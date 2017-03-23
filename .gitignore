@@ -1,6 +1,8 @@
 # Created by .ignore support plugin (hsz.mobi)
 /logs/
 /cache/
+.idea/misc.xml
+.idea/Four.iml
 .idea/workspace.xml
 __pycache__/
 economics/__pycache__/
