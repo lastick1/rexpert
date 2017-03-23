@@ -8,3 +8,4 @@ mission_report/__pycache__/
 /img/
 *spline.json
 *lines.json
+/configs/conf.ini
