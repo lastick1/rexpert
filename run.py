@@ -38,6 +38,6 @@ def run():
 
 
 # reset()
-# run()
-generate('result1', 'moscow')
+run()
+# generate('result1', 'moscow')
 print()

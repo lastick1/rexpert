@@ -61,6 +61,12 @@ class Player:
                 }
                 if not connector.Squad.get_planes(self.squad['id']):
                     connector.Squad.initialize(self.squad['id'])
+                    print('[{}] squad {} initialized: {} id, {} strength'.format(
+                        datetime.datetime.now().strftime("%H:%M:%S"),
+                        data['squad_name'],
+                        data['squad_id'],
+                        data['squad_strength']
+                    ))
                 self.planes_to_squad()
 
     def __str__(self):

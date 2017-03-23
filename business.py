@@ -48,7 +48,6 @@ class Business:
                 # если игрок ещё не инициализирован в базе, завершаем этот процесс необходимыми данными
                 if not self.players[s.account_id].initialized:
                     self.players[s.account_id].initialize(s.nickname)  # создаём запись в базе
-                    self.players[s.account_id].planes = {'light': 2, 'medium': 2, 'heavy': 2}  # начальный гараж
                     self.players[s.account_id].unlocks = 1  # начальное количество модификаций
             # определяем, вылет был начат с тылового или с фронтового аэродрома
             rear_start = False
@@ -69,6 +68,28 @@ class Business:
         mods = len(sortie.weapon_mods_id)
         aircraft_cls = aircrafts.aircraft_types[sortie.aircraft_name]
 
+        if sortie.tik_takeoff:
+            # если взлетел
+            if self.can_take(p, aircraft_cls, rear_start) and self.can_use_mods(p, aircraft_cls, mods, rear_start):
+                # с разрешением на взлёт (доступный самолёт и модификации)
+                if sortie not in self.flying_sorties:
+                    # отнимаем одократно один самолёт, до возвращения на базу
+                    self.flying_sorties.add(sortie)
+                    if not rear_start:
+                        p.planes[aircraft_cls] -= 1
+            else:
+                # без разрешения на взлёт
+                if sortie.sortie_status.is_in_flight:
+                    self._commands.append(Command(
+                        self.name,
+                        tik=sortie.tik_spawn,
+                        cmd_type=CommandType.kick,
+                        account_id=sortie.account_id,
+                        subject=sortie.nickname,
+                        reason='Takeoff restricted: {} {} [{}] {} [{}]'.format(
+                            sortie.nickname, p.planes, p.unlocks, sortie.aircraft_name, mods)
+                    ))
+        pass
         # вылет может быть всё же завершённым - диско
         if sortie.is_disco:
             if len(sortie.aircraft.damagers) > 0:
@@ -116,28 +137,6 @@ class Business:
                 subject=message,
                 reason='info message'
             ))
-        if sortie.tik_takeoff:
-            # если взлетел
-            if self.can_take(p, aircraft_cls, rear_start) and self.can_use_mods(p, aircraft_cls, mods, rear_start):
-                # с разрешением на взлёт (доступный самолёт и модификации)
-                if sortie not in self.flying_sorties:
-                    # отнимаем одократно один самолёт, до возвращения на базу
-                    self.flying_sorties.add(sortie)
-                    if not rear_start:
-                        p.planes[aircraft_cls] -= 1
-            else:
-                # без разрешения на взлёт
-                if sortie.sortie_status.is_in_flight:
-                    self._commands.append(Command(
-                        self.name,
-                        tik=sortie.tik_spawn,
-                        cmd_type=CommandType.kick,
-                        account_id=sortie.account_id,
-                        subject=sortie.nickname,
-                        reason='Takeoff restricted: {} {} [{}] {} [{}]'.format(
-                            sortie.nickname, p.planes, p.unlocks, sortie.aircraft_name, mods)
-                    ))
-        pass
 
     def _finished_sortie(self, sortie, rear_start):
         """ Обработка завершённого вылета

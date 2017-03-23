@@ -433,9 +433,9 @@ class PGConnector:
             with psycopg2.connect(PGConnector.Player.__connection_string) as connection:
                 cur = connection.cursor(cursor_factory=RealDictCursor)
                 cur.execute(sql, (account_id, ))
-                if cur.rowcount > 1:
-                    raise NameError('More than 1 account! {}'.format(account_id))
-                if cur.rowcount == 1:
+                # if cur.rowcount > 1:
+                #     raise NameError('More than 1 account! {}'.format(account_id))
+                if cur.rowcount >= 1:
                     return cur.fetchall()[0]
                 return
 
