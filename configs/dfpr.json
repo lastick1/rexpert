@@ -1,0 +1,69 @@
+{
+  "settings": ["forests", "guimap", "hmap", "textures", "mapId"],
+  "moscow": {
+    "seasons": ["wi", "au"],
+    "wi": {
+      "forests": "graphics\\LANDSCAPE_Moscow_w\\trees\\woods.wds",
+      "guimap": "moscow-winter",
+      "hmap": "graphics\\LANDSCAPE_Moscow_w\\height.hini",
+      "textures": "graphics\\LANDSCAPE_Moscow_w\\textures.tini",
+      "mapId": "graphics\\LANDSCAPE_Moscow_w\\height.dat",
+      "wtype_diapason": [0, 34]
+    },
+    "au": {
+      "forests": "graphics\\LANDSCAPE_Moscow_a\\trees\\woods.wds",
+      "guimap": "moscow-autumn",
+      "hmap": "graphics\\LANDSCAPE_Moscow_a\\height.hini",
+      "textures": "graphics\\LANDSCAPE_Moscow_a\\textures.tini",
+      "mapId": "graphics\\LANDSCAPE_Moscow_a\\height.dat",
+      "wtype_diapason": [35, 70]
+    },
+    "su": {
+      "forests": "graphics\\LANDSCAPE_Moscow_a\\trees\\woods.wds",
+      "guimap": "moscow-autumn",
+      "hmap": "graphics\\LANDSCAPE_Moscow_a\\height.hini",
+      "textures": "graphics\\LANDSCAPE_Moscow_a\\textures.tini",
+      "mapId": "graphics\\LANDSCAPE_Moscow_a\\height.dat",
+      "wtype_diapason": [35, 70]
+    },
+    "tvd": "scg\\2\\",
+    "overlay": "moscow-base-scene.Group:none",
+    "xposition": 281600,
+    "zposition": 281600,
+    "xtargetposition": 50000,
+    "ztargetposition": 50000
+  },
+  "stalingrad": {
+    "seasons": ["wi", "au", "su"],
+    "wi": {
+      "forests": "graphics\\LANDSCAPE_Stalin_w\\trees\\woods.wds",
+      "guimap": "stalingrad-winter-1942",
+      "hmap": "graphics\\LANDSCAPE_Stalin_w\\height.hini",
+      "textures": "graphics\\LANDSCAPE_Stalin_w\\textures.tini",
+      "mapId": "graphics\\LANDSCAPE_Stalin_w\\height.dat",
+      "wtype_diapason": [0, 34]
+    },
+    "au": {
+      "forests": "graphics\\LANDSCAPE_Stalin_a\\trees\\woods.wds",
+      "guimap": "stalingrad-autumn-1942",
+      "hmap": "graphics\\LANDSCAPE_Stalin_a\\height.hini",
+      "textures": "graphics\\LANDSCAPE_Stalin_a\\textures.tini",
+      "mapId": "graphics\\LANDSCAPE_Stalin_a\\height.dat",
+      "wtype_diapason": [35, 70]
+    },
+    "su": {
+      "forests": "graphics\\LANDSCAPE_Stalin_s\\trees\\woods.wds",
+      "guimap": "stalingrad-summer-1942",
+      "hmap": "graphics\\LANDSCAPE_Stalin_s\\height.hini",
+      "textures": "graphics\\LANDSCAPE_Stalin_s\\textures.tini",
+      "mapId": "graphics\\LANDSCAPE_Stalin_s\\height.dat",
+      "wtype_diapason": [35, 70]
+    },
+    "tvd": "scg\\1\\",
+    "overlay": "stalingrad-base-scene.Group:none",
+    "xposition": 230400,
+    "zposition": 358400,
+    "xtargetposition": 115200,
+    "ztargetposition": 179200
+  }
+}

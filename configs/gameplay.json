@@ -1,0 +1,83 @@
+{
+  "penalties": {
+    "disco": 0.1,
+    "bailout": 0.25,
+    "bailout_captured": 0.1,
+    "death": 0.05,
+    "ditch": 0.7,
+    "ditch_captured": 0.15,
+    "crash": 0.5,
+    "crash_captured": 0.1
+  },
+  "aircraft_lost": {
+    "ditch": 0.5,
+    "ditch_captured": 1,
+    "crash": 0.75,
+    "crash_captured": 1,
+    "death": 1
+  },
+  "grounds": {
+    "warehouse": {
+      "radius": 2500,
+      "hp": 165
+    },
+    "tanks": {
+      "radius": 1500,
+      "hp": 60
+    },
+    "airfield": {
+      "radius": 2200,
+      "hp": 65
+    },
+    "hq": {
+      "radius": 5000,
+      "hp": 300
+    },
+    "industrial": {
+      "radius": 5000,
+      "hp": 200
+    },
+    "bridge": {
+      "radius": 500,
+      "hp": 10
+    },
+    "fort": {
+      "radius": 370,
+      "hp": 90
+    }
+  },
+  "supply": {
+    "kill_weight_reward": 0.2,
+    "free_plane_hours": 6,
+    "renew_minutes": 30,
+    "flight_second_price": 0.15,
+    "amount": 500,
+    "max_suppliable": 1000,
+    "aircraft_multipliers": {
+      "light": 1,
+      "medium": 2,
+      "heavy": 2,
+      "transport": 5
+    }
+  },
+  "economics": {
+    "takeoff_fee": 100,
+    "startup_capital": 1000,
+    "max_capital": 100000000,
+    "min_capital": 0,
+    "min_price": 250,
+    "max_price": 5000000,
+    "coefficients": {
+      "weapons": 1,
+      "fuel": 0.5,
+      "base": 0.5,
+      "sorties": 0.75,
+      "points": 1.5,
+      "payloads": 1,
+      "light": 4,
+      "medium": 1,
+      "heavy": 1,
+      "transport": 0.1
+    }
+  }
+}

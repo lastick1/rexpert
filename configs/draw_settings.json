@@ -1,0 +1,35 @@
+{
+  "icon_size": 100,
+  "backgrounds": {
+    "moscow": "4.png",
+    "stalingrad": "stalingrad_background.png"
+  },
+  "flame": "fire.png",
+  "af": "af.png",
+  "coals": ["axis", "allies"],
+  "countries": {"101": "allies", "201": "axis"},
+  "coal_icons": ["key_position", "trucks", "tank", "arty", "wh", "hq", "af"],
+  "axis": {
+    "key_position": "blue_point.png",
+    "trucks": "car_blue.png",
+    "tank": "tank_blue.png",
+    "arty": "art_blue.png",
+    "wh": "sklad_blue.png",
+    "hq": "schtab3_blue.png",
+    "af": "blue_field.png"
+  },
+  "allies": {
+    "key_position": "red_point.png",
+    "trucks": "car_red.png",
+    "tank": "tank_red.png",
+    "arty": "art_red.png",
+    "wh": "sklad_red.png",
+    "hq": "schtab2_red.png",
+    "af": "red_field.png"
+  },
+  "show_options": {
+    "targets_on_map": true,
+    "airfields_on_map": true,
+    "colored_af": true
+  }
+}

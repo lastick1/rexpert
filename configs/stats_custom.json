@@ -1,0 +1,12 @@
+{
+  "image_files": {
+    "map_main_page": ".\\img\\t.jpg",
+    "map_full_size": ".\\img\\g.jpg"
+  },
+  "json_files": {
+    "online_players": "players.json",
+    "elapsed_time": "elapsed_time.json",
+    "planes_data": "planes_data.json",
+    "payloads": "payload.json"
+  }
+}

@@ -1,0 +1,896 @@
+MCU_TR_Subtitle
+{
+  Index = 166;
+  Name = "Translator Subtitle";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -5010.164;
+  YPos = 100.825;
+  ZPos = -5007.852;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  SubtitleInfo
+  {
+    Duration = 10;
+    FontSize = 30;
+    HAlign = 1;
+    VAlign = 0;
+    RColor = 191;
+    GColor = 0;
+    BColor = 0;
+    LCText = 13;
+  }
+  
+  Coalitions = [0, 1, 2];
+}
+
+MCU_TR_Subtitle
+{
+  Index = 167;
+  Name = "Translator Subtitle";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -4996.089;
+  YPos = 100.825;
+  ZPos = -5007.942;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  SubtitleInfo
+  {
+    Duration = 10;
+    FontSize = 30;
+    HAlign = 1;
+    VAlign = 0;
+    RColor = 191;
+    GColor = 0;
+    BColor = 0;
+    LCText = 14;
+  }
+  
+  Coalitions = [0, 1, 2];
+}
+
+MCU_CMD_Behaviour
+{
+  Index = 168;
+  Name = "NEUT";
+  Desc = "";
+  Targets = [];
+  Objects = [169];
+  XPos = -5006.395;
+  YPos = 100.825;
+  ZPos = -5003.905;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Filter = 16;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  AILevel = 3;
+  Country = 0;
+  FloatParam = 0;
+}
+
+MCU_Timer
+{
+  Index = 170;
+  Name = "1s";
+  Desc = "";
+  Targets = [168,171,166,172,173,174];
+  Objects = [];
+  XPos = -5006.442;
+  YPos = 100.825;
+  ZPos = -5007.878;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 171;
+  Name = "repair time";
+  Desc = "";
+  Targets = [176,167,177];
+  Objects = [];
+  XPos = -4999.480;
+  YPos = 17.795;
+  ZPos = -5007.861;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 2400;
+  Random = 100;
+}
+
+MCU_H_Dynamic
+{
+  Index = 178;
+  Name = "Repair";
+  Desc = "";
+  Targets = [171];
+  Objects = [];
+  XPos = -4999.505;
+  YPos = 17.795;
+  ZPos = -5015.054;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "Time";
+}
+
+MCU_CMD_Behaviour
+{
+  Index = 176;
+  Name = "GER";
+  Desc = "";
+  Targets = [];
+  Objects = [169];
+  XPos = -4999.542;
+  YPos = 17.795;
+  ZPos = -5003.968;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Filter = 16;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  AILevel = 2;
+  Country = 201;
+  FloatParam = 0;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 180;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -5003.000;
+  YPos = 17.795;
+  ZPos = -4997.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+
+Airfield
+{
+  Name = "!AFNAME!";
+  Index = 181;
+  LinkTrId = 169;
+  XPos = -5003.000;
+  YPos = 17.795;
+  ZPos = -4997.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fakefield.mgm";
+  Script = "LuaScripts\WorldObjects\Airfields\fakefield.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  Callsign = 0;
+  Callnum = 0;
+  Planes
+  {
+    Plane
+    {
+      SetIndex = 0;
+      Number = -1;
+      AILevel = 2;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\planes\bf109e7\bf109e7.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\bf109e7.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "1..5";
+      AvSkins = "";
+      AvPayloads = "0..3";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 0;
+      Number = -1;
+      AILevel = 2;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\planes\bf109f2\bf109f2.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\bf109f2.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "1..5";
+      AvSkins = "";
+      AvPayloads = "0..6";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 0;
+      Number = -1;
+      AILevel = 2;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\planes\mc202s8\mc202s8.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\mc202s8.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "1..5";
+      AvSkins = "";
+      AvPayloads = "0..5";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 0;
+      Number = -1;
+      AILevel = 2;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\planes\bf109f4\bf109f4.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\bf109f4.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "1..6";
+      AvSkins = "";
+      AvPayloads = "0..5";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 0;
+      Number = -1;
+      AILevel = 2;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\planes\bf109g2\bf109g2.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\bf109g2.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "1..5";
+      AvSkins = "";
+      AvPayloads = "0..4";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 0;
+      Number = -1;
+      AILevel = 3;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\planes\bf110e2\bf110e2.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\bf110e2.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "1..4";
+      AvSkins = "";
+      AvPayloads = "0..6/9";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 0;
+      Number = -1;
+      AILevel = 3;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 2;
+      WMMask = 11001;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\planes\ju523mg4e\ju523mg4e.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\ju523mg4e.txt";
+      Name = "";
+      Skin = "ju523mg4e\ju523mg4e_skin_03.dds";
+      AvMods = "";
+      AvSkins = "";
+      AvPayloads = "";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 0;
+      Number = -1;
+      AILevel = 3;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\planes\ju87d3\ju87d3.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\ju87d3.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "1/3..5";
+      AvSkins = "";
+      AvPayloads = "0..6/8..11";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 0;
+      Number = -1;
+      AILevel = 3;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\planes\he111h6\he111h6.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\he111h6.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "1..3";
+      AvSkins = "";
+      AvPayloads = "0..6/13";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 0;
+      Number = -1;
+      AILevel = 3;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\planes\ju88a4\ju88a4.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\ju88a4.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "1..3";
+      AvSkins = "";
+      AvPayloads = "0..9/12";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 1;
+      Number = -1;
+      AILevel = 2;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\planes\bf109e7\bf109e7.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\bf109e7.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "1..5";
+      AvSkins = "";
+      AvPayloads = "0..3";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 1;
+      Number = -1;
+      AILevel = 2;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\planes\bf109f2\bf109f2.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\bf109f2.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "1..5";
+      AvSkins = "";
+      AvPayloads = "0..6";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 1;
+      Number = -1;
+      AILevel = 2;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\planes\bf109f4\bf109f4.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\bf109f4.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "1..6";
+      AvSkins = "";
+      AvPayloads = "0..5";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 1;
+      Number = -1;
+      AILevel = 2;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\planes\bf109g2\bf109g2.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\bf109g2.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "1..5";
+      AvSkins = "";
+      AvPayloads = "0..4";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 1;
+      Number = -1;
+      AILevel = 3;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\planes\bf110e2\bf110e2.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\bf110e2.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "1..4";
+      AvSkins = "";
+      AvPayloads = "0..6/9";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 1;
+      Number = -1;
+      AILevel = 3;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\planes\ju87d3\ju87d3.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\ju87d3.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "1/3..5";
+      AvSkins = "";
+      AvPayloads = "0..6/8..11";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 1;
+      Number = -1;
+      AILevel = 3;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\planes\he111h6\he111h6.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\he111h6.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "1..3";
+      AvSkins = "";
+      AvPayloads = "0..6/13";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 1;
+      Number = -1;
+      AILevel = 3;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\planes\ju88a4\ju88a4.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\ju88a4.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "1..3";
+      AvSkins = "";
+      AvPayloads = "0..9/12";
+      Callsign = 0;
+      Callnum = 0;
+    }
+  }
+  ReturnPlanes = 1;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 3000;
+}
+
+MCU_TR_Entity
+{
+  Index = 169;
+  Name = "Airfield entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -5003.000;
+  YPos = 17.995;
+  ZPos = -4997.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 181;
+}
+
+MCU_TR_ServerInput
+{
+  Index = 183;
+  Name = "!AFNAME!";
+  Desc = "";
+  Targets = [170];
+  Objects = [];
+  XPos = -5006.489;
+  YPos = 17.795;
+  ZPos = -5015.061;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+}
+
+MCU_H_Output
+{
+  Index = 172;
+  Name = "KILLED_EVENT";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -5004.556;
+  YPos = 17.795;
+  ZPos = -5015.013;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 173;
+  Name = "AAA_OFF";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -5003.043;
+  YPos = 17.795;
+  ZPos = -5015.039;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 177;
+  Name = "AAA_ON";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -5001.359;
+  YPos = 17.795;
+  ZPos = -5015.087;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Input
+{
+  Index = 187;
+  Name = "PLANESET_SWITCH";
+  Desc = "";
+  Targets = [188];
+  Objects = [];
+  XPos = -5003.021;
+  YPos = 17.795;
+  ZPos = -5006.420;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_CMD_Behaviour
+{
+  Index = 188;
+  Name = "switch";
+  Desc = "";
+  Targets = [];
+  Objects = [169];
+  XPos = -5003.040;
+  YPos = 17.795;
+  ZPos = -5003.782;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Filter = 32;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  AILevel = 2;
+  Country = 0;
+  FloatParam = 1;
+}
+
+MCU_Deactivate
+{
+  Index = 174;
+  Name = "Trigger Deactivate";
+  Desc = "";
+  Targets = [170];
+  Objects = [];
+  XPos = -5004.346;
+  YPos = 17.795;
+  ZPos = -5009.565;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Input
+{
+  Index = 191;
+  Name = "CARGO_EVENT";
+  Desc = "";
+  Targets = [192,193];
+  Objects = [];
+  XPos = -4997.804;
+  YPos = 17.795;
+  ZPos = -5015.037;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Timer
+{
+  Index = 193;
+  Name = "1s";
+  Desc = "";
+  Targets = [167,176,177];
+  Objects = [];
+  XPos = -4997.190;
+  YPos = 17.795;
+  ZPos = -5012.385;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Deactivate
+{
+  Index = 192;
+  Name = "Trigger Deactivate";
+  Desc = "";
+  Targets = [171];
+  Objects = [];
+  XPos = -4998.236;
+  YPos = 17.795;
+  ZPos = -5012.385;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
