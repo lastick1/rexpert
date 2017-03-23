@@ -6,3 +6,5 @@ __pycache__/
 economics/__pycache__/
 mission_report/__pycache__/
 /img/
+*spline.json
+*lines.json
