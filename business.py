@@ -175,7 +175,7 @@ class Business:
         if datetime.strptime(p.last_mission, date_format) > datetime.strptime(self.name, date_format):
             # если время последней миссии позже, чем обрабатываемая миссия, то ничего не делаем
             # т.е. не обрабатываем повторно обработанные миссии
-            return
+            return 'second'
         if datetime.strptime(p.last_mission, date_format) < datetime.strptime(self.name, date_format):
             # если время последней миссии раньше, чем обрабатываемая миссия, то обнуляем последний тик
             # и обновляем текущую миссию
@@ -187,7 +187,7 @@ class Business:
             p.touch(self.name, sortie.tik_spawn)
         else:
             # не обрабатываем вылеты в миссии повторно
-            return
+            return 'twice'
 
         """При взлёте с фронтового аэродрома,
         количество доступных самолётов соответствующей категории уменьшается на единицу
@@ -250,6 +250,8 @@ class Business:
             if not is_ff and sortie.bot.is_killed:
                 p.planes[aircraft_cls] -= 1
             return 0
+        p.planes[aircraft_cls] += 1
+        return 10
 
     @staticmethod
     def can_take(player, a_cls, rear_start):

@@ -22,13 +22,13 @@ def generate(name, tvd_name):
     c = campaign.Campaign()
     c.tvds[tvd_name].update()
     gen.Generator.make_mission(name, tvd_name)
-    draw.draw_graph(
+    """draw.draw_graph(
         c.tvds[tvd_name].grid.neutral_line,
         c.tvds[tvd_name].grid.areas,
         c.tvds[tvd_name].name,
         c.tvds[tvd_name].grid.nodes_list,
         c.tvds[tvd_name].grid.edges
-    )
+    )"""
 
 
 def run():
