@@ -113,6 +113,8 @@ class Player:
             raise NameError('No such account_id in custom_profiles_extension {}'.format(self.account_id))
 
     def set_unlocks(self, value):
+        if value < 0:
+            value = 0
         connector.Player.set_unlocks(self.account_id, value)
 
     unlocks = property(fget=get_unlocks, fset=set_unlocks, doc="Количество модификаций, доступное игроку")

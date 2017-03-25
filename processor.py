@@ -14,7 +14,7 @@ connector = db.PGConnector
 
 
 def log_this(msg, m_name):
-    with Path('../logs/timing_log_' + m_name + '.txt').absolute().open(
+    with Path('./logs/timing_log_' + m_name + '.txt').open(
             mode='a', encoding='utf-8') as f:
         f.write(msg)
         f.write('\n')
@@ -73,7 +73,7 @@ class Processor:
             self.threads[m_name].join()
             self.threads[m_name] = threading.Thread(args=(m_name, logs), target=self._process)
             self.threads[m_name].start()
-        print('[{}] alive {}'.format(datetime.now().strftime("%H:%M:%S"), m_name))
+        # print('[{}] alive {}'.format(datetime.now().strftime("%H:%M:%S"), m_name))
 
     def notify(self, m_name):
         """ Уведомить о приходе нового лог-файла миссии """

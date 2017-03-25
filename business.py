@@ -56,9 +56,32 @@ class Business:
                     rear_start = True
             # если миссия не завершена - обрабатываем по-другому
             if not s.is_ended and not self.is_mission_ended:
-                self._unfinished_sortie(s, rear_start)
+                code = self._unfinished_sortie(s, rear_start)
+                with Path('./logs/business_start_' + self.name + '.txt').open(
+                        mode='a', encoding='utf-8') as f:
+                    f.write('[{}] {} [{}] {} {} [sortie_status {}] [aircraft_status {}]\n'.format(
+                        datetime.now().strftime("%H:%M:%S"),
+                        s.tik_spawn,
+                        code,
+                        self.players[s.account_id].nickname,
+                        s.aircraft_name,
+                        s.sortie_status,
+                        s.aircraft_status
+                    ))
                 continue
-            self._finished_sortie(s, rear_start)
+            code = self._finished_sortie(s, rear_start)
+            if not s.sortie_status.is_not_takeoff:
+                with Path('./logs/business_finished_' + self.name + '.txt').open(
+                        mode='a', encoding='utf-8') as f:
+                    f.write('[{}] {} [{}] {} {} [sortie_status {}] [aircraft_status {}]\n'.format(
+                        datetime.now().strftime("%H:%M:%S"),
+                        s.tik_spawn,
+                        code,
+                        self.players[s.account_id].nickname,
+                        s.aircraft_name,
+                        s.sortie_status,
+                        s.aircraft_status
+                    ))
             self.used_sorties.add(s)
 
     def _unfinished_sortie(self, sortie, rear_start):
@@ -77,6 +100,7 @@ class Business:
                     self.flying_sorties.add(sortie)
                     if not rear_start:
                         p.planes[aircraft_cls] -= 1
+                        return -1
             else:
                 # без разрешения на взлёт
                 if sortie.sortie_status.is_in_flight:
@@ -89,18 +113,20 @@ class Business:
                         reason='Takeoff restricted: {} {} [{}] {} [{}]'.format(
                             sortie.nickname, p.planes, p.unlocks, sortie.aircraft_name, mods)
                     ))
+                    return 0
         pass
         # вылет может быть всё же завершённым - диско
         if sortie.is_disco:
+            self.used_sorties.add(sortie)
             if len(sortie.aircraft.damagers) > 0:
                 # За диско с дамагерами минусуем один самолёт этого класса (light, medium или heavy)
                 p.planes[aircrafts.aircraft_types[sortie.aircraft_name]] -= 1
-            self.used_sorties.add(sortie)
-            return
+                return -2
+            return 1
 
         if sortie.aircraft_status.is_destroyed:
             self.used_sorties.add(sortie)
-            return
+            return 2
 
         # уведомляем о состоянии гаража и доступных модификациях
         if sortie not in self.notified_sorties:
@@ -137,6 +163,7 @@ class Business:
                 subject=message,
                 reason='info message'
             ))
+        return 0
 
     def _finished_sortie(self, sortie, rear_start):
         """ Обработка завершённого вылета
@@ -172,27 +199,31 @@ class Business:
                     # за диско с дамагом от кого-либо или прыжком не восполняем
                     # минусуем анлоки
                     p.unlocks -= mods
-                    return
+                    return -1
+            if sortie.is_captured:
+                # если пленён
+                p.unlocks -= 1
+                return -2
             if sortie.sortie_status.is_shotdown:
                 # сбит - не восполняем
                 # минусуем анлоки
                 p.unlocks -= mods
-                return
+                return -3
             if sortie.sortie_status.is_ditched:
                 # дитч - не восполняем
                 # минусуем анлоки
                 p.unlocks -= mods
-                return
+                return -4
             if sortie.sortie_status.is_crashed:
                 # разбился - не восполняем
                 # минусуем анлоки
                 p.unlocks -= mods
-                return
-            if sortie.aircraft_status.is_destroyed:
+                return -5
+            if sortie.aircraft_status.is_destroyed and not sortie.sortie_status.is_landed:
                 # самолёт уничтожен - не восполняем
                 # минусуем анлоки
                 p.unlocks -= mods
-                return
+                return -6
             if len(sortie.killboard) > 0:
                 """Увеличение данного лимита будет происходить только при успешном выполнении боевых вылетов
                 - вылетов с уничтоженными наземными целями или сбитыми самолётами противника.
@@ -208,6 +239,8 @@ class Business:
             if is_ended_on_front:
                 # возвращаем самолёт в случае, если сел на фронтовом аэродроме
                 p.planes[aircraft_cls] += 1
+                return 1
+            return 2
         else:
             # у не взлетевших минусуем самолёты только за смерть от противника
             killer = sortie.bot.killers[0] if len(sortie.bot.killers) else None
@@ -216,7 +249,7 @@ class Business:
                 is_ff = True
             if not is_ff and sortie.bot.is_killed:
                 p.planes[aircraft_cls] -= 1
-        pass
+            return 0
 
     @staticmethod
     def can_take(player, a_cls, rear_start):
