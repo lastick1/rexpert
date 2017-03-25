@@ -148,7 +148,7 @@ class Tvd:
             hour=int(season['sunset'].split(sep=':')[0]),
             minute=int(season['sunset'].split(sep=':')[1])
         )
-        return sunrise, sunset - datetime.timedelta(hours=1)
+        return sunrise, sunset - datetime.timedelta(hours=2)
 
     def season_data(self, date):
         """ Информация по сезону на указанную дату (из daytime.csv) """
