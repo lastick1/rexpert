@@ -73,7 +73,6 @@ class Processor:
             self.threads[m_name].join()
             self.threads[m_name] = threading.Thread(args=(m_name, logs), target=self._process)
             self.threads[m_name].start()
-        # print('[{}] alive {}'.format(datetime.now().strftime("%H:%M:%S"), m_name))
 
     def notify(self, m_name):
         """ Уведомить о приходе нового лог-файла миссии """

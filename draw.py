@@ -31,7 +31,7 @@ def get_parallel_multiline(pts, dist):
         tmppts[i] = tmpline[0]
         tmppts[i + 1] = tmpline[1]
         i += 1
-    return [(p[0], p[1]) for p in tmppts]
+    return [[p[0], p[1]] for p in tmppts]
 
 
 def get_parallel_line(line_x_y, dist):
@@ -188,9 +188,22 @@ def draw_spline(
             draw.line([parpts1[0], parpts1[len(parpts1) - 1]], fill=color[1], width=linewidth)
             draw.line([parpts2[0], parpts2[len(parpts2) - 1]], fill=color[0], width=linewidth)
 
-    with open('spline.json', mode='w') as f:
-        f.write(json.dumps(lines))
-    # base.save(str(output), "PNG")
+
+def get_splines(
+        cut,  # набор из линий фронта
+        dist=10  # расстояние между составными кривыми линии фронта
+):
+    """Функция отрисовки линии фронта, сглаженной двухмерным кубическим сплайном
+        Линия фронта состоит из 2 параллельных линий"""
+    lines = []
+
+    for line in cut:
+        pts = [(float(p[0]), float(p[1])) for p in line]
+        respts = polydim_spline(pts)
+        parpts1 = get_parallel_multiline(respts, int(dist / 2))
+        parpts2 = get_parallel_multiline(respts, int(dist / (-2)))
+        lines.append([parpts1, parpts2])
+    return lines
 
 
 def draw_graph(neutral_line, influences, map_name, nodes=list(), edges=list(), icons=None, debug_data=None):

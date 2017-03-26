@@ -7,6 +7,15 @@
     "online_players": "players.json",
     "elapsed_time": "elapsed_time.json",
     "planes_data": "planes_data.json",
-    "payloads": "payload.json"
+    "payloads": "payload.json",
+    "il2missionplanner": "il2missionplanner.json"
+  },
+  "il2missionplanner": {
+    "moscow": {
+      "right_top": [201, 201]
+    },
+    "stalingrad": {
+      "right_top": [164.35, 256]
+    }
   }
 }

@@ -1,11 +1,11 @@
+import draw
 import datetime
 import json
 from pathlib import Path
-from cfg import MissionGenCfg, MainCfg
+from cfg import MissionGenCfg, MainCfg, StatsCustomCfg
 from tvd import Tvd
 import mission_report
 import gen
-import db
 date_format = '%d.%m.%Y'
 
 
@@ -30,7 +30,7 @@ class Mission:
         if len(data):
             atypes = list([mission_report.parse_mission_log_line.parse(x[0]) for x in data])
             self.atypes += atypes
-            self.m_report.processing_rows(x[0] for x in data)
+            self.m_report.processing_rows(list(x[0] for x in data))
             if not self.g_report:
                 self.g_report = mission_report.ground_report.GroundReport(self.src, self.name)
             self.g_report.process_ground_kills(self.m_report.sorties)
@@ -133,6 +133,7 @@ class Campaign:
         self.tvds = {x: Tvd(x, self.data[x]['current_date']) for x in MissionGenCfg.maps}
         self.generations = dict()
         self.captures = dict()
+        self._saved_plans = set()
 
     def save(self):
         cache = Path(r'.\cache\campaign.json').absolute()
@@ -144,6 +145,9 @@ class Campaign:
         :return: None """
         m_tvd_name = m.tvd_name
         if not m.is_ended:
+            if m.name not in self._saved_plans:
+                self.save_mission_plan(m, m_tvd_name)
+                self._saved_plans.add(m.name)
             for c in m.captures:
                 if m.name not in self.captures.keys():
                     self.captures[m.name] = set()
@@ -167,6 +171,51 @@ class Campaign:
                 gen.Generator.make_mission(m.next_name, m_tvd_name)
                 self.generations[m.name] = lc
             self.save()
+
+    def save_mission_plan(self, msn, tvd_name):
+        """ Сохранение плана миссии в JSON для il2missionplanner 
+        :type msn: Mission
+        :type tvd_name: str """
+        icons = msn.src.icons
+        x_c = StatsCustomCfg.cfg['il2missionplanner'][tvd_name]['right_top'][0] / \
+              MissionGenCfg.cfg[tvd_name]['right_top']['x']
+        z_c = StatsCustomCfg.cfg['il2missionplanner'][tvd_name]['right_top'][1] / \
+              MissionGenCfg.cfg[tvd_name]['right_top']['z']
+
+        cut = [list((x.x * x_c, x.z * z_c) for x in self.tvds[tvd_name].grid.neutral_line)]
+        frontline = draw.get_splines(cut)
+        for lines_pair in frontline:
+            for line in lines_pair:
+                for point in line:
+                    point[0] = round(point[0], 2)
+                    point[1] = round(point[1], 2)
+        # lat - x
+        # lng - z
+        targets = []
+        for key in icons.keys():
+            if key == 'flames':
+                continue
+            coal, cls = tuple(key.split('_'))
+            for t in icons[key]:
+                targets.append({
+                    'latLng': {
+                        'lat': round(t['x'] * x_c, 2),
+                        'lng': round(t['z'] * z_c, 2)
+                    },
+                    'name': cls.capitalize(),
+                    'color': 'black' if coal == 'axis' else 'red',
+                    'type': 'bomb-target',
+                    'notes': ' '
+                })
+        data = {
+            'mapHash': tvd_name,
+            'routes': [],
+            'points': targets,
+            'frontline': frontline
+        }
+        dest = Path(MainCfg.stats_static.joinpath(StatsCustomCfg.cfg['json_files']['il2missionplanner']))
+        with dest.open(mode='w') as f:
+            json.dump(data, f)
 
     def next_tvd_name(self, current):
         if len(MissionGenCfg.maps)-1 == MissionGenCfg.maps.index(current):
