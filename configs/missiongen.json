@@ -18,7 +18,7 @@
     "icons_group_file": "blocks_quickmission\\icons\\FL_icon.Group",
     "default_params_source": "defaultparams_template.dat",
     "default_params_dest": "defaultparams.dat",
-    "daytime_csv": "daytime.csv",
+    "daytime_csv": "daytime_moscow.csv",
     "airfields_csv": "moscow_fields.csv",
     "stages": [
       { "id": 1, "start": "01.09.1941", "end": "01.10.1941", "red": "rus_period_1.Group", "blue": "ger_period_1.Group" },

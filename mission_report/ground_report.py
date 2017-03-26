@@ -1,5 +1,6 @@
 from cfg import Gameplay
 from rcon import Command, CommandType
+import mission_report.mission_src
 
 types_hp = {
     'warehouse': Gameplay.grounds['warehouse']['hp'],
@@ -68,6 +69,8 @@ class Ground:
 
 class GroundReport:
     def __init__(self, mission_src, mission_name):
+        """ Класс, считающий уничтожение наземных целей
+        :type mission_src: mission_report.mission_src.MissionSrc """
         self.src = mission_src
         self.mission_name = mission_name
         self.grounds = []

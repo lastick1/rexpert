@@ -31,7 +31,7 @@ def get_parallel_multiline(pts, dist):
         tmppts[i] = tmpline[0]
         tmppts[i + 1] = tmpline[1]
         i += 1
-    return [(p[0], p[1]) for p in tmppts]
+    return [[p[0], p[1]] for p in tmppts]
 
 
 def get_parallel_line(line_x_y, dist):
