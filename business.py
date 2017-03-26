@@ -49,39 +49,7 @@ class Business:
                 if not self.players[s.account_id].initialized:
                     self.players[s.account_id].initialize(s.nickname)  # создаём запись в базе
                     self.players[s.account_id].unlocks = 1  # начальное количество модификаций
-            # определяем, вылет был начат с тылового или с фронтового аэродрома
-            rear_start = False
-            for af in self.rear_airfields:
-                if af.distance_to(s.pos_start['x'], s.pos_start['z']) < 4000:
-                    rear_start = True
-            # если миссия не завершена - обрабатываем по-другому
-            if not s.is_ended and not self.is_mission_ended:
-                code = self._unfinished_sortie(s, rear_start)
-                with Path('./logs/business_start_' + self.name + '.txt').open(
-                        mode='a', encoding='utf-8') as f:
-                    f.write('[{}] {} [{}] {} {} [sortie_status {}] [aircraft_status {}]\n'.format(
-                        datetime.now().strftime("%H:%M:%S"),
-                        s.tik_spawn,
-                        code,
-                        self.players[s.account_id].nickname,
-                        s.aircraft_name,
-                        s.sortie_status,
-                        s.aircraft_status
-                    ))
-                continue
-            code = self._finished_sortie(s, rear_start)
-            if not s.sortie_status.is_not_takeoff:
-                with Path('./logs/business_finished_' + self.name + '.txt').open(
-                        mode='a', encoding='utf-8') as f:
-                    f.write('[{}] {} [{}] {} {} [sortie_status {}] [aircraft_status {}]\n'.format(
-                        datetime.now().strftime("%H:%M:%S"),
-                        s.tik_spawn,
-                        code,
-                        self.players[s.account_id].nickname,
-                        s.aircraft_name,
-                        s.sortie_status,
-                        s.aircraft_status
-                    ))
+            
             self.used_sorties.add(s)
 
     def _unfinished_sortie(self, sortie, rear_start):
