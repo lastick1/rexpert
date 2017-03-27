@@ -50,7 +50,7 @@ class Processor:
         if not self.missions[m_name].is_ended:
             self.commander.process_commands(self.missions[m_name].g_report.killed_commands)
 
-        """# бизнес-логика
+        # бизнес-логика
         if m_name not in self.business.keys():
             self.business[m_name] = business.Business(m_name)
         self.business[m_name].update(
@@ -60,7 +60,7 @@ class Processor:
         )
         # отправка сервер инпутов с чатом и киками
         if not self.missions[m_name].is_ended:
-            self.commander.process_commands(self.business[m_name].commands)"""
+            self.commander.process_commands(self.business[m_name].commands)
 
         self.campaign.update(self.missions[m_name])
 

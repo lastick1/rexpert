@@ -38,19 +38,161 @@ class Business:
         self.is_mission_ended = is_mission_ended
         self.rear_airfields = tuple(Point(x=x['x'], z=x['z']) for x in MissionGenCfg.cfg[tvd_name]['rear_airfields'])
 
+        s_data = dict()
         for s in sorties:
             # если вылет уже использован или не пригоден для обработки - пропускаем
-            if s in self.used_sorties or s.cls_base != 'aircraft':
+            if s.cls_base != 'aircraft' or s in self.used_sorties:
                 continue
-            # создаём объект игрока, если его ещё нет
-            if s.account_id not in self.players.keys():
-                self.players[s.account_id] = Player(s.account_id)
-                # если игрок ещё не инициализирован в базе, завершаем этот процесс необходимыми данными
-                if not self.players[s.account_id].initialized:
-                    self.players[s.account_id].initialize(s.nickname)  # создаём запись в базе
-                    self.players[s.account_id].unlocks = 1  # начальное количество модификаций
-            
-            self.used_sorties.add(s)
+
+            # раскидываем sortie по account_id и обрабатываем каждого отдельно
+            if s.account_id not in s_data.keys():
+                s_data[s.account_id] = []
+            s_data[s.account_id].append(s)
+        self.process_players(s_data)
+
+    def process_players(self, s_data):
+        """ Последовательная обработка вылетов каждого игрока
+        :type s_data: dict """
+        for account_id in s_data.keys():
+            s_count = len(s_data[account_id])
+            i = 0
+            while i < s_count:
+                s = s_data[account_id][i]  # берём очередной вылет
+                p = self.get_player(account_id, s.nickname)  # берём игрока
+                if datetime.strptime(p.last_mission, date_format) > datetime.strptime(self.name, date_format):
+                    # если время последней миссии позже, чем обрабатываемая миссия, то ничего не делаем
+                    # т.е. не обрабатываем повторно обработанные миссии
+                    i += 1
+                    continue
+                # если время последней миссии раньше, чем обрабатываемая миссия,
+                # то сбрасываем последний тик у икрока и обновляем последнюю миссию у игрока
+                if datetime.strptime(p.last_mission, date_format) < datetime.strptime(self.name, date_format):
+                    p.touch(self.name, -1)
+                if s.tik_spawn >= p.last_tik:
+                    i += 1
+                    continue
+                p.touch(self.name, s.tik_spawn)
+                rear_start = self._is_rear_start(s)  # проверяем, стартовал ли с тылового
+                s_ended = self._is_sortie_ended(s, i, s_count)  # определяем завершён ли вылет
+                mods = len(s.weapon_mods_id)  # количество модификаций
+                aircraft_cls = aircrafts.aircraft_types[s.aircraft_name]  # класс самолёта (лёгкий, средний, тяжёлый)
+                if s_ended:
+                    decision = self._decide_ended(s)
+                    give_unlocks = decision['is_rtb'] and len(s.killboard)
+                    if decision['return']:
+                        if give_unlocks:
+                            p.unlocks += 1
+                        p.planes[aircraft_cls] += 1
+                    else:
+                        p.unlocks -= mods
+                    self.log_decision(s, decision, give_unlocks)
+                else:
+                    decision = self._decide_permission(s, mods, rear_start)
+                    if decision['remove']:
+                        p.planes[aircraft_cls] -= 1
+                    if decision['notify']:
+                        self.notify_player()
+                    self.log_unended(s, decision)
+                    raise NameError('s')
+                i += 1
+
+    def _decide_permission(self, s, mods, rear_start):
+        """ Принятие решения об уведомлении игрока, списании самолёта, разрешении на взлёт """
+        return {'remove': False, 'rear_start': rear_start, 'notify': True, 'mods': mods, 'permission': True}
+
+    def log_unended(self, s, desision):
+        """ Логгирование решения по взлёту (списание самолёта) """
+        file = Path('./logs/business_' + self.name + '.json')
+        if file.exists():
+            with file.open(encoding='utf-8') as f:
+                data = json.load(f)
+        else:
+            data = dict()
+        if s.nickname not in data.keys():
+            data[s.nickname] = dict()
+        if s.tik_spawn not in data[s.nickname].keys():
+            data[s.nickname][s.tik_spawn] = dict()
+        data[s.nickname][s.tik_spawn].update(
+            {
+                'mods':''
+            }
+        )
+
+    def log_decision(self, s, decision, give_unlocks):
+        """ Логгирование решения по вылету
+        :type s: Sortie
+        :type decision: dict
+        :type give_unlocks: bool"""
+        file = Path('./logs/business_' + self.name + '.json')
+        if file.exists():
+            with file.open(encoding='utf-8') as f:
+                data = json.load(f)
+        else:
+            data = dict()
+        if s.nickname not in data.keys():
+            data[s.nickname] = dict()
+        if s.tik_spawn not in data[s.nickname].keys():
+            data[s.nickname][s.tik_spawn] = dict()
+        data[s.nickname][s.tik_spawn].update(
+            {
+                'aircraft_name': s.aircraft_name,
+                'give_unlocks': give_unlocks,
+                'sortie_status': s.sortie_status,
+                'aircraft_status': s.aircraft_status
+            }.update(decision)
+        )
+        with file.open(mode='w', encoding='utf-8') as f:
+            json.dump(data, f)
+
+    def _decide_ended(self, s):
+        """ Принять решение о списании возврате самолёта по резульатам вылета
+        :type s: Sortie """
+        craft = s.aircraft
+        killer = s.bot.killers[0] if len(s.bot.killers) else None
+        if s.sortie_status.is_not_takeoff:
+            return {'return': False, 'reason': 'не взлетал', 'is_rtb': craft.is_rtb}
+        if s.is_disco and s.aircraft_damage > 5:
+            return {'return': False, 'reason': 'диско с уроном', 'is_rtb': craft.is_rtb}
+        if s.is_bailout:
+            return {'return': False, 'reason': 'на тряпке', 'is_rtb': craft.is_rtb}
+        if s.sortie_status.is_in_flight:
+            return {'return': True, 'reason': 'завершил в воздухе', 'is_rtb': craft.is_rtb}
+        if s.is_captured:
+            return {'return': False, 'reason': 'плен', 'is_rtb': craft.is_rtb}
+        if craft.life_status.is_destroyed and not craft.is_rtb:
+            return {'return': False, 'reason': 'самолёт уничтожен', 'is_rtb': craft.is_rtb}
+        if s.sortie_status.is_ditched and not craft.is_rtb:
+            return {'return': True, 'reason': 'сел без поломки ВМГ вне базы (дитч)', 'is_rtb': craft.is_rtb}
+        if s.sortie_status.is_crashed and not craft.is_rtb:
+            return {'return': False, 'reason': 'сел с поломкой ВМГ вне базы (краш)', 'is_rtb': craft.is_rtb}
+        if killer and killer.coal_id != s.coal_id:
+            return {'return': False, 'reason': 'убит пилот', 'is_rtb': craft.is_rtb}
+        return {'return': True, 'reason': 'default', 'is_rtb': craft.is_rtb}
+
+    def get_player(self, account_id, nickname):
+        """ Получить объект игрока класса Player (инициализируется при необходимости)
+        :rtype Player """
+        # создаём объект игрока, если его ещё нет
+        if account_id not in self.players.keys():
+            self.players[account_id] = Player(account_id)
+            # если игрок ещё не инициализирован в базе, завершаем этот процесс необходимыми данными
+            if not self.players[account_id].initialized:
+                self.players[account_id].initialize(nickname)  # создаём запись в базе
+                self.players[account_id].unlocks = 1  # начальное количество модификаций
+        return self.players[account_id]
+
+    def _is_sortie_ended(self, s, i, count):
+        """:type s: Sortie """
+        if i < count-1 or s.is_ended or s.is_disco:
+            return True
+        return False
+
+    def _is_rear_start(self, s):
+        """:type s: Sortie"""
+        for af in self.rear_airfields:
+            if af.distance_to(s.pos_start['x'], s.pos_start['z']) < 5000:
+                return True
+        return False
 
     def _unfinished_sortie(self, sortie, rear_start):
         """ Обработка незавершённого вылета
@@ -59,7 +201,7 @@ class Business:
         mods = len(sortie.weapon_mods_id)
         aircraft_cls = aircrafts.aircraft_types[sortie.aircraft_name]
 
-        if sortie.tik_takeoff:
+        """if sortie.tik_takeoff:
             # если взлетел
             if self.can_take(p, aircraft_cls, rear_start) and self.can_use_mods(p, aircraft_cls, mods, rear_start):
                 # с разрешением на взлёт (доступный самолёт и модификации)
@@ -131,7 +273,7 @@ class Business:
                 subject=message,
                 reason='info message'
             ))
-        return 0
+        return 0"""
 
     def _finished_sortie(self, sortie, rear_start):
         """ Обработка завершённого вылета
