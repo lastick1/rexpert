@@ -176,10 +176,7 @@
       "101": {
         "frontline": {
           "dogfight": [],
-          "transport": [
-            7000,
-            10000
-          ],
+          "transport": [],
           "train": [],
           "tank": [],
           "artillery": [
@@ -204,8 +201,8 @@
         "scenario": {
           "dogfight": [],
           "transport": [
-            0,
-            15000
+            2000,
+            20000
           ],
           "train": [],
           "tank": [],
@@ -226,10 +223,7 @@
       "201": {
         "frontline": {
           "dogfight": [],
-          "transport": [
-            7000,
-            10000
-          ],
+          "transport": [],
           "train": [],
           "tank": [],
           "artillery": [
@@ -254,8 +248,8 @@
         "scenario": {
           "dogfight": [],
           "transport": [
-            0,
-            15000
+            2000,
+            20000
           ],
           "train": [],
           "tank": [],
