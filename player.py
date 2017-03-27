@@ -121,3 +121,5 @@ class Player:
 
     def touch(self, last_mission, last_tik):
         connector.Player.touch(self.account_id, last_mission, last_tik)
+        self.last_mission = last_mission
+        self.last_tik = last_tik
