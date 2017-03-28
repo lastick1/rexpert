@@ -189,8 +189,8 @@ class Campaign:
                 for point in line:
                     point[0] = round(point[0], 2)
                     point[1] = round(point[1], 2)
-        # lat - x
-        # lng - z
+        # lat - z
+        # lng - x
         targets = []
         for key in icons.keys():
             if key == 'flames':
@@ -199,16 +199,16 @@ class Campaign:
             for t in icons[key]:
                 targets.append({
                     'latLng': {
-                        'lat': round(t['x'] * x_c, 2),
-                        'lng': round(t['z'] * z_c, 2)
+                        'lng': round(t['x'] * x_c, 2),
+                        'lat': round(t['z'] * z_c, 2)
                     },
                     'name': cls.capitalize(),
-                    'color': 'black' if coal == 'axis' else 'red',
-                    'type': 'bomb-target',
+                    'color': 'blue' if coal == 'axis' else 'red',
+                    'type': StatsCustomCfg.cfg['il2missionplanner']['icons_mapping'][cls],
                     'notes': ' '
                 })
         data = {
-            'mapHash': tvd_name,
+            'mapHash': '#{}'.format(tvd_name),
             'routes': [],
             'points': targets,
             'frontline': frontline

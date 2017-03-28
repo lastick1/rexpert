@@ -16,6 +16,16 @@
     },
     "stalingrad": {
       "right_top": [164.35, 256]
+    },
+    "icons_mapping":{
+      "airfields": "re-af",
+      "tanks": "re-tanks",
+      "warehouses": "re-warehouse",
+      "hqs": "re-hq",
+      "trucks": "re-motorcade",
+      "arts": "re-art",
+      "Inactive_Point": "re-point",
+      "Active_Point": "re-point-active"
     }
   }
 }
