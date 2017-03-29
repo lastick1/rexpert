@@ -108,13 +108,15 @@ class Tvd:
         cache_data = json.load(m_date_cache_file.open())
         # with m_date_cache_file.open(mode='r') as f:
         cached_date = datetime.datetime.strptime(cache_data[self.name], date_format)
+
+        d = datetime.timedelta(seconds=1)
         for side in MissionGenCfg.cfg['sides']:
             folder = MissionGenCfg.af_groups_folders[self.name][side]
             # шаблон по-умолчанию
             template_group = MissionGenCfg.default_stages[self.name][side]
             # ищем период для текущей даты ТВД
             for stage in self.stages:
-                if self.date_next in stage:
+                if self.date_next + d in stage:
                     if cached_date in stage:
                         print('... airfields generation skipped - same airfields generated already [{}] {}'.format(
                             cached_date.strftime(date_format), self.date_next.strftime(date_format)))
