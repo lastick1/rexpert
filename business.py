@@ -200,8 +200,8 @@ class Business:
         :type s: Sortie """
         craft = s.aircraft
         killer = s.bot.killers[0] if len(s.bot.killers) else None
-        # if s.sortie_status.is_not_takeoff:
-        #     return {'return': False, 'reason': 'не взлетал', 'is_rtb': craft.is_rtb}
+        if s.sortie_status.is_not_takeoff:
+            return {'return': True, 'reason': 'не взлетал', 'is_rtb': craft.is_rtb}
         if s.is_disco and s.aircraft_damage > 5:
             return {'return': False, 'reason': 'диско с уроном', 'is_rtb': craft.is_rtb}
         if s.is_bailout:
