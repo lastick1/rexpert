@@ -115,6 +115,8 @@ class Business:
                 if len(s_data[account_id]):
                     sq_mate_s = s_data[account_id][-1]
                     sq_mate = self.get_player(sq_mate_s.account_id, sq_mate_s.nickname)
+                    if not sq_mate.squad:
+                        continue
                     if sq_mate.squad['id'] != p.squad['id']:
                         continue
                     if not sq_mate_s.is_disco and not sq_mate_s.is_ended and not self._is_rear_start(sq_mate_s):
