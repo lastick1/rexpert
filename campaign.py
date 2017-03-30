@@ -195,7 +195,8 @@ class Campaign:
         for key in icons.keys():
             coal, cls = tuple(key.split('_'))
             for t in icons[key]:
-                name = StatsCustomCfg.cfg['il2missionplanner']['names_mapping'][cls]
+                name = StatsCustomCfg.cfg['il2missionplanner']['icon_names_mapping'][cls]
+                notes = StatsCustomCfg.cfg['il2missionplanner']['icon_notes_mapping'][cls]
                 if cls == 'airfields':
                     name = t['name']
                 targets.append({
@@ -205,8 +206,8 @@ class Campaign:
                     },
                     'name': name,
                     'color': 'blue' if coal == 'axis' else 'red',
-                    'type': StatsCustomCfg.cfg['il2missionplanner']['icons_mapping'][cls],
-                    'notes': ' '
+                    'type': StatsCustomCfg.cfg['il2missionplanner']['icons_types_mapping'][cls],
+                    'notes': notes
                 })
         data = {
             'mapHash': '#{}'.format(tvd_name),

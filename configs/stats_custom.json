@@ -17,7 +17,7 @@
     "stalingrad": {
       "right_top": [164.35, 256]
     },
-    "icons_mapping":{
+    "icons_types_mapping":{
       "airfields": "re-af",
       "tanks": "re-tanks",
       "warehouses": "re-warehouse",
@@ -27,15 +27,25 @@
       "Inactive_Point": "re-point",
       "flames": "re-point-active"
     },
-    "names_mapping":{
+    "icon_names_mapping":{
       "airfields": "Airfield",
       "tanks": "Tanks",
-      "warehouses": "Front Warehouse",
+      "warehouses": "WH",
       "hqs": "HQ",
-      "trucks": "Truck Convoy",
-      "arts": "Artillery",
+      "trucks": "Convoy",
+      "arts": "",
       "Inactive_Point": "re-point",
       "flames": ""
+    },
+    "icon_notes_mapping":{
+      "airfields": "Airfield",
+      "tanks": "Attacking Tank Platoon",
+      "warehouses": "Front Warehouse",
+      "hqs": "Headquarters",
+      "trucks": "Truck Convoy",
+      "arts": "Artillery Positions",
+      "Inactive_Point": "re-point",
+      "flames": "Defend ground forces!"
     }
   }
 }
