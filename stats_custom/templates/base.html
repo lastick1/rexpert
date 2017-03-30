@@ -77,7 +77,6 @@
 
         <script src="/static/js/jquery-1.7.1.min.js"></script>
         <script src="/static/js/jquery.tmpl.min.js"></script>
-        <script src="/static/js/payloads_template.js"></script>
         <style>
         
         .custom_elapsed_time_container {
@@ -101,24 +100,38 @@
         </style>
         <script>
         "use strict";
+        function onCurrentPeriodClick(){
+            console.log('hi');
+        }
         function pad(n, width, z) {
             z = z || '0';
             n = n + '';
             return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
         }
-        
         $(document).ready(function() {
-            $.getJSON('/static/elapsed_time.json', function(data) {
-                
-                $('.custom_elapsed_body').text(pad(data['h'], 2) + ":" + pad(data['m'], 2) + ":" + pad(data['s'], 2))
-                
+            $.getJSON('/static/mission_info.json', function(data) {
+                var m_start = new Date(data['m_start']);
+                var m_length = data['m_length'];
+                var m_end = new Date(m_start.getTime() + m_length);
+                var seconds = (m_length + m_length - new Date().getTime() + m_end.getTime()) / 1000;
+                var minutes = seconds / 60;
+                var hours = minutes / 60;
+                var hours_left = Math.floor(hours);
+                var minutes_left = Math.floor(minutes - hours_left * 60)
+                var seconds_left = Math.floor(seconds - minutes_left * 60 - hours_left * 3600)
+
+                $('.custom_elapsed_body').text(pad(hours_left, 2) + ":" + pad(minutes_left, 2) + ":" + pad(seconds_left, 2));
+
+                $('.custom_period_info_button').text("Current period: " + data['period_id']);
+                if (document.URL.indexOf("/ru") > 0){
+                    $('.custom_elapsed_header').text("Время до конца миссии:");
+                    $('.custom_period_info_button').text("Текущий период: " + data['period_id']);
+                }
+                if (document.URL.indexOf("/de") > 0){
+                    $('.custom_elapsed_header').text("Missionende in:");
+                    $('.custom_period_info_button').text("Current period: " + data['period_id']);
+                }
             });
-            if (document.URL.indexOf("/ru") > 0){
-                $('.custom_elapsed_header').text("Время до конца миссии:")
-            }
-            if (document.URL.indexOf("/de") > 0){
-                $('.custom_elapsed_header').text("Missionende in:")
-            }
         });
         </script>
         <div class="custom_elapsed_time_container">
@@ -150,7 +163,12 @@
             {% endif %}
             <a href="{% url 'faq' %}">FAQ</a>
             <a href="{% url 'info' %}">{% trans 'Info' %}</a>
+            <!-- custom start -->
+            <!-- period info, available plane set -->
+            <a href="#" onclick="onCurrentPeriodClick();" class="custom_period_info_button">Current period: #</a>
+            <!-- custom end -->
         </div>
+
         <div class="nav_tour">
             {% trans 'Tour' %}:
             <div class="nav_tour_select">
@@ -169,6 +187,9 @@
             </div>
         </div>
     </div>
+    <!-- custom start -->
+    <div class="period_info_main"></div>
+    <!-- custom end -->
 </nav>
 
 {% block nav_tabs %}{% endblock nav_tabs %}

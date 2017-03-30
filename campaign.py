@@ -1,4 +1,5 @@
 import draw
+import pytz
 import datetime
 import json
 from pathlib import Path
@@ -146,6 +147,7 @@ class Campaign:
         m_tvd_name = m.tvd_name
         if not m.is_ended:
             if m.name not in self._saved_plans:
+                self.save_mission_info(m, m_tvd_name)
                 self.save_mission_plan(m, m_tvd_name)
                 self._saved_plans.add(m.name)
             for c in m.captures:
@@ -171,6 +173,30 @@ class Campaign:
                 gen.Generator.make_mission(m.next_name, m_tvd_name)
                 self.generations[m.name] = lc
             self.save()
+
+    def save_mission_info(self, m, m_tvd_name):
+        period_id = self.tvds[m_tvd_name].current_date_stage_id
+        m_start = datetime.datetime.strptime(m.name, 'missionReport(%Y-%m-%d_%H-%M-%S)')
+        utc_offset = datetime.datetime.utcnow() - datetime.datetime.now()
+        result_utc_datetime = m_start + utc_offset
+        data = {
+            'period_id': period_id,
+            'm_date': str(m.src.date),
+            'm_start': int(result_utc_datetime.timestamp() * 1000),
+            'plane_images': list(map(
+                lambda x: StatsCustomCfg.cfg['mission_info']['plane_images_files'][x],
+                StatsCustomCfg.cfg['mission_info']['available_planes_by_period_id'][str(period_id)]
+            )),
+            'm_length': datetime.timedelta(
+                hours=MainCfg.mission_time['h'],
+                minutes=MainCfg.mission_time['m'],
+                seconds=MainCfg.mission_time['s']
+            ).total_seconds() * 1000
+        }
+        data_file = MainCfg.stats_static.joinpath(StatsCustomCfg.cfg['mission_info']['json'])
+        with data_file.open(mode='w') as f:
+            json.dump(data, f)
+
 
     def save_mission_plan(self, msn, tvd_name):
         """ Сохранение плана миссии в JSON для il2missionplanner 
@@ -215,7 +241,7 @@ class Campaign:
             'points': targets,
             'frontline': frontline
         }
-        dest = Path(MainCfg.stats_static.joinpath(StatsCustomCfg.cfg['json_files']['il2missionplanner']))
+        dest = Path(MainCfg.stats_static.joinpath(StatsCustomCfg.cfg['il2missionplanner']['json']))
         with dest.open(mode='w') as f:
             json.dump(data, f)
 
