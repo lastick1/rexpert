@@ -224,8 +224,10 @@ class MissionSrc:
             'axis_airfields': []
         }
         for mo in self.mission_objectives:
-            if mo['obj_type'] == '14':
-                icons['flames'].append({'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
+            if mo['obj_type'] == '14' and mo['coalition'] == '2' and mo['success'] == '1':
+                icons['allies_flames'].append({'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
+            elif mo['obj_type'] == '14' and mo['coalition'] == '1' and mo['success'] == '1':
+                icons['axis_flames'].append({'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
             elif mo['obj_type'] == '6' and mo['coalition'] == '2' and mo['success'] == '1':
                 icons['allies_trucks'].append({'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
             elif mo['obj_type'] == '6' and mo['coalition'] == '1' and mo['success'] == '1':

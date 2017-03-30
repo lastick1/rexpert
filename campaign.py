@@ -193,7 +193,7 @@ class Campaign:
         # lng - x
         targets = []
         for key in icons.keys():
-            if key == 'flames' or 'half' in key:
+            if 'half' in key:
                 continue
             coal, cls = tuple(key.split('_'))
             for t in icons[key]:
