@@ -209,13 +209,14 @@ class MissionSrc:
     @property
     def icons(self):
         icons = {
-            'flames': [],
+            'allies_flames': [],
             'allies_trucks': [],
             'allies_tanks': [],
             'allies_arts': [],
             'allies_warehouses': [],
             'allies_hqs': [],
             'allies_airfields': [],
+            'axis_flames': [],
             'axis_trucks': [],
             'axis_tanks': [],
             'axis_arts': [],
