@@ -26,6 +26,16 @@
       "arts": "re-art",
       "Inactive_Point": "re-point",
       "flames": "re-point-active"
+    },
+    "names_mapping":{
+      "airfields": "Airfield",
+      "tanks": "Tanks",
+      "warehouses": "Front Warehouse",
+      "hqs": "HQ",
+      "trucks": "Truck Convoy",
+      "arts": "Artillery",
+      "Inactive_Point": "re-point",
+      "flames": ""
     }
   }
 }

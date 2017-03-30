@@ -242,6 +242,8 @@ class MissionSrc:
             elif mo['obj_type'] == '4' and mo['coalition'] == '1':
                 icons['axis_arts'].append({'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
         for o in self.server_inputs:
+            if 'half' in o['name']:
+                continue
             if 'warehouse' in o['name'] and 'red' in o['name']:
                 icons['allies_warehouses'].append({'x': float(o['ZPos']), 'z': float(o['XPos'])})
             elif 'warehouse' in o['name'] and 'blue' in o['name']:
@@ -252,7 +254,7 @@ class MissionSrc:
                 icons['axis_hqs'].append({'x': float(o['ZPos']), 'z': float(o['XPos'])})
         for o in self.airfields:
             if o['coalition'] == 'red':
-                icons['allies_airfields'].append({'x': float(o['ZPos']), 'z': float(o['XPos'])})
+                icons['allies_airfields'].append({'x': float(o['ZPos']), 'z': float(o['XPos']), 'name': o['name']})
             elif o['coalition'] == 'blue':
-                icons['axis_airfields'].append({'x': float(o['ZPos']), 'z': float(o['XPos'])})
+                icons['axis_airfields'].append({'x': float(o['ZPos']), 'z': float(o['XPos']), 'name': o['name']})
         return icons

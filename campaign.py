@@ -193,16 +193,17 @@ class Campaign:
         # lng - x
         targets = []
         for key in icons.keys():
-            if 'half' in key:
-                continue
             coal, cls = tuple(key.split('_'))
             for t in icons[key]:
+                name = StatsCustomCfg.cfg['il2missionplanner']['names_mapping'][cls]
+                if cls == 'airfields':
+                    name = t['name']
                 targets.append({
                     'latLng': {
                         'lng': round(t['x'] * x_c, 2),
                         'lat': round(t['z'] * z_c, 2)
                     },
-                    'name': cls.capitalize(),
+                    'name': name,
                     'color': 'blue' if coal == 'axis' else 'red',
                     'type': StatsCustomCfg.cfg['il2missionplanner']['icons_mapping'][cls],
                     'notes': ' '
