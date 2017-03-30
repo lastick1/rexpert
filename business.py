@@ -133,13 +133,16 @@ class Business:
                         cmd_type=CommandType.kick,
                         account_id=s.account_id,
                         subject=s.nickname,
-                        reason='Takeoff restricted: {} {}({}) [{}] {} [{}]'.format(
-                            s.nickname,
-                            aircraft_cls,
-                            p.planes[aircraft_cls] - checkout[aircraft_cls],
-                            p.unlocks,
+                        reason='Takeoff restricted: {} | {}({}:{}){} | unlocks({}:{}){}'.format(
                             s.aircraft_name,
-                            mods)
+                            aircraft_cls,
+                            p.planes[aircraft_cls],
+                            checkout[aircraft_cls],
+                            aircraft_permission,
+                            p.unlocks,
+                            mods,
+                            mods_permission
+                        )
                     ))
         else:
             # раскомментировать следующие 2 строки чтобы оповещать однократно
