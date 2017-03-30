@@ -229,18 +229,18 @@ class MissionSrc:
                 icons['allies_flames'].append({'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
             elif mo['obj_type'] == '14' and mo['coalition'] == '1' and mo['success'] == '1':
                 icons['axis_flames'].append({'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
-            elif mo['obj_type'] == '6' and mo['coalition'] == '2' and mo['success'] == '1':
-                icons['allies_trucks'].append({'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
-            elif mo['obj_type'] == '6' and mo['coalition'] == '1' and mo['success'] == '1':
-                icons['axis_trucks'].append({'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
-            elif mo['obj_type'] == '6' and mo['coalition'] == '1' and mo['success'] == '0':
-                icons['allies_tanks'].append({'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
-            elif mo['obj_type'] == '6' and mo['coalition'] == '2' and mo['success'] == '0':
-                icons['axis_tanks'].append({'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
             elif mo['obj_type'] == '4' and mo['coalition'] == '2':
                 icons['allies_arts'].append({'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
             elif mo['obj_type'] == '4' and mo['coalition'] == '1':
                 icons['axis_arts'].append({'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
+            elif mo['obj_type'] == '5' and mo['coalition'] == '2':
+                icons['allies_trucks'].append({'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
+            elif mo['obj_type'] == '5' and mo['coalition'] == '1':
+                icons['axis_trucks'].append({'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
+            elif mo['obj_type'] == '6' and mo['coalition'] == '2':
+                icons['allies_tanks'].append({'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
+            elif mo['obj_type'] == '6' and mo['coalition'] == '1':
+                icons['axis_tanks'].append({'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
         for o in self.server_inputs:
             if 'half' in o['name']:
                 continue
