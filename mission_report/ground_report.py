@@ -54,6 +54,8 @@ class Ground:
 
     @property
     def killed(self):
+        if 'half' in self.name and len(self.killed_objects) > int(types_hp[self.g_type] / 2):
+            return True
         if len(self.killed_objects) > types_hp[self.g_type]:
             return True
         else:
