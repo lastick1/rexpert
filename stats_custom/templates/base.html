@@ -133,7 +133,7 @@
                     m_start = data['m_start'];
                     m_length = data['m_length'];
                     m_end = m_start + m_length;
-                    seconds = (m_length - new Date().getTime() + m_end) / 1000;
+                    seconds = (m_length + m_length - new Date().getTime() + m_end) / 1000;
                     if (seconds > 0){
                         var minutes = seconds / 60;
                         var hours = minutes / 60;
