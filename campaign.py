@@ -176,27 +176,32 @@ class Campaign:
 
     def save_mission_info(self, m, m_tvd_name):
         period_id = self.tvds[m_tvd_name].current_date_stage_id
-        m_start = datetime.datetime.strptime(m.name, 'missionReport(%Y-%m-%d_%H-%M-%S)')
-        utc_offset = datetime.datetime.utcnow() - datetime.datetime.now()
-        result_utc_datetime = m_start + utc_offset
+        m_length = datetime.timedelta(
+            hours=MainCfg.mission_time['h'],
+            minutes=MainCfg.mission_time['m'],
+            seconds=MainCfg.mission_time['s']
+        )
+        m_start = datetime.datetime.strptime(
+            m.name, 'missionReport(%Y-%m-%d_%H-%M-%S)').replace(tzinfo=datetime.timezone.utc)
+        m_start.replace(tzinfo=pytz.timezone('Europe/Moscow'))
+        utc_offset = datetime.datetime.now() - datetime.datetime.utcnow()
+        result_utc_datetime = m_start - utc_offset + m_length
+
+        # t = m_start.astimezone(pytz.UTC)
+        tmp = int(result_utc_datetime.timestamp())
+        # tmp2 = datetime.datetime(microsecond=tmp / 1000)
         data = {
             'period_id': period_id,
             'm_date': str(m.src.date),
-            'm_start': int(result_utc_datetime.timestamp() * 1000),
+            'm_end': int(result_utc_datetime.timestamp() * 1000),
             'plane_images': list(map(
                 lambda x: StatsCustomCfg.cfg['mission_info']['plane_images_files'][x],
                 StatsCustomCfg.cfg['mission_info']['available_planes_by_period_id'][str(period_id)]
-            )),
-            'm_length': int(datetime.timedelta(
-                hours=MainCfg.mission_time['h'],
-                minutes=MainCfg.mission_time['m'],
-                seconds=MainCfg.mission_time['s']
-            ).total_seconds() * 1000)
+            ))
         }
         data_file = MainCfg.stats_static.joinpath(StatsCustomCfg.cfg['mission_info']['json'])
         with data_file.open(mode='w') as f:
             json.dump(data, f)
-
 
     def save_mission_plan(self, msn, tvd_name):
         """ Сохранение плана миссии в JSON для il2missionplanner 
