@@ -205,9 +205,16 @@ class Tvd:
         return start + datetime.timedelta(seconds=randint(0, int((end - start).total_seconds())))
 
     @property
-    def current_stage_id(self):
+    def next_date_stage_id(self):
         for stage in self.stages:
             if self.date_next in stage:
+                return stage.id
+        raise NameError('Incorrect date for all stages: {}'.format(self.date_next))
+
+    @property
+    def current_date_stage_id(self):
+        for stage in self.stages:
+            if self.date in stage:
                 return stage.id
         raise NameError('Incorrect date for all stages: {}'.format(self.date_next))
 
@@ -285,6 +292,6 @@ class Tvd:
             elif dfpr_lines[y].startswith('$loc_filename ='):
                 dfpr_lines[y] = '$loc_filename = {}\n'.format(MissionGenCfg.cfg[self.name]['ldf_file'])
             elif dfpr_lines[y].startswith('$period ='):
-                dfpr_lines[y] = '$period = {}\n'.format(self.current_stage_id)
+                dfpr_lines[y] = '$period = {}\n'.format(self.next_date_stage_id)
         with self.default_params_file.open(mode='w', encoding='utf-8-sig') as f:
             f.writelines(dfpr_lines)

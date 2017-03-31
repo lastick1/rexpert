@@ -7,10 +7,10 @@
     "online_players": "players.json",
     "elapsed_time": "elapsed_time.json",
     "planes_data": "planes_data.json",
-    "payloads": "payload.json",
-    "il2missionplanner": "il2missionplanner.json"
+    "payloads": "payload.json"
   },
   "il2missionplanner": {
+    "json": "il2missionplanner.json",
     "moscow": {
       "right_top": [192, 192]
     },
@@ -25,7 +25,8 @@
       "trucks": "re-motorcade",
       "arts": "re-art",
       "Inactive_Point": "re-point",
-      "flames": "re-point-active"
+      "flames": "re-point-active",
+      "forts": "re-fort"
     },
     "icon_names_mapping":{
       "airfields": "Airfield",
@@ -35,7 +36,8 @@
       "trucks": "Convoy",
       "arts": "",
       "Inactive_Point": "re-point",
-      "flames": ""
+      "flames": "",
+      "forts": "Fort"
     },
     "icon_notes_mapping":{
       "airfields": "Airfield",
@@ -45,7 +47,172 @@
       "trucks": "Truck Convoy",
       "arts": "Artillery Positions",
       "Inactive_Point": "re-point",
-      "flames": "Defend ground forces!"
+      "flames": "Defend ground forces!",
+      "forts": "Fortified Area"
+    }
+  },
+  "mission_info":{
+    "json": "mission_info.json",
+    "available_planes_by_period_id": {
+      "1": [
+        "bf 109 e-7",
+        "bf 110 e-2",
+        "ju 87 d-3",
+        "il-2 mod.1941",
+        "i-16 type 24",
+        "pe-2 ser.35"
+      ],
+      "2": [
+        "bf 109 e-7",
+        "bf 110 e-2",
+        "ju 87 d-3",
+        "il-2 mod.1941",
+        "i-16 type 24",
+        "pe-2 ser.35",
+        "bf 109 f-2",
+        "he 111 h-6",
+        "mig-3 ser.24"
+      ],
+      "3": [
+        "bf 109 e-7",
+        "bf 110 e-2",
+        "ju 87 d-3",
+        "il-2 mod.1941",
+        "i-16 type 24",
+        "pe-2 ser.35",
+        "bf 109 f-2",
+        "he 111 h-6",
+        "mig-3 ser.24",
+        "lagg-3 ser.29",
+        "ju 88 a-4"
+      ],
+      "4": [
+        "bf 109 e-7",
+        "bf 110 e-2",
+        "ju 87 d-3",
+        "il-2 mod.1941",
+        "i-16 type 24",
+        "pe-2 ser.35",
+        "bf 109 f-2",
+        "he 111 h-6",
+        "mig-3 ser.24",
+        "lagg-3 ser.29",
+        "ju 88 a-4",
+        "mc.202 ser.viii",
+        "p-40e-1"
+      ],
+      "5": [
+        "bf 109 e-7",
+        "bf 110 e-2",
+        "ju 87 d-3",
+        "il-2 mod.1941",
+        "i-16 type 24",
+        "pe-2 ser.35",
+        "bf 109 f-2",
+        "he 111 h-6",
+        "mig-3 ser.24",
+        "lagg-3 ser.29",
+        "ju 88 a-4",
+        "mc.202 ser.viii",
+        "p-40e-1",
+        "bf 109 f-4",
+        "yak-1 ser.69",
+        "il-2 mod.1942",
+        "pe-2 ser.87"
+      ],
+      "6": [
+        "bf 109 e-7",
+        "bf 110 e-2",
+        "ju 87 d-3",
+        "il-2 mod.1941",
+        "i-16 type 24",
+        "pe-2 ser.35",
+        "bf 109 f-2",
+        "he 111 h-6",
+        "mig-3 ser.24",
+        "lagg-3 ser.29",
+        "ju 88 a-4",
+        "mc.202 ser.viii",
+        "p-40e-1",
+        "bf 109 f-4",
+        "yak-1 ser.69",
+        "il-2 mod.1942",
+        "pe-2 ser.87",
+        "bf 109 g-2",
+        "la-5 ser.8"
+      ],
+      "7": [
+        "bf 109 e-7",
+        "bf 110 e-2",
+        "ju 87 d-3",
+        "il-2 mod.1941",
+        "i-16 type 24",
+        "pe-2 ser.35",
+        "bf 109 f-2",
+        "he 111 h-6",
+        "mig-3 ser.24",
+        "lagg-3 ser.29",
+        "ju 88 a-4",
+        "mc.202 ser.viii",
+        "p-40e-1",
+        "bf 109 f-4",
+        "yak-1 ser.69",
+        "il-2 mod.1942",
+        "pe-2 ser.87",
+        "bf 109 g-2",
+        "la-5 ser.8",
+        "fw 190 a-3"
+      ],
+      "8": [
+        "bf 109 e-7",
+        "bf 110 e-2",
+        "ju 87 d-3",
+        "il-2 mod.1941",
+        "i-16 type 24",
+        "pe-2 ser.35",
+        "bf 109 f-2",
+        "he 111 h-6",
+        "mig-3 ser.24",
+        "lagg-3 ser.29",
+        "ju 88 a-4",
+        "mc.202 ser.viii",
+        "p-40e-1",
+        "bf 109 f-4",
+        "yak-1 ser.69",
+        "il-2 mod.1942",
+        "pe-2 ser.87",
+        "bf 109 g-2",
+        "la-5 ser.8",
+        "fw 190 a-3",
+        "yak-1b ser.127",
+        "bf 109 g-4"
+      ]
+    }
+    ,
+    "plane_images_files":{
+      "bf 109 e-7": "/static/img/aircraft/bf 109 e-7.png",
+      "bf 109 f-2": "/static/img/aircraft/bf 109 f-2.png",
+      "bf 109 f-4": "/static/img/aircraft/bf 109 f-4.png",
+      "bf 109 g-2": "/static/img/aircraft/bf 109 g-2.png",
+      "bf 109 g-4": "/static/img/aircraft/bf 109 g-4.png",
+      "bf 110 e-2": "/static/img/aircraft/bf 110 e-2.png",
+      "fw 190 a-3": "/static/img/aircraft/fw 190 a-3.png",
+      "he 111 h-6": "/static/img/aircraft/he 111 h-6.png",
+      "i-16 type 24": "/static/img/aircraft/i-16 type 24.png",
+      "il-2 mod.1941": "/static/img/aircraft/il-2 mod.1941.png",
+      "il-2 mod.1942": "/static/img/aircraft/il-2 mod.1942.png",
+      "ju 52 3mg4e": "/static/img/aircraft/ju 52 3mg4e.png",
+      "ju 87 d-3": "/static/img/aircraft/ju 87 d-3.png",
+      "ju 88 a-4": "/static/img/aircraft/ju 88 a-4.png",
+      "la-5 ser.8": "/static/img/aircraft/la-5 ser.8.png",
+      "lagg-3 ser.29": "/static/img/aircraft/lagg-3 ser.29.png",
+      "mc.202 ser.viii": "/static/img/aircraft/mc.202 ser.viii.png",
+      "mig-3 ser.24": "/static/img/aircraft/mig-3 ser.24.png",
+      "p-40e-1": "/static/img/aircraft/p-40e-1.png",
+      "pe-2 ser.35": "/static/img/aircraft/pe-2 ser.35.png",
+      "pe-2 ser.87": "/static/img/aircraft/pe-2 ser.87.png",
+      "yak-1 ser.69": "/static/img/aircraft/yak-1 ser.69.png",
+      "yak-1b ser.127": "/static/img/aircraft/yak-1b ser.127.png"
     }
   }
 }
