@@ -130,17 +130,17 @@
                     var m_length = data['m_length'];
                     var m_end = new Date(m_start.getTime() + m_length);
                     var seconds = (m_length + m_length - new Date().getTime() + m_end.getTime()) / 1000;
-                    var minutes = seconds / 60;
-                    var hours = minutes / 60;
-                    var hours_left = Math.floor(hours);
-                    var minutes_left = Math.floor(minutes - hours_left * 60)
-                    var seconds_left = Math.floor(seconds - minutes_left * 60 - hours_left * 3600)
+                    if (seconds > 0){
+                        var minutes = seconds / 60;
+                        var hours = minutes / 60;
+                        var hours_left = Math.floor(hours);
+                        var minutes_left = Math.floor(minutes - hours_left * 60)
+                        var seconds_left = Math.floor(seconds - minutes_left * 60 - hours_left * 3600)
+                        $('.custom_elapsed_body').text(pad(hours_left, 2) + ":" + pad(minutes_left, 2) + ":" + pad(seconds_left, 2));
+                    }
                     var available_template_en = '<img src="${Src}">';
                     var available_template_ru = '<img src="${Src}">';
                     var available_template_de = '<img src="${Src}">';
-
-                    $('.custom_elapsed_body').text(pad(hours_left, 2) + ":" + pad(minutes_left, 2) + ":" + pad(seconds_left, 2));
-
                     var p_data = [];
                     images = data['plane_images'];
                     images.forEach(function(item, i, arr) {
