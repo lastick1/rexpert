@@ -123,13 +123,17 @@
             return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
         }
         var images = [];
+        var m_start = 0;
+        var m_length = 0;
+        var m_end = 0;
+        var seconds = 0;
         ;(function($){
             $(document).ready(function() {
                 $.getJSON('/static/mission_info.json', function(data) {
-                    var m_start = new Date(data['m_start']);
-                    var m_length = data['m_length'];
-                    var m_end = new Date(m_start.getTime() + m_length);
-                    var seconds = (m_length + m_length - new Date().getTime() + m_end.getTime()) / 1000;
+                    m_start = data['m_start'];
+                    m_length = data['m_length'];
+                    m_end = m_start + m_length;
+                    seconds = (m_length - new Date().getTime() + m_end) / 1000;
                     if (seconds > 0){
                         var minutes = seconds / 60;
                         var hours = minutes / 60;

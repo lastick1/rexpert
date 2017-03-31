@@ -187,11 +187,11 @@ class Campaign:
                 lambda x: StatsCustomCfg.cfg['mission_info']['plane_images_files'][x],
                 StatsCustomCfg.cfg['mission_info']['available_planes_by_period_id'][str(period_id)]
             )),
-            'm_length': datetime.timedelta(
+            'm_length': int(datetime.timedelta(
                 hours=MainCfg.mission_time['h'],
                 minutes=MainCfg.mission_time['m'],
                 seconds=MainCfg.mission_time['s']
-            ).total_seconds() * 1000
+            ).total_seconds() * 1000)
         }
         data_file = MainCfg.stats_static.joinpath(StatsCustomCfg.cfg['mission_info']['json'])
         with data_file.open(mode='w') as f:
