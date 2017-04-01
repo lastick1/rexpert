@@ -169,12 +169,22 @@ class Campaign:
                 self.generations[m.name] = -1
             lc = m.last_change
             if lc > self.generations[m.name]:
+                next_name = m.next_name
+                print('[{}] Preparing next: {}'.format(
+                    datetime.datetime.now().strftime("%H:%M:%S"),
+                    next_name
+                ))
                 self.tvds[m_tvd_name].update()
-                gen.Generator.make_mission(m.next_name, m_tvd_name)
+                gen.Generator.make_mission(next_name, m_tvd_name)
                 self.generations[m.name] = lc
             self.save()
 
     def save_mission_info(self, m, m_tvd_name):
+        """ Сохранение информации о миссии в JSON для сайта (UTC время конца, самолёты, дата миссии) """
+        print('[{}] Saving mission INFO: {}'.format(
+            datetime.datetime.now().strftime("%H:%M:%S"),
+            m.name
+        ))
         period_id = self.tvds[m_tvd_name].current_date_stage_id
         m_start = datetime.datetime.strptime(m.name, 'missionReport(%Y-%m-%d_%H-%M-%S)')
         utc_offset = datetime.datetime.utcnow() - datetime.datetime.now()
@@ -202,19 +212,23 @@ class Campaign:
         """ Сохранение плана миссии в JSON для il2missionplanner 
         :type msn: Mission
         :type tvd_name: str """
+        print('[{}] Saving mission PLAN: {}'.format(
+            datetime.datetime.now().strftime("%H:%M:%S"),
+            msn.name
+        ))
         icons = msn.src.icons
         x_c = StatsCustomCfg.cfg['il2missionplanner'][tvd_name]['right_top'][0] / \
               MissionGenCfg.cfg[tvd_name]['right_top']['x']
         z_c = StatsCustomCfg.cfg['il2missionplanner'][tvd_name]['right_top'][1] / \
               MissionGenCfg.cfg[tvd_name]['right_top']['z']
 
-        cut = [list((x.x * x_c, x.z * z_c) for x in self.tvds[tvd_name].grid.neutral_line)]
+        cut = [list((x.x, x.z) for x in self.tvds[tvd_name].grid.neutral_line)]
         frontline = draw.get_splines(cut)
         for lines_pair in frontline:
             for line in lines_pair:
                 for point in line:
-                    point[0] = round(point[0], 2)
-                    point[1] = round(point[1], 2)
+                    point[0] = round(point[0] * x_c, 3)
+                    point[1] = round(point[1] * z_c, 3)
         # lat - z
         # lng - x
         targets = []
