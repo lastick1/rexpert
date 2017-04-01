@@ -81,7 +81,9 @@ def polydim_spline(pts):
     result = []
     i = 0
     for pt in s_xt:
-        result.append((pt[1], s_yt[i][1]))
+        # берём только каждую 25-ю вершину (отсекаем избыточные данные)
+        if not (i % 25):
+            result.append((pt[1], s_yt[i][1]))
         i += 1
     return result
 
