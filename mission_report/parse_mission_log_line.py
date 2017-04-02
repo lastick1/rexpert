@@ -70,7 +70,7 @@ atype_10 = re.compile('^T:(?P<tik>\d+) AType:10 PLID:(?P<aircraft_id>\d+) PID:(?
                       'TYPE:(?P<aircraft_name>[\w\(\) .\-_]+) COUNTRY:(?P<country_id>\d{1,3}) FORM:(?P<form>\d+) '
                       'FIELD:(?P<airfield_id>\d+) INAIR:(?P<airstart>\d) PARENT:(?P<parent_id>[-\d]+) '
                       'PAYLOAD:(?P<payload_id>\d{1,2}) FUEL:(?P<fuel>\S{5,6}) '
-                      'SKIN:(?P<skin>[\S ]*) WM:(?P<weapon_mods_id>\d+)$')
+                      'SKIN:(?P<skin>.*) WM:(?P<weapon_mods_id>\d+)$')
 
 
 # группа объектов, с лидером и список членов
@@ -214,7 +214,10 @@ def parse(line):
     """
     atype_id = int(line.partition('AType:')[2][:2])
     if 0 <= atype_id <= 21:
-        data = atype_handlers[atype_id].match(line.strip()).groupdict()
+        try:
+            data = atype_handlers[atype_id].match(line.strip()).groupdict()
+        except AttributeError as e:
+            print()
         data['atype_id'] = atype_id
         for key, value in list(data.items()):
             if key in params_handlers:
