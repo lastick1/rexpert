@@ -27,7 +27,7 @@ def generate(name, tvd_name):
 def run():
     c = rcon.Commander()
     p = processor.Processor(c)
-    r = reader.AtypesReader(p)
+    r = reader.AtypesReader(p, cycle=5)
 
 
 # reset()

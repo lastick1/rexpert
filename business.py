@@ -21,6 +21,7 @@ class Business:
         self._commands = []
         self.is_mission_ended = False
         self.rear_airfields = []
+        self.granted_permissions = set()
 
     @property
     def commands(self):
@@ -81,7 +82,12 @@ class Business:
                     decision = self._decide_ended(s)
                     message = '{} {} {} '.format(s.nickname, s.aircraft_name, decision)
                     if decision['return']:
-                        if decision['is_rtb'] and len(s.killboard):  # дать анлок за результативный вылет
+                        has_kill = False
+                        for key in s.killboard.keys():
+                            for obj in s.killboard[key]:
+                                if s.coal_id != obj.coal_id:
+                                    has_kill = True
+                        if decision['is_rtb'] and has_kill:  # дать анлок за результативный вылет
                             p.unlocks += 1
                             message += '+mod '
                         if rear_start and decision['is_rtb'] and self.is_supply_valid(s):
@@ -127,61 +133,69 @@ class Business:
         mods_permission = self.can_use_mods(p, aircraft_cls, mods, rear_start)
 
         if s.sortie_status.is_in_flight:
-            if not (aircraft_permission and mods_permission):  # кик за несанкционированный взлёт
-                if s.sortie_status.is_in_flight:
-                    self._commands.append(Command(
-                        self.name,
-                        tik=s.tik_spawn,
-                        cmd_type=CommandType.kick,
-                        account_id=s.account_id,
-                        subject=s.nickname,
-                        reason='Takeoff restricted: {} | {}({}:{}){} | unlocks({}:{}){}'.format(
-                            s.aircraft_name,
-                            aircraft_cls,
-                            p.planes[aircraft_cls],
-                            checkout[aircraft_cls],
-                            aircraft_permission,
-                            p.unlocks,
-                            mods,
-                            mods_permission
-                        )
-                    ))
+            if s not in self.granted_permissions:
+                if not (aircraft_permission and mods_permission):  # кик за несанкционированный взлёт
+                    if s.sortie_status.is_in_flight:
+                        self._commands.append(Command(
+                            self.name,
+                            tik=s.tik_spawn,
+                            cmd_type=CommandType.kick,
+                            account_id=s.account_id,
+                            subject=s.nickname,
+                            reason='Takeoff restricted: {} | {}({}:{}){} | unlocks({}:{}){}'.format(
+                                s.aircraft_name,
+                                aircraft_cls,
+                                p.planes[aircraft_cls],
+                                checkout[aircraft_cls],
+                                aircraft_permission,
+                                p.unlocks,
+                                mods,
+                                mods_permission
+                            )
+                        ))
+                else:
+                    self.granted_permissions.add(s)
         else:
             # раскомментировать следующие 2 строки чтобы оповещать однократно
-            # if s not in self.notified_sorties:
-                # self.notified_sorties.add(s)
-            name = p.squad['tag'] if p.squad else p.nickname
-            self._commands.append(Command(
-                self.name,
-                tik=s.tik_spawn,
-                cmd_type=CommandType.message,
-                account_id=s.account_id,
-                subject='{} available planes: Light {}, Medium {}, Heavy {}'.format(
-                    name, p.planes['light'], p.planes['medium'], p.planes['heavy']),
-                reason='info message'
-            ))
-            self._commands.append(Command(
-                self.name,
-                tik=s.tik_spawn,
-                cmd_type=CommandType.message,
-                account_id=s.account_id,
-                subject='{} your available modifications is {}'.format(p.nickname, p.unlocks),
-                reason='info message'
-            ))
-            # предупреждаем о запрете или разрешении на взлёт
-            if aircraft_permission and mods_permission:
-                message = 'Takeoff granted!'
+            if s not in self.notified_sorties:
+                self.notified_sorties.add(s)
+                name = p.squad['tag'] if p.squad else p.nickname
+                self._commands.append(Command(
+                    self.name,
+                    tik=s.tik_spawn,
+                    cmd_type=CommandType.message,
+                    account_id=s.account_id,
+                    subject='{} available planes: Light {}, Medium {}, Heavy {}'.format(
+                        name,
+                        p.planes['light'] - checkout['light'] if p.planes['light'] - checkout['light'] >= 0 else 0,
+                        p.planes['medium'] - checkout['medium'] if p.planes['medium'] - checkout['medium'] >= 0 else 0,
+                        p.planes['heavy'] - checkout['heavy'] if p.planes['heavy'] - checkout['heavy'] >= 0 else 0
+                    ),
+                    reason='info message'
+                ))
+                self._commands.append(Command(
+                    self.name,
+                    tik=s.tik_spawn,
+                    cmd_type=CommandType.message,
+                    account_id=s.account_id,
+                    subject='{} your available modifications is {}'.format(p.nickname, p.unlocks),
+                    reason='info message'
+                ))
+                # предупреждаем о запрете или разрешении на взлёт
+                if aircraft_permission and mods_permission:
+                    message = 'Takeoff granted!'
+                    self.granted_permissions.add(s)
 
-            else:
-                message = 'TAKEOFF is FORBIDDEN for you on this aircraft!'
-            self._commands.append(Command(
-                self.name,
-                tik=s.tik_spawn,
-                cmd_type=CommandType.message,
-                account_id=s.account_id,
-                subject=message,
-                reason='info message'
-            ))
+                else:
+                    message = 'TAKEOFF is FORBIDDEN for you on this aircraft!'
+                self._commands.append(Command(
+                    self.name,
+                    tik=s.tik_spawn,
+                    cmd_type=CommandType.message,
+                    account_id=s.account_id,
+                    subject=message,
+                    reason='info message'
+                ))
 
     @staticmethod
     def is_supply_valid(sortie):
@@ -223,7 +237,9 @@ class Business:
         if s.sortie_status.is_crashed and not craft.is_rtb:
             return {'return': False, 'reason': 'сел с поломкой ВМГ вне базы (краш)', 'is_rtb': craft.is_rtb}
         if killer and killer.coal_id != s.coal_id:
-            return {'return': False, 'reason': 'убит пилот', 'is_rtb': craft.is_rtb}
+            return {'return': False, 'reason': 'убит пилот кем-то', 'is_rtb': craft.is_rtb}
+        if s.bot and s.bot.is_killed and not s.sortie_status.is_not_takeoff:
+            return {'return': False, 'reason': 'умер после взлёта', 'is_rtb': craft.is_rtb}
         return {'return': True, 'reason': 'default', 'is_rtb': craft.is_rtb}
 
     def get_player(self, account_id, nickname):
