@@ -89,6 +89,19 @@ target_defs = (
 )
 
 
+objectives_mapping = {
+    '14': 'flames',
+    '5': 'trucks',
+    '6': 'tanks',
+    '4': 'arts'
+}
+coalitions_mapping = {
+    '4': {'1': '2', '2': '1'},
+    '5': {'1': '2', '2': '1'},
+    '6': {'1': '2', '2': '1'}
+}
+
+
 class MissionSrc:
     """
     Класс-парсер исходников миссии
@@ -209,58 +222,60 @@ class MissionSrc:
     @property
     def icons(self):
         icons = {
-            'allies_flames': [],
-            'allies_trucks': [],
-            'allies_tanks': [],
-            'allies_arts': [],
-            'allies_warehouses': [],
-            'allies_hqs': [],
-            'allies_airfields': [],
-            'allies_forts': [],
-            'axis_flames': [],
-            'axis_trucks': [],
-            'axis_tanks': [],
-            'axis_arts': [],
-            'axis_warehouses': [],
-            'axis_hqs': [],
-            'axis_airfields': [],
-            'axis_forts': []
+            '1': {
+                'flames': [],
+                'trucks': [],
+                'tanks': [],
+                'arts': [],
+                'warehouses': [],
+                'hqs': [],
+                'airfields': [],
+                'forts': []
+            },
+            '2': {
+                'flames': [],
+                'trucks': [],
+                'tanks': [],
+                'arts': [],
+                'warehouses': [],
+                'hqs': [],
+                'airfields': [],
+                'forts': []
+            }
         }
         for mo in self.mission_objectives:
-            if mo['obj_type'] == '14' and mo['coalition'] == '2' and mo['success'] == '1':
-                icons['allies_flames'].append({'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
-            elif mo['obj_type'] == '14' and mo['coalition'] == '1' and mo['success'] == '1':
-                icons['axis_flames'].append({'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
-            elif mo['obj_type'] == '4' and mo['coalition'] == '2':
-                icons['allies_arts'].append({'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
-            elif mo['obj_type'] == '4' and mo['coalition'] == '1':
-                icons['axis_arts'].append({'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
-            elif mo['obj_type'] == '5' and mo['coalition'] == '2':
-                icons['allies_trucks'].append({'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
-            elif mo['obj_type'] == '5' and mo['coalition'] == '1':
-                icons['axis_trucks'].append({'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
-            elif mo['obj_type'] == '6' and mo['coalition'] == '2':
-                icons['allies_tanks'].append({'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
-            elif mo['obj_type'] == '6' and mo['coalition'] == '1':
-                icons['axis_tanks'].append({'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
+            if mo['obj_type'] in ('15', '0'):
+                continue
+            if mo['obj_type'] == '14' and mo['success'] == '1':
+                icons[mo['coalition']][objectives_mapping[mo['obj_type']]].append(
+                    {'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
+            else:
+                if mo['obj_type'] in coalitions_mapping.keys():
+                    coal = coalitions_mapping[mo['obj_type']][mo['coalition']]
+                else:
+                    coal = mo['coalition']
+                icons[coal][objectives_mapping[mo['obj_type']]].append({'x': float(mo['ZPos']), 'z': float(mo['XPos'])})
         for o in self.server_inputs:
             if 'half' in o['name']:
                 continue
+            if 'red' in o['name']:
+                coal = '1'
+            elif 'blue' in o['name']:
+                coal = '2'
+            else:
+                continue
             if 'warehouse' in o['name'] and 'red' in o['name']:
-                icons['allies_warehouses'].append({'x': float(o['ZPos']), 'z': float(o['XPos'])})
-            elif 'warehouse' in o['name'] and 'blue' in o['name']:
-                icons['axis_warehouses'].append({'x': float(o['ZPos']), 'z': float(o['XPos'])})
+                icons[coal]['warehouses'].append({'x': float(o['ZPos']), 'z': float(o['XPos'])})
             elif 'hq' in o['name'] and 'rus' in o['name']:
-                icons['allies_hqs'].append({'x': float(o['ZPos']), 'z': float(o['XPos'])})
-            elif 'hq' in o['name'] and 'ger' in o['name']:
-                icons['axis_hqs'].append({'x': float(o['ZPos']), 'z': float(o['XPos'])})
-            elif 'fort' in o['name'] and 'red' in o['name']:
-                icons['allies_forts'].append({'x': float(o['ZPos']), 'z': float(o['XPos'])})
+                icons[coal]['hqs'].append({'x': float(o['ZPos']), 'z': float(o['XPos'])})
             elif 'fort' in o['name'] and 'blue' in o['name']:
-                icons['axis_forts'].append({'x': float(o['ZPos']), 'z': float(o['XPos'])})
+                icons[coal]['forts'].append({'x': float(o['ZPos']), 'z': float(o['XPos'])})
         for o in self.airfields:
             if o['coalition'] == 'red':
-                icons['allies_airfields'].append({'x': float(o['ZPos']), 'z': float(o['XPos']), 'name': o['name']})
+                coal = '1'
             elif o['coalition'] == 'blue':
-                icons['axis_airfields'].append({'x': float(o['ZPos']), 'z': float(o['XPos']), 'name': o['name']})
+                coal = '2'
+            else:
+                continue
+            icons[coal]['airfields'].append({'x': float(o['ZPos']), 'z': float(o['XPos']), 'name': o['name']})
         return icons

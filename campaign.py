@@ -119,6 +119,13 @@ class Mission:
     def date(self):
         return self.src.date
 
+    @property
+    def score(self):
+        triggered_m_objectives = list([x for x in self.atypes if x['atype_id'] == 8])
+        score = {'red': 0, 'blue': 0}
+
+        return score
+
 
 class Campaign:
     def __init__(self):
@@ -145,6 +152,7 @@ class Campaign:
         :type m: Mission
         :return: None """
         m_tvd_name = m.tvd_name
+        print(m.score)
         if not m.is_ended:
             if m.name not in self._saved_plans:
                 self.save_mission_info(m, m_tvd_name)
@@ -197,9 +205,6 @@ class Campaign:
         utc_offset = datetime.datetime.now() - datetime.datetime.utcnow()
         result_utc_datetime = m_start - utc_offset + m_length
 
-        # t = m_start.astimezone(pytz.UTC)
-        tmp = int(result_utc_datetime.timestamp())
-        # tmp2 = datetime.datetime(microsecond=tmp / 1000)
         data = {
             'period_id': period_id,
             'm_date': str(m.src.date),
@@ -237,23 +242,23 @@ class Campaign:
         # lat - z
         # lng - x
         targets = []
-        for key in icons.keys():
-            coal, cls = tuple(key.split('_'))
-            for t in icons[key]:
-                name = StatsCustomCfg.cfg['il2missionplanner']['icon_names_mapping'][cls]
-                notes = StatsCustomCfg.cfg['il2missionplanner']['icon_notes_mapping'][cls]
-                if cls == 'airfields':
-                    name = t['name']
-                targets.append({
-                    'latLng': {
-                        'lng': round(t['x'] * x_c, 2),
-                        'lat': round(t['z'] * z_c, 2)
-                    },
-                    'name': name,
-                    'color': 'blue' if coal == 'axis' else 'red',
-                    'type': StatsCustomCfg.cfg['il2missionplanner']['icons_types_mapping'][cls],
-                    'notes': notes
-                })
+        for coal in icons.keys():
+            for cls in icons[coal].keys():
+                for i in icons[coal][cls]:
+                    name = StatsCustomCfg.cfg['il2missionplanner']['icon_names_mapping'][cls]
+                    notes = StatsCustomCfg.cfg['il2missionplanner']['icon_notes_mapping'][cls]
+                    if cls == 'airfields':
+                        name = i['name']
+                    targets.append({
+                        'latLng': {
+                            'lng': round(i['x'] * x_c, 2),
+                            'lat': round(i['z'] * z_c, 2)
+                        },
+                        'name': name,
+                        'color': 'blue' if coal == '2' else 'red',
+                        'type': StatsCustomCfg.cfg['il2missionplanner']['icons_types_mapping'][cls],
+                        'notes': notes
+                    })
         data = {
             'mapHash': '#{}'.format(tvd_name),
             'routes': [],
