@@ -214,10 +214,7 @@ def parse(line):
     """
     atype_id = int(line.partition('AType:')[2][:2])
     if 0 <= atype_id <= 21:
-        try:
-            data = atype_handlers[atype_id].match(line.strip()).groupdict()
-        except AttributeError as e:
-            print()
+        data = atype_handlers[atype_id].match(line.strip()).groupdict()
         data['atype_id'] = atype_id
         for key, value in list(data.items()):
             if key in params_handlers:

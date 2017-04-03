@@ -90,6 +90,8 @@ class Business:
                     else:
                         # списываем самолёт и анлоки при невозврате с фронтового аэродрома
                         if not rear_start:
+                            if p.planes == 0:
+                                raise NameError('Ты что творишь, сука!?')
                             p.unlocks -= mods
                             p.planes[aircraft_cls] -= 1
                             message += '-mods({}) -plane({}) '.format(mods, aircraft_cls)
