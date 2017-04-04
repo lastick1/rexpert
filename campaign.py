@@ -176,7 +176,7 @@ class Mission:
             # if mo_cls == 'troops':
             coal = str(mo['coal_id'])
             score[coal] += Gameplay.cfg['objectives'][mo_cls]
-        return "Capture: Blue {0}/{2}, Red {1}/{2}".format(
+        return "Capture: Blue {0} / {2}, Red {1} / {2}".format(
             int(score['2']) if score['2'] < MainCfg.capture_pts else MainCfg.capture_pts,
             int(score['1']) if score['1'] < MainCfg.capture_pts else MainCfg.capture_pts,
             MainCfg.capture_pts)
