@@ -6,6 +6,24 @@
   "maps": ["moscow", "stalingrad"],
   "sides": ["red", "blue"],
   "scenario_min_distance": 50000,
+  "objectives": {
+    "0": "primary",
+    "1": "airfield",
+    "2": "hqs",
+    "3": "fort",
+    "4": "arts",
+    "5": "trucks",
+    "6": "tanks",
+    "7": "warehouses",
+    "8": "train",
+    "9": "troops",
+    "10": false,
+    "11": false,
+    "12": false,
+    "13": "boost",
+    "14": "capture",
+    "15": "pause"
+  },
   "moscow":
   {
     "tvd": 2,

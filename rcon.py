@@ -108,6 +108,12 @@ class RconCommunicator:
         resp = self.__rcon_send_raw_command("chatmsg {0} {1} {2}".format(roomtype, id, message))
         return resp
 
+    def info_message(self, message):
+        if not self.CONNECTED:
+            raise NameError("Not connected")
+        resp = self.__rcon_send_raw_command("chatmsg 0 0 {}".format(message))
+        return resp
+
     def private_message(self, account_id, message):
         if not self.CONNECTED:
             raise NameError("Not connected")
@@ -156,6 +162,7 @@ class CommandType(Enum):
     kick = 2
     s_input = 3
     ban = 4
+    info = 5
 
 
 class Command:
@@ -257,6 +264,11 @@ class Commander:
                                     cmndr_log.write('{} \n'.format(line))
                                 elif cmd.cmd_type == CommandType.message:
                                     status = self._console.private_message(cmd.account_id, cmd.text)
+                                    if MainCfg.console_chat_output:
+                                        print(cmd.now.strftime("[%H:%M:%S]"), end=' ')
+                                        print("{} MSG [{}]: {}".format(status, cmd.account_id, cmd.text))
+                                elif cmd.cmd_type == CommandType.info:
+                                    status = self._console.info_message(cmd.text)
                                     if MainCfg.console_chat_output:
                                         print(cmd.now.strftime("[%H:%M:%S]"), end=' ')
                                         print("{} MSG [{}]: {}".format(status, cmd.account_id, cmd.text))

@@ -30,6 +30,7 @@ class Processor:
         self.threads = dict()
         self.missions = dict()
         self.last_mission = None
+        self.filter_int = 0
 
     def _process(self, m_name, logs):
         """ Обработка логов """
@@ -61,6 +62,11 @@ class Processor:
         # отправка сервер инпутов с чатом и киками
         if not self.missions[m_name].is_ended:
             self.commander.process_commands(self.business[m_name].commands)
+
+        if self.filter_int % 6:
+            self.commander.process_commands(
+                [rcon.Command(m_name, cmd_type=rcon.CommandType.info, subject=self.missions[m_name].score)])
+        self.filter_int += 1
 
         self.campaign.update(self.missions[m_name])
 

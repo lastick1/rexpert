@@ -244,7 +244,7 @@ class MissionSrc:
             }
         }
         for mo in self.mission_objectives:
-            if mo['obj_type'] in ('15', '0'):
+            if mo['obj_type'] not in ('4', '5', '6', '14'):
                 continue
             if mo['obj_type'] == '14' and mo['success'] == '1':
                 icons[mo['coalition']][objectives_mapping[mo['obj_type']]].append(

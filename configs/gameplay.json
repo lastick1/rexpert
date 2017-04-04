@@ -46,6 +46,16 @@
       "hp": 115
     }
   },
+  "objectives": {
+    "airfield": 12,
+    "hqs": 24,
+    "fort": 18,
+    "arts": 10,
+    "trucks": 10,
+    "warehouses": 15,
+    "train": 2,
+    "troops": 5
+  },
   "supply": {
     "kill_weight_reward": 0.2,
     "free_plane_hours": 6,

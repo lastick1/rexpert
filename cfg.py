@@ -47,6 +47,7 @@ class MainCfg:
         'm': int(conf['GAMEPLAY']['mission_time'].split(sep=':')[1]),
         's': int(conf['GAMEPLAY']['mission_time'].split(sep=':')[2])
     }
+    capture_pts = int(conf['GAMEPLAY']['capture_pts'])
 
 
 class DbCfg:

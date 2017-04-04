@@ -3,7 +3,7 @@ import pytz
 import datetime
 import json
 from pathlib import Path
-from cfg import MissionGenCfg, MainCfg, StatsCustomCfg
+from cfg import MissionGenCfg, MainCfg, StatsCustomCfg, Gameplay
 from tvd import Tvd
 import mission_report
 import gen
@@ -120,11 +120,66 @@ class Mission:
         return self.src.date
 
     @property
-    def score(self):
-        triggered_m_objectives = list([x for x in self.atypes if x['atype_id'] == 8])
-        score = {'red': 0, 'blue': 0}
+    def length(self):
+        return datetime.timedelta(
+            hours=MainCfg.mission_time['h'],
+            minutes=MainCfg.mission_time['m'],
+            seconds=MainCfg.mission_time['s']
+        )
 
-        return score
+    @property
+    def end(self):
+        return self.start + self.length
+
+    @property
+    def score(self):
+        triggered_m_objectives = list([x for x in self.atypes if x['atype_id'] == 8])  # сработавшие обжективы
+        passed_minutes = int((datetime.datetime.now() - self.start).seconds / 60)  # время с начала миссии
+        coal_reverse = {'1': '2', '2': '1'}
+        # счёт в минутах
+        score = {'1': 0, '2': 0}  # счётчики результатов по коалициям
+        boosts = {'1': [], '2': []}  # время ускорения [x1.5, x2]
+        pauses = {'1': [], '2': []}  # паузы, когда счётчик останавливается
+        # вычисляем моменты ускорения таймера, если были
+        for mo in triggered_m_objectives:
+            mo_cls = MissionGenCfg.cfg['objectives'][str(mo['task_type_id'])]
+            if mo_cls == "boost":
+                mo_delta = datetime.timedelta(seconds=int(mo['tik'] / 50))
+                boosts[str(mo['coal_id'])].append(self.start + mo_delta)
+        # вычисляем паузы таймера если были
+        for mo in triggered_m_objectives:
+            mo_cls = MissionGenCfg.cfg['objectives'][str(mo['task_type_id'])]
+            if mo_cls == "pause" and not mo['success']:
+                mo_delta = datetime.timedelta(seconds=int(mo['tik'] / 50))
+                pauses[str(mo['coal_id'])].append(self.start + mo_delta)
+        # начисляем ежеминутные очки захвата с учётом ускорения
+        i = self.start
+        while i < self.end and i < datetime.datetime.now():
+            for coal in ('1', '2'):
+                paused = False  # остановлено ли время
+                for pause in pauses[coal]:
+                    if pause < i < pause + datetime.timedelta(minutes=15):
+                        paused = True
+                if paused:
+                    continue
+                score[coal] += 1
+                for boost_time in boosts[coal]:
+                    if boost_time < i:
+                        score[coal] += 0.5
+            i = i + datetime.timedelta(minutes=1)
+        # начисляем стоимость целей в очках захвата
+        for mo in triggered_m_objectives:
+            mo_cls = MissionGenCfg.cfg['objectives'][str(mo['task_type_id'])]
+            if mo_cls not in Gameplay.cfg['objectives'].keys():
+                continue  # если цели не задана стоимость - игнорируем
+            # coal = coal_reverse[str(mo['coal_id'])]  # у всех кроме десанта - коалиция накрест
+            # if mo_cls == 'troops':
+            coal = str(mo['coal_id'])
+            score[coal] += Gameplay.cfg['objectives'][mo_cls]
+        return "Capture: Blue {0}/{2}, Red {1}/{2}".format(
+            int(score['2']) if score['2'] < MainCfg.capture_pts else MainCfg.capture_pts,
+            int(score['1']) if score['1'] < MainCfg.capture_pts else MainCfg.capture_pts,
+            MainCfg.capture_pts)
 
 
 class Campaign:
@@ -152,7 +207,6 @@ class Campaign:
         :type m: Mission
         :return: None """
         m_tvd_name = m.tvd_name
-        print(m.score)
         if not m.is_ended:
             if m.name not in self._saved_plans:
                 self.save_mission_info(m, m_tvd_name)
