@@ -286,11 +286,13 @@ class Business:
         """ Может ли игрок брать указанное количество модификаций (анлоков) """
         """С тыловых аэродромов самолёты лёгкой и средней категории можно брать только без модификаций.
         Тяжёлые можно брать с модификациями с любых аэродромов."""
+        # если самолётов нет, использовать анлоки нельзя
+        if player.planes[aircraft_cls] == 0:
+            return False
         if aircraft_cls in ['heavy']:
             return mods <= player.unlocks
         else:
             if rear_start:
                 return mods <= 0
             else:
-                # если самолётов нет, использовать анлоки нельзя
-                return mods <= player.unlocks if player.planes[aircraft_cls] > 0 else False
+                return mods <= player.unlocks

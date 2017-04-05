@@ -216,7 +216,7 @@ class Tvd:
         for stage in self.stages:
             if self.date in stage:
                 return stage.id
-        raise NameError('Incorrect date for all stages: {}'.format(self.date_next))
+        raise NameError('Incorrect date for all stages: {}'.format(self.date))
 
     def randomize_defaultparams(self):
         """ Задать случайные параметры погоды, времени года и суток """
