@@ -59,12 +59,12 @@ class Business:
             i = 0
             while i < s_count:
                 s = s_data[account_id][i]  # берём очередной вылет
-                p = self.get_player(account_id, s.nickname)  # берём игрока
+                aircraft_cls = aircrafts.aircraft_types[s.aircraft_name]  # класс самолёта (лёгкий, средний, тяжёлый)
+                p = self.get_player(account_id, s.nickname, 'aircraft_{}'.format(aircraft_cls))  # берём игрока
 
                 rear_start = self._is_rear_start(s)  # проверяем, стартовал ли с тылового
                 s_ended = self._is_sortie_ended(s, i, s_count)  # определяем завершён ли вылет
                 mods = len(s.weapon_mods_id)  # количество модификаций
-                aircraft_cls = aircrafts.aircraft_types[s.aircraft_name]  # класс самолёта (лёгкий, средний, тяжёлый)
                 if s_ended:
                     if datetime.strptime(p.last_mission, date_format) > datetime.strptime(self.name, date_format):
                         # если время последней миссии позже, чем обрабатываемая миссия, то ничего не делаем
@@ -122,7 +122,10 @@ class Business:
                     continue
                 if len(s_data[account_id]):
                     sq_mate_s = s_data[account_id][-1]
-                    sq_mate = self.get_player(sq_mate_s.account_id, sq_mate_s.nickname)
+                    sq_mate = self.get_player(
+                        sq_mate_s.account_id,
+                        sq_mate_s.nickname,
+                        'aircraft_{}'.format(aircrafts.aircraft_types[sq_mate_s.aircraft_name]))
                     if not sq_mate.squad:
                         continue
                     if sq_mate.squad['id'] != p.squad['id']:
@@ -165,10 +168,9 @@ class Business:
                     tik=s.tik_spawn,
                     cmd_type=CommandType.message,
                     account_id=s.account_id,
-                    subject='{} available planes: Light {}, Medium {}, Heavy {}'.format(
+                    subject='{} available planes: Light {}, Heavy {}'.format(
                         name,
                         p.planes['light'] - checkout['light'] if p.planes['light'] - checkout['light'] >= 0 else 0,
-                        p.planes['medium'] - checkout['medium'] if p.planes['medium'] - checkout['medium'] >= 0 else 0,
                         p.planes['heavy'] - checkout['heavy'] if p.planes['heavy'] - checkout['heavy'] >= 0 else 0
                     ),
                     reason='info message'
@@ -242,7 +244,7 @@ class Business:
             return {'return': False, 'reason': 'умер после взлёта', 'is_rtb': craft.is_rtb}
         return {'return': True, 'reason': 'default', 'is_rtb': craft.is_rtb}
 
-    def get_player(self, account_id, nickname):
+    def get_player(self, account_id, nickname, specialization):
         """ Получить объект игрока класса Player (инициализируется при необходимости)
         :rtype Player """
         # создаём объект игрока, если его ещё нет
@@ -250,7 +252,7 @@ class Business:
             self.players[account_id] = Player(account_id)
             # если игрок ещё не инициализирован в базе, завершаем этот процесс необходимыми данными
             if not self.players[account_id].initialized:
-                self.players[account_id].initialize(nickname)  # создаём запись в базе
+                self.players[account_id].initialize(nickname, specialization)  # создаём запись в базе
                 self.players[account_id].unlocks = 1  # начальное количество модификаций
         return self.players[account_id]
 
@@ -290,4 +292,5 @@ class Business:
             if rear_start:
                 return mods <= 0
             else:
-                return mods <= player.unlocks
+                # если самолётов нет, использовать анлоки нельзя
+                return mods <= player.unlocks if player.planes[aircraft_cls] > 0 else False

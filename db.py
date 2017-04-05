@@ -373,7 +373,7 @@ class PGConnector:
             PGConnector.Player.__connection_string = connection_string
 
         @staticmethod
-        def initialize_player(account_id, nickname):
+        def initialize_player(account_id, nickname, specialization):
             sql_sel_profiles = """SELECT id, uuid, nickname, is_hide, user_id, squad_id
                                         FROM profiles
                                         WHERE uuid = %s or nickname = %s"""
@@ -384,8 +384,8 @@ class PGConnector:
                                         SET nickname=%s
                                         WHERE uuid = %s"""
             sql_ins_custom = """INSERT INTO custom_profiles_extension(
-                                        account_id)
-                                        VALUES (%s)"""
+                                        account_id, specialization)
+                                        VALUES (%s, %s)"""
             sql_ins_player = """INSERT INTO profiles(
                                         uuid, nickname, is_hide)
                                         VALUES (%s, %s, %s)"""
@@ -401,11 +401,11 @@ class PGConnector:
                     cur.execute(sql_sel_profiles, (account_id, nickname))
                     fetch = cur.fetchall()
                     if len(fetch) > 0:
-                        cur.execute(sql_ins_custom, (account_id, ))
+                        cur.execute(sql_ins_custom, (account_id, specialization))
                         connection.commit()
                     else:
                         cur.execute(sql_ins_player, (account_id, nickname, False))
-                        cur.execute(sql_ins_custom, (account_id, ))
+                        cur.execute(sql_ins_custom, (account_id, specialization))
                         connection.commit()
 
         @staticmethod
@@ -428,7 +428,7 @@ class PGConnector:
                     LEFT JOIN squads_members as s ON s.member_id = u.id
                     LEFT JOIN squads as sd ON sd.id = s.squad_id
                     LEFT JOIN players as pl ON pl.profile_id = p.id
-                    --WHERE pl.tour_id = (SELECT max(tour_id) FROM players)
+                    --WHERE pl.tour_id = (SELECT max(id) FROM tours)
                     WHERE account_id = %s"""
             with psycopg2.connect(PGConnector.Player.__connection_string) as connection:
                 cur = connection.cursor(cursor_factory=RealDictCursor)
@@ -457,24 +457,40 @@ class PGConnector:
                 return
 
         @staticmethod
-        def update_ban_date(account_id, days):
-            sql = """UPDATE custom_profiles_extension
-                    SET ban_expire_date=NOW() + INTERVAL '%s day'
-                    WHERE account_id=%s"""
-            with psycopg2.connect(PGConnector.Player.__connection_string) as connection:
-                cur = connection.cursor()
-                cur.execute(sql, (days, account_id))
-
-        @staticmethod
-        def select_banned():
-            sql = """SELECT account_id FROM custom_profiles_extension WHERE ban_expire_date > NOW()"""
+        def select_specialization(account_id):
+            sql = """SELECT 
+                        profiles.uuid, 
+                        profiles.nickname, 
+                        players.sorties_cls,
+                        custom_profiles_extension.specialization
+                    FROM 
+                        custom_profiles_extension
+                        LEFT JOIN profiles ON custom_profiles_extension.account_id = profiles.uuid
+                        LEFT JOIN players ON players.profile_id = profiles.id
+                    WHERE 
+                        profiles.uuid = %s AND
+                        players.tour_id = (SELECT max(id) FROM tours)"""
             with psycopg2.connect(PGConnector.Player.__connection_string) as connection:
                 cur = connection.cursor(cursor_factory=RealDictCursor)
-                cur.execute(sql)
+                cur.execute(sql, (account_id, ))
                 if cur.rowcount > 0:
-                    return set(x['account_id'] for x in cur.fetchall())
+                    return cur.fetchone()
                 else:
-                    return set()
+                    sql = """SELECT * FROM custom_profiles_extension WHERE account_id = %s ;"""
+                    cur.execute(sql, (account_id,))
+                    if cur.rowcount > 0:
+                        return cur.fetchone()
+                return
+
+        @staticmethod
+        def set_specialization(account_id, specialization):
+            sql = """UPDATE custom_profiles_extension
+                    SET specialization = %s
+                    WHERE account_id = %s ;"""
+            with psycopg2.connect(PGConnector.Player.__connection_string) as connection:
+                cur = connection.cursor()
+                cur.execute(sql, (specialization, account_id))
+                connection.commit()
 
         @staticmethod
         def select_players_table():
