@@ -145,7 +145,7 @@ class Business:
                             cmd_type=CommandType.kick,
                             account_id=s.account_id,
                             subject=s.nickname,
-                            reason='Takeoff restricted: {} | {}({}:{}){} | unlocks({}:{}){}'.format(
+                            reason='Takeoff restricted: {} | {}({}:{}){} | unlocks({}:{}){} | RS:{}'.format(
                                 s.aircraft_name,
                                 aircraft_cls,
                                 p.planes[aircraft_cls],
@@ -153,7 +153,8 @@ class Business:
                                 aircraft_permission,
                                 p.unlocks,
                                 mods,
-                                mods_permission
+                                mods_permission,
+                                rear_start
                             )
                         ))
                 else:
@@ -288,7 +289,7 @@ class Business:
         Тяжёлые можно брать с модификациями с любых аэродромов."""
         # если самолётов нет, использовать анлоки нельзя
         if player.planes[aircraft_cls] == 0:
-            return False
+            return mods <= 0
         if aircraft_cls in ['heavy']:
             return mods <= player.unlocks
         else:

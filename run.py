@@ -1,11 +1,11 @@
-from cfg import DbCfg, MainCfg
+from cfg import DbCfg
 import processor
 import rcon
 import db
 import reader
 import gen
 import campaign
-import draw
+import datetime
 db.PGConnector.init(DbCfg.connection_string)
 
 
@@ -29,8 +29,7 @@ def run():
     p = processor.Processor(c)
     r = reader.AtypesReader(p, cycle=5)
 
-
+print(datetime.datetime.now().strftime("[%H:%M:%S]"))
 # reset()
 run()
 # generate('result1', 'moscow')
-print()
