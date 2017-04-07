@@ -154,7 +154,7 @@ class Mission:
                 pauses[str(mo['coal_id'])].append(self.start + mo_delta)
         # начисляем ежеминутные очки захвата с учётом ускорения
         i = self.start
-        while i < self.end and i < datetime.datetime.now():
+        while i < self.end and i < datetime.datetime.now() - datetime.timedelta(seconds=30):
             for coal in ('1', '2'):
                 paused = False  # остановлено ли время
                 for pause in pauses[coal]:

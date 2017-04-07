@@ -29,7 +29,7 @@ def run():
     p = processor.Processor(c)
     r = reader.AtypesReader(p, cycle=5)
 
-print(datetime.datetime.now().strftime("[%H:%M:%S]"))
+print(datetime.datetime.now().strftime("[%H:%M:%S] Program Start"))
 # reset()
 run()
 # generate('result1', 'moscow')

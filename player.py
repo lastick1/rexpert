@@ -1,5 +1,6 @@
 import datetime
 import db
+from pathlib import Path
 import json
 connector = db.PGConnector
 
@@ -62,12 +63,15 @@ class Player:
             raise NameError('Invalid data for initialization: {} {}'.format(self.account_id, nickname))
 
         connector.Player.initialize_player(self.account_id, nickname, specialization)
-        print('[{}] {} {} {} initialized'.format(
+        log_txt = '[{}] {} {} {} initialized'.format(
             datetime.datetime.now().strftime("%H:%M:%S"),
             self.nickname,
             self.account_id,
             specialization
-        ))
+        )
+        with Path('./logs/players_init.txt').open(mode='a', encoding='utf-8') as f:
+            f.write(log_txt + '\n')
+        print(log_txt)
         self.load()
 
     def load(self):
@@ -87,12 +91,15 @@ class Player:
                 }
                 if not connector.Squad.get_planes(self.squad['id']):
                     connector.Squad.initialize(self.squad['id'])
-                    print('[{}] squad {} initialized: {} id, {} strength'.format(
+                    log_txt = '[{}] squad {} initialized: {} id, {} strength'.format(
                         datetime.datetime.now().strftime("%H:%M:%S"),
                         data['squad_name'],
                         data['squad_id'],
                         data['squad_strength']
-                    ))
+                    )
+                    with Path('./logs/players_init.txt').open(mode='a', encoding='utf-8') as f:
+                        f.write(log_txt + '\n')
+                    print(log_txt)
                 self.planes_to_squad()
 
     def __str__(self):
