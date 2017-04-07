@@ -31,7 +31,7 @@ def get_parallel_multiline(pts, dist):
         tmppts[i] = tmpline[0]
         tmppts[i + 1] = tmpline[1]
         i += 1
-    return [[p[0], p[1]] for p in tmppts]
+    return [(p[0], p[1]) for p in tmppts]
 
 
 def get_parallel_line(line_x_y, dist):
@@ -55,7 +55,7 @@ def get_parallel_line(line_x_y, dist):
     return [resbeg, resend]
 
 
-def polydim_spline(pts):
+def polydim_spline(pts, skip=False):
     """Интерполяция производной двухмерной функции двухмерным же сплайном"""
     """Подготовка вспомогательных массивов"""
     n = len(pts)
@@ -82,8 +82,10 @@ def polydim_spline(pts):
     i = 0
     for pt in s_xt:
         # берём только каждую 25-ю вершину (отсекаем избыточные данные)
-        if not (i % 25):
-            result.append((pt[1], s_yt[i][1]))
+        if skip and i % 25:
+            i += 1
+            continue
+        result.append((pt[1], s_yt[i][1]))
         i += 1
     return result
 
@@ -201,7 +203,7 @@ def get_splines(
 
     for line in cut:
         pts = [(float(p[0]), float(p[1])) for p in line]
-        respts = polydim_spline(pts)
+        respts = polydim_spline(pts, skip=True)
         parpts1 = get_parallel_multiline(respts, int(dist / 2))
         parpts2 = get_parallel_multiline(respts, int(dist / (-2)))
         lines.append([parpts1, parpts2])
@@ -210,7 +212,7 @@ def get_splines(
 
 def draw_graph(neutral_line, influences, map_name, nodes=list(), edges=list(), icons=None, debug_data=None):
     base = Image.open(DrawCfg.background[map_name]).convert('RGBA')
-    kp_icons = {x: Image.open(DrawCfg.icons[x]['key_position']) for x in DrawCfg.coals}
+    kp_icons = {x: Image.open(DrawCfg.icons[x]['flames']) for x in DrawCfg.coals}
     draw = ImageDraw.Draw(base)
     x_coefficient = abs(base.size[1] / MissionGenCfg.cfg[map_name]['right_top']['x'])
     z_coefficient = abs(base.size[0] / MissionGenCfg.cfg[map_name]['right_top']['z'])
@@ -264,115 +266,27 @@ def draw_graph(neutral_line, influences, map_name, nodes=list(), edges=list(), i
                 (p[0] + base.size[0] / 100, p[1] + base.size[1] / 100),
                 fill=color,
                 outline=(0, 0, 0))
-    """
-    flame = Image.open(str(config.Draw.flame))
-    airfield = Image.open(str(config.Draw.af))
-    airfield.thumbnail((config.Draw.icon_size, config.Draw.icon_size), Image.ANTIALIAS)
-
-    axis_airfield = Image.open(str(config.Draw.axis['af']))
-    axis_airfield.thumbnail((config.Draw.icon_size, config.Draw.icon_size), Image.ANTIALIAS)
-    axis_truck = Image.open(str(config.Draw.axis['trucks']))
-    axis_truck.thumbnail((130, 130), Image.ANTIALIAS)
-    axis_tank = Image.open(str(config.Draw.axis['tank']))
-    axis_tank.thumbnail((130, 130), Image.ANTIALIAS)
-    axis_warehouse = Image.open(str(config.Draw.axis['wh']))
-    axis_warehouse.thumbnail((130, 130), Image.ANTIALIAS)
-    axis_art = Image.open(str(config.Draw.axis['arty']))
-    axis_art.thumbnail((130, 130), Image.ANTIALIAS)
-    axis_hq = Image.open(str(config.Draw.axis['hq']))
-    axis_hq.thumbnail((130, 130), Image.ANTIALIAS)
-
-    allies_airfield = Image.open(str(config.Draw.allies['af']))
-    allies_airfield.thumbnail((config.Draw.icon_size, config.Draw.icon_size), Image.ANTIALIAS)
-    allies_truck = Image.open(str(config.Draw.allies['trucks']))
-    allies_truck.thumbnail((130, 130), Image.ANTIALIAS)
-    allies_tank = Image.open(str(config.Draw.allies['tank']))
-    allies_tank.thumbnail((130, 130), Image.ANTIALIAS)
-    allies_warehouse = Image.open(str(config.Draw.allies['wh']))
-    allies_warehouse.thumbnail((130, 130), Image.ANTIALIAS)
-    allies_art = Image.open(str(config.Draw.allies['arty']))
-    allies_art.thumbnail((130, 130), Image.ANTIALIAS)
-    allies_hq = Image.open(str(config.Draw.allies['hq']))
-    allies_hq.thumbnail((130, 130), Image.ANTIALIAS)
-
-
-    for p in icons['flames']:
-        base.paste(flame,
-                   (int(p['x'] * x_coefficient - flame.size[0] / 2),
-                    base.size[1] - int(p['z'] * z_coefficient) - int(flame.size[1] / 1.4)),
-                   flame)
-
-    if config.Draw.airfields_on_map:
-        if config.Draw.colored_af:
-            for p in icons['allies_airfields']:
-                base.paste(allies_airfield,
-                           (int(p['x'] * x_coefficient - allies_airfield.size[0] / 2),
-                            base.size[1] - int(p['z'] * z_coefficient) - int(allies_airfield.size[1] / 2)),
-                           allies_airfield)
-            for p in icons['axis_airfields']:
-                base.paste(axis_airfield,
-                           (int(p['x'] * x_coefficient - axis_airfield.size[0] / 2),
-                            base.size[1] - int(p['z'] * z_coefficient) - int(axis_airfield.size[1] / 2)),
-                           axis_airfield)
-        else:
-            for p in icons['axis_airfields'] + icons['allies_airfields']:
-                base.paste(airfield,
-                           (int(p['x'] * x_coefficient - airfield.size[0] / 2),
-                            base.size[1] - int(p['z'] * z_coefficient) - int(airfield.size[1] / 2)),
-                           airfield)
-
-    if config.Draw.targets_on_map:
-        for p in icons['allies_trucks']:
-            base.paste(allies_truck,
-                       (int(p['x'] * x_coefficient - allies_truck.size[0] / 2),
-                        base.size[1] - int(p['z'] * z_coefficient) - int(allies_truck.size[1])),
-                       allies_truck)
-        for p in icons['allies_warehouses']:
-            base.paste(allies_warehouse,
-                       (int(p['x'] * x_coefficient - allies_warehouse.size[0] / 2),
-                        base.size[1] - int(p['z'] * z_coefficient) - int(allies_warehouse.size[1])),
-                       allies_warehouse)
-        for p in icons['allies_arts']:
-            base.paste(allies_art,
-                       (int(p['x'] * x_coefficient - allies_art.size[0] / 2),
-                        base.size[1] - int(p['z'] * z_coefficient) - int(allies_art.size[1])),
-                       allies_art)
-        for p in icons['allies_tanks']:
-            base.paste(allies_tank,
-                       (int(p['x'] * x_coefficient - allies_tank.size[0] / 2),
-                        base.size[1] - int(p['z'] * z_coefficient) - int(allies_tank.size[1])),
-                       allies_tank)
-        for p in icons['allies_hqs']:
-            base.paste(allies_hq,
-                       (int(p['x'] * x_coefficient - allies_hq.size[0] / 2),
-                        base.size[1] - int(p['z'] * z_coefficient) - int(allies_hq.size[1])),
-                       allies_hq)
-        for p in icons['axis_trucks']:
-            base.paste(axis_truck,
-                       (int(p['x'] * x_coefficient - axis_truck.size[0] / 2),
-                        base.size[1] - int(p['z'] * z_coefficient) - int(axis_truck.size[1])),
-                       axis_truck)
-        for p in icons['axis_warehouses']:
-            base.paste(axis_warehouse,
-                       (int(p['x'] * x_coefficient - axis_warehouse.size[0] / 2),
-                        base.size[1] - int(p['z'] * z_coefficient) - int(axis_warehouse.size[1])),
-                       axis_warehouse)
-        for p in icons['axis_arts']:
-            base.paste(axis_art,
-                       (int(p['x'] * x_coefficient - axis_art.size[0] / 2),
-                        base.size[1] - int(p['z'] * z_coefficient) - int(axis_art.size[1])),
-                       axis_art)
-        for p in icons['axis_tanks']:
-            base.paste(axis_tank,
-                       (int(p['x'] * x_coefficient - axis_tank.size[0] / 2),
-                        base.size[1] - int(p['z'] * z_coefficient) - int(axis_tank.size[1])),
-                       axis_tank)
-        for p in icons['axis_hqs']:
-            base.paste(axis_hq,
-                       (int(p['x'] * x_coefficient - axis_hq.size[0] / 2),
-                        base.size[1] - int(p['z'] * z_coefficient) - int(axis_hq.size[1])),
-                       axis_hq)
-    """
+    flame = Image.open(DrawCfg.flame)
+    airfield = Image.open(DrawCfg.airfield)
+    airfield.thumbnail((DrawCfg.cfg['icon_size'][0], DrawCfg.cfg['icon_size'][1]), Image.ANTIALIAS)
+    for coal in icons.keys():  # ('1', '2'):
+        for cls in icons[coal].keys():
+            if cls not in DrawCfg.cfg['coal_icons']:
+                continue
+            for point in icons[coal][cls]:
+                image = Image.open(DrawCfg.icons[DrawCfg.cfg['coal_mapping'][coal]][cls])
+                image.thumbnail((130, 130), Image.ANTIALIAS)
+                coordinates = (
+                        int(point['x'] * x_coefficient - image.size[0] / 2),
+                        base.size[1] - int(point['z'] * z_coefficient) - int(image.size[1])
+                    )
+                base.paste(image, coordinates, image)
+                if cls == 'flames':
+                    coordinates = (
+                        int(point['x'] * x_coefficient - flame.size[0] / 2),
+                        base.size[1] - int(point['z'] * z_coefficient) - int(flame.size[1])
+                    )
+                    base.paste(flame, coordinates, flame)
     base.save(StatsCustomCfg.map_full_size)
     th_width = 1140
     size = base.size

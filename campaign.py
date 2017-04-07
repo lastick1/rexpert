@@ -281,6 +281,12 @@ class Campaign:
             msn.name
         ))
         icons = msn.src.icons
+        draw.draw_graph(
+            self.tvds[tvd_name].grid.neutral_line,
+            self.tvds[tvd_name].grid.areas,
+            tvd_name,
+            icons=icons
+        )
         x_c = StatsCustomCfg.cfg['il2missionplanner'][tvd_name]['right_top'][0] / \
               MissionGenCfg.cfg[tvd_name]['right_top']['x']
         z_c = StatsCustomCfg.cfg['il2missionplanner'][tvd_name]['right_top'][1] / \
@@ -288,11 +294,13 @@ class Campaign:
 
         cut = [list((x.x, x.z) for x in self.tvds[tvd_name].grid.neutral_line)]
         frontline = draw.get_splines(cut)
+        frontline_resized = []
         for lines_pair in frontline:
+            frontline_resized.append([])
             for line in lines_pair:
+                frontline_resized[-1].append([])
                 for point in line:
-                    point[0] = round(point[0] * x_c, 3)
-                    point[1] = round(point[1] * z_c, 3)
+                    frontline_resized[-1][-1].append([round(point[0] * x_c, 3), round(point[1] * z_c, 3)])
         # lat - z
         # lng - x
         targets = []
@@ -317,7 +325,7 @@ class Campaign:
             'mapHash': '#{}'.format(tvd_name),
             'routes': [],
             'points': targets,
-            'frontline': frontline
+            'frontline': frontline_resized
         }
         dest = Path(MainCfg.stats_static.joinpath(StatsCustomCfg.cfg['il2missionplanner']['json']))
         with dest.open(mode='w') as f:

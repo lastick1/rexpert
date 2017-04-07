@@ -1,31 +1,37 @@
 {
-  "icon_size": 100,
+  "icon_size": [100, 100],
   "backgrounds": {
     "moscow": "4.png",
     "stalingrad": "stalingrad_background.png"
   },
-  "flame": "fire.png",
-  "af": "af.png",
+  "flames": "fire.png",
+  "airfields": "af.png",
   "coals": ["axis", "allies"],
+  "coal_mapping": {
+    "1": "allies",
+    "2": "axis"
+  },
   "countries": {"101": "allies", "201": "axis"},
-  "coal_icons": ["key_position", "trucks", "tank", "arty", "wh", "hq", "af"],
+  "coal_icons": ["flames", "trucks", "tanks", "arts", "warehouses", "hqs", "airfields", "forts"],
   "axis": {
-    "key_position": "blue_point.png",
+    "flames": "red_point.png",
     "trucks": "car_blue.png",
-    "tank": "tank_blue.png",
-    "arty": "art_blue.png",
-    "wh": "sklad_blue.png",
-    "hq": "schtab3_blue.png",
-    "af": "blue_field.png"
+    "tanks": "tank_blue.png",
+    "arts": "art_blue.png",
+    "warehouses": "sklad_blue.png",
+    "hqs": "schtab3_blue.png",
+    "airfields": "blue_field.png",
+    "forts": "fort_blue.png"
   },
   "allies": {
-    "key_position": "red_point.png",
+    "flames": "blue_point.png",
     "trucks": "car_red.png",
-    "tank": "tank_red.png",
-    "arty": "art_red.png",
-    "wh": "sklad_red.png",
-    "hq": "schtab2_red.png",
-    "af": "red_field.png"
+    "tanks": "tank_red.png",
+    "arts": "art_red.png",
+    "warehouses": "sklad_red.png",
+    "hqs": "schtab2_red.png",
+    "airfields": "red_field.png",
+    "forts": "fort_red.png"
   },
   "show_options": {
     "targets_on_map": true,

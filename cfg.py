@@ -96,6 +96,8 @@ class DrawCfg:
     coals = draw_cfg['coals']
     img_folder = img_fld
     background = {x: str(img_fld.joinpath(draw_cfg['backgrounds'][x])) for x in MissionGenCfg.maps}
+    flame = str(img_fld.joinpath(draw_cfg['flames']))
+    airfield = str(img_fld.joinpath(draw_cfg['airfields']))
     icons = {x: {z: str(img_fld.joinpath(draw_cfg[x][z]).absolute()) for z in draw_cfg['coal_icons']} for x in coals}
     draw_edges = True if "true" in conf['PROGRAM']['draw_edges'].lower() else False
     draw_nodes = True if "true" in conf['PROGRAM']['draw_nodes'].lower() else False
