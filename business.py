@@ -52,7 +52,7 @@ class Business:
                 s_data[s.account_id] = []
             s_data[s.account_id].append(s)
         self.process_players(s_data)
-        self.save_hangar_info()
+        # self.save_hangar_info()
 
     def process_players(self, s_data):
         """ Последовательная обработка вылетов каждого игрока
@@ -118,7 +118,8 @@ class Business:
         for acc in accounts:
             if acc['account_id'] not in self.players.keys():
                 self.players[acc['account_id']] = Player(acc['account_id'])
-            data[acc['id']] = self.players[acc['account_id']].planes
+            p = self.players[acc['account_id']]
+            data[acc['id']] = {'light': p.planes['light'], 'heavy': p.planes['heavy']}
         with StatsCustomCfg.credits_data.open(mode='w') as f:
             json.dump(data, f)
 
