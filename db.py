@@ -6,10 +6,6 @@ class ConstructorNotAllowed(Warning):
     pass
 
 
-class NoSuchSquadId(Warning):
-    pass
-
-
 class PGConnector:
     """ Коннектор базы данных """
     def __init__(self):
@@ -373,6 +369,17 @@ class PGConnector:
             PGConnector.Player.__connection_string = connection_string
 
         @staticmethod
+        def select_all():
+            sql = """SELECT account_id, id FROM custom_profiles_extension, profiles WHERE account_id = uuid"""
+            with psycopg2.connect(PGConnector.Player.__connection_string) as connection:
+                cur = connection.cursor(cursor_factory=RealDictCursor)
+                cur.execute(sql)
+                if cur.rowcount:
+                    return cur.fetchall()
+                else:
+                    return []
+
+        @staticmethod
         def initialize_player(account_id, nickname, specialization):
             sql_sel_profiles = """SELECT id, uuid, nickname, is_hide, user_id, squad_id
                                         FROM profiles
@@ -429,7 +436,8 @@ class PGConnector:
                     LEFT JOIN squads as sd ON sd.id = s.squad_id
                     LEFT JOIN players as pl ON pl.profile_id = p.id
                     --WHERE pl.tour_id = (SELECT max(id) FROM tours)
-                    WHERE account_id = %s"""
+                    WHERE account_id = %s
+                    ORDER BY pl.tour_id DESC"""
             with psycopg2.connect(PGConnector.Player.__connection_string) as connection:
                 cur = connection.cursor(cursor_factory=RealDictCursor)
                 cur.execute(sql, (account_id, ))
@@ -616,6 +624,35 @@ class PGConnector:
                         raise NameError('Two squads with same id! {}'.format(squad_id))
                     return cur.fetchone()
                 raise NoSuchSquadId
+
+        @staticmethod
+        def last_flight(squad_id):
+            sql = """SELECT
+                u.id as                 user_id,
+                s.squad_id as           squad_id,
+                p.uuid as               account_id,
+                p.nickname as           nickname,
+                e.planes as 		    planes,
+                sd.name as 		        squad_name,
+                sd.tag as 			    squad_tag,
+                pl.sorties_cls as 		sorties_cls,
+                e.last_mission as       last_mission,
+                e.last_tik as           last_tik,
+                (SELECT count(*) FROM profiles WHERE squad_id = s.squad_id) as squad_strength
+                    FROM profiles as p
+                    JOIN custom_profiles_extension as e ON p.uuid = e.account_id
+                    LEFT JOIN users as u ON u.username = p.nickname
+                    LEFT JOIN squads_members as s ON s.member_id = u.id
+                    LEFT JOIN squads as sd ON sd.id = s.squad_id
+                    LEFT JOIN players as pl ON pl.profile_id = p.id
+                    WHERE s.squad_id = %s
+                    ORDER BY pl.tour_id DESC, e.last_mission DESC, e.last_tik DESC"""
+            with psycopg2.connect(PGConnector.Squad.__connection_string) as connection:
+                cur = connection.cursor(cursor_factory=RealDictCursor)
+                cur.execute(sql, (squad_id,))
+                if cur.rowcount:
+                    return cur.fetchone()
+                raise NameError('NoSuchSquadId {}'.format(squad_id))
 
         @staticmethod
         def initialize(squad_id):

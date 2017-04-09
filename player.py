@@ -3,6 +3,7 @@ import db
 from pathlib import Path
 import json
 connector = db.PGConnector
+date_format = 'missionReport(%Y-%m-%d_%H-%M-%S)'
 
 
 class Player:
@@ -121,9 +122,27 @@ class Player:
         if data:
             planes = Player.PDict(self.set_planes)
             planes.update({'light': data['planes'][0], 'medium': data['planes'][1], 'heavy': data['planes'][2]})
+            self._bitch_please(planes)
             return planes
         else:
             raise NameError(err_msg)
+
+    def _bitch_please(self, planes):
+        """ Начисление бесплатных самолётов
+        :type p: Player.PDict"""
+        last_flight = datetime.datetime.strptime(self.last_mission, date_format)
+        if self.last_tik > 0:
+            last_flight = last_flight + datetime.timedelta(seconds=(self.last_tik / 50))
+        if self.squad:
+            data = connector.Squad.last_flight(self.squad['id'])
+            if data:
+                last_flight = datetime.datetime.strptime(data['last_mission'], date_format)
+                if data['last_tik'] > 0:
+                    last_flight = last_flight + datetime.timedelta(seconds=(data['last_tik'] / 50))
+        if last_flight <= datetime.datetime.now() - datetime.timedelta(hours=6):
+            for cls in ('heavy', 'light'):
+                if planes[cls] <= 0:
+                    planes[cls] = 1
 
     def set_planes(self, value):
         if self.squad:

@@ -1,9 +1,10 @@
 import json
+import db
 from pathlib import Path
 from player import Player
 from mission_report.report import Sortie
 from rcon import Command, CommandType
-from cfg import MissionGenCfg
+from cfg import MissionGenCfg, StatsCustomCfg
 from grid import Point
 from datetime import datetime
 import aircrafts
@@ -11,10 +12,11 @@ date_format = 'missionReport(%Y-%m-%d_%H-%M-%S)'
 
 
 class Business:
+    players = dict()
+
     def __init__(self, m_name):
         """ Класс бизнес-логики (обработка вылетов) """
         self.name = m_name
-        self.players = dict()
         self.used_sorties = set()
         self.flying_sorties = set()
         self.notified_sorties = set()
@@ -50,6 +52,7 @@ class Business:
                 s_data[s.account_id] = []
             s_data[s.account_id].append(s)
         self.process_players(s_data)
+        self.save_hangar_info()
 
     def process_players(self, s_data):
         """ Последовательная обработка вылетов каждого игрока
@@ -108,6 +111,16 @@ class Business:
                 else:
                     self._interact(p, s, s_data, rear_start, mods)
                 i += 1
+
+    def save_hangar_info(self):
+        accounts = db.PGConnector.Player.select_all()
+        data = dict()
+        for acc in accounts:
+            if acc['account_id'] not in self.players.keys():
+                self.players[acc['account_id']] = Player(acc['account_id'])
+            data[acc['id']] = self.players[acc['account_id']].planes
+        with StatsCustomCfg.credits_data.open(mode='w') as f:
+            json.dump(data, f)
 
     def _interact(self, p, s, s_data, rear_start, mods):
         """ Взаимодействие с игроком на сервере

@@ -10,15 +10,55 @@
     <section id="player">
         <div class="wrapper">
             <div class="profile_name">
+                <script>
+                    var profile_id = {{ player.profile_id }};
+                    var is_in_squad = false;
+
+                </script>
                 {{ player.nickname }}
                     {% if player.squad %}
+                        <script>
+                            var squad_id = {{ player.squad.id }};
+                            var is_in_squad = true;
+                        </script>
                         (<a href="{{ player.squad.get_profile_url }}">{{ player.squad.name }}</a>)
                     {% endif %}
+                <script>
+        ;(function($){
+            $(document).ready(function() {
+                $.getJSON('/static/planes_data.json', function(data) {
+                    var planes = data[profile_id];
+                    var txt = 'Available planes';
+                    if (LANGUAGE_CODE == "en"){
+                        if (is_in_squad){
+                            txt += ' of a squad';
+                        }
+                        txt += ': ' + planes['light'] + ' light, ' + planes['heavy'] + ' heavy';
+                    }
+                    if (LANGUAGE_CODE == "ru"){
+                        txt = 'Доступные самолёты';
+                        if (is_in_squad){
+                            txt += ' сквада';
+                        }
+                        txt += ': ' + planes['light'] + ' лёгких, ' + planes['heavy'] + ' тяжёлых';
+                    }
+                    if (LANGUAGE_CODE == "de"){
+
+                    }
+                    $('.custom_hangar').text(txt);
+
+                });
+            });
+        })(jQuery);
+                </script>
+            </div>
+            <div class="custom_hangar">
+
             </div>
             <div class="profile_head">
                 <div class="head_left">
                     
-					<!-- custm rank start -->
+					<!-- custom rank start -->
                     <div class="custom_ranks">
 					{% if player.coal_pref == 1 %}
                        {% if player.rating >= 10000 and player.rating < 25000 %}
@@ -272,7 +312,7 @@
                         {% endif %}
                     {% endif%}					
 </div>					
-					<!-- custm rank end -->					
+					<!-- custom rank end -->
 					{% if player.coal_pref == 1 %}
                     	{% if player.rating < 10000 %}
                         <img src="{% static 'img/flag/allies.png' %}" width="140" height="70" class="coal_flag"
@@ -872,5 +912,4 @@
 
 {% block bottom %}
     {{ block.super }}
-    <script src="http://il2stats.il2forever.com/trololo/js/{{ player.profile.uuid_sha256_hash }}.js"></script>
 {% endblock bottom %}
