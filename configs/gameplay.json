@@ -51,12 +51,12 @@
     }
   },
   "objectives": {
-    "airfield": 12,
-    "hqs": 24,
+    "airfield": 70,
+    "hqs": 35,
     "fort": 18,
     "arts": 10,
     "trucks": 10,
-    "warehouses": 15,
+    "warehouses": 25,
     "train": 2,
     "troops": 5
   },
