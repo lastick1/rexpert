@@ -7,6 +7,7 @@ from cfg import MissionGenCfg, MainCfg, StatsCustomCfg, Gameplay
 from tvd import Tvd
 import mission_report
 import gen
+import rcon
 date_format = '%d.%m.%Y'
 
 
@@ -23,6 +24,7 @@ class Mission:
         self.m_report = mission_report.report.MissionReport(objects=objects)
         self.g_report = None
         self.processed_t14 = 0
+        self.capture_coals = set()
 
     def update(self, data):
         """
@@ -134,11 +136,8 @@ class Mission:
     @property
     def score(self):
         triggered_m_objectives = list([x for x in self.atypes if x['atype_id'] == 8])  # сработавшие обжективы
-        passed_minutes = int((datetime.datetime.now() - self.start).seconds / 60)  # время с начала миссии
-        coal_reverse = {'1': '2', '2': '1'}
-        # счёт в минутах
         score = {'1': 0, '2': 0}  # счётчики результатов по коалициям
-        boosts = {'1': [], '2': []}  # время ускорения [x1.5, x2]
+        boosts = {'1': [], '2': []}  # время начала ускорения [x1.5, x2]
         pauses = {'1': [], '2': []}  # паузы, когда счётчик останавливается
         # вычисляем моменты ускорения таймера, если были
         for mo in triggered_m_objectives:
@@ -176,10 +175,26 @@ class Mission:
             # if mo_cls == 'troops':
             coal = str(mo['coal_id'])
             score[coal] += Gameplay.cfg['objectives'][mo_cls]
-        return "Capture: Blue {0} / {2}, Red {1} / {2}".format(
-            int(score['2']) if score['2'] < MainCfg.capture_pts else MainCfg.capture_pts,
-            int(score['1']) if score['1'] < MainCfg.capture_pts else MainCfg.capture_pts,
+        return {'red': score['1'], 'blue': score['2']}
+
+    @property
+    def commands(self):
+        """ Команды о счёте (инфо) и захвате (инпуты) """
+        r = []
+        score = self.score
+        score_msg = "Capture: Blue {0} / {2}, Red {1} / {2}".format(
+            int(score['blue']) if score['blue'] < MainCfg.capture_pts else MainCfg.capture_pts,
+            int(score['red']) if score['red'] < MainCfg.capture_pts else MainCfg.capture_pts,
             MainCfg.capture_pts)
+        r.append(rcon.Command(self.name, cmd_type=rcon.CommandType.info, subject=score_msg))
+        for side in score.keys():
+            if score[side] >= MainCfg.capture_pts:
+                if side not in self.capture_coals:  # отправляем сервер-инпуты захвата один раз
+                    self.capture_coals.add(side)
+                    capture_inputs = {'red': 'r_capture_1', 'blue': 'b_capture_1'}
+                    r.append(rcon.Command(
+                        self.name, cmd_type=rcon.CommandType.s_input, subject=capture_inputs[side]))
+        return r
 
 
 class Campaign:

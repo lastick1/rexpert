@@ -5,8 +5,6 @@ import rcon
 import db
 import campaign
 import business
-from draw import draw_graph
-from cfg import MainCfg, Gameplay, StatsCustomCfg
 from pathlib import Path
 date_format = 'missionReport(%Y-%m-%d_%H-%M-%S)'
 
@@ -49,6 +47,7 @@ class Processor:
             self.missions[m_name].complete()
         # отправка сервер инпутов об уничтоженных наземных целях
         if not self.missions[m_name].is_ended:
+            self.commander.process_commands(self.missions[m_name].commands)  # команды инфо счёта и инпуты захвата
             self.commander.process_commands(self.missions[m_name].g_report.killed_commands)
 
         # бизнес-логика
@@ -62,11 +61,6 @@ class Processor:
         # отправка сервер инпутов с чатом и киками
         if not self.missions[m_name].is_ended:
             self.commander.process_commands(self.business[m_name].commands)
-
-        if self.filter_int % 6:
-            self.commander.process_commands(
-                [rcon.Command(m_name, cmd_type=rcon.CommandType.info, subject=self.missions[m_name].score)])
-        self.filter_int += 1
 
         self.campaign.update(self.missions[m_name])
 
