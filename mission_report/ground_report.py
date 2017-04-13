@@ -9,6 +9,7 @@ types_hp = {
     'airfield': Gameplay.grounds['airfield']['hp'],
     'hq': Gameplay.grounds['hq']['hp'],
     'industrial': Gameplay.grounds['industrial']['hp'],
+    'artillery': Gameplay.grounds['artillery']['hp'],
     'fort': Gameplay.grounds['fort']['hp']
 }
 types_radius = {
@@ -18,6 +19,7 @@ types_radius = {
     'airfield': Gameplay.grounds['airfield']['radius'],
     'hq': Gameplay.grounds['hq']['radius'],
     'industrial': Gameplay.grounds['industrial']['radius'],
+    'artillery': Gameplay.grounds['artillery']['radius'],
     'fort': Gameplay.grounds['fort']['radius']
 }
 
@@ -49,6 +51,8 @@ class Ground:
             return 'industrial'
         elif 'fort' in self.name:
             return 'fort'
+        elif 'arty' in self.name:
+            return 'artillery'
         else:
             return 'airfield'
 

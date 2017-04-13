@@ -41,6 +41,10 @@
       "radius": 500,
       "hp": 10
     },
+    "artillery": {
+      "radius": 400,
+      "hp": 50
+    },
     "fort": {
       "radius": 370,
       "hp": 115
