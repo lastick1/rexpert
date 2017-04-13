@@ -31,5 +31,5 @@ def run():
 
 print(datetime.datetime.now().strftime("[%H:%M:%S] Program Start"))
 # reset()
-run()
 # generate('result1', 'moscow')
+run()
