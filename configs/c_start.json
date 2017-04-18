@@ -1,11 +1,11 @@
 {
   "current_tvd": "moscow",
   "moscow": {
-    "current_date": "31.08.1941",
+    "current_date": "01.09.1941",
     "is_ended": false
   },
   "stalingrad": {
-    "current_date": "30.04.1942",
+    "current_date": "01.05.1942",
     "is_ended": false
   }
 }

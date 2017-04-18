@@ -59,7 +59,7 @@
     "tvd": 1,
     "right_top": {"x": 230400.0, "z": 358400.0},
     "tvd_folder": ".\\data\\scg\\1\\",
-    "mt_file": "templates\\212\\stalin_v1.mt",
+    "mt_file": "templates\\212\\s2_150min.mt",
     "graph_file": "stalingrad_sandbox.xgml",
     "ldf_file": "stalingrad_lf.ldf",
     "ldf_base_file": "stalin-base.ldf",
