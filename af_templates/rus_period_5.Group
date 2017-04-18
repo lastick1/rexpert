@@ -1,6 +1,6 @@
 MCU_TR_Subtitle
 {
-  Index = 434;
+  Index = 242;
   Name = "Translator Subtitle";
   Desc = "";
   Targets = [];
@@ -21,7 +21,7 @@ MCU_TR_Subtitle
     RColor = 191;
     GColor = 0;
     BColor = 0;
-    LCText = 29;
+    LCText = 19;
   }
   
   Coalitions = [0, 1, 2];
@@ -29,7 +29,7 @@ MCU_TR_Subtitle
 
 MCU_TR_Subtitle
 {
-  Index = 435;
+  Index = 243;
   Name = "Translator Subtitle";
   Desc = "";
   Targets = [];
@@ -50,7 +50,7 @@ MCU_TR_Subtitle
     RColor = 191;
     GColor = 0;
     BColor = 0;
-    LCText = 30;
+    LCText = 20;
   }
   
   Coalitions = [0, 1, 2];
@@ -58,11 +58,11 @@ MCU_TR_Subtitle
 
 MCU_CMD_Behaviour
 {
-  Index = 436;
+  Index = 244;
   Name = "NEUT";
   Desc = "";
   Targets = [];
-  Objects = [437];
+  Objects = [245];
   XPos = -5006.395;
   YPos = 100.825;
   ZPos = -5003.905;
@@ -83,10 +83,10 @@ MCU_CMD_Behaviour
 
 MCU_Timer
 {
-  Index = 438;
+  Index = 246;
   Name = "1s";
   Desc = "";
-  Targets = [436,439,434,440,441,442];
+  Targets = [244,247,242,248,249,250];
   Objects = [];
   XPos = -5006.442;
   YPos = 100.825;
@@ -100,10 +100,10 @@ MCU_Timer
 
 MCU_Timer
 {
-  Index = 439;
+  Index = 247;
   Name = "repair time";
   Desc = "";
-  Targets = [444,435,445];
+  Targets = [252,243,253];
   Objects = [];
   XPos = -4999.622;
   YPos = 17.795;
@@ -117,10 +117,10 @@ MCU_Timer
 
 MCU_H_Dynamic
 {
-  Index = 446;
+  Index = 254;
   Name = "Repair";
   Desc = "";
-  Targets = [439];
+  Targets = [247];
   Objects = [];
   XPos = -4999.693;
   YPos = 17.795;
@@ -133,11 +133,11 @@ MCU_H_Dynamic
 
 MCU_CMD_Behaviour
 {
-  Index = 444;
+  Index = 252;
   Name = "RUS";
   Desc = "";
   Targets = [];
-  Objects = [437];
+  Objects = [245];
   XPos = -4999.542;
   YPos = 17.795;
   ZPos = -5003.968;
@@ -158,7 +158,7 @@ MCU_CMD_Behaviour
 
 MCU_H_ReferencePoint
 {
-  Index = 448;
+  Index = 256;
   Name = "Helper Reference Point";
   Desc = "";
   Targets = [];
@@ -178,8 +178,8 @@ MCU_H_ReferencePoint
 Airfield
 {
   Name = "!AFNAME!";
-  Index = 449;
-  LinkTrId = 437;
+  Index = 257;
+  LinkTrId = 245;
   XPos = -5003.000;
   YPos = 17.795;
   ZPos = -4997.000;
@@ -328,34 +328,6 @@ Airfield
       RenewTime = 1800;
       Altitude = 500;
       Spotter = -1;
-      Model = "graphics\planes\yak1s69\yak1s69.mgm";
-      Script = "LuaScripts\WorldObjects\Planes\yak1s69.txt";
-      Name = "";
-      Skin = "";
-      AvMods = "1..5";
-      AvSkins = "";
-      AvPayloads = "0..11";
-      Callsign = 0;
-      Callnum = 0;
-    }
-    Plane
-    {
-      SetIndex = 0;
-      Number = -1;
-      AILevel = 2;
-      StartInAir = 2;
-      Engageable = 1;
-      Vulnerable = 1;
-      LimitAmmo = 1;
-      AIRTBDecision = 1;
-      Renewable = 0;
-      PayloadId = 0;
-      WMMask = 1;
-      Fuel = 1;
-      RouteTime = 0;
-      RenewTime = 1800;
-      Altitude = 500;
-      Spotter = -1;
       Model = "graphics\planes\il2m41\il2m41.mgm";
       Script = "LuaScripts\WorldObjects\Planes\il2m41.txt";
       Name = "";
@@ -552,34 +524,6 @@ Airfield
       RenewTime = 1800;
       Altitude = 500;
       Spotter = -1;
-      Model = "graphics\planes\yak1s69\yak1s69.mgm";
-      Script = "LuaScripts\WorldObjects\Planes\yak1s69.txt";
-      Name = "";
-      Skin = "";
-      AvMods = "1..5";
-      AvSkins = "";
-      AvPayloads = "0..11";
-      Callsign = 0;
-      Callnum = 0;
-    }
-    Plane
-    {
-      SetIndex = 1;
-      Number = -1;
-      AILevel = 2;
-      StartInAir = 2;
-      Engageable = 1;
-      Vulnerable = 1;
-      LimitAmmo = 1;
-      AIRTBDecision = 1;
-      Renewable = 0;
-      PayloadId = 0;
-      WMMask = 1;
-      Fuel = 1;
-      RouteTime = 0;
-      RenewTime = 1800;
-      Altitude = 500;
-      Spotter = -1;
       Model = "graphics\planes\il2m41\il2m41.mgm";
       Script = "LuaScripts\WorldObjects\Planes\il2m41.txt";
       Name = "";
@@ -688,7 +632,7 @@ Airfield
 
 MCU_TR_Entity
 {
-  Index = 437;
+  Index = 245;
   Name = "Airfield entity";
   Desc = "";
   Targets = [];
@@ -700,15 +644,15 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 1;
-  MisObjID = 449;
+  MisObjID = 257;
 }
 
 MCU_TR_ServerInput
 {
-  Index = 451;
+  Index = 259;
   Name = "!AFNAME!";
   Desc = "";
-  Targets = [438];
+  Targets = [246];
   Objects = [];
   XPos = -5006.358;
   YPos = 17.795;
@@ -721,7 +665,7 @@ MCU_TR_ServerInput
 
 MCU_H_Output
 {
-  Index = 440;
+  Index = 248;
   Name = "KILLED_EVENT";
   Desc = "";
   Targets = [];
@@ -736,7 +680,7 @@ MCU_H_Output
 
 MCU_H_Output
 {
-  Index = 441;
+  Index = 249;
   Name = "AAA_OFF";
   Desc = "";
   Targets = [];
@@ -751,7 +695,7 @@ MCU_H_Output
 
 MCU_H_Output
 {
-  Index = 445;
+  Index = 253;
   Name = "AAA_ON";
   Desc = "";
   Targets = [];
@@ -766,10 +710,10 @@ MCU_H_Output
 
 MCU_H_Input
 {
-  Index = 455;
+  Index = 263;
   Name = "PLANESET_SWITCH";
   Desc = "";
-  Targets = [456];
+  Targets = [264];
   Objects = [];
   XPos = -5003.234;
   YPos = 17.795;
@@ -781,11 +725,11 @@ MCU_H_Input
 
 MCU_CMD_Behaviour
 {
-  Index = 456;
+  Index = 264;
   Name = "switch";
   Desc = "";
   Targets = [];
-  Objects = [437];
+  Objects = [245];
   XPos = -5003.197;
   YPos = 17.795;
   ZPos = -5003.722;
@@ -806,10 +750,10 @@ MCU_CMD_Behaviour
 
 MCU_Deactivate
 {
-  Index = 442;
+  Index = 250;
   Name = "Trigger Deactivate";
   Desc = "";
-  Targets = [438];
+  Targets = [246];
   Objects = [];
   XPos = -5004.346;
   YPos = 17.795;
@@ -821,10 +765,10 @@ MCU_Deactivate
 
 MCU_H_Input
 {
-  Index = 459;
+  Index = 267;
   Name = "CARGO_EVENT";
   Desc = "";
-  Targets = [460,461];
+  Targets = [268,269];
   Objects = [];
   XPos = -4997.875;
   YPos = 17.795;
@@ -836,10 +780,10 @@ MCU_H_Input
 
 MCU_Timer
 {
-  Index = 461;
+  Index = 269;
   Name = "1s";
   Desc = "";
-  Targets = [435,445,444];
+  Targets = [243,253,252];
   Objects = [];
   XPos = -4997.261;
   YPos = 17.795;
@@ -853,10 +797,10 @@ MCU_Timer
 
 MCU_Deactivate
 {
-  Index = 460;
+  Index = 268;
   Name = "Trigger Deactivate";
   Desc = "";
-  Targets = [439];
+  Targets = [247];
   Objects = [];
   XPos = -4998.332;
   YPos = 17.795;
