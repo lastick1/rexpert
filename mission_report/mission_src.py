@@ -258,17 +258,17 @@ class MissionSrc:
         for o in self.server_inputs:
             if 'half' in o['name']:
                 continue
-            if 'red' in o['name']:
+            if 'red' in o['name'] or 'rus' in o['name']:
                 coal = '1'
-            elif 'blue' in o['name']:
+            elif 'blue' in o['name'] or 'ger' in o['name']:
                 coal = '2'
             else:
                 continue
-            if 'warehouse' in o['name'] and 'red' in o['name']:
+            if 'warehouse' in o['name']:
                 icons[coal]['warehouses'].append({'x': float(o['ZPos']), 'z': float(o['XPos'])})
-            elif 'hq' in o['name'] and 'rus' in o['name']:
+            elif 'hq' in o['name']:
                 icons[coal]['hqs'].append({'x': float(o['ZPos']), 'z': float(o['XPos'])})
-            elif 'fort' in o['name'] and 'blue' in o['name']:
+            elif 'fort' in o['name']:
                 icons[coal]['forts'].append({'x': float(o['ZPos']), 'z': float(o['XPos'])})
         for o in self.airfields:
             if o['coalition'] == 'red':

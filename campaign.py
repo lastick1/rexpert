@@ -324,6 +324,9 @@ class Campaign:
             for cls in icons[coal].keys():
                 for i in icons[coal][cls]:
                     name = StatsCustomCfg.cfg['il2missionplanner']['icon_names_mapping'][cls]
+                    color = 'blue' if coal == '2' else 'red'
+                    if cls == 'flames':
+                        color = 'red' if coal == '2' else 'blue'
                     notes = StatsCustomCfg.cfg['il2missionplanner']['icon_notes_mapping'][cls]
                     if cls == 'airfields':
                         name = i['name']
@@ -333,7 +336,7 @@ class Campaign:
                             'lat': round(i['z'] * z_c, 2)
                         },
                         'name': name,
-                        'color': 'blue' if coal == '2' else 'red',
+                        'color': color,
                         'type': StatsCustomCfg.cfg['il2missionplanner']['icons_types_mapping'][cls],
                         'notes': notes
                     })
