@@ -1,6 +1,6 @@
 MCU_TR_Subtitle
 {
-  Index = 200;
+  Index = 62;
   Name = "Translator Subtitle";
   Desc = "";
   Targets = [];
@@ -21,7 +21,7 @@ MCU_TR_Subtitle
     RColor = 191;
     GColor = 0;
     BColor = 0;
-    LCText = 15;
+    LCText = 7;
   }
   
   Coalitions = [0, 1, 2];
@@ -29,7 +29,7 @@ MCU_TR_Subtitle
 
 MCU_TR_Subtitle
 {
-  Index = 201;
+  Index = 63;
   Name = "Translator Subtitle";
   Desc = "";
   Targets = [];
@@ -50,7 +50,7 @@ MCU_TR_Subtitle
     RColor = 191;
     GColor = 0;
     BColor = 0;
-    LCText = 16;
+    LCText = 8;
   }
   
   Coalitions = [0, 1, 2];
@@ -58,11 +58,11 @@ MCU_TR_Subtitle
 
 MCU_CMD_Behaviour
 {
-  Index = 202;
+  Index = 64;
   Name = "NEUT";
   Desc = "";
   Targets = [];
-  Objects = [203];
+  Objects = [65];
   XPos = -5006.395;
   YPos = 100.825;
   ZPos = -5003.905;
@@ -83,10 +83,10 @@ MCU_CMD_Behaviour
 
 MCU_Timer
 {
-  Index = 204;
+  Index = 66;
   Name = "1s";
   Desc = "";
-  Targets = [202,205,200,206,207,208];
+  Targets = [64,67,62,68,69,70];
   Objects = [];
   XPos = -5006.442;
   YPos = 100.825;
@@ -100,10 +100,10 @@ MCU_Timer
 
 MCU_Timer
 {
-  Index = 205;
+  Index = 67;
   Name = "repair time";
   Desc = "";
-  Targets = [210,201,211];
+  Targets = [72,63,73];
   Objects = [];
   XPos = -4999.480;
   YPos = 17.795;
@@ -117,10 +117,10 @@ MCU_Timer
 
 MCU_H_Dynamic
 {
-  Index = 212;
+  Index = 74;
   Name = "Repair";
   Desc = "";
-  Targets = [205];
+  Targets = [67];
   Objects = [];
   XPos = -4999.505;
   YPos = 17.795;
@@ -133,11 +133,11 @@ MCU_H_Dynamic
 
 MCU_CMD_Behaviour
 {
-  Index = 210;
+  Index = 72;
   Name = "GER";
   Desc = "";
   Targets = [];
-  Objects = [203];
+  Objects = [65];
   XPos = -4999.542;
   YPos = 17.795;
   ZPos = -5003.968;
@@ -158,7 +158,7 @@ MCU_CMD_Behaviour
 
 MCU_H_ReferencePoint
 {
-  Index = 214;
+  Index = 76;
   Name = "Helper Reference Point";
   Desc = "";
   Targets = [];
@@ -178,8 +178,8 @@ MCU_H_ReferencePoint
 Airfield
 {
   Name = "!AFNAME!";
-  Index = 215;
-  LinkTrId = 203;
+  Index = 77;
+  LinkTrId = 65;
   XPos = -5003.000;
   YPos = 17.795;
   ZPos = -4997.000;
@@ -342,7 +342,7 @@ Airfield
     {
       SetIndex = 0;
       Number = -1;
-      AILevel = 2;
+      AILevel = 3;
       StartInAir = 2;
       Engageable = 1;
       Vulnerable = 1;
@@ -391,6 +391,34 @@ Airfield
       AvMods = "1..4";
       AvSkins = "";
       AvPayloads = "0..6/9";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 0;
+      Number = -1;
+      AILevel = 3;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\planes\bf110g2\bf110g2.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\bf110g2.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "1..6";
+      AvSkins = "";
+      AvPayloads = "0..15";
       Callsign = 0;
       Callnum = 0;
     }
@@ -475,6 +503,34 @@ Airfield
       AvMods = "1..3";
       AvSkins = "";
       AvPayloads = "0..6/13";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 0;
+      Number = -1;
+      AILevel = 3;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\planes\he111h16\he111h16.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\he111h16.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "1";
+      AvSkins = "";
+      AvPayloads = "0..10/19";
       Callsign = 0;
       Callnum = 0;
     }
@@ -664,6 +720,34 @@ Airfield
       RenewTime = 1800;
       Altitude = 500;
       Spotter = -1;
+      Model = "graphics\planes\bf110g2\bf110g2.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\bf110g2.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "1..6";
+      AvSkins = "";
+      AvPayloads = "0..15";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 1;
+      Number = -1;
+      AILevel = 3;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
       Model = "graphics\planes\ju87d3\ju87d3.mgm";
       Script = "LuaScripts\WorldObjects\Planes\ju87d3.txt";
       Name = "";
@@ -720,6 +804,34 @@ Airfield
       RenewTime = 1800;
       Altitude = 500;
       Spotter = -1;
+      Model = "graphics\planes\he111h16\he111h16.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\he111h16.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "1";
+      AvSkins = "";
+      AvPayloads = "0..10/19";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 1;
+      Number = -1;
+      AILevel = 3;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
       Model = "graphics\planes\ju88a4\ju88a4.mgm";
       Script = "LuaScripts\WorldObjects\Planes\ju88a4.txt";
       Name = "";
@@ -744,7 +856,7 @@ Airfield
 
 MCU_TR_Entity
 {
-  Index = 203;
+  Index = 65;
   Name = "Airfield entity";
   Desc = "";
   Targets = [];
@@ -756,15 +868,15 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 1;
-  MisObjID = 215;
+  MisObjID = 77;
 }
 
 MCU_TR_ServerInput
 {
-  Index = 217;
+  Index = 79;
   Name = "!AFNAME!";
   Desc = "";
-  Targets = [204];
+  Targets = [66];
   Objects = [];
   XPos = -5006.489;
   YPos = 17.795;
@@ -777,7 +889,7 @@ MCU_TR_ServerInput
 
 MCU_H_Output
 {
-  Index = 206;
+  Index = 68;
   Name = "KILLED_EVENT";
   Desc = "";
   Targets = [];
@@ -792,7 +904,7 @@ MCU_H_Output
 
 MCU_H_Output
 {
-  Index = 207;
+  Index = 69;
   Name = "AAA_OFF";
   Desc = "";
   Targets = [];
@@ -807,7 +919,7 @@ MCU_H_Output
 
 MCU_H_Output
 {
-  Index = 211;
+  Index = 73;
   Name = "AAA_ON";
   Desc = "";
   Targets = [];
@@ -822,10 +934,10 @@ MCU_H_Output
 
 MCU_H_Input
 {
-  Index = 221;
+  Index = 83;
   Name = "PLANESET_SWITCH";
   Desc = "";
-  Targets = [222];
+  Targets = [84];
   Objects = [];
   XPos = -5003.021;
   YPos = 17.795;
@@ -837,11 +949,11 @@ MCU_H_Input
 
 MCU_CMD_Behaviour
 {
-  Index = 222;
+  Index = 84;
   Name = "switch";
   Desc = "";
   Targets = [];
-  Objects = [203];
+  Objects = [65];
   XPos = -5003.040;
   YPos = 17.795;
   ZPos = -5003.782;
@@ -862,10 +974,10 @@ MCU_CMD_Behaviour
 
 MCU_Deactivate
 {
-  Index = 208;
+  Index = 70;
   Name = "Trigger Deactivate";
   Desc = "";
-  Targets = [204];
+  Targets = [66];
   Objects = [];
   XPos = -5004.346;
   YPos = 17.795;
@@ -877,14 +989,14 @@ MCU_Deactivate
 
 MCU_H_Input
 {
-  Index = 225;
+  Index = 87;
   Name = "CARGO_EVENT";
   Desc = "";
-  Targets = [226,227];
+  Targets = [88,89];
   Objects = [];
-  XPos = -4997.543;
+  XPos = -4997.804;
   YPos = 17.795;
-  ZPos = -5015.089;
+  ZPos = -5015.037;
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;
@@ -892,14 +1004,14 @@ MCU_H_Input
 
 MCU_Timer
 {
-  Index = 227;
+  Index = 89;
   Name = "1s";
   Desc = "";
-  Targets = [201,210,211];
+  Targets = [63,72,73];
   Objects = [];
-  XPos = -4996.929;
+  XPos = -4997.190;
   YPos = 17.795;
-  ZPos = -5012.437;
+  ZPos = -5012.385;
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;
@@ -909,14 +1021,14 @@ MCU_Timer
 
 MCU_Deactivate
 {
-  Index = 226;
+  Index = 88;
   Name = "Trigger Deactivate";
   Desc = "";
-  Targets = [205];
+  Targets = [67];
   Objects = [];
-  XPos = -4998.000;
+  XPos = -4998.236;
   YPos = 17.795;
-  ZPos = -5012.437;
+  ZPos = -5012.385;
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;

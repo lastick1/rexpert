@@ -18,8 +18,8 @@
   },
   "grounds": {
     "warehouse": {
-      "radius": 2500,
-      "hp": 150
+      "radius": 3000,
+      "hp": 140
     },
     "tanks": {
       "radius": 1500,
