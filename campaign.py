@@ -149,9 +149,9 @@ class Mission:
         # вычисляем паузы таймера если были
         for mo in triggered_m_objectives:
             mo_cls = MissionGenCfg.cfg['objectives'][str(mo['task_type_id'])]
-            if mo_cls == "tanks" and not mo['success']:
+            if mo_cls == "tanks" and mo['success']:
                 mo_delta = datetime.timedelta(seconds=int(mo['tik'] / 50))
-                pauses[str(mo['coal_id'])].append(self.start + mo_delta)
+                pauses[reverted_coal[mo['coal_id']]].append(self.start + mo_delta)
         # начисляем ежеминутные очки захвата с учётом ускорения
         i = self.start
         while i < self.end and i < datetime.datetime.now() - datetime.timedelta(seconds=30):
