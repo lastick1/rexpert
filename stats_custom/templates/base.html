@@ -144,6 +144,7 @@
                     var available_template_en = '<img src="${Src}">';
                     var available_template_ru = '<img src="${Src}">';
                     var available_template_de = '<img src="${Src}">';
+                    var available_template_fr = '<img src="${Src}">';
                     var p_data = [];
                     images = data['plane_images'];
                     images.forEach(function(item, i, arr) {
@@ -163,6 +164,10 @@
                         $('.custom_elapsed_header').text("Missionende in:");
                         $('.custom_period_info_button').text("Available Planes");
                         $.tmpl(available_template_de, p_data).appendTo( ".available_planes" );
+                    }
+                    if (LANGUAGE_CODE == "fr"){
+                        $('.custom_period_info_button').text("Available Planes");
+                        $.tmpl(available_template_fr, p_data).appendTo( ".available_planes" );
                     }
                 });
             });
