@@ -6,7 +6,6 @@ from pathlib import Path
 from cfg import MissionGenCfg, MainCfg, StatsCustomCfg, Gameplay
 from tvd import Tvd
 import mission_report
-import gen
 import rcon
 date_format = '%d.%m.%Y'
 
@@ -87,15 +86,12 @@ class Mission:
     @property
     def online_ids(self):
         online_ids = set()
-        for atype in sorted(self.atypes, key=lambda x: x['tik']):
-            if atype['tik'] == 0:
-                continue
+        for atype in sorted(list(x for x in self.atypes if x['atype_id'] in (20, 21)), key=lambda x: x['tik']):
             if atype['atype_id'] == 20:
                 online_ids.add(atype['account_id'])
-            elif atype['atype_id'] == 21:
-                if atype['account_id'] not in online_ids:
-                    continue
-                online_ids.remove(atype['account_id'])
+            if atype['atype_id'] == 21:
+                if atype['account_id'] in online_ids:
+                    online_ids.remove(atype['account_id'])
         return online_ids
 
     @property
@@ -223,6 +219,7 @@ class Campaign:
         :type m: Mission
         :return: None """
         m_tvd_name = m.tvd_name
+        r = False
         if not m.is_ended:
             if m.name not in self._saved_plans:
                 self.save_mission_info(m, m_tvd_name)
@@ -253,9 +250,10 @@ class Campaign:
                     next_name
                 ))
                 self.tvds[m_tvd_name].update()
-                gen.Generator.make_mission(next_name, m_tvd_name)
+                r = next_name, m_tvd_name
                 self.generations[m.name] = lc
             self.save()
+        return r
 
     def save_mission_info(self, m, m_tvd_name):
         """ Сохранение информации о миссии в JSON для сайта (UTC время конца, самолёты, дата миссии) """

@@ -6,6 +6,7 @@ import db
 import campaign
 import business
 from pathlib import Path
+import gen
 date_format = 'missionReport(%Y-%m-%d_%H-%M-%S)'
 
 connector = db.PGConnector
@@ -62,17 +63,20 @@ class Processor:
         if not self.missions[m_name].is_ended:
             self.commander.process_commands(self.business[m_name].commands)
 
-        self.campaign.update(self.missions[m_name])
+        u = self.campaign.update(self.missions[m_name])
+        if u:
+            # если требуется обновить следующую миссию
+            if m_name not in self.threads.keys():
+                self.threads[m_name] = threading.Thread(args=(u[0], u[1]), target=gen.Generator.make_mission)
+                self.threads[m_name].start()
+            else:
+                self.threads[m_name].join()
+                self.threads[m_name] = threading.Thread(args=(u[0], u[1]), target=gen.Generator.make_mission)
+                self.threads[m_name].start()
 
     def consume(self, m_name, logs):
         """ Обработать новые логи миссии """
-        if m_name not in self.threads.keys():
-            self.threads[m_name] = threading.Thread(args=(m_name, logs), target=self._process)
-            self.threads[m_name].start()
-        else:
-            self.threads[m_name].join()
-            self.threads[m_name] = threading.Thread(args=(m_name, logs), target=self._process)
-            self.threads[m_name].start()
+        self._process(m_name, logs)
 
     def notify(self, m_name):
         """ Уведомить о приходе нового лог-файла миссии """

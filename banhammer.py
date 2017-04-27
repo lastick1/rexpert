@@ -1,0 +1,2 @@
+class BanHammer:
+    pass
