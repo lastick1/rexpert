@@ -202,7 +202,7 @@ Airfield
     {
       SetIndex = 0;
       Number = -1;
-      AILevel = 2;
+      AILevel = 1;
       StartInAir = 2;
       Engageable = 1;
       Vulnerable = 1;
@@ -230,7 +230,7 @@ Airfield
     {
       SetIndex = 0;
       Number = -1;
-      AILevel = 2;
+      AILevel = 1;
       StartInAir = 2;
       Engageable = 1;
       Vulnerable = 1;
@@ -258,7 +258,7 @@ Airfield
     {
       SetIndex = 0;
       Number = -1;
-      AILevel = 2;
+      AILevel = 1;
       StartInAir = 2;
       Engageable = 1;
       Vulnerable = 1;
@@ -286,7 +286,7 @@ Airfield
     {
       SetIndex = 0;
       Number = -1;
-      AILevel = 2;
+      AILevel = 1;
       StartInAir = 2;
       Engageable = 1;
       Vulnerable = 1;
@@ -314,7 +314,7 @@ Airfield
     {
       SetIndex = 0;
       Number = -1;
-      AILevel = 2;
+      AILevel = 1;
       StartInAir = 2;
       Engageable = 1;
       Vulnerable = 1;
@@ -342,7 +342,7 @@ Airfield
     {
       SetIndex = 0;
       Number = -1;
-      AILevel = 3;
+      AILevel = 1;
       StartInAir = 2;
       Engageable = 1;
       Vulnerable = 1;
@@ -370,7 +370,7 @@ Airfield
     {
       SetIndex = 0;
       Number = -1;
-      AILevel = 3;
+      AILevel = 1;
       StartInAir = 2;
       Engageable = 1;
       Vulnerable = 1;
@@ -398,7 +398,7 @@ Airfield
     {
       SetIndex = 0;
       Number = -1;
-      AILevel = 3;
+      AILevel = 1;
       StartInAir = 2;
       Engageable = 1;
       Vulnerable = 1;
@@ -426,7 +426,7 @@ Airfield
     {
       SetIndex = 0;
       Number = -1;
-      AILevel = 3;
+      AILevel = 1;
       StartInAir = 2;
       Engageable = 1;
       Vulnerable = 1;
@@ -454,7 +454,7 @@ Airfield
     {
       SetIndex = 0;
       Number = -1;
-      AILevel = 3;
+      AILevel = 1;
       StartInAir = 2;
       Engageable = 1;
       Vulnerable = 1;
@@ -482,7 +482,7 @@ Airfield
     {
       SetIndex = 0;
       Number = -1;
-      AILevel = 3;
+      AILevel = 1;
       StartInAir = 2;
       Engageable = 1;
       Vulnerable = 1;
@@ -510,7 +510,7 @@ Airfield
     {
       SetIndex = 0;
       Number = -1;
-      AILevel = 3;
+      AILevel = 1;
       StartInAir = 2;
       Engageable = 1;
       Vulnerable = 1;
@@ -538,7 +538,7 @@ Airfield
     {
       SetIndex = 0;
       Number = -1;
-      AILevel = 3;
+      AILevel = 1;
       StartInAir = 2;
       Engageable = 1;
       Vulnerable = 1;
@@ -566,7 +566,7 @@ Airfield
     {
       SetIndex = 1;
       Number = -1;
-      AILevel = 2;
+      AILevel = 1;
       StartInAir = 2;
       Engageable = 1;
       Vulnerable = 1;
@@ -594,7 +594,7 @@ Airfield
     {
       SetIndex = 1;
       Number = -1;
-      AILevel = 2;
+      AILevel = 1;
       StartInAir = 2;
       Engageable = 1;
       Vulnerable = 1;
@@ -622,7 +622,7 @@ Airfield
     {
       SetIndex = 1;
       Number = -1;
-      AILevel = 2;
+      AILevel = 1;
       StartInAir = 2;
       Engageable = 1;
       Vulnerable = 1;
@@ -650,7 +650,7 @@ Airfield
     {
       SetIndex = 1;
       Number = -1;
-      AILevel = 2;
+      AILevel = 1;
       StartInAir = 2;
       Engageable = 1;
       Vulnerable = 1;
@@ -678,7 +678,7 @@ Airfield
     {
       SetIndex = 1;
       Number = -1;
-      AILevel = 3;
+      AILevel = 1;
       StartInAir = 2;
       Engageable = 1;
       Vulnerable = 1;
@@ -706,7 +706,7 @@ Airfield
     {
       SetIndex = 1;
       Number = -1;
-      AILevel = 3;
+      AILevel = 1;
       StartInAir = 2;
       Engageable = 1;
       Vulnerable = 1;
@@ -734,7 +734,7 @@ Airfield
     {
       SetIndex = 1;
       Number = -1;
-      AILevel = 3;
+      AILevel = 1;
       StartInAir = 2;
       Engageable = 1;
       Vulnerable = 1;
@@ -762,7 +762,7 @@ Airfield
     {
       SetIndex = 1;
       Number = -1;
-      AILevel = 3;
+      AILevel = 1;
       StartInAir = 2;
       Engageable = 1;
       Vulnerable = 1;
@@ -790,7 +790,7 @@ Airfield
     {
       SetIndex = 1;
       Number = -1;
-      AILevel = 3;
+      AILevel = 1;
       StartInAir = 2;
       Engageable = 1;
       Vulnerable = 1;
@@ -818,7 +818,7 @@ Airfield
     {
       SetIndex = 1;
       Number = -1;
-      AILevel = 3;
+      AILevel = 1;
       StartInAir = 2;
       Engageable = 1;
       Vulnerable = 1;
