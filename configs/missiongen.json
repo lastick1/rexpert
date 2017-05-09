@@ -32,7 +32,7 @@
     "mt_file": "templates\\212\\m2_150min.mt",
     "graph_file": "moscow.xgml",
     "ldf_file": "moscow_lf.ldf",
-    "ldf_base_file": "moscow-base_v2.ldf",
+    "ldf_base_file": "moscow-base.ldf",
     "icons_group_file": "blocks_quickmission\\icons\\FL_icon.Group",
     "default_params_source": "defaultparams_template.dat",
     "default_params_dest": "defaultparams.dat",
