@@ -256,7 +256,10 @@ class Tvd:
             elif dfpr_lines[y].startswith('$time ='):
                 dfpr_lines[y] = '$time = {}\n'.format(date.strftime('%H:%M:%S'))
             elif dfpr_lines[y].startswith('$seasonprefix ='):
-                dfpr_lines[y] = '$seasonprefix = {}\n'.format(season['season_prefix'])
+                sp = season['season_prefix']
+                if sp == 'au':
+                    sp = 'su'  # либо su либо wi должно быть season prefix
+                dfpr_lines[y] = '$seasonprefix = {}\n'.format(sp)
             elif dfpr_lines[y].startswith('$sunrise ='):
                 dfpr_lines[y] = '$sunrise = {}\n'.format(season['sunrise'])
             elif dfpr_lines[y].startswith('$sunset ='):

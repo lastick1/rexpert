@@ -360,7 +360,7 @@ Airfield
       Script = "LuaScripts\WorldObjects\Planes\la5s8.txt";
       Name = "";
       Skin = "";
-      AvMods = "1..5";
+      AvMods = "1..6";
       AvSkins = "";
       AvPayloads = "0..9";
       Callsign = 0;

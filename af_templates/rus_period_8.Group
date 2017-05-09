@@ -1,6 +1,6 @@
 MCU_TR_Subtitle
 {
-  Index = 536;
+  Index = 2;
   Name = "Translator Subtitle";
   Desc = "";
   Targets = [];
@@ -21,7 +21,7 @@ MCU_TR_Subtitle
     RColor = 191;
     GColor = 0;
     BColor = 0;
-    LCText = 35;
+    LCText = 3;
   }
   
   Coalitions = [0, 1, 2];
@@ -29,7 +29,7 @@ MCU_TR_Subtitle
 
 MCU_TR_Subtitle
 {
-  Index = 537;
+  Index = 3;
   Name = "Translator Subtitle";
   Desc = "";
   Targets = [];
@@ -50,7 +50,7 @@ MCU_TR_Subtitle
     RColor = 191;
     GColor = 0;
     BColor = 0;
-    LCText = 36;
+    LCText = 4;
   }
   
   Coalitions = [0, 1, 2];
@@ -58,11 +58,11 @@ MCU_TR_Subtitle
 
 MCU_CMD_Behaviour
 {
-  Index = 538;
+  Index = 4;
   Name = "NEUT";
   Desc = "";
   Targets = [];
-  Objects = [539];
+  Objects = [5];
   XPos = -5006.395;
   YPos = 100.825;
   ZPos = -5003.905;
@@ -83,10 +83,10 @@ MCU_CMD_Behaviour
 
 MCU_Timer
 {
-  Index = 540;
+  Index = 6;
   Name = "1s";
   Desc = "";
-  Targets = [538,541,536,542,543,544];
+  Targets = [4,7,2,8,9,10];
   Objects = [];
   XPos = -5006.442;
   YPos = 100.825;
@@ -100,10 +100,10 @@ MCU_Timer
 
 MCU_Timer
 {
-  Index = 541;
+  Index = 7;
   Name = "repair time";
   Desc = "";
-  Targets = [546,537,547];
+  Targets = [12,3,13];
   Objects = [];
   XPos = -4999.622;
   YPos = 17.795;
@@ -117,10 +117,10 @@ MCU_Timer
 
 MCU_H_Dynamic
 {
-  Index = 548;
+  Index = 14;
   Name = "Repair";
   Desc = "";
-  Targets = [541];
+  Targets = [7];
   Objects = [];
   XPos = -4999.693;
   YPos = 17.795;
@@ -133,11 +133,11 @@ MCU_H_Dynamic
 
 MCU_CMD_Behaviour
 {
-  Index = 546;
+  Index = 12;
   Name = "RUS";
   Desc = "";
   Targets = [];
-  Objects = [539];
+  Objects = [5];
   XPos = -4999.542;
   YPos = 17.795;
   ZPos = -5003.968;
@@ -158,7 +158,7 @@ MCU_CMD_Behaviour
 
 MCU_H_ReferencePoint
 {
-  Index = 550;
+  Index = 16;
   Name = "Helper Reference Point";
   Desc = "";
   Targets = [];
@@ -178,8 +178,8 @@ MCU_H_ReferencePoint
 Airfield
 {
   Name = "!AFNAME!";
-  Index = 551;
-  LinkTrId = 539;
+  Index = 17;
+  LinkTrId = 5;
   XPos = -5003.000;
   YPos = 17.795;
   ZPos = -4997.000;
@@ -360,7 +360,7 @@ Airfield
       Script = "LuaScripts\WorldObjects\Planes\la5s8.txt";
       Name = "";
       Skin = "";
-      AvMods = "1..5";
+      AvMods = "1..6";
       AvSkins = "";
       AvPayloads = "0..9";
       Callsign = 0;
@@ -772,7 +772,7 @@ Airfield
 
 MCU_TR_Entity
 {
-  Index = 539;
+  Index = 5;
   Name = "Airfield entity";
   Desc = "";
   Targets = [];
@@ -784,15 +784,15 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 1;
-  MisObjID = 551;
+  MisObjID = 17;
 }
 
 MCU_TR_ServerInput
 {
-  Index = 553;
+  Index = 19;
   Name = "!AFNAME!";
   Desc = "";
-  Targets = [540];
+  Targets = [6];
   Objects = [];
   XPos = -5006.358;
   YPos = 17.795;
@@ -805,7 +805,7 @@ MCU_TR_ServerInput
 
 MCU_H_Output
 {
-  Index = 542;
+  Index = 8;
   Name = "KILLED_EVENT";
   Desc = "";
   Targets = [];
@@ -820,7 +820,7 @@ MCU_H_Output
 
 MCU_H_Output
 {
-  Index = 543;
+  Index = 9;
   Name = "AAA_OFF";
   Desc = "";
   Targets = [];
@@ -835,7 +835,7 @@ MCU_H_Output
 
 MCU_H_Output
 {
-  Index = 547;
+  Index = 13;
   Name = "AAA_ON";
   Desc = "";
   Targets = [];
@@ -850,10 +850,10 @@ MCU_H_Output
 
 MCU_H_Input
 {
-  Index = 557;
+  Index = 23;
   Name = "PLANESET_SWITCH";
   Desc = "";
-  Targets = [558];
+  Targets = [24];
   Objects = [];
   XPos = -5003.234;
   YPos = 17.795;
@@ -865,11 +865,11 @@ MCU_H_Input
 
 MCU_CMD_Behaviour
 {
-  Index = 558;
+  Index = 24;
   Name = "switch";
   Desc = "";
   Targets = [];
-  Objects = [539];
+  Objects = [5];
   XPos = -5003.197;
   YPos = 17.795;
   ZPos = -5003.722;
@@ -890,10 +890,10 @@ MCU_CMD_Behaviour
 
 MCU_Deactivate
 {
-  Index = 544;
+  Index = 10;
   Name = "Trigger Deactivate";
   Desc = "";
-  Targets = [540];
+  Targets = [6];
   Objects = [];
   XPos = -5004.346;
   YPos = 17.795;
@@ -905,10 +905,10 @@ MCU_Deactivate
 
 MCU_H_Input
 {
-  Index = 561;
+  Index = 27;
   Name = "CARGO_EVENT";
   Desc = "";
-  Targets = [562,563];
+  Targets = [28,29];
   Objects = [];
   XPos = -4998.221;
   YPos = 17.795;
@@ -920,10 +920,10 @@ MCU_H_Input
 
 MCU_Timer
 {
-  Index = 563;
+  Index = 29;
   Name = "1s";
   Desc = "";
-  Targets = [537,546,547];
+  Targets = [3,12,13];
   Objects = [];
   XPos = -4997.607;
   YPos = 17.795;
@@ -937,10 +937,10 @@ MCU_Timer
 
 MCU_Deactivate
 {
-  Index = 562;
+  Index = 28;
   Name = "Trigger Deactivate";
   Desc = "";
-  Targets = [541];
+  Targets = [7];
   Objects = [];
   XPos = -4998.678;
   YPos = 17.795;

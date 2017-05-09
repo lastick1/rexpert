@@ -141,7 +141,7 @@ class Mission:
             mo_cls = MissionGenCfg.cfg['objectives'][str(mo['task_type_id'])]
             if mo_cls == "boost":
                 mo_delta = datetime.timedelta(seconds=int(mo['tik'] / 50))
-                boosts[reverted_coal[mo['coal_id']]].append(self.start + mo_delta)
+                boosts[str(mo['coal_id'])].append(self.start + mo_delta)
         # вычисляем паузы таймера если были
         for mo in triggered_m_objectives:
             mo_cls = MissionGenCfg.cfg['objectives'][str(mo['task_type_id'])]
