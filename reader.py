@@ -62,10 +62,11 @@ class AtypesReader:
                 names_set = sorted(self.read_mission_names())
                 for i in range(len(names_set)):
                     name = names_set[i]
-                    formatted = self.format_atypes(self.read_mission_log(name), name)
-                    self.write_mission_log(formatted, name, len(names_set) - 1 - i)
+                    log_files = self.get_mission_log_files(name)
+                    log = self.read_mission_log(log_files)
+                    self.write_mission_log(log, name, len(names_set) - 1 - i)
                     self.processor.notify(name)
-                    self.move_mission_log_files(self.get_mission_log_file_names(name))
+                    self.archive_log_files(log_files)
                 time.sleep(self.cycle)
             print('AtypesReader stopped')
 
@@ -75,25 +76,29 @@ class AtypesReader:
                 files.add(mn.findall(file.name).pop())
             return files
 
-        def get_mission_log_file_names(self, name):
+        def get_mission_log_files(self, name):
             mission_file_names = set()
             for file in self.directory.glob(name + "*.txt"):
-                mission_file_names.add(file.name)
+                mission_file_names.add(MainCfg.logs_directory.joinpath(file.name))
             return mission_file_names
 
-        def read_mission_log(self, name):
+        def read_mission_log(self, files):
+            """
+            
+            :type files: list[Path] 
+            :return: 
+            """
             log = list()
-            for file in self.get_mission_log_file_names(name):
-                var = str(self.directory.joinpath(file).absolute())
-                with open(var) as fd:
+            for file in files:
+                with file.open() as fd:
                     log += fd.readlines()
             return log
 
         def is_mission_finished(self, atypes):
-            at7 = [x for x in atypes if x[0]['atype_id'] == 7]
-            if len(at7) > 1:
-                raise Warning
-            return False if len(at7) == 0 else True
+            for a in atypes:
+                if a[1] == 7:
+                    return True
+            return False
 
         def format_atypes(self, atypes, name):
             def f(x):
@@ -101,10 +106,17 @@ class AtypesReader:
                 return m, name, x
             return list(map(f, atypes))
 
-        def write_mission_log(self, formatted, name, recent_missions):
-            c = connector.Log.insert_atypes(sorted([x for x in formatted if x[0]['atype_id'] != 15], key=lambda k: k[0]['tik']))
+        def write_mission_log(self, logs, name, recent_missions):
+            atypes = []
+            for line in logs:
+                if 'AType:15' in line:
+                    continue
+                atype_id = int(line.partition('AType:')[2][:2])
+                tik = int(line.partition('T:')[2][:2])
+                atypes.append((tik, atype_id, line, name))
+            c = connector.Log.insert_atypes(atypes)
 
-            if self.is_mission_finished(formatted):
+            if self.is_mission_finished(atypes):
                 connector.Log.insert_or_update_mission_row(
                     is_processed=False,
                     mission_name=name,
@@ -130,8 +142,7 @@ class AtypesReader:
                     )
             return c[-1]
 
-        def move_mission_log_files(self, file_names):
-            for file in file_names:
-                file_src_abs = str(self.directory.joinpath(file).absolute())
-                file_dest_abs = str(self.archive.joinpath(file).absolute())
-                os.rename(file_src_abs, file_dest_abs)
+        def archive_log_files(self, files):
+            for file in files:
+                file = Path(file)
+                file.rename(self.archive.joinpath(file.name))

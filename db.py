@@ -51,16 +51,16 @@ class PGConnector:
 
         @staticmethod
         def insert_atypes(atypes):
+            """
+            :param atypes: [tik, atype, atype_string, mission_name] 
+            """
             with psycopg2.connect(PGConnector.Log.__connection_string) as connection:
                 cursor = connection.cursor()
-                args = []
-                for at in atypes:
-                    args.append((at[0]['tik'], at[0]['atype_id'], at[2], at[1]))
-                records_list_template = ','.join(['%s'] * len(args))
+                records_list_template = ','.join(['%s'] * len(atypes))
                 insert_query = """INSERT INTO custom_atypes_cache(tik, atype, atype_string, mission_name)
                                     VALUES {0} RETURNING key""".format(records_list_template)
-                if len(args) > 0:
-                    cursor.execute(insert_query, args)
+                if len(atypes) > 0:
+                    cursor.execute(insert_query, atypes)
                     connection.commit()
                     return cursor.fetchall()
                 return [0]
