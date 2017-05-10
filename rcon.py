@@ -241,7 +241,8 @@ class Commander:
                                 status = 'status'
                                 if cmd.cmd_type == CommandType.s_input:
                                     status = self._console.server_input(cmd.text)
-                                    line = '{} {} {}'.format(cmd.now.strftime("[%H:%M:%S]"), status, cmd.text)
+                                    line = '{} {} {} {}'.format(
+                                        cmd.now.strftime("[%H:%M:%S]"), status, cmd.text, cmd.reason)
                                     if MainCfg.console_cmd_output:
                                         print(line)
                                     cmndr_log.write('{} \n'.format(line))

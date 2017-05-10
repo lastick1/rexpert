@@ -350,7 +350,7 @@ Airfield
       AIRTBDecision = 1;
       Renewable = 0;
       PayloadId = 2;
-      WMMask = 11001;
+      WMMask = 1001;
       Fuel = 1;
       RouteTime = 0;
       RenewTime = 1800;
@@ -360,9 +360,9 @@ Airfield
       Script = "LuaScripts\WorldObjects\Planes\ju523mg4e.txt";
       Name = "";
       Skin = "ju523mg4e\ju523mg4e_skin_03.dds";
-      AvMods = "";
+      AvMods = "3/4";
       AvSkins = "";
-      AvPayloads = "";
+      AvPayloads = "2";
       Callsign = 0;
       Callnum = 0;
     }

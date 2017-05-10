@@ -178,19 +178,19 @@ class Mission:
     def commands(self):
         """ Команды о счёте (инфо) и захвате (инпуты) """
         r = []
-        score = self.score
+        score = self.score.copy()
         score_msg = "Capture: Blue {0} / {2}, Red {1} / {2}".format(
             int(score['blue']) if score['blue'] < MainCfg.capture_pts else MainCfg.capture_pts,
             int(score['red']) if score['red'] < MainCfg.capture_pts else MainCfg.capture_pts,
             MainCfg.capture_pts)
         r.append(rcon.Command(self.name, cmd_type=rcon.CommandType.info, subject=score_msg))
         for side in score.keys():
-            if score[side] >= MainCfg.capture_pts:
+            if int(score[side]) >= MainCfg.capture_pts:
                 if side not in self.capture_coals:  # отправляем сервер-инпуты захвата один раз
                     self.capture_coals.add(side)
                     capture_inputs = {'red': 'r_capture_1', 'blue': 'b_capture_1'}
                     r.append(rcon.Command(
-                        self.name, cmd_type=rcon.CommandType.s_input, subject=capture_inputs[side]))
+                        self.name, cmd_type=rcon.CommandType.s_input, subject=capture_inputs[side], reason=str(score)))
         return r
 
 
