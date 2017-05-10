@@ -9,3 +9,4 @@ mission_report/__pycache__/
 *spline.json
 *lines.json
 /configs/conf.ini
+sandbox.py
