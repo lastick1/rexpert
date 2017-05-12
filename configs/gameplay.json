@@ -43,7 +43,7 @@
     },
     "artillery": {
       "radius": 400,
-      "hp": 50
+      "hp": 60
     },
     "fort": {
       "radius": 370,
