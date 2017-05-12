@@ -276,9 +276,9 @@ Airfield
       Script = "LuaScripts\WorldObjects\Planes\il2m41.txt";
       Name = "";
       Skin = "";
-      AvMods = "1..5";
+      AvMods = "1..3";
       AvSkins = "";
-      AvPayloads = "0..72";
+      AvPayloads = "0..39/72";
       Callsign = 0;
       Callnum = 0;
     }
@@ -388,9 +388,9 @@ Airfield
       Script = "LuaScripts\WorldObjects\Planes\il2m41.txt";
       Name = "";
       Skin = "";
-      AvMods = "1..5";
+      AvMods = "1..3";
       AvSkins = "";
-      AvPayloads = "0..72";
+      AvPayloads = "0..39/72";
       Callsign = 0;
       Callnum = 0;
     }

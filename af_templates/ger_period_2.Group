@@ -278,7 +278,7 @@ Airfield
       Skin = "";
       AvMods = "1..4";
       AvSkins = "";
-      AvPayloads = "0..6/9";
+      AvPayloads = "0..5/9";
       Callsign = 0;
       Callnum = 0;
     }
@@ -446,7 +446,7 @@ Airfield
       Skin = "";
       AvMods = "1..4";
       AvSkins = "";
-      AvPayloads = "0..6/9";
+      AvPayloads = "0..5/9";
       Callsign = 0;
       Callnum = 0;
     }

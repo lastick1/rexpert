@@ -304,7 +304,7 @@ Airfield
       Script = "LuaScripts\WorldObjects\Planes\p40e1.txt";
       Name = "";
       Skin = "";
-      AvMods = "1..5";
+      AvMods = "1..6";
       AvSkins = "";
       AvPayloads = "0..36";
       Callsign = 0;
@@ -388,7 +388,7 @@ Airfield
       Script = "LuaScripts\WorldObjects\Planes\yak1s127.txt";
       Name = "";
       Skin = "";
-      AvMods = "1..5";
+      AvMods = "1..6";
       AvSkins = "";
       AvPayloads = "0..9";
       Callsign = 0;
@@ -447,6 +447,34 @@ Airfield
       AvMods = "1..5";
       AvSkins = "";
       AvPayloads = "0..87";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 0;
+      Number = -1;
+      AILevel = 1;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 98;
+      WMMask = 100011;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\planes\il2m43\il2m43.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\il2m43.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "";
+      AvSkins = "";
+      AvPayloads = "";
       Callsign = 0;
       Callnum = 0;
     }
@@ -640,7 +668,7 @@ Airfield
       Script = "LuaScripts\WorldObjects\Planes\yak1s127.txt";
       Name = "";
       Skin = "";
-      AvMods = "1..5";
+      AvMods = "1..6";
       AvSkins = "";
       AvPayloads = "0..9";
       Callsign = 0;
@@ -755,6 +783,34 @@ Airfield
       AvMods = "1..5";
       AvSkins = "";
       AvPayloads = "0..11";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 1;
+      Number = -1;
+      AILevel = 1;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 98;
+      WMMask = 100011;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\planes\il2m43\il2m43.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\il2m43.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "";
+      AvSkins = "";
+      AvPayloads = "";
       Callsign = 0;
       Callnum = 0;
     }

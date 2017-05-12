@@ -168,7 +168,7 @@ class Player:
         if value < 0:
             value = 0
         if value > 6:
-            value = 6
+            value = 5
         connector.Player.set_unlocks(self.account_id, value)
 
     unlocks = property(fget=get_unlocks, fset=set_unlocks, doc="Количество модификаций, доступное игроку")

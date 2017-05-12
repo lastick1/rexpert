@@ -304,7 +304,7 @@ Airfield
       Script = "LuaScripts\WorldObjects\Planes\p40e1.txt";
       Name = "";
       Skin = "";
-      AvMods = "1..5";
+      AvMods = "1..6";
       AvSkins = "";
       AvPayloads = "0..36";
       Callsign = 0;

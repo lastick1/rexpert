@@ -43,7 +43,7 @@
     },
     "artillery": {
       "radius": 400,
-      "hp": 60
+      "hp": 70
     },
     "fort": {
       "radius": 370,
@@ -58,7 +58,7 @@
     "trucks": 10,
     "warehouses": 25,
     "train": 2,
-    "troops": 5
+    "troops": 25
   },
   "supply": {
     "kill_weight_reward": 0.2,
