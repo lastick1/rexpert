@@ -184,7 +184,7 @@ class PGConnector:
                         FROM custom_atypes_cache
                         WHERE mission_name = %s
                         AND key > %s
-                        ORDER BY key"""
+                        ORDER BY tik, key"""
             with psycopg2.connect(PGConnector.Missions.__connection_string) as connection:
                 cursor = connection.cursor()
                 cursor.execute(sql, (mission_name, last_atype))

@@ -65,8 +65,8 @@ class AtypesReader:
                     log_files = self.get_mission_log_files(name)
                     log = self.read_mission_log(log_files)
                     self.write_mission_log(log, name, len(names_set) - 1 - i)
-                    self.processor.notify(name)
                     self.archive_log_files(log_files)
+                    self.processor.notify(name)
                 time.sleep(self.cycle)
             print('AtypesReader stopped')
 

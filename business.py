@@ -235,7 +235,8 @@ class Business:
         """ Принять решение о списании возврате самолёта по резульатам вылета
         :type s: Sortie """
         craft = s.aircraft
-
+        if not craft:
+            return {'return': True, 'reason': 'craft is none', 'is_rtb': False}
         killer = s.bot.killers[0] if (s.bot and len(s.bot.killers)) else None
         if s.sortie_status.is_not_takeoff:
             return {'return': True, 'reason': 'не взлетал', 'is_rtb': craft.is_rtb}

@@ -265,9 +265,8 @@ class Grid:
     def neutral_line(self):
         """ Цепь нейтральных узлов """
         first = list(x for x in self.nodes_list if x.text == '!')[0]
-        tail = None
-        cc = first.cc
-        for x in list(cc):
+        cc = list(first.cc)
+        for x in cc:
             if x == first:
                 continue
             r_prot = False
@@ -278,9 +277,7 @@ class Grid:
                 if n.country == 201 and 'prot' in n.text:
                     b_prot = True
             if r_prot and b_prot:
-                tail = x
-                break
-        return first.path(tail, ignore_country=False) + [tail]
+                return first.path(x, ignore_country=False) + [x]
 
     @property
     def areas(self):
@@ -288,6 +285,8 @@ class Grid:
          :rtype dict """
         countries = (101, 201)
         nl = self.neutral_line
+        if len(nl) < 2:
+            return []
         nl_start = nl[0]
         nl_end = nl[len(nl)-1]
         areas = {x: [] for x in countries}
