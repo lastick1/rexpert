@@ -24,6 +24,7 @@ class Business:
         self.is_mission_ended = False
         self.rear_airfields = []
         self.granted_permissions = set()
+        self.players.clear()  # TODO убрать этот хотфикс / пересмотреть модель работы с данными игроков
 
     @property
     def commands(self):
