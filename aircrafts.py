@@ -762,6 +762,7 @@ aircraft_types = {
     'i-16 type 24': 'light',
     'il-2 mod.1941': 'heavy',
     'il-2 mod.1942': 'heavy',
+    'il-2 mod.1943': 'heavy',
     'ju 52 3mg4e': 'heavy',
     'ju 87 d-3': 'heavy',
     'ju 88 a-4': 'heavy',
