@@ -37,7 +37,7 @@
     "seasons": ["wi", "au", "su"],
     "wi": {
       "forests": "graphics\\LANDSCAPE_Stalin_w\\trees\\woods.wds",
-      "guimap": "stalingrad-winter-1942",
+      "guimap": "stalingrad-1942",
       "hmap": "graphics\\LANDSCAPE_Stalin_w\\height.hini",
       "textures": "graphics\\LANDSCAPE_Stalin_w\\textures.tini",
       "mapId": "graphics\\LANDSCAPE_Stalin_w\\height.dat",

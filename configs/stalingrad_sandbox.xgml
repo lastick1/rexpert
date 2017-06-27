@@ -205,7 +205,7 @@
 				<attribute key="h" type="double">45.0</attribute>
 				<attribute key="type" type="String">ellipse</attribute>
 				<attribute key="raisedBorder" type="boolean">false</attribute>
-				<attribute key="fill" type="String">#FF0000</attribute>
+				<attribute key="fill" type="String">#00FF00</attribute>
 				<attribute key="outline" type="String">#000000</attribute>
 				<attribute key="outlineWidth" type="int">7</attribute>
 			</section>
@@ -436,7 +436,7 @@
 				<attribute key="h" type="double">45.0</attribute>
 				<attribute key="type" type="String">ellipse</attribute>
 				<attribute key="raisedBorder" type="boolean">false</attribute>
-				<attribute key="fill" type="String">#00FF00</attribute>
+				<attribute key="fill" type="String">#0000FF</attribute>
 				<attribute key="outline" type="String">#000000</attribute>
 				<attribute key="outlineWidth" type="int">7</attribute>
 			</section>
@@ -1211,7 +1211,7 @@
 				<attribute key="h" type="double">45.0</attribute>
 				<attribute key="type" type="String">ellipse</attribute>
 				<attribute key="raisedBorder" type="boolean">false</attribute>
-				<attribute key="fill" type="String">#00FF00</attribute>
+				<attribute key="fill" type="String">#0000FF</attribute>
 				<attribute key="outline" type="String">#000000</attribute>
 				<attribute key="outlineWidth" type="int">7</attribute>
 			</section>
@@ -1232,7 +1232,7 @@
 				<attribute key="h" type="double">45.0</attribute>
 				<attribute key="type" type="String">ellipse</attribute>
 				<attribute key="raisedBorder" type="boolean">false</attribute>
-				<attribute key="fill" type="String">#FF0000</attribute>
+				<attribute key="fill" type="String">#0000FF</attribute>
 				<attribute key="outline" type="String">#000000</attribute>
 				<attribute key="outlineWidth" type="int">7</attribute>
 			</section>
@@ -1274,7 +1274,7 @@
 				<attribute key="h" type="double">45.0</attribute>
 				<attribute key="type" type="String">ellipse</attribute>
 				<attribute key="raisedBorder" type="boolean">false</attribute>
-				<attribute key="fill" type="String">#FF0000</attribute>
+				<attribute key="fill" type="String">#0000FF</attribute>
 				<attribute key="outline" type="String">#000000</attribute>
 				<attribute key="outlineWidth" type="int">7</attribute>
 			</section>
@@ -1295,7 +1295,7 @@
 				<attribute key="h" type="double">45.0</attribute>
 				<attribute key="type" type="String">ellipse</attribute>
 				<attribute key="raisedBorder" type="boolean">false</attribute>
-				<attribute key="fill" type="String">#FF0000</attribute>
+				<attribute key="fill" type="String">#00FF00</attribute>
 				<attribute key="outline" type="String">#000000</attribute>
 				<attribute key="outlineWidth" type="int">7</attribute>
 			</section>
@@ -1337,7 +1337,7 @@
 				<attribute key="h" type="double">45.0</attribute>
 				<attribute key="type" type="String">ellipse</attribute>
 				<attribute key="raisedBorder" type="boolean">false</attribute>
-				<attribute key="fill" type="String">#FF0000</attribute>
+				<attribute key="fill" type="String">#00FF00</attribute>
 				<attribute key="outline" type="String">#000000</attribute>
 				<attribute key="outlineWidth" type="int">7</attribute>
 			</section>
@@ -2681,7 +2681,7 @@
 				<attribute key="h" type="double">45.0</attribute>
 				<attribute key="type" type="String">ellipse</attribute>
 				<attribute key="raisedBorder" type="boolean">false</attribute>
-				<attribute key="fill" type="String">#00FF00</attribute>
+				<attribute key="fill" type="String">#0000FF</attribute>
 				<attribute key="outline" type="String">#000000</attribute>
 				<attribute key="outlineWidth" type="int">7</attribute>
 			</section>
