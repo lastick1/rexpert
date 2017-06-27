@@ -57,7 +57,7 @@
     "arts": 10,
     "trucks": 10,
     "warehouses": 25,
-    "train": 2,
+    "train": 5,
     "troops": 25
   },
   "supply": {
