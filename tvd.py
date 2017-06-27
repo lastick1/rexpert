@@ -80,10 +80,16 @@ class Tvd:
         ))
         if self.is_ended:
             print('WARNING! Updating ended TVD: {}'.format(self.name))
+        self.verify_grid()
         self.update_icons()
         self.update_ldb()
         self.update_airfields()
         self.randomize_defaultparams()
+
+    def verify_grid(self):
+        if not self.grid.neutral_line:
+            # self.grid.restore_neutral_line()
+            pass
 
     def update_icons(self):
         """ Обновление группы иконок в соответствии с положением ЛФ """

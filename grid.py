@@ -137,6 +137,16 @@ class Node(Point):
         }
 
 
+class Chain:
+    """ Цепочка узлов от начального до конечного """
+    def __init__(self, start, end):
+        """
+        :type start: Node  
+        :type end: Node 
+        """
+        self.nodes = start.path(end, ignore_country=(start.country == end.country)) + [end]
+
+
 class Grid:
     def __init__(self, name):
         self.nodes = dict()  # узлы сетки
