@@ -84,6 +84,41 @@ class Node(Point):
     def __str__(self):
         return '{} {} {}'.format(self.key, self.country, self.text)
 
+    def serialize_xgml(self, c_x, c_z):
+        """ Сериализация в формат XGML """
+        return """\t\t<section name="node">
+\t\t\t<attribute key="id" type="int">{0}</attribute>
+\t\t\t<attribute key="label" type="String">{1}</attribute>
+\t\t\t<section name="graphics">
+\t\t\t\t<attribute key="x" type="double">{2}</attribute>
+\t\t\t\t<attribute key="y" type="double">{3}</attribute>
+\t\t\t\t<attribute key="w" type="double">45.0</attribute>
+\t\t\t\t<attribute key="h" type="double">45.0</attribute>
+\t\t\t\t<attribute key="type" type="String">ellipse</attribute>
+\t\t\t\t<attribute key="raisedBorder" type="boolean">false</attribute>
+\t\t\t\t<attribute key="fill" type="String">{4}</attribute>
+\t\t\t\t<attribute key="outline" type="String">#000000</attribute>
+\t\t\t\t<attribute key="outlineWidth" type="int">7</attribute>
+\t\t\t</section>
+\t\t\t<section name="LabelGraphics">
+\t\t\t\t<attribute key="text" type="String">{1}</attribute>
+\t\t\t\t<attribute key="fontSize" type="int">12</attribute>
+\t\t\t\t<attribute key="fontName" type="String">Dialog</attribute>
+\t\t\t\t<attribute key="anchor" type="String">c</attribute>
+\t\t\t</section>
+\t\t</section>""".format(
+            self.key,
+            self.text,
+            c_z * self.z,
+            # todo сделать через параметр
+            2637.5-c_x * self.x,
+            self.color
+        )
+
+    @property
+    def color(self):
+        return {0: '#00FF00', 101: '#FF0000', 201: '#0000FF'}[self.country]
+
     @property
     def cc(self):
         """ Компонента связности: все вершины той же страны, до которых есть путь """
@@ -171,6 +206,44 @@ class Grid:
                 edges.append((self.nodes[n], b))
             used.add(self.nodes[n])
         return edges
+
+    def serialize_edges_xgml(self):
+        string = ""
+        for e in self.edges:
+            string += """
+\t\t<section name="edge">
+\t\t\t<attribute key="source" type="int">{0}</attribute>
+\t\t\t<attribute key="target" type="int">{1}</attribute>
+\t\t<section name="graphics">
+\t\t\t<attribute key="width" type="int">7</attribute>
+\t\t\t<attribute key="fill" type="String">#000000</attribute>
+\t\t</section>
+\t\t</section>""".format(e[0].key, e[1].key)
+        return string
+
+    def serialize_nodes_xgml(self):
+        string = ""
+        c_x = 0.01
+        c_z = 0.01
+        for n in self.nodes.values():
+            string += n.serialize_xgml(c_x, c_z)
+        return string
+
+    def serialize_xgml(self):
+        return """<?xml version="1.0" encoding="Cp1251"?>
+<section name="xgml">
+\t<attribute key="Creator" type="String">yFiles</attribute>
+\t<attribute key="Version" type="String">2.14</attribute>
+\t<section name="graph">
+\t\t<attribute key="hierarchic" type="int">1</attribute>
+\t\t<attribute key="label" type="String"></attribute>
+\t\t<attribute key="directed" type="int">1</attribute>
+{0}{1}
+\t</section>
+</section>""".format(
+            self.serialize_nodes_xgml(),
+            self.serialize_edges_xgml()
+        )
 
     def connected_components(self, country):
         """ Компоненты связности указанной страны """
@@ -380,6 +453,10 @@ class Grid:
         node.country = country
         db.PGConnector.Graph.update_graph_node(node.key, MissionGenCfg.cfg[self.name]['tvd'], country)
         self._resolve(country)
+
+    def capture_node(self, node, coal):
+        """ Захват узла """
+        self.capture(node.x, node.z, coal)
 
     def _resolve(self, priority):
         """ Красим "нейтралов" за линией фронта в цвет победившей стороны """
