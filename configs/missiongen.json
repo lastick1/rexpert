@@ -5,7 +5,7 @@
   "default_map": "moscow",
   "maps": ["moscow", "stalingrad"],
   "sides": ["red", "blue"],
-  "scenario_min_distance": 50000,
+  "scenario_min_distance": 15000,
   "objectives": {
     "0": "primary",
     "1": "airfield",
@@ -60,7 +60,7 @@
     "right_top": {"x": 230400.0, "z": 358400.0},
     "tvd_folder": ".\\data\\scg\\1\\",
     "mt_file": "templates\\212\\s2_150min.mt",
-    "graph_file": "stalingrad_sandbox.xgml",
+    "graph_file": "stalingrad.xgml",
     "ldf_file": "stalingrad_lf.ldf",
     "ldf_base_file": "stalin-base.ldf",
     "icons_group_file": "blocks_quickmission\\icons\\FL_icon.Group",

@@ -84,6 +84,13 @@ class Node(Point):
     def __str__(self):
         return '{} {} {}'.format(self.key, self.country, self.text)
 
+    @property
+    def connected_to_aux(self):
+        for n in self.neighbors:
+            if n.is_aux:
+                return True
+        return False
+
     def serialize_xgml(self, c_x, c_z):
         """ Сериализация в формат XGML """
         return """\t\t<section name="node">
@@ -415,10 +422,15 @@ class Grid:
         return r
 
     @property
+    def selectables(self):
+        nl = self.neutral_line[1:-2]
+        return tuple(x for x in nl if not x.connected_to_aux)
+
+    @property
     def scenarios(self):
         countries = [101, 201]
-        nl = self.neutral_line[1:-2]
-        first_candidates = list(nl[1:-2])
+        nl = self.selectables
+        first_candidates = list(nl)
         first = nl[random.randint(0, len(first_candidates)-1)]
         second_candidates = []
         for x in first_candidates:
