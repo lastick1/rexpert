@@ -84,14 +84,7 @@ class Node(Point):
     def __str__(self):
         return '{} {} {}'.format(self.key, self.country, self.text)
 
-    @property
-    def connected_to_aux(self):
-        for n in self.neighbors:
-            if n.is_aux:
-                return True
-        return False
-
-    def serialize_xgml(self, c_x, c_z):
+    def serialize_xgml(self, c_x, c_z, tvd_name):
         """ Сериализация в формат XGML """
         return """\t\t<section name="node">
 \t\t\t<attribute key="id" type="int">{0}</attribute>
@@ -117,8 +110,7 @@ class Node(Point):
             self.key,
             self.text,
             c_z * self.z,
-            # todo сделать через параметр
-            2637.5-c_x * self.x,
+            - c_x * self.x,
             self.color
         )
 
@@ -230,10 +222,10 @@ class Grid:
 
     def serialize_nodes_xgml(self):
         string = ""
-        c_x = 0.01
-        c_z = 0.01
+        c_x = MissionGenCfg.cfg[self.name]['graph_zoom_point']['y'] / MissionGenCfg.cfg[self.name]['right_top']['x']
+        c_z = MissionGenCfg.cfg[self.name]['graph_zoom_point']['x'] / MissionGenCfg.cfg[self.name]['right_top']['z']
         for n in self.nodes.values():
-            string += n.serialize_xgml(c_x, c_z)
+            string += n.serialize_xgml(c_x, c_z, self.name)
         return string
 
     def serialize_xgml(self):
@@ -307,8 +299,10 @@ class Grid:
                 rb_point_x = float(tag_x.text)
                 rb_point_y = float(tag_y.text)
 
-        x_coefficient = MissionGenCfg.cfg[self.name]['right_top']['x'] / rb_point_y
-        z_coefficient = MissionGenCfg.cfg[self.name]['right_top']['z'] / rb_point_x
+        x_coefficient = MissionGenCfg.cfg[self.name]['right_top']['x'] / \
+                        MissionGenCfg.cfg[self.name]['graph_zoom_point']['y']
+        z_coefficient = MissionGenCfg.cfg[self.name]['right_top']['z'] / \
+                        MissionGenCfg.cfg[self.name]['graph_zoom_point']['x']
 
         for section in graph:
             if str(section.tag) == 'section':
@@ -422,15 +416,10 @@ class Grid:
         return r
 
     @property
-    def selectables(self):
-        nl = self.neutral_line[1:-2]
-        return tuple(x for x in nl if not x.connected_to_aux)
-
-    @property
     def scenarios(self):
         countries = [101, 201]
-        nl = self.selectables
-        first_candidates = list(nl)
+        nl = self.neutral_line[1:-2]
+        first_candidates = list(nl[1:-2])
         first = nl[random.randint(0, len(first_candidates)-1)]
         second_candidates = []
         for x in first_candidates:

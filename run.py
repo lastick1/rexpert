@@ -6,7 +6,15 @@ import reader
 import gen
 import campaign
 import datetime
+import codecs
 db.PGConnector.init(DbCfg.connection_string)
+
+
+def export(name):
+    c = campaign.Campaign()
+    with codecs.open(name + "_export.xgml", "w", encoding="cp1251") as f:
+        f.write(c.tvds[name].grid.serialize_xgml())
+        f.close()
 
 
 def reset():
@@ -31,5 +39,8 @@ def run():
 
 print(datetime.datetime.now().strftime("[%H:%M:%S] Program Start"))
 # reset()
+# export('moscow')
+# export('stalingrad')
+# generate('result1', 'moscow')
 # generate('result1', 'stalingrad')
 run()
