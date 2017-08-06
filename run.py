@@ -10,6 +10,12 @@ import codecs
 db.PGConnector.init(DbCfg.connection_string)
 
 
+def create_divisions_ldb():
+    c = campaign.Campaign()
+    for name in c.tvds.keys():
+        c.tvds[name].create_divisions()
+
+
 def export(name):
     c = campaign.Campaign()
     with codecs.open(name + "_export.xgml", "w", encoding="cp1251") as f:
@@ -39,6 +45,7 @@ def run():
 
 print(datetime.datetime.now().strftime("[%H:%M:%S] Program Start"))
 # reset()
+# create_divisions_ldb()
 # export('moscow')
 # export('stalingrad')
 # generate('result1', 'moscow')

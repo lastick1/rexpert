@@ -53,7 +53,9 @@
       "red": ".\\blocks_quickmission\\airfields_red",
       "blue": ".\\blocks_quickmission\\airfields_blue"
     },
-    "rear_airfields":[ {"x": 65000.0, "z": 41000.0}, {"x": 142000.0, "z": 239000.0} ]
+    "rear_airfields":[ {"x": 65000.0, "z": 41000.0}, {"x": 142000.0, "z": 239000.0} ],
+    "division_margin": 4000,
+    "division_depth": 7000
   },
   "stalingrad":
   {
@@ -84,7 +86,9 @@
       "red": ".\\blocks_quickmission\\airfields_red",
       "blue": ".\\blocks_quickmission\\airfields_blue"
     },
-    "rear_airfields":[ {"x": 79000.0, "z": 12000.0}, {"x": 121000.0, "z": 347000.0} ]
+    "rear_airfields":[ {"x": 79000.0, "z": 12000.0}, {"x": 121000.0, "z": 347000.0} ],
+    "division_margin": 4000,
+    "division_depth": 7000
   },
   "kuban":
   {
@@ -109,6 +113,8 @@
       "red": ".\\blocks_quickmission\\airfields_red",
       "blue": ".\\blocks_quickmission\\airfields_blue"
     },
-    "rear_airfields":[ {"x": 0.0, "z": 0.0}, {"x": 0.0, "z": 0.0} ]
+    "rear_airfields":[ {"x": 0.0, "z": 0.0}, {"x": 0.0, "z": 0.0} ],
+    "division_margin": 4000,
+    "division_depth": 7000
   }
 }

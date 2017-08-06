@@ -110,7 +110,6 @@ class Node(Point):
             self.key,
             self.text,
             c_z * self.z,
-            # todo сделать через параметр
             - c_x * self.x,
             self.color
         )
@@ -207,6 +206,12 @@ class Grid:
             used.add(self.nodes[n])
         return edges
 
+    @property
+    def edges_raw(self):
+        """ Кортеж всех рёбер в виде 2-элементных кортежей координат точек вершин ребра """
+        edges = self.edges
+        return tuple(((x[0].x, x[0].z), (x[1].x, x[1].z)) for x in edges)
+
     def serialize_edges_xgml(self):
         string = ""
         for e in self.edges:
@@ -257,7 +262,6 @@ class Grid:
             used |= set(cc)
         return ccs
 
-
     def write_db(self):
         db.PGConnector.Graph.insert(
             MissionGenCfg.cfg[self.name]['tvd'],
@@ -289,16 +293,6 @@ class Grid:
         tree = Et.parse(source=str(xgml_file.absolute()))
         root = tree.getroot()
         graph = root.find('section')
-        rb_point_x = 0
-        rb_point_y = 0
-        for section in graph.findall("*[@name='node']"):
-            tag_label = section.findall("*[@key='label']")[0]
-            if tag_label.text == "rb":
-                section_graphics = section.findall("*[@name='graphics']")[0]
-                tag_x = section_graphics.findall("*[@key='x']")[0]
-                tag_y = section_graphics.findall("*[@key='y']")[0]
-                rb_point_x = float(tag_x.text)
-                rb_point_y = float(tag_y.text)
 
         x_coefficient = MissionGenCfg.cfg[self.name]['right_top']['x'] / \
                         MissionGenCfg.cfg[self.name]['graph_zoom_point']['y']
@@ -313,7 +307,7 @@ class Grid:
                     section_graphics = section.findall("*[@name='graphics']")[0]
                     tag_x = section_graphics.findall("*[@key='x']")[0]
                     tag_y = section_graphics.findall("*[@key='y']")[0]
-                    x = -1 * (float(tag_y.text) - rb_point_y) * x_coefficient
+                    x = -1 * (float(tag_y.text) - MissionGenCfg.cfg[self.name]['graph_zoom_point']['y']) * x_coefficient
                     z = float(tag_x.text) * z_coefficient
                     tag_fill = section_graphics.findall("*[@key='fill']")[0]
                     country = None

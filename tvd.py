@@ -5,7 +5,7 @@ from pathlib import Path
 from random import randint
 from cfg import MissionGenCfg, MainCfg, DfprCfg
 from grid import Grid
-from gen import Group, Ldb, FlGroup
+from gen import Group, Ldb, FlGroup, Divisions
 # from campaign import Mission
 
 date_format = '%d.%m.%Y'
@@ -87,9 +87,16 @@ class Tvd:
         self.randomize_defaultparams()
 
     def verify_grid(self):
+        """ Проверка и самопочинка графа """
+        # TODO доделать
         if not self.grid.neutral_line:
             # self.grid.restore_neutral_line()
             pass
+
+    def create_divisions(self):
+        """ Обновление базы локаций с обозначением расположения дивизий """
+        ldf = Divisions(self.name, self.grid.edges_raw)
+        ldf.make()
 
     def update_icons(self):
         """ Обновление группы иконок в соответствии с положением ЛФ """

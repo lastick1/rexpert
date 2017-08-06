@@ -8,6 +8,7 @@ from pathlib import Path
 from datetime import datetime
 from grid import Point
 from cfg import MissionGenCfg, MainCfg, LocationsCfg
+from geometry import Segment
 
 
 class Group:
@@ -433,6 +434,52 @@ class GroundObjectiveLocation(Point):
         )
 
 
+division_format = """AirObjective
+{{
+  Name = "AirObjective";
+  Desc = "";
+  XPos = {0:.3f};
+  YPos = 75.515;
+  ZPos = {1:.3f};
+  OY = {2:.3f};
+  Length = {3:.3f};
+  Width = {4:.3f};
+  ReconFlight = 0;
+  BomberFlight = 0;
+  FighterPatrolFlight = 0;
+  Dogfight = 0;
+  DuelOpponent = 1;
+  Balloon = 0;
+}}"""
+
+
+class Division(Segment):
+    def __init__(self, segment_coordinates, frontline_margin_distance, depth):
+        super().__init__(
+            segment_coordinates[0][0],
+            segment_coordinates[0][1],
+            segment_coordinates[1][0],
+            segment_coordinates[1][1]
+        )
+        self.frame = super().parallel_segments(frontline_margin_distance)
+        self.depth = depth
+
+    def __str__(self):
+        return division_format.format(
+            self.frame[0].center[0],
+            self.frame[0].center[1],
+            self.frame[0].angle,
+            self.depth,
+            self.frame[0].length
+        ) + '\n\n' + division_format.format(
+            self.frame[1].center[0],
+            self.frame[1].center[1],
+            self.frame[1].angle,
+            self.depth,
+            self.frame[1].length
+        )
+
+
 class AirObjectiveRecon:
     def __init__(self, string):
         self.cls = 'air_objective_recon'
@@ -501,6 +548,31 @@ class Ldb:
         generator.wait()
         time.sleep(3)
 
+
+class Divisions:
+    def __init__(self, tvd_name, edges):
+        folder = MainCfg.game_folder.joinpath(Path(MissionGenCfg.cfg[tvd_name]['tvd_folder']))
+        self.ldf_file = folder.joinpath(MissionGenCfg.cfg[tvd_name]['ldf_file'])
+        self.divisions = []
+        for edge in edges:
+            self.divisions.append(Division(
+                edge,
+                MissionGenCfg.cfg[tvd_name]['division_margin'],
+                MissionGenCfg.cfg[tvd_name]['division_depth']
+            ))
+
+    @property
+    def text(self):
+        """ Текст исходного файла базы локаций """
+        text = '#1CGS Location Database file'
+        for division in self.divisions:
+            text += '\n\n{}'.format(division)
+        text += '\n\n#end of file'
+        return text
+
+    def make(self):
+        """ Записать текстовый файл базы локаций и скомпилировать бинарный файл с помощью make_ldb.exe """
+        self.ldf_file.write_text(self.text)
 
 icon_text = """MCU_Icon
 {{
