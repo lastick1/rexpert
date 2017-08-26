@@ -26,3 +26,19 @@ class TestSegment(TestCase):
 
         self.assertEqual((s1._x1, s1._y1, s1._x2, s1._y2), (1, 5, 4, 5))
         self.assertEqual((s2._x1, s2._y1, s2._x2, s2._y2), (1, 1, 4, 1))
+
+
+class TestPoint(TestCase):
+    def test_is_in_area_must_be_true_for_1_1_and_square_size_of_2(self):
+        point = geometry.Point(1, 1)
+        area = [
+            geometry.Point(0, 0), geometry.Point(0, 2), geometry.Point(2, 2), geometry.Point(2, 2)
+        ]
+        self.assertEqual(True, point.is_in_area(area))
+        area.reverse()
+        self.assertEqual(True, point.is_in_area(area))
+
+    def test_distance_to_must_be_5_for_1_1_and_4_5(self):
+        point = geometry.Point(1, 1)
+
+        self.assertEqual(point.distance_to(4, 5), 5)

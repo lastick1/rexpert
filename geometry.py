@@ -50,3 +50,46 @@ class Segment:
         s1 = Segment(self._x1 + n_vector[0], self._y1 + n_vector[1], self._x2 + n_vector[0], self._y2 + n_vector[1])
         s2 = Segment(self._x1 - n_vector[0], self._y1 - n_vector[1], self._x2 - n_vector[0], self._y2 - n_vector[1])
         return s1, s2
+
+
+class Point:
+    """ Класс точки """
+    def __init__(self, x=0.0, z=0.0, country=None):
+        self.x = x
+        self.z = z
+        self._country = country
+
+    def get_country(self):
+        return self._country
+
+    def set_country(self, value):
+        self._country = value
+
+    def del_country(self):
+        del self._country
+
+    country = property(get_country, set_country, del_country)
+
+    def is_in_area(self, polygon):
+        x = self.x
+        y = self.z
+        poly = [(x.x, x.z) for x in polygon]
+        n = len(poly)
+        inside = False
+        xinters = None
+
+        p1x, p1y = poly[0]
+        for i in range(n + 1):
+            p2x, p2y = poly[i % n]
+            if y > min(p1y, p2y):
+                if y <= max(p1y, p2y):
+                    if x <= max(p1x, p2x):
+                        if p1y != p2y:
+                            xinters = (y - p1y) * (p2x - p1x) / (p2y - p1y) + p1x
+                        if p1x == p2x or x <= xinters:
+                            inside = not inside
+            p1x, p1y = p2x, p2y
+        return inside
+
+    def distance_to(self, x, z):
+        return ((self.x - x) ** 2 + (self.z - z) ** 2) ** .5

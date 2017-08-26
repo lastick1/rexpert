@@ -3,6 +3,7 @@ import queue
 import math
 import random
 import db
+import geometry
 from cfg import MissionGenCfg
 
 
@@ -31,49 +32,7 @@ def get_parallel_line(line_x_y, dist):
     return [resbeg, resend]
 
 
-class Point:
-    def __init__(self, x=0.0, z=0.0, country=None):
-        self.x = x
-        self.z = z
-        self._country = country
-
-    def get_country(self):
-        return self._country
-
-    def set_country(self, value):
-        self._country = value
-
-    def del_country(self):
-        del self._country
-
-    country = property(get_country, set_country, del_country)
-
-    def is_in_area(self, polygon):
-        x = self.x
-        y = self.z
-        poly = [(x.x, x.z) for x in polygon]
-        n = len(poly)
-        inside = False
-        xinters = None
-
-        p1x, p1y = poly[0]
-        for i in range(n + 1):
-            p2x, p2y = poly[i % n]
-            if y > min(p1y, p2y):
-                if y <= max(p1y, p2y):
-                    if x <= max(p1x, p2x):
-                        if p1y != p2y:
-                            xinters = (y - p1y) * (p2x - p1x) / (p2y - p1y) + p1x
-                        if p1x == p2x or x <= xinters:
-                            inside = not inside
-            p1x, p1y = p2x, p2y
-        return inside
-
-    def distance_to(self, x, z):
-        return ((self.x - x) ** 2 + (self.z - z) ** 2) ** .5
-
-
-class Node(Point):
+class Node(geometry.Point):
     def __init__(self, key, x, z, country, is_aux, selectable, text):
         super().__init__(x=x, z=z, country=country)
         self.neighbors = set()
@@ -402,12 +361,12 @@ class Grid:
                         v1 = area[i]
                         v2 = area[0]
                         t = get_parallel_line(((v1.x, v1.z), (v2.x, v2.z)), dist)[0]
-                        r[country][-1].append(Point(x=t[0], z=t[1], country=country))
+                        r[country][-1].append(geometry.Point(x=t[0], z=t[1], country=country))
                     else:
                         v1 = area[i]
                         v2 = area[i + 1]
                         t = get_parallel_line(((v1.x, v1.z), (v2.x, v2.z)), dist)[0]
-                        r[country][-1].append(Point(x=t[0], z=t[1], country=country))
+                        r[country][-1].append(geometry.Point(x=t[0], z=t[1], country=country))
                     i += 1
         return r
 
