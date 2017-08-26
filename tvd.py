@@ -25,24 +25,24 @@ class Stage:
 
 
 class Tvd:
-    def __init__(self, name, date, config, main_config):
+    def __init__(self, tvd_name, date, config, main_config):
         """ Класс театра военных действий (ТВД) кампании, для которого генерируются миссии """
-        self.name = name
+        self.name = tvd_name
         self.sides = config.cfg['sides']
-        self.default_stages = config.default_stages[self.name]
-        self.af_groups_folders = config.af_groups_folders[self.name]
-        self.ldf_file = config.cfg[name]['ldf_file']
-        self.tvd_folder = config.cfg[name]['tvd_folder']
+        self.default_stages = config.default_stages[tvd_name]
+        self.af_groups_folders = config.af_groups_folders[tvd_name]
+        self.ldf_file = config.cfg[tvd_name]['ldf_file']
+        self.tvd_folder = config.cfg[tvd_name]['tvd_folder']
 
         self.date = datetime.datetime.strptime(date, date_format)
-        self.id = config.cfg[name]['tvd']
-        folder = main_config.game_folder.joinpath(Path(config.cfg[name]['tvd_folder']))
-        self.default_params_file = folder.joinpath(config.cfg[name]['default_params_dest'])
+        self.id = config.cfg[tvd_name]['tvd']
+        folder = main_config.game_folder.joinpath(Path(config.cfg[tvd_name]['tvd_folder']))
+        self.default_params_file = folder.joinpath(config.cfg[tvd_name]['default_params_dest'])
         self.default_params_template_file = main_config.configs_folder.joinpath(
-            config.cfg[name]['default_params_source'])
-        self.icons_group_file = folder.joinpath(config.cfg[name]['icons_group_file'])
-        self.right_top = config.cfg[name]['right_top']
-        self.grid = Grid(self.name, config)
+            config.cfg[tvd_name]['default_params_source'])
+        self.icons_group_file = folder.joinpath(config.cfg[tvd_name]['icons_group_file'])
+        self.right_top = config.cfg[tvd_name]['right_top']
+        self.grid = Grid(tvd_name, config)
         self.grid.read_db()
         # таблица аэродромов с координатами
         self.airfields_data = tuple(
@@ -52,7 +52,7 @@ class Tvd:
                  'xpos': z[1],
                  'zpos': z[2]
              })(x.split(sep=';'))
-            for x in config.af_csv[self.name].open().readlines()
+            for x in config.af_csv[tvd_name].open().readlines()
         )
         # данные по сезонам из daytime.csv
         self.seasons_data = tuple(
@@ -66,10 +66,10 @@ class Tvd:
                  'max_temp': int(z[5]),
                  'season_prefix': str(z[6]).rstrip()
              })(x.split(sep=';'))
-            for x in config.daytime_files[self.name].open().readlines()
+            for x in config.daytime_files[tvd_name].open().readlines()
         )
         self.stages = tuple(
-            Stage(x, self.sides, config.af_templates_folder) for x in config.stages[self.name]
+            Stage(x, self.sides, config.af_templates_folder) for x in config.stages[tvd_name]
         )
 
     def capture(self, x, z, coal_id):
