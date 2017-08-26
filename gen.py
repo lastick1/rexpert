@@ -529,9 +529,6 @@ class Ldb:
         text = '#1CGS Location Database file'
         for k in self.locations:
             for loc in self.locations[k]:
-                # if k in ('decorations', 'objective_nodes'):
-                    # if not loc.loc_country:
-                    #     continue
                 text += '\n\n{}'.format(loc)
         text += '\n\n#end of file'
         return text
@@ -643,18 +640,18 @@ influence_text = """MCU_TR_InfluenceArea
 
 
 class FrontLineIcon(Point):
-    def __init__(self, id, point, target=None):
+    def __init__(self, _id, point, target=None):
         """
         Класс иконки, из которых состоит линия фронта
-        :param id: ИД объекта MCU_Icon
+        :param _id: ИД объекта MCU_Icon
         :param point: узел, иконки
         :param target: ИД следующей иконки в цепочке
         """
         super().__init__(x=point.x, z=point.z)
         self.target = target
-        self.id = id
-        self.lc_name = id*2-1
-        self.lc_desc = id*2
+        self.id = _id
+        self.lc_name = _id * 2 - 1
+        self.lc_desc = _id * 2
 
     def __str__(self):
         if self.target is not None:
@@ -664,14 +661,14 @@ class FrontLineIcon(Point):
 
 
 class InfluenceArea:
-    def __init__(self, id, boundary, country):
+    def __init__(self, _id, boundary, country):
         """
         Класс зоны влияния, которая определяет принадлежность территории к какой-то стране
         :param id: ИД объекта MCU_TR_InfluenceArea
         :param boundary: список вершин многоугольника зоны (по часовой стрелке)
         :param country: страна, к которой относится территория зоны
         """
-        self.id = id
+        self.id = _id
         self.boundary = boundary
         self.country = country
 

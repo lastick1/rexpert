@@ -54,6 +54,7 @@ class Point:
         poly = [(x.x, x.z) for x in polygon]
         n = len(poly)
         inside = False
+        xinters = None
 
         p1x, p1y = poly[0]
         for i in range(n + 1):
@@ -84,7 +85,7 @@ class Node(Point):
     def __str__(self):
         return '{} {} {}'.format(self.key, self.country, self.text)
 
-    def serialize_xgml(self, c_x, c_z, tvd_name):
+    def serialize_xgml(self, c_x, c_z):
         """ Сериализация в формат XGML """
         return """\t\t<section name="node">
 \t\t\t<attribute key="id" type="int">{0}</attribute>
@@ -231,7 +232,7 @@ class Grid:
         c_x = MissionGenCfg.cfg[self.name]['graph_zoom_point']['y'] / MissionGenCfg.cfg[self.name]['right_top']['x']
         c_z = MissionGenCfg.cfg[self.name]['graph_zoom_point']['x'] / MissionGenCfg.cfg[self.name]['right_top']['z']
         for n in self.nodes.values():
-            string += n.serialize_xgml(c_x, c_z, self.name)
+            string += n.serialize_xgml(c_x, c_z)
         return string
 
     def serialize_xgml(self):
@@ -294,10 +295,10 @@ class Grid:
         root = tree.getroot()
         graph = root.find('section')
 
-        x_coefficient = MissionGenCfg.cfg[self.name]['right_top']['x'] / \
-                        MissionGenCfg.cfg[self.name]['graph_zoom_point']['y']
-        z_coefficient = MissionGenCfg.cfg[self.name]['right_top']['z'] / \
-                        MissionGenCfg.cfg[self.name]['graph_zoom_point']['x']
+        landscape_max_x = MissionGenCfg.cfg[self.name]['right_top']['x']
+        landscape_max_z = MissionGenCfg.cfg[self.name]['right_top']['z']
+        x_coefficient = landscape_max_x / MissionGenCfg.cfg[self.name]['graph_zoom_point']['y']
+        z_coefficient = landscape_max_z / MissionGenCfg.cfg[self.name]['graph_zoom_point']['x']
 
         for section in graph:
             if str(section.tag) == 'section':
@@ -423,8 +424,6 @@ class Grid:
         random.shuffle(second_candidates)
         second = second_candidates.pop()
         random.shuffle(countries)
-        # z = list(zip(countries, [nl[-1], nl[-2]]))
-        # print('Scenarios selection in test mode')
         z = list(zip(countries, [first, second]))
         d = {x[0]: [x[1]] for x in z}
         return d

@@ -238,16 +238,6 @@ class Tvd:
         # случайное направление и сила ветра по высотам
         wind_direction0000 = randint(0, 360)
         wind_power0000 = randint(0, 2)
-        """
-        wind_direction0500 = wind_direction0000 + randint(-15, 15)
-        wind_power0500 = wind_power0000 + randint(0, 2)
-        wind_direction1000 = wind_direction0000 + randint(-20, 20)
-        wind_power1000 = wind_power0000 + randint(2, 4)
-        wind_direction2000 = wind_direction0000 + randint(-25, 25)
-        wind_power2000 = wind_power0000 + randint(4, 7)
-        wind_direction5000 = wind_direction0000 + randint(-30, 30)
-        wind_power5000 = wind_power0000 + randint(7, 10)
-        """
 
         date = Tvd.random_datetime(*self.date_next_day_duration)
         season = self.date_next_season_data

@@ -301,20 +301,20 @@ class Campaign:
             tvd_name,
             icons=icons
         )
-        x_c = StatsCustomCfg.cfg['il2missionplanner'][tvd_name]['right_top'][0] / \
-              MissionGenCfg.cfg[tvd_name]['right_top']['x']
-        z_c = StatsCustomCfg.cfg['il2missionplanner'][tvd_name]['right_top'][1] / \
-              MissionGenCfg.cfg[tvd_name]['right_top']['z']
+        planner_max_x = StatsCustomCfg.cfg['il2missionplanner'][tvd_name]['right_top'][0]
+        planner_max_z = StatsCustomCfg.cfg['il2missionplanner'][tvd_name]['right_top'][1]
+        x_c = planner_max_x / MissionGenCfg.cfg[tvd_name]['right_top']['x']
+        z_c = planner_max_z / MissionGenCfg.cfg[tvd_name]['right_top']['z']
 
         cut = [list((x.x, x.z) for x in self.tvds[tvd_name].grid.neutral_line)]
         frontline = draw.get_splines(cut)
-        frontline_resized = []
+        frontline_resize = []
         for lines_pair in frontline:
-            frontline_resized.append([])
+            frontline_resize.append([])
             for line in lines_pair:
-                frontline_resized[-1].append([])
+                frontline_resize[-1].append([])
                 for point in line:
-                    frontline_resized[-1][-1].append([round(point[0] * x_c, 3), round(point[1] * z_c, 3)])
+                    frontline_resize[-1][-1].append([round(point[0] * x_c, 3), round(point[1] * z_c, 3)])
         # lat - z
         # lng - x
         targets = []
@@ -342,13 +342,14 @@ class Campaign:
             'mapHash': '#{}'.format(tvd_name),
             'routes': [],
             'points': targets,
-            'frontline': frontline_resized
+            'frontline': frontline_resize
         }
         dest = Path(MainCfg.stats_static.joinpath(StatsCustomCfg.cfg['il2missionplanner']['json']))
         with dest.open(mode='w') as f:
             json.dump(data, f)
 
-    def next_tvd_name(self, current):
+    @staticmethod
+    def next_tvd_name(current):
         if len(MissionGenCfg.maps)-1 == MissionGenCfg.maps.index(current):
             return current
         else:

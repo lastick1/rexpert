@@ -1,7 +1,6 @@
 import datetime
 import db
 from pathlib import Path
-import json
 connector = db.PGConnector
 date_format = 'missionReport(%Y-%m-%d_%H-%M-%S)'
 
@@ -13,7 +12,6 @@ class Player:
             self.callback = callback
 
         def __setitem__(self, item, value):
-            # print("You are changing the value of {} to {}!".format(item, value))
             super(Player.PDict, self).__setitem__(item, value)
             self.callback(self)
 
@@ -128,8 +126,7 @@ class Player:
             raise NameError(err_msg)
 
     def _bitch_please(self, planes):
-        """ Начисление бесплатных самолётов
-        :type p: Player.PDict"""
+        """ Начисление бесплатных самолётов """
         last_flight = datetime.datetime.strptime(self.last_mission, date_format)
         if self.last_tik > 0:
             last_flight = last_flight + datetime.timedelta(seconds=(self.last_tik / 50))
