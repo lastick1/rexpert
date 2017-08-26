@@ -4,7 +4,6 @@ import math
 import random
 import db
 import geometry
-from cfg import MissionGenCfg
 
 
 def rotate(v, b, c):
@@ -142,9 +141,17 @@ class Chain:
 
 
 class Grid:
-    def __init__(self, name):
+    def __init__(self, name, config):
         self.nodes = dict()  # узлы сетки
-        self.name = name
+        self.tvd = config.cfg[name]['tvd']
+        self.xgml_file = config.xgml[name]
+        self.scenario_min_distance = config.cfg['scenario_min_distance']
+        self.graph_zoom_point_x = config.cfg[name]['graph_zoom_point']['y']
+        self.graph_zoom_point_z = config.cfg[name]['graph_zoom_point']['x']
+        self.x_coefficient_serialization = self.graph_zoom_point_x / config.cfg[name]['right_top']['x']
+        self.z_coefficient_serialization = self.graph_zoom_point_z / config.cfg[name]['right_top']['z']
+        self.x_coefficient_deserialization = config.cfg[name]['right_top']['x'] / self.graph_zoom_point_x
+        self.z_coefficient_deserialization = config.cfg[name]['right_top']['z'] / self.graph_zoom_point_z
 
     @property
     def nodes_list(self):
@@ -188,10 +195,8 @@ class Grid:
 
     def serialize_nodes_xgml(self):
         string = ""
-        c_x = MissionGenCfg.cfg[self.name]['graph_zoom_point']['y'] / MissionGenCfg.cfg[self.name]['right_top']['x']
-        c_z = MissionGenCfg.cfg[self.name]['graph_zoom_point']['x'] / MissionGenCfg.cfg[self.name]['right_top']['z']
         for n in self.nodes.values():
-            string += n.serialize_xgml(c_x, c_z)
+            string += n.serialize_xgml(self.x_coefficient_serialization, self.z_coefficient_serialization)
         return string
 
     def serialize_xgml(self):
@@ -224,13 +229,13 @@ class Grid:
 
     def write_db(self):
         db.PGConnector.Graph.insert(
-            MissionGenCfg.cfg[self.name]['tvd'],
+            self.tvd,
             tuple(x.to_dict() for x in self.nodes_list),
             tuple({'node_a': x[0].key, 'node_b': x[1].key} for x in self.edges))
 
     def read_db(self):
         self.nodes.clear()
-        nodes_rows, edges_rows = db.PGConnector.Graph.select(MissionGenCfg.cfg[self.name]['tvd'])
+        nodes_rows, edges_rows = db.PGConnector.Graph.select(self.tvd)
         for row in nodes_rows:
             self.nodes[row['key']] = Node(
                 row['key'],
@@ -249,15 +254,9 @@ class Grid:
 
     def read_file(self):
         """ Считать граф из XGML файла """
-        xgml_file = MissionGenCfg.xgml[self.name]
-        tree = Et.parse(source=str(xgml_file.absolute()))
+        tree = Et.parse(source=str(self.xgml_file.absolute()))
         root = tree.getroot()
         graph = root.find('section')
-
-        landscape_max_x = MissionGenCfg.cfg[self.name]['right_top']['x']
-        landscape_max_z = MissionGenCfg.cfg[self.name]['right_top']['z']
-        x_coefficient = landscape_max_x / MissionGenCfg.cfg[self.name]['graph_zoom_point']['y']
-        z_coefficient = landscape_max_z / MissionGenCfg.cfg[self.name]['graph_zoom_point']['x']
 
         for section in graph:
             if str(section.tag) == 'section':
@@ -267,8 +266,8 @@ class Grid:
                     section_graphics = section.findall("*[@name='graphics']")[0]
                     tag_x = section_graphics.findall("*[@key='x']")[0]
                     tag_y = section_graphics.findall("*[@key='y']")[0]
-                    x = -1 * (float(tag_y.text) - MissionGenCfg.cfg[self.name]['graph_zoom_point']['y']) * x_coefficient
-                    z = float(tag_x.text) * z_coefficient
+                    x = -1 * (float(tag_y.text) - self.graph_zoom_point_x) * self.x_coefficient_deserialization
+                    z = float(tag_x.text) * self.z_coefficient_deserialization
                     tag_fill = section_graphics.findall("*[@key='fill']")[0]
                     country = None
                     if tag_fill.text.upper() == '#FF0000':
@@ -378,7 +377,7 @@ class Grid:
         first = nl[random.randint(0, len(first_candidates)-1)]
         second_candidates = []
         for x in first_candidates:
-            if x.distance_to(first.x, first.z) > MissionGenCfg.cfg['scenario_min_distance']:
+            if x.distance_to(first.x, first.z) > self.scenario_min_distance:
                 second_candidates.append(x)
         random.shuffle(second_candidates)
         second = second_candidates.pop()
@@ -403,9 +402,9 @@ class Grid:
         for n in node.neighbors:
             if n.country and n.country != country:
                 n.country = 0
-                db.PGConnector.Graph.update_graph_node(n.key, MissionGenCfg.cfg[self.name]['tvd'], 0)
+                db.PGConnector.Graph.update_graph_node(n.key, self.tvd, 0)
         node.country = country
-        db.PGConnector.Graph.update_graph_node(node.key, MissionGenCfg.cfg[self.name]['tvd'], country)
+        db.PGConnector.Graph.update_graph_node(node.key, self.tvd, country)
         self._resolve(country)
 
     def capture_node(self, node, coal):
@@ -424,4 +423,4 @@ class Grid:
                 resolvable.append(n)
         for x in resolvable:
             x.country = priority
-            db.PGConnector.Graph.update_graph_node(x.key, MissionGenCfg.cfg[self.name]['tvd'], priority)
+            db.PGConnector.Graph.update_graph_node(x.key, self.tvd, priority)

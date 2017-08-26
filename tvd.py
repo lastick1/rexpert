@@ -6,7 +6,6 @@ from random import randint
 from cfg import MissionGenCfg, MainCfg, DfprCfg
 from grid import Grid
 from gen import Group, Ldb, FlGroup, Divisions
-# from campaign import Mission
 
 date_format = '%d.%m.%Y'
 default_af_cache = {'moscow': '30.09.2016', 'stalingrad': '30.09.2016'}
@@ -38,7 +37,7 @@ class Tvd:
             MissionGenCfg.cfg[name]['default_params_source'])
         self.icons_group_file = self.folder.joinpath(MissionGenCfg.cfg[name]['icons_group_file'])
         self.right_top = MissionGenCfg.cfg[name]['right_top']
-        self.grid = Grid(self.name)
+        self.grid = Grid(self.name, MissionGenCfg)
         self.grid.read_db()
         # таблица аэродромов с координатами
         self.airfields_data = tuple(
