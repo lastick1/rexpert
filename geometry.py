@@ -1,8 +1,8 @@
 from math import acos, pi
-# import math
 
 
 class Segment:
+    """ Класс отрезка """
     def __init__(self, x1, y1, x2, y2):
         # http://school-collection.edu.ru/catalog/res/925c1429-c4d9-43b8-8b08-ac6d44f57906/view/
         self._center = (x1 + x2)/2, (y1 + y2)/2
@@ -27,6 +27,7 @@ class Segment:
 
     @property
     def length(self):
+        """ Длина отрезка """
         return self._length
 
     @property
@@ -42,7 +43,7 @@ class Segment:
     def parallel_segments(self, distance):
         """
         :param distance:
-        :return: Два параллельных отрезка такой же длины на заданной дистанции от отрезка
+        :return: Два параллельных отрезка такой же длины на заданной дистанции от текущего отрезка
         :rtype: (Segment, Segment)
         """
         n_vector = self._nx * distance, self._ny * distance
