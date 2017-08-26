@@ -205,7 +205,7 @@ class Campaign:
             self.data = json.load(init.open())
             self.save()
         # театры военных действий, используемые в кампании
-        self.tvds = {x: Tvd(x, self.data[x]['current_date']) for x in MissionGenCfg.maps}
+        self.tvds = {x: Tvd(x, self.data[x]['current_date'], MissionGenCfg, MainCfg) for x in MissionGenCfg.maps}
         self.generations = dict()
         self.captures = dict()
         self._saved_plans = set()

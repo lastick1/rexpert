@@ -3,7 +3,7 @@ import weather
 import datetime
 from pathlib import Path
 from random import randint
-from cfg import MissionGenCfg, MainCfg, DfprCfg
+from cfg import DfprCfg
 from grid import Grid
 from gen import Group, Ldb, FlGroup, Divisions
 
@@ -12,32 +12,38 @@ default_af_cache = {'moscow': '30.09.2016', 'stalingrad': '30.09.2016'}
 
 
 class Stage:
-    def __init__(self, raw):
+    def __init__(self, raw, sides, af_templates_folder):
         """ Класс этапа кампании, для которого создаются группы аэродромов с заданными самолётами """
         self.start = datetime.datetime.strptime(raw['start'], date_format)
         self.end = datetime.datetime.strptime(raw['end'], date_format)
         self.id = int(raw['id'])
         self.af_templates = dict()
-        for side in MissionGenCfg.cfg['sides']:
-            self.af_templates[side] = MissionGenCfg.af_templates_folder.joinpath(raw[side])
+        for side in sides:
+            self.af_templates[side] = af_templates_folder.joinpath(raw[side])
 
     def __contains__(self, item):
         return self.start <= item < self.end
 
 
 class Tvd:
-    def __init__(self, name, date):
+    def __init__(self, name, date, config, main_config):
         """ Класс театра военных действий (ТВД) кампании, для которого генерируются миссии """
         self.name = name
+        self.sides = config.cfg['sides']
+        self.default_stages = config.default_stages[self.name]
+        self.af_groups_folders = config.af_groups_folders[self.name]
+        self.ldf_file = config.cfg[self.name]['ldf_file']
+        self.tvd_folder = config.cfg[self.name]['tvd_folder']
+
         self.date = datetime.datetime.strptime(date, date_format)
-        self.id = MissionGenCfg.cfg[name]['tvd']
-        self.folder = MainCfg.game_folder.joinpath(Path(MissionGenCfg.cfg[name]['tvd_folder']))
-        self.default_params_file = self.folder.joinpath(MissionGenCfg.cfg[name]['default_params_dest'])
-        self.default_params_template_file = MainCfg.configs_folder.joinpath(
-            MissionGenCfg.cfg[name]['default_params_source'])
-        self.icons_group_file = self.folder.joinpath(MissionGenCfg.cfg[name]['icons_group_file'])
-        self.right_top = MissionGenCfg.cfg[name]['right_top']
-        self.grid = Grid(self.name, MissionGenCfg)
+        self.id = config.cfg[name]['tvd']
+        folder = main_config.game_folder.joinpath(Path(config.cfg[name]['tvd_folder']))
+        self.default_params_file = folder.joinpath(config.cfg[name]['default_params_dest'])
+        self.default_params_template_file = main_config.configs_folder.joinpath(
+            config.cfg[name]['default_params_source'])
+        self.icons_group_file = folder.joinpath(config.cfg[name]['icons_group_file'])
+        self.right_top = config.cfg[name]['right_top']
+        self.grid = Grid(self.name, config)
         self.grid.read_db()
         # таблица аэродромов с координатами
         self.airfields_data = tuple(
@@ -47,7 +53,7 @@ class Tvd:
                  'xpos': z[1],
                  'zpos': z[2]
              })(x.split(sep=';'))
-            for x in MissionGenCfg.af_csv[self.name].open().readlines()
+            for x in config.af_csv[self.name].open().readlines()
         )
         # данные по сезонам из daytime.csv
         self.seasons_data = tuple(
@@ -61,10 +67,10 @@ class Tvd:
                  'max_temp': int(z[5]),
                  'season_prefix': str(z[6]).rstrip()
              })(x.split(sep=';'))
-            for x in MissionGenCfg.daytime_files[self.name].open().readlines()
+            for x in config.daytime_files[self.name].open().readlines()
         )
         self.stages = tuple(
-            Stage(x) for x in MissionGenCfg.stages[self.name]
+            Stage(x, self.sides, config.af_templates_folder) for x in config.stages[self.name]
         )
 
     def capture(self, x, z, coal_id):
@@ -74,7 +80,7 @@ class Tvd:
         """ Обновление групп, баз локаций и файла параметров генерации в папке ТВД (data/scg/x) """
         print('[{}] Updating TVD folder: {} ({})'.format(
             datetime.datetime.now().strftime("%H:%M:%S"),
-            MissionGenCfg.cfg[self.name]['tvd_folder'],
+            self.tvd_folder,
             self.name
         ))
         if self.is_ended:
@@ -122,10 +128,10 @@ class Tvd:
         cached_date = datetime.datetime.strptime(cache_data[self.name], date_format)
 
         d = datetime.timedelta(seconds=1)
-        for side in MissionGenCfg.cfg['sides']:
-            folder = MissionGenCfg.af_groups_folders[self.name][side]
+        for side in self.sides:
+            folder = self.af_groups_folders[side]
             # шаблон по-умолчанию
-            template_group = MissionGenCfg.default_stages[self.name][side]
+            template_group = self.default_stages[side]
             # ищем период для текущей даты ТВД
             for stage in self.stages:
                 if self.date_next + d in stage:
@@ -295,7 +301,7 @@ class Tvd:
             elif dfpr_lines[y].startswith('$ztargetposition ='):
                 dfpr_lines[y] = '$ztargetposition = {}\n'.format(DfprCfg.cfg[self.name]['ztargetposition'])
             elif dfpr_lines[y].startswith('$loc_filename ='):
-                dfpr_lines[y] = '$loc_filename = {}\n'.format(MissionGenCfg.cfg[self.name]['ldf_file'])
+                dfpr_lines[y] = '$loc_filename = {}\n'.format(self.ldf_file)
             elif dfpr_lines[y].startswith('$period ='):
                 dfpr_lines[y] = '$period = {}\n'.format(self.next_date_stage_id)
         with self.default_params_file.open(mode='w', encoding='utf-8-sig') as f:
