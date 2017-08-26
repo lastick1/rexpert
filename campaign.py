@@ -3,7 +3,7 @@ import pytz
 import datetime
 import json
 from pathlib import Path
-from cfg import MissionGenCfg, MainCfg, StatsCustomCfg, Gameplay
+from cfg import MissionGenCfg, MainCfg, DfprCfg, StatsCustomCfg, Gameplay
 from tvd import Tvd
 import mission_report
 import rcon
@@ -249,7 +249,8 @@ class Campaign:
                     datetime.datetime.now().strftime("%H:%M:%S"),
                     next_name
                 ))
-                self.tvds[m_tvd_name].update()
+                # обновляем папку твд с настройками default params
+                self.tvds[m_tvd_name].update(DfprCfg.cfg[m_tvd_name])
                 r = next_name, m_tvd_name
                 self.generations[m.name] = lc
             self.save()

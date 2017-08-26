@@ -3,7 +3,6 @@ import weather
 import datetime
 from pathlib import Path
 from random import randint
-from cfg import DfprCfg
 from grid import Grid
 from gen import Group, Ldb, FlGroup, Divisions
 
@@ -32,8 +31,8 @@ class Tvd:
         self.sides = config.cfg['sides']
         self.default_stages = config.default_stages[self.name]
         self.af_groups_folders = config.af_groups_folders[self.name]
-        self.ldf_file = config.cfg[self.name]['ldf_file']
-        self.tvd_folder = config.cfg[self.name]['tvd_folder']
+        self.ldf_file = config.cfg[name]['ldf_file']
+        self.tvd_folder = config.cfg[name]['tvd_folder']
 
         self.date = datetime.datetime.strptime(date, date_format)
         self.id = config.cfg[name]['tvd']
@@ -76,7 +75,7 @@ class Tvd:
     def capture(self, x, z, coal_id):
         self.grid.capture(x, z, coal_id)
 
-    def update(self):
+    def update(self, default_params_config):
         """ Обновление групп, баз локаций и файла параметров генерации в папке ТВД (data/scg/x) """
         print('[{}] Updating TVD folder: {} ({})'.format(
             datetime.datetime.now().strftime("%H:%M:%S"),
@@ -89,7 +88,7 @@ class Tvd:
         self.update_icons()
         self.update_ldb()
         self.update_airfields()
-        self.randomize_defaultparams()
+        self.randomize_defaultparams(default_params_config)
 
     def verify_grid(self):
         """ Проверка и самопочинка графа """
@@ -236,7 +235,7 @@ class Tvd:
                 return stage.id
         raise NameError('Incorrect date for all stages: {}'.format(self.date))
 
-    def randomize_defaultparams(self):
+    def randomize_defaultparams(self, params_config):
         """ Задать случайные параметры погоды, времени года и суток """
         with self.default_params_template_file.open(encoding='utf-8-sig') as f:
             dfpr_lines = f.readlines()
@@ -249,12 +248,12 @@ class Tvd:
         # Случайная температура для сезона
         temperature = randint(season['min_temp'], season['max_temp'])
 
-        for setting in DfprCfg.cfg[self.name][season['season_prefix']]:
+        for setting in params_config[season['season_prefix']]:
             for i in range(len(dfpr_lines)):
                 if dfpr_lines[i].startswith('${} ='.format(setting)):
                     dfpr_lines[i] = '${} = {}\n'.format(
-                        setting, DfprCfg.cfg[self.name][season['season_prefix']][setting])
-        weather_type = randint(*DfprCfg.cfg[self.name][season['season_prefix']]['wtype_diapason'])
+                        setting, params_config[season['season_prefix']][setting])
+        weather_type = randint(*params_config[season['season_prefix']]['wtype_diapason'])
 
         w_preset = weather.WeatherPreset(weather.presets[weather_type])
         # задаём параметры defaultparams в соответствии с конфигом
@@ -289,17 +288,17 @@ class Tvd:
             elif dfpr_lines[y].startswith('$prevwtype ='):
                 dfpr_lines[y] = '$prevwtype = {}\n'.format(weather_type)
             elif dfpr_lines[y].startswith('$tvd ='):
-                dfpr_lines[y] = '$tvd = {}\n'.format(DfprCfg.cfg[self.name]['tvd'])
+                dfpr_lines[y] = '$tvd = {}\n'.format(params_config['tvd'])
             elif dfpr_lines[y].startswith('$overlay ='):
-                dfpr_lines[y] = '$overlay = {}\n'.format(DfprCfg.cfg[self.name]['overlay'])
+                dfpr_lines[y] = '$overlay = {}\n'.format(params_config['overlay'])
             elif dfpr_lines[y].startswith('$xposition ='):
-                dfpr_lines[y] = '$xposition = {}\n'.format(DfprCfg.cfg[self.name]['xposition'])
+                dfpr_lines[y] = '$xposition = {}\n'.format(params_config['xposition'])
             elif dfpr_lines[y].startswith('$zposition ='):
-                dfpr_lines[y] = '$zposition = {}\n'.format(DfprCfg.cfg[self.name]['zposition'])
+                dfpr_lines[y] = '$zposition = {}\n'.format(params_config['zposition'])
             elif dfpr_lines[y].startswith('$xtargetposition ='):
-                dfpr_lines[y] = '$xtargetposition = {}\n'.format(DfprCfg.cfg[self.name]['xtargetposition'])
+                dfpr_lines[y] = '$xtargetposition = {}\n'.format(params_config['xtargetposition'])
             elif dfpr_lines[y].startswith('$ztargetposition ='):
-                dfpr_lines[y] = '$ztargetposition = {}\n'.format(DfprCfg.cfg[self.name]['ztargetposition'])
+                dfpr_lines[y] = '$ztargetposition = {}\n'.format(params_config['ztargetposition'])
             elif dfpr_lines[y].startswith('$loc_filename ='):
                 dfpr_lines[y] = '$loc_filename = {}\n'.format(self.ldf_file)
             elif dfpr_lines[y].startswith('$period ='):
