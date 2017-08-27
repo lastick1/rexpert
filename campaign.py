@@ -6,7 +6,7 @@ from pathlib import Path
 from cfg import MissionGenCfg, MainCfg, DfprCfg, StatsCustomCfg, Gameplay
 from tvd import Tvd
 import mission_report
-import custom_report
+import processing
 import rcon
 date_format = '%d.%m.%Y'
 
@@ -16,12 +16,12 @@ class MissingAType0(Exception):
 
 
 class Mission:
-    def __init__(self, name, objects, event_handlers):
+    def __init__(self, name, objects):
         self.name = name
         self._force_complete = False
         self.atypes = []
         self.last_atype = 0
-        self.m_report = mission_report.report.MissionReport(objects=objects, custom_handlers=event_handlers)
+        self.m_report = mission_report.report.MissionReport(objects=objects)
         self.g_report = None
         self.processed_t14 = 0
         self.capture_coals = set()

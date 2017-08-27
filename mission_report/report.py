@@ -21,7 +21,7 @@ class MissionReport:
     :type lost_bots: dict[int, Sortie]
     """
 
-    def __init__(self, objects, custom_handlers):
+    def __init__(self, objects):
         """
         :type objects: dict
         :type custom_handlers: tuple
@@ -63,8 +63,6 @@ class MissionReport:
                                 self.event_bot_eject_leave, self.event_round_end, self.event_player_connected,
                                 self.event_player_disconnected)
 
-        self.custom_handlers = custom_handlers
-
     def processing(self, files):
         """
         :type files: list
@@ -104,7 +102,6 @@ class MissionReport:
                     self.update_ratio(data=data)
 
                 self.events_handlers[atype_id](**data)
-                self.custom_handlers[atype_id](**data)
 
                 self.update_last_tik(data=data)
 
