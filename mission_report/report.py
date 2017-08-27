@@ -1,14 +1,10 @@
 from collections import defaultdict
 from itertools import count
-import logging
 import operator
 
 from mission_report.statuses import BotLifeStatus, SortieStatus, LifeStatus
 from mission_report.helpers import distance, point_in_polygon, is_pos_correct
 from mission_report import parse_mission_log_line
-
-
-# logger = logging.getLogger('mission_report')
 
 
 class MissionReport:
@@ -25,9 +21,10 @@ class MissionReport:
     :type lost_bots: dict[int, Sortie]
     """
 
-    def __init__(self, objects):
+    def __init__(self, objects, custom_handlers):
         """
         :type objects: dict
+        :type custom_handlers: tuple
         """
         self.index = count().__next__
 
@@ -51,7 +48,6 @@ class MissionReport:
         self.active_sorties = defaultdict(set)
         self.lines = []
         self.winning_coal_id = None
-        # self.online_uuid = set()
         self.log_entries = []
 
         # словари вылетов для которых не нашлось объекта - поздняя инициализация
@@ -66,6 +62,8 @@ class MissionReport:
                                 self.event_log_version, self.event_bot_deinitialization, self.event_pos_changed,
                                 self.event_bot_eject_leave, self.event_round_end, self.event_player_connected,
                                 self.event_player_disconnected)
+
+        self.custom_handlers = custom_handlers
 
     def processing(self, files):
         """
@@ -106,6 +104,7 @@ class MissionReport:
                     self.update_ratio(data=data)
 
                 self.events_handlers[atype_id](**data)
+                self.custom_handlers[atype_id](**data)
 
                 self.update_last_tik(data=data)
 

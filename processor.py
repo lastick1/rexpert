@@ -1,10 +1,10 @@
-# from time import sleep
 from datetime import datetime
 import threading
 import rcon
 import db
 import campaign
 import business
+import custom_report
 from pathlib import Path
 import gen
 date_format = 'missionReport(%Y-%m-%d_%H-%M-%S)'
@@ -24,6 +24,8 @@ class Processor:
         """ Класс контроля за обработкой
         :type commander: rcon.Commander """
         self.campaign = campaign.Campaign()
+        self.objects_dict = connector.get_objects_dict()
+        self.controller = custom_report.EventsController(self.objects_dict)
         self.commander = commander
         self.business = dict()
         self.threads = dict()
@@ -41,7 +43,8 @@ class Processor:
                 self.last_mission = m_name
         if m_name not in self.missions.keys():
             # если миссия новая, то создаём её
-            self.missions[m_name] = campaign.Mission(m_name, connector.get_objects_dict())
+            self.missions[m_name] = campaign.Mission(
+                m_name, self.objects_dict, self.controller.events_handlers)
         # обновление миссии новыми логами
         self.missions[m_name].update(logs)
         if datetime.strptime(m_name, date_format) < datetime.strptime(self.last_mission, date_format):
