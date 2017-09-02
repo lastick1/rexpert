@@ -6,7 +6,7 @@ import os
 
 from pathlib import Path
 from datetime import datetime
-from grid import Point
+from geometry import Point
 from cfg import MissionGenCfg, MainCfg, LocationsCfg
 from geometry import Segment
 

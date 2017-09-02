@@ -2,7 +2,6 @@ import threading
 from time import sleep
 from pathlib import Path
 import queue
-from cfg import MainCfg
 import datetime
 from enum import Enum
 import socket
@@ -202,32 +201,38 @@ class Command:
 
 
 class Commander:
-    def __init__(self):
+    def __init__(self, config):
         """
         Класс, передающий команды/сообщения на сервер и игрокам
         """
         self.commands_pool = dict()
-        self._process = Commander.__Process()
+        self._process = Commander.__Process(config)
 
     def stop(self):
         self._process.running = False
         self._process.join()
 
     class __Process(threading.Thread):
-        def __init__(self):
+        def __init__(self, config):
+            if not config:
+                return
             threading.Thread.__init__(self)
             self.queue = queue.Queue()
             self.current_mission = None
             self.running = True
-            if MainCfg.offline_mode:
+            self.offline_mode = config.offline_mode
+            self.console_cmd_output = config.console_cmd_output
+            self.console_chat_output = config.console_chat_output
+            self.test_mode = config.test_mode
+            if config.offline_mode:
                 self._console = None
             else:
-                self._console = RconCommunicator(MainCfg.rcon_ip, MainCfg.rcon_port)
-                self._console.auth(MainCfg.rcon_login, MainCfg.rcon_password)
+                self._console = RconCommunicator(config.rcon_ip, config.rcon_port)
+                self._console.auth(config.rcon_login, config.rcon_password)
             self.start()
 
         def run(self):
-            if MainCfg.offline_mode:
+            if self.offline_mode:
                 print('Console Commander started in offline mode')
             else:
                 print('Console Commander started')
@@ -236,41 +241,41 @@ class Commander:
                     with Path('./logs/commands_'+self.current_mission+'.txt').absolute().open(
                             mode='a', encoding='utf-8') as cmndr_log:
                         cmd = self.queue.get()
-                        if not MainCfg.offline_mode:
+                        if not self.offline_mode:
                             if cmd.mission_name == self.current_mission:
                                 status = 'status'
                                 if cmd.cmd_type == CommandType.s_input:
                                     status = self._console.server_input(cmd.text)
                                     line = '{} {} {} {}'.format(
                                         cmd.now.strftime("[%H:%M:%S]"), status, cmd.text, cmd.reason)
-                                    if MainCfg.console_cmd_output:
+                                    if self.console_cmd_output:
                                         print(line)
                                     cmndr_log.write('{} \n'.format(line))
                                     sleep(30)
                                 elif cmd.cmd_type == CommandType.kick:
-                                    if not MainCfg.test_mode:
+                                    if not self.test_mode:
                                         status = self._console.kick(cmd.text)
                                     line = '{} {} {} KICK [{}] - {}'.format(
                                         cmd.now.strftime("[%H:%M:%S]"), status, cmd.account_id, cmd.text, cmd.reason)
-                                    if MainCfg.console_cmd_output:
+                                    if self.console_cmd_output:
                                         print(line)
                                     cmndr_log.write('{} \n'.format(line))
                                 elif cmd.cmd_type == CommandType.ban:
-                                    if not MainCfg.test_mode:
+                                    if not self.test_mode:
                                         status = self._console.banuser(cmd.account_id)
                                     line = '{} {} {} BAN [{}] - {}'.format(
                                         cmd.now.strftime("[%H:%M:%S]"), status, cmd.account_id, cmd.text, cmd.reason)
-                                    if MainCfg.console_cmd_output:
+                                    if self.console_cmd_output:
                                         print(line)
                                     cmndr_log.write('{} \n'.format(line))
                                 elif cmd.cmd_type == CommandType.message:
                                     status = self._console.private_message(cmd.account_id, cmd.text)
-                                    if MainCfg.console_chat_output:
+                                    if self.console_chat_output:
                                         print(cmd.now.strftime("[%H:%M:%S]"), end=' ')
                                         print("{} MSG [{}]: {}".format(status, cmd.account_id, cmd.text))
                                 elif cmd.cmd_type == CommandType.info:
                                     status = self._console.info_message(cmd.text)
-                                    if MainCfg.console_chat_output:
+                                    if self.console_chat_output:
                                         print(cmd.now.strftime("[%H:%M:%S]"), end=' ')
                                         print("{} MSG [{}]: {}".format(status, cmd.account_id, cmd.text))
                                 cmd.is_sent = True
@@ -279,7 +284,7 @@ class Commander:
                                     cmd.mission_name, cmd.cmd_type, cmd.text, cmd.account_id))
             print('Console Commander stopped')
 
-    def process_commands(self, commands):
+    def process_commands(self, commands: list):
         for cmd in commands:
             if cmd.mission_name not in self.commands_pool:
                 self.commands_pool[cmd.mission_name] = []
@@ -289,3 +294,14 @@ class Commander:
 
     def update_current_mission(self, mission_name):
         self._process.current_mission = mission_name
+
+    def message(self, account_id: str, text: str, reason: str = 'info message'):
+        commands = list()
+        commands.append(Command(
+            '',
+            cmd_type=CommandType.message,
+            account_id=account_id,
+            subject=text,
+            reason=reason
+        ))
+        self.process_commands(commands)
