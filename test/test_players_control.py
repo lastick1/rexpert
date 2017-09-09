@@ -10,8 +10,8 @@ class TestPlayersController(TestCase):
         rexpert = mongo['rexpert']
         players = rexpert['Players']
         controller = PlayersController(rcon.Commander(None), players)
-        account_id = '_test_id'
-        nickname = '_test_nickname1'
+        account_id = '_test_id1'
+        nickname = '_test_nickname'
         controller.spawn_player(None, None, account_id, None, nickname, None, None, None, None, None, None, None, None,
                                 None, None, None, None, None, None, None, None)
 

@@ -6,9 +6,15 @@ import pymongo
 
 class PlayersController:
     """ Контроллер обработки событий, связанных с игроками """
-    def __init__(self, commands: rcon.Commander, players: pymongo.collection.Collection):
+    def __init__(
+            self,
+            commands: rcon.Commander,
+            players: pymongo.collection.Collection,
+            squads: pymongo.collection.Collection
+    ):
         self._commands = commands
         self.__players = players
+        self.__squads = squads
         pass
 
     def spawn_player(self, aircraft_id, bot_id, account_id, profile_id, name, pos, aircraft_name, country_id,
@@ -19,6 +25,18 @@ class PlayersController:
         p.nickname = name
         # self._commands.message(account_id, 'Hello {}!'.format(name))
         self.__players.update_one({'_id': p.account_id}, {'$set': p.to_dict()}, upsert=True)
+
+    def bot_deinitialization(self, bot_id, pos):
+        pass
+
+    def bot_eject_leave(self, bot_id, parent_id, pos):
+        pass
+
+    def influence_area(self, area_id, country_id, coal_id, enabled, in_air):
+        pass
+
+    def influence_area_boundary(self, area_id, boundary):
+        pass
 
     def connect_player(self, account_id: str, profile_id: str) -> None:
         pass

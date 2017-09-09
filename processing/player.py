@@ -2,6 +2,7 @@ ID = '_id'
 NICKNAME = 'nickname'
 BAN_DATE = 'ban_expire_date'
 KNOWN_NICKNAMES = 'known_nicknames'
+UNLOCKS = 'unlocks'
 
 
 class Player:
@@ -12,17 +13,20 @@ class Player:
             self._nickname = None
             self.ban_expire_date = None
             self.previous_nicknames = None
+            self.unlocks = 1
             return
         self._nickname = data[NICKNAME]
         self.ban_expire_date = data[BAN_DATE]
         self.previous_nicknames = data[KNOWN_NICKNAMES]
+        self.unlocks = data[UNLOCKS]
 
     def to_dict(self):
         return {
             ID: self.account_id,
             NICKNAME: self._nickname,
             BAN_DATE: self.ban_expire_date,
-            KNOWN_NICKNAMES: self.previous_nicknames
+            KNOWN_NICKNAMES: self.previous_nicknames,
+            UNLOCKS: self.unlocks
         }
 
     def get_nickname(self):

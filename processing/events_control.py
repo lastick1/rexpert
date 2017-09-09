@@ -111,6 +111,9 @@ class EventsController:
                      coal_id, airfield_id, airstart, parent_id, payload_id, fuel, skin, weapon_mods_id,
                      cartridges, shells, bombs, rockets, form):
         """ AType 10 handler """
+        self.players_controller.spawn_player(aircraft_id, bot_id, account_id, profile_id, name, pos, aircraft_name,
+                                             country_id, coal_id, airfield_id, airstart, parent_id, payload_id, fuel,
+                                             skin, weapon_mods_id, cartridges, shells, bombs, rockets, form)
         self.update_tik(tik)
 
     def event_group(self, tik, group_id, members_id, leader_id):
