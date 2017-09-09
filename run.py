@@ -43,6 +43,7 @@ def run():
     p = processor.Processor(c)
     r = reader.AtypesReader(p)
 
+
 print(datetime.datetime.now().strftime("[%H:%M:%S] Program Start"))
 # reset()
 # create_divisions_ldb()
