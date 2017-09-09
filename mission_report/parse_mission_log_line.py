@@ -2,6 +2,7 @@ from ast import literal_eval
 from datetime import datetime
 import functools
 import re
+import unicodedata
 
 
 class UnexpectedATypeWarning(Warning):
@@ -9,11 +10,11 @@ class UnexpectedATypeWarning(Warning):
 
 
 # старт миссии
-# T:0 AType:0 GDate:1943.1.1 GTime:9:15:0 MFile:Multiplayer/Dogfight\Commando-WL-012-01.msnbin MID: GType:2
-# CNTRS:0:0,50:0,101:1,201:2,202:2 SETTS:010000000010000100000000110 MODS:0 PRESET:0 AQMID:0
+# T:0 AType:0 GDate:1942.9.19 GTime:14:0:0 MFile:Multiplayer/Dogfight\result.msnbin MID: GType:2 CNTRS:0:0,101:1,201:2
+# SETTS:000000000010000100000000110 MODS:0 PRESET:0 AQMID:0 ROUNDS: 1 POINTS: 15000
 atype_0 = re.compile('^T:(?P<tik>\d+) AType:0 GDate:(?P<date>(\d{4}.\d{1,2}.\d{1,2} GTime:\d{1,2}:\d{1,2}:\d{1,2})) '
                      'MFile:(?P<file_path>.+) MID:\d* GType:(?P<game_type_id>\d+) CNTRS:(?P<countries>[,:\d]+) '
-                     'SETTS:(?P<settings>\d+) MODS:(?P<mods>\d) PRESET:(?P<preset_id>\d) AQMID:\d+.*')
+                     'SETTS:(?P<settings>\d+) MODS:(?P<mods>\d) PRESET:(?P<preset_id>\d)')
 
 # попадание пули/бомбы в объект
 # T:63164 AType:1 AMMO:BULLET_GER_792x57_SS AID:138247 TID:59392
@@ -69,8 +70,8 @@ atype_10 = re.compile('^T:(?P<tik>\d+) AType:10 PLID:(?P<aircraft_id>\d+) PID:(?
                       'IDS:(?P<profile_id>[-\w]{36}) LOGIN:(?P<account_id>[-\w]{36}) NAME:(?P<name>.+) '
                       'TYPE:(?P<aircraft_name>[\w\(\) .\-_]+) COUNTRY:(?P<country_id>\d{1,3}) FORM:(?P<form>\d+) '
                       'FIELD:(?P<airfield_id>\d+) INAIR:(?P<airstart>\d) PARENT:(?P<parent_id>[-\d]+) '
-                      'PAYLOAD:(?P<payload_id>\d{1,2}) FUEL:(?P<fuel>\S{5,6}) '
-                      'SKIN:(?P<skin>.*) WM:(?P<weapon_mods_id>\d+)$')
+                      'PAYLOAD:(?P<payload_id>\d+) FUEL:(?P<fuel>\S{5,6}) '
+                      'SKIN:(?P<skin>[\S ]*) WM:(?P<weapon_mods_id>\d+)$')
 
 
 # группа объектов, с лидером и список членов
@@ -134,11 +135,14 @@ atype_handlers = [
 ]
 
 
+re_pos = re.compile('[.\-\d]+,\s*[.\-\d]+,\s*[.\-\d]+')
+
+
 def pos_handler(pos):
     """
     :type pos: str
     """
-    if '#' not in pos:
+    if re_pos.match(pos.strip()):
         pos = tuple(map(float, pos.split(',')))
         return dict(zip(['x', 'y', 'z'], pos))
     else:
@@ -160,6 +164,10 @@ def object_name_handler(type_):
         return 'CFlareGun'
     elif 'CAeroplaneFragment_' in type_:
         return 'CAeroplaneFragment'
+    elif 'CBlocksArray_' in type_:
+        return 'CBlocksArray'
+    elif 'CTurretCamera_' in type_:
+        return 'CTurretCamera'
     else:
         return type_
 
@@ -212,6 +220,7 @@ def parse(line):
     :type line: str
     :rtype: dict | None
     """
+    line = unicodedata.normalize('NFKD', line)
     atype_id = int(line.partition('AType:')[2][:2])
     if 0 <= atype_id <= 21:
         data = atype_handlers[atype_id].match(line.strip()).groupdict()
