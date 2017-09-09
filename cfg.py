@@ -42,6 +42,7 @@ class MainCfg:
     logs_directory = Path(conf['DSERVER']['logs_directory'])
     arch_directory = Path(conf['DSERVER']['arch_directory'])
     logs_copy_directory = Path(conf['NEW_STATS']['logs_directory'])
+    zips_copy_directory = Path(conf['NEW_STATS']['zips_directory'])
     chat_directory = Path(conf['DSERVER']['chat_directory'])
     msrc_directory = Path(conf['NEW_STATS']['msrc_directory'])
     mission_time = {
