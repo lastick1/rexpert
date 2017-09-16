@@ -1,10 +1,11 @@
+""" Модуль взаимодействия с консолью DServer """
 import threading
 from time import sleep
 from pathlib import Path
 import queue
 import datetime
 from enum import Enum
-import socket
+from socket import socket, AF_INET, SOCK_STREAM
 # import time
 
 
@@ -13,35 +14,31 @@ class RconCommunicator:
     through Server Remote Console - 'RCon' """
 
     def __init__(self, tcp_ip, tcp_port, buffer_size=1024):
-        self.TCP_IP = tcp_ip
-        self.TCP_PORT = tcp_port
-        self.BUFFER_SIZE = buffer_size
-        self.SOCKET = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.SOCKET.settimeout(500)
-        self.CONNECTED = False
-        if self.TCP_IP and self.TCP_PORT:
+        self.tcp_ip = tcp_ip
+        self.tcp_port = tcp_port
+        self.buffer_size = buffer_size
+        self.socket = socket(AF_INET, SOCK_STREAM)
+        self.socket.settimeout(500)
+        self.connected = False
+        if self.tcp_ip and self.tcp_port:
             try:
-                self.SOCKET.connect((self.TCP_IP, self.TCP_PORT))
-                self.CONNECTED = True
+                self.socket.connect((self.tcp_ip, self.tcp_port))
+                self.connected = True
             finally:
-                self.AUTHED = False
-                self.RESPONSE_LIST = []
+                self.authed = False
+                self.response_list = []
 
-    def __rcon_send_raw_command(self, command='mystatus'):
+    def __rcon_send_raw_command(self, command: str = 'mystatus'):
         """Sends command 'as is', may cause errors"""
-        if not hasattr(self, 'TCP_IP') \
-                or not hasattr(self, 'TCP_PORT') \
-                or not hasattr(self, 'BUFFER_SIZE') \
-                or not hasattr(self, 'SOCKET'):
+        if not hasattr(self, 'tcp_ip') or not hasattr(self, 'tcp_port') \
+        or not hasattr(self, 'buffer_size') or not hasattr(self, 'socket'):
             raise NameError("RconCommunicator NotInitialized")
-        if type(command) is not str:
-            raise NameError("type(command) is not str")
 
-        if not self.CONNECTED:
+        if not self.connected:
             return None
         # формируем пакет
-        cl = len(command) + 1
-        pack_l = cl.to_bytes(2, byteorder='little')
+        command_len = len(command) + 1
+        pack_l = command_len.to_bytes(2, byteorder='little')
         pack_m = command.encode(encoding='utf-8')
         pack_z = (0).to_bytes(1, byteorder='little')
         packet = pack_l + pack_m + pack_z
@@ -49,113 +46,125 @@ class RconCommunicator:
         # добавить проверку, установлено ли соединение
         # отправляем пакет
         try:
-            self.SOCKET.send(packet)
-        except:
-            self.CONNECTED = False
+            self.socket.send(packet)
+        except: #pylint: disable=W0702
+            self.connected = False
             return None
-        resp = self.SOCKET.recv(self.BUFFER_SIZE)
-        self.RESPONSE_LIST.append((resp, command))
+        resp = self.socket.recv(self.buffer_size)
+        self.response_list.append((resp, command))
         return str(resp[2:-1], encoding="ascii")
 
     def reconnect(self):
-        self.SOCKET.close()
-        self.SOCKET = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.SOCKET.settimeout(500)
-        self.CONNECTED = False
+        """ Переподключение к консоли """
+        self.socket.close()
+        self.socket = socket(AF_INET, SOCK_STREAM)
+        self.socket.settimeout(500)
+        self.connected = False
         try:
-            self.SOCKET.connect((self.TCP_IP, self.TCP_PORT))
-            self.CONNECTED = True
+            self.socket.connect((self.tcp_ip, self.tcp_port))
+            self.connected = True
         finally:
-            self.AUTHED = False
+            self.authed = False
 
     def auth(self, user, password):
         """Authenticate communicator. Gives more permission if true"""
-        if not self.CONNECTED:
+        if not self.connected:
             return False
 
         resp = self.__rcon_send_raw_command("auth {0} {1}".format(user, password))
 
-        if len(resp):
+        if len(resp):  #pylint: disable=C1801
             if resp[-1] == "1":
-                self.AUTHED = True
+                self.authed = True
                 return True
             else:
                 # self.AUTHED = False
                 return False
-        elif type(resp) is bytes and len(resp) == 0:
-            self.AUTHED = True
+        elif isinstance(resp, bytes) and len(resp) == 0:  #pylint: disable=C1801
+            self.authed = True
             return True
         else:
             # self.AUTHED = False
             return False
 
     def server_status(self):
-        if not self.CONNECTED:
+        """ Статус сервера (типа пинг) """
+        if not self.connected:
             raise NameError("Not connected")
         resp = self.__rcon_send_raw_command("serverstatus")
         return resp
 
     def player_list(self):
-        if not self.CONNECTED:
+        """ Получение списка игроков (тяжёлая команда) """
+        if not self.connected:
             raise NameError("Not connected")
         resp = self.__rcon_send_raw_command("getplayerlist")
         return resp
 
-    def chatmsg(self, roomtype, id, message):
-        if not self.CONNECTED:
+    def chatmsg(self, roomtype, identifier, message):
+        """ Отправка сообщения в чат сервера """
+        if not self.connected:
             raise NameError("Not connected")
-        resp = self.__rcon_send_raw_command("chatmsg {0} {1} {2}".format(roomtype, id, message))
+        resp = self.__rcon_send_raw_command(
+            "chatmsg {0} {1} {2}".format(roomtype, identifier, message))
         return resp
 
     def info_message(self, message):
-        if not self.CONNECTED:
+        """ Сообщение всем пользователям """
+        if not self.connected:
             raise NameError("Not connected")
         resp = self.__rcon_send_raw_command("chatmsg 0 0 {}".format(message))
         return resp
 
     def private_message(self, account_id, message):
-        if not self.CONNECTED:
+        """ Сообщение конкретному пользователю """
+        if not self.connected:
             raise NameError("Not connected")
         return self.chatmsg(3, account_id, message)
 
     def allies_message(self, message):
-        if not self.CONNECTED:
+        """ Сообщение команде союзников """
+        if not self.connected:
             raise NameError("Not connected")
         return self.chatmsg(2, 1, message)
 
     def axis_message(self, message):
-        if not self.CONNECTED:
+        """ Сообщение команде люфтваффе """
+        if not self.connected:
             raise NameError("Not connected")
         return self.chatmsg(2, 2, message)
 
     def kick(self, name):
-        if not self.CONNECTED:
+        """ Кик пользователя """
+        if not self.connected:
             raise NameError("Not connected")
         resp = self.__rcon_send_raw_command("kick name {0}".format(name))
         return resp
 
     def ban(self, name):
-        if not self.CONNECTED:
+        """ Бан пользователя на 7 дней """
+        if not self.connected:
             raise NameError("Not connected")
         resp = self.__rcon_send_raw_command("ban name {0}".format(name))
         return resp
 
     def banuser(self, name):
-        if not self.CONNECTED:
+        """ Бан пользователя на 15 минут """
+        if not self.connected:
             raise NameError("Not connected")
         resp = self.__rcon_send_raw_command("banuser playerid {0}".format(name))
         return resp
 
     def server_input(self, server_input):
-        if not self.CONNECTED:
+        """ Отправка сервер-инпута в логику миссии """
+        if not self.connected:
             raise NameError("Not connected")
         resp = self.__rcon_send_raw_command("serverinput {0}".format(server_input))
         return resp
 
-    pass  # class
-
 
 class CommandType(Enum):
+    """ Тип команды """
     none = 0
     message = 1
     kick = 2
@@ -165,12 +174,21 @@ class CommandType(Enum):
 
 
 class Command:
-    def __init__(self, mission_name, tik=0, cmd_type=CommandType.none, account_id='', subject='', reason=''):
+    """ Команда, передаваемая серверу """
+    def __init__(
+            self,
+            mission_name: str,
+            tik: int = 0,
+            cmd_type: CommandType = CommandType.none,
+            account_id: str = '',
+            subject: str = '',
+            reason: str = ''):
         """
-        Класс команды, передаваемой серверу
-        :param tik: int
-        :param mission_name: str
-        :param subject: str
+        :param tik: тик
+        :param cmd_type: тип команды
+        :param mission_name: имя миссии
+        :param subject: тело команды (сообщение, ник)
+        :param reason: причина отправки команды
         """
         self.tik = tik
         self.cmd_type = cmd_type
@@ -183,12 +201,14 @@ class Command:
 
     @property
     def m_start(self):
-        if len(self.mission_name):
+        """ Начало миссии """
+        if self.mission_name:
             return datetime.datetime.strptime(self.mission_name, 'missionReport(%Y-%m-%d_%H-%M-%S)')
         return datetime.datetime.now()
 
     @property
-    def t(self):
+    def time_passed(self):
+        """ Время с начала миссии """
         return self.now - self.m_start
 
     def __eq__(self, other):
@@ -201,18 +221,18 @@ class Command:
 
 
 class Commander:
+    """ Класс, передающий команды/сообщения на сервер и игрокам """
     def __init__(self, config):
-        """
-        Класс, передающий команды/сообщения на сервер и игрокам
-        """
         self.commands_pool = dict()
-        self._process = Commander.__Process(config)
+        self._process = Commander._Process(config)
 
     def stop(self):
+        """ Остановка работы """
         self._process.running = False
         self._process.join()
 
-    class __Process(threading.Thread):
+    class _Process(threading.Thread):
+        """ Синлтон """
         def __init__(self, config):
             if not config:
                 return
@@ -239,7 +259,7 @@ class Commander:
             while self.running:
                 if not self.queue.empty():
                     with Path('./logs/commands_'+self.current_mission+'.txt').absolute().open(
-                            mode='a', encoding='utf-8') as cmndr_log:
+                        mode='a', encoding='utf-8') as cmndr_log:
                         cmd = self.queue.get()
                         if not self.offline_mode:
                             if cmd.mission_name == self.current_mission:
@@ -247,7 +267,10 @@ class Commander:
                                 if cmd.cmd_type == CommandType.s_input:
                                     status = self._console.server_input(cmd.text)
                                     line = '{} {} {} {}'.format(
-                                        cmd.now.strftime("[%H:%M:%S]"), status, cmd.text, cmd.reason)
+                                        cmd.now.strftime("[%H:%M:%S]"),
+                                        status,
+                                        cmd.text,
+                                        cmd.reason)
                                     if self.console_cmd_output:
                                         print(line)
                                     cmndr_log.write('{} \n'.format(line))
@@ -256,7 +279,11 @@ class Commander:
                                     if not self.test_mode:
                                         status = self._console.kick(cmd.text)
                                     line = '{} {} {} KICK [{}] - {}'.format(
-                                        cmd.now.strftime("[%H:%M:%S]"), status, cmd.account_id, cmd.text, cmd.reason)
+                                        cmd.now.strftime("[%H:%M:%S]"),
+                                        status,
+                                        cmd.account_id,
+                                        cmd.text,
+                                        cmd.reason)
                                     if self.console_cmd_output:
                                         print(line)
                                     cmndr_log.write('{} \n'.format(line))
@@ -264,7 +291,11 @@ class Commander:
                                     if not self.test_mode:
                                         status = self._console.banuser(cmd.account_id)
                                     line = '{} {} {} BAN [{}] - {}'.format(
-                                        cmd.now.strftime("[%H:%M:%S]"), status, cmd.account_id, cmd.text, cmd.reason)
+                                        cmd.now.strftime("[%H:%M:%S]"),
+                                        status,
+                                        cmd.account_id,
+                                        cmd.text,
+                                        cmd.reason)
                                     if self.console_cmd_output:
                                         print(line)
                                     cmndr_log.write('{} \n'.format(line))
@@ -272,12 +303,14 @@ class Commander:
                                     status = self._console.private_message(cmd.account_id, cmd.text)
                                     if self.console_chat_output:
                                         print(cmd.now.strftime("[%H:%M:%S]"), end=' ')
-                                        print("{} MSG [{}]: {}".format(status, cmd.account_id, cmd.text))
+                                        print("{} MSG [{}]: {}".format(
+                                            status, cmd.account_id, cmd.text))
                                 elif cmd.cmd_type == CommandType.info:
                                     status = self._console.info_message(cmd.text)
                                     if self.console_chat_output:
                                         print(cmd.now.strftime("[%H:%M:%S]"), end=' ')
-                                        print("{} MSG [{}]: {}".format(status, cmd.account_id, cmd.text))
+                                        print("{} MSG [{}]: {}".format(
+                                            status, cmd.account_id, cmd.text))
                                 cmd.is_sent = True
                             else:
                                 print("[{}] {} not processed: {} {}".format(
@@ -285,6 +318,7 @@ class Commander:
             print('Console Commander stopped')
 
     def process_commands(self, commands: list):
+        """ Обработать список команд (отправить) """
         for cmd in commands:
             if cmd.mission_name not in self.commands_pool:
                 self.commands_pool[cmd.mission_name] = []
@@ -293,9 +327,11 @@ class Commander:
                 self._process.queue.put(cmd)
 
     def update_current_mission(self, mission_name):
+        """ Обновить текущую миссию """
         self._process.current_mission = mission_name
 
     def message(self, account_id: str, text: str, reason: str = 'info message'):
+        """ Отправить сообщение """
         commands = list()
         commands.append(Command(
             '',

@@ -1,47 +1,53 @@
-from cfg import DbCfg
-import processor
+""" Основной файл для запуска """
+import datetime
+import codecs
+from cfg import DbCfg, MainCfg
+from processor import Processor
 import rcon
 import db
 import reader
 import gen
-import campaign
-import datetime
-import codecs
+from campaign import Campaign
 db.PGConnector.init(DbCfg.connection_string)
 
 
 def create_divisions_ldb():
-    c = campaign.Campaign()
-    for name in c.tvds.keys():
-        c.tvds[name].create_divisions()
+    """ Создать базу локаций, обозначающих расположения дивизий """
+    campaign = Campaign()
+    for name in campaign.tvds.keys():
+        campaign.tvds[name].create_divisions()
 
 
-def export(name):
-    c = campaign.Campaign()
-    with codecs.open(name + "_export.xgml", "w", encoding="cp1251") as f:
-        f.write(c.tvds[name].grid.serialize_xgml())
-        f.close()
+def export(name: str):
+    """ Экспортировать граф в XGML формате """
+    campaign = Campaign()
+    with codecs.open(name + "_export.xgml", "w", encoding="cp1251") as stream:
+        stream.write(campaign.tvds[name].grid.serialize_xgml())
+        stream.close()
 
 
 def reset():
+    """ Сбросить состояние графа """
     db.PGConnector.Graph.reset()
-    c = campaign.Campaign()
-    for name in c.tvds.keys():
-        c.tvds[name].grid.read_file()
-        c.tvds[name].grid.write_db()
-        c.tvds[name].grid.read_db()
+    campaign = Campaign()
+    for name in campaign.tvds.keys():
+        campaign.tvds[name].grid.read_file()
+        campaign.tvds[name].grid.write_db()
+        campaign.tvds[name].grid.read_db()
 
 
-def generate(name, tvd_name):
-    c = campaign.Campaign()
-    c.tvds[tvd_name].update()
+def generate(name: str, tvd_name: str):
+    """ Сгенерировать миссию """
+    campaign = Campaign()
+    campaign.tvds[tvd_name].update()
     gen.Generator.make_mission(name, tvd_name)
 
 
 def run():
-    c = rcon.Commander()
-    p = processor.Processor(c)
-    reader.AtypesReader(p)
+    """ Запустить коммандер """
+    commander = rcon.Commander(MainCfg)
+    processor = Processor(commander)
+    reader.AtypesReader(processor)
 
 print(datetime.datetime.now().strftime("[%H:%M:%S] Program Start"))
 # reset()
@@ -50,4 +56,4 @@ print(datetime.datetime.now().strftime("[%H:%M:%S] Program Start"))
 # export('stalingrad')
 # generate('result1', 'moscow')
 # generate('result1', 'stalingrad')
-run()
+# run()

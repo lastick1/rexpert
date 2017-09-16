@@ -1,3 +1,4 @@
+#pylint: disable=missing-docstring,invalid-name
 from unittest import TestCase
 import geometry
 

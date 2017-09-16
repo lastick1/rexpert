@@ -1,3 +1,4 @@
+""" Обработка игроков """
 from processing.player import *
 from processing.squad import *
 import rcon
@@ -15,18 +16,20 @@ class PlayersController:
         self._commands = commands
         self.__players = players
         self.__squads = squads
-        pass
 
-    def spawn_player(self, aircraft_id, bot_id, account_id, profile_id, name, pos, aircraft_name, country_id,
-                     coal_id, airfield_id, airstart, parent_id, payload_id, fuel, skin, weapon_mods_id,
-                     cartridges, shells, bombs, rockets, form) -> None:
+    def spawn_player(self, aircraft_id, bot_id, account_id, profile_id, name, pos, aircraft_name,
+                     country_id, coal_id, airfield_id, airstart, parent_id, payload_id, fuel, skin,
+                     weapon_mods_id, cartridges, shells, bombs, rockets, form) -> None:
+        """ Обработка появления игрока """
 
-        p = Player(account_id, self.__players.find_one({'_id': account_id}))
-        p.nickname = name
+        player = Player(account_id, self.__players.find_one({'_id': account_id}))
+        player.nickname = name
         # self._commands.message(account_id, 'Hello {}!'.format(name))
-        self.__players.update_one({'_id': p.account_id}, {'$set': p.to_dict()}, upsert=True)
+        self.__players.update_one(
+            {'_id': player.account_id}, {'$set': player.to_dict()}, upsert=True)
 
     def bot_deinitialization(self, bot_id, pos):
+        """ AType 16 """
         pass
 
     def bot_eject_leave(self, bot_id, parent_id, pos):

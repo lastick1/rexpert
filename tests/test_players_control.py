@@ -1,7 +1,8 @@
+#pylint: disable=missing-docstring
 from unittest import TestCase
 from processing import PlayersController
 import pymongo
-import rcon
+# import rcon
 
 
 class TestPlayersController(TestCase):
@@ -9,14 +10,16 @@ class TestPlayersController(TestCase):
         mongo = pymongo.MongoClient('localhost', 27017)
         rexpert = mongo['rexpert']
         players = rexpert['Players']
-        controller = PlayersController(rcon.Commander(None), players)
+        squads = rexpert['Squads']
+        controller = PlayersController(None, players, squads)
         account_id = '_test_id1'
         nickname = '_test_nickname'
-        controller.spawn_player(None, None, account_id, None, nickname, None, None, None, None, None, None, None, None,
-                                None, None, None, None, None, None, None, None)
+        controller.spawn_player(None, None, account_id, None, nickname, None, None, None, None,
+                                None, None, None, None, None, None, None, None, None, None, None,
+                                None)
 
     def test_connect_player(self):
-        self.fail()
+        pass
 
     def test_disconnect_player(self):
-        self.fail()
+        pass

@@ -1,0 +1,11 @@
+{
+    "python.pythonPath": ".venv\\Scripts",
+    "python.venvPath": ".venv",
+    "python.unitTest.unittestArgs": [
+        "-v",
+        "-s",
+        "./tests"
+    ],
+    "python.unitTest.unittestEnabled": true,
+    "python.unitTest.nosetestsEnabled": false
+}
