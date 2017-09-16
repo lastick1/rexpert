@@ -1,8 +1,10 @@
+""" Хелперы """
+#pylint: disable=c0103
 import math
-
 
 # http://www.ariel.com.au/a/python-point-int-poly.html
 def point_in_polygon(point, polygon):
+    """ Проверка нахождения точки в многоугольнике """
     x, y = point['x'], point['z']
     n = len(polygon)
     inside = False
@@ -19,10 +21,12 @@ def point_in_polygon(point, polygon):
 
 
 def distance(p1, p2):
+    """ Расстояние между точками """
     return math.hypot(p2['x'] - p1['x'], p2['z'] - p1['z'])
 
 
 def is_pos_correct(pos):
+    """ Корректность позиции (не None и не все координаты равны нулю) """
     if not pos or pos == {'x': 0.0, 'y': 0.0, 'z': 0.0}:
         return False
     return True
