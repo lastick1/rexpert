@@ -63,47 +63,47 @@ class EventsController:
         self.tik_last = tik
 
     def event_mission_start(self, tik, date, file_path, game_type_id, countries, settings, mods, preset_id):
-        " AType 0 handler "
+        "AType 0 handler"
         self.update_tik(tik)
 
     def event_hit(self, tik, ammo, attacker_id, target_id):
-        " AType 1 handler "
+        "AType 1 handler"
         self.update_tik(tik)
 
     def event_damage(self, tik, damage, attacker_id, target_id, pos):
-        " AType 2 handler "
+        "AType 2 handler"
         self.update_tik(tik)
         # дамага может не быть из-за бага логов
 
     def event_kill(self, tik, attacker_id, target_id, pos):
-        " AType 3 handler "
+        "AType 3 handler"
         self.update_tik(tik)
         # в логах так бывает что кто-то умер, а кто не известно :)
 
     def event_sortie_end(self, tik, aircraft_id, bot_id, cartridges, shells, bombs, rockets, pos):
-        " AType 4 handler "
+        "AType 4 handler"
         self.update_tik(tik)
         # бывают события дубли - проверяем
 
     def event_takeoff(self, tik, aircraft_id, pos):
-        " AType 5 handler "
+        "AType 5 handler"
         self.update_tik(tik)
 
     def event_landing(self, tik, aircraft_id, pos):
-        " AType 6 handler "
+        "AType 6 handler"
         self.update_tik(tik)
 
     def event_mission_end(self, tik):
-        " AType 7 handler "
+        "AType 7 handler"
         self.update_tik(tik)
         self.is_correctly_completed = True
 
     def event_mission_result(self, tik, object_id, coal_id, task_type_id, success, icon_type_id, pos):
-        " AType 8 handler "
+        "AType 8 handler"
         self.update_tik(tik)
 
     def event_airfield(self, tik, airfield_id, country_id, coal_id, aircraft_id_list, pos):
-        " AType 9 handler "
+        "AType 9 handler"
         self.update_tik(tik)
         if airfield_id in self.airfields.keys():
             self.airfields[airfield_id].update(country_id=country_id, coal_id=coal_id)
@@ -114,54 +114,54 @@ class EventsController:
     def event_player(self, tik, aircraft_id, bot_id, account_id, profile_id, name, pos, aircraft_name, country_id,
                      coal_id, airfield_id, airstart, parent_id, payload_id, fuel, skin, weapon_mods_id,
                      cartridges, shells, bombs, rockets, form):
-        " AType 10 handler "
+        "AType 10 handler"
         self.players_controller.spawn_player(aircraft_id, bot_id, account_id, profile_id, name, pos, aircraft_name,
                                              country_id, coal_id, airfield_id, airstart, parent_id, payload_id, fuel,
                                              skin, weapon_mods_id, cartridges, shells, bombs, rockets, form)
         self.update_tik(tik)
 
     def event_group(self, tik, group_id, members_id, leader_id):
-        " AType 11 handler "
+        "AType 11 handler"
         self.update_tik(tik)
 
     def event_game_object(self, tik, object_id, object_name, country_id, coal_id, name, parent_id):
-        " AType 12 handler "
+        "AType 12 handler"
         self.update_tik(tik)
 
     def event_influence_area(self, tik, area_id, country_id, coal_id, enabled, in_air):
-        " AType 13 handler "
+        "AType 13 handler"
         self.update_tik(tik)
 
     def event_influence_area_boundary(self, tik, area_id, boundary):
-        " AType 14 handler "
+        "AType 14 handler"
         self.update_tik(tik)
 
     def event_log_version(self, tik, version):
-        " AType 15 handler "
+        "AType 15 handler"
         self.update_tik(tik)
 
     def event_bot_deinitialization(self, tik, bot_id, pos):
-        " AType 16 handler "
+        "AType 16 handler"
         self.update_tik(tik)
 
     def event_pos_changed(self, tik, object_id, pos):
-        " AType 17 handler "
+        "AType 17 handler"
         self.update_tik(tik)
 
     def event_bot_eject_leave(self, tik, bot_id, parent_id, pos):
-        " AType 18 handler "
+        "AType 18 handler"
         self.update_tik(tik)
 
     def event_round_end(self, tik):
-        " AType 19 handler "
+        "AType 19 handler"
         self.update_tik(tik)
 
     def event_player_connected(self, tik, account_id, profile_id):
-        " AType 20 handler "
+        "AType 20 handler"
         self.update_tik(tik)
         self.players_controller.connect_player(account_id=account_id, profile_id=profile_id)
 
     def event_player_disconnected(self, tik, account_id, profile_id):
-        " AType 21 handler "
+        "AType 21 handler"
         self.update_tik(tik)
         self.players_controller.disconnect_player(account_id=account_id, profile_id=profile_id)

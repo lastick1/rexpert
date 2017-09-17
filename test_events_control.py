@@ -25,11 +25,9 @@ class TestEventsController(unittest.TestCase):
         "Тест корректного завершения миссии с наличием AType:7 в логе"
         # Arrange
         controller = EventsController(self.objects, self.players, None)
-
         # Act
         for line in pathlib.Path(TEST_LOG1).read_text().split('\n'):
             controller.process_line(line)
-
         # Assert
         self.assertEqual(True, controller.is_correctly_completed)
 

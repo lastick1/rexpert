@@ -10,7 +10,7 @@ class PlayersController:
     def __init__(
             self,
             offline_mode: bool,
-            commands: rcon.Commander,
+            commands: rcon.DServerRcon,
             players: pymongo.collection.Collection,
             squads: pymongo.collection.Collection
     ):
@@ -21,16 +21,16 @@ class PlayersController:
     def spawn_player(self, aircraft_id, bot_id, account_id, profile_id, name, pos, aircraft_name,
                      country_id, coal_id, airfield_id, airstart, parent_id, payload_id, fuel, skin,
                      weapon_mods_id, cartridges, shells, bombs, rockets, form) -> None:
-        """ Обработка появления игрока """
+        "Обработка появления игрока"
 
         player = Player(account_id, self.__players.find_one({'_id': account_id}))
         player.nickname = name
-        # self._commands.message(account_id, 'Hello {}!'.format(name))
+        self._commands.private_message(account_id, 'Hello {}!'.format(name))
         self.__players.update_one(
             {'_id': player.account_id}, {'$set': player.to_dict()}, upsert=True)
 
     def bot_deinitialization(self, bot_id, pos):
-        " AType 16 "
+        "AType 16"
         pass
 
     def bot_eject_leave(self, bot_id, parent_id, pos):

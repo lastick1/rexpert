@@ -1,3 +1,4 @@
+"Модель данных игрока"
 ID = '_id'
 NICKNAME = 'nickname'
 BAN_DATE = 'ban_expire_date'
@@ -6,7 +7,7 @@ UNLOCKS = 'unlocks'
 
 
 class Player:
-    """ Класс игрока """
+    "Класс игрока"
     def __init__(self, account_id: str, data: dict = None):
         self.account_id = account_id
         if not data:
@@ -21,6 +22,7 @@ class Player:
         self.unlocks = data[UNLOCKS]
 
     def to_dict(self):
+        "Сериализация в словарь для MongoDB"
         return {
             ID: self.account_id,
             NICKNAME: self._nickname,
@@ -30,9 +32,11 @@ class Player:
         }
 
     def get_nickname(self):
+        "Полчить ник"
         return self._nickname
 
     def set_nickname(self, value):
+        "Присвоить ник"
         if not self.previous_nicknames:
             self.previous_nicknames = list()
         if self._nickname and value != self._nickname:
@@ -40,11 +44,3 @@ class Player:
         self._nickname = value
 
     nickname = property(fget=get_nickname, fset=set_nickname, doc='Ник игрока')
-
-    """
-    @staticmethod
-    def get(account_id: str):
-        if account_id not in Player.players.keys():
-            Player.players[account_id] = Player(account_id)
-        return Player.players[account_id]
-        """
