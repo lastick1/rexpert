@@ -1,4 +1,4 @@
-#pylint: disable=missing-docstring
+"Тестирование событий, связанных с игроками"
 import unittest
 from processing import PlayersController
 import pymongo
@@ -6,12 +6,16 @@ import pymongo
 
 
 class TestPlayersController(unittest.TestCase):
-    def test_spawn_player(self):
+    "Тесты событий с обработкой данных игроков"
+    def setUp(self):
         mongo = pymongo.MongoClient('localhost', 27017)
         rexpert = mongo['rexpert']
-        players = rexpert['Players']
-        squads = rexpert['Squads']
-        controller = PlayersController(None, players, squads)
+        self.players = rexpert['Players']
+        self.squads = rexpert['Squads']
+
+    def test_spawn_player(self):
+        "Респаун игрока"
+        controller = PlayersController(True, None, self.players, self.squads)
         account_id = '_test_id1'
         nickname = '_test_nickname'
         controller.spawn_player(None, None, account_id, None, nickname, None, None, None, None,

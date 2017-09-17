@@ -1,4 +1,4 @@
-#pylint: disable=missing-docstring
+"Тестирование обработки событий"
 import unittest
 import pathlib
 from db import PGConnector
@@ -12,18 +12,26 @@ PGConnector.init(CONFIG.connection_string)
 TEST_LOG1 = './testdata/spawn_takeoff_landing_despawn_missionReport(2017-09-17_09-05-09)[0].txt'
 
 class TestEventsController(unittest.TestCase):
-    def test_processing(self):
-        objects = PGConnector.get_objects_dict()
+    "Тесты базовой обработки логов с новой базой на каждом тесте"
+    def setUp(self):
+        "Настройка базы перед тестом"
         mongo = pymongo.MongoClient('localhost', 27017)
-        rexpert = mongo['rexpert']
-        players = PlayersController(None, rexpert['Players'], rexpert['Squads'])
-        controller = EventsController(objects, players, None)
-        parsed = []
-        text = pathlib.Path(TEST_LOG1).read_text()
-        for line in text.split('\n'):
+        mongo.drop_database('test_rexpert')
+        rexpert = mongo['test_rexpert']
+        self.players = PlayersController(True, None, rexpert['Players'], rexpert['Squads'])
+        self.objects = PGConnector.get_objects_dict()
+
+    def test_processing_with_atype_7(self):
+        "Тест корректного завершения миссии с наличием AType:7 в логе"
+        # Arrange
+        controller = EventsController(self.objects, self.players, None)
+
+        # Act
+        for line in pathlib.Path(TEST_LOG1).read_text().split('\n'):
             controller.process_line(line)
-            parsed.append(line)
-        print(text)
+
+        # Assert
+        self.assertEqual(True, controller.is_correctly_completed)
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(verbosity=2)

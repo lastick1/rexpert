@@ -9,6 +9,7 @@ class PlayersController:
     """ Контроллер обработки событий, связанных с игроками """
     def __init__(
             self,
+            offline_mode: bool,
             commands: rcon.Commander,
             players: pymongo.collection.Collection,
             squads: pymongo.collection.Collection
@@ -29,7 +30,7 @@ class PlayersController:
             {'_id': player.account_id}, {'$set': player.to_dict()}, upsert=True)
 
     def bot_deinitialization(self, bot_id, pos):
-        """ AType 16 """
+        " AType 16 "
         pass
 
     def bot_eject_leave(self, bot_id, parent_id, pos):

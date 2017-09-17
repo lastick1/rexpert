@@ -232,7 +232,7 @@ class Commander:
         self._process.join()
 
     class _Process(threading.Thread):
-        """ Синлтон """
+        """ Синглтон """
         def __init__(self, config):
             if not config:
                 return
