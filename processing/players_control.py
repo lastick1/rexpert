@@ -1,6 +1,6 @@
 """ Обработка игроков """
-from processing.player import *
-from processing.squad import *
+from processing.player import Player
+from processing.squad import Squad
 import rcon
 import pymongo
 

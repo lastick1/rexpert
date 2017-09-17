@@ -1,11 +1,11 @@
 #pylint: disable=missing-docstring
-from unittest import TestCase
+import unittest
 from processing import PlayersController
 import pymongo
 # import rcon
 
 
-class TestPlayersController(TestCase):
+class TestPlayersController(unittest.TestCase):
     def test_spawn_player(self):
         mongo = pymongo.MongoClient('localhost', 27017)
         rexpert = mongo['rexpert']

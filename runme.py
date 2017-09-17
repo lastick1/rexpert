@@ -1,14 +1,13 @@
 """ Основной файл для запуска """
 import datetime
 import codecs
-from cfg import DbCfg, MainCfg
 from processor import Processor
 import rcon
 import db
 import reader
 import gen
 from campaign import Campaign
-db.PGConnector.init(DbCfg.connection_string)
+from configs import Main
 
 
 def create_divisions_ldb():
@@ -45,8 +44,9 @@ def generate(name: str, tvd_name: str):
 
 def run():
     """ Запустить коммандер """
-    commander = rcon.Commander(MainCfg)
-    processor = Processor(commander)
+    config = Main()
+    commander = rcon.Commander(config)
+    processor = Processor(config, commander)
     reader.AtypesReader(processor)
 
 print(datetime.datetime.now().strftime("[%H:%M:%S] Program Start"))

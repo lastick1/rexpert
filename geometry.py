@@ -1,8 +1,9 @@
+"Расчёт координат"
 from math import acos, pi
 
 
-class Segment:
-    """ Класс отрезка """
+class Segment:  #pylint: disable=R0902
+    "Класс отрезка"
     def __init__(self, x1, y1, x2, y2):
         # http://school-collection.edu.ru/catalog/res/925c1429-c4d9-43b8-8b08-ac6d44f57906/view/
         self._center = (x1 + x2)/2, (y1 + y2)/2
@@ -37,7 +38,7 @@ class Segment:
 
     @property
     def angle(self):
-        """ Угол между (0.0, 1.0) вектором и параллельной отрезку прямой, проходящей через (0.0, 0.0) """
+        "Угол между (0.0, 1.0) вектором и параллельной отрезку прямой, проходящей через (0.0, 0.0)"
         return acos(self._cos_a) * 180 / pi
 
     def parallel_segments(self, distance):
@@ -47,12 +48,14 @@ class Segment:
         :rtype: (Segment, Segment)
         """
         n_vector = self._nx * distance, self._ny * distance
-        s1 = Segment(self._x1 + n_vector[0], self._y1 + n_vector[1], self._x2 + n_vector[0], self._y2 + n_vector[1])
-        s2 = Segment(self._x1 - n_vector[0], self._y1 - n_vector[1], self._x2 - n_vector[0], self._y2 - n_vector[1])
-        return s1, s2
+        seg1 = Segment(self._x1 + n_vector[0], self._y1 + n_vector[1],
+                       self._x2 + n_vector[0], self._y2 + n_vector[1])
+        seg2 = Segment(self._x1 - n_vector[0], self._y1 - n_vector[1],
+                       self._x2 - n_vector[0], self._y2 - n_vector[1])
+        return seg1, seg2
 
 
-class Point:
+class Point:  #pylint: disable=C0103,C0111
     """ Класс точки """
     def __init__(self, x=0.0, z=0.0, country=None):
         self.x = x

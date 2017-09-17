@@ -1,9 +1,10 @@
 #pylint: disable=missing-docstring,invalid-name
-from unittest import TestCase
+import unittest
 import geometry
 
+TEST_LOG1 = './testdata/spawn_takeoff_landing_despawn_missionReport(2017-09-17_09-05-09)[0].txt'
 
-class TestSegment(TestCase):
+class TestSegment(unittest.TestCase):
     def test_length_must_equal_5_for_345_triangle(self):
         hypotenuse = geometry.Segment(3, 4, 6, 8)
         self.assertEqual(hypotenuse.length, 5)
@@ -29,7 +30,7 @@ class TestSegment(TestCase):
         self.assertEqual((s2._x1, s2._y1, s2._x2, s2._y2), (1, 1, 4, 1))
 
 
-class TestPoint(TestCase):
+class TestPoint(unittest.TestCase):
     def test_is_in_area_must_be_true_for_1_1_and_square_size_of_2(self):
         point = geometry.Point(1, 1)
         area = [

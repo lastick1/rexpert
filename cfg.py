@@ -1,3 +1,5 @@
+""" Конфиги """
+# pylint: disable=no-member
 from pathlib import Path
 import json
 import configparser
@@ -51,6 +53,7 @@ class MainCfg:
 
 
 class DbCfg:
+    """ Конфиг подключения к базе данных """
     connection_string = 'dbname={} host={} port={} user={} password={}'.format(
         conf['STATS']['database'],
         conf['STATS']['host'],

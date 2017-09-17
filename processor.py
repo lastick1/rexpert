@@ -1,31 +1,31 @@
+" Основной обработчик "
 from datetime import datetime
 import threading
+from pathlib import Path
 import rcon
 import db
 import campaign
 import business
 import processing
-from pathlib import Path
 import gen
-date_format = 'missionReport(%Y-%m-%d_%H-%M-%S)'
+FORMAT_D = 'missionReport(%Y-%m-%d_%H-%M-%S)'
 
-connector = db.PGConnector
+CONNECTOR = db.PGConnector
 
 
 def log_this(msg, m_name):
-    with Path('./logs/timing_log_' + m_name + '.txt').open(
-            mode='a', encoding='utf-8') as f:
-        f.write(msg)
-        f.write('\n')
+    " Залогировать "
+    with Path('./logs/timing_log_' + m_name + '.txt').open(mode='a', encoding='utf-8') as stream:
+        stream.write(msg)
+        stream.write('\n')
 
 
-class Processor:
-    def __init__(self, commander):
-        """ Класс контроля за обработкой
-        :type commander: rcon.Commander """
+class Processor:  #pylint: disable=R0902
+    " Класс контроля за обработкой "
+    def __init__(self, config, commander: rcon.Commander):
         self.campaign = campaign.Campaign()
-        self.objects_dict = connector.get_objects_dict()
-        self.players_controller = processing.PlayersController()
+        self.objects_dict = CONNECTOR.get_objects_dict()
+        self.players_controller = processing.PlayersController(commander, None, None)
         self.ground_controller = processing.GroundController()
         self.controller = processing.EventsController(
             self.objects_dict,
@@ -45,18 +45,19 @@ class Processor:
         if not self.last_mission:
             self.last_mission = m_name
         else:
-            if datetime.strptime(m_name, date_format) > datetime.strptime(self.last_mission, date_format):
+            if datetime.strptime(m_name, FORMAT_D) > datetime.strptime(self.last_mission, FORMAT_D):
                 self.last_mission = m_name
         if m_name not in self.missions.keys():
             # если миссия новая, то создаём её
             self.missions[m_name] = campaign.Mission(m_name, self.objects_dict)
         # обновление миссии новыми логами
         self.missions[m_name].update(logs)
-        if datetime.strptime(m_name, date_format) < datetime.strptime(self.last_mission, date_format):
+        if datetime.strptime(m_name, FORMAT_D) < datetime.strptime(self.last_mission, FORMAT_D):
             self.missions[m_name].complete()
         # отправка сервер инпутов об уничтоженных наземных целях
         if not self.missions[m_name].is_ended:
-            self.commander.process_commands(self.missions[m_name].commands)  # команды инфо счёта и инпуты захвата
+            # команды инфо счёта и инпуты захвата
+            self.commander.process_commands(self.missions[m_name].commands)
             self.commander.process_commands(self.missions[m_name].g_report.killed_commands)
 
         # бизнес-логика
@@ -71,15 +72,18 @@ class Processor:
         if not self.missions[m_name].is_ended:
             self.commander.process_commands(self.business[m_name].commands)
 
-        u = self.campaign.update(self.missions[m_name])
-        if u:
+        update = self.campaign.update(self.missions[m_name])
+        if update:
             # если требуется обновить следующую миссию
+            args = (update[0], update[1])
             if m_name not in self.threads.keys():
-                self.threads[m_name] = threading.Thread(args=(u[0], u[1]), target=gen.Generator.make_mission)
+                self.threads[m_name] = threading.Thread(
+                    args=args, target=gen.Generator.make_mission)
                 self.threads[m_name].start()
             else:
                 self.threads[m_name].join()
-                self.threads[m_name] = threading.Thread(args=(u[0], u[1]), target=gen.Generator.make_mission)
+                self.threads[m_name] = threading.Thread(
+                    args=args, target=gen.Generator.make_mission)
                 self.threads[m_name].start()
 
     def consume(self, m_name, logs):
@@ -91,5 +95,5 @@ class Processor:
         last_atype = 0
         if m_name in self.missions.keys():
             last_atype = self.missions[m_name].last_atype
-        logs = connector.Missions.select_mission_log_atypes(m_name, last_atype=last_atype)
+        logs = CONNECTOR.Missions.select_mission_log_atypes(m_name, last_atype=last_atype)
         self.consume(m_name, logs)
