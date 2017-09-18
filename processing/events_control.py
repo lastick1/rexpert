@@ -3,6 +3,7 @@ import processing.parse_mission_log_line
 import logging
 from .players_control import PlayersController
 from .ground_control import GroundController
+from .missions_control import CampaignController
 from .objects import Airfield
 
 
@@ -11,30 +12,34 @@ class EventsController:
             self,
             objects: dict,
             players_controller: PlayersController,
-            ground_controller: GroundController
+            ground_controller: GroundController,
+            campaign_controller: CampaignController
     ):
         """
         Контроллер обработки событий из логов
         :param objects: Справочник объектов в логах
         :param players_controller: Контроллер игроков
         :param ground_controller: Контроллер наземки
+        :param campaign_controller: Контроллер кампании и миссий
         """
         self.objects = objects
         self.tik_last = 0
         self.players_controller = players_controller
         self.ground_controller = ground_controller
+        self.campaign_controller = campaign_controller
         self.is_correctly_completed = False
         self.countries = dict()
         self.airfields = dict()
 
         # порядок важен т.к. позиция в tuple соответствует ID события
-        self.events_handlers = (self.event_mission_start, self.event_hit, self.event_damage, self.event_kill,
-                                self.event_sortie_end, self.event_takeoff, self.event_landing, self.event_mission_end,
-                                self.event_mission_result, self.event_airfield, self.event_player, self.event_group,
-                                self.event_game_object, self.event_influence_area, self.event_influence_area_boundary,
-                                self.event_log_version, self.event_bot_deinitialization, self.event_pos_changed,
-                                self.event_bot_eject_leave, self.event_round_end, self.event_player_connected,
-                                self.event_player_disconnected)
+        self.events_handlers = (
+            self.event_mission_start, self.event_hit, self.event_damage, self.event_kill,
+            self.event_sortie_end, self.event_takeoff, self.event_landing, self.event_mission_end,
+            self.event_mission_result, self.event_airfield, self.event_player, self.event_group,
+            self.event_game_object, self.event_influence_area, self.event_influence_area_boundary,
+            self.event_log_version, self.event_bot_deinitialization, self.event_pos_changed,
+            self.event_bot_eject_leave, self.event_round_end, self.event_player_connected,
+            self.event_player_disconnected)
     
     def process_line(self, line: str):
         "Точка входа обработки события"
@@ -65,6 +70,8 @@ class EventsController:
     def event_mission_start(self, tik, date, file_path, game_type_id, countries, settings, mods, preset_id):
         "AType 0 handler"
         self.update_tik(tik)
+        self.campaign_controller.start_mission(
+            date, file_path, game_type_id, countries, settings, mods, preset_id)
 
     def event_hit(self, tik, ammo, attacker_id, target_id):
         "AType 1 handler"
@@ -96,6 +103,7 @@ class EventsController:
     def event_mission_end(self, tik):
         "AType 7 handler"
         self.update_tik(tik)
+        self.campaign_controller.end_mission()
         self.is_correctly_completed = True
 
     def event_mission_result(self, tik, object_id, coal_id, task_type_id, success, icon_type_id, pos):

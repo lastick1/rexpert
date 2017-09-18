@@ -1,13 +1,41 @@
+"Контроль миссий и хода кампании"
+from pathlib import Path
+from datetime import datetime
 class Mission:
-    pass
+    "Миссия"
+    def __init__(self, name: str, source: Path, additional: dict):
+        self.name = name
+        self.source = source
+        self.additional = additional
 
 
-class MissionController:
-    def __init__(self):
-        pass
+class CampaignController:
+    "Контролеер"
+    def __init__(self, dogfight: Path):
+        self._dogfight = dogfight
+        self.missions = list()
 
-    def mission_start(self, date, file_path, game_type_id, countries, settings, mods, preset_id):
-        pass
+    def start_mission(self, date: datetime,
+                      file_path: str,
+                      game_type_id: int,
+                      countries: dict,
+                      settings: tuple,
+                      mods: bool,
+                      preset_id: int):
+        "AType:0"
+        name = file_path.replace(r'Multiplayer/Dogfight', '').replace('\\', '')
+        name = name.replace(r'.msnbin', '')
+        source = Path(self._dogfight.joinpath(name + '_src.Mission')).absolute()
+        additional = {
+            'date': date,
+            'game_type_id': game_type_id,
+            'countries': countries,
+            'settings': settings,
+            'mods': mods,
+            'preset_id': preset_id
+        }
+        self.missions.append(Mission(name, source, additional))
 
-    def mission_end(self):
+    def end_mission(self):
+        "AType:7"
         pass

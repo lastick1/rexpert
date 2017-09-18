@@ -3,7 +3,7 @@ import unittest
 import pathlib
 from db import PGConnector
 from configs.main import Main
-from processing import EventsController, PlayersController
+from processing import EventsController, PlayersController, CampaignController
 import pymongo
 
 CONFIG = Main()
@@ -19,12 +19,13 @@ class TestEventsController(unittest.TestCase):
         mongo.drop_database('test_rexpert')
         rexpert = mongo['test_rexpert']
         self.players = PlayersController(True, None, rexpert['Players'], rexpert['Squads'])
+        self.campaign = CampaignController(CONFIG.dogfight_folder)
         self.objects = PGConnector.get_objects_dict()
 
     def test_processing_with_atype_7(self):
         "Тест корректного завершения миссии с наличием AType:7 в логе"
         # Arrange
-        controller = EventsController(self.objects, self.players, None)
+        controller = EventsController(self.objects, self.players, None, self.campaign)
         # Act
         for line in pathlib.Path(TEST_LOG1).read_text().split('\n'):
             controller.process_line(line)
