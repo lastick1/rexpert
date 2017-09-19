@@ -2,8 +2,9 @@
 import unittest
 import pathlib
 from db import PGConnector
-from configs.main import Main
+from configs import Main, Mgen
 from processing import EventsController, PlayersController, CampaignController
+from tests import mocks
 import pymongo
 
 CONFIG = Main()
@@ -18,8 +19,11 @@ class TestEventsController(unittest.TestCase):
         mongo = pymongo.MongoClient('localhost', 27017)
         mongo.drop_database('test_rexpert')
         rexpert = mongo['test_rexpert']
-        self.players = PlayersController(True, None, rexpert['Players'], rexpert['Squads'])
-        self.campaign = CampaignController(CONFIG.dogfight_folder)
+        console = mocks.ConsoleMock()
+        self.main = CONFIG
+        self.mgen = Mgen(self.main)
+        self.players = PlayersController(True, console, rexpert['Players'], rexpert['Squads'])
+        self.campaign = CampaignController(CONFIG.dogfight_folder, CONFIG, self.mgen)
         self.objects = PGConnector.get_objects_dict()
 
     def test_processing_with_atype_7(self):

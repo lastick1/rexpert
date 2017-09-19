@@ -1,9 +1,9 @@
-""" Парсер конфига """
+"Парсер главного конфига"
 from pathlib import Path
 import configparser
 
 class Main:  # pylint: disable=R0903,R0902,C0301
-    """ Класс конфига """
+    "Класс конфига"
     _instances = 0
 
     def __init__(self, src=configparser.ConfigParser()):

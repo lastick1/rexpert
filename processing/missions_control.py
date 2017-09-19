@@ -1,6 +1,10 @@
 "Контроль миссий и хода кампании"
 from pathlib import Path
 from datetime import datetime
+from configs import Main, Mgen
+from gen import Generator
+
+
 class Mission:
     "Миссия"
     def __init__(self, name: str, source: Path, additional: dict):
@@ -11,9 +15,11 @@ class Mission:
 
 class CampaignController:
     "Контролеер"
-    def __init__(self, dogfight: Path):
+    def __init__(self, dogfight: Path, main: Main, mgen: Mgen):
         self._dogfight = dogfight
         self.missions = list()
+        self.main = main
+        self.mgen = mgen
 
     def start_mission(self, date: datetime,
                       file_path: str,
@@ -35,6 +41,8 @@ class CampaignController:
             'preset_id': preset_id
         }
         self.missions.append(Mission(name, source, additional))
+        next_name = 'result1' if name == 'result2' else 'result2'
+        Generator.make_mission(next_name, 'moscow', self.main, self.mgen)
 
     def end_mission(self):
         "AType:7"

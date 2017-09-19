@@ -14,6 +14,7 @@ class PlayersController:
             players: pymongo.collection.Collection,
             squads: pymongo.collection.Collection
     ):
+        self.use_rcon = not offline_mode
         self._commands = commands
         self.__players = players
         self.__squads = squads
@@ -25,7 +26,8 @@ class PlayersController:
 
         player = Player(account_id, self.__players.find_one({'_id': account_id}))
         player.nickname = name
-        self._commands.private_message(account_id, 'Hello {}!'.format(name))
+        if self.use_rcon:
+            self._commands.private_message(account_id, 'Hello {}!'.format(name))
         self.__players.update_one(
             {'_id': player.account_id}, {'$set': player.to_dict()}, upsert=True)
 

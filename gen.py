@@ -7,7 +7,7 @@ import os
 from pathlib import Path
 from datetime import datetime
 from geometry import Point
-from cfg import MissionGenCfg, MainCfg, LocationsCfg
+from configs import Main, Mgen, LocationsConfig
 from geometry import Segment
 
 
@@ -54,7 +54,7 @@ class Group:
 
 
 class MissionFiles:
-    def __init__(self, mission_file):
+    def __init__(self, mission_file: Path, config: Main):
         """ Класс миссии в файловой системе, для перемещения и переименования файлов миссии """
         tmp = mission_file.absolute()
         self.files = {
@@ -68,6 +68,8 @@ class MissionFiles:
             'pol': Path(''.join(str(tmp).split('.')[:-1]) + '.pol'),
             'spa': Path(''.join(str(tmp).split('.')[:-1]) + '.spa')
         }
+        self.resaver_folder = config.resaver_folder
+        self.game_folder = config.game_folder
 
     def _replace(self, dst):
         """ Перемещение файлов миссии в указанную папку с заменой """
@@ -76,7 +78,7 @@ class MissionFiles:
             self.files[file_ext].replace(tmp)
             self.files[file_ext] = tmp
 
-    def move_to_dogfight(self, name):
+    def move_to_dogfight(self, name: str):
         """ Перемещение файлов миссии в папку Multiplayer/Dogfight с заменой
         :param name: Имя файлов миссии"""
         # меняем в лист-файле пути к файлам локализации
@@ -92,11 +94,11 @@ class MissionFiles:
 
     def resave(self):
         now = str(datetime.now()).replace(":", "-").replace(" ", "_")
-        resaver_folder = str(MainCfg.resaver_folder)
-        data_folder = str(MainCfg.game_folder.joinpath(r'.\data'))
+        resaver_folder = str(self.resaver_folder)
+        data_folder = str(self.game_folder.joinpath(r'.\data'))
         with open(resaver_folder + r"\resaver_log_" + now + ".txt", "w") as resaver_log:
             args = [
-                str(MainCfg.resaver_folder) + r"\MissionResaver.exe",
+                str(self.resaver_folder) + r"\MissionResaver.exe",
                 "-d",
                 data_folder,
                 "-f",
@@ -119,37 +121,39 @@ class MissionFiles:
 
 class Generator:
     @staticmethod
-    def make_mission(file_name, tvd_name):
+    def make_mission(file_name: str, tvd_name: str, main: Main, mgen: Mgen):
         """
         Метод генерирует и перемещает миссию в папку Multiplayer/Dogfight
         :param file_name: имя файла миссии
         :param tvd_name: имя карты
         :return:
         """
-        default_params = MissionGenCfg.tvd_folders[tvd_name].joinpath(
-            MissionGenCfg.cfg[tvd_name]['default_params_dest']).absolute()
-        mission_template = MissionGenCfg.tvd_folders[tvd_name].joinpath(
-            MissionGenCfg.cfg[tvd_name]['mt_file']).absolute()
+        mission_gen_folder = main.mission_gen_folder
+        game_folder = main.game_folder
+        use_resaver = main.use_resaver
+        tvd_folder = mgen.tvd_folders[tvd_name]
+        default_params = tvd_folder.joinpath(mgen.cfg[tvd_name]['default_params_dest']).absolute()
+        mission_template = tvd_folder.joinpath(mgen.cfg[tvd_name]['mt_file']).absolute()
         print("[{}] Generating new mission: [{}]...".format(
             datetime.now().strftime("%H:%M:%S"),
             file_name
         ))
         now = str(datetime.now()).replace(":", "-").replace(" ", "_")
-        with open(str(MainCfg.mission_gen_folder) + r"\missiongen_log_" + now + ".txt", "w") as missiongen_log:
+        with open(str(mission_gen_folder) + r"\missiongen_log_" + now + ".txt", "w") as missiongen_log:
             args = [
-                str(MainCfg.mission_gen_folder) + r"\MissionGen.exe",
+                str(mission_gen_folder) + r"\MissionGen.exe",
                 "--params",
                 str(default_params),
                 "--all-langs",
                 str(mission_template)
             ]
             # запуск генератора миссии
-            generator = subprocess.Popen(args, cwd=str(MainCfg.mission_gen_folder), stdout=missiongen_log)
+            generator = subprocess.Popen(args, cwd=str(mission_gen_folder), stdout=missiongen_log)
             generator.wait()
             time.sleep(0.5)
 
-        mission_files = MissionFiles(MainCfg.game_folder.joinpath(r'.\data\Missions\result.Mission'))
-        if MainCfg.use_resaver:
+        mission_files = MissionFiles(game_folder.joinpath(r'.\data\Missions\result.Mission'), main)
+        if use_resaver:
             mission_files.resave()
         mission_files.move_to_dogfight(file_name)
         mission_files.detach_src()
@@ -269,10 +273,11 @@ class AirObjectiveLocation(Point):
 
 
 class DecorationLocation(Point):
-    def __init__(self, string, tvd_name, areas, frontline, objective_nodes):
+    def __init__(self, string, tvd_name, areas, frontline, objective_nodes, config: LocationsConfig):
         tmp = str(string).split(';')
         super().__init__(x=float(tmp[2].partition('= ')[-1]), z=float(tmp[4].partition('= ')[-1]))
         self.cls = 'decoration'
+        self.cfg = config.cfg
         self.tvd_name = tvd_name
         self.frontline = frontline
         self.objective_nodes = objective_nodes
@@ -309,8 +314,8 @@ class DecorationLocation(Point):
             for area in self.areas[country]:
                 if self.is_in_area(area):
                     for t in (x for x in self.types.keys() if self.types[x] == 1):
-                        fl_rule = LocationsCfg.cfg[self.cls][self.tvd_name][str(country)]['frontline'][t]
-                        on_rule = LocationsCfg.cfg[self.cls][self.tvd_name][str(country)]['scenario'][t]
+                        fl_rule = self.cfg[self.cls][self.tvd_name][str(country)]['frontline'][t]
+                        on_rule = self.cfg[self.cls][self.tvd_name][str(country)]['scenario'][t]
                         if len(fl_rule) or len(on_rule):
                             if len(fl_rule) and not len(on_rule):
                                 # только правило "от линии фронта"
@@ -353,10 +358,11 @@ class DecorationLocation(Point):
 
 # TODO объединить классы GroundObjectiveLocation и DecorationLocation в один класс
 class GroundObjectiveLocation(Point):
-    def __init__(self, string, tvd_name, areas, frontline, objective_nodes):
+    def __init__(self, string, tvd_name, areas, frontline, objective_nodes, config: LocationsConfig):
         tmp = str(string).split(';')
         super().__init__(x=float(tmp[2].partition('= ')[-1]), z=float(tmp[4].partition('= ')[-1]))
         self.cls = 'ground_objective'
+        self.cfg = config.cfg
         self.tvd_name = tvd_name
         self.frontline = frontline
         self.objective_nodes = objective_nodes
@@ -392,8 +398,8 @@ class GroundObjectiveLocation(Point):
             for area in self.areas[country]:
                 if self.is_in_area(area):
                     for t in (x for x in self.types.keys() if self.types[x] == 1):
-                        fl_rule = LocationsCfg.cfg[self.cls][self.tvd_name][str(country)]['frontline'][t]
-                        on_rule = LocationsCfg.cfg[self.cls][self.tvd_name][str(country)]['scenario'][t]
+                        fl_rule = self.cfg[self.cls][self.tvd_name][str(country)]['frontline'][t]
+                        on_rule = self.cfg[self.cls][self.tvd_name][str(country)]['scenario'][t]
                         if len(fl_rule) or len(on_rule):
                             if len(fl_rule) and not len(on_rule):
                                 # только правило "от линии фронта"
@@ -490,7 +496,7 @@ class AirObjectiveRecon:
 
 
 class Ldb:
-    def __init__(self, tvd_name, areas, objective_nodes, frontline):
+    def __init__(self, tvd_name, areas, objective_nodes, frontline, main: Main, mgen: Mgen):
         """
         Класс для присвоения наций локациям в базе по заданным параметрам
         :param tvd_name: имя ТВД для получения конфига локаций
@@ -498,9 +504,10 @@ class Ldb:
         :param objective_nodes: активные узлы
         :param frontline: линия фронта
         """
-        folder = MainCfg.game_folder.joinpath(Path(MissionGenCfg.cfg[tvd_name]['tvd_folder']))
-        self.ldf_file = folder.joinpath(MissionGenCfg.cfg[tvd_name]['ldf_file'])
-        with folder.joinpath(MissionGenCfg.cfg[tvd_name]['ldf_base_file']).open() as f:
+        folder = main.game_folder.joinpath(Path(mgen.cfg[tvd_name]['tvd_folder']))
+        self.ldf_file = folder.joinpath(mgen.cfg[tvd_name]['ldf_file'])
+        self.make_ldb_folder = mgen.make_ldb_folder
+        with folder.joinpath(mgen.cfg[tvd_name]['ldf_base_file']).open() as f:
             self.ldf_base = f.read()
         self.locations = {
             'airfields': [],
@@ -537,25 +544,25 @@ class Ldb:
         """ Записать текстовый файл базы локаций и скомпилировать бинарный файл с помощью make_ldb.exe """
         self.ldf_file.write_text(self.text)
         args = [
-            str(MissionGenCfg.make_ldb_folder.joinpath('.\\make_ldb.exe').absolute()),
+            str(self.make_ldb_folder.joinpath('.\\make_ldb.exe').absolute()),
             str(self.ldf_file)
         ]
         # запуск утилиты make_ldb_folder
-        generator = subprocess.Popen(args, cwd=str(MissionGenCfg.make_ldb_folder), stdout=subprocess.DEVNULL)
+        generator = subprocess.Popen(args, cwd=str(self.make_ldb_folder), stdout=subprocess.DEVNULL)
         generator.wait()
         time.sleep(3)
 
 
 class Divisions:
-    def __init__(self, tvd_name, edges):
-        folder = MainCfg.game_folder.joinpath(Path(MissionGenCfg.cfg[tvd_name]['tvd_folder']))
-        self.ldf_file = folder.joinpath(MissionGenCfg.cfg[tvd_name]['ldf_file'])
+    def __init__(self, tvd_name, edges, main: Main, mgen: Mgen):
+        folder = main.game_folder.joinpath(Path(mgen.cfg[tvd_name]['tvd_folder']))
+        self.ldf_file = folder.joinpath(mgen.cfg[tvd_name]['ldf_file'])
         self.divisions = []
         for edge in edges:
             self.divisions.append(Division(
                 edge,
-                MissionGenCfg.cfg[tvd_name]['division_margin'],
-                MissionGenCfg.cfg[tvd_name]['division_depth']
+                mgen.cfg[tvd_name]['division_margin'],
+                mgen.cfg[tvd_name]['division_depth']
             ))
 
     @property
@@ -681,14 +688,14 @@ class InfluenceArea:
 
 
 class FlGroup(Group):
-    def __init__(self, tvd_name, line, areas):
+    def __init__(self, tvd_name, line, areas, mgen: Mgen):
         """
         Класс группы линии фронта
         :param tvd_name: имя ТВД
         :param line: линия фронта (снизу вверх)
         :param areas: зоны влияния (словарь многоугольников по странам)
         """
-        super().__init__(MissionGenCfg.icons_group_files[tvd_name])
+        super().__init__(mgen.icons_group_files[tvd_name])
         self.icons = []
         self.influences = []
         self._loc_text = None
@@ -701,7 +708,7 @@ class FlGroup(Group):
             for boundary in areas[country]:
                 self.influences.append(InfluenceArea(i, boundary, country))
                 i += 1
-        ref_point = MissionGenCfg.cfg[tvd_name]['right_top']
+        ref_point = mgen.cfg[tvd_name]['right_top']
         self.ref_point_text = ref_point_helper_format.format(i, ref_point['x'], ref_point['z'])
 
     def make(self):
