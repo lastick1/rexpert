@@ -12,4 +12,5 @@ mission_report/__pycache__/
 sandbox.py
 .venv/
 .vscode/.ropeproject/
+.vs/
 /tmp/
