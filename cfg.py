@@ -43,7 +43,10 @@ class MainCfg:
     rcon_password = conf['RCON']['rcon_password']
     logs_directory = Path(conf['DSERVER']['logs_directory'])
     arch_directory = Path(conf['DSERVER']['arch_directory'])
+    logs_copy_directory = Path(conf['NEW_STATS']['logs_directory'])
+    zips_copy_directory = Path(conf['NEW_STATS']['zips_directory'])
     chat_directory = Path(conf['DSERVER']['chat_directory'])
+    msrc_directory = Path(conf['NEW_STATS']['msrc_directory'])
     mission_time = {
         'h': int(conf['GAMEPLAY']['mission_time'].split(sep=':')[0]),
         'm': int(conf['GAMEPLAY']['mission_time'].split(sep=':')[1]),

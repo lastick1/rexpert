@@ -73,10 +73,10 @@
     "daytime_csv": "daytime.csv",
     "airfields_csv": "stalin_fields.csv",
     "stages": [
-      { "id": 5, "start": "01.05.1942", "end": "01.07.1942", "red": "rus_period_5.Group", "blue": "ger_period_5.Group" },
-      { "id": 6, "start": "01.07.1942", "end": "01.09.1942", "red": "rus_period_6.Group", "blue": "ger_period_6.Group" },
-      { "id": 7, "start": "01.09.1942", "end": "01.11.1942", "red": "rus_period_7.Group", "blue": "ger_period_7.Group" },
-      { "id": 8, "start": "01.11.1942", "end": "01.02.1943", "red": "rus_period_8.Group", "blue": "ger_period_8.Group" }
+      { "id": 5, "start": "01.07.1942", "end": "01.08.1942", "red": "rus_period_5.Group", "blue": "ger_period_5.Group" },
+      { "id": 6, "start": "01.08.1942", "end": "01.09.1942", "red": "rus_period_6.Group", "blue": "ger_period_6.Group" },
+      { "id": 7, "start": "01.09.1942", "end": "01.10.1942", "red": "rus_period_7.Group", "blue": "ger_period_7.Group" },
+      { "id": 8, "start": "01.10.1942", "end": "01.12.1942", "red": "rus_period_8.Group", "blue": "ger_period_8.Group" }
     ],
     "default_templates": {
       "red": "default_red_af.Group",

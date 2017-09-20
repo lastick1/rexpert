@@ -159,6 +159,35 @@ class Generator:
         mission_files.detach_src()
         print("... generation done!")
 
+    @staticmethod
+    def save_files_for_zlo(file_name):
+        """ Копирование файлов для -DED-Zlodey """
+        suffix = '_src'
+        mission = '.Mission'
+        if file_name == 'result1':
+            src = 'result2'
+        else:
+            src = 'result1'
+        src_file = MainCfg.dogfight_folder.joinpath(src + suffix + mission)
+        dst_file = MainCfg.msrc_directory.joinpath(src + mission)
+        shutil.copyfile(str(src_file), str(dst_file))
+
+        logs_dir = MainCfg.arch_directory.joinpath('mission_report_backup')
+        now = datetime.now()
+        for year in logs_dir.glob(str(now.year)):
+            for month in year.glob(str(now.month)):
+                days = dict()
+                for day in month.glob('*'):
+                    days[int(day.parts[len(day.parts) - 1])] = day
+                    pass
+                keys = sorted(days.keys())
+                last = days[keys[len(keys) - 1]]
+                archives = sorted(last.glob('*.zip'))
+                last_arch = Path(archives[len(archives) - 1])
+                name = last_arch.parts[len(last_arch.parts) - 1]
+                shutil.copyfile(str(last_arch), str(MainCfg.zips_copy_directory.joinpath(name)))
+                return
+
 
 airfields_raw_re = re.compile(
     '\nAirfield\n\{[\n\sa-zA-Z0-9=;._ "]*\n\s*}'
