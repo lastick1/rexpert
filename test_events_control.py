@@ -7,7 +7,7 @@ from processing import EventsController, PlayersController, CampaignController
 from tests import mocks
 import pymongo
 
-CONFIG = Main()
+CONFIG = Main(pathlib.Path(r'.\tmp\conf.ini'))
 PGConnector.init(CONFIG.connection_string)
 
 TEST_LOG1 = './testdata/spawn_takeoff_landing_despawn_missionReport(2017-09-17_09-05-09)[0].txt'
@@ -24,7 +24,7 @@ class TestEventsController(unittest.TestCase):
         self.mgen = Mgen(self.main)
         self.players = PlayersController(True, console, rexpert['Players'], rexpert['Squads'])
         self.campaign = CampaignController(CONFIG.dogfight_folder, CONFIG, self.mgen)
-        self.objects = PGConnector.get_objects_dict()
+        self.objects = mocks.PGConnectorMock.get_objects_dict()  # PGConnector.get_objects_dict()
 
     def test_processing_with_atype_7(self):
         "Тест корректного завершения миссии с наличием AType:7 в логе"
