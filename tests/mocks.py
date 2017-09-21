@@ -19,9 +19,13 @@ class ConsoleMock(rcon.DServerRcon):
     def __init__(self):
         super().__init__('127.0.0.1', '8991')
         self.recieved_private_messages = 0
+        self.banned = []
 
     def private_message(self, account_id: str, message: str):
         self.recieved_private_messages += 1
+
+    def banuser(self, name):
+        self.banned.append(name)
 
 class PGConnectorMock(db.PGConnector):
     "Заглушка коннектора к postgresql"

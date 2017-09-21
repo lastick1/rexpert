@@ -1,4 +1,5 @@
 """ Обработка игроков """
+import datetime
 from processing.player import Player
 from processing.squad import Squad
 import rcon
@@ -45,7 +46,10 @@ class PlayersController:
         pass
 
     def connect_player(self, account_id: str, profile_id: str) -> None:
-        pass
+        "AType 20"
+        player = Player(account_id, self.__players.find_one({'_id': account_id}))
+        if player.ban_expire_date and player.ban_expire_date > datetime.datetime.now():
+            self._commands.banuser(player.account_id)
 
     def disconnect_player(self, account_id: str, profile_id: str) -> None:
         pass
