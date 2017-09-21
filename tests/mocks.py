@@ -31,6 +31,9 @@ class PGConnectorMock(db.PGConnector):
 
 class GeneratorMock(gen.Generator):
     "Заглушка генератора миссий"
-    @staticmethod
-    def make_mission(file_name: str, tvd_name: str, main: configs.Main, mgen: configs.Mgen):
-        pass
+    def __init__(self, main: MainMock, mgen: MgenMock):
+        super().__init__(main, mgen)
+        self.generations = 0
+
+    def make_mission(self, file_name: str, tvd_name: str):
+        self.generations += 1

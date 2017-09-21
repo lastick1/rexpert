@@ -43,7 +43,7 @@ class CampaignController:
         }
         self.missions.append(Mission(name, source, additional))
         next_name = 'result1' if name == 'result2' else 'result2'
-        self.generator.make_mission(next_name, 'moscow', self.main, self.mgen)
+        self.generator.make_mission(next_name, 'moscow')
 
     def end_mission(self):
         "AType:7"

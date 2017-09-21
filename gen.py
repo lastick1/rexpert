@@ -54,7 +54,7 @@ class Group:
 
 
 class MissionFiles:
-    def __init__(self, mission_file: Path, config: Main):
+    def __init__(self, mission_file: Path, game_folder: Path, resaver_folder: Path):
         """ Класс миссии в файловой системе, для перемещения и переименования файлов миссии """
         tmp = mission_file.absolute()
         self.files = {
@@ -68,8 +68,8 @@ class MissionFiles:
             'pol': Path(''.join(str(tmp).split('.')[:-1]) + '.pol'),
             'spa': Path(''.join(str(tmp).split('.')[:-1]) + '.spa')
         }
-        self.resaver_folder = config.resaver_folder
-        self.game_folder = config.game_folder
+        self.resaver_folder = resaver_folder
+        self.game_folder = game_folder
 
     def _replace(self, dst):
         """ Перемещение файлов миссии в указанную папку с заменой """
@@ -120,18 +120,23 @@ class MissionFiles:
 
 
 class Generator:
-    @staticmethod
-    def make_mission(file_name: str, tvd_name: str, main: Main, mgen: Mgen):
+    def __init__(self, main: Main, mgen: Mgen):
+        self.game_folder = main.game_folder
+        self.mission_gen_folder = main.mission_gen_folder
+        self.resaver_folder = main.resaver_folder
+        self.dogfight_folder = main.dogfight_folder
+        self.msrc_directory = main.msrc_directory
+        self.use_resaver = main.use_resaver
+        self.tvd_folders = mgen.tvd_folders
+
+    def make_mission(self, file_name: str, tvd_name: str):
         """
         Метод генерирует и перемещает миссию в папку Multiplayer/Dogfight
         :param file_name: имя файла миссии
         :param tvd_name: имя карты
         :return:
         """
-        mission_gen_folder = main.mission_gen_folder
-        game_folder = main.game_folder
-        use_resaver = main.use_resaver
-        tvd_folder = mgen.tvd_folders[tvd_name]
+        tvd_folder = self.tvd_folders[tvd_name]
         default_params = tvd_folder.joinpath(mgen.cfg[tvd_name]['default_params_dest']).absolute()
         mission_template = tvd_folder.joinpath(mgen.cfg[tvd_name]['mt_file']).absolute()
         print("[{}] Generating new mission: [{}]...".format(
@@ -139,28 +144,30 @@ class Generator:
             file_name
         ))
         now = str(datetime.now()).replace(":", "-").replace(" ", "_")
-        with open(str(mission_gen_folder) + r"\missiongen_log_" + now + ".txt", "w") as missiongen_log:
+        with open(str(self.mission_gen_folder) + r"\missiongen_log_" + now + ".txt", "w") as missiongen_log:
             args = [
-                str(mission_gen_folder) + r"\MissionGen.exe",
+                str(self.mission_gen_folder) + r"\MissionGen.exe",
                 "--params",
                 str(default_params),
                 "--all-langs",
                 str(mission_template)
             ]
             # запуск генератора миссии
-            generator = subprocess.Popen(args, cwd=str(mission_gen_folder), stdout=missiongen_log)
+            generator = subprocess.Popen(args, cwd=str(self.mission_gen_folder), stdout=missiongen_log)
             generator.wait()
             time.sleep(0.5)
 
-        mission_files = MissionFiles(game_folder.joinpath(r'.\data\Missions\result.Mission'), main)
-        if use_resaver:
+        mission_files = MissionFiles(
+            self.game_folder.joinpath(r'.\data\Missions\result.Mission'),
+            self.game_folder,
+            self.resaver_folder)
+        if self.use_resaver:
             mission_files.resave()
         mission_files.move_to_dogfight(file_name)
         mission_files.detach_src()
         print("... generation done!")
 
-    @staticmethod
-    def save_files_for_zlo(file_name):
+    def save_files_for_zlo(self, file_name):
         """ Копирование файлов для -DED-Zlodey """
         suffix = '_src'
         mission = '.Mission'
@@ -168,26 +175,9 @@ class Generator:
             src = 'result2'
         else:
             src = 'result1'
-        src_file = MainCfg.dogfight_folder.joinpath(src + suffix + mission)
-        dst_file = MainCfg.msrc_directory.joinpath(src + mission)
+        src_file = self.dogfight_folder.joinpath(src + suffix + mission)
+        dst_file = self.msrc_directory.joinpath(src + mission)
         shutil.copyfile(str(src_file), str(dst_file))
-
-        logs_dir = MainCfg.arch_directory.joinpath('mission_report_backup')
-        now = datetime.now()
-        for year in logs_dir.glob(str(now.year)):
-            for month in year.glob(str(now.month)):
-                days = dict()
-                for day in month.glob('*'):
-                    days[int(day.parts[len(day.parts) - 1])] = day
-                    pass
-                keys = sorted(days.keys())
-                last = days[keys[len(keys) - 1]]
-                archives = sorted(last.glob('*.zip'))
-                last_arch = Path(archives[len(archives) - 1])
-                name = last_arch.parts[len(last_arch.parts) - 1]
-                shutil.copyfile(str(last_arch), str(MainCfg.zips_copy_directory.joinpath(name)))
-                return
-
 
 airfields_raw_re = re.compile(
     '\nAirfield\n\{[\n\sa-zA-Z0-9=;._ "]*\n\s*}'
