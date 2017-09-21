@@ -1,6 +1,18 @@
 "Заглушки, фальшивки и т.п. для тестирования"
+import pathlib
 import rcon
 import db
+import gen
+import configs
+
+class MainMock(configs.Main):
+    "Заглушка конфига"
+    def __init__(self, path: pathlib.Path):
+        super().__init__(path=path)
+
+class MgenMock(configs.Mgen):
+    "Заглушка конфига генерации миссий"
+    pass
 
 class ConsoleMock(rcon.DServerRcon):
     "Заглушка коммандера"
@@ -16,3 +28,9 @@ class PGConnectorMock(db.PGConnector):
     @staticmethod
     def get_objects_dict():
         return {}
+
+class GeneratorMock(gen.Generator):
+    "Заглушка генератора миссий"
+    @staticmethod
+    def make_mission(file_name: str, tvd_name: str, main: configs.Main, mgen: configs.Mgen):
+        pass

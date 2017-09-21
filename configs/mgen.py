@@ -11,7 +11,8 @@ class Mgen:
         Mgen._instances += 1
         if Mgen._instances > 1:
             raise NameError('Too much Mgen instances')
-        src = json.load(open('.\\configs\\missiongen.json'))
+        with open('.\\configs\\missiongen.json') as stream:
+            src = json.load(stream)
         self.cfg = src
         self.maps = src['maps']
         self.tvd_folders = {x: main.game_folder.joinpath(src[x]['tvd_folder']).absolute()

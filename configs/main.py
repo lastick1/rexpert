@@ -11,7 +11,7 @@ class Main:  # pylint: disable=R0903,R0902,C0301
         if Main._instances > 1:
             raise NameError('Too much Main instances')
         src = configparser.ConfigParser()
-        src.read(path.absolute())
+        src.read(str(path.absolute()))
         self.game_folder = Path(src['PROGRAM']['game_folder']).absolute()
         self.dogfight_folder = self.game_folder.joinpath(r'.\data\Multiplayer\Dogfight').absolute()
         self.mission_gen_folder = Path(src['MISSIONGEN']['mission_gen_folder']).absolute()

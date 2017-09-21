@@ -1,14 +1,9 @@
 "Тестирование обработки событий"
 import unittest
 import pathlib
-from db import PGConnector
-from configs import Main, Mgen
 from processing import EventsController, PlayersController, CampaignController
 from tests import mocks
 import pymongo
-
-CONFIG = Main(pathlib.Path(r'.\tmp\conf.ini'))
-PGConnector.init(CONFIG.connection_string)
 
 TEST_LOG1 = './testdata/spawn_takeoff_landing_despawn_missionReport(2017-09-17_09-05-09)[0].txt'
 
@@ -20,11 +15,11 @@ class TestEventsController(unittest.TestCase):
         mongo.drop_database('test_rexpert')
         rexpert = mongo['test_rexpert']
         console = mocks.ConsoleMock()
-        self.main = CONFIG
-        self.mgen = Mgen(self.main)
+        self.main = mocks.MainMock(pathlib.Path(r'.\testdata\conf.ini'))
+        self.mgen = mocks.MgenMock(self.main)
         self.players = PlayersController(True, console, rexpert['Players'], rexpert['Squads'])
-        self.campaign = CampaignController(CONFIG.dogfight_folder, CONFIG, self.mgen)
-        self.objects = mocks.PGConnectorMock.get_objects_dict()  # PGConnector.get_objects_dict()
+        self.campaign = CampaignController(self.main, self.mgen, mocks.GeneratorMock)
+        self.objects = mocks.PGConnectorMock.get_objects_dict()
 
     def test_processing_with_atype_7(self):
         "Тест корректного завершения миссии с наличием AType:7 в логе"

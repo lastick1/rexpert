@@ -15,11 +15,12 @@ class Mission:
 
 class CampaignController:
     "Контролеер"
-    def __init__(self, dogfight: Path, main: Main, mgen: Mgen):
-        self._dogfight = dogfight
+    def __init__(self, main: Main, mgen: Mgen, generator: Generator):
+        self._dogfight = main.dogfight_folder
         self.missions = list()
         self.main = main
         self.mgen = mgen
+        self.generator = generator
 
     def start_mission(self, date: datetime,
                       file_path: str,
@@ -42,7 +43,7 @@ class CampaignController:
         }
         self.missions.append(Mission(name, source, additional))
         next_name = 'result1' if name == 'result2' else 'result2'
-        Generator.make_mission(next_name, 'moscow', self.main, self.mgen)
+        self.generator.make_mission(next_name, 'moscow', self.main, self.mgen)
 
     def end_mission(self):
         "AType:7"
