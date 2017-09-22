@@ -24,6 +24,7 @@ types_radius = {
 
 
 class Ground:
+    "Класс наземной цели"
     def __init__(self, server_input):
         self.name = server_input['name']
         self.x = server_input['XPos']
@@ -31,13 +32,16 @@ class Ground:
         self.killed_objects = set()
 
     def try_add_kill(self, kill):
-        def distance(x1, y1, x2, y2):
-            return ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
+        "Попытаться добавить килл"
+        def distance(x_1, y_1, x_2, y_2):
+            "Расстояние между точками"
+            return ((x_1 - x_2) ** 2 + (y_1 - y_2) ** 2) ** 0.5
         if distance(kill.last_pos['x'], kill.last_pos['z'], self.x, self.z) < self.radius:
             self.killed_objects.add(kill)
 
     @property
     def g_type(self):
+        "Тип цели"
         if 'warehouse' in self.name:
             return 'warehouse'
         elif 'bridge' in self.name:
@@ -57,6 +61,7 @@ class Ground:
 
     @property
     def killed(self):
+        "Убита ли цель"
         if 'half' in self.name and len(self.killed_objects) > int(types_hp[self.g_type] / 2):
             return True
         if len(self.killed_objects) > types_hp[self.g_type]:
@@ -66,6 +71,7 @@ class Ground:
 
     @property
     def radius(self):
+        "Радиус цели"
         return types_radius[self.g_type]
 
     def __str__(self):
@@ -73,9 +79,8 @@ class Ground:
 
 
 class GroundReport:
-    def __init__(self, mission_src, mission_name):
-        """ Класс, считающий уничтожение наземных целей
-        :type mission_src: mission_report.mission_src.MissionSrc """
+    "Класс, считающий уничтожение наземных целей"
+    def __init__(self, mission_src: mission_report.mission_src.MissionSrc, mission_name: str):
         self.src = mission_src
         self.mission_name = mission_name
         self.grounds = []
@@ -84,6 +89,7 @@ class GroundReport:
                 self.grounds.append(Ground(server_input))
 
     def process_ground_kills(self, sorties):
+        "обработать килы наземных целей"
         for sortie in sorties:
             for kill_list in sortie.killboard:
                 for kill in sortie.killboard[kill_list]:
@@ -92,14 +98,5 @@ class GroundReport:
 
     @property
     def killed_grounds_names(self):
+        "Названия убитых наземных целей (сервер инпуты)"
         return [x.name for x in self.grounds if x.killed]
-
-    @property
-    def killed_commands(self):
-        return [
-            Command(
-                self.mission_name,
-                cmd_type=CommandType.s_input,
-                subject=x.name)
-            for x in self.grounds if x.killed
-            ]
