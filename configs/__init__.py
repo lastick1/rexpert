@@ -1,3 +1,5 @@
 " Модуль работы с конфигами "
-from configs.main import Main
-from configs.mgen import Mgen, LocationsConfig
+from .main import Main
+from .mgen import Mgen, LocationsConfig
+from .game import Gameplay
+from .draw import Draw

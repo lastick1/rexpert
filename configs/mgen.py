@@ -40,3 +40,8 @@ class LocationsConfig:
     "Конфиг генерации базы локаций"
     def __init__(self):
         self.cfg = json.load(open('.\\configs\\loc_cfg.json'))
+
+class GeneratorParamsConfig:
+    "Конфиг дефолтпарамсов"
+    def __init__(self):
+        self.cfg = json.load(open('.\\configs\\dfpr.json'))
