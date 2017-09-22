@@ -2,13 +2,12 @@
 import xml.etree.ElementTree as Et
 import queue
 import random
-import db
 import geometry
 import configs
 
 class Node(geometry.Point):
     "Узел графа"
-    def __init__(self, key, x, z, country, is_aux, selectable, text):
+    def __init__(self, key, x, z, country, is_aux: bool, selectable: bool, text: str):
         super().__init__(x=x, z=z, country=country)
         self.neighbors = set()
         self.key = key
@@ -197,33 +196,6 @@ class Grid:
             ccs.append(connected_component)
             used |= set(connected_component)
         return ccs
-
-    def write_db(self):
-        "Сохранить граф в базе данных"
-        db.PGConnector.Graph.insert(
-            self.tvd,
-            tuple(x.to_dict() for x in self.nodes_list),
-            tuple({'node_a': x[0].key, 'node_b': x[1].key} for x in self.edges))
-
-    def read_db(self):
-        "Считать граф из базы данных"
-        self.nodes.clear()
-        nodes_rows, edges_rows = db.PGConnector.Graph.select(self.tvd)
-        for row in nodes_rows:
-            self.nodes[row['key']] = Node(
-                row['key'],
-                row['coordinate_x'],
-                row['coordinate_z'],
-                row['country'],
-                row['is_aux'],
-                row['selectable'],
-                row['text']
-            )
-        for row in edges_rows:
-            source_id = row['node_a']
-            target_id = row['node_b']
-            self.nodes[source_id].neighbors.add(self.nodes[target_id])
-            self.nodes[target_id].neighbors.add(self.nodes[source_id])
 
     def read_file(self):
         "Считать граф из XGML файла"
