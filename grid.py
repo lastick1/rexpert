@@ -41,7 +41,7 @@ class Node(geometry.Point):
 \t\t\t\t<attribute key="fontName" type="String">Dialog</attribute>
 \t\t\t\t<attribute key="anchor" type="String">c</attribute>
 \t\t\t</section>
-\t\t</section>""".format(self.key,self.text, c_z * self.z, - c_x * self.x, self.color)
+\t\t</section>""".format(self.key, self.text, c_z * self.z, - c_x * self.x, self.color)
 
     @property
     def color(self):
@@ -318,49 +318,51 @@ class Grid:
     @staticmethod
     def _insert_gap(areas):
         "Добавить зазор между зонами"
-        r = {x: [] for x in areas.keys()}
+        result = {x: [] for x in areas.keys()}
         dist = -250
         for country in areas:
             for area in areas[country]:
-                r[country].append([])
+                result[country].append([])
                 i = 0
                 while i < len(area):
                     if i == len(area)-1:
-                        v1 = area[i]
-                        v2 = area[0]
-                        t = geometry.get_parallel_line(((v1.x, v1.z), (v2.x, v2.z)), dist)[0]
-                        r[country][-1].append(geometry.Point(x=t[0], z=t[1], country=country))
+                        v_1 = area[i]
+                        v_2 = area[0]
+                        tmp = geometry.get_parallel_line(((v_1.x, v_1.z), (v_2.x, v_2.z)), dist)[0]
+                        result[country][-1].append(
+                            geometry.Point(x=tmp[0], z=tmp[1], country=country))
                     else:
-                        v1 = area[i]
-                        v2 = area[i + 1]
-                        t = geometry.get_parallel_line(((v1.x, v1.z), (v2.x, v2.z)), dist)[0]
-                        r[country][-1].append(geometry.Point(x=t[0], z=t[1], country=country))
+                        v_1 = area[i]
+                        v_2 = area[i + 1]
+                        tmp = geometry.get_parallel_line(((v_1.x, v_1.z), (v_2.x, v_2.z)), dist)[0]
+                        result[country][-1].append(
+                            geometry.Point(x=tmp[0], z=tmp[1], country=country))
                     i += 1
-        return r
+        return result
 
     @property
     def scenarios(self) -> dict:
         "Выьрать точки сценариев, за которые будут вестись бои"
         countries = [101, 201]
-        nl = self.neutral_line[1:-2]
-        first_candidates = list(nl[1:-2])
-        first = nl[random.randint(0, len(first_candidates)-1)]
+        neutral_line = self.neutral_line[1:-2]
+        first_candidates = list(neutral_line[1:-2])
+        first = neutral_line[random.randint(0, len(first_candidates)-1)]
         second_candidates = []
-        for x in first_candidates:
-            if x.distance_to(first.x, first.z) > self.scenario_min_distance:
-                second_candidates.append(x)
+        for candidate in first_candidates:
+            if candidate.distance_to(first.x, first.z) > self.scenario_min_distance:
+                second_candidates.append(candidate)
         random.shuffle(second_candidates)
         second = second_candidates.pop()
         random.shuffle(countries)
-        z = list(zip(countries, [first, second]))
-        d = {x[0]: [x[1]] for x in z}
-        return d
+        zipped = list(zip(countries, [first, second]))
+        result = {candidate[0]: [candidate[1]] for candidate in zipped}
+        return result
 
     def find(self, x, z, r=10) -> Node:
         "Найти узел по координатам (в квадрате стороной 2*r)"
-        for n in self.nodes_list:
-            if abs(x - n.x) < r and abs(z - n.z) < r:
-                return n
+        for node in self.nodes_list:
+            if abs(x - node.x) < r and abs(z - node.z) < r:
+                return node
 
     def capture(self, x, z, coal):
         "Захват точки"
@@ -368,11 +370,12 @@ class Grid:
         node = self.find(x, z)
         print('Capture {}[{}] {}'.format(node.text, node.key, country))
         if not node:
-            raise NameError('Not found node to capture for [{}] coal in [x:{} z:{}]'.format(coal, x, z))
-        for n in node.neighbors:
-            if n.country and n.country != country:
-                n.country = 0
-                db.PGConnector.Graph.update_graph_node(n.key, self.tvd, 0)
+            raise NameError('Not found node to capture for [{}] coal in [x:{} z:{}]'.format(
+                coal, x, z))
+        for neighbor in node.neighbors:
+            if neighbor.country and neighbor.country != country:
+                neighbor.country = 0
+                db.PGConnector.Graph.update_graph_node(neighbor.key, self.tvd, 0)
         node.country = country
         db.PGConnector.Graph.update_graph_node(node.key, self.tvd, country)
         self._resolve(country)
@@ -384,13 +387,13 @@ class Grid:
     def _resolve(self, priority):
         "Красим 'нейтралов' за линией фронта в цвет победившей стороны"
         resolvable = []
-        for n in self.neutrals:
+        for neutral in self.neutrals:
             is_correct = False
-            for nc in list(x for x in n.neighbors if x.country):
-                if nc.country and nc.country != priority:
+            for node in list(x for x in neutral.neighbors if x.country):
+                if node.country and node.country != priority:
                     is_correct = True
             if not is_correct:
-                resolvable.append(n)
+                resolvable.append(neutral)
         for x in resolvable:
             x.country = priority
             db.PGConnector.Graph.update_graph_node(x.key, self.tvd, priority)
