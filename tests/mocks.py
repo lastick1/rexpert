@@ -37,7 +37,7 @@ class GeneratorMock(gen.Generator):
     "Заглушка генератора миссий"
     def __init__(self, main: MainMock, mgen: MgenMock):
         super().__init__(main, mgen)
-        self.generations = 0
+        self.generations = []
 
     def make_mission(self, file_name: str, tvd_name: str):
-        self.generations += 1
+        self.generations.append((file_name, tvd_name))

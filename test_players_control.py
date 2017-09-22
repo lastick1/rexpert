@@ -22,7 +22,7 @@ class TestPlayersController(unittest.TestCase):
         self.console_mock.socket.close()
 
     def test_player_initialization(self):
-        "Тест инициализации игрока на спауне"
+        "Инициализируется игрок на спауне"
         # Arrange
         account_id = '_test_id1'
         nickname = '_test_nickname'
@@ -35,7 +35,7 @@ class TestPlayersController(unittest.TestCase):
         self.assertEqual(1, player[UNLOCKS])
 
     def test_spawn_player(self):
-        "Респаун игрока"
+        "Отправляется сообщение игроку на спауне"
         # Arrange
         account_id = '_test_id1'
         nickname = '_test_nickname'
@@ -47,7 +47,7 @@ class TestPlayersController(unittest.TestCase):
         self.assertEqual(0, self.console_mock.recieved_private_messages)
 
     def test_connect_player_check_ban(self):
-        "Забаненого пользователя должно забанить через консоль"
+        "Отправляется команда бана забаненого пользователя через консоль"
         # Arrange
         account_id = '_test_id1'
         profile_id = '_test_profile_id1'

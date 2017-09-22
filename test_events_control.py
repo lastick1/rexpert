@@ -26,7 +26,7 @@ class TestEventsController(unittest.TestCase):
         self.objects = mocks.PGConnectorMock.get_objects_dict()
 
     def test_processing_with_atype_7(self):
-        "Тест корректного завершения миссии с наличием AType:7 в логе"
+        "Завершается корректно миссия с AType:7 в логе"
         # Arrange
         controller = EventsController(self.objects, self.players, None, self.campaign)
         # Act
@@ -36,7 +36,7 @@ class TestEventsController(unittest.TestCase):
         self.assertEqual(True, controller.is_correctly_completed)
 
     def test_generate_next_with_atype_0(self):
-        "Тест генерации следующей миссии с наличием AType:0 в логе"
+        "Генерируется следующая миссия с AType:0 в логе"
         # Arrange
         controller = EventsController(self.objects, self.players, None, self.campaign)
         # Act
@@ -44,7 +44,7 @@ class TestEventsController(unittest.TestCase):
             controller.process_line(line)
 
         # Assert
-        self.assertEqual(self.generator.generations, 1)
+        self.assertEqual(len(self.generator.generations), 1)
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
