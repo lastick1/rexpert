@@ -1,37 +1,13 @@
+"Работа с графом"
 import xml.etree.ElementTree as Et
 import queue
-import math
 import random
 import db
 import geometry
-
-
-def rotate(v, b, c):
-    return (b.x - v.x) * (c.z - b.z) - (b.z - v.z) * (c.x - b.x)
-
-
-def get_parallel_line(line_x_y, dist):
-    """Расчёт параллельного заданному (line_x_y) отрезка"""
-    x1 = line_x_y[0][0]
-    y1 = line_x_y[0][1]
-    x2 = line_x_y[1][0]
-    y2 = line_x_y[1][1]
-    """Нахождение вектора нормали к исходной прямой"""
-    norm = [y2 - y1, x1 - x2]
-    """Длина вектора"""
-    lenn = math.sqrt(math.pow(norm[0], 2) + math.pow(norm[1], 2))
-    """Коэффициент перевода длины вектора нормали к заданному расстоянию"""
-    kl = dist / lenn
-    """Нахождение вектора нужной длины, коллинеарного нормали"""
-    vect = [norm[0] * kl, norm[1] * kl]
-    """Нахождение первой точки отрезка"""
-    resbeg = (vect[0] + x1, vect[1] + y1)
-    """Нахождение второй точки отрезка"""
-    resend = (vect[0] + x2, vect[1] + y2)
-    return [resbeg, resend]
-
+import configs
 
 class Node(geometry.Point):
+    "Узел графа"
     def __init__(self, key, x, z, country, is_aux, selectable, text):
         super().__init__(x=x, z=z, country=country)
         self.neighbors = set()
@@ -44,7 +20,7 @@ class Node(geometry.Point):
         return '{} {} {}'.format(self.key, self.country, self.text)
 
     def serialize_xgml(self, c_x, c_z):
-        """ Сериализация в формат XGML """
+        "Сериализовать в формат XGML"
         return """\t\t<section name="node">
 \t\t\t<attribute key="id" type="int">{0}</attribute>
 \t\t\t<attribute key="label" type="String">{1}</attribute>
@@ -65,25 +41,20 @@ class Node(geometry.Point):
 \t\t\t\t<attribute key="fontName" type="String">Dialog</attribute>
 \t\t\t\t<attribute key="anchor" type="String">c</attribute>
 \t\t\t</section>
-\t\t</section>""".format(
-            self.key,
-            self.text,
-            c_z * self.z,
-            - c_x * self.x,
-            self.color
-        )
+\t\t</section>""".format(self.key,self.text, c_z * self.z, - c_x * self.x, self.color)
 
     @property
     def color(self):
+        "Цвет вершины"
         return {0: '#00FF00', 101: '#FF0000', 201: '#0000FF'}[self.country]
 
     @property
-    def cc(self):
-        """ Компонента связности: все вершины той же страны, до которых есть путь """
+    def cc(self):  # pylint: disable=C0103
+        "Компонента связности: все вершины той же страны, до которых есть путь"
         return self.bfs(ignore_country=False)[1]
 
-    def path(self, to, ignore_country=True):
-        """ Путь к указанной вершине """
+    def path(self, to, ignore_country=True):  # pylint: disable=C0103
+        "Путь к указанной вершине"
         bfs = self.bfs(ignore_country=ignore_country)[0]
         path = []
         i = to.key
@@ -99,6 +70,7 @@ class Node(geometry.Point):
         :rtype: tuple[dict, set]
         :returns: Словарь маршрута обхода в ширину [0], использованные вершины [1]
         """
+        # pylint: disable=C0103
         v = self
         q = queue.Queue()  # очередь для добавления вершин при обходе в ширину
         path = dict()
@@ -119,6 +91,7 @@ class Node(geometry.Point):
         return path, used
 
     def to_dict(self):
+        "Сериализовать в словарь"
         return {
             'country': self.country,
             'coordinate_x': self.x,
@@ -132,56 +105,54 @@ class Node(geometry.Point):
 
 class Chain:
     """ Цепочка узлов от начального до конечного """
-    def __init__(self, start, end):
-        """
-        :type start: Node  
-        :type end: Node 
-        """
+    def __init__(self, start: Node, end: Node):
         self.nodes = start.path(end, ignore_country=(start.country == end.country)) + [end]
 
 
 class Grid:
-    def __init__(self, name, config):
+    "Граф (сетка)"
+    def __init__(self, name, config: configs.Mgen):
         self.nodes = dict()  # узлы сетки
         self.tvd = config.cfg[name]['tvd']
         self.xgml_file = config.xgml[name]
         self.scenario_min_distance = config.cfg['scenario_min_distance']
-        self.graph_zoom_point_x = config.cfg[name]['graph_zoom_point']['y']
-        self.graph_zoom_point_z = config.cfg[name]['graph_zoom_point']['x']
-        self.x_coefficient_serialization = self.graph_zoom_point_x / config.cfg[name]['right_top']['x']
-        self.z_coefficient_serialization = self.graph_zoom_point_z / config.cfg[name]['right_top']['z']
-        self.x_coefficient_deserialization = config.cfg[name]['right_top']['x'] / self.graph_zoom_point_x
-        self.z_coefficient_deserialization = config.cfg[name]['right_top']['z'] / self.graph_zoom_point_z
+        self.graph_zoom_x = config.cfg[name]['graph_zoom_point']['y']
+        self.graph_zoom_z = config.cfg[name]['graph_zoom_point']['x']
+        self.x_coefficient_serialization = self.graph_zoom_x / config.cfg[name]['right_top']['x']
+        self.z_coefficient_serialization = self.graph_zoom_z / config.cfg[name]['right_top']['z']
+        self.x_coefficient_deserialization = config.cfg[name]['right_top']['x'] / self.graph_zoom_x
+        self.z_coefficient_deserialization = config.cfg[name]['right_top']['z'] / self.graph_zoom_z
 
     @property
-    def nodes_list(self):
-        """ Узлы списком """
+    def nodes_list(self) -> list:
+        "Узлы списком"
         return list(self.nodes[x] for x in self.nodes.keys())
 
     @property
-    def edges(self):
-        """ Список всех рёбер, соединяющих вершины, в виде 2-элементных кортежей из соединяемых вершин """
+    def edges(self) -> list:
+        "Все рёбра графа, в виде 2-элементных кортежей из соединяемых вершин"
         edges = []
         used = set()
-        for n in self.nodes:
-            if self.nodes[n] in used:
+        for node in self.nodes:
+            if self.nodes[node] in used:
                 continue
-            for b in self.nodes[n].neighbors:
-                if b in used:
+            for neighbors in self.nodes[node].neighbors:
+                if neighbors in used:
                     continue
-                edges.append((self.nodes[n], b))
-            used.add(self.nodes[n])
+                edges.append((self.nodes[node], neighbors))
+            used.add(self.nodes[node])
         return edges
 
     @property
-    def edges_raw(self):
+    def edges_raw(self) -> tuple:
         """ Кортеж всех рёбер в виде 2-элементных кортежей координат точек вершин ребра """
         edges = self.edges
         return tuple(((x[0].x, x[0].z), (x[1].x, x[1].z)) for x in edges)
 
-    def serialize_edges_xgml(self):
+    def serialize_edges_xgml(self) -> str:
+        "Сериализация рёбер"
         string = ""
-        for e in self.edges:
+        for edge in self.edges:
             string += """
 \t\t<section name="edge">
 \t\t\t<attribute key="source" type="int">{0}</attribute>
@@ -190,16 +161,19 @@ class Grid:
 \t\t\t<attribute key="width" type="int">7</attribute>
 \t\t\t<attribute key="fill" type="String">#000000</attribute>
 \t\t</section>
-\t\t</section>""".format(e[0].key, e[1].key)
+\t\t</section>""".format(edge[0].key, edge[1].key)
         return string
 
-    def serialize_nodes_xgml(self):
+    def serialize_nodes_xgml(self) -> str:
+        "Сериализовать узлы графа"
         string = ""
-        for n in self.nodes.values():
-            string += n.serialize_xgml(self.x_coefficient_serialization, self.z_coefficient_serialization)
+        for nodes in self.nodes.values():
+            string += nodes.serialize_xgml(
+                self.x_coefficient_serialization, self.z_coefficient_serialization)
         return string
 
-    def serialize_xgml(self):
+    def serialize_xgml(self) -> str:
+        "Сериализовать граф"
         return """<?xml version="1.0" encoding="Cp1251"?>
 <section name="xgml">
 \t<attribute key="Creator" type="String">yFiles</attribute>
@@ -210,30 +184,29 @@ class Grid:
 \t\t<attribute key="directed" type="int">1</attribute>
 {0}{1}
 \t</section>
-</section>""".format(
-            self.serialize_nodes_xgml(),
-            self.serialize_edges_xgml()
-        )
+</section>""".format(self.serialize_nodes_xgml(), self.serialize_edges_xgml())
 
-    def connected_components(self, country):
-        """ Компоненты связности указанной страны """
+    def connected_components(self, country) -> list:
+        "Компоненты связности указанной страны"
         ccs = []
         used = set()
         nodes = set(x for x in self.nodes_list if x.loc_country == country)
         while len(nodes - used):
             first = list(nodes - used)[0]
-            cc = first.cc
-            ccs.append(cc)
-            used |= set(cc)
+            connected_component = first.cc
+            ccs.append(connected_component)
+            used |= set(connected_component)
         return ccs
 
     def write_db(self):
+        "Сохранить граф в базе данных"
         db.PGConnector.Graph.insert(
             self.tvd,
             tuple(x.to_dict() for x in self.nodes_list),
             tuple({'node_a': x[0].key, 'node_b': x[1].key} for x in self.edges))
 
     def read_db(self):
+        "Считать граф из базы данных"
         self.nodes.clear()
         nodes_rows, edges_rows = db.PGConnector.Graph.select(self.tvd)
         for row in nodes_rows:
@@ -253,7 +226,7 @@ class Grid:
             self.nodes[target_id].neighbors.add(self.nodes[source_id])
 
     def read_file(self):
-        """ Считать граф из XGML файла """
+        "Считать граф из XGML файла"
         tree = Et.parse(source=str(self.xgml_file.absolute()))
         root = tree.getroot()
         graph = root.find('section')
@@ -266,7 +239,7 @@ class Grid:
                     section_graphics = section.findall("*[@name='graphics']")[0]
                     tag_x = section_graphics.findall("*[@key='x']")[0]
                     tag_y = section_graphics.findall("*[@key='y']")[0]
-                    x = -1 * (float(tag_y.text) - self.graph_zoom_point_x) * self.x_coefficient_deserialization
+                    x = -1 * (float(tag_y.text) - self.graph_zoom_x) * self.x_coefficient_deserialization
                     z = float(tag_x.text) * self.z_coefficient_deserialization
                     tag_fill = section_graphics.findall("*[@key='fill']")[0]
                     country = None
@@ -280,7 +253,8 @@ class Grid:
                     selectable = False if '.' in tag_label.text else True
                     is_aux = True if 'prot' in tag_label.text.lower() else False
                     if tag_label.text not in ('rb', 'zero'):
-                        self.nodes[node_id] = Node(node_id, x, z, country, is_aux, selectable, tag_label.text)
+                        self.nodes[node_id] = Node(
+                            node_id, x, z, country, is_aux, selectable, tag_label.text)
 
         for section in graph:
             if str(section.tag) == 'section':
@@ -289,22 +263,18 @@ class Grid:
                     target_id = int(section.findall("*[@key='target']")[0].text)
                     self.nodes[source_id].neighbors.add(self.nodes[target_id])
                     self.nodes[target_id].neighbors.add(self.nodes[source_id])
-        # масштабирование графа к заданному размеру (задаётся точкой right_top)
-        """for n in self.nodes:
-            self.nodes[n].x *= x_coefficient
-            self.nodes[n].z *= z_coefficient
-            """
 
     @property
-    def neutrals(self):
+    def neutrals(self) -> list:
+        "Узлы, где страна ==0"
         return list(x for x in self.nodes_list if x.country == 0)
 
     @property
-    def neutral_line(self):
-        """ Цепь нейтральных узлов """
+    def neutral_line(self) -> list:
+        "Цепь нейтральных узлов"
         first = list(x for x in self.nodes_list if x.text == '!')[0]
-        cc = list(first.cc)
-        for x in cc:
+        connected_component = list(first.cc)
+        for x in connected_component:
             if x == first:
                 continue
             r_prot = False
@@ -318,15 +288,14 @@ class Grid:
                 return first.path(x, ignore_country=False) + [x]
 
     @property
-    def areas(self):
-        """ Зоны влияния
-         :rtype dict """
+    def areas(self) -> dict:
+        "Зоны влияния"
         countries = (101, 201)
-        nl = self.neutral_line
-        if len(nl) < 2:
+        neutral_line = self.neutral_line
+        if len(neutral_line) < 2:
             return []
-        nl_start = nl[0]
-        nl_end = nl[len(nl)-1]
+        nl_start = neutral_line[0]
+        nl_end = neutral_line[len(neutral_line)-1]
         areas = {x: [] for x in countries}
         for country in countries:
             cc_end_prot = None
@@ -340,7 +309,7 @@ class Grid:
                     cc_start_prot = n
                     break
             p = cc_start_prot.path(cc_end_prot) + [cc_end_prot]
-            p += nl
+            p += neutral_line
             if country == 201:
                 p.reverse()
             areas[country].append(p)
@@ -348,7 +317,7 @@ class Grid:
 
     @staticmethod
     def _insert_gap(areas):
-        """ Добавить зазор между зонами """
+        "Добавить зазор между зонами"
         r = {x: [] for x in areas.keys()}
         dist = -250
         for country in areas:
@@ -359,18 +328,19 @@ class Grid:
                     if i == len(area)-1:
                         v1 = area[i]
                         v2 = area[0]
-                        t = get_parallel_line(((v1.x, v1.z), (v2.x, v2.z)), dist)[0]
+                        t = geometry.get_parallel_line(((v1.x, v1.z), (v2.x, v2.z)), dist)[0]
                         r[country][-1].append(geometry.Point(x=t[0], z=t[1], country=country))
                     else:
                         v1 = area[i]
                         v2 = area[i + 1]
-                        t = get_parallel_line(((v1.x, v1.z), (v2.x, v2.z)), dist)[0]
+                        t = geometry.get_parallel_line(((v1.x, v1.z), (v2.x, v2.z)), dist)[0]
                         r[country][-1].append(geometry.Point(x=t[0], z=t[1], country=country))
                     i += 1
         return r
 
     @property
-    def scenarios(self):
+    def scenarios(self) -> dict:
+        "Выьрать точки сценариев, за которые будут вестись бои"
         countries = [101, 201]
         nl = self.neutral_line[1:-2]
         first_candidates = list(nl[1:-2])
@@ -386,14 +356,14 @@ class Grid:
         d = {x[0]: [x[1]] for x in z}
         return d
 
-    def find(self, x, z, r=10):
-        """ Найти узел по координатам (в квадрате стороной 2*r) """
+    def find(self, x, z, r=10) -> Node:
+        "Найти узел по координатам (в квадрате стороной 2*r)"
         for n in self.nodes_list:
             if abs(x - n.x) < r and abs(z - n.z) < r:
                 return n
 
     def capture(self, x, z, coal):
-        """ Захват точки """
+        "Захват точки"
         country = coal * 100 + 1
         node = self.find(x, z)
         print('Capture {}[{}] {}'.format(node.text, node.key, country))
@@ -408,11 +378,11 @@ class Grid:
         self._resolve(country)
 
     def capture_node(self, node, coal):
-        """ Захват узла """
+        "Захват узла"
         self.capture(node.x, node.z, coal)
 
     def _resolve(self, priority):
-        """ Красим "нейтралов" за линией фронта в цвет победившей стороны """
+        "Красим 'нейтралов' за линией фронта в цвет победившей стороны"
         resolvable = []
         for n in self.neutrals:
             is_correct = False

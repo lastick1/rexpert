@@ -1,5 +1,4 @@
 from cfg import Gameplay
-from rcon import Command, CommandType
 import mission_report.mission_src
 
 types_hp = {

@@ -3,7 +3,7 @@ import unittest
 import datetime
 import pathlib
 from tests import mocks
-from processing.missions_control import CampaignController
+from processing import CampaignController
 
 DATE_FORMAT = '%d.%m.%Y'
 

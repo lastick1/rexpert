@@ -1,5 +1,31 @@
 "Расчёт координат"
-from math import acos, pi
+import math
+
+
+def rotate(v, b, c):  # pylint: disable=C0103
+    "Полезная функция, с помощью которой можно определить положение точки относительно отрезка"
+    return (b.x - v.x) * (c.z - b.z) - (b.z - v.z) * (c.x - b.x)
+
+
+def get_parallel_line(line_x_y, dist):
+    "Расчёт параллельного заданному (line_x_y) отрезка"
+    x_1 = line_x_y[0][0]
+    y_1 = line_x_y[0][1]
+    x_2 = line_x_y[1][0]
+    y_2 = line_x_y[1][1]
+    # Нахождение вектора нормали к исходной прямой
+    norm = [y_2 - y_1, x_1 - x_2]
+    # Длина вектора
+    lenn = math.sqrt(math.pow(norm[0], 2) + math.pow(norm[1], 2))
+    # Коэффициент перевода длины вектора нормали к заданному расстоянию
+    koef = dist / lenn
+    # Нахождение вектора нужной длины, коллинеарного нормали
+    vect = [norm[0] * koef, norm[1] * koef]
+    # Нахождение первой точки отрезка
+    resbeg = (vect[0] + x_1, vect[1] + y_1)
+    # Нахождение второй точки отрезка
+    resend = (vect[0] + x_2, vect[1] + y_2)
+    return [resbeg, resend]
 
 
 class Segment:  #pylint: disable=R0902
@@ -39,7 +65,7 @@ class Segment:  #pylint: disable=R0902
     @property
     def angle(self):
         "Угол между (0.0, 1.0) вектором и параллельной отрезку прямой, проходящей через (0.0, 0.0)"
-        return acos(self._cos_a) * 180 / pi
+        return math.acos(self._cos_a) * 180 / math.pi
 
     def parallel_segments(self, distance):
         """

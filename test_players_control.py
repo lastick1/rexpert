@@ -5,7 +5,6 @@ from processing import PlayersController
 from processing.player import UNLOCKS
 from tests import ConsoleMock
 import pymongo
-# import rcon
 
 
 class TestPlayersController(unittest.TestCase):
