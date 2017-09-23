@@ -1,10 +1,9 @@
 import json
-import weather
 import datetime
 from pathlib import Path
 from random import randint
-from grid import Grid
-from gen import Group, Ldb, FlGroup, Divisions
+from .grid import Grid
+from .gen import Group, Ldb, FlGroup, Divisions
 
 date_format = '%d.%m.%Y'
 default_af_cache = {'moscow': '30.09.2016', 'stalingrad': '30.09.2016'}

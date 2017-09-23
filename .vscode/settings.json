@@ -2,10 +2,7 @@
     "python.pythonPath": "${workspaceRoot}/.venv/scripts/python.exe",
     "python.venvPath": "${workspaceRoot}/.venv",
     "python.unitTest.unittestArgs": [
-        "-v",
-        "-s",
-        "."
     ],
-    "python.unitTest.unittestEnabled": true,
-    "python.unitTest.nosetestsEnabled": false
+    "python.unitTest.unittestEnabled": false,
+    "python.unitTest.nosetestsEnabled": true
 }

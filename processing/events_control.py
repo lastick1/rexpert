@@ -3,7 +3,7 @@ import processing.parse_mission_log_line
 import logging
 from .players_control import PlayersController
 from .ground_control import GroundController
-from .missions_control import CampaignController
+from .campaign_control import CampaignController
 from .objects import Airfield
 
 

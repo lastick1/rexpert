@@ -2,7 +2,7 @@
 from pathlib import Path
 from datetime import datetime
 from configs import Main, Mgen
-from gen import Generator
+from generation import Generator
 
 
 class Mission:

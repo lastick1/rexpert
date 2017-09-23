@@ -1,9 +1,8 @@
 "Заглушки, фальшивки и т.п. для тестирования"
 import pathlib
 import rcon
-import db
-import gen
 import configs
+import generation
 
 class MainMock(configs.Main):
     "Заглушка конфига"
@@ -25,15 +24,10 @@ class ConsoleMock(rcon.DServerRcon):
         self.recieved_private_messages += 1
 
     def banuser(self, name):
+        print('banned {}'.format(name))
         self.banned.append(name)
 
-class PGConnectorMock(db.PGConnector):
-    "Заглушка коннектора к postgresql"
-    @staticmethod
-    def get_objects_dict():
-        return {}
-
-class GeneratorMock(gen.Generator):
+class GeneratorMock(generation.Generator):
     "Заглушка генератора миссий"
     def __init__(self, main: MainMock, mgen: MgenMock):
         super().__init__(main, mgen)

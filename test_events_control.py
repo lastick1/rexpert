@@ -23,7 +23,7 @@ class TestEventsController(unittest.TestCase):
         self.generator = mocks.GeneratorMock(self.main, self.mgen)
         self.players = PlayersController(True, console, rexpert['Players'], rexpert['Squads'])
         self.campaign = CampaignController(self.main, self.mgen, self.generator)
-        self.objects = mocks.PGConnectorMock.get_objects_dict()
+        self.objects = {}
 
     def test_processing_with_atype_7(self):
         "Завершается корректно миссия с AType:7 в логе"
