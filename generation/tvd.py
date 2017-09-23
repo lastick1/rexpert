@@ -13,7 +13,7 @@ default_af_cache = {'moscow': '30.09.2016', 'stalingrad': '30.09.2016'}
 
 class Stage:
     def __init__(self, raw, sides, af_templates_folder):
-        """ Класс этапа кампании, для которого создаются группы аэродромов с заданными самолётами """
+        "Класс этапа кампании, для которого создаются группы аэродромов с заданными самолётами"
         self.start = datetime.datetime.strptime(raw['start'], date_format)
         self.end = datetime.datetime.strptime(raw['end'], date_format)
         self.id = int(raw['id'])
@@ -27,7 +27,7 @@ class Stage:
 
 class Tvd:
     def __init__(self, name, date, mgen: configs.Mgen, main: configs.Main, loc_cfg: configs.LocationsConfig, params: configs.GeneratorParamsConfig):
-        """ Класс театра военных действий (ТВД) кампании, для которого генерируются миссии """
+        "Класс театра военных действий (ТВД) кампании, для которого генерируются миссии"
         self.name = name
         self.main = main
         self.mgen = mgen
@@ -80,11 +80,12 @@ class Tvd:
         self.grid.capture(x, z, coal_id)
 
     def update(self):
-        """ Обновление групп, баз локаций и файла параметров генерации в папке ТВД (data/scg/x) """
-        print('[{}] Updating TVD folder: {} ({})'.format(
+        "Обновление групп, баз локаций и файла параметров генерации в папке ТВД (data/scg/x)"
+        print('[{}] Updating TVD folder: {} ({}) {}'.format(
             datetime.datetime.now().strftime("%H:%M:%S"),
             self.tvd_folder,
-            self.name
+            self.name,
+            self.date_next.strftime(date_format)
         ))
         if self.is_ended:
             print('WARNING! Updating ended TVD: {}'.format(self.name))
@@ -95,33 +96,33 @@ class Tvd:
         self.randomize_defaultparams(self.params.cfg[self.name])
 
     def verify_grid(self):
-        """ Проверка и самопочинка графа """
+        "Проверка и самопочинка графа"
         # TODO доделать
         if not self.grid.neutral_line:
             # self.grid.restore_neutral_line()
             pass
 
     def create_divisions(self):
-        """ Обновление базы локаций с обозначением расположения дивизий """
+        "Обновление базы локаций с обозначением расположения дивизий"
         ldf = Divisions(self.name, self.grid.edges_raw)
         ldf.make()
 
     def update_icons(self):
-        """ Обновление группы иконок в соответствии с положением ЛФ """
+        "Обновление группы иконок в соответствии с положением ЛФ"
         print('[{}] generating icons group...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
         flg = FlGroup(self.name, self.grid.neutral_line, self.grid.areas, self.mgen)
         flg.make()
         print('... icons done')
 
     def update_ldb(self):
-        """ Обновление базы локаций до актуального состояния """
+        "Обновление базы локаций до актуального состояния"
         print('[{}] generating Locations Data Base (LDB)...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
         ldf = Ldb(self.name, self.grid.areas, self.grid.scenarios, self.grid.neutral_line, self.main, self.mgen, self.loc_cfg)
         ldf.make()
         print('... LDB done')
 
     def update_airfields(self):
-        """ Генерация групп аэродромов для ТВД """
+        "Генерация групп аэродромов для ТВД"
         print('[{}] generating airfields groups...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
         m_date_cache_file = Path(r'.\cache\airfields.json')
         if not m_date_cache_file.exists():
@@ -139,11 +140,11 @@ class Tvd:
             for stage in self.stages:
                 if self.date_next + d in stage:
                     if cached_date in stage:
-                        print('... airfields generation skipped - same airfields generated already [{}] {}'.format(
-                            cached_date.strftime(date_format), self.date_next.strftime(date_format)))
+                        print('... airfields generation skipped - same airfields generated already [{}]'.format(
+                            cached_date.strftime(date_format)))
                         return
                     template_group = stage.af_templates[side]
-                    print('... dated plane set [{}] {}'.format(side, self.date_next.strftime(date_format)))
+                    print('... dated plane set [{}]'.format(side))
                     break
             for row in self.airfields_data:
                 group = Group(template_group)
@@ -155,7 +156,7 @@ class Tvd:
         m_date_cache_file.write_text(json.dumps(cache_data), encoding='utf-8')
 
     def date_day_duration(self, date):
-        """ Рассвет и закат для указанной даты """
+        "Рассвет и закат для указанной даты"
         season = self.season_data(date)
         sunrise = datetime.datetime(
             date.year,
@@ -174,7 +175,7 @@ class Tvd:
         return sunrise, sunset - datetime.timedelta(hours=1, minutes=30)
 
     def season_data(self, date):
-        """ Информация по сезону на указанную дату (из daytime.csv) """
+        "Информация по сезону на указанную дату (из daytime.csv)"
         for season in self.seasons_data:
             start = datetime.datetime(
                 date.year,
@@ -192,23 +193,23 @@ class Tvd:
 
     @property
     def date_next_season_data(self):
-        """ Данные по сезону на дату следующей миссии """
+        "Данные по сезону на дату следующей миссии"
         return self.season_data(self.date_next)
 
     @property
     def date_next(self):
-        """ Дата следующей миссии этого ТВД """
+        "Дата следующей миссии этого ТВД"
         d = datetime.timedelta(days=1)
         return self.date + d
 
     @property
     def date_end(self):
-        """ Дата окончания ТВД """
+        "Дата окончания ТВД"
         return self.stages[-1].end
 
     @property
     def date_next_day_duration(self):
-        """ Интервал светового дня для даты следующей миссии """
+        "Интервал светового дня для даты следующей миссии"
         return self.date_day_duration(self.date_next)
 
     @property
@@ -222,7 +223,7 @@ class Tvd:
 
     @staticmethod
     def random_datetime(start, end):
-        """ Случайный момент времени между указанными значениями """
+        "Случайный момент времени между указанными значениями"
         return start + datetime.timedelta(seconds=randint(0, int((end - start).total_seconds())))
 
     @property
@@ -240,7 +241,7 @@ class Tvd:
         raise NameError('Incorrect date for all stages: {}'.format(self.date))
 
     def randomize_defaultparams(self, params_config: dict):
-        """ Задать случайные параметры погоды, времени года и суток """
+        "Задать случайные параметры погоды, времени года и суток"
         with self.default_params_template_file.open(encoding='utf-8-sig') as f:
             dfpr_lines = f.readlines()
         # случайное направление и сила ветра по высотам

@@ -2,13 +2,13 @@
 import xml.etree.ElementTree as Et
 import queue
 import random
+import pathlib
 import geometry
 import configs
-import pathlib
 
 class Node(geometry.Point):
     "Узел графа"
-    def __init__(self, key, x, z, country, is_aux: bool, selectable: bool, text: str):
+    def __init__(self, key, x, z, country, is_aux: bool, selectable: bool, text: str):  # pylint: disable=R0913
         super().__init__(x=x, z=z, country=country)
         self.neighbors = set()
         self.key = key
@@ -81,7 +81,7 @@ class Node(geometry.Point):
         used.add(v)
         while not q.empty():  # пока в очереди есть хотя бы одна вершина
             v = q.get()  # извлекаем вершину из очереди
-            neighbors = v.neighbors if ignore_country else set(x for x in v.neighbors if x.country == self.country)
+            neighbors = v.neighbors if ignore_country else set(x for x in v.neighbors if x.country == self.country)  # pylint: disable=C0301
             for w in neighbors:  # запускаем обход из всех вершин, смежных с вершиной v
                 if w in used:  # если вершина уже была посещена, то пропускаем ее
                     continue
@@ -103,12 +103,6 @@ class Node(geometry.Point):
         }
 
 
-class Chain:
-    """ Цепочка узлов от начального до конечного """
-    def __init__(self, start: Node, end: Node):
-        self.nodes = start.path(end, ignore_country=(start.country == end.country)) + [end]
-
-
 class Grid:
     "Граф (сетка)"
     def __init__(self, name: str, xgml: pathlib.Path, config: configs.Mgen):
@@ -127,7 +121,7 @@ class Grid:
     @property
     def nodes_list(self) -> list:
         "Узлы списком"
-        return list(self.nodes[x] for x in self.nodes.keys())
+        return list(self.nodes[x] for x in self.nodes)
 
     @property
     def edges(self) -> list:
@@ -201,10 +195,16 @@ class Grid:
 
     def read_file(self):
         "Считать граф из XGML файла"
+        # pylint: disable=C0103
         tree = Et.parse(source=str(self.xgml_file.absolute()))
         root = tree.getroot()
         graph = root.find('section')
 
+        self._read_nodes(graph)
+        self._read_edges(graph)
+
+    def _read_nodes(self, graph):
+        "Считать узлы графа"
         for section in graph:
             if str(section.tag) == 'section':
                 if section.attrib['name'] == 'node':
@@ -230,6 +230,7 @@ class Grid:
                         self.nodes[node_id] = Node(
                             node_id, x, z, country, is_aux, selectable, tag_label.text)
 
+    def _read_edges(self, graph):
         for section in graph:
             if str(section.tag) == 'section':
                 if section.attrib['name'] == 'edge':
@@ -248,18 +249,18 @@ class Grid:
         "Цепь нейтральных узлов"
         first = list(x for x in self.nodes_list if x.text == '!')[0]
         connected_component = list(first.cc)
-        for x in connected_component:
-            if x == first:
+        for node in connected_component:
+            if node == first:
                 continue
             r_prot = False
             b_prot = False
-            for n in x.neighbors:
-                if n.country == 101 and 'prot' in n.text:
+            for neighbor in node.neighbors:
+                if neighbor.country == 101 and 'prot' in neighbor.text:
                     r_prot = True
-                if n.country == 201 and 'prot' in n.text:
+                if neighbor.country == 201 and 'prot' in neighbor.text:
                     b_prot = True
             if r_prot and b_prot:
-                return first.path(x, ignore_country=False) + [x]
+                return first.path(node, ignore_country=False) + [node]
 
     @property
     def areas(self) -> dict:
@@ -274,19 +275,19 @@ class Grid:
         for country in countries:
             cc_end_prot = None
             cc_start_prot = None
-            for n in list(x for x in nl_start.neighbors if 'prot' in x.text):
-                if n.country == country:
-                    cc_end_prot = n
+            for node in list(x for x in nl_start.neighbors if 'prot' in x.text):
+                if node.country == country:
+                    cc_end_prot = node
                     break
-            for n in list(x for x in nl_end.neighbors if 'prot' in x.text):
-                if n.country == country:
-                    cc_start_prot = n
+            for node in list(x for x in nl_end.neighbors if 'prot' in x.text):
+                if node.country == country:
+                    cc_start_prot = node
                     break
-            p = cc_start_prot.path(cc_end_prot) + [cc_end_prot]
-            p += neutral_line
+            path = cc_start_prot.path(cc_end_prot) + [cc_end_prot]
+            path += neutral_line
             if country == 201:
-                p.reverse()
-            areas[country].append(p)
+                path.reverse()
+            areas[country].append(path)
         return self._insert_gap(areas)
 
     @staticmethod
@@ -332,13 +333,13 @@ class Grid:
         result = {candidate[0]: [candidate[1]] for candidate in zipped}
         return result
 
-    def find(self, x, z, r=10) -> Node:
+    def find(self, x, z, side: float = 10) -> Node:  # pylint: disable=C0103
         "Найти узел по координатам (в квадрате стороной 2*r)"
         for node in self.nodes_list:
-            if abs(x - node.x) < r and abs(z - node.z) < r:
+            if abs(x - node.x) < side and abs(z - node.z) < side:
                 return node
 
-    def capture(self, x, z, coal):
+    def capture(self, x, z, coal):  # pylint: disable=C0103
         "Захват точки"
         country = coal * 100 + 1
         node = self.find(x, z)
@@ -352,12 +353,13 @@ class Grid:
         node.country = country
         self._resolve(country)
 
-    def capture_node(self, node, coal):
+    def capture_node(self, node: Node, coal: int):
         "Захват узла"
         self.capture(node.x, node.z, coal)
 
     def _resolve(self, priority):
         "Красим 'нейтралов' за линией фронта в цвет победившей стороны"
+        # pylint: disable=C0103
         resolvable = []
         for neutral in self.neutrals:
             is_correct = False
