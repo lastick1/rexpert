@@ -4,6 +4,7 @@ from processing.player import Player
 from processing.squad import Squad
 import rcon
 import pymongo
+from .objects import Aircraft, BotPilot, Airfield
 
 
 class PlayersController:
@@ -20,9 +21,11 @@ class PlayersController:
         self.__players = players
         self.__squads = squads
 
-    def spawn_player(self, aircraft_id, bot_id, account_id, profile_id, name, pos, aircraft_name,
-                     country_id, coal_id, airfield_id, airstart, parent_id, payload_id, fuel, skin,
-                     weapon_mods_id, cartridges, shells, bombs, rockets, form) -> None:
+    def spawn_player(self, aircraft: Aircraft, bot: BotPilot, account_id: str, profile_id: str,
+                     name: str, pos: dict, aircraft_name: str, country_id: int, coal_id: int,
+                     airfield_id: int, airstart: bool, parent_id: int, payload_id: int,
+                     fuel: float, skin: str, weapon_mods_id: list, cartridges: int, shells: int,
+                     bombs: int, rockets: int, form: str) -> None:
         "Обработка появления игрока"
 
         player = Player(account_id, self.__players.find_one({'_id': account_id}))

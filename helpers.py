@@ -2,7 +2,6 @@
 from pathlib import Path
 import os
 
-# compile_log('./tmp', 'missionReport*.txt', './tmp/compiled')
 def compile_log(folder: str, report: str, dest: str):
     """ Собрать лог по порядку из папки в один файл
     :param folder: Папка
