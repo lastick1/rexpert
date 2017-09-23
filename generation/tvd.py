@@ -4,6 +4,8 @@ from pathlib import Path
 from random import randint
 from .grid import Grid
 from .gen import Group, Ldb, FlGroup, Divisions
+from .weather import presets, WeatherPreset
+import configs
 
 date_format = '%d.%m.%Y'
 default_af_cache = {'moscow': '30.09.2016', 'stalingrad': '30.09.2016'}
@@ -24,25 +26,28 @@ class Stage:
 
 
 class Tvd:
-    def __init__(self, tvd_name, date, config, main_config):
+    def __init__(self, name, date, mgen: configs.Mgen, main: configs.Main, loc_cfg: configs.LocationsConfig, params: configs.GeneratorParamsConfig):
         """ Класс театра военных действий (ТВД) кампании, для которого генерируются миссии """
-        self.name = tvd_name
-        self.sides = config.cfg['sides']
-        self.default_stages = config.default_stages[tvd_name]
-        self.af_groups_folders = config.af_groups_folders[tvd_name]
-        self.ldf_file = config.cfg[tvd_name]['ldf_file']
-        self.tvd_folder = config.cfg[tvd_name]['tvd_folder']
+        self.name = name
+        self.main = main
+        self.mgen = mgen
+        self.loc_cfg = loc_cfg
+        self.params = params
+        self.sides = mgen.cfg['sides']
+        self.default_stages = mgen.default_stages[name]
+        self.af_groups_folders = mgen.af_groups_folders[name]
+        self.ldf_file = mgen.cfg[name]['ldf_file']
+        self.tvd_folder = mgen.cfg[name]['tvd_folder']
 
         self.date = datetime.datetime.strptime(date, date_format)
-        self.id = config.cfg[tvd_name]['tvd']
-        folder = main_config.game_folder.joinpath(Path(config.cfg[tvd_name]['tvd_folder']))
-        self.default_params_file = folder.joinpath(config.cfg[tvd_name]['default_params_dest'])
-        self.default_params_template_file = main_config.configs_folder.joinpath(
-            config.cfg[tvd_name]['default_params_source'])
-        self.icons_group_file = folder.joinpath(config.cfg[tvd_name]['icons_group_file'])
-        self.right_top = config.cfg[tvd_name]['right_top']
-        self.grid = Grid(tvd_name, config)
-        self.grid.read_db()
+        self.id = mgen.cfg[name]['tvd']
+        folder = main.game_folder.joinpath(Path(mgen.cfg[name]['tvd_folder']))
+        self.default_params_file = folder.joinpath(mgen.cfg[name]['default_params_dest'])
+        self.default_params_template_file = main.configs_folder.joinpath(
+            mgen.cfg[name]['default_params_source'])
+        self.icons_group_file = folder.joinpath(mgen.cfg[name]['icons_group_file'])
+        self.right_top = mgen.cfg[name]['right_top']
+        self.grid = Grid(name, mgen.xgml[name], mgen)
         # таблица аэродромов с координатами
         self.airfields_data = tuple(
             (lambda z:
@@ -51,7 +56,7 @@ class Tvd:
                  'xpos': z[1],
                  'zpos': z[2]
              })(x.split(sep=';'))
-            for x in config.af_csv[tvd_name].open().readlines()
+            for x in mgen.af_csv[name].open().readlines()
         )
         # данные по сезонам из daytime.csv
         self.seasons_data = tuple(
@@ -65,16 +70,16 @@ class Tvd:
                  'max_temp': int(z[5]),
                  'season_prefix': str(z[6]).rstrip()
              })(x.split(sep=';'))
-            for x in config.daytime_files[tvd_name].open().readlines()
+            for x in mgen.daytime_files[name].open().readlines()
         )
         self.stages = tuple(
-            Stage(x, self.sides, config.af_templates_folder) for x in config.stages[tvd_name]
+            Stage(x, self.sides, mgen.af_templates_folder) for x in mgen.stages[name]
         )
 
     def capture(self, x, z, coal_id):
         self.grid.capture(x, z, coal_id)
 
-    def update(self, default_params_config):
+    def update(self):
         """ Обновление групп, баз локаций и файла параметров генерации в папке ТВД (data/scg/x) """
         print('[{}] Updating TVD folder: {} ({})'.format(
             datetime.datetime.now().strftime("%H:%M:%S"),
@@ -87,7 +92,7 @@ class Tvd:
         self.update_icons()
         self.update_ldb()
         self.update_airfields()
-        self.randomize_defaultparams(default_params_config)
+        self.randomize_defaultparams(self.params.cfg[self.name])
 
     def verify_grid(self):
         """ Проверка и самопочинка графа """
@@ -104,14 +109,14 @@ class Tvd:
     def update_icons(self):
         """ Обновление группы иконок в соответствии с положением ЛФ """
         print('[{}] generating icons group...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
-        flg = FlGroup(self.name, self.grid.neutral_line, self.grid.areas)
+        flg = FlGroup(self.name, self.grid.neutral_line, self.grid.areas, self.mgen)
         flg.make()
         print('... icons done')
 
     def update_ldb(self):
         """ Обновление базы локаций до актуального состояния """
         print('[{}] generating Locations Data Base (LDB)...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
-        ldf = Ldb(self.name, self.grid.areas, self.grid.scenarios, self.grid.neutral_line)
+        ldf = Ldb(self.name, self.grid.areas, self.grid.scenarios, self.grid.neutral_line, self.main, self.mgen, self.loc_cfg)
         ldf.make()
         print('... LDB done')
 
@@ -234,7 +239,7 @@ class Tvd:
                 return stage.id
         raise NameError('Incorrect date for all stages: {}'.format(self.date))
 
-    def randomize_defaultparams(self, params_config):
+    def randomize_defaultparams(self, params_config: dict):
         """ Задать случайные параметры погоды, времени года и суток """
         with self.default_params_template_file.open(encoding='utf-8-sig') as f:
             dfpr_lines = f.readlines()
@@ -254,7 +259,7 @@ class Tvd:
                         setting, params_config[season['season_prefix']][setting])
         weather_type = randint(*params_config[season['season_prefix']]['wtype_diapason'])
 
-        w_preset = weather.WeatherPreset(weather.presets[weather_type])
+        w_preset = WeatherPreset(presets[weather_type])
         # задаём параметры defaultparams в соответствии с конфигом
         for y in range(len(dfpr_lines)):
             if dfpr_lines[y].startswith('$date ='):

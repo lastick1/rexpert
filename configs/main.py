@@ -17,6 +17,7 @@ class Main:  # pylint: disable=R0903,R0902,C0301
         self.mission_gen_folder = Path(src['MISSIONGEN']['mission_gen_folder']).absolute()
         self.stats_folder = Path(src['PROGRAM']['stats_folder'])
         self.stats_static = Path(self.stats_folder.joinpath(r'.\static')).absolute()
+        self.maps_archive_folder = Path(src['PROGRAM']['maps_archive_folder'])
         self.graph_folder = Path('.\\configs\\').absolute()
         self.configs_folder = Path('.\\configs\\').absolute()
         self.cache_folder = Path('.\\cache\\').absolute()

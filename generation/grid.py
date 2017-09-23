@@ -4,6 +4,7 @@ import queue
 import random
 import geometry
 import configs
+import pathlib
 
 class Node(geometry.Point):
     "Узел графа"
@@ -110,10 +111,10 @@ class Chain:
 
 class Grid:
     "Граф (сетка)"
-    def __init__(self, name, config: configs.Mgen):
+    def __init__(self, name: str, xgml: pathlib.Path, config: configs.Mgen):
         self.nodes = dict()  # узлы сетки
         self.tvd = config.cfg[name]['tvd']
-        self.xgml_file = config.xgml[name]
+        self.xgml_file = xgml
         self.scenario_min_distance = config.cfg['scenario_min_distance']
         self.graph_zoom_x = config.cfg[name]['graph_zoom_point']['y']
         self.graph_zoom_z = config.cfg[name]['graph_zoom_point']['x']
@@ -121,6 +122,7 @@ class Grid:
         self.z_coefficient_serialization = self.graph_zoom_z / config.cfg[name]['right_top']['z']
         self.x_coefficient_deserialization = config.cfg[name]['right_top']['x'] / self.graph_zoom_x
         self.z_coefficient_deserialization = config.cfg[name]['right_top']['z'] / self.graph_zoom_z
+        self.read_file()
 
     @property
     def nodes_list(self) -> list:
@@ -347,9 +349,7 @@ class Grid:
         for neighbor in node.neighbors:
             if neighbor.country and neighbor.country != country:
                 neighbor.country = 0
-                db.PGConnector.Graph.update_graph_node(neighbor.key, self.tvd, 0)
         node.country = country
-        db.PGConnector.Graph.update_graph_node(node.key, self.tvd, country)
         self._resolve(country)
 
     def capture_node(self, node, coal):
@@ -368,4 +368,3 @@ class Grid:
                 resolvable.append(neutral)
         for x in resolvable:
             x.country = priority
-            db.PGConnector.Graph.update_graph_node(x.key, self.tvd, priority)

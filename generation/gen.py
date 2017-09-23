@@ -121,6 +121,7 @@ class MissionFiles:
 
 class Generator:
     def __init__(self, main: Main, mgen: Mgen):
+        self.cfg = mgen.cfg
         self.game_folder = main.game_folder
         self.mission_gen_folder = main.mission_gen_folder
         self.resaver_folder = main.resaver_folder
@@ -137,8 +138,8 @@ class Generator:
         :return:
         """
         tvd_folder = self.tvd_folders[tvd_name]
-        default_params = tvd_folder.joinpath(mgen.cfg[tvd_name]['default_params_dest']).absolute()
-        mission_template = tvd_folder.joinpath(mgen.cfg[tvd_name]['mt_file']).absolute()
+        default_params = tvd_folder.joinpath(self.cfg[tvd_name]['default_params_dest']).absolute()
+        mission_template = tvd_folder.joinpath(self.cfg[tvd_name]['mt_file']).absolute()
         print("[{}] Generating new mission: [{}]...".format(
             datetime.now().strftime("%H:%M:%S"),
             file_name
@@ -515,7 +516,7 @@ class AirObjectiveRecon:
 
 
 class Ldb:
-    def __init__(self, tvd_name, areas, objective_nodes, frontline, main: Main, mgen: Mgen):
+    def __init__(self, tvd_name, areas, objective_nodes, frontline, main: Main, mgen: Mgen, loc_cfg: LocationsConfig):
         """
         Класс для присвоения наций локациям в базе по заданным параметрам
         :param tvd_name: имя ТВД для получения конфига локаций
@@ -539,10 +540,10 @@ class Ldb:
             self.locations['air_objectives_recons'].append(AirObjectiveRecon(str(m)))
         for m in ground_objective_raw_re.findall(self.ldf_base):
             self.locations['ground_objectives'].append(
-                GroundObjectiveLocation(str(m), tvd_name, areas, frontline, objective_nodes))
+                GroundObjectiveLocation(str(m), tvd_name, areas, frontline, objective_nodes, loc_cfg))
         for m in decorations_raw_re.findall(self.ldf_base):
             self.locations['decorations'].append(
-                DecorationLocation(str(m), tvd_name, areas, frontline, objective_nodes))
+                DecorationLocation(str(m), tvd_name, areas, frontline, objective_nodes, loc_cfg))
 
         for country in objective_nodes.keys():
             for node in objective_nodes[country]:
