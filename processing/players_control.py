@@ -1,6 +1,6 @@
 """ Обработка игроков """
 import datetime
-from processing.player import Player, ID, NICKNAME, BAN_DATE, KNOWN_NICKNAMES, UNLOCKS
+from processing.player import Player, ID
 from processing.squad import Squad
 import rcon
 import pymongo
@@ -21,6 +21,30 @@ class PlayersController:
         self.__players = players
         self.__squads = squads
 
+    def _filter_by_account_id(self, account_id: str) -> dict:
+        "Получить фильтр документов по ИД игрока"
+        return {ID: account_id}
+
+    def _update_request_body(self, document: dict) -> dict:
+        "Построить запрос обновления документа"
+        return {'$set': document}
+
+    def _count(self, account_id) -> int:
+        "Посчитать документы игрока в БД"
+        _filter = self._filter_by_account_id(account_id)
+        return self.__players.count(_filter)
+
+    def _find(self, account_id) -> dict:
+        "Найти документ игрока в БД"
+        _filter = self._filter_by_account_id(account_id)
+        return self.__players.find_one(_filter)
+
+    def _update(self, player: Player):
+        "Обновить/создать игрока в БД"
+        _filter = self._filter_by_account_id(player.account_id)
+        document = self._update_request_body(player.to_dict())
+        self.__players.update_one(_filter, document, upsert=True)
+
     def spawn_player(self, aircraft: Aircraft, bot: BotPilot, account_id: str, profile_id: str,
                      name: str, pos: dict, aircraft_name: str, country_id: int, coal_id: int,
                      airfield_id: int, airstart: bool, parent_id: int, payload_id: int,
@@ -28,12 +52,13 @@ class PlayersController:
                      bombs: int, rockets: int, form: str) -> None:
         "Обработка появления игрока"
 
-        player = Player(account_id, self.__players.find_one({'_id': account_id}), aircraft, bot)
+        document = self._find(account_id)
+        player = Player(account_id, document, aircraft, bot)
         player.nickname = name
         if self.use_rcon:
             self._commands.private_message(account_id, 'Hello {}!'.format(name))
-        self.__players.update_one(
-            {'_id': player.account_id}, {'$set': player.to_dict()}, upsert=True)
+
+        self._update(player)
 
     def bot_deinitialization(self, bot_id, pos):
         "AType 16"
@@ -50,25 +75,21 @@ class PlayersController:
 
     def connect_player(self, account_id: str, profile_id: str) -> None:
         "AType 20"
-        _filter = {'_id': account_id}
 
-        if self.__players.count(filter=_filter) == 0:
-            self.__players.insert_one(self._create_document(account_id, profile_id))
+        if self._count(account_id) == 0:
+            document = Player.create_document(account_id, online=True)
+            player = Player(account_id, document)
+            self._update(player)
 
-        document = self.__players.find_one(filter=_filter)
-        player = Player(account_id, document, None, None)
+        document = self._find(account_id)
+        player = Player(account_id, document)
         if player.ban_expire_date and player.ban_expire_date > datetime.datetime.now():
             self._commands.banuser(player.account_id)
 
-    def _create_document(self, account_id: str, profile_id: str) -> dict:
-        return {
-            ID: account_id,
-            NICKNAME: None,
-            BAN_DATE: None,
-            KNOWN_NICKNAMES: [],
-            UNLOCKS: 1
-        }
-
     def disconnect_player(self, account_id: str, profile_id: str) -> None:
         "AType 21"
-        pass
+        _filter = self._filter_by_account_id(account_id)
+        document = self.__players.find_one(_filter)
+        player = Player(account_id, document)
+        player.online = False
+        self._update(player)

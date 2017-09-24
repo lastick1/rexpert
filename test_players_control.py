@@ -3,8 +3,8 @@ import unittest
 import datetime
 import pathlib
 import pymongo
-from processing import PlayersController
-from processing.player import ID, NICKNAME, BAN_DATE, KNOWN_NICKNAMES, UNLOCKS
+from processing import PlayersController, Player
+from processing.player import ID, NICKNAME
 from processing.objects import Aircraft, BotPilot
 from configs.objects import Objects
 from tests import mocks
@@ -24,8 +24,7 @@ class TestPlayersController(unittest.TestCase):
         self.controller = PlayersController(False, self.console_mock, self.players, self.squads)
         self.objects = Objects()
         self._account_id = '_test_id1'
-        self._player = {ID: self._account_id, NICKNAME: None, BAN_DATE: None, UNLOCKS: 1,
-                        KNOWN_NICKNAMES: []}
+        self._player = Player.create_document(self._account_id)
 
     def tearDown(self):
         self.console_mock.socket.close()
@@ -36,7 +35,7 @@ class TestPlayersController(unittest.TestCase):
         "Обновляется ник игрока на спауне"
         # Arrange
         nickname = '_test_nickname'
-        self.players.insert_one(self._player)
+        self.players.update_one({ID: self._account_id}, {'$set': self._player})
         aircraft = Aircraft(1, self.objects['I-16 type 24'], 201, 2, 'Test I-16')
         bot = BotPilot(2, self.objects['BotPilot'], aircraft, 201, 2, 'Test pilot')
         # Act
@@ -51,7 +50,7 @@ class TestPlayersController(unittest.TestCase):
         "Отправляется сообщение игроку на спауне"
         # Arrange
         nickname = '_test_nickname'
-        self.players.insert_one(self._player)
+        self.players.update_one({ID: self._account_id}, {'$set': self._player})
         aircraft = Aircraft(1, self.objects['I-16 type 24'], 201, 2, 'Test I-16')
         bot = BotPilot(2, self.objects['BotPilot'], aircraft, 201, 2, 'Test pilot')
         # Act
@@ -75,7 +74,7 @@ class TestPlayersController(unittest.TestCase):
         "Отправляется команда бана забаненого пользователя через консоль"
         # Arrange
         profile_id = '_test_profile_id1'
-        self.players.insert_one(self._player)
+        self.players.update_one({ID: self._account_id}, {'$set': self._player})
         date = datetime.datetime.now() + datetime.timedelta(days=1)
         self.players.update_one(
             filter={'_id': self._account_id},

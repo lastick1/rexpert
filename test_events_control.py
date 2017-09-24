@@ -30,7 +30,7 @@ class TestEventsController(unittest.TestCase):
 
     def tearDown(self):
         "Удаление базы после теста"
-        # self.mongo.drop_database(DB_NAME)
+        self.mongo.drop_database(DB_NAME)
         self.mongo.close()
 
     def test_processing_with_atype_7(self):
