@@ -4,7 +4,7 @@ import datetime
 import pathlib
 import pymongo
 from processing import PlayersController, Player
-from processing.player import ID, NICKNAME, KNOWN_NICKNAMES, ONLINE
+from processing.player import ID, NICKNAME, KNOWN_NICKNAMES, ONLINE, BAN_DATE
 from processing.objects import Aircraft, BotPilot
 from configs.objects import Objects
 from tests import mocks
@@ -47,7 +47,7 @@ class TestPlayersController(unittest.TestCase):
         # Arrange
         self.players.update_one(FILTER, {'$set': TEST_PLAYER}, upsert=True)
         date = datetime.datetime.now() + datetime.timedelta(days=1)
-        self.players.update_one(FILTER, update={'$set': {'ban_expire_date': date}})
+        self.players.update_one(FILTER, update={'$set': {BAN_DATE: date}})
         # Act
         self.controller.connect_player(TEST_ACCOUNT_ID, TEST_PROFILE_ID)
         # Assert
