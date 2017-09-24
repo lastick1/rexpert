@@ -17,11 +17,11 @@ class ConsoleMock(rcon.DServerRcon):
     "Заглушка коммандера"
     def __init__(self):
         super().__init__('127.0.0.1', '8991')
-        self.recieved_private_messages = 0
+        self.recieved_private_messages = []
         self.banned = []
 
     def private_message(self, account_id: str, message: str):
-        self.recieved_private_messages += 1
+        self.recieved_private_messages.append((account_id, message))
 
     def banuser(self, name):
         print('banned {}'.format(name))

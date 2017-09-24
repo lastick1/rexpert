@@ -47,7 +47,7 @@ class TestPlayersController(unittest.TestCase):
         self.assertEqual(nickname, player[NICKNAME])
 
     def test_spawn_player(self):
-        "Отправляется сообщение игроку на спауне"
+        "Отправляется приветственное сообщение игроку на спауне"
         # Arrange
         nickname = '_test_nickname'
         self.players.update_one({ID: self._account_id}, {'$set': self._player})
@@ -58,9 +58,11 @@ class TestPlayersController(unittest.TestCase):
                                      None, None, None, None, None, None, None, None, None, None,
                                      None, None, None, None)
         # Assert
-        self.assertEqual(1, self.console_mock.recieved_private_messages)
+        self.assertIn(
+            (self._account_id, 'Hello {}!'.format(nickname)),
+            self.console_mock.recieved_private_messages)
 
-    def test_connect_player_initialization(self):
+    def test_connect_player_init(self):
         "Инициализируется игрок на первом входе на сервер"
         # Arrange
         profile_id = '_test_profile_id1'
