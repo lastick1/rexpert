@@ -1,4 +1,5 @@
 "Заглушки, фальшивки и т.п. для тестирования"
+# pylint: disable=all
 import pathlib
 import rcon
 import configs
