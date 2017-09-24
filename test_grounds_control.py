@@ -6,6 +6,7 @@ from configs.objects import Objects
 
 OBJECTS = Objects()
 
+
 class TestGroundControl(unittest.TestCase):
     "Тесты контроллера наземки"
     def setUp(self):
@@ -27,6 +28,7 @@ class TestGroundControl(unittest.TestCase):
         # Assert
         self.assertIn(target, self.controller.grounds.values())
         self.assertNotIn(aircraft, self.controller.grounds.values())
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
