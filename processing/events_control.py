@@ -143,17 +143,26 @@ class EventsController:
             airfield = Airfield(airfield_id=airfield_id, country_id=country_id, coal_id=coal_id, pos=pos)
             self.airfields[airfield_id] = airfield
 
-    def event_player(self, tik, aircraft_id, bot_id, account_id, profile_id, name, pos, aircraft_name, country_id,
-                     coal_id, airfield_id, airstart, parent_id, payload_id, fuel, skin, weapon_mods_id,
-                     cartridges, shells, bombs, rockets, form) -> None:
+    def _get_aircraft(self, aircraft_id) -> Aircraft:
+        "Получить самолёт"
+        return self.objects_id_ref[aircraft_id]
+
+    def _get_bot(self, bot_id) -> BotPilot:
+        "Получить бота"
+        return self.objects_id_ref[bot_id]
+    
+    def event_player(self, tik: int, aircraft_id: int, bot_id: int, account_id: str,
+                     profile_id: str, name: str, pos: dict, aircraft_name: str, country_id: int,
+                     coal_id: int, airfield_id: int, airstart: bool, parent_id: int,
+                     payload_id: int, fuel: float, skin: str, weapon_mods_id: list,
+                     cartridges: int, shells: int, bombs: int, rockets: int, form: str) -> None:
         "AType 10 handler"
-        aircraft = self.objects_id_ref[aircraft_id]
-        bot = self.objects_id_ref[bot_id]
-        self.players_controller.spawn_player(
-            aircraft, bot, account_id, profile_id, name, pos, aircraft_name, country_id, coal_id,
-            airfield_id, airstart, parent_id, payload_id, fuel, skin, weapon_mods_id, cartridges,
-            shells, bombs, rockets, form)
-        aircraft
+        aircraft = self._get_aircraft(aircraft_id)
+        aircraft.update_pos(pos)
+        bot = self._get_bot(bot_id)
+        bot.update_pos(pos)
+
+        self.players_controller.spawn_player(bot, account_id, name)
         self.update_tik(tik)
 
     def event_group(self, tik: int, group_id: int, members_id: int, leader_id: int) -> None:
@@ -204,12 +213,12 @@ class EventsController:
     def event_player_connected(self, tik: int, account_id: str, profile_id: str) -> None:
         "AType 20 handler"
         self.update_tik(tik)
-        self.players_controller.connect_player(account_id, profile_id)
+        self.players_controller.connect_player(account_id)
 
     def event_player_disconnected(self, tik: int, account_id: str, profile_id: str) -> None:
         "AType 21 handler"
         self.update_tik(tik)
-        self.players_controller.disconnect_player(account_id, profile_id)
+        self.players_controller.disconnect_player(account_id)
 
     def get_object(self, obj_id: int, obj: configs.Object, parent_id: int, country_id: int,
                    coal_id: int, name: str) -> Object:

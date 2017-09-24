@@ -37,7 +37,7 @@ class TestPlayersController(unittest.TestCase):
     def test_connect_player_init(self):
         "Инициализируется игрок на первом входе на сервер"
         # Act
-        self.controller.connect_player(TEST_ACCOUNT_ID, TEST_PROFILE_ID)
+        self.controller.connect_player(TEST_ACCOUNT_ID)
         document = self.players.find_one(FILTER)
         # Assert
         self.assertNotEqual(None, document)
@@ -49,7 +49,7 @@ class TestPlayersController(unittest.TestCase):
         date = datetime.datetime.now() + datetime.timedelta(days=1)
         self.players.update_one(FILTER, update={'$set': {BAN_DATE: date}})
         # Act
-        self.controller.connect_player(TEST_ACCOUNT_ID, TEST_PROFILE_ID)
+        self.controller.connect_player(TEST_ACCOUNT_ID)
         # Assert
         self.assertIn(TEST_ACCOUNT_ID, self.console_mock.banned)
 
@@ -60,9 +60,7 @@ class TestPlayersController(unittest.TestCase):
         aircraft = Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
         bot = BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
         # Act
-        self.controller.spawn_player(aircraft, bot, TEST_ACCOUNT_ID, None, TEST_NICKNAME, None,
-                                     None, None, None, None, None, None, None, None, None, None,
-                                     None, None, None, None, None)
+        self.controller.spawn_player(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
         # Assert
         player = self.players.find_one(FILTER)
         self.assertEqual(TEST_NICKNAME, player[NICKNAME])
@@ -74,9 +72,7 @@ class TestPlayersController(unittest.TestCase):
         aircraft = Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
         bot = BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
         # Act
-        self.controller.spawn_player(aircraft, bot, TEST_ACCOUNT_ID, None, TEST_NICKNAME, None,
-                                     None, None, None, None, None, None, None, None, None, None,
-                                     None, None, None, None, None)
+        self.controller.spawn_player(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
         # Assert
         self.assertIn(
             (TEST_ACCOUNT_ID, 'Hello {}!'.format(TEST_NICKNAME)),
@@ -89,12 +85,8 @@ class TestPlayersController(unittest.TestCase):
         aircraft = Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
         bot = BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
         # Act
-        self.controller.spawn_player(aircraft, bot, TEST_ACCOUNT_ID, TEST_PROFILE_ID,
-                                     TEST_NICKNAME, None, None, 201, 2, None, None, None, 0, 1,
-                                     None, [], 0, 0, 0, 0, None)
-        self.controller.spawn_player(aircraft, bot, TEST_ACCOUNT_ID, TEST_PROFILE_ID,
-                                     TEST_NICKNAME, None, None, 201, 2, None, None, None, 0, 1,
-                                     None, [], 0, 0, 0, 0, None)
+        self.controller.spawn_player(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
+        self.controller.spawn_player(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
         # Assert
         document = self.players.find_one(FILTER)
         self.assertEqual([], document[KNOWN_NICKNAMES])
@@ -106,12 +98,8 @@ class TestPlayersController(unittest.TestCase):
         aircraft = Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
         bot = BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
         # Act
-        self.controller.spawn_player(
-            aircraft, bot, TEST_ACCOUNT_ID, TEST_PROFILE_ID, TEST_NICKNAME, None,
-            None, 201, 2, None, None, None, 0, 1, None, [], 0, 0, 0, 0, None)
-        self.controller.spawn_player(
-            aircraft, bot, TEST_ACCOUNT_ID, TEST_PROFILE_ID, 'new_nickname', None,
-            None, 201, 2, None, None, None, 0, 1, None, [], 0, 0, 0, 0, None)
+        self.controller.spawn_player(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
+        self.controller.spawn_player(bot, TEST_ACCOUNT_ID, 'new_nickname')
         # Assert
         document = self.players.find_one(FILTER)
         self.assertEqual([TEST_NICKNAME], document[KNOWN_NICKNAMES])
@@ -121,7 +109,7 @@ class TestPlayersController(unittest.TestCase):
         # Arrange
         self.players.update_one(FILTER, {'$set': TEST_PLAYER}, upsert=True)
         # Act
-        self.controller.disconnect_player(TEST_ACCOUNT_ID, TEST_PROFILE_ID)
+        self.controller.disconnect_player(TEST_ACCOUNT_ID)
         # Assert
         document = self.players.find_one(FILTER)
         self.assertEqual(False, document[ONLINE])
@@ -137,14 +125,12 @@ class TestPlayersController(unittest.TestCase):
         target = Ground(3, OBJECTS['static_il2'], 101, 1, 'Test target', pos)
         expect = TEST_PLAYER[UNLOCKS] + 1
         # Act
-        self.controller.connect_player(TEST_ACCOUNT_ID, TEST_PROFILE_ID)
-        self.controller.spawn_player(
-            aircraft, bot, TEST_ACCOUNT_ID, TEST_PROFILE_ID, TEST_NICKNAME, None,
-            None, 201, 2, None, None, None, 0, 1, None, [], 0, 0, 0, 0, None)
+        self.controller.connect_player(TEST_ACCOUNT_ID)
+        self.controller.spawn_player(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
         aircraft.add_damage(target, damage)
         self.controller.damage(aircraft, damage, target, pos)
         self.controller.bot_deinitialization(bot)
-        self.controller.disconnect_player(TEST_ACCOUNT_ID, TEST_PROFILE_ID)
+        self.controller.disconnect_player(TEST_ACCOUNT_ID)
         # Assert
         document = self.players.find_one(FILTER)
         self.assertEqual(expect, document[UNLOCKS])
@@ -159,14 +145,12 @@ class TestPlayersController(unittest.TestCase):
         target = Ground(3, OBJECTS['static_il2'], 101, 1, 'Test target', pos)
         expect = TEST_PLAYER[UNLOCKS] + 1
         # Act
-        self.controller.connect_player(TEST_ACCOUNT_ID, TEST_PROFILE_ID)
-        self.controller.spawn_player(
-            aircraft, bot, TEST_ACCOUNT_ID, TEST_PROFILE_ID, TEST_NICKNAME, None,
-            None, 201, 2, None, None, None, 0, 1, None, [], 0, 0, 0, 0, None)
+        self.controller.connect_player(TEST_ACCOUNT_ID)
+        self.controller.spawn_player(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
         aircraft.add_kill(target)
         self.controller.kill(aircraft, target, pos)
         self.controller.bot_deinitialization(bot)
-        self.controller.disconnect_player(TEST_ACCOUNT_ID, TEST_PROFILE_ID)
+        self.controller.disconnect_player(TEST_ACCOUNT_ID)
         # Assert
         document = self.players.find_one(FILTER)
         self.assertEqual(expect, document[UNLOCKS])
