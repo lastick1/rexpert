@@ -7,12 +7,13 @@ from configs import Objects
 import pymongo
 
 TEST_LOG1 = './testdata/spawn_takeoff_landing_despawn_missionReport(2017-09-17_09-05-09)[0].txt'
-TEST_LOG2 = './testdata/spawn_takeoff_bombing_landing_af_crashed_despawn_missionReport(2017-09-23_19-31-30)[0]'
+TEST_LOG2 = './testdata/target_bombing_crashlanded_on_af_missionReport(2017-09-23_19-31-30)[0].txt'
 TEST_LOG3 = './testdata/multiple_spawns_missionReport(2017-09-24_14-46-12)[0].txt'
 DB_NAME = 'test_rexpert'
 
 MAIN = mocks.MainMock(pathlib.Path(r'.\testdata\conf.ini'))
 MGEN = mocks.MgenMock(MAIN)
+OBJECTS = Objects()
 
 class TestEventsController(unittest.TestCase):
     "Тесты базовой обработки логов с новой базой на каждом тесте"
@@ -21,8 +22,7 @@ class TestEventsController(unittest.TestCase):
         self.mongo = pymongo.MongoClient(MAIN.mongo_host, MAIN.mongo_port)
         rexpert = self.mongo[DB_NAME]
         console = mocks.ConsoleMock()
-        self.objects = Objects()
-        self.grounds = GroundController(self.objects)
+        self.grounds = GroundController(OBJECTS)
         self.generator = mocks.GeneratorMock(MAIN, MGEN)
         self.players = PlayersController(True, console, rexpert['Players'], rexpert['Squads'])
         self.campaign = CampaignController(MAIN, MGEN, self.generator)
@@ -35,7 +35,7 @@ class TestEventsController(unittest.TestCase):
     def test_processing_with_atype_7(self):
         "Завершается корректно миссия с AType:7 в логе"
         # Arrange
-        controller = EventsController(self.objects, self.players, self.grounds, self.campaign)
+        controller = EventsController(OBJECTS, self.players, self.grounds, self.campaign)
         # Act
         for line in pathlib.Path(TEST_LOG1).read_text().split('\n'):
             controller.process_line(line)
@@ -45,13 +45,23 @@ class TestEventsController(unittest.TestCase):
     def test_generate_next_with_atype_0(self):
         "Генерируется следующая миссия с AType:0 в логе"
         # Arrange
-        controller = EventsController(self.objects, self.players, self.grounds, self.campaign)
+        controller = EventsController(OBJECTS, self.players, self.grounds, self.campaign)
         # Act
         for line in pathlib.Path(TEST_LOG1).read_text().split('\n'):
             controller.process_line(line)
 
         # Assert
         self.assertEqual(len(self.generator.generations), 1)
+
+    def test_bombing(self):
+        "Учитываются наземные цели"
+        # Arrange
+        controller = EventsController(OBJECTS, self.players, self.grounds, self.campaign)
+        # Act
+        for line in pathlib.Path(TEST_LOG2).read_text().split('\n'):
+            controller.process_line(line)
+        # Assert
+        self.assertGreater(len(controller.ground_controller.units), 0)
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

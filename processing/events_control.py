@@ -5,7 +5,7 @@ import configs
 from .players_control import PlayersController
 from .ground_control import GroundController
 from .campaign_control import CampaignController
-from .objects import Aircraft, BotPilot, Airfield, Object
+from .objects import Aircraft, BotPilot, Airfield, Ground, Object, GROUND_CLASSES
 
 
 class EventsController:
@@ -86,6 +86,9 @@ class EventsController:
 
     def event_kill(self, tik, attacker_id, target_id, pos) -> None:
         "AType 3 handler"
+        attacker = self.objects_id_ref[attacker_id]
+        target = self.objects_id_ref[target_id]
+        self.ground_controller.ground_kill(attacker, target, pos)
         self.update_tik(tik)
         # в логах так бывает что кто-то умер, а кто не известно :)
 
@@ -139,10 +142,11 @@ class EventsController:
     def event_game_object(self, tik: int, object_id: int, object_name: str, country_id: int,
                           coal_id: int, name: str, parent_id: int) -> None:
         "AType 12 handler"
-        self.ground_controller.ground_object(
-            tik, object_id, object_name, country_id, coal_id, name, parent_id)
         game_object = self.get_object(object_id, self.objects[object_name], parent_id, country_id, coal_id, name)
         self.objects_id_ref[object_id] = game_object
+        if game_object.cls_base == 'ground':
+            self.ground_controller.ground_object(
+                tik, game_object, object_name, country_id, coal_id, name, parent_id)
         self.update_tik(tik)
 
     def event_influence_area(self, tik: int, area_id: int, country_id: int, coal_id: int, enabled: bool, in_air: bool) -> None:
@@ -188,4 +192,9 @@ class EventsController:
             return BotPilot(obj_id, obj, self.objects_id_ref[parent_id], country_id, coal_id, name)
         if obj.playable and 'aircraft' in obj.cls:
             return Aircraft(obj_id, obj, country_id, coal_id, name)
+        if 'airfield' in obj.cls:
+            return Airfield(obj_id, country_id, coal_id, None)
+        _cls = obj.cls
+        if obj.cls in GROUND_CLASSES:
+            return Ground(obj_id, obj, country_id, coal_id, name)
         return Object(obj_id, obj, country_id, coal_id, name)

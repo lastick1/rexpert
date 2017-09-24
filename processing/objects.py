@@ -5,6 +5,7 @@ from .helpers import is_pos_correct, distance
 class Object:
     "Базовый объект"
     def __init__(self, obj_id: int, obj: configs.Object, country_id: int, coal_id: int, name: str):
+        self.cls_base = None
         self.deinitialized = False
         self.obj_id = obj_id
         self.country_id = country_id
@@ -14,6 +15,12 @@ class Object:
     def deinitialize(self):
         "Пометить объект как удалённый из игрового мира"
         self.deinitialized = True
+
+class Ground(Object):
+    "Наземный объект"
+    def __init__(self, obj_id: int, obj: configs.Object, country_id: int, coal_id: int, name: str):
+        super().__init__(obj_id, obj, country_id, coal_id, name)
+        self.cls_base = 'ground'
 
 class Aircraft(Object):
     "Самолёт"
@@ -52,3 +59,20 @@ class Airfield(Object):
         "Обновить страну и коалицию"
         self.country_id = country_id
         self.coal_id = coal_id
+
+
+ALL_CLASSES = {
+    'aaa_light', 'tank_turret', 'ship', 'shell', 'tank_heavy', 'aircraft_light', 'tank_medium',
+    'aircraft_pilot', 'aircraft_heavy', 'car', 'rocket', 'artillery_howitzer', 'flare', 'aaa_mg',
+    'aircraft_turret', 'vehicle_turret', 'trash', 'tank_light', 'tank_driver', 'wagon',
+    'searchlight', 'locomotive', 'artillery_field', 'bomb', 'airfield', 'aircraft_transport',
+    'explosion', 'artillery_rocket', 'parachute', 'aircraft_gunner', 'aircraft_static',
+    'industrial', 'bridge', 'machine_gunner', 'bullet', 'armoured_vehicle', 'vehicle_static',
+    'vehicle_crew', 'truck', 'aircraft_medium', 'aaa_heavy'}
+
+GROUND_CLASSES = {
+    'aaa_light', 'tank_turret', 'ship', 'tank_heavy', 'tank_medium', 'car', 'artillery_howitzer',
+    'aaa_mg', 'aircraft_turret', 'vehicle_turret', 'trash', 'tank_light', 'tank_driver', 'wagon',
+    'searchlight', 'locomotive', 'artillery_field', 'airfield', 'aircraft_transport',
+    'artillery_rocket', 'aircraft_gunner', 'aircraft_static', 'industrial', 'bridge',
+    'machine_gunner', 'armoured_vehicle', 'vehicle_static', 'vehicle_crew', 'truck', 'aaa_heavy'}
