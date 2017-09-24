@@ -21,13 +21,11 @@ class TestEventsController(unittest.TestCase):
         self.mongo = pymongo.MongoClient(MAIN.mongo_host, MAIN.mongo_port)
         rexpert = self.mongo[DB_NAME]
         console = mocks.ConsoleMock()
-        self.main = MAIN
-        self.mgen = MGEN
         self.objects = Objects()
         self.grounds = GroundController(self.objects)
-        self.generator = mocks.GeneratorMock(self.main, self.mgen)
+        self.generator = mocks.GeneratorMock(MAIN, MGEN)
         self.players = PlayersController(True, console, rexpert['Players'], rexpert['Squads'])
-        self.campaign = CampaignController(self.main, self.mgen, self.generator)
+        self.campaign = CampaignController(MAIN, MGEN, self.generator)
 
     def tearDown(self):
         "Удаление базы после теста"

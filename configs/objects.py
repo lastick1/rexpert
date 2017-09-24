@@ -3,6 +3,7 @@ import codecs
 
 class Object:
     "Класс объекта из логов"
+    # pylint: disable=R0913,R0903
     def __init__(self, cls_name: str, log_name: str, playable: str, name: str, name_ru: str):
         self.cls = cls_name
         self.log_name = log_name
