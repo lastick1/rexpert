@@ -9,8 +9,6 @@ class Mgen:
 
     def __init__(self, main: Main):
         Mgen._instances += 1
-        if Mgen._instances > 1:
-            raise NameError('Too much Mgen instances')
         with open('.\\configs\\missiongen.json') as stream:
             src = json.load(stream)
         self.cfg = src

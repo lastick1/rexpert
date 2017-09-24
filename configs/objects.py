@@ -3,8 +3,8 @@ import codecs
 
 class Object:
     "Класс объекта из логов"
-    def __init__(self, cls: str, log_name: str, playable: str, name: str, name_ru: str):
-        self.cls = cls
+    def __init__(self, cls_name: str, log_name: str, playable: str, name: str, name_ru: str):
+        self.cls = cls_name
         self.log_name = log_name
         self.playable = bool(int(playable))
         self.name = name

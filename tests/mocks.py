@@ -24,7 +24,6 @@ class ConsoleMock(rcon.DServerRcon):
         self.recieved_private_messages.append((account_id, message))
 
     def banuser(self, name):
-        print('banned {}'.format(name))
         self.banned.append(name)
 
 class GeneratorMock(generation.Generator):

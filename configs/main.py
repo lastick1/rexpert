@@ -8,8 +8,6 @@ class Main:  # pylint: disable=R0903,R0902,C0301
 
     def __init__(self, path: Path):
         Main._instances += 1
-        if Main._instances > 1:
-            raise NameError('Too much Main instances')
         src = configparser.ConfigParser()
         src.read(str(path.absolute()))
         self.game_folder = Path(src['PROGRAM']['game_folder']).absolute()

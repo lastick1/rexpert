@@ -8,6 +8,7 @@ import pymongo
 
 TEST_LOG1 = './testdata/spawn_takeoff_landing_despawn_missionReport(2017-09-17_09-05-09)[0].txt'
 TEST_LOG2 = './testdata/spawn_takeoff_bombing_landing_af_crashed_despawn_missionReport(2017-09-23_19-31-30)[0]'
+TEST_LOG3 = './testdata/multiple_spawns_missionReport(2017-09-24_14-46-12)[0].txt'
 DB_NAME = 'test_rexpert'
 
 MAIN = mocks.MainMock(pathlib.Path(r'.\testdata\conf.ini'))
