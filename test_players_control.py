@@ -83,7 +83,7 @@ class TestPlayersController(unittest.TestCase):
             self.console_mock.recieved_private_messages)
 
     def test_multiple_spawn_nickname(self):
-        "Не добавляетcя лишний известный ник при неоднократный спауне"
+        "Не добавляетcя лишний известный ник при неоднократном спауне"
         # Arrange
         self.players.update_one(FILTER, {'$set': TEST_PLAYER}, upsert=True)
         aircraft = Aircraft(1, self.objects['I-16 type 24'], 201, 2, 'Test I-16')
