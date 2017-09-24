@@ -4,7 +4,7 @@ from processing.player import Player, ID
 from processing.squad import Squad
 import rcon
 import pymongo
-from .objects import Aircraft, BotPilot, Airfield
+from .objects import Aircraft, BotPilot, Airfield, Object
 
 
 class PlayersController:
@@ -17,6 +17,7 @@ class PlayersController:
             squads: pymongo.collection.Collection
     ):
         self.use_rcon = not offline_mode
+        self.players_aircrafts = dict()
         self._commands = commands
         self.__players = players
         self.__squads = squads
@@ -59,10 +60,29 @@ class PlayersController:
             self._commands.private_message(account_id, 'Hello {}!'.format(name))
 
         self._update(player)
+        self.players_aircrafts[aircraft.obj_id] = player
 
-    def bot_deinitialization(self, bot_id, pos):
-        "AType 16"
-        pass
+    def damage(self, attacker: Object, damage: float, target: Object, pos: dict):
+        "Обработать килл"
+        if attacker and attacker.cls_base == 'aircraft':
+            pass
+
+    def kill(self, attacker: Object, target: Object, pos: dict):
+        "Обработать килл"
+        if attacker and attacker.cls_base == 'aircraft':
+            pass
+
+    def bot_deinitialization(self, bot: BotPilot):
+        "Обработать конец вылета"
+        player = self._get_player_by_bot(bot)
+        has_kills = len(player.current_aircraft.killboard) > 0
+        has_damage = len(player.current_aircraft.damageboard) > 0
+        if has_kills or has_damage:
+            player.unlocks += 1
+            self._update(player)
+
+    def _get_player_by_bot(self, bot: BotPilot) -> Player:
+        return self.players_aircrafts[bot.aircraft.obj_id]
 
     def bot_eject_leave(self, bot_id, parent_id, pos):
         pass
@@ -88,8 +108,7 @@ class PlayersController:
 
     def disconnect_player(self, account_id: str, profile_id: str) -> None:
         "AType 21"
-        _filter = self._filter_by_account_id(account_id)
-        document = self.__players.find_one(_filter)
+        document = self._find(account_id)
         player = Player(account_id, document)
         player.online = False
         self._update(player)

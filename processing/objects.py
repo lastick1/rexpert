@@ -18,29 +18,68 @@ class Object:
 
 class Ground(Object):
     "Наземный объект"
-    def __init__(self, obj_id: int, obj: configs.Object, country_id: int, coal_id: int, name: str):
+    def __init__(self,
+                 obj_id: int, obj: configs.Object, country_id: int,
+                 coal_id: int, name: str, pos: dict = None):
         super().__init__(obj_id, obj, country_id, coal_id, name)
         self.cls_base = 'ground'
+        self.killed = False
+        self.pos = pos
+
+    def update_pos(self, pos: dict) -> None:
+        "Обновить позицию"
+        if is_pos_correct(pos):
+            self.pos = pos
 
 class Aircraft(Object):
     "Самолёт"
-    def __init__(self, obj_id: int, obj: configs.Object, country_id: int, coal_id: int, name: str):
+    def __init__(self,
+                 obj_id: int, obj: configs.Object, country_id: int,
+                 coal_id: int, name: str, pos: dict = None):
         super().__init__(obj_id, obj, country_id, coal_id, name)
         self.cls_base, self.type = obj.cls.split('_')
         self.name = obj.name
         self.log_name = obj.log_name
+        self.pos = pos
+        self.killboard = list()
+        self.damageboard = dict()
+
+    def add_kill(self, target: Object):
+        "Добавить убитый объект"
+        self.killboard.append(target)
+
+    def add_damage(self, target: Object, damage: float):
+        "Добавить нанесённый урон"
+        if hasattr(target, 'pos'):
+            key = str(target.pos)
+            if key not in self.damageboard:
+                self.damageboard[key] = 0.0
+            self.damageboard[key] += damage
+        else:
+            NameError('Damage nowhere {} {}'.format(target.pos, damage))
+
+    def update_pos(self, pos: dict) -> None:
+        "Обновить позицию"
+        if is_pos_correct(pos):
+            self.pos = pos
 
 class BotPilot(Object):
     "Пилот"
     def __init__(self, obj_id: int, obj: configs.Object, parent: Aircraft, country_id: int,
-                 coal_id: int, name: str):
+                 coal_id: int, name: str, pos: dict = None):
         super().__init__(obj_id, obj, country_id, coal_id, name)
         self.aircraft = parent
+        self.pos = pos
 
     def deinitialize(self):
         "Пометить объект как удалённый из игрового мира"
         self.aircraft.deinitialize()
         super().deinitialize()
+
+    def update_pos(self, pos: dict) -> None:
+        "Обновить позицию"
+        if is_pos_correct(pos):
+            self.pos = pos
 
 class Airfield(Object):
     "Аэродром"
@@ -60,6 +99,10 @@ class Airfield(Object):
         self.country_id = country_id
         self.coal_id = coal_id
 
+    def update_pos(self, pos: dict) -> None:
+        "Обновить позицию"
+        if is_pos_correct(pos):
+            self.pos = pos
 
 ALL_CLASSES = {
     'aaa_light', 'tank_turret', 'ship', 'shell', 'tank_heavy', 'aircraft_light', 'tank_medium',

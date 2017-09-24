@@ -11,7 +11,8 @@ ONLINE = 'online'
 
 class Player:
     "Класс игрока"
-    def __init__(self, account_id: str, data: dict, aircraft: Aircraft = None, bot: BotPilot = None):
+    def __init__(self, account_id: str, data: dict,
+                 aircraft: Aircraft = None, bot: BotPilot = None):
         self.account_id = account_id
         self.current_aircraft = aircraft
         self.current_bot = bot

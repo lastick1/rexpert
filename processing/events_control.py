@@ -9,6 +9,7 @@ from .objects import Aircraft, BotPilot, Airfield, Ground, Object, GROUND_CLASSE
 
 
 class EventsController:
+    "Контроллер обработки событий из логов"
     def __init__(
             self,
             objects: dict,
@@ -17,7 +18,6 @@ class EventsController:
             campaign_controller: CampaignController
     ):
         """
-        Контроллер обработки событий из логов
         :param objects: Справочник объектов в логах
         :param players_controller: Контроллер игроков
         :param ground_controller: Контроллер наземки
@@ -79,16 +79,35 @@ class EventsController:
         "AType 1 handler"
         self.update_tik(tik)
 
-    def event_damage(self, tik, damage, attacker_id, target_id, pos) -> None:
+    def event_damage(self, tik: int, damage: float, attacker_id: int, target_id: int, pos: dict) -> None:
         "AType 2 handler"
+        target = self.objects_id_ref[target_id]
+        target.update_pos(pos)
+        attacker = None
+        if attacker_id:
+            attacker = self.objects_id_ref[attacker_id]
+            attacker.update_pos(pos)
+            attacker.add_damage(target, damage)
+
+        self.players_controller.damage(attacker, damage, target, pos)
+        self.ground_controller.damage(attacker, damage, target, pos)
+
         self.update_tik(tik)
         # дамага может не быть из-за бага логов
 
-    def event_kill(self, tik, attacker_id, target_id, pos) -> None:
+    def event_kill(self, tik: int, attacker_id: int, target_id: int, pos: dict) -> None:
         "AType 3 handler"
-        attacker = self.objects_id_ref[attacker_id]
         target = self.objects_id_ref[target_id]
-        self.ground_controller.ground_kill(attacker, target, pos)
+        target.update_pos(pos)
+        attacker = None
+        if attacker_id:
+            attacker = self.objects_id_ref[attacker_id]
+            attacker.update_pos(pos)
+            attacker.add_kill(target)
+        
+        self.players_controller.kill(attacker, target, pos)
+        self.ground_controller.kill(attacker, target, pos)
+        
         self.update_tik(tik)
         # в логах так бывает что кто-то умер, а кто не известно :)
 
@@ -130,12 +149,14 @@ class EventsController:
         "AType 10 handler"
         aircraft = self.objects_id_ref[aircraft_id]
         bot = self.objects_id_ref[bot_id]
-        self.players_controller.spawn_player(aircraft, bot, account_id, profile_id, name, pos, aircraft_name,
-                                             country_id, coal_id, airfield_id, airstart, parent_id, payload_id, fuel,
-                                             skin, weapon_mods_id, cartridges, shells, bombs, rockets, form)
+        self.players_controller.spawn_player(
+            aircraft, bot, account_id, profile_id, name, pos, aircraft_name, country_id, coal_id,
+            airfield_id, airstart, parent_id, payload_id, fuel, skin, weapon_mods_id, cartridges,
+            shells, bombs, rockets, form)
+        aircraft
         self.update_tik(tik)
 
-    def event_group(self, tik, group_id, members_id, leader_id) -> None:
+    def event_group(self, tik: int, group_id: int, members_id: int, leader_id: int) -> None:
         "AType 11 handler"
         self.update_tik(tik)
 
@@ -153,41 +174,45 @@ class EventsController:
         "AType 13 handler"
         self.update_tik(tik)
 
-    def event_influence_area_boundary(self, tik, area_id, boundary) -> None:
+    def event_influence_area_boundary(self, tik: int, area_id: int, boundary) -> None:
         "AType 14 handler"
         self.update_tik(tik)
 
-    def event_log_version(self, tik, version) -> None:
+    def event_log_version(self, tik: int, version) -> None:
         "AType 15 handler"
         self.update_tik(tik)
 
-    def event_bot_deinitialization(self, tik, bot_id, pos) -> None:
+    def event_bot_deinitialization(self, tik: int, bot_id: int, pos: dict) -> None:
         "AType 16 handler"
+        bot = self.objects_id_ref[bot_id]
+        bot.update_pos(pos)
+        self.players_controller.bot_deinitialization(bot)
         self.update_tik(tik)
 
-    def event_pos_changed(self, tik, object_id, pos) -> None:
+    def event_pos_changed(self, tik: int, object_id: int, pos: dict) -> None:
         "AType 17 handler"
         self.update_tik(tik)
 
-    def event_bot_eject_leave(self, tik, bot_id, parent_id, pos) -> None:
+    def event_bot_eject_leave(self, tik: int, bot_id: int, parent_id: int, pos: dict) -> None:
         "AType 18 handler"
         self.update_tik(tik)
 
-    def event_round_end(self, tik) -> None:
+    def event_round_end(self, tik: int) -> None:
         "AType 19 handler"
         self.update_tik(tik)
 
-    def event_player_connected(self, tik, account_id, profile_id) -> None:
+    def event_player_connected(self, tik: int, account_id: str, profile_id: str) -> None:
         "AType 20 handler"
         self.update_tik(tik)
-        self.players_controller.connect_player(account_id=account_id, profile_id=profile_id)
+        self.players_controller.connect_player(account_id, profile_id)
 
-    def event_player_disconnected(self, tik, account_id, profile_id) -> None:
+    def event_player_disconnected(self, tik: int, account_id: str, profile_id: str) -> None:
         "AType 21 handler"
         self.update_tik(tik)
-        self.players_controller.disconnect_player(account_id=account_id, profile_id=profile_id)
+        self.players_controller.disconnect_player(account_id, profile_id)
 
-    def get_object(self, obj_id: int, obj: configs.Object, parent_id: int, country_id: int, coal_id: int, name: str) -> Object:
+    def get_object(self, obj_id: int, obj: configs.Object, parent_id: int, country_id: int,
+                   coal_id: int, name: str) -> Object:
         if 'BotPilot' in obj.log_name and 'aircraft' in obj.cls:
             return BotPilot(obj_id, obj, self.objects_id_ref[parent_id], country_id, coal_id, name)
         if obj.playable and 'aircraft' in obj.cls:

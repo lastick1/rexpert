@@ -4,8 +4,8 @@ import datetime
 import pathlib
 import pymongo
 from processing import PlayersController, Player
-from processing.player import ID, NICKNAME, KNOWN_NICKNAMES, ONLINE, BAN_DATE
-from processing.objects import Aircraft, BotPilot
+from processing.player import ID, NICKNAME, KNOWN_NICKNAMES, ONLINE, BAN_DATE, UNLOCKS
+from processing.objects import Aircraft, BotPilot, Ground
 from configs.objects import Objects
 from tests import mocks
 from tests import ConsoleMock
@@ -17,6 +17,7 @@ TEST_ACCOUNT_ID = '_test_id1'
 TEST_PROFILE_ID = '_test_profile_id1'
 TEST_PLAYER = Player.create_document(TEST_ACCOUNT_ID)
 FILTER = {ID: TEST_ACCOUNT_ID}
+OBJECTS = Objects()
 
 class TestPlayersController(unittest.TestCase):
     "Тесты событий с обработкой данных игроков"
@@ -27,7 +28,6 @@ class TestPlayersController(unittest.TestCase):
         self.squads = rexpert['Squads']
         self.console_mock = ConsoleMock()
         self.controller = PlayersController(False, self.console_mock, self.players, self.squads)
-        self.objects = Objects()
 
     def tearDown(self):
         self.console_mock.socket.close()
@@ -57,8 +57,8 @@ class TestPlayersController(unittest.TestCase):
         "Обновляется ник игрока на спауне"
         # Arrange
         self.players.update_one(FILTER, {'$set': TEST_PLAYER}, upsert=True)
-        aircraft = Aircraft(1, self.objects['I-16 type 24'], 201, 2, 'Test I-16')
-        bot = BotPilot(2, self.objects['BotPilot'], aircraft, 201, 2, 'Test pilot')
+        aircraft = Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
+        bot = BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
         # Act
         self.controller.spawn_player(aircraft, bot, TEST_ACCOUNT_ID, None, TEST_NICKNAME, None,
                                      None, None, None, None, None, None, None, None, None, None,
@@ -71,8 +71,8 @@ class TestPlayersController(unittest.TestCase):
         "Отправляется приветственное сообщение игроку на спауне"
         # Arrange
         self.players.update_one(FILTER, {'$set': TEST_PLAYER}, upsert=True)
-        aircraft = Aircraft(1, self.objects['I-16 type 24'], 201, 2, 'Test I-16')
-        bot = BotPilot(2, self.objects['BotPilot'], aircraft, 201, 2, 'Test pilot')
+        aircraft = Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
+        bot = BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
         # Act
         self.controller.spawn_player(aircraft, bot, TEST_ACCOUNT_ID, None, TEST_NICKNAME, None,
                                      None, None, None, None, None, None, None, None, None, None,
@@ -86,8 +86,8 @@ class TestPlayersController(unittest.TestCase):
         "Не добавляетcя лишний известный ник при неоднократном спауне"
         # Arrange
         self.players.update_one(FILTER, {'$set': TEST_PLAYER}, upsert=True)
-        aircraft = Aircraft(1, self.objects['I-16 type 24'], 201, 2, 'Test I-16')
-        bot = BotPilot(2, self.objects['BotPilot'], aircraft, 201, 2, 'Test pilot')
+        aircraft = Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
+        bot = BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
         # Act
         self.controller.spawn_player(aircraft, bot, TEST_ACCOUNT_ID, TEST_PROFILE_ID,
                                      TEST_NICKNAME, None, None, 201, 2, None, None, None, 0, 1,
@@ -103,15 +103,15 @@ class TestPlayersController(unittest.TestCase):
         "Пополняются известные ники при спауне с новым ником"
         # Arrange
         self.players.update_one(FILTER, {'$set': TEST_PLAYER}, upsert=True)
-        aircraft = Aircraft(1, self.objects['I-16 type 24'], 201, 2, 'Test I-16')
-        bot = BotPilot(2, self.objects['BotPilot'], aircraft, 201, 2, 'Test pilot')
+        aircraft = Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
+        bot = BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
         # Act
-        self.controller.spawn_player(aircraft, bot, TEST_ACCOUNT_ID, TEST_PROFILE_ID,
-                                     TEST_NICKNAME, None, None, 201, 2, None, None, None, 0, 1,
-                                     None, [], 0, 0, 0, 0, None)
-        self.controller.spawn_player(aircraft, bot, TEST_ACCOUNT_ID, TEST_PROFILE_ID,
-                                     'new_nickname', None, None, 201, 2, None, None, None, 0, 1,
-                                     None, [], 0, 0, 0, 0, None)
+        self.controller.spawn_player(
+            aircraft, bot, TEST_ACCOUNT_ID, TEST_PROFILE_ID, TEST_NICKNAME, None,
+            None, 201, 2, None, None, None, 0, 1, None, [], 0, 0, 0, 0, None)
+        self.controller.spawn_player(
+            aircraft, bot, TEST_ACCOUNT_ID, TEST_PROFILE_ID, 'new_nickname', None,
+            None, 201, 2, None, None, None, 0, 1, None, [], 0, 0, 0, 0, None)
         # Assert
         document = self.players.find_one(FILTER)
         self.assertEqual([TEST_NICKNAME], document[KNOWN_NICKNAMES])
@@ -125,6 +125,51 @@ class TestPlayersController(unittest.TestCase):
         # Assert
         document = self.players.find_one(FILTER)
         self.assertEqual(False, document[ONLINE])
+
+    def test_give_unlock_for_damage(self):
+        "Даётся модификация за вылет с уроном"
+        # Arrange
+        self.players.update_one(FILTER, {'$set': TEST_PLAYER}, upsert=True)
+        pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
+        damage = 80.0
+        aircraft = Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
+        bot = BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
+        target = Ground(3, OBJECTS['static_il2'], 101, 1, 'Test target', pos)
+        expect = TEST_PLAYER[UNLOCKS] + 1
+        # Act
+        self.controller.connect_player(TEST_ACCOUNT_ID, TEST_PROFILE_ID)
+        self.controller.spawn_player(
+            aircraft, bot, TEST_ACCOUNT_ID, TEST_PROFILE_ID, TEST_NICKNAME, None,
+            None, 201, 2, None, None, None, 0, 1, None, [], 0, 0, 0, 0, None)
+        aircraft.add_damage(target, damage)
+        self.controller.damage(aircraft, damage, target, pos)
+        self.controller.bot_deinitialization(bot)
+        self.controller.disconnect_player(TEST_ACCOUNT_ID, TEST_PROFILE_ID)
+        # Assert
+        document = self.players.find_one(FILTER)
+        self.assertEqual(expect, document[UNLOCKS])
+
+    def test_give_unlock_for_kill(self):
+        "Даётся модификация за вылет с килом"
+        # Arrange
+        self.players.update_one(FILTER, {'$set': TEST_PLAYER}, upsert=True)
+        pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
+        aircraft = Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
+        bot = BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
+        target = Ground(3, OBJECTS['static_il2'], 101, 1, 'Test target', pos)
+        expect = TEST_PLAYER[UNLOCKS] + 1
+        # Act
+        self.controller.connect_player(TEST_ACCOUNT_ID, TEST_PROFILE_ID)
+        self.controller.spawn_player(
+            aircraft, bot, TEST_ACCOUNT_ID, TEST_PROFILE_ID, TEST_NICKNAME, None,
+            None, 201, 2, None, None, None, 0, 1, None, [], 0, 0, 0, 0, None)
+        aircraft.add_kill(target)
+        self.controller.kill(aircraft, target, pos)
+        self.controller.bot_deinitialization(bot)
+        self.controller.disconnect_player(TEST_ACCOUNT_ID, TEST_PROFILE_ID)
+        # Assert
+        document = self.players.find_one(FILTER)
+        self.assertEqual(expect, document[UNLOCKS])
 
 
 if __name__ == '__main__':
