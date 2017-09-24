@@ -1,6 +1,6 @@
 """ Обработка игроков """
 import datetime
-from processing.player import Player
+from processing.player import Player, ID, NICKNAME, BAN_DATE, KNOWN_NICKNAMES, UNLOCKS
 from processing.squad import Squad
 import rcon
 import pymongo
@@ -28,7 +28,7 @@ class PlayersController:
                      bombs: int, rockets: int, form: str) -> None:
         "Обработка появления игрока"
 
-        player = Player(account_id, self.__players.find_one({'_id': account_id}))
+        player = Player(account_id, self.__players.find_one({'_id': account_id}), aircraft, bot)
         player.nickname = name
         if self.use_rcon:
             self._commands.private_message(account_id, 'Hello {}!'.format(name))
@@ -50,9 +50,25 @@ class PlayersController:
 
     def connect_player(self, account_id: str, profile_id: str) -> None:
         "AType 20"
-        player = Player(account_id, self.__players.find_one({'_id': account_id}))
+        _filter = {'_id': account_id}
+
+        if self.__players.count(filter=_filter) == 0:
+            self.__players.insert_one(self._create_document(account_id, profile_id))
+
+        document = self.__players.find_one(filter=_filter)
+        player = Player(account_id, document, None, None)
         if player.ban_expire_date and player.ban_expire_date > datetime.datetime.now():
             self._commands.banuser(player.account_id)
 
+    def _create_document(self, account_id: str, profile_id: str) -> dict:
+        return {
+            ID: account_id,
+            NICKNAME: None,
+            BAN_DATE: None,
+            KNOWN_NICKNAMES: [],
+            UNLOCKS: 1
+        }
+
     def disconnect_player(self, account_id: str, profile_id: str) -> None:
+        "AType 21"
         pass

@@ -17,9 +17,8 @@ class TestEventsController(unittest.TestCase):
     "Тесты базовой обработки логов с новой базой на каждом тесте"
     def setUp(self):
         "Настройка базы перед тестом"
-        mongo = pymongo.MongoClient('localhost', 27017)
-        mongo.drop_database(DB_NAME)
-        rexpert = mongo[DB_NAME]
+        self.mongo = pymongo.MongoClient(MAIN.mongo_host, MAIN.mongo_port)
+        rexpert = self.mongo[DB_NAME]
         console = mocks.ConsoleMock()
         self.main = MAIN
         self.mgen = MGEN
@@ -28,6 +27,11 @@ class TestEventsController(unittest.TestCase):
         self.generator = mocks.GeneratorMock(self.main, self.mgen)
         self.players = PlayersController(True, console, rexpert['Players'], rexpert['Squads'])
         self.campaign = CampaignController(self.main, self.mgen, self.generator)
+
+    def tearDown(self):
+        "Удаление базы после теста"
+        # self.mongo.drop_database(DB_NAME)
+        self.mongo.close()
 
     def test_processing_with_atype_7(self):
         "Завершается корректно миссия с AType:7 в логе"

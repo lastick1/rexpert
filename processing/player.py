@@ -1,4 +1,6 @@
 "Модель данных игрока"
+from .objects import Aircraft, BotPilot
+
 ID = '_id'
 NICKNAME = 'nickname'
 BAN_DATE = 'ban_expire_date'
@@ -8,14 +10,10 @@ UNLOCKS = 'unlocks'
 
 class Player:
     "Класс игрока"
-    def __init__(self, account_id: str, data: dict = None):
+    def __init__(self, account_id: str, data: dict, aircraft: Aircraft, bot: BotPilot):
         self.account_id = account_id
-        if not data:
-            self._nickname = None
-            self.ban_expire_date = None
-            self.previous_nicknames = None
-            self.unlocks = 1
-            return
+        self.current_aircraft = aircraft
+        self.current_bot = bot
         self._nickname = data[NICKNAME]
         self.ban_expire_date = data[BAN_DATE]
         self.previous_nicknames = data[KNOWN_NICKNAMES]
