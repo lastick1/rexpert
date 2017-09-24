@@ -16,7 +16,8 @@ class GroundController:
 
     def damage(self, attacker: Object, damage: float, target: Ground, pos: dict) -> None:
         "Обработать урон наземному объекту"
-        self.grounds[str(pos)] = target
+        if target.cls_base == 'ground':
+            self.grounds[str(pos)] = target
 
     def kill(self, attacker: Object, target: Ground, pos: dict) -> None:
         "Обработать уничтожение наземного объекта"

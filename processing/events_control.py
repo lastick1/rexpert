@@ -89,7 +89,6 @@ class EventsController:
             attacker.update_pos(pos)
             attacker.add_damage(target, damage)
 
-        self.players_controller.damage(attacker, damage, target, pos)
         self.ground_controller.damage(attacker, damage, target, pos)
 
         self.update_tik(tik)
