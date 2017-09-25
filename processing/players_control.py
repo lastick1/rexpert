@@ -4,7 +4,7 @@ from processing.player import Player, ID
 from processing.squad import Squad
 import rcon
 import pymongo
-from .objects import BotPilot, Object
+from .objects import BotPilot, Object, Aircraft
 
 
 def _filter_by_account_id(account_id: str) -> dict:
@@ -69,6 +69,10 @@ class PlayersController:
         "Обработать килл"
         if attacker and attacker.cls_base == 'aircraft':
             pass
+
+    def landing(self, aircraft: Aircraft, on_airfield: bool) -> None:
+        "Обработать посадку"
+        pass
 
     def bot_deinitialization(self, bot: BotPilot):
         "Обработать конец вылета"

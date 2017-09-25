@@ -43,6 +43,7 @@ class Aircraft(Object):
         self.pos = pos
         self.killboard = list()
         self.damageboard = dict()
+        self.landed = True
 
     def add_kill(self, target: Object):
         "Добавить убитый объект"
@@ -62,6 +63,16 @@ class Aircraft(Object):
         "Обновить позицию"
         if is_pos_correct(pos):
             self.pos = pos
+
+    def takeoff(self, pos: dict) -> None:
+        "Взлёт"
+        self.landed = False
+        self.update_pos(pos)
+
+    def land(self, pos: dict) -> None:
+        "Посадка"
+        self.landed = True
+        self.update_pos(pos)
 
 class BotPilot(Object):
     "Пилот"

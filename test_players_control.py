@@ -166,6 +166,7 @@ class TestPlayersController(unittest.TestCase):
         aircraft = Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
         bot = BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
         target = Ground(3, OBJECTS['static_il2'], 101, 1, 'Test target', pos)
+        expect = TEST_PLAYER[UNLOCKS]
         # Act
         self.controller.connect_player(TEST_ACCOUNT_ID)
         self.controller.spawn_player(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
@@ -174,7 +175,8 @@ class TestPlayersController(unittest.TestCase):
         self.controller.bot_deinitialization(bot)
         self.controller.disconnect_player(TEST_ACCOUNT_ID)
         # Assert
-        self.fail()
+        document = self.players.find_one(FILTER)
+        self.assertEqual(expect, document[UNLOCKS])
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
