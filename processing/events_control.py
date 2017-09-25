@@ -42,7 +42,7 @@ class EventsController:
             self.event_log_version, self.event_bot_deinitialization, self.event_pos_changed,
             self.event_bot_eject_leave, self.event_round_end, self.event_player_connected,
             self.event_player_disconnected)
-    
+
     def process_line(self, line: str):
         "Точка входа обработки события"
         # TODO добавить проверку на одинаковые записи подряд
@@ -63,10 +63,11 @@ class EventsController:
             self.events_handlers[atype_id](**atype)
 
         except processing.parse_mission_log_line.UnexpectedATypeWarning:
-            logging.warning('unexpected atype: [{}]'.format(line))
-    
-    
+            logging.warning('unexpected atype: [%s]', line)
+
+
     def update_tik(self, tik: int) -> None:
+        "Обновить тик"
         self.tik_last = tik
 
     def event_mission_start(self, tik: int, date, file_path, game_type_id, countries, settings, mods, preset_id) -> None:
