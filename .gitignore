@@ -10,3 +10,4 @@ mission_report/__pycache__/
 *lines.json
 /configs/conf.ini
 sandbox.py
+.vs/
