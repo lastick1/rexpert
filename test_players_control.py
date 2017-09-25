@@ -178,5 +178,9 @@ class TestPlayersController(unittest.TestCase):
         document = self.players.find_one(FILTER)
         self.assertEqual(expect, document[UNLOCKS])
 
+    def test_dont_give_for_friendly(self):
+        "Не даётся модификация за вылет со стрельбой по своим"
+        self.fail("Дописать тест")
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
