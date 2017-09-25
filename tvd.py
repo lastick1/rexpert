@@ -206,7 +206,7 @@ class Tvd:
     @property
     def is_ended(self):
         # TODO добавить проверку на завершение по территории
-        return self.date_next > self.date_end
+        return self.date_next >= self.date_end
 
     @property
     def score(self):

@@ -249,7 +249,11 @@ class Campaign:
                     datetime.datetime.now().strftime("%H:%M:%S"),
                     next_name
                 ))
-                self.tvds[m_tvd_name].update()
+                if not self.tvds[m_tvd_name].is_ended:
+                    self.tvds[m_tvd_name].update()
+                else:
+                    next_tvd_name = self.next_tvd_name(m_tvd_name)
+                    self.tvds[next_tvd_name].update()
                 r = next_name, m_tvd_name
                 self.generations[m.name] = lc
             self.save()
