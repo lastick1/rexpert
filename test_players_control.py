@@ -131,7 +131,6 @@ class TestPlayersController(unittest.TestCase):
         self.controller.connect_player(TEST_ACCOUNT_ID)
         self.controller.spawn_player(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
         aircraft.add_damage(target, damage)
-        self.controller.damage(aircraft, damage, target, pos)
         self.controller.bot_deinitialization(bot)
         self.controller.disconnect_player(TEST_ACCOUNT_ID)
         # Assert
@@ -151,7 +150,6 @@ class TestPlayersController(unittest.TestCase):
         self.controller.connect_player(TEST_ACCOUNT_ID)
         self.controller.spawn_player(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
         aircraft.add_kill(target)
-        self.controller.kill(aircraft, target, pos)
         self.controller.bot_deinitialization(bot)
         self.controller.disconnect_player(TEST_ACCOUNT_ID)
         # Assert
@@ -170,8 +168,8 @@ class TestPlayersController(unittest.TestCase):
         # Act
         self.controller.connect_player(TEST_ACCOUNT_ID)
         self.controller.spawn_player(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
+        aircraft.takeoff(pos)
         aircraft.add_kill(target)
-        self.controller.kill(aircraft, target, pos)
         self.controller.bot_deinitialization(bot)
         self.controller.disconnect_player(TEST_ACCOUNT_ID)
         # Assert
@@ -180,7 +178,22 @@ class TestPlayersController(unittest.TestCase):
 
     def test_dont_give_for_friendly(self):
         "Не даётся модификация за вылет со стрельбой по своим"
-        self.fail("Дописать тест")
+        # Arrange
+        self._create(FILTER, TEST_PLAYER)
+        pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
+        aircraft = Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
+        bot = BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
+        target = Ground(3, OBJECTS['static_il2'], 201, 2, 'Test target', pos)
+        expect = TEST_PLAYER[UNLOCKS]
+        # Act
+        self.controller.connect_player(TEST_ACCOUNT_ID)
+        self.controller.spawn_player(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
+        aircraft.add_kill(target)
+        self.controller.bot_deinitialization(bot)
+        self.controller.disconnect_player(TEST_ACCOUNT_ID)
+        # Assert
+        document = self.players.find_one(FILTER)
+        self.assertEqual(expect, document[UNLOCKS])
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

@@ -42,20 +42,30 @@ class Aircraft(Object):
         self.log_name = obj.log_name
         self.pos = pos
         self.killboard = list()
+        self.friendly_fire_kills = list()
         self.damageboard = dict()
+        self.friendly_fire_damages = dict()
         self.landed = True
 
     def add_kill(self, target: Object):
         "Добавить убитый объект"
-        self.killboard.append(target)
+        if target.coal_id == self.coal_id:
+            self.friendly_fire_kills.append(target)
+        else:
+            self.killboard.append(target)
 
     def add_damage(self, target: Object, damage: float):
         "Добавить нанесённый урон"
         if hasattr(target, 'pos'):
             key = str(target.pos)
-            if key not in self.damageboard:
-                self.damageboard[key] = 0.0
-            self.damageboard[key] += damage
+            if target.coal_id == self.coal_id:
+                if key not in self.friendly_fire_damages:
+                    self.friendly_fire_damages[key] = 0.0
+                self.friendly_fire_damages[key] += damage
+            else:
+                if key not in self.damageboard:
+                    self.damageboard[key] = 0.0
+                self.damageboard[key] += damage
         else:
             NameError('Damage nowhere {} {}'.format(target.pos, damage))
 
