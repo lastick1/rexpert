@@ -7,6 +7,9 @@ BAN_DATE = 'ban_expire_date'
 KNOWN_NICKNAMES = 'known_nicknames'
 UNLOCKS = 'unlocks'
 ONLINE = 'online'
+PLANES = 'planes'
+HEAVY = 'heavy'
+LIGHT = 'light'
 
 
 class Player:
@@ -19,6 +22,7 @@ class Player:
         self.previous_nicknames = data[KNOWN_NICKNAMES]
         self.unlocks = data[UNLOCKS]
         self.online = data[ONLINE]
+        self.planes = data[PLANES]
 
     def to_dict(self) -> dict:
         "Сериализация в словарь для MongoDB"
@@ -28,7 +32,8 @@ class Player:
             BAN_DATE: self.ban_expire_date,
             KNOWN_NICKNAMES: self.previous_nicknames,
             UNLOCKS: self.unlocks,
-            ONLINE: self.online
+            ONLINE: self.online,
+            PLANES: self.planes
         }
 
     @staticmethod
@@ -36,7 +41,7 @@ class Player:
         "Инициализировать объект-документ для MongoDB"
         return {
             ID: account_id, NICKNAME: None, BAN_DATE: None, KNOWN_NICKNAMES: [], UNLOCKS: 1,
-            ONLINE: online
+            ONLINE: online, PLANES: {HEAVY: 2, LIGHT: 3}
         }
 
     def get_nickname(self) -> str:
