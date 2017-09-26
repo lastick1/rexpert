@@ -31,6 +31,13 @@ class Ground(Object):
         if is_pos_correct(pos):
             self.pos = pos
 
+    def add_kill(self, pos: dict) -> None:
+        "Добавить килл"
+        pass
+    def add_damage(self, pos: dict) -> None:
+        "Добавить нанесённый урон"
+        pass
+
 class Aircraft(Object):
     "Самолёт"
     def __init__(self,

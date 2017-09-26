@@ -44,10 +44,10 @@ def generate(name: str, tvd_name: str):
     generation.Generator(MAIN, MGEN).make_mission(name, tvd_name)
 
 
+print(datetime.datetime.now().strftime("[%H:%M:%S] Program Start."))
 # import helpers
 # helpers.compile_log('./tmp', 'missionReport*.txt', './tmp/compiled')
 
-print(datetime.datetime.now().strftime("[%H:%M:%S] Program Start"))
 # reset()
 # create_divisions_ldb()
 # export('moscow')
@@ -55,3 +55,4 @@ print(datetime.datetime.now().strftime("[%H:%M:%S] Program Start"))
 # generate('result1', 'moscow')
 # generate('result1', 'stalingrad')
 # run()
+print(datetime.datetime.now().strftime("[%H:%M:%S] Program Finish."))
