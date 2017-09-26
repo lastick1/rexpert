@@ -62,14 +62,25 @@ class PlayersController:
 
     def finish(self, bot: BotPilot):
         "Обработать конец вылета (деинициализация бота)"
+        changed = False
+
         has_kills = len(bot.aircraft.killboard) > 0
         has_damage = len(bot.aircraft.damageboard) > 0
         ff_kills = len(bot.aircraft.friendly_fire_kills) > 0
         ff_damage = len(bot.aircraft.friendly_fire_damages) > 0
         friendly_fire = ff_damage or ff_kills
+
         if not friendly_fire and bot.aircraft.landed and has_kills or has_damage:
+            changed = True
             player = self._get_player(bot)
             player.unlocks += 1
+
+        if bot.aircraft.damaged_by_enemy and not bot.aircraft.is_safe:
+            changed = True
+            player = self._get_player(bot)
+            player.planes[bot.aircraft.type] -= 1
+
+        if changed:
             self._update(player)
 
     def _get_player(self, bot: BotPilot) -> Player:

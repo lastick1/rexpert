@@ -2,6 +2,8 @@
 import configs
 from .helpers import is_pos_correct, distance
 
+
+
 class Object:
     "Базовый объект"
     def __init__(self, obj_id: int, obj: configs.Object, country_id: int, coal_id: int, name: str):
@@ -38,6 +40,34 @@ class Ground(Object):
         "Добавить нанесённый урон"
         pass
 
+class Airfield(Object):
+    "Аэродром"
+    def __init__(self, airfield_id: int, country_id: int, coal_id: int, pos: dict):
+        super().__init__(airfield_id, None, country_id, coal_id, 'airfield')
+        self.pos = pos
+
+    def is_in_range(self, radius: float, pos: dict) -> bool:
+        "Находится ли точка на аэродроме"
+        if is_pos_correct(pos=self.pos) and is_pos_correct(pos=pos):
+            return distance(self.pos, pos) <= radius
+        else:
+            return False
+
+    def update(self, country_id: int, coal_id: int) -> None:
+        "Обновить страну и коалицию"
+        self.country_id = country_id
+        self.coal_id = coal_id
+
+    def update_pos(self, pos: dict) -> None:
+        "Обновить позицию"
+        if is_pos_correct(pos):
+            self.pos = pos
+
+
+def _to_airfield(obj) -> Airfield:
+    return obj
+
+
 class Aircraft(Object):
     "Самолёт"
     def __init__(self,
@@ -45,6 +75,8 @@ class Aircraft(Object):
                  coal_id: int, name: str, pos: dict = None):
         super().__init__(obj_id, obj, country_id, coal_id, name)
         self.cls_base, self.type = obj.cls.split('_')
+        if self.type == 'medium':
+            self.type = 'heavy'
         self.name = obj.name
         self.log_name = obj.log_name
         self.pos = pos
@@ -53,15 +85,17 @@ class Aircraft(Object):
         self.damageboard = dict()
         self.friendly_fire_damages = dict()
         self.landed = True
+        self.damaged_by_enemy = False
+        self.is_safe = True
 
-    def add_kill(self, target: Object):
+    def add_kill(self, target: Object) -> None:
         "Добавить убитый объект"
         if target.coal_id == self.coal_id:
             self.friendly_fire_kills.append(target)
         else:
             self.killboard.append(target)
 
-    def add_damage(self, target: Object, damage: float):
+    def add_damage(self, target: Object, damage: float) -> None:
         "Добавить нанесённый урон"
         if hasattr(target, 'pos'):
             key = str(target.pos)
@@ -76,6 +110,12 @@ class Aircraft(Object):
         else:
             NameError('Damage nowhere {} {}'.format(target.pos, damage))
 
+    def recieve_damage(self, attacker: Object, damage: float, pos: dict) -> None:
+        "Учесть полученный урон"
+        if attacker.coal_id != self.coal_id and damage > 0:
+            self.damaged_by_enemy = True
+        self.update_pos(pos)
+
     def update_pos(self, pos: dict) -> None:
         "Обновить позицию"
         if is_pos_correct(pos):
@@ -84,12 +124,17 @@ class Aircraft(Object):
     def takeoff(self, pos: dict) -> None:
         "Взлёт"
         self.landed = False
+        self.is_safe = False
         self.update_pos(pos)
 
-    def land(self, pos: dict) -> None:
+    def land(self, pos: dict, airfields: list, landing_radius: float) -> None:
         "Посадка"
         self.landed = True
         self.update_pos(pos)
+        for item in airfields:
+            airfield = _to_airfield(item)
+            if airfield.coal_id == self.coal_id and airfield.is_in_range(landing_radius, pos):
+                self.is_safe = True
 
 class BotPilot(Object):
     "Пилот"
@@ -99,33 +144,10 @@ class BotPilot(Object):
         self.aircraft = parent
         self.pos = pos
 
-    def deinitialize(self):
+    def deinitialize(self) -> None:
         "Пометить объект как удалённый из игрового мира"
         self.aircraft.deinitialize()
         super().deinitialize()
-
-    def update_pos(self, pos: dict) -> None:
-        "Обновить позицию"
-        if is_pos_correct(pos):
-            self.pos = pos
-
-class Airfield(Object):
-    "Аэродром"
-    def __init__(self, airfield_id: int, country_id: int, coal_id: int, pos: dict):
-        super().__init__(airfield_id, None, country_id, coal_id, 'airfield')
-        self.pos = pos
-
-    def on_airfield(self, pos: dict):
-        "Находится ли точка на аэродроме"
-        if is_pos_correct(pos=self.pos) and is_pos_correct(pos=pos):
-            return distance(self.pos, pos) <= 4000
-        else:
-            return False
-
-    def update(self, country_id: int, coal_id: int):
-        "Обновить страну и коалицию"
-        self.country_id = country_id
-        self.coal_id = coal_id
 
     def update_pos(self, pos: dict) -> None:
         "Обновить позицию"

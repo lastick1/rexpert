@@ -110,7 +110,6 @@ class EventsController:
             attacker.update_pos(pos)
             attacker.add_kill(target)
 
-        self.players_controller.kill(attacker, target, pos)
         self.ground_controller.kill(attacker, target, pos)
 
         self.update_tik(tik)
@@ -174,7 +173,7 @@ class EventsController:
         bot = self._get_bot(bot_id)
         bot.update_pos(pos)
 
-        self.players_controller.spawn_player(bot, account_id, name)
+        self.players_controller.spawn(bot, account_id, name)
         self.update_tik(tik)
 
     def event_group(self, tik: int, group_id: int, members_id: int, leader_id: int) -> None:
@@ -209,7 +208,7 @@ class EventsController:
         "AType 16 handler"
         bot = self.objects_id_ref[bot_id]
         bot.update_pos(pos)
-        self.players_controller.bot_deinitialization(bot)
+        self.players_controller.finish(bot)
         self.update_tik(tik)
 
     def event_pos_changed(self, tik: int, object_id: int, pos: dict) -> None:
@@ -227,12 +226,12 @@ class EventsController:
     def event_player_connected(self, tik: int, account_id: str, profile_id: str) -> None:
         "AType 20 handler"
         self.update_tik(tik)
-        self.players_controller.connect_player(account_id)
+        self.players_controller.connect(account_id)
 
     def event_player_disconnected(self, tik: int, account_id: str, profile_id: str) -> None:
         "AType 21 handler"
         self.update_tik(tik)
-        self.players_controller.disconnect_player(account_id)
+        self.players_controller.disconnect(account_id)
 
     def create_object(self, obj_id: int, obj: configs.Object, parent_id: int, country_id: int,
                       coal_id: int, name: str) -> Object:
