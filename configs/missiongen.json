@@ -54,8 +54,8 @@
       "blue": ".\\blocks_quickmission\\airfields_blue"
     },
     "rear_airfields":[ {"x": 65000.0, "z": 41000.0}, {"x": 142000.0, "z": 239000.0} ],
-    "division_margin": 4000,
-    "division_depth": 7000
+    "division_margin": 5100,
+    "division_depth": 10000
   },
   "stalingrad":
   {

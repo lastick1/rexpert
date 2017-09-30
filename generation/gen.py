@@ -574,6 +574,7 @@ class Ldb:
 
 
 class Divisions:
+    "Дивизии"
     def __init__(self, tvd_name, edges, main: Main, mgen: Mgen):
         folder = main.game_folder.joinpath(Path(mgen.cfg[tvd_name]['tvd_folder']))
         self.ldf_file = folder.joinpath(mgen.cfg[tvd_name]['ldf_file'])

@@ -104,7 +104,7 @@ class Tvd:
 
     def create_divisions(self):
         "Обновление базы локаций с обозначением расположения дивизий"
-        ldf = Divisions(self.name, self.grid.edges_raw)
+        ldf = Divisions(self.name, self.grid.edges_raw, self.main, self.mgen)
         ldf.make()
 
     def update_icons(self):
