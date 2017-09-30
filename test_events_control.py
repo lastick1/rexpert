@@ -65,5 +65,8 @@ class TestEventsController(unittest.TestCase):
         # Assert
         self.assertGreater(len(controller.ground_controller.units), 0)
 
+    # TODO Отправляется предупреждение о запрете взлёта
+    # TODO Отправляется команда кика при запрещённом взлёте
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

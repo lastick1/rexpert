@@ -248,8 +248,5 @@ class TestPlayersController(unittest.TestCase):
         document = self.players.find_one(FILTER)
         self.assertEqual(expect, document[PLANES][aircraft.type])
 
-    # TODO Отправляется предупреждение о запрете взлёта
-    # TODO Отправляется команда кика при запрещённом взлёте
-
 if __name__ == '__main__':
     unittest.main(verbosity=2)
