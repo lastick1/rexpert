@@ -12,7 +12,12 @@ class MainMock(configs.Main):
 
 class MgenMock(configs.Mgen):
     "Заглушка конфига генерации миссий"
-    pass
+    def __init__(self, main: MainMock):
+        super().__init__(main)
+        self.xgml = { 
+            'stalingrad': pathlib.Path(r'./testdata/stalingrad.xgml'),
+            'moscow': pathlib.Path(r'./testdata/moscow.xgml'),
+            }
 
 class ConsoleMock(rcon.DServerRcon):
     "Заглушка коммандера"

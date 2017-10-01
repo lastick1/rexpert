@@ -1,4 +1,5 @@
 "Работа с графом"
+import codecs
 import xml.etree.ElementTree as Et
 import queue
 import random
@@ -19,7 +20,7 @@ class Node(geometry.Point):
     def __str__(self):
         return '{} {} {}'.format(self.key, self.country, self.text)
 
-    def serialize_xgml(self, c_x, c_z):
+    def serialize_xgml(self, c_x, c_z, offset):
         "Сериализовать в формат XGML"
         return """\t\t<section name="node">
 \t\t\t<attribute key="id" type="int">{0}</attribute>
@@ -41,7 +42,7 @@ class Node(geometry.Point):
 \t\t\t\t<attribute key="fontName" type="String">Dialog</attribute>
 \t\t\t\t<attribute key="anchor" type="String">c</attribute>
 \t\t\t</section>
-\t\t</section>""".format(self.key, self.text, c_z * self.z, - c_x * self.x, self.color)
+\t\t</section>""".format(self.key, self.text, c_z * self.z, offset - c_x * self.x, self.color)
 
     @property
     def color(self):
@@ -108,7 +109,6 @@ class Grid:
     def __init__(self, name: str, xgml: pathlib.Path, config: configs.Mgen):
         self.nodes = dict()  # узлы сетки
         self.tvd = config.cfg[name]['tvd']
-        self.xgml_file = xgml
         self.scenario_min_distance = config.cfg['scenario_min_distance']
         self.graph_zoom_x = config.cfg[name]['graph_zoom_point']['y']
         self.graph_zoom_z = config.cfg[name]['graph_zoom_point']['x']
@@ -116,7 +116,7 @@ class Grid:
         self.z_coefficient_serialization = self.graph_zoom_z / config.cfg[name]['right_top']['z']
         self.x_coefficient_deserialization = config.cfg[name]['right_top']['x'] / self.graph_zoom_x
         self.z_coefficient_deserialization = config.cfg[name]['right_top']['z'] / self.graph_zoom_z
-        self.read_file()
+        self.read_file(xgml)
 
     @property
     def nodes_list(self) -> list:
@@ -162,9 +162,9 @@ class Grid:
     def serialize_nodes_xgml(self) -> str:
         "Сериализовать узлы графа"
         string = ""
-        for nodes in self.nodes.values():
-            string += nodes.serialize_xgml(
-                self.x_coefficient_serialization, self.z_coefficient_serialization)
+        for node in self.nodes.values():
+            string += node.serialize_xgml(
+                self.x_coefficient_serialization, self.z_coefficient_serialization, self.graph_zoom_x)
         return string
 
     def serialize_xgml(self) -> str:
@@ -193,10 +193,16 @@ class Grid:
             used |= set(connected_component)
         return ccs
 
-    def read_file(self):
+    def save_file(self, path: pathlib.Path):
+        "Записать граф в XGML файл"
+        with codecs.open(str(path), "w", encoding="cp1251") as stream:
+            stream.write(self.serialize_xgml())
+            stream.close()
+
+    def read_file(self, xgml_file: pathlib.Path):
         "Считать граф из XGML файла"
         # pylint: disable=C0103
-        tree = Et.parse(source=str(self.xgml_file.absolute()))
+        tree = Et.parse(source=str(xgml_file.absolute()))
         root = tree.getroot()
         graph = root.find('section')
 
@@ -261,6 +267,7 @@ class Grid:
                     b_prot = True
             if r_prot and b_prot:
                 return first.path(node, ignore_country=False) + [node]
+        raise NameError('WTF')
 
     @property
     def areas(self) -> dict:
@@ -320,6 +327,8 @@ class Grid:
         "Выьрать точки сценариев, за которые будут вестись бои"
         countries = [101, 201]
         neutral_line = self.neutral_line[1:-2]
+        if not neutral_line:
+            raise NameError('WTF!')
         first_candidates = list(neutral_line[1:-2])
         first = neutral_line[random.randint(0, len(first_candidates)-1)]
         second_candidates = []
