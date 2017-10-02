@@ -1,6 +1,6 @@
 MCU_TR_Subtitle
 {
-  Index = 2;
+  Index = 182;
   Name = "Translator Subtitle";
   Desc = "";
   Targets = [];
@@ -21,7 +21,7 @@ MCU_TR_Subtitle
     RColor = 191;
     GColor = 0;
     BColor = 0;
-    LCText = 3;
+    LCText = 15;
   }
   
   Coalitions = [0, 1, 2];
@@ -29,7 +29,7 @@ MCU_TR_Subtitle
 
 MCU_TR_Subtitle
 {
-  Index = 3;
+  Index = 183;
   Name = "Translator Subtitle";
   Desc = "";
   Targets = [];
@@ -50,7 +50,7 @@ MCU_TR_Subtitle
     RColor = 191;
     GColor = 0;
     BColor = 0;
-    LCText = 4;
+    LCText = 16;
   }
   
   Coalitions = [0, 1, 2];
@@ -58,11 +58,11 @@ MCU_TR_Subtitle
 
 MCU_CMD_Behaviour
 {
-  Index = 4;
+  Index = 184;
   Name = "NEUT";
   Desc = "";
   Targets = [];
-  Objects = [5];
+  Objects = [185];
   XPos = -5006.395;
   YPos = 100.825;
   ZPos = -5003.905;
@@ -83,10 +83,10 @@ MCU_CMD_Behaviour
 
 MCU_Timer
 {
-  Index = 6;
+  Index = 186;
   Name = "1s";
   Desc = "";
-  Targets = [4,7,2,8,9,10];
+  Targets = [184,187,182,188,189,190];
   Objects = [];
   XPos = -5006.442;
   YPos = 100.825;
@@ -100,10 +100,10 @@ MCU_Timer
 
 MCU_Timer
 {
-  Index = 7;
+  Index = 187;
   Name = "repair time";
   Desc = "";
-  Targets = [12,3,13];
+  Targets = [192,183,193];
   Objects = [];
   XPos = -4999.622;
   YPos = 17.795;
@@ -117,10 +117,10 @@ MCU_Timer
 
 MCU_H_Dynamic
 {
-  Index = 14;
+  Index = 194;
   Name = "Repair";
   Desc = "";
-  Targets = [7];
+  Targets = [187];
   Objects = [];
   XPos = -4999.693;
   YPos = 17.795;
@@ -133,11 +133,11 @@ MCU_H_Dynamic
 
 MCU_CMD_Behaviour
 {
-  Index = 12;
+  Index = 192;
   Name = "RUS";
   Desc = "";
   Targets = [];
-  Objects = [5];
+  Objects = [185];
   XPos = -4999.542;
   YPos = 17.795;
   ZPos = -5003.968;
@@ -158,7 +158,7 @@ MCU_CMD_Behaviour
 
 MCU_H_ReferencePoint
 {
-  Index = 16;
+  Index = 196;
   Name = "Helper Reference Point";
   Desc = "";
   Targets = [];
@@ -178,8 +178,8 @@ MCU_H_ReferencePoint
 Airfield
 {
   Name = "!AFNAME!";
-  Index = 17;
-  LinkTrId = 5;
+  Index = 197;
+  LinkTrId = 185;
   XPos = -5003.000;
   YPos = 17.795;
   ZPos = -4997.000;
@@ -388,9 +388,37 @@ Airfield
       Script = "LuaScripts\WorldObjects\Planes\yak1s127.txt";
       Name = "";
       Skin = "";
-      AvMods = "1..6";
+      AvMods = "1..4";
       AvSkins = "";
-      AvPayloads = "0..9";
+      AvPayloads = "0..3";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 0;
+      Number = -1;
+      AILevel = 1;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\planes\spitfiremkvb\spitfiremkvb.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\spitfiremkvb.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "1..2";
+      AvSkins = "";
+      AvPayloads = "0..1";
       Callsign = 0;
       Callnum = 0;
     }
@@ -461,8 +489,8 @@ Airfield
       LimitAmmo = 1;
       AIRTBDecision = 1;
       Renewable = 0;
-      PayloadId = 98;
-      WMMask = 100011;
+      PayloadId = 0;
+      WMMask = 1;
       Fuel = 1;
       RouteTime = 0;
       RenewTime = 1800;
@@ -472,9 +500,9 @@ Airfield
       Script = "LuaScripts\WorldObjects\Planes\il2m43.txt";
       Name = "";
       Skin = "";
-      AvMods = "";
+      AvMods = "1..5";
       AvSkins = "";
-      AvPayloads = "";
+      AvPayloads = "0..104";
       Callsign = 0;
       Callnum = 0;
     }
@@ -668,9 +696,37 @@ Airfield
       Script = "LuaScripts\WorldObjects\Planes\yak1s127.txt";
       Name = "";
       Skin = "";
-      AvMods = "1..6";
+      AvMods = "1..4";
       AvSkins = "";
-      AvPayloads = "0..9";
+      AvPayloads = "0..3";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 1;
+      Number = -1;
+      AILevel = 1;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\planes\spitfiremkvb\spitfiremkvb.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\spitfiremkvb.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "1..2";
+      AvSkins = "";
+      AvPayloads = "0..1";
       Callsign = 0;
       Callnum = 0;
     }
@@ -748,6 +804,34 @@ Airfield
       RenewTime = 1800;
       Altitude = 500;
       Spotter = -1;
+      Model = "graphics\planes\il2m43\il2m43.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\il2m43.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "1..5";
+      AvSkins = "";
+      AvPayloads = "0..104";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 1;
+      Number = -1;
+      AILevel = 1;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
       Model = "graphics\planes\pe2s35\pe2s35.mgm";
       Script = "LuaScripts\WorldObjects\Planes\pe2s35.txt";
       Name = "";
@@ -786,34 +870,6 @@ Airfield
       Callsign = 0;
       Callnum = 0;
     }
-    Plane
-    {
-      SetIndex = 1;
-      Number = -1;
-      AILevel = 1;
-      StartInAir = 2;
-      Engageable = 1;
-      Vulnerable = 1;
-      LimitAmmo = 1;
-      AIRTBDecision = 1;
-      Renewable = 0;
-      PayloadId = 98;
-      WMMask = 100011;
-      Fuel = 1;
-      RouteTime = 0;
-      RenewTime = 1800;
-      Altitude = 500;
-      Spotter = -1;
-      Model = "graphics\planes\il2m43\il2m43.mgm";
-      Script = "LuaScripts\WorldObjects\Planes\il2m43.txt";
-      Name = "";
-      Skin = "";
-      AvMods = "";
-      AvSkins = "";
-      AvPayloads = "";
-      Callsign = 0;
-      Callnum = 0;
-    }
   }
   ReturnPlanes = 1;
   Hydrodrome = 0;
@@ -828,7 +884,7 @@ Airfield
 
 MCU_TR_Entity
 {
-  Index = 5;
+  Index = 185;
   Name = "Airfield entity";
   Desc = "";
   Targets = [];
@@ -840,15 +896,15 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 1;
-  MisObjID = 17;
+  MisObjID = 197;
 }
 
 MCU_TR_ServerInput
 {
-  Index = 19;
+  Index = 199;
   Name = "!AFNAME!";
   Desc = "";
-  Targets = [6];
+  Targets = [186];
   Objects = [];
   XPos = -5006.358;
   YPos = 17.795;
@@ -861,7 +917,7 @@ MCU_TR_ServerInput
 
 MCU_H_Output
 {
-  Index = 8;
+  Index = 188;
   Name = "KILLED_EVENT";
   Desc = "";
   Targets = [];
@@ -876,7 +932,7 @@ MCU_H_Output
 
 MCU_H_Output
 {
-  Index = 9;
+  Index = 189;
   Name = "AAA_OFF";
   Desc = "";
   Targets = [];
@@ -891,7 +947,7 @@ MCU_H_Output
 
 MCU_H_Output
 {
-  Index = 13;
+  Index = 193;
   Name = "AAA_ON";
   Desc = "";
   Targets = [];
@@ -906,10 +962,10 @@ MCU_H_Output
 
 MCU_H_Input
 {
-  Index = 23;
+  Index = 203;
   Name = "PLANESET_SWITCH";
   Desc = "";
-  Targets = [24];
+  Targets = [204];
   Objects = [];
   XPos = -5003.234;
   YPos = 17.795;
@@ -921,11 +977,11 @@ MCU_H_Input
 
 MCU_CMD_Behaviour
 {
-  Index = 24;
+  Index = 204;
   Name = "switch";
   Desc = "";
   Targets = [];
-  Objects = [5];
+  Objects = [185];
   XPos = -5003.197;
   YPos = 17.795;
   ZPos = -5003.722;
@@ -946,10 +1002,10 @@ MCU_CMD_Behaviour
 
 MCU_Deactivate
 {
-  Index = 10;
+  Index = 190;
   Name = "Trigger Deactivate";
   Desc = "";
-  Targets = [6];
+  Targets = [186];
   Objects = [];
   XPos = -5004.346;
   YPos = 17.795;
@@ -961,10 +1017,10 @@ MCU_Deactivate
 
 MCU_H_Input
 {
-  Index = 27;
+  Index = 207;
   Name = "CARGO_EVENT";
   Desc = "";
-  Targets = [28,29];
+  Targets = [208,209];
   Objects = [];
   XPos = -4998.221;
   YPos = 17.795;
@@ -976,10 +1032,10 @@ MCU_H_Input
 
 MCU_Timer
 {
-  Index = 29;
+  Index = 209;
   Name = "1s";
   Desc = "";
-  Targets = [3,12,13];
+  Targets = [183,192,193];
   Objects = [];
   XPos = -4997.607;
   YPos = 17.795;
@@ -993,10 +1049,10 @@ MCU_Timer
 
 MCU_Deactivate
 {
-  Index = 28;
+  Index = 208;
   Name = "Trigger Deactivate";
   Desc = "";
-  Targets = [7];
+  Targets = [187];
   Objects = [];
   XPos = -4998.678;
   YPos = 17.795;
