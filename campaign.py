@@ -348,7 +348,7 @@ class Campaign:
             'points': targets,
             'frontline': frontline_resized
         }
-        dest = Path(MainCfg.stats_static.joinpath(StatsCustomCfg.cfg['il2missionplanner']['json']))
+        dest = Path(MainCfg.planner_folder.joinpath(StatsCustomCfg.cfg['il2missionplanner']['json']))
         with dest.open(mode='w') as f:
             json.dump(data, f)
 

@@ -759,6 +759,7 @@ aircraft_types = {
     'fw 190 a-5': 'light',
     'he 111 h-6': 'heavy',
     'he 111 h-16': 'heavy',
+    'hs 129 b-2': 'heavy',
     'i-16 type 24': 'light',
     'il-2 mod.1941': 'heavy',
     'il-2 mod.1942': 'heavy',
@@ -773,6 +774,7 @@ aircraft_types = {
     'p-40e-1': 'light',
     'pe-2 ser.35': 'heavy',
     'pe-2 ser.87': 'heavy',
+    'spitfire mk.vb': 'light',
     'yak-1 ser.69': 'light',
     'yak-1b ser.127': 'light'
 }
@@ -789,6 +791,7 @@ available_payloads = {
     'fw 190 a-5': set(range(10)),
     'he 111 h-6': set(range(13)),
     'he 111 h-16': set(range(23)),
+    'hs 129 b-2': set(range(87)),
     'i-16 type 24': set(range(22)),
     'il-2 mod.1941': set(range(72)),
     'il-2 mod.1942': set(range(87)),
@@ -802,6 +805,7 @@ available_payloads = {
     'p-40e-1': set(range(36)),
     'pe-2 ser.35': set(range(11)),
     'pe-2 ser.87': set(range(11)),
+    'spitfire mk.vb': set(range(11)),
     'yak-1 ser.69': set(range(11)),
     'yak-1b ser.127': set(range(3))
 }

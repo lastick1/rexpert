@@ -23,6 +23,7 @@ class MainCfg:
     dogfight_folder = main_game_folder.joinpath('.\\data\\Multiplayer\\Dogfight').absolute()
     mission_gen_folder = Path(conf['MISSIONGEN']['mission_gen_folder']).absolute()
     stats_static = Path(conf['PROGRAM']['stats_folder']).joinpath('.\\static\\').absolute()
+    planner_folder = Path(conf['PROGRAM']['planner_folder']).absolute()
     graph_folder = Path('.\\configs\\').absolute()
     configs_folder = Path('.\\configs\\').absolute()
     cache_folder = Path('.\\cache\\').absolute()
