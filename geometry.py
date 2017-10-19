@@ -83,21 +83,9 @@ class Segment:  #pylint: disable=R0902
 
 class Point:  #pylint: disable=C0103,C0111
     """ Класс точки """
-    def __init__(self, x=0.0, z=0.0, country=None):
+    def __init__(self, x=0.0, z=0.0):
         self.x = x
         self.z = z
-        self._country = country
-
-    def get_country(self):
-        return self._country
-
-    def set_country(self, value):
-        self._country = value
-
-    def del_country(self):
-        del self._country
-
-    country = property(get_country, set_country, del_country)
 
     def is_in_area(self, polygon):
         x = self.x

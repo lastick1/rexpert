@@ -9,13 +9,26 @@ import configs
 
 class Node(geometry.Point):
     "Узел графа"
-    def __init__(self, key, x, z, country, is_aux: bool, selectable: bool, text: str):  # pylint: disable=R0913
-        super().__init__(x=x, z=z, country=country)
+    def __init__(self, key: str, text: str, pos: dict, color: str):
+        super().__init__(x=pos['x'], z=pos['z'])
         self.neighbors = set()
         self.key = key
-        self.is_aux = is_aux
-        self.selectable = selectable
+        self.color = color
         self.text = text
+        self._country = 0
+        self._is_airfield = False
+        if color == '#FF0000':
+            self._country = 101
+            self._is_airfield = True
+        if color == '#00CCFF':
+            self._country = 201
+            self._is_airfield = True
+
+    def get_country(self) -> int:
+        "Получить страну"
+        return self._country
+
+    country = property(fget=get_country, doc='Страна')
 
     def __str__(self):
         return '{} {} {}'.format(self.key, self.country, self.text)
@@ -98,9 +111,7 @@ class Node(geometry.Point):
             'coordinate_x': self.x,
             'coordinate_z': self.z,
             'key': self.key,
-            'selectable': self.selectable,
-            'text': self.text,
-            'is_aux': self.is_aux
+            'text': self.text
         }
 
 
@@ -164,7 +175,9 @@ class Grid:
         string = ""
         for node in self.nodes.values():
             string += node.serialize_xgml(
-                self.x_coefficient_serialization, self.z_coefficient_serialization, self.graph_zoom_x)
+                self.x_coefficient_serialization,
+                self.z_coefficient_serialization,
+                self.graph_zoom_x)
         return string
 
     def serialize_xgml(self) -> str:
@@ -180,18 +193,6 @@ class Grid:
 {0}{1}
 \t</section>
 </section>""".format(self.serialize_nodes_xgml(), self.serialize_edges_xgml())
-
-    def connected_components(self, country) -> list:
-        "Компоненты связности указанной страны"
-        ccs = []
-        used = set()
-        nodes = set(x for x in self.nodes_list if x.loc_country == country)
-        while len(nodes - used):
-            first = list(nodes - used)[0]
-            connected_component = first.cc
-            ccs.append(connected_component)
-            used |= set(connected_component)
-        return ccs
 
     def save_file(self, path: pathlib.Path):
         "Записать граф в XGML файл"
@@ -214,27 +215,21 @@ class Grid:
         for section in graph:
             if str(section.tag) == 'section':
                 if section.attrib['name'] == 'node':
-                    tag_id = section.findall("*[@key='id']")[0]
-                    tag_label = section.findall("*[@key='label']")[0]
-                    section_graphics = section.findall("*[@name='graphics']")[0]
-                    tag_x = section_graphics.findall("*[@key='x']")[0]
-                    tag_y = section_graphics.findall("*[@key='y']")[0]
-                    x = -1 * (float(tag_y.text) - self.graph_zoom_x) * self.x_coefficient_deserialization
-                    z = float(tag_x.text) * self.z_coefficient_deserialization
-                    tag_fill = section_graphics.findall("*[@key='fill']")[0]
-                    country = None
-                    if tag_fill.text.upper() == '#FF0000':
-                        country = 101
-                    if tag_fill.text.upper() == '#0000FF':
-                        country = 201
-                    if tag_fill.text.upper() == '#00FF00':
-                        country = 0
-                    node_id = int(tag_id.text)
-                    selectable = False if '.' in tag_label.text else True
-                    is_aux = True if 'prot' in tag_label.text.lower() else False
-                    if tag_label.text not in ('rb', 'zero'):
-                        self.nodes[node_id] = Node(
-                            node_id, x, z, country, is_aux, selectable, tag_label.text)
+                    node_id = int(section.findall("*[@key='id']")[0].text)
+                    text = section.findall("*[@key='label']")[0].text
+                    graphics = section.findall("*[@name='graphics']")[0]
+                    coords = self._get_coordinates(graphics)
+                    color = graphics.findall("*[@key='fill']")[0].text.upper()
+                    self.nodes[node_id] = Node(node_id, text, coords, color)
+
+    def _get_coordinates(self, section) -> tuple:
+        'Получить координаты из секции графики'
+        tag_x = section.findall("*[@key='x']")[0]
+        tag_y = section.findall("*[@key='y']")[0]
+        return {
+            'x': -1 * (float(tag_y.text) - self.graph_zoom_x) * self.x_coefficient_deserialization,
+            'z': float(tag_x.text) * self.z_coefficient_deserialization
+        }
 
     def _read_edges(self, graph):
         for section in graph:
@@ -269,79 +264,6 @@ class Grid:
                 return first.path(node, ignore_country=False) + [node]
         raise NameError('WTF')
 
-    @property
-    def areas(self) -> dict:
-        "Зоны влияния"
-        countries = (101, 201)
-        neutral_line = self.neutral_line
-        if len(neutral_line) < 2:
-            return []
-        nl_start = neutral_line[0]
-        nl_end = neutral_line[len(neutral_line)-1]
-        areas = {x: [] for x in countries}
-        for country in countries:
-            cc_end_prot = None
-            cc_start_prot = None
-            for node in list(x for x in nl_start.neighbors if 'prot' in x.text):
-                if node.country == country:
-                    cc_end_prot = node
-                    break
-            for node in list(x for x in nl_end.neighbors if 'prot' in x.text):
-                if node.country == country:
-                    cc_start_prot = node
-                    break
-            path = cc_start_prot.path(cc_end_prot) + [cc_end_prot]
-            path += neutral_line
-            if country == 201:
-                path.reverse()
-            areas[country].append(path)
-        return self._insert_gap(areas)
-
-    @staticmethod
-    def _insert_gap(areas):
-        "Добавить зазор между зонами"
-        result = {x: [] for x in areas.keys()}
-        dist = -250
-        for country in areas:
-            for area in areas[country]:
-                result[country].append([])
-                i = 0
-                while i < len(area):
-                    if i == len(area)-1:
-                        v_1 = area[i]
-                        v_2 = area[0]
-                        tmp = geometry.get_parallel_line(((v_1.x, v_1.z), (v_2.x, v_2.z)), dist)[0]
-                        result[country][-1].append(
-                            geometry.Point(x=tmp[0], z=tmp[1], country=country))
-                    else:
-                        v_1 = area[i]
-                        v_2 = area[i + 1]
-                        tmp = geometry.get_parallel_line(((v_1.x, v_1.z), (v_2.x, v_2.z)), dist)[0]
-                        result[country][-1].append(
-                            geometry.Point(x=tmp[0], z=tmp[1], country=country))
-                    i += 1
-        return result
-
-    @property
-    def scenarios(self) -> dict:
-        "Выьрать точки сценариев, за которые будут вестись бои"
-        countries = [101, 201]
-        neutral_line = self.neutral_line[1:-2]
-        if not neutral_line:
-            raise NameError('WTF!')
-        first_candidates = list(neutral_line[1:-2])
-        first = neutral_line[random.randint(0, len(first_candidates)-1)]
-        second_candidates = []
-        for candidate in first_candidates:
-            if candidate.distance_to(first.x, first.z) > self.scenario_min_distance:
-                second_candidates.append(candidate)
-        random.shuffle(second_candidates)
-        second = second_candidates.pop()
-        random.shuffle(countries)
-        zipped = list(zip(countries, [first, second]))
-        result = {candidate[0]: [candidate[1]] for candidate in zipped}
-        return result
-
     def find(self, x, z, side: float = 10) -> Node:  # pylint: disable=C0103
         "Найти узел по координатам (в квадрате стороной 2*r)"
         for node in self.nodes_list:
@@ -360,22 +282,7 @@ class Grid:
             if neighbor.country and neighbor.country != country:
                 neighbor.country = 0
         node.country = country
-        self._resolve(country)
 
     def capture_node(self, node: Node, coal: int):
         "Захват узла"
         self.capture(node.x, node.z, coal)
-
-    def _resolve(self, priority):
-        "Красим 'нейтралов' за линией фронта в цвет победившей стороны"
-        # pylint: disable=C0103
-        resolvable = []
-        for neutral in self.neutrals:
-            is_correct = False
-            for node in list(x for x in neutral.neighbors if x.country):
-                if node.country and node.country != priority:
-                    is_correct = True
-            if not is_correct:
-                resolvable.append(neutral)
-        for x in resolvable:
-            x.country = priority
