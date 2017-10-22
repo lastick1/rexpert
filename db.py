@@ -280,6 +280,17 @@ class PGConnector:
 
                 connection.commit()
 
+        @staticmethod
+        def save_score(mission_name: str, score: dict) -> None:
+            """Сохранить счёт миссии"""
+            sql_insert = """
+            DELETE FROM custom_missions_score WHERE mission_name = %s;
+            INSERT INTO custom_missions_score(mission_name, red, blue)
+            VALUES (%s, %s, %s);"""
+            with psycopg2.connect(PGConnector.Missions.__connection_string) as connection:
+                cur = connection.cursor(cursor_factory=RealDictCursor)
+                cur.execute(sql_insert, (mission_name, mission_name, score['red'], score['blue']))
+
     class Graph:
         """ Подкласс для работы с данными графа в БД """
         def __init__(self):

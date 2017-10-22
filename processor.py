@@ -48,6 +48,7 @@ class Processor:
             self.missions[m_name].complete()
         # отправка сервер инпутов об уничтоженных наземных целях
         if not self.missions[m_name].is_ended:
+            connector.Missions.save_score(m_name, self.missions[m_name].score)
             self.commander.process_commands(self.missions[m_name].commands)  # команды инфо счёта и инпуты захвата
             self.commander.process_commands(self.missions[m_name].g_report.killed_commands)
 
