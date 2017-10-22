@@ -1,12 +1,13 @@
-"Работа с графом"
+"""Работа с графом"""
 import codecs
 import xml.etree.ElementTree as Et
 import pathlib
-from node import Node
+from .node import Node
 import configs
 
+
 class Grid:
-    "Граф (сетка)"
+    """Граф (сетка)"""
     def __init__(self, name: str, xgml: pathlib.Path, config: configs.Mgen):
         self.nodes = dict()  # узлы сетки
         self.tvd = config.cfg[name]['tvd']
@@ -21,12 +22,12 @@ class Grid:
 
     @property
     def nodes_list(self) -> list:
-        "Узлы списком"
+        """Узлы списком"""
         return list(self.nodes[x] for x in self.nodes)
 
     @property
     def edges(self) -> list:
-        "Все рёбра графа, в виде 2-элементных кортежей из соединяемых вершин"
+        """Все рёбра графа, в виде 2-элементных кортежей из соединяемых вершин"""
         edges = []
         used = set()
         for node in self.nodes:
@@ -46,7 +47,7 @@ class Grid:
         return tuple(((x[0].x, x[0].z), (x[1].x, x[1].z)) for x in edges)
 
     def serialize_edges_xgml(self) -> str:
-        "Сериализация рёбер"
+        """Сериализация рёбер"""
         string = ""
         for edge in self.edges:
             string += """
@@ -60,8 +61,9 @@ class Grid:
 \t\t</section>""".format(edge[0].key, edge[1].key)
         return string
 
+    @property
     def serialize_nodes_xgml(self) -> str:
-        "Сериализовать узлы графа"
+        """Сериализовать узлы графа"""
         string = ""
         for node in self.nodes.values():
             string += node.serialize_xgml(
@@ -71,7 +73,7 @@ class Grid:
         return string
 
     def serialize_xgml(self) -> str:
-        "Сериализовать граф"
+        """Сериализовать граф"""
         return """<?xml version="1.0" encoding="Cp1251"?>
 <section name="xgml">
 \t<attribute key="Creator" type="String">yFiles</attribute>
@@ -82,16 +84,16 @@ class Grid:
 \t\t<attribute key="directed" type="int">1</attribute>
 {0}{1}
 \t</section>
-</section>""".format(self.serialize_nodes_xgml(), self.serialize_edges_xgml())
+</section>""".format(self.serialize_nodes_xgml, self.serialize_edges_xgml())
 
     def save_file(self, path: pathlib.Path):
-        "Записать граф в XGML файл"
+        """Записать граф в XGML файл"""
         with codecs.open(str(path), "w", encoding="cp1251") as stream:
             stream.write(self.serialize_xgml())
             stream.close()
 
     def read_file(self, xgml_file: pathlib.Path):
-        "Считать граф из XGML файла"
+        """Считать граф из XGML файла"""
         # pylint: disable=C0103
         tree = Et.parse(source=str(xgml_file.absolute()))
         root = tree.getroot()
@@ -101,19 +103,19 @@ class Grid:
         self._read_edges(graph)
 
     def _read_nodes(self, graph):
-        "Считать узлы графа"
+        """Считать узлы графа"""
         for section in graph:
             if str(section.tag) == 'section':
                 if section.attrib['name'] == 'node':
-                    node_id = int(section.findall("*[@key='id']")[0].text)
+                    node_id = section.findall("*[@key='id']")[0].text
                     text = section.findall("*[@key='label']")[0].text
                     graphics = section.findall("*[@name='graphics']")[0]
-                    coords = self._get_coordinates(graphics)
+                    coordinates = self._get_coordinates(graphics)
                     color = graphics.findall("*[@key='fill']")[0].text.upper()
-                    self.nodes[node_id] = Node(node_id, text, coords, color)
+                    self.nodes[node_id] = Node(node_id, text, coordinates, color)
 
-    def _get_coordinates(self, section) -> tuple:
-        'Получить координаты из секции графики'
+    def _get_coordinates(self, section) -> dict:
+        """Получить координаты из секции графики"""
         tag_x = section.findall("*[@key='x']")[0]
         tag_y = section.findall("*[@key='y']")[0]
         return {
@@ -132,12 +134,12 @@ class Grid:
 
     @property
     def neutrals(self) -> list:
-        "Узлы, где страна ==0"
+        """Узлы, где страна ==0"""
         return list(x for x in self.nodes_list if x.country == 0)
 
     @property
     def neutral_line(self) -> list:
-        "Цепь нейтральных узлов"
+        """Цепь нейтральных узлов"""
         first = list(x for x in self.nodes_list if x.text == '!')[0]
         connected_component = list(first.cc)
         for node in connected_component:
@@ -155,13 +157,13 @@ class Grid:
         raise NameError('WTF')
 
     def find(self, x, z, side: float = 10) -> Node:  # pylint: disable=C0103
-        "Найти узел по координатам (в квадрате стороной 2*r)"
+        """Найти узел по координатам (в квадрате стороной 2*r)"""
         for node in self.nodes_list:
             if abs(x - node.x) < side and abs(z - node.z) < side:
                 return node
 
     def capture(self, x, z, coal):  # pylint: disable=C0103
-        "Захват точки"
+        """Захват точки"""
         country = coal * 100 + 1
         node = self.find(x, z)
         print('Capture {}[{}] {}'.format(node.text, node.key, country))
@@ -173,6 +175,6 @@ class Grid:
                 neighbor.country = 0
         node.country = country
 
-    def capture_node(self, node: node.Node, coal: int):
-        "Захват узла"
+    def capture_node(self, node: Node, coal: int):
+        """Захват узла"""
         self.capture(node.x, node.z, coal)

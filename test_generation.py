@@ -11,20 +11,21 @@ MOSCOW = 'moscow'
 STALIN = 'stalingrad'
 KUBAN = 'kuban'
 
+
 class TestGrid(unittest.TestCase):
-    "Тесты графа"
+    """Тесты графа"""
     def setUp(self):
-        "Настройка тестов"
+        """Настройка тестов"""
         self.iterations = 25
 
     def test_grid_capturing_moscow(self):
-        "Проверка захвата в графе Москвы"
+        """Проверка захвата в графе Москвы"""
         grid = generation.Grid(MOSCOW, MGEN.xgml[MOSCOW], MGEN)
         # Act
         self.fail()
 
     def test_grid_capturing_stalingrad(self):
-        "Проверка захвата в графе Сталинграда"
+        """Проверка захвата в графе Сталинграда"""
         grid = generation.Grid(STALIN, MGEN.xgml[STALIN], MGEN)
         path = pathlib.Path(r'./tmp/{}_{}.xgml'.format(STALIN, 0))
         grid.save_file(path)
@@ -32,7 +33,7 @@ class TestGrid(unittest.TestCase):
         self.fail()
 
     def test_grid_capturing_kuban(self):
-        "Проверка захвата в графе Кубани"
+        """Проверка захвата в графе Кубани"""
         grid = generation.Grid(STALIN, MGEN.xgml[KUBAN], MGEN)
         path = pathlib.Path(r'./tmp/{}_{}.xgml'.format(KUBAN, 0))
         grid.save_file(path)
@@ -41,8 +42,9 @@ class TestGrid(unittest.TestCase):
 
 
 class TestTvd(unittest.TestCase):
-    "Тесты ТВД"
+    """Тесты ТВД"""
     pass
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

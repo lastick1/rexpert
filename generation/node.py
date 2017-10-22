@@ -1,10 +1,10 @@
-"Узел графа"
+"""Узел графа"""
 import queue
 import geometry
 
 
 class Node(geometry.Point):
-    "Узел графа"
+    """Узел графа"""
     def __init__(self, key: str, text: str, pos: dict, color: str):
         super().__init__(x=pos['x'], z=pos['z'])
         self.neighbors = set()
@@ -21,7 +21,7 @@ class Node(geometry.Point):
             self._is_airfield = True
 
     def get_country(self) -> int:
-        "Получить страну"
+        """Получить страну"""
         return self._country
 
     country = property(fget=get_country, doc='Страна')
@@ -30,7 +30,7 @@ class Node(geometry.Point):
         return '{} {} {}'.format(self.key, self.country, self.text)
 
     def serialize_xgml(self, c_x, c_z, offset):
-        "Сериализовать в формат XGML"
+        """Сериализовать в формат XGML"""
         return """\t\t<section name="node">
 \t\t\t<attribute key="id" type="int">{0}</attribute>
 \t\t\t<attribute key="label" type="String">{1}</attribute>
@@ -53,18 +53,8 @@ class Node(geometry.Point):
 \t\t\t</section>
 \t\t</section>""".format(self.key, self.text, c_z * self.z, offset - c_x * self.x, self.color)
 
-    @property
-    def color(self):
-        "Цвет вершины"
-        return {0: '#00FF00', 101: '#FF0000', 201: '#0000FF'}[self.country]
-
-    @property
-    def cc(self):  # pylint: disable=C0103
-        "Компонента связности: все вершины той же страны, до которых есть путь"
-        return self.bfs(ignore_country=False)[1]
-
     def path(self, to, ignore_country=True):  # pylint: disable=C0103
-        "Путь к указанной вершине"
+        """Путь к указанной вершине"""
         bfs = self.bfs(ignore_country=ignore_country)[0]
         path = []
         i = to.key
@@ -91,7 +81,7 @@ class Node(geometry.Point):
         used.add(v)
         while not q.empty():  # пока в очереди есть хотя бы одна вершина
             v = q.get()  # извлекаем вершину из очереди
-            neighbors = v.neighbors if ignore_country else set(x for x in v.neighbors if x.country == self.country)  # pylint: disable=C0301
+            neighbors = v.neighbors if ignore_country else set(x for x in v.neighbors if x.country == self.country)
             for w in neighbors:  # запускаем обход из всех вершин, смежных с вершиной v
                 if w in used:  # если вершина уже была посещена, то пропускаем ее
                     continue
@@ -101,7 +91,7 @@ class Node(geometry.Point):
         return path, used
 
     def to_dict(self):
-        "Сериализовать в словарь"
+        """Сериализовать в словарь"""
         return {
             'country': self.country,
             'coordinate_x': self.x,
@@ -109,4 +99,3 @@ class Node(geometry.Point):
             'key': self.key,
             'text': self.text
         }
-
