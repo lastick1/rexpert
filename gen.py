@@ -126,8 +126,6 @@ class Generator:
         :param tvd_name: имя карты
         :return:
         """
-        Generator.save_files_for_zlo(file_name)
-
         default_params = MissionGenCfg.tvd_folders[tvd_name].joinpath(
             MissionGenCfg.cfg[tvd_name]['default_params_dest']).absolute()
         mission_template = MissionGenCfg.tvd_folders[tvd_name].joinpath(
@@ -155,6 +153,9 @@ class Generator:
             mission_files.resave()
         mission_files.move_to_dogfight(file_name)
         mission_files.detach_src()
+
+        Generator.save_files_for_zlo(file_name)
+
         print("... generation done!")
 
     @staticmethod
