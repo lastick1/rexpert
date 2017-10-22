@@ -163,9 +163,9 @@ class Generator:
         suffix = '_src'
         mission = '.Mission'
         if file_name == 'result1':
-            src = 'result2'
-        else:
             src = 'result1'
+        else:
+            src = 'result2'
         src_file = MainCfg.dogfight_folder.joinpath(src + suffix + mission)
         dst_file = MainCfg.msrc_directory.joinpath(src + mission)
         shutil.copyfile(str(src_file), str(dst_file))
