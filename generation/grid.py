@@ -42,7 +42,7 @@ class Grid:
 
     @property
     def edges_raw(self) -> tuple:
-        """ Кортеж всех рёбер в виде 2-элементных кортежей координат точек вершин ребра """
+        """Кортеж всех рёбер в виде 2-элементных кортежей координат точек вершин ребра"""
         edges = self.edges
         return tuple(((x[0].x, x[0].z), (x[1].x, x[1].z)) for x in edges)
 
@@ -135,25 +135,12 @@ class Grid:
     @property
     def neutrals(self) -> list:
         """Узлы, где страна ==0"""
-        return list(x for x in self.nodes_list if x.country == 0)
+        return list(node for node in self.nodes_list if node.country == 0)
 
     @property
     def neutral_line(self) -> list:
         """Цепь нейтральных узлов"""
-        first = list(x for x in self.nodes_list if x.text == '!')[0]
-        connected_component = list(first.cc)
-        for node in connected_component:
-            if node == first:
-                continue
-            r_prot = False
-            b_prot = False
-            for neighbor in node.neighbors:
-                if neighbor.country == 101 and 'prot' in neighbor.text:
-                    r_prot = True
-                if neighbor.country == 201 and 'prot' in neighbor.text:
-                    b_prot = True
-            if r_prot and b_prot:
-                return first.path(node, ignore_country=False) + [node]
+
         raise NameError('WTF')
 
     def find(self, x, z, side: float = 10) -> Node:  # pylint: disable=C0103
@@ -162,18 +149,17 @@ class Grid:
             if abs(x - node.x) < side and abs(z - node.z) < side:
                 return node
 
-    def capture(self, x, z, coal):  # pylint: disable=C0103
-        """Захват точки"""
-        country = coal * 100 + 1
+    def capture(self, x, z, country: int):  # pylint: disable=C0103
+        """Захват вершины"""
         node = self.find(x, z)
         print('Capture {}[{}] {}'.format(node.text, node.key, country))
         if not node:
-            raise NameError('Not found node to capture for [{}] coal in [x:{} z:{}]'.format(
-                coal, x, z))
+            raise NameError('Not found node to capture for [{}] country in [x:{} z:{}]'.format(
+                country, x, z))
         for neighbor in node.neighbors:
             if neighbor.country and neighbor.country != country:
                 neighbor.country = 0
-        node.country = country
+        node.capture(country)
 
     def capture_node(self, node: Node, coal: int):
         """Захват узла"""

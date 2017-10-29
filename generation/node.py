@@ -4,12 +4,14 @@ import geometry
 
 
 class Node(geometry.Point):
+    color_map = {0: '#FFFFFF', 101: '#FF0000', 201: '#00CCFF'}
+
     """Узел графа"""
     def __init__(self, key: str, text: str, pos: dict, color: str):
         super().__init__(x=pos['x'], z=pos['z'])
         self.neighbors = set()
         self.key = key
-        self.color = color
+        self._color = color
         self.text = text
         self._country = 0
         self._is_airfield = False
@@ -20,16 +22,20 @@ class Node(geometry.Point):
             self._country = 201
             self._is_airfield = True
 
-    def get_country(self) -> int:
-        """Получить страну"""
+    @property
+    def country(self) -> int:
+        """Страна вершины"""
         return self._country
 
-    country = property(fget=get_country, doc='Страна')
+    @property
+    def color(self) -> str:
+        """Цвет вершины"""
+        return Node.color_map[self._country]
 
     def __str__(self):
         return '{} {} {}'.format(self.key, self.country, self.text)
 
-    def serialize_xgml(self, c_x, c_z, offset):
+    def serialize_xgml(self, c_x, c_z, offset) -> str:
         """Сериализовать в формат XGML"""
         return """\t\t<section name="node">
 \t\t\t<attribute key="id" type="int">{0}</attribute>
@@ -37,8 +43,8 @@ class Node(geometry.Point):
 \t\t\t<section name="graphics">
 \t\t\t\t<attribute key="x" type="double">{2}</attribute>
 \t\t\t\t<attribute key="y" type="double">{3}</attribute>
-\t\t\t\t<attribute key="w" type="double">45.0</attribute>
-\t\t\t\t<attribute key="h" type="double">45.0</attribute>
+\t\t\t\t<attribute key="w" type="double">15.0</attribute>
+\t\t\t\t<attribute key="h" type="double">15.0</attribute>
 \t\t\t\t<attribute key="type" type="String">ellipse</attribute>
 \t\t\t\t<attribute key="raisedBorder" type="boolean">false</attribute>
 \t\t\t\t<attribute key="fill" type="String">{4}</attribute>
@@ -53,7 +59,7 @@ class Node(geometry.Point):
 \t\t\t</section>
 \t\t</section>""".format(self.key, self.text, c_z * self.z, offset - c_x * self.x, self.color)
 
-    def path(self, to, ignore_country=True):  # pylint: disable=C0103
+    def path(self, to, ignore_country=True) -> list:  # pylint: disable=C0103
         """Путь к указанной вершине"""
         bfs = self.bfs(ignore_country=ignore_country)[0]
         path = []
@@ -64,7 +70,7 @@ class Node(geometry.Point):
         path.reverse()
         return path
 
-    def bfs(self, ignore_country=True):
+    def bfs(self, ignore_country=True) -> tuple:
         """ Обход в ширину от вершины
         :param ignore_country: Обходить всё подряд или только той же страны
         :rtype: tuple[dict, set]
@@ -76,7 +82,7 @@ class Node(geometry.Point):
         path = dict()
         used = set()
         if v in used:
-            return
+            return path, used
         q.put(v)  # начинаем обход из вершины v
         used.add(v)
         while not q.empty():  # пока в очереди есть хотя бы одна вершина
@@ -90,7 +96,7 @@ class Node(geometry.Point):
                 path[w.key] = v
         return path, used
 
-    def to_dict(self):
+    def to_dict(self) -> dict:
         """Сериализовать в словарь"""
         return {
             'country': self.country,
@@ -99,3 +105,11 @@ class Node(geometry.Point):
             'key': self.key,
             'text': self.text
         }
+
+    def capture(self, country: int) -> None:
+        """Захватить вершину"""
+        if country == 0:
+            raise NameError('Cannot capture by neutrals')  # нельзя красить в нейтралов
+        if self._country == 0:
+            raise NameError('Cannot capture neutrals')  # нельзя красить нейтралов
+        self._country = country

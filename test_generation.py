@@ -10,6 +10,7 @@ MGEN = MgenMock(MAIN)
 MOSCOW = 'moscow'
 STALIN = 'stalingrad'
 KUBAN = 'kuban'
+TEST = 'test'
 
 
 class TestGrid(unittest.TestCase):
@@ -17,6 +18,15 @@ class TestGrid(unittest.TestCase):
     def setUp(self):
         """Настройка тестов"""
         self.iterations = 25
+
+    def test_neutrals_property(self):
+        """Проверка выбора вершин линии фронта"""
+        # Arrange
+        grid = generation.Grid(TEST, MGEN.xgml[TEST], MGEN)
+        # Act
+        neutrals = grid.neutrals
+        # Assert
+        self.fail()
 
     def test_grid_capturing_moscow(self):
         """Проверка захвата в графе Москвы"""

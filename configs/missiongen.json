@@ -116,5 +116,37 @@
     "rear_airfields":[ {"x": 0.0, "z": 0.0}, {"x": 0.0, "z": 0.0} ],
     "division_margin": 4000,
     "division_depth": 7000
+  },
+  "test": {
+    "tvd": 1,
+    "right_top": {"x": 230400.0, "z": 358400.0},
+    "tvd_folder": ".\\data\\scg\\1\\",
+    "mt_file": "templates\\212\\s2_150min.mt",
+    "graph_file": "test_w4f.xgml",
+    "graph_zoom_point": {"x": 4096.5, "y": 2637.5},
+    "ldf_file": "stalingrad_lf.ldf",
+    "ldf_base_file": "stalin-base.ldf",
+    "icons_group_file": "blocks_quickmission\\icons\\FL_icon.Group",
+    "default_params_source": "defaultparams_template.dat",
+    "default_params_dest": "defaultparams.dat",
+    "daytime_csv": "daytime.csv",
+    "airfields_csv": "stalin_fields.csv",
+    "stages": [
+      { "id": 5, "start": "01.07.1942", "end": "01.08.1942", "red": "rus_period_5.Group", "blue": "ger_period_5.Group" },
+      { "id": 6, "start": "01.08.1942", "end": "01.09.1942", "red": "rus_period_6.Group", "blue": "ger_period_6.Group" },
+      { "id": 7, "start": "01.09.1942", "end": "01.10.1942", "red": "rus_period_7.Group", "blue": "ger_period_7.Group" },
+      { "id": 8, "start": "01.10.1942", "end": "01.12.1942", "red": "rus_period_8.Group", "blue": "ger_period_8.Group" }
+    ],
+    "default_templates": {
+      "red": "default_red_af.Group",
+      "blue": "default_blue_af.Group"
+    },
+    "af_groups_folders": {
+      "red": ".\\blocks_quickmission\\airfields_red",
+      "blue": ".\\blocks_quickmission\\airfields_blue"
+    },
+    "rear_airfields":[ {"x": 79000.0, "z": 12000.0}, {"x": 121000.0, "z": 347000.0} ],
+    "division_margin": 4000,
+    "division_depth": 7000
   }
 }

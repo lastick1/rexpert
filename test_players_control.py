@@ -80,7 +80,7 @@ class TestPlayersController(unittest.TestCase):
         # Assert
         self.assertIn(
             (TEST_ACCOUNT_ID, 'Hello {}!'.format(TEST_NICKNAME)),
-            self.console_mock.recieved_private_messages)
+            self.console_mock.received_private_messages)
 
     def test_multiple_spawn_nickname(self):
         "Не добавляетcя лишний известный ник при неоднократном спауне"
