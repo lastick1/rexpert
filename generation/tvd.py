@@ -98,7 +98,7 @@ class Tvd:
     def verify_grid(self):
         "Проверка и самопочинка графа"
         # TODO доделать
-        if not self.grid.neutral_line:
+        if not self.grid.border_nodes:
             # self.grid.restore_neutral_line()
             pass
 
@@ -110,14 +110,14 @@ class Tvd:
     def update_icons(self):
         "Обновление группы иконок в соответствии с положением ЛФ"
         print('[{}] generating icons group...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
-        flg = FlGroup(self.name, self.grid.neutral_line, self.grid.areas, self.mgen)
+        flg = FlGroup(self.name, self.grid.border_nodes, self.grid.areas, self.mgen)
         flg.make()
         print('... icons done')
 
     def update_ldb(self):
         "Обновление базы локаций до актуального состояния"
         print('[{}] generating Locations Data Base (LDB)...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
-        ldf = Ldb(self.name, self.grid.areas, self.grid.scenarios, self.grid.neutral_line, self.main, self.mgen, self.loc_cfg)
+        ldf = Ldb(self.name, self.grid.areas, self.grid.scenarios, self.grid.border_nodes, self.main, self.mgen, self.loc_cfg)
         ldf.make()
         print('... LDB done')
 

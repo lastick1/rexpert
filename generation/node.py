@@ -32,6 +32,14 @@ class Node(geometry.Point):
         """Цвет вершины"""
         return Node.color_map[self._country]
 
+    @property
+    def is_border(self) -> bool:
+        """Лежит ли вершина между вершинами разных стран"""
+        countries = set()
+        for neighbor in self.neighbors:
+            countries.add(neighbor.country)
+        return len(countries) > 2
+
     def __str__(self):
         return '{} {} {}'.format(self.key, self.country, self.text)
 

@@ -4,6 +4,7 @@ import xml.etree.ElementTree as Et
 import pathlib
 from .node import Node
 import configs
+import geometry
 
 
 class Grid:
@@ -127,8 +128,8 @@ class Grid:
         for section in graph:
             if str(section.tag) == 'section':
                 if section.attrib['name'] == 'edge':
-                    source_id = int(section.findall("*[@key='source']")[0].text)
-                    target_id = int(section.findall("*[@key='target']")[0].text)
+                    source_id = section.findall("*[@key='source']")[0].text
+                    target_id = section.findall("*[@key='target']")[0].text
                     self.nodes[source_id].neighbors.add(self.nodes[target_id])
                     self.nodes[target_id].neighbors.add(self.nodes[source_id])
 
@@ -138,10 +139,42 @@ class Grid:
         return list(node for node in self.nodes_list if node.country == 0)
 
     @property
-    def neutral_line(self) -> list:
-        """Цепь нейтральных узлов"""
+    def border_nodes(self) -> set:
+        """Вершины линии фронта"""
+        return set(node for node in self.neutrals if node.is_border)
 
-        raise NameError('WTF')
+    @property
+    def border(self) -> list:
+        """Линия фронта (упорядоченные)"""
+        def _is_reversed(a: Node, b: Node) -> bool:
+            """Прямой или обратный порядок построения ЛФ"""
+            # 1. получаем цветные вершины треугольников со стороной - отрезком лф
+            colored = set(a.neighbors) & set(b.neighbors)
+            # 2. проверяем, какая из них слева от отрезка лф
+            for c in colored:
+                rotation = geometry.rotate(a, b, c)
+                if rotation < 0 and c.country == 101:
+                    return True
+            return False
+
+        nodes = list(self.border_nodes)
+        first = nodes.pop()
+        result = [first]
+        while len(nodes):
+            # пока список не опустеет, повторяем
+            # вытаскиваем вершину с головы списка, добавляем её к концу или к началу результата, либо в конец списка
+            node = nodes.pop(0)
+            if node in result[-1].neighbors:
+                result.append(node)
+            elif node in result[0].neighbors:
+                result.insert(0, node)
+            else:
+                nodes.append(node)
+
+        # переворачиваем результат, если слева от линии оказались красные вершины
+        if _is_reversed(result[0], result[1]):
+            result.reverse()
+        return result
 
     def find(self, x, z, side: float = 10) -> Node:  # pylint: disable=C0103
         """Найти узел по координатам (в квадрате стороной 2*r)"""

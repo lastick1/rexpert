@@ -302,7 +302,7 @@ class Campaign:
         ))
         icons = msn.src.icons
         draw.draw_graph(
-            self.tvds[tvd_name].grid.neutral_line,
+            self.tvds[tvd_name].grid.border_nodes,
             self.tvds[tvd_name].grid.areas,
             tvd_name,
             icons=icons
@@ -312,7 +312,7 @@ class Campaign:
         x_c = planner_max_x / self.cfg[tvd_name]['right_top']['x']
         z_c = planner_max_z / self.cfg[tvd_name]['right_top']['z']
 
-        cut = [list((x.x, x.z) for x in self.tvds[tvd_name].grid.neutral_line)]
+        cut = [list((x.x, x.z) for x in self.tvds[tvd_name].grid.border_nodes)]
         frontline = draw.get_splines(cut)
         frontline_resize = []
         for lines_pair in frontline:

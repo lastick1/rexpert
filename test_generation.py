@@ -19,14 +19,17 @@ class TestGrid(unittest.TestCase):
         """Настройка тестов"""
         self.iterations = 25
 
-    def test_neutrals_property(self):
+    def test_neutral_line_property(self):
         """Проверка выбора вершин линии фронта"""
         # Arrange
         grid = generation.Grid(TEST, MGEN.xgml[TEST], MGEN)
         # Act
-        neutrals = grid.neutrals
+        frontline = grid.border_nodes
+        border = grid.border
         # Assert
-        self.fail()
+        self.assertEqual(len(frontline), 9)
+        self.assertEqual(len(border), 9)
+        self.assertEqual(border[0].text, 'L1')
 
     def test_grid_capturing_moscow(self):
         """Проверка захвата в графе Москвы"""
