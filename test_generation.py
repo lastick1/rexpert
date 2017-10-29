@@ -1,6 +1,7 @@
 """Тестирование генерации миссий и работы графа"""
 import unittest
 import pathlib
+import random
 import generation
 from tests.mocks import MainMock, MgenMock
 
@@ -31,6 +32,24 @@ class TestGrid(unittest.TestCase):
         self.assertEqual(len(border), 9)
         self.assertEqual(border[0].text, 'L1')
 
+    def test_grid_capturing_test(self):
+        """Проверка захвата в тестовом графе"""
+        grid = generation.Grid(TEST, MGEN.xgml[TEST], MGEN)
+        path = pathlib.Path(r'./tmp/{}_{}.xgml'.format(TEST, 0))
+        grid.save_file(path)
+        # Act
+        for i in range(1, self.iterations):
+            nodes = list(grid.border_nodes)
+            if len(nodes) == 0:
+                break
+            random.shuffle(nodes)
+            for node in nodes.pop().neighbors:
+                if node.country == 201:
+                    node.capture(101)
+                    break
+            path = pathlib.Path(r'./tmp/{}_{}.xgml'.format(TEST, i))
+            grid.save_file(path)
+
     def test_grid_capturing_moscow(self):
         """Проверка захвата в графе Москвы"""
         grid = generation.Grid(MOSCOW, MGEN.xgml[MOSCOW], MGEN)
@@ -41,14 +60,6 @@ class TestGrid(unittest.TestCase):
         """Проверка захвата в графе Сталинграда"""
         grid = generation.Grid(STALIN, MGEN.xgml[STALIN], MGEN)
         path = pathlib.Path(r'./tmp/{}_{}.xgml'.format(STALIN, 0))
-        grid.save_file(path)
-        # Act
-        self.fail()
-
-    def test_grid_capturing_kuban(self):
-        """Проверка захвата в графе Кубани"""
-        grid = generation.Grid(STALIN, MGEN.xgml[KUBAN], MGEN)
-        path = pathlib.Path(r'./tmp/{}_{}.xgml'.format(KUBAN, 0))
         grid.save_file(path)
         # Act
         self.fail()

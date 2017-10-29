@@ -56,7 +56,7 @@ class Grid:
 \t\t\t<attribute key="source" type="int">{0}</attribute>
 \t\t\t<attribute key="target" type="int">{1}</attribute>
 \t\t<section name="graphics">
-\t\t\t<attribute key="width" type="int">7</attribute>
+\t\t\t<attribute key="width" type="int">1</attribute>
 \t\t\t<attribute key="fill" type="String">#000000</attribute>
 \t\t</section>
 \t\t</section>""".format(edge[0].key, edge[1].key)
@@ -148,7 +148,7 @@ class Grid:
         """Линия фронта (упорядоченные)"""
         def _is_reversed(a: Node, b: Node) -> bool:
             """Прямой или обратный порядок построения ЛФ"""
-            #pylint: disable=C0103
+            # pylint: disable=C0103
             # 1. получаем цветные вершины треугольников со стороной - отрезком лф
             colored = set(a.neighbors) & set(b.neighbors)
             # 2. проверяем, какая из них слева от отрезка лф
@@ -184,18 +184,15 @@ class Grid:
             if abs(x - node.x) < side and abs(z - node.z) < side:
                 return node
 
-    def capture(self, x, z, country: int):  # pylint: disable=C0103
+    def capture(self, x, z, country: int) -> None:  # pylint: disable=C0103
         """Захват вершины"""
         node = self.find(x, z)
         print('Capture {}[{}] {}'.format(node.text, node.key, country))
         if not node:
             raise NameError('Not found node to capture for [{}] country in [x:{} z:{}]'.format(
                 country, x, z))
-        for neighbor in node.neighbors:
-            if neighbor.country and neighbor.country != country:
-                neighbor.country = 0
         node.capture(country)
 
-    def capture_node(self, node: Node, coal: int):
+    def capture_node(self, node: Node, country: int) -> None:
         """Захват узла"""
-        self.capture(node.x, node.z, coal)
+        self.capture(node.x, node.z, country)

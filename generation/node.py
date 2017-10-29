@@ -57,7 +57,7 @@ class Node(geometry.Point):
 \t\t\t\t<attribute key="raisedBorder" type="boolean">false</attribute>
 \t\t\t\t<attribute key="fill" type="String">{4}</attribute>
 \t\t\t\t<attribute key="outline" type="String">#000000</attribute>
-\t\t\t\t<attribute key="outlineWidth" type="int">7</attribute>
+\t\t\t\t<attribute key="outlineWidth" type="int">1</attribute>
 \t\t\t</section>
 \t\t\t<section name="LabelGraphics">
 \t\t\t\t<attribute key="text" type="String">{1}</attribute>
