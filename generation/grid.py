@@ -2,9 +2,9 @@
 import codecs
 import xml.etree.ElementTree as Et
 import pathlib
-from .node import Node
 import configs
 import geometry
+from .node import Node
 
 
 class Grid:
@@ -148,6 +148,7 @@ class Grid:
         """Линия фронта (упорядоченные)"""
         def _is_reversed(a: Node, b: Node) -> bool:
             """Прямой или обратный порядок построения ЛФ"""
+            #pylint: disable=C0103
             # 1. получаем цветные вершины треугольников со стороной - отрезком лф
             colored = set(a.neighbors) & set(b.neighbors)
             # 2. проверяем, какая из них слева от отрезка лф
@@ -162,7 +163,8 @@ class Grid:
         result = [first]
         while len(nodes):
             # пока список не опустеет, повторяем
-            # вытаскиваем вершину с головы списка, добавляем её к концу или к началу результата, либо в конец списка
+            # вытаскиваем вершину с головы списка, добавляем её к концу или к началу результата
+            # либо в конец списка
             node = nodes.pop(0)
             if node in result[-1].neighbors:
                 result.append(node)
