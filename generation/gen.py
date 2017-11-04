@@ -10,6 +10,8 @@ from geometry import Point
 from configs import Main, Mgen, LocationsConfig
 from geometry import Segment
 
+from .mission_files import MissionFiles
+
 
 class Group:
     def __init__(self, group_file):
@@ -51,72 +53,6 @@ class Group:
             else:
                 content = self.files[file_ext].read_text(encoding='utf-16-le').replace(src, dst)
                 self.files[file_ext].write_text(content, encoding='utf-16-le')
-
-
-class MissionFiles:
-    def __init__(self, mission_file: Path, game_folder: Path, resaver_folder: Path):
-        """ Класс миссии в файловой системе, для перемещения и переименования файлов миссии """
-        tmp = mission_file.absolute()
-        self.files = {
-            'Mission': tmp,
-            'msnbin': Path(''.join(str(tmp).split('.')[:-1]) + '.msnbin'),
-            'list': Path(''.join(str(tmp).split('.')[:-1]) + '.list'),
-            'eng': Path(''.join(str(tmp).split('.')[:-1]) + '.eng'),
-            'fra': Path(''.join(str(tmp).split('.')[:-1]) + '.fra'),
-            'rus': Path(''.join(str(tmp).split('.')[:-1]) + '.rus'),
-            'ger': Path(''.join(str(tmp).split('.')[:-1]) + '.ger'),
-            'pol': Path(''.join(str(tmp).split('.')[:-1]) + '.pol'),
-            'spa': Path(''.join(str(tmp).split('.')[:-1]) + '.spa')
-        }
-        self.resaver_folder = resaver_folder
-        self.game_folder = game_folder
-
-    def _replace(self, dst):
-        """ Перемещение файлов миссии в указанную папку с заменой """
-        for file_ext in self.files:
-            tmp = Path(str(dst) + '.' + file_ext)
-            self.files[file_ext].replace(tmp)
-            self.files[file_ext] = tmp
-
-    def move_to_dogfight(self, name: str):
-        """ Перемещение файлов миссии в папку Multiplayer/Dogfight с заменой
-        :param name: Имя файлов миссии"""
-        # меняем в лист-файле пути к файлам локализации
-        content = self.files['list'].read_text(encoding='utf-8').replace('missions/', 'multiplayer/dogfight/')
-        content = content.replace('result', name)
-        self.files['list'].write_text(content, encoding='utf-8')
-        # вычисляем путь к папке data
-        d = os.path.dirname(str(self.files['Mission']))
-        while d.split(sep='\\')[-1] != 'data':
-            d = str(Path(d).joinpath(os.pardir).resolve())
-        # переносим файлы с заменой
-        self._replace(Path(d).joinpath('.\\Multiplayer\\Dogfight\\' + name))
-
-    def resave(self):
-        now = str(datetime.now()).replace(":", "-").replace(" ", "_")
-        resaver_folder = str(self.resaver_folder)
-        data_folder = str(self.game_folder.joinpath(r'.\data'))
-        with open(resaver_folder + r"\resaver_log_" + now + ".txt", "w") as resaver_log:
-            args = [
-                str(self.resaver_folder) + r"\MissionResaver.exe",
-                "-d",
-                data_folder,
-                "-f",
-                str(self.files['Mission'])
-            ]
-            resaver = subprocess.Popen(args, cwd=str(resaver_folder), stdout=resaver_log)
-            resaver.wait()
-            time.sleep(0.5)
-
-    def detach_src(self):
-        """ Переименование файла исходника миссии с заменой, чтобы он не был использован DServer """
-        p = Path(os.path.splitext(str(self.files['Mission']))[0] + '_src.Mission')
-        self.files['Mission'].replace(p)
-        self.files['Mission'] = p
-
-    # TODO сделать вместо detach - zip архив
-    def zip_src(self):
-        raise NotImplemented
 
 
 class Generator:
@@ -179,6 +115,7 @@ class Generator:
         src_file = self.dogfight_folder.joinpath(src + suffix + mission)
         dst_file = self.msrc_directory.joinpath(src + mission)
         shutil.copyfile(str(src_file), str(dst_file))
+
 
 airfields_raw_re = re.compile(
     '\nAirfield\n\{[\n\sa-zA-Z0-9=;._ "]*\n\s*}'
@@ -574,7 +511,7 @@ class Ldb:
 
 
 class Divisions:
-    "Дивизии"
+    """Дивизии"""
     def __init__(self, tvd_name, edges, main: Main, mgen: Mgen):
         folder = main.game_folder.joinpath(Path(mgen.cfg[tvd_name]['tvd_folder']))
         self.ldf_file = folder.joinpath(mgen.cfg[tvd_name]['ldf_file'])
@@ -598,6 +535,7 @@ class Divisions:
     def make(self):
         """ Записать текстовый файл базы локаций и скомпилировать бинарный файл с помощью make_ldb.exe """
         self.ldf_file.write_text(self.text)
+
 
 icon_text = """MCU_Icon
 {{
@@ -692,7 +630,7 @@ class InfluenceArea:
     def __init__(self, _id, boundary, country):
         """
         Класс зоны влияния, которая определяет принадлежность территории к какой-то стране
-        :param id: ИД объекта MCU_TR_InfluenceArea
+        :param _id: ИД объекта MCU_TR_InfluenceArea
         :param boundary: список вершин многоугольника зоны (по часовой стрелке)
         :param country: страна, к которой относится территория зоны
         """
