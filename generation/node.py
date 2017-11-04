@@ -43,30 +43,6 @@ class Node(geometry.Point):
     def __str__(self):
         return '{} {} {}'.format(self.key, self.country, self.text)
 
-    def serialize_xgml(self, c_x, c_z, offset) -> str:
-        """Сериализовать в формат XGML"""
-        return """\t\t<section name="node">
-\t\t\t<attribute key="id" type="int">{0}</attribute>
-\t\t\t<attribute key="label" type="String">{1}</attribute>
-\t\t\t<section name="graphics">
-\t\t\t\t<attribute key="x" type="double">{2}</attribute>
-\t\t\t\t<attribute key="y" type="double">{3}</attribute>
-\t\t\t\t<attribute key="w" type="double">15.0</attribute>
-\t\t\t\t<attribute key="h" type="double">15.0</attribute>
-\t\t\t\t<attribute key="type" type="String">ellipse</attribute>
-\t\t\t\t<attribute key="raisedBorder" type="boolean">false</attribute>
-\t\t\t\t<attribute key="fill" type="String">{4}</attribute>
-\t\t\t\t<attribute key="outline" type="String">#000000</attribute>
-\t\t\t\t<attribute key="outlineWidth" type="int">1</attribute>
-\t\t\t</section>
-\t\t\t<section name="LabelGraphics">
-\t\t\t\t<attribute key="text" type="String">{1}</attribute>
-\t\t\t\t<attribute key="fontSize" type="int">12</attribute>
-\t\t\t\t<attribute key="fontName" type="String">Dialog</attribute>
-\t\t\t\t<attribute key="anchor" type="String">c</attribute>
-\t\t\t</section>
-\t\t</section>""".format(self.key, self.text, c_z * self.z, offset - c_x * self.x, self.color)
-
     def path(self, to, ignore_country=True) -> list:  # pylint: disable=C0103
         """Путь к указанной вершине"""
         bfs = self.bfs(ignore_country=ignore_country)[0]

@@ -23,7 +23,9 @@ class TestGrid(unittest.TestCase):
     def test_neutral_line_property(self):
         """Проверка выбора вершин линии фронта"""
         # Arrange
-        grid = generation.Grid(TEST, MGEN.xgml[TEST], MGEN)
+        xgml = generation.Xgml(TEST, MGEN)
+        xgml.parse()
+        grid = generation.Grid(TEST, xgml.nodes, xgml.edges, MGEN)
         # Act
         frontline = grid.border_nodes
         border = grid.border
@@ -34,9 +36,11 @@ class TestGrid(unittest.TestCase):
 
     def test_grid_capturing_test(self):
         """Проверка захвата в тестовом графе"""
-        grid = generation.Grid(TEST, MGEN.xgml[TEST], MGEN)
+        xgml = generation.Xgml(TEST, MGEN)
+        xgml.parse()
+        grid = generation.Grid(TEST, xgml.nodes, xgml.edges, MGEN)
         path = pathlib.Path(r'./tmp/{}_{}.xgml'.format(TEST, 0))
-        grid.save_file(path)
+        xgml.save_file(str(path), grid.nodes, grid.edges)
         # Act
         for i in range(1, self.iterations):
             nodes = list(grid.border_nodes)
@@ -48,7 +52,7 @@ class TestGrid(unittest.TestCase):
                     node.capture(101)
                     break
             path = pathlib.Path(r'./tmp/{}_{}.xgml'.format(TEST, i))
-            grid.save_file(path)
+            xgml.save_file(str(path), grid.nodes, grid.edges)
 
     def test_grid_capturing_moscow(self):
         """Проверка захвата в графе Москвы"""
@@ -58,9 +62,11 @@ class TestGrid(unittest.TestCase):
 
     def test_grid_capturing_stalingrad(self):
         """Проверка захвата в графе Сталинграда"""
-        grid = generation.Grid(STALIN, MGEN.xgml[STALIN], MGEN)
+        xgml = generation.Xgml(STALIN, MGEN)
+        xgml.parse()
+        grid = generation.Grid(STALIN, xgml.nodes, xgml.edges, MGEN)
         path = pathlib.Path(r'./tmp/{}_{}.xgml'.format(STALIN, 0))
-        grid.save_file(path)
+        xgml.save_file(str(path), grid.nodes, grid.edges)
         # Act
         self.fail()
 

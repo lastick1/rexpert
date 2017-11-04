@@ -1,4 +1,4 @@
-"Тестирование обработки событий"
+"""Тестирование обработки событий"""
 import unittest
 import pathlib
 from processing import EventsController, PlayersController, CampaignController, GroundController
@@ -17,10 +17,11 @@ MAIN = mocks.MainMock(pathlib.Path(r'.\testdata\conf.ini'))
 MGEN = mocks.MgenMock(MAIN)
 OBJECTS = Objects()
 
+
 class TestEventsController(unittest.TestCase):
-    "Тесты базовой обработки логов с новой базой на каждом тесте"
+    """Тесты базовой обработки логов с новой базой на каждом тесте"""
     def setUp(self):
-        "Настройка базы перед тестом"
+        """Настройка базы перед тестом"""
         self.mongo = pymongo.MongoClient(MAIN.mongo_host, MAIN.mongo_port)
         rexpert = self.mongo[DB_NAME]
         console = mocks.ConsoleMock()
@@ -30,12 +31,12 @@ class TestEventsController(unittest.TestCase):
         self.campaign = CampaignController(MAIN, MGEN, self.generator)
 
     def tearDown(self):
-        "Удаление базы после теста"
+        """Удаление базы после теста"""
         self.mongo.drop_database(DB_NAME)
         self.mongo.close()
 
     def test_processing_with_atype_7(self):
-        "Завершается корректно миссия с AType:7 в логе"
+        """Завершается корректно миссия с AType:7 в логе"""
         # Arrange
         controller = EventsController(OBJECTS, self.players, self.grounds, self.campaign)
         # Act
@@ -45,7 +46,7 @@ class TestEventsController(unittest.TestCase):
         self.assertEqual(True, controller.is_correctly_completed)
 
     def test_generate_next_with_atype_0(self):
-        "Генерируется следующая миссия с AType:0 в логе"
+        """Генерируется следующая миссия с AType:0 в логе"""
         # Arrange
         controller = EventsController(OBJECTS, self.players, self.grounds, self.campaign)
         # Act
@@ -56,7 +57,7 @@ class TestEventsController(unittest.TestCase):
         self.assertEqual(len(self.generator.generations), 1)
 
     def test_bombing(self):
-        "Учитываются наземные цели"
+        """Учитываются наземные цели"""
         # Arrange
         controller = EventsController(OBJECTS, self.players, self.grounds, self.campaign)
         # Act
@@ -67,6 +68,7 @@ class TestEventsController(unittest.TestCase):
 
     # TODO Отправляется предупреждение о запрете взлёта
     # TODO Отправляется команда кика при запрещённом взлёте
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
