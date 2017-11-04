@@ -88,6 +88,18 @@ class Point:  # pylint: disable=C0103,C0111
         self.x = x
         self.z = z
 
+    def __eq__(self, other):
+        return self.x == other.x and self.z == other.z
+
+    def __hash__(self):
+        return hash((self.x, self.z))
+
+    def __str__(self):
+        return str(self.to_dict())
+
+    def to_dict(self):
+        return {'x': self.x, 'z': self.z}
+
     def is_in_area(self, polygon):
         x = self.x
         y = self.z

@@ -54,13 +54,13 @@ class TestGrid(unittest.TestCase):
             path = pathlib.Path(r'./tmp/{}_{}.xgml'.format(TEST, i))
             xgml.save_file(str(path), grid.nodes, grid.edges)
 
-    def test_grid_capturing_moscow(self):
+    def _test_grid_capturing_moscow(self):
         """Проверка захвата в графе Москвы"""
         grid = generation.Grid(MOSCOW, MGEN.xgml[MOSCOW], MGEN)
         # Act
         self.fail()
 
-    def test_grid_capturing_stalingrad(self):
+    def _test_grid_capturing_stalingrad(self):
         """Проверка захвата в графе Сталинграда"""
         xgml = generation.Xgml(STALIN, MGEN)
         xgml.parse()
