@@ -3,8 +3,8 @@ import datetime
 from pathlib import Path
 from random import randint
 from .grid import Grid
-from .gen import Ldb, FlGroup, Divisions
-from .groups import Group
+from .gen import Ldb, Divisions
+from .groups import Group, FrontLineGroup
 from .weather import presets, WeatherPreset
 import configs
 
@@ -111,7 +111,7 @@ class Tvd:
     def update_icons(self):
         """Обновление группы иконок в соответствии с положением ЛФ"""
         print('[{}] generating icons group...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
-        flg = FlGroup(self.name, self.grid.border_nodes, self.grid.areas, self.mgen)
+        flg = FrontLineGroup(self.name, self.grid.border_nodes, self.grid.areas, self.mgen)
         flg.make()
         print('... icons done')
 
