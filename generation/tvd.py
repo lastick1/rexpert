@@ -2,6 +2,8 @@ import json
 import datetime
 from pathlib import Path
 from random import randint
+
+from generation import BoundaryBuilder
 from .grid import Grid
 from .gen import Ldb, Divisions
 from .groups import Group, FrontLineGroup
@@ -39,6 +41,13 @@ class Tvd:
         self.af_groups_folders = mgen.af_groups_folders[name]
         self.ldf_file = mgen.cfg[name]['ldf_file']
         self.tvd_folder = mgen.cfg[name]['tvd_folder']
+
+        offset = 10000
+        north = self.mgen.cfg['right_top']['x'] + offset
+        east = self.mgen.cfg['right_top']['z'] + offset
+        south = 0 - offset
+        west = 0 - offset
+        self.boundary_builder = BoundaryBuilder(north=north, east=east, south=south, west=west)
 
         self.date = datetime.datetime.strptime(date, date_format)
         self.id = mgen.cfg[name]['tvd']
@@ -111,14 +120,25 @@ class Tvd:
     def update_icons(self):
         """Обновление группы иконок в соответствии с положением ЛФ"""
         print('[{}] generating icons group...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
-        flg = FrontLineGroup(self.name, self.grid.border_nodes, self.grid.areas, self.mgen)
+        border = self.grid.border
+        areas = {
+            101: self.boundary_builder.build_east(border),
+            201: self.boundary_builder.build_west(border)
+        }
+        flg = FrontLineGroup(self.name, self.grid.border_nodes, areas, self.mgen)
         flg.make()
         print('... icons done')
 
     def update_ldb(self):
         """Обновление базы локаций до актуального состояния"""
         print('[{}] generating Locations Data Base (LDB)...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
-        ldf = Ldb(self.name, self.grid.areas, self.grid.scenarios, self.grid.border_nodes, self.main, self.mgen, self.loc_cfg)
+        border = self.grid.border
+        areas = {
+            101: self.boundary_builder.build_east(border),
+            201: self.boundary_builder.build_west(border)
+        }
+        # TODO добавить модуль, который будет отвечать за выбор аэродромов и их глобальное состояние
+        ldf = Ldb(self.name, areas, self.grid.scenarios, self.grid.border_nodes, self.main, self.mgen, self.loc_cfg)
         ldf.make()
         print('... LDB done')
 
