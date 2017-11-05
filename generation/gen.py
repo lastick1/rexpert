@@ -1,3 +1,4 @@
+"""Сборка бинарных файлов в scg и генерация миссий"""
 import re
 import subprocess
 import time
