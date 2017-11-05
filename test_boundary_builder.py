@@ -4,10 +4,10 @@ import generation
 import geometry
 
 
-class TestGrid(unittest.TestCase):
+class TestBoundaryBuilder(unittest.TestCase):
     """Тестовый класс"""
 
-    def test_boundary_builder_build_east(self):
+    def test_build_east(self):
         """Создаётся корректный многоугольник восточной InfluenceArea"""
         north, east, south, west = 10, 10, 0, 0
         builder = generation.BoundaryBuilder(north, east, south, west)
@@ -34,7 +34,7 @@ class TestGrid(unittest.TestCase):
         # Assert
         self.assertSequenceEqual(result, expected)
 
-    def test_boundary_builder_build_west(self):
+    def test_build_west(self):
         """Создаётся корректный многоугольник западной InfluenceArea"""
         north, east, south, west = 10, 10, 0, 0
         builder = generation.BoundaryBuilder(north, east, south, west)
