@@ -3,7 +3,8 @@ import datetime
 from pathlib import Path
 from random import randint
 from .grid import Grid
-from .gen import Group, Ldb, FlGroup, Divisions
+from .gen import Ldb, FlGroup, Divisions
+from .groups import Group
 from .weather import presets, WeatherPreset
 import configs
 
