@@ -201,7 +201,7 @@ class TestPlayersController(unittest.TestCase):
         # Act
         self.controller.spawn(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
         aircraft.takeoff(pos)
-        aircraft.recieve_damage(damager, 10, pos)
+        aircraft.receive_damage(damager, 10, pos)
         self.controller.finish(bot)
         # Assert
         document = self.players.find_one(FILTER)
@@ -220,7 +220,7 @@ class TestPlayersController(unittest.TestCase):
         # Act
         self.controller.spawn(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
         aircraft.takeoff(pos)
-        aircraft.recieve_damage(damager, 10, pos)
+        aircraft.receive_damage(damager, 10, pos)
         aircraft.land(pos, airfields, MAIN.airfield_radius)
         self.controller.finish(bot)
         # Assert
@@ -241,7 +241,7 @@ class TestPlayersController(unittest.TestCase):
         # Act
         self.controller.spawn(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
         aircraft.takeoff(pos_airfield)
-        aircraft.recieve_damage(damager, 10, pos_aircraft)
+        aircraft.receive_damage(damager, 10, pos_aircraft)
         aircraft.land(pos_airfield, airfields, MAIN.airfield_radius)
         self.controller.finish(bot)
         # Assert
