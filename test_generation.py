@@ -26,7 +26,7 @@ class TestGrid(unittest.TestCase):
         return set(z.key for z in nodes)
 
     @staticmethod
-    def _get_polygon_keys(nodes: list) -> tuple:
+    def _get_polygons_keys(nodes: list) -> tuple:
         """Получить ключи узлов в списке многоугольников"""
         return tuple(set(z.key for z in x) for x in nodes)
 
@@ -64,13 +64,13 @@ class TestGrid(unittest.TestCase):
             path = pathlib.Path(r'./tmp/{}_{}.xgml'.format(TEST, i))
             xgml.save_file(str(path), grid.nodes, grid.edges)
 
-    def test_get_triangles(self):
+    def test_node_triangles(self):
         """Определяются смежные треугольники для вершины"""
         xgml = generation.Xgml(TEST, MGEN)
         xgml.parse()
         grid = generation.Grid(TEST, xgml.nodes, xgml.edges, MGEN)
         nodes = grid.nodes
-        expected = self._get_polygon_keys([
+        expected = self._get_polygons_keys([
             (nodes['7'], nodes['23'], nodes['30']),
             (nodes['7'], nodes['30'], nodes['31']),
             (nodes['7'], nodes['31'], nodes['47']),
@@ -78,7 +78,7 @@ class TestGrid(unittest.TestCase):
             (nodes['7'], nodes['24'], nodes['23'])
         ])
         # act
-        result = self._get_polygon_keys(grid.get_triangles(nodes['7']))
+        result = self._get_polygons_keys(grid.node('7').triangles)
         # assert
         self.assertCountEqual(result, expected)
 

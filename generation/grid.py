@@ -87,6 +87,10 @@ class Grid:
             result.reverse()
         return result
 
+    def node(self, key: str) -> Node:
+        """Получить узел"""
+        return self.nodes[key]
+
     def find(self, x, z, side: float = 10) -> Node:  # pylint: disable=C0103
         """Найти узел по координатам (в квадрате стороной 2*r)"""
         for node in self.nodes_list:
@@ -105,25 +109,6 @@ class Grid:
     def capture_node(self, node: Node, country: int) -> None:
         """Захват узла"""
         self.capture(node.x, node.z, country)
-
-    @staticmethod
-    def get_triangles(node: Node) -> list:
-        """Получить треугольники, к которым относится вершины"""
-        result = list()
-        used = set()
-        for neighbor in node.neighbors:
-            nodes = set(neighbor.neighbors) & node.neighbors
-            for tmp in nodes:
-                triangle = node, neighbor, tmp
-                triangle_keys = int(node.key), int(neighbor.key), int(tmp.key)
-                triangle_hash = ''
-                for key in sorted(triangle_keys):
-                    triangle_hash += '_{}'.format(key)
-                if triangle_hash in used:
-                    continue
-                result.append(triangle)
-                used.add(triangle_hash)
-        return list(result)
 
     @staticmethod
     def get_neighbors_of(nodes: list) -> list:

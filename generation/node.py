@@ -40,6 +40,25 @@ class Node(geometry.Point):
             countries.add(neighbor.country)
         return len(countries) > 2
 
+    @property
+    def triangles(self) -> list:
+        """Треугольники, в которые входит вершина"""
+        result = list()
+        used = set()
+        for neighbor in self.neighbors:
+            nodes = set(neighbor.neighbors) & self.neighbors
+            for tmp in nodes:
+                triangle = self, neighbor, tmp
+                triangle_keys = int(self.key), int(neighbor.key), int(tmp.key)
+                triangle_hash = ''
+                for key in sorted(triangle_keys):
+                    triangle_hash += '_{}'.format(key)
+                if triangle_hash in used:
+                    continue
+                result.append(triangle)
+                used.add(triangle_hash)
+        return list(result)
+
     def __str__(self):
         return '{} {} {}'.format(self.key, self.country, self.text)
 
