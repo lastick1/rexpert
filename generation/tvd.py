@@ -3,7 +3,7 @@ import datetime
 from pathlib import Path
 from random import randint
 
-from generation import BoundaryBuilder
+from .influences import BoundaryBuilder
 from .grid import Grid
 from .gen import Ldb, Divisions
 from .groups import Group, FrontLineGroup
@@ -122,8 +122,8 @@ class Tvd:
         print('[{}] generating icons group...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
         border = self.grid.border
         areas = {
-            101: self.boundary_builder.build_east(border),
-            201: self.boundary_builder.build_west(border)
+            101: self.boundary_builder.influence_east(border),
+            201: self.boundary_builder.influence_west(border)
         }
         flg = FrontLineGroup(self.name, self.grid.border_nodes, areas, self.mgen)
         flg.make()
@@ -134,8 +134,8 @@ class Tvd:
         print('[{}] generating Locations Data Base (LDB)...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
         border = self.grid.border
         areas = {
-            101: self.boundary_builder.build_east(border),
-            201: self.boundary_builder.build_west(border)
+            101: self.boundary_builder.influence_east(border),
+            201: self.boundary_builder.influence_west(border)
         }
         # TODO добавить модуль, который будет отвечать за выбор аэродромов и их глобальное состояние
         ldf = Ldb(self.name, areas, self.grid.scenarios, self.grid.border_nodes, self.main, self.mgen, self.loc_cfg)

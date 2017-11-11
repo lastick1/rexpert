@@ -54,7 +54,7 @@ class Grid:
 
     @property
     def border(self) -> list:
-        """Линия фронта (упорядоченные)"""
+        """Линия фронта (упорядоченные с юга на север)"""
         def _is_reversed(a: Node, b: Node) -> bool:
             """Прямой или обратный порядок построения ЛФ"""
             # pylint: disable=C0103
@@ -105,3 +105,22 @@ class Grid:
     def capture_node(self, node: Node, country: int) -> None:
         """Захват узла"""
         self.capture(node.x, node.z, country)
+
+    @staticmethod
+    def get_triangles(node: Node) -> list:
+        """Получить треугольники, к которым относится вершины"""
+        result = list()
+        used = set()
+        for neighbor in node.neighbors:
+            nodes = set(neighbor.neighbors) & node.neighbors
+            for tmp in nodes:
+                triangle = node, neighbor, tmp
+                triangle_keys = int(node.key), int(neighbor.key), int(tmp.key)
+                triangle_hash = ''
+                for key in sorted(triangle_keys):
+                    triangle_hash += '_{}'.format(key)
+                if triangle_hash in used:
+                    continue
+                result.append(triangle)
+                used.add(triangle_hash)
+        return list(result)

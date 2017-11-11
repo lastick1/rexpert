@@ -20,8 +20,13 @@ class TestGrid(unittest.TestCase):
         """Настройка тестов"""
         self.iterations = 25
 
+    @staticmethod
+    def _get_polygon_keys(nodes: list) -> tuple:
+        """Получить ключи узлов в списке многоугольников"""
+        return tuple(set(z.key for z in x) for x in nodes)
+
     def test_neutral_line_property(self):
-        """Проверка выбора вершин линии фронта"""
+        """Упорядочиваются вершины линии фронта"""
         # Arrange
         xgml = generation.Xgml(TEST, MGEN)
         xgml.parse()
@@ -35,7 +40,7 @@ class TestGrid(unittest.TestCase):
         self.assertEqual(border[0].text, 'L1')
 
     def test_grid_capturing_test(self):
-        """Проверка захвата в тестовом графе"""
+        """Выполняется захват в тестовом графе"""
         xgml = generation.Xgml(TEST, MGEN)
         xgml.parse()
         grid = generation.Grid(TEST, xgml.nodes, xgml.edges, MGEN)
@@ -54,14 +59,32 @@ class TestGrid(unittest.TestCase):
             path = pathlib.Path(r'./tmp/{}_{}.xgml'.format(TEST, i))
             xgml.save_file(str(path), grid.nodes, grid.edges)
 
+    def test_get_triangles(self):
+        """Определяются смежные треугольники для вершины"""
+        xgml = generation.Xgml(TEST, MGEN)
+        xgml.parse()
+        grid = generation.Grid(TEST, xgml.nodes, xgml.edges, MGEN)
+        nodes = grid.nodes
+        expected = self._get_polygon_keys([
+            (nodes['7'], nodes['23'], nodes['30']),
+            (nodes['7'], nodes['30'], nodes['31']),
+            (nodes['7'], nodes['31'], nodes['47']),
+            (nodes['7'], nodes['47'], nodes['24']),
+            (nodes['7'], nodes['24'], nodes['23'])
+        ])
+        # act
+        result = self._get_polygon_keys(grid.get_triangles(nodes['7']))
+        # assert
+        self.assertCountEqual(result, expected)
+
     def _test_grid_capturing_moscow(self):
-        """Проверка захвата в графе Москвы"""
+        """Выполняется захват в графе Москвы"""
         grid = generation.Grid(MOSCOW, MGEN.xgml[MOSCOW], MGEN)
         # Act
         self.fail()
 
     def _test_grid_capturing_stalingrad(self):
-        """Проверка захвата в графе Сталинграда"""
+        """Выполняется захват в графе Сталинграда"""
         xgml = generation.Xgml(STALIN, MGEN)
         xgml.parse()
         grid = generation.Grid(STALIN, xgml.nodes, xgml.edges, MGEN)
