@@ -99,6 +99,7 @@ class Xgml(GridIO):
 \t\t\t\t<attribute key="anchor" type="String">c</attribute>
 \t\t\t</section>
 \t\t</section>""".format(node.key, node.text + ' ' + node.key, c_z * node.z, offset - c_x * node.x, node.color)
+    # TODO не забыть убрать запись ключа в текст узла тут ^
 
     @staticmethod
     def serialize_edges_xgml(edges: list) -> str:

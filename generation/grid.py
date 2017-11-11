@@ -124,3 +124,11 @@ class Grid:
                 result.append(triangle)
                 used.add(triangle_hash)
         return list(result)
+
+    @staticmethod
+    def get_neighbors_of(nodes: list) -> list:
+        """Получить все узлы, соседствующие с хотя бы одним из списка"""
+        result = set()
+        for node in set(nodes):
+            result |= node.neighbors - set(nodes)
+        return list(result)

@@ -32,6 +32,8 @@ class BoundaryBuilder:
         result.reverse()
         return result
 
+
+
     def confrontation_west(self, grid: Grid) -> list:
         """Построить вершины для западной прифронтовой зоны"""
         border = grid.border

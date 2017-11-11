@@ -196,7 +196,7 @@ class TestBoundaryBuilder(unittest.TestCase):
         path = pathlib.Path(r'./tmp/tmp.xgml')
         xgml.save_file(str(path), grid.nodes, grid.edges)
         # Act
-        result = builder.confrontation_west(nodes)
+        result = builder.confrontation_west(grid)
         # Assert
         self.assertCountEqual(tuple(int(x.key) for x in result), expected_keys)
 

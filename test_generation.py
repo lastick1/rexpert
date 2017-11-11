@@ -21,6 +21,11 @@ class TestGrid(unittest.TestCase):
         self.iterations = 25
 
     @staticmethod
+    def _get_nodes_keys(nodes: list) -> set:
+        """Получить ключи узлов из списка узлов"""
+        return set(z.key for z in nodes)
+
+    @staticmethod
     def _get_polygon_keys(nodes: list) -> tuple:
         """Получить ключи узлов в списке многоугольников"""
         return tuple(set(z.key for z in x) for x in nodes)
@@ -74,6 +79,22 @@ class TestGrid(unittest.TestCase):
         ])
         # act
         result = self._get_polygon_keys(grid.get_triangles(nodes['7']))
+        # assert
+        self.assertCountEqual(result, expected)
+
+    def test_get_neighbors_of(self):
+        """Находятся все соседи узлов из списка"""
+        xgml = generation.Xgml(TEST, MGEN)
+        xgml.parse()
+        grid = generation.Grid(TEST, xgml.nodes, xgml.edges, MGEN)
+        expected = self._get_nodes_keys([
+            grid.nodes['18'], grid.nodes['19'], grid.nodes['1'], grid.nodes['0'], grid.nodes['21'], grid.nodes['5'],
+            grid.nodes['24'], grid.nodes['7'], grid.nodes['6'], grid.nodes['39'], grid.nodes['8'], grid.nodes['29'],
+            grid.nodes['12'], grid.nodes['33'], grid.nodes['15'], grid.nodes['37'], grid.nodes['14'], grid.nodes['41'],
+            grid.nodes['13']
+        ])
+        # act
+        result = self._get_nodes_keys(grid.get_neighbors_of(grid.border))
         # assert
         self.assertCountEqual(result, expected)
 
