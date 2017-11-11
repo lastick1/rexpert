@@ -56,7 +56,7 @@ class TestBoundaryBuilder(unittest.TestCase):
             generation.Node(key='30', text='47', pos={'x': 16, 'z': 16}, color=COLOR_BLUE),
             generation.Node(key='31', text='L', pos={'x': 17, 'z': 18}, color=COLOR_WHITE),
             generation.Node(key='32', text='L', pos={'x': 18, 'z': 22}, color=COLOR_WHITE),
-            generation.Node(key='33', text='67', pos={'x': 19, 'z': 25}, color=COLOR_WHITE),
+            generation.Node(key='33', text='67', pos={'x': 19, 'z': 25}, color=COLOR_RED),
             generation.Node(key='34', text='L', pos={'x': 20, 'z': 27}, color=COLOR_WHITE),
             generation.Node(key='35', text='L', pos={'x': 19, 'z': 29}, color=COLOR_WHITE),
             generation.Node(key='36', text='L', pos={'x': 17, 'z': 25}, color=COLOR_WHITE),
@@ -110,6 +110,11 @@ class TestBoundaryBuilder(unittest.TestCase):
             nodes.append(generation.Node(key=key, text=key, pos=point.to_dict(), color='#FFFFFF'))
             key += 1
         return nodes
+
+    @staticmethod
+    def _get_nodes_keys(nodes: list) -> set:
+        """Получить ключи узлов из списка узлов"""
+        return set(z.key for z in nodes)
 
     def test_build_east(self):
         """Создаётся корректный многоугольник восточной InfluenceArea"""
@@ -183,6 +188,21 @@ class TestBoundaryBuilder(unittest.TestCase):
         # Assert
         self.assertSequenceEqual(result, expected)
 
+    def test_get_second_line_nodes(self):
+        """Определяются вершины, образующие линию ограничения прифронтовой полосы"""
+        expected_keys = {
+            101: ('11', '39', '45', '46', '36', '35', '34', '7'),
+            201: ('2', '12', '26', '42', '29', '16', '5')
+        }
+        countries = (201, 101)
+        builder = generation.BoundaryBuilder(self.north, self.east, self.south, self.west)
+        grid = self._get_grid()
+        for country in countries:
+            # Act
+            result = self._get_nodes_keys(list(builder.get_second_line_nodes(grid, country)))
+            # Assert
+            self.assertCountEqual(expected_keys[country], result)
+
     def test_confrontation_area_west(self):
         """Создаётся многоугольник западной прифронтовой полосы"""
         expected_keys = (1, 25, 41, 43, 44, 31, 32, 18, 6, 5, 16, 29, 42, 26, 12, 2, 1)
@@ -196,9 +216,10 @@ class TestBoundaryBuilder(unittest.TestCase):
         path = pathlib.Path(r'./tmp/tmp.xgml')
         xgml.save_file(str(path), grid.nodes, grid.edges)
         # Act
+        self.fail()
         result = builder.confrontation_west(grid)
         # Assert
-        self.assertCountEqual(tuple(int(x.key) for x in result), expected_keys)
+        self.assertSequenceEqual(tuple(int(x.key) for x in result), expected_keys)
 
 
 if __name__ == '__main__':

@@ -94,7 +94,7 @@ class TestGrid(unittest.TestCase):
             grid.nodes['13']
         ])
         # act
-        result = self._get_nodes_keys(grid.get_neighbors_of(grid.border))
+        result = self._get_nodes_keys(grid.get_neighbors_of(grid.border_nodes))
         # assert
         self.assertCountEqual(result, expected)
 

@@ -1,7 +1,13 @@
 """Формирование списков вершин для InfluenceArea"""
 import geometry
 
-from .grid import Grid
+from .grid import Grid, Node
+
+
+def _to_node(obj) -> Node:
+    """Приведение типа к узлу"""
+    return obj
+
 
 class BoundaryBuilder:
     def __init__(self, north: float, east: float, south: float, west: float):
@@ -32,12 +38,39 @@ class BoundaryBuilder:
         result.reverse()
         return result
 
+    @staticmethod
+    def get_second_line_nodes(grid: Grid, country: int) -> set:
+        """Получить все узлы, ограничивающие прифронтовую полосу"""
+        # TODO решить проблему... может быть более одного ребра от вершины из ограничения до линии фронта
+        result = set()
+        border_nodes = grid.border_nodes
+        nodes = tuple(x for x in grid.get_neighbors_of(border_nodes)
+                      if x.country == country or x.related_country == country)
+        for node in nodes:
+            if len(node.neighbors & border_nodes) != 2:
+                result.add(node)
+        return result
+
     def confrontation_west(self, grid: Grid) -> list:
         """Построить вершины для западной прифронтовой зоны"""
-        border = grid.border
-        nodes = grid.nodes_list
+        second_line_nodes = self.get_second_line_nodes(grid)
+        result = []
 
-        return []
+        cursor = _to_node(grid.border[0])
+        while len(second_line_nodes):
+            nodes = cursor.neighbors & second_line_nodes
+            neutrals = list(x for x in nodes if x.country == 0)
+            airfields = list(x for x in nodes if x.country != 0)
+            if len(neutrals) == 1:
+                cursor = neutrals[0]
+                result.append(cursor)
+                second_line_nodes.remove(cursor)
+            elif len(airfields) >= 1:
+                cursor = airfields[0]
+                result.append(cursor)
+                second_line_nodes.remove(cursor)
+
+        return result
 
     def confrontation_east(self, nodes):
         """Построить вершины для западной прифронтовой зоны"""

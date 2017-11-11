@@ -59,6 +59,19 @@ class Node(geometry.Point):
                 used.add(triangle_hash)
         return list(result)
 
+    @property
+    def related_country(self):
+        """Страна соседей (все ли соседи одной страны). 0 если страны отличаются"""
+        nodes = list(node for node in self.neighbors if node.country)
+        if not len(nodes):
+            return self.country
+        first = nodes.pop().country
+        while len(nodes):
+            current = nodes.pop().country
+            if first != current:
+                return 0
+        return first
+
     def __str__(self):
         return '{} {} {}'.format(self.key, self.country, self.text)
 

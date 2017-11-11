@@ -111,9 +111,9 @@ class Grid:
         self.capture(node.x, node.z, country)
 
     @staticmethod
-    def get_neighbors_of(nodes: list) -> list:
+    def get_neighbors_of(nodes: set) -> list:
         """Получить все узлы, соседствующие с хотя бы одним из списка"""
         result = set()
-        for node in set(nodes):
-            result |= node.neighbors - set(nodes)
+        for node in nodes:
+            result |= node.neighbors - nodes
         return list(result)
