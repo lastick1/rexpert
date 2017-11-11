@@ -184,7 +184,7 @@ class TestBoundaryBuilder(unittest.TestCase):
         self.assertSequenceEqual(result, expected)
 
     def test_confrontation_area_west(self):
-        """Создаётся многоугольник западно прифронтовой полосы"""
+        """Создаётся многоугольник западной прифронтовой полосы"""
         expected_keys = (1, 25, 41, 43, 44, 31, 32, 18, 6, 5, 16, 29, 42, 26, 12, 2, 1)
         xgml = generation.Xgml(TEST, MGEN)
         builder = generation.BoundaryBuilder(self.north, self.east, self.south, self.west)
