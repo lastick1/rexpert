@@ -100,7 +100,11 @@ class TestGrid(unittest.TestCase):
 
     def _test_grid_capturing_moscow(self):
         """Выполняется захват в графе Москвы"""
-        grid = generation.Grid(MOSCOW, MGEN.xgml[MOSCOW], MGEN)
+        xgml = generation.Xgml(MOSCOW, MGEN)
+        xgml.parse()
+        grid = generation.Grid(MOSCOW, xgml.nodes, xgml.edges, MGEN)
+        path = pathlib.Path(r'./tmp/{}_{}.xgml'.format(MOSCOW, 0))
+        xgml.save_file(str(path), grid.nodes, grid.edges)
         # Act
         self.fail()
 
