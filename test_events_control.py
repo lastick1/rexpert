@@ -38,7 +38,7 @@ class TestEventsController(unittest.TestCase):
     def test_processing_with_atype_7(self):
         """Завершается корректно миссия с AType:7 в логе"""
         # Arrange
-        controller = EventsController(OBJECTS, self.players, self.grounds, self.campaign)
+        controller = EventsController(OBJECTS, self.players, self.grounds, self.campaign, MAIN)
         # Act
         for line in pathlib.Path(TEST_LOG1).read_text().split('\n'):
             controller.process_line(line)
@@ -48,7 +48,7 @@ class TestEventsController(unittest.TestCase):
     def test_generate_next_with_atype_0(self):
         """Генерируется следующая миссия с AType:0 в логе"""
         # Arrange
-        controller = EventsController(OBJECTS, self.players, self.grounds, self.campaign)
+        controller = EventsController(OBJECTS, self.players, self.grounds, self.campaign, MAIN)
         # Act
         for line in pathlib.Path(TEST_LOG1).read_text().split('\n'):
             controller.process_line(line)
@@ -59,7 +59,7 @@ class TestEventsController(unittest.TestCase):
     def test_bombing(self):
         """Учитываются наземные цели"""
         # Arrange
-        controller = EventsController(OBJECTS, self.players, self.grounds, self.campaign)
+        controller = EventsController(OBJECTS, self.players, self.grounds, self.campaign, MAIN)
         # Act
         for line in pathlib.Path(TEST_LOG2).read_text().split('\n'):
             controller.process_line(line)

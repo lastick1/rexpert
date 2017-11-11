@@ -17,7 +17,8 @@ class EventsController:
             objects: dict,
             players_controller: PlayersController,
             ground_controller: GroundController,
-            campaign_controller: CampaignController
+            campaign_controller: CampaignController,
+            config: configs.Main
     ):
         """
         :param objects: Справочник объектов в логах
@@ -34,6 +35,7 @@ class EventsController:
         self.is_correctly_completed = False
         self.countries = dict()
         self.airfields = dict()
+        self.config = config
 
         # порядок важен т.к. позиция в tuple соответствует ID события
         self.events_handlers = (
@@ -129,7 +131,7 @@ class EventsController:
     def event_landing(self, tik: int, aircraft_id: int, pos: dict) -> None:
         """AType 6 handler"""
         aircraft = self._get_aircraft(aircraft_id)
-        aircraft.land(pos, self.airfields)
+        aircraft.land(pos, list(self.airfields.values()), self.config.airfield_radius)
         self.update_tik(tik)
 
     def event_mission_end(self, tik: int) -> None:
