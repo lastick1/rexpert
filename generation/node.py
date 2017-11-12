@@ -41,6 +41,21 @@ class Node(geometry.Point):
         return len(countries) > 2
 
     @property
+    def border_neighbors(self) -> set:
+        """Соседи, лежащие между вершинами разных стран"""
+        return set(node for node in self.neighbors if node.is_border)
+
+    @property
+    def has_border_neighbor(self) -> bool:
+        """Есть ли среди соседей узлы лежащие между вершинами разных стран"""
+        return bool(len(self.border_neighbors))
+
+    @property
+    def not_border_neighbors(self) -> set:
+        """Соседи, не лежащие между вершинами разных стран"""
+        return set(node for node in self.neighbors if not node.is_border)
+
+    @property
     def triangles(self) -> list:
         """Треугольники, в которые входит вершина"""
         result = list()

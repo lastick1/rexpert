@@ -205,19 +205,21 @@ class TestBoundaryBuilder(unittest.TestCase):
 
     def test_confrontation_area_west(self):
         """Создаётся многоугольник западной прифронтовой полосы"""
-        expected_keys = (1, 25, 41, 43, 44, 31, 32, 18, 6, 5, 16, 29, 42, 26, 12, 2, 1)
-        xgml = generation.Xgml(TEST, MGEN)
+        expected_keys = (2, 26, 42, 29, 16, 5, 6, 18, 32, 31, 44, 43, 41, 25, 1)
         builder = generation.BoundaryBuilder(self.north, self.east, self.south, self.west)
-        xgml.z_coefficient_serialization = 15
-        xgml.x_coefficient_serialization = 15
         grid = self._get_grid()
-        nodes = grid.nodes
-        # expected_nodes = list(x for x in nodes if int(x.key) in expected_keys)
-        path = pathlib.Path(r'./tmp/tmp.xgml')
-        xgml.save_file(str(path), grid.nodes, grid.edges)
         # Act
-        self.fail()
         result = builder.confrontation_west(grid)
+        # Assert
+        self.assertSequenceEqual(tuple(int(x.key) for x in result), expected_keys)
+
+    def test_confrontation_area_east(self):
+        """Создаётся многоугольник западной прифронтовой полосы"""
+        expected_keys = (7, 34, 35, 36, 46, 45, 40, 11, 1, 25, 41, 43, 44, 31, 32, 18, 6)
+        builder = generation.BoundaryBuilder(self.north, self.east, self.south, self.west)
+        grid = self._get_grid()
+        # Act
+        result = builder.confrontation_east(grid)
         # Assert
         self.assertSequenceEqual(tuple(int(x.key) for x in result), expected_keys)
 

@@ -48,25 +48,44 @@ class BoundaryBuilder:
 
     def confrontation_west(self, grid: Grid) -> list:
         """Построить вершины для западной прифронтовой зоны"""
-        # TODO решить проблему... может быть более одного ребра от вершины из ограничения до линии фронта
         confrontation_nodes = self.get_confrontation_nodes(grid, 201)
+        border = grid.border
+        start = _to_node(border[0])
+        end = _to_node(border[-1])
         result = []
 
-        cursor = _to_node(grid.border[0])
-        while len(confrontation_nodes):
-            nodes = cursor.neighbors & confrontation_nodes
-            neutrals = list(x for x in nodes if x.country == 0)
-            airfields = list(x for x in nodes if x.country != 0)
-            if len(neutrals) == 1:
-                cursor = neutrals[0]
-                result.append(cursor)
-                confrontation_nodes.remove(cursor)
-            elif len(airfields) >= 1:
-                cursor = airfields[0]
-                result.append(cursor)
-                confrontation_nodes.remove(cursor)
+        while start not in end.neighbors:
+            nodes = list(end.neighbors & confrontation_nodes)
+            if len(nodes):
+                nodes.sort(key=lambda x: len(x.not_border_neighbors - confrontation_nodes))
+                end = nodes.pop()
+                result.append(end)
+                confrontation_nodes.remove(end)
+            else:
+                break
 
+        result = border + result
+        result.reverse()
         return result
 
-    def confrontation_east(self, nodes):
+    def confrontation_east(self, grid: Grid) -> list:
         """Построить вершины для западной прифронтовой зоны"""
+        confrontation_nodes = self.get_confrontation_nodes(grid, 101)
+        border = grid.border
+        start = _to_node(border[-1])
+        end = _to_node(border[0])
+        result = []
+
+        while start not in end.neighbors:
+            nodes = list(end.neighbors & confrontation_nodes)
+            if len(nodes):
+                nodes.sort(key=lambda x: len(x.not_border_neighbors - confrontation_nodes))
+                end = nodes.pop()
+                result.append(end)
+                confrontation_nodes.remove(end)
+            else:
+                break
+
+        result.reverse()
+        result = result + border
+        return result
