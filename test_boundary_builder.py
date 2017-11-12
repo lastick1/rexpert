@@ -4,7 +4,7 @@ import pathlib
 import generation
 import geometry
 
-from tests import mocks
+from tests import mocks, utils
 
 MAIN = mocks.MainMock(pathlib.Path(r'.\testdata\conf.ini'))
 MGEN = mocks.MgenMock(MAIN)
@@ -14,21 +14,6 @@ class TestBoundaryBuilder(unittest.TestCase):
     """Тестовый класс"""
     def setUp(self):
         self.north, self.east, self.south, self.west = 10, 10, 0, 0
-
-    @staticmethod
-    def _get_nodes(points: list) -> list:
-        """Получить узлы из точек (нейтральные)"""
-        nodes = []
-        key = 0
-        for point in points:
-            nodes.append(generation.Node(key=key, text=key, pos=point.to_dict(), color='#FFFFFF'))
-            key += 1
-        return nodes
-
-    @staticmethod
-    def _get_nodes_keys(nodes: list) -> set:
-        """Получить ключи узлов из списка узлов"""
-        return set(z.key for z in nodes)
 
     def test_build_east(self):
         """Создаётся корректный многоугольник восточной InfluenceArea"""
@@ -40,7 +25,7 @@ class TestBoundaryBuilder(unittest.TestCase):
             geometry.Point(x=7, z=4),
             geometry.Point(x=9, z=6)
         ]
-        nodes = self._get_nodes(points)
+        nodes = utils.get_nodes(points)
         expected = points + [
             geometry.Point(x=self.north, z=6),
             geometry.Point(x=self.north, z=self.east),
@@ -62,7 +47,7 @@ class TestBoundaryBuilder(unittest.TestCase):
             geometry.Point(x=7, z=4),
             geometry.Point(x=9, z=6)
         ]
-        nodes = self._get_nodes(points)
+        nodes = utils.get_nodes(points)
         points.reverse()
         expected = [
             geometry.Point(x=self.south, z=6),
@@ -88,7 +73,7 @@ class TestBoundaryBuilder(unittest.TestCase):
             geometry.Point(x=8, z=3),
             geometry.Point(x=8, z=1),
         ]
-        nodes = self._get_nodes(points)
+        nodes = utils.get_nodes(points)
         points.reverse()
         expected = [
             geometry.Point(x=self.south, z=1),
@@ -113,7 +98,7 @@ class TestBoundaryBuilder(unittest.TestCase):
         grid = mocks.get_test_grid(MGEN)
         for country in countries:
             # Act
-            result = self._get_nodes_keys(list(builder.get_confrontation_nodes(grid, country)))
+            result = utils.get_nodes_keys(list(builder.get_confrontation_nodes(grid, country)))
             # Assert
             self.assertCountEqual(expected_keys[country], result, msg=country)
 
