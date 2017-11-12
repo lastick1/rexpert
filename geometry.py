@@ -123,3 +123,28 @@ class Point:  # pylint: disable=C0103,C0111
 
     def distance_to(self, x, z):
         return ((self.x - x) ** 2 + (self.z - z) ** 2) ** .5
+
+
+def jarvis_march(array: list) -> list:
+    """Находит минимальную выпуклую оболочку в массиве точек"""
+    # https://habrahabr.ru/post/144921/
+    n = len(array)
+    p = list(range(n))
+    # start point
+    for i in range(1, n):
+        if array[p[i]].x < array[p[0]].x:
+            p[i], p[0] = p[0], p[i]
+    h = [p[0]]
+    del p[0]
+    p.append(h[0])
+    while True:
+        right = 0
+        for i in range(1, len(p)):
+            if rotate(array[h[-1]], array[p[right]], array[p[i]]) < 0:
+                right = i
+        if p[right] == h[0]:
+            break
+        else:
+            h.append(p[right])
+            del p[right]
+    return [array[x] for x in h]

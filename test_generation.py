@@ -3,10 +3,10 @@ import unittest
 import pathlib
 import random
 import generation
-from tests.mocks import MainMock, MgenMock
+from tests import mocks
 
-MAIN = MainMock(pathlib.Path(r'./testdata/conf.ini'))
-MGEN = MgenMock(MAIN)
+MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
+MGEN = mocks.MgenMock(MAIN)
 
 MOSCOW = 'moscow'
 STALIN = 'stalingrad'
@@ -14,21 +14,21 @@ KUBAN = 'kuban'
 TEST = 'test'
 
 
+def _get_nodes_keys(nodes: list) -> set:
+    """Получить ключи узлов из списка узлов"""
+    return set(z.key for z in nodes)
+
+
+def _get_polygons_keys(nodes: list) -> tuple:
+    """Получить ключи узлов в списке многоугольников"""
+    return tuple(set(z.key for z in x) for x in nodes)
+
+
 class TestGrid(unittest.TestCase):
     """Тесты графа"""
     def setUp(self):
         """Настройка тестов"""
         self.iterations = 25
-
-    @staticmethod
-    def _get_nodes_keys(nodes: list) -> set:
-        """Получить ключи узлов из списка узлов"""
-        return set(z.key for z in nodes)
-
-    @staticmethod
-    def _get_polygons_keys(nodes: list) -> tuple:
-        """Получить ключи узлов в списке многоугольников"""
-        return tuple(set(z.key for z in x) for x in nodes)
 
     def test_neutral_line_property(self):
         """Упорядочиваются вершины линии фронта"""
@@ -64,37 +64,19 @@ class TestGrid(unittest.TestCase):
             path = pathlib.Path(r'./tmp/{}_{}.xgml'.format(TEST, i))
             xgml.save_file(str(path), grid.nodes, grid.edges)
 
-    def test_node_triangles(self):
-        """Определяются смежные треугольники для вершины"""
-        xgml = generation.Xgml(TEST, MGEN)
-        xgml.parse()
-        grid = generation.Grid(TEST, xgml.nodes, xgml.edges, MGEN)
-        nodes = grid.nodes
-        expected = self._get_polygons_keys([
-            (nodes['7'], nodes['23'], nodes['30']),
-            (nodes['7'], nodes['30'], nodes['31']),
-            (nodes['7'], nodes['31'], nodes['47']),
-            (nodes['7'], nodes['47'], nodes['24']),
-            (nodes['7'], nodes['24'], nodes['23'])
-        ])
-        # act
-        result = self._get_polygons_keys(grid.node('7').triangles)
-        # assert
-        self.assertCountEqual(result, expected)
-
     def test_get_neighbors_of(self):
         """Находятся все соседи узлов из списка"""
         xgml = generation.Xgml(TEST, MGEN)
         xgml.parse()
         grid = generation.Grid(TEST, xgml.nodes, xgml.edges, MGEN)
-        expected = self._get_nodes_keys([
+        expected = _get_nodes_keys([
             grid.nodes['18'], grid.nodes['19'], grid.nodes['1'], grid.nodes['0'], grid.nodes['21'], grid.nodes['5'],
             grid.nodes['24'], grid.nodes['7'], grid.nodes['6'], grid.nodes['39'], grid.nodes['8'], grid.nodes['29'],
             grid.nodes['12'], grid.nodes['33'], grid.nodes['15'], grid.nodes['37'], grid.nodes['14'], grid.nodes['41'],
             grid.nodes['13']
         ])
         # act
-        result = self._get_nodes_keys(grid.get_neighbors_of(grid.border_nodes))
+        result = _get_nodes_keys(grid.get_neighbors_of(grid.border_nodes))
         # assert
         self.assertCountEqual(result, expected)
 
@@ -119,9 +101,37 @@ class TestGrid(unittest.TestCase):
         self.fail()
 
 
+class TestNode(unittest.TestCase):
+    """Тесты вершин"""
+
+    def test_node_triangles(self):
+        """Определяются смежные треугольники для вершины"""
+        xgml = generation.Xgml(TEST, MGEN)
+        xgml.parse()
+        grid = mocks.get_test_grid(MGEN)
+        nodes = grid.nodes
+        expected = _get_polygons_keys([
+            (nodes['30'], nodes['6'], nodes['31']),
+            (nodes['30'], nodes['31'], nodes['44']),
+            (nodes['30'], nodes['44'], nodes['43']),
+            (nodes['30'], nodes['43'], nodes['29']),
+            (nodes['30'], nodes['29'], nodes['6'])
+        ])
+        # act
+        result = _get_polygons_keys(grid.node('30').triangles)
+        # assert
+        self.assertCountEqual(result, expected)
+
+    def test_neighbors_sorted(self):
+        """Сортируются соседи по часовой стрелке"""
+
+        # act
+        # assert
+        self.fail()
+
+
 class TestTvd(unittest.TestCase):
     """Тесты ТВД"""
-    pass
 
 
 if __name__ == '__main__':
