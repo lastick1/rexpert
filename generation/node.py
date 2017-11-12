@@ -23,6 +23,11 @@ class Node(geometry.Point):
             self._is_airfield = True
 
     @property
+    def is_airfield(self):
+        """Является ли вершина аэродромом (захватываемой)"""
+        return self._is_airfield
+
+    @property
     def country(self) -> int:
         """Страна вершины"""
         return self._country

@@ -3,11 +3,13 @@ import datetime
 from pathlib import Path
 from random import randint
 
+from geometry import Point
 from .influences import BoundaryBuilder
 from .grid import Grid
 from .gen import Ldb, Divisions
 from .groups import Group, FrontLineGroup
 from .weather import presets, WeatherPreset
+from .xgml_io import Xgml
 import configs
 
 date_format = '%d.%m.%Y'
@@ -28,6 +30,13 @@ class Stage:
         return self.start <= item < self.end
 
 
+class Boundary(Point):
+    """Класс зоны влияния"""
+    def __init__(self, x: float, z: float, polygon: list):
+        super().__init__(x=x, z=z)
+        self.polygon = polygon
+
+
 class Tvd:
     def __init__(self, name, date, mgen: configs.Mgen, main: configs.Main, loc_cfg: configs.LocationsConfig, params: configs.GeneratorParamsConfig):
         """Класс театра военных действий (ТВД) кампании, для которого генерируются миссии"""
@@ -43,8 +52,8 @@ class Tvd:
         self.tvd_folder = mgen.cfg[name]['tvd_folder']
 
         offset = 10000
-        north = self.mgen.cfg['right_top']['x'] + offset
-        east = self.mgen.cfg['right_top']['z'] + offset
+        north = self.mgen.cfg[name]['right_top']['x'] + offset
+        east = self.mgen.cfg[name]['right_top']['z'] + offset
         south = 0 - offset
         west = 0 - offset
         self.boundary_builder = BoundaryBuilder(north=north, east=east, south=south, west=west)
@@ -57,7 +66,9 @@ class Tvd:
             mgen.cfg[name]['default_params_source'])
         self.icons_group_file = folder.joinpath(mgen.cfg[name]['icons_group_file'])
         self.right_top = mgen.cfg[name]['right_top']
-        self.grid = Grid(name, mgen.xgml[name], mgen)
+        xgml = Xgml(name, mgen)
+        xgml.parse()
+        self.grid = Grid(name, xgml.nodes, xgml.edges, mgen)
         # таблица аэродромов с координатами
         self.airfields_data = tuple(
             (lambda z:
@@ -121,11 +132,20 @@ class Tvd:
         """Обновление группы иконок в соответствии с положением ЛФ"""
         print('[{}] generating icons group...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
         border = self.grid.border
+        nodes = self.grid.nodes_list
+        influence_east = self.boundary_builder.influence_east(border)
+        influence_west = self.boundary_builder.influence_west(border)
+        east_boundary = Boundary(influence_east[0].x, influence_east[0].z, influence_east)
+        west_boundary = Boundary(influence_west[0].x, influence_west[0].z, influence_west)
+        east_influences = list(Boundary(node.x, node.z, node.neighbors_sorted) for node in nodes if node.country == 101)
+        west_influences = list(Boundary(node.x, node.z, node.neighbors_sorted) for node in nodes if node.country == 201)
+        east_influences.append(east_boundary)
+        west_influences.append(west_boundary)
         areas = {
-            101: self.boundary_builder.influence_east(border),
-            201: self.boundary_builder.influence_west(border)
+            101: east_influences,
+            201: west_influences
         }
-        flg = FrontLineGroup(self.name, self.grid.border_nodes, areas, self.mgen)
+        flg = FrontLineGroup(self.name, self.grid.border, areas, self.mgen)
         flg.make()
         print('... icons done')
 

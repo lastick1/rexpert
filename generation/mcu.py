@@ -25,14 +25,14 @@ class FrontLineIcon(Point):
             return icon_text.format(self.id, '', self.x, self.z, self.lc_name, self.lc_desc)
 
 
-class InfluenceArea:
-    def __init__(self, _id, boundary, country):
-        """
-        Класс зоны влияния, которая определяет принадлежность территории к какой-то стране
+class InfluenceArea(Point):
+    def __init__(self, x: float, z: float, _id: int, boundary: list, country: int):
+        """Класс зоны влияния, которая определяет принадлежность территории к какой-то стране
         :param _id: ИД объекта MCU_TR_InfluenceArea
         :param boundary: список вершин многоугольника зоны (по часовой стрелке)
         :param country: страна, к которой относится территория зоны
         """
+        super().__init__(x=x, z=z)
         self.id = _id
         self.boundary = boundary
         self.country = country
@@ -41,6 +41,5 @@ class InfluenceArea:
         boundary_text = ''
         for point in self.boundary:
             boundary_text += '    {:.2f}, {:.2f};\n'.format(point.x, point.z)
-        point = self.boundary[0]
-        return influence_text.format(self.id, float(point.x), float(point.z), self.country, boundary_text)
+        return influence_text.format(self.id, float(self.x), float(self.z), self.country, boundary_text)
 

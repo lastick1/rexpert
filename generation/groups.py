@@ -52,9 +52,9 @@ class Group:
 
 
 class FrontLineGroup(Group):
+    """Класс группы линии фронта"""
     def __init__(self, tvd_name, line, areas, mgen: configs.Mgen):
         """
-        Класс группы линии фронта
         :param tvd_name: имя ТВД
         :param line: линия фронта (снизу вверх)
         :param areas: зоны влияния (словарь многоугольников по странам)
@@ -70,7 +70,7 @@ class FrontLineGroup(Group):
         self.icons[len(self.icons)-1].target = None
         for country in areas.keys():
             for boundary in areas[country]:
-                self.influences.append(InfluenceArea(i, boundary, country))
+                self.influences.append(InfluenceArea(boundary.x, boundary.z, i, boundary.polygon, country))
                 i += 1
         ref_point = mgen.cfg[tvd_name]['right_top']
         self.ref_point_text = ref_point_helper_format.format(i, ref_point['x'], ref_point['z'])
