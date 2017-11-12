@@ -58,14 +58,7 @@ class Node(geometry.Point):
     @property
     def neighbors_sorted(self) -> list:
         """Соседи, отсортированные против часовой стрелки"""
-        nbs = list(self.neighbors)
-        sorted_points = geometry.jarvis_march(nbs)
-        nbs_sorted = []
-        for pt in sorted_points:
-            for n in nbs:
-                if pt.key == n.key:
-                    nbs_sorted.append(n)
-        return nbs_sorted
+        return geometry.sort_points_clockwise(list(self.neighbors), self)
 
     @property
     def triangles(self) -> list:

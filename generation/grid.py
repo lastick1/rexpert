@@ -87,9 +87,9 @@ class Grid:
             result.reverse()
         return result
 
-    def node(self, key: str) -> Node:
+    def node(self, key) -> Node:
         """Получить узел"""
-        return self.nodes[key]
+        return self.nodes[str(key)]
 
     def find(self, x, z, side: float = 10) -> Node:  # pylint: disable=C0103
         """Найти узел по координатам (в квадрате стороной 2*r)"""

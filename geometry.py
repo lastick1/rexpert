@@ -31,13 +31,14 @@ def get_parallel_line(line_x_y, dist):
 
 class Segment:  # pylint: disable=R0902
     """Класс отрезка"""
+
     def __init__(self, x1, y1, x2, y2):
         # http://school-collection.edu.ru/catalog/res/925c1429-c4d9-43b8-8b08-ac6d44f57906/view/
-        self._center = (x1 + x2)/2, (y1 + y2)/2
+        self._center = (x1 + x2) / 2, (y1 + y2) / 2
         length = ((y1 - y2) ** 2 + (x2 - x1) ** 2) ** 0.5  # длина вектора нормали
         self._nx = (y1 - y2) / length  # x единичного вектора нормали отрезка
         self._ny = (x2 - x1) / length  # y единичного вектора нормали отрезка
-        self._dx = self._ny   # x единичного вектора, коллинеарного отрезку
+        self._dx = self._ny  # x единичного вектора, коллинеарного отрезку
         self._dy = -self._nx  # y единичного вектора, коллинеарного отрезку
         # http://webmath.mesi.ru/MESI/JSPBaseLine/HTMLLinks/index_1.jsp
         self._length = ((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5
@@ -84,6 +85,7 @@ class Segment:  # pylint: disable=R0902
 
 class Point:  # pylint: disable=C0103,C0111
     """ Класс точки """
+
     def __init__(self, x=0.0, z=0.0):
         self.x = x
         self.z = z
@@ -123,6 +125,48 @@ class Point:  # pylint: disable=C0103,C0111
 
     def distance_to(self, x, z):
         return ((self.x - x) ** 2 + (self.z - z) ** 2) ** .5
+
+
+def sort_points_clockwise(points, middle_point):
+    def cmp_to_key(mycmp):
+        """Convert a cmp= function into a key= function"""
+
+        class K:
+            def __init__(self, obj, *args):
+                self.obj = obj
+
+            def __lt__(self, other):
+                return mycmp(self.obj, other.obj) < 0
+
+            def __gt__(self, other):
+                return mycmp(self.obj, other.obj) > 0
+
+            def __eq__(self, other):
+                return mycmp(self.obj, other.obj) == 0
+
+            def __le__(self, other):
+                return mycmp(self.obj, other.obj) <= 0
+
+            def __ge__(self, other):
+                return mycmp(self.obj, other.obj) >= 0
+
+            def __ne__(self, other):
+                return mycmp(self.obj, other.obj) != 0
+
+        return K
+
+    def comparator(lhs, rhs):
+        lhs_angle = math.atan2(lhs.z - average_z, lhs.x - average_x)
+        rhs_angle = math.atan2(rhs.z - average_z, rhs.x - average_x)
+        if lhs_angle < rhs_angle:
+            return -1
+        if lhs_angle > rhs_angle:
+            return 1
+        return 0
+
+    average_x = middle_point.x
+    average_z = middle_point.z
+    return sorted(points, key=cmp_to_key(comparator))
 
 
 def jarvis_march(array: list) -> list:

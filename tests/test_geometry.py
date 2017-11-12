@@ -4,6 +4,7 @@ import geometry
 
 TEST_LOG1 = './testdata/spawn_takeoff_landing_despawn_missionReport(2017-09-17_09-05-09)[0].txt'
 
+
 class TestSegment(unittest.TestCase):
     def test_length_must_equal_5_for_345_triangle(self):
         hypotenuse = geometry.Segment(3, 4, 6, 8)
@@ -44,3 +45,20 @@ class TestPoint(unittest.TestCase):
         point = geometry.Point(1, 1)
 
         self.assertEqual(point.distance_to(4, 5), 5)
+
+
+class TestFuncs(unittest.TestCase):
+    def test_sort_clockwise(self):
+        point = geometry.Point(1, 1)
+        point_1 = geometry.Point(1, 0)
+        point_2 = geometry.Point(2, 0)
+        point_3 = geometry.Point(2, 1)
+        point_4 = geometry.Point(2, 2)
+        point_5 = geometry.Point(1, 2)
+        point_6 = geometry.Point(0, 1)
+        data = [point_1, point_4, point_3, point_5, point_2, point_6]
+        expected = [point_1, point_2, point_3, point_4, point_5, point_6]
+        # act
+        result = geometry.sort_points_clockwise(data, point)
+        # assert
+        self.assertSequenceEqual(expected, result)

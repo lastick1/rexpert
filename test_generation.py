@@ -60,10 +60,9 @@ class TestGrid(unittest.TestCase):
         xgml.parse()
         grid = generation.Grid(TEST, xgml.nodes, xgml.edges, MGEN)
         expected = utils.get_nodes_keys([
-            grid.nodes['18'], grid.nodes['19'], grid.nodes['1'], grid.nodes['0'], grid.nodes['21'], grid.nodes['5'],
-            grid.nodes['24'], grid.nodes['7'], grid.nodes['6'], grid.nodes['39'], grid.nodes['8'], grid.nodes['29'],
-            grid.nodes['12'], grid.nodes['33'], grid.nodes['15'], grid.nodes['37'], grid.nodes['14'], grid.nodes['41'],
-            grid.nodes['13']
+            grid.node(18), grid.node(19), grid.node(1), grid.node(0), grid.node(21), grid.node(5), grid.node(24),
+            grid.node(7), grid.node(6), grid.node(39), grid.node(8), grid.node(29), grid.node(12), grid.node(33),
+            grid.node(15), grid.node(37), grid.node(14), grid.node(41), grid.node(13)
         ])
         # act
         result = utils.get_nodes_keys(grid.get_neighbors_of(grid.border_nodes))
@@ -96,28 +95,29 @@ class TestNode(unittest.TestCase):
 
     def test_node_triangles(self):
         """Определяются смежные треугольники для вершины"""
-        xgml = generation.Xgml(TEST, MGEN)
-        xgml.parse()
         grid = mocks.get_test_grid(MGEN)
-        nodes = grid.nodes
         expected = utils.get_polygons_keys([
-            (nodes['30'], nodes['6'], nodes['31']),
-            (nodes['30'], nodes['31'], nodes['44']),
-            (nodes['30'], nodes['44'], nodes['43']),
-            (nodes['30'], nodes['43'], nodes['29']),
-            (nodes['30'], nodes['29'], nodes['6'])
+            (grid.node(30), grid.node(6), grid.node(31)),
+            (grid.node(30), grid.node(31), grid.node(44)),
+            (grid.node(30), grid.node(44), grid.node(43)),
+            (grid.node(30), grid.node(43), grid.node(29)),
+            (grid.node(30), grid.node(29), grid.node(6))
         ])
         # act
-        result = utils.get_polygons_keys(grid.node('30').triangles)
+        result = utils.get_polygons_keys(grid.node(30).triangles)
         # assert
         self.assertCountEqual(result, expected)
 
     def test_neighbors_sorted(self):
         """Сортируются соседи по часовой стрелке"""
-
+        grid = mocks.get_test_grid(MGEN)
+        expected = utils.get_nodes_keys([
+            grid.node(5), grid.node(16), grid.node(29), grid.node(42), grid.node(26), grid.node(13), grid.node(27)
+        ])
         # act
+        result = utils.get_nodes_keys(grid.node(28).neighbors_sorted)
         # assert
-        self.fail()
+        self.assertSequenceEqual(result, expected)
 
 
 class TestTvd(unittest.TestCase):
