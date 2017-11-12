@@ -135,12 +135,16 @@ class Tvd:
         nodes = self.grid.nodes_list
         influence_east = self.boundary_builder.influence_east(border)
         influence_west = self.boundary_builder.influence_west(border)
+        confrontation_east = self.boundary_builder.confrontation_east(self.grid)
+        confrontation_west = self.boundary_builder.confrontation_west(self.grid)
         east_boundary = Boundary(influence_east[0].x, influence_east[0].z, influence_east)
         west_boundary = Boundary(influence_west[0].x, influence_west[0].z, influence_west)
         east_influences = list(Boundary(node.x, node.z, node.neighbors_sorted) for node in nodes if node.country == 101)
         west_influences = list(Boundary(node.x, node.z, node.neighbors_sorted) for node in nodes if node.country == 201)
         east_influences.append(east_boundary)
         west_influences.append(west_boundary)
+        east_influences.append(Boundary(confrontation_east[0].x, confrontation_east[0].z, confrontation_east))
+        west_influences.append(Boundary(confrontation_west[0].x, confrontation_west[0].z, confrontation_west))
         areas = {
             101: east_influences,
             201: west_influences

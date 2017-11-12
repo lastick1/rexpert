@@ -123,14 +123,21 @@ class TestNode(unittest.TestCase):
 class TestTvd(unittest.TestCase):
     """Тесты ТВД"""
 
-    def test_influences(self):
+    def test_influences_moscow(self):
         """Генерируются зоны влияния филдов"""
         xgml = generation.Xgml(MOSCOW, MGEN)
         xgml.parse()
-        MGEN.icons_group_files[MOSCOW] = pathlib.Path('./tmp/FL_icon.Group').absolute()
+        MGEN.icons_group_files[MOSCOW] = pathlib.Path('./tmp/FL_icon_moscow.Group').absolute()
         tvd = generation.Tvd(MOSCOW, '10.11.1942', MGEN, MAIN, None, None)
         tvd.update_icons()
 
+    def test_influences_stalin(self):
+        """Генерируются зоны влияния филдов"""
+        xgml = generation.Xgml(STALIN, MGEN)
+        xgml.parse()
+        MGEN.icons_group_files[STALIN] = pathlib.Path('./tmp/FL_icon_stalin.Group').absolute()
+        tvd = generation.Tvd(STALIN, '10.11.1942', MGEN, MAIN, None, None)
+        tvd.update_icons()
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
