@@ -188,20 +188,20 @@ class TestBoundaryBuilder(unittest.TestCase):
         # Assert
         self.assertSequenceEqual(result, expected)
 
-    def test_get_second_line_nodes(self):
-        """Определяются вершины, образующие линию ограничения прифронтовой полосы"""
+    def test_get_confrontation_nodes(self):
+        """Определяются вершины, входящие в прифронтовую полосу"""
         expected_keys = {
-            101: ('11', '39', '45', '46', '36', '35', '34', '7'),
-            201: ('2', '12', '26', '42', '29', '16', '5')
+            101: ('24', '11', '40', '45', '47', '46', '36', '35', '33', '34', '19', '7'),
+            201: ('2', '12', '26', '42', '29', '16', '30', '17', '5')
         }
-        countries = (201, 101)
+        countries = (101, 201)
         builder = generation.BoundaryBuilder(self.north, self.east, self.south, self.west)
         grid = self._get_grid()
         for country in countries:
             # Act
-            result = self._get_nodes_keys(list(builder.get_second_line_nodes(grid, country)))
+            result = self._get_nodes_keys(list(builder.get_confrontation_nodes(grid, country)))
             # Assert
-            self.assertCountEqual(expected_keys[country], result)
+            self.assertCountEqual(expected_keys[country], result, msg=country)
 
     def test_confrontation_area_west(self):
         """Создаётся многоугольник западной прифронтовой полосы"""

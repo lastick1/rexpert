@@ -39,36 +39,32 @@ class BoundaryBuilder:
         return result
 
     @staticmethod
-    def get_second_line_nodes(grid: Grid, country: int) -> set:
-        """Получить все узлы, ограничивающие прифронтовую полосу"""
-        # TODO решить проблему... может быть более одного ребра от вершины из ограничения до линии фронта
-        result = set()
+    def get_confrontation_nodes(grid: Grid, country: int) -> set:
+        """Получить все узлы, входящие в прифронтовую полосу, кроме узлов линии фронта"""
         border_nodes = grid.border_nodes
-        nodes = tuple(x for x in grid.get_neighbors_of(border_nodes)
-                      if x.country == country or x.related_country == country)
-        for node in nodes:
-            if len(node.neighbors & border_nodes) != 2:
-                result.add(node)
-        return result
+        return set(
+            {x for x in grid.get_neighbors_of(border_nodes) if x.country == country or x.related_country == country}
+        )
 
     def confrontation_west(self, grid: Grid) -> list:
         """Построить вершины для западной прифронтовой зоны"""
-        second_line_nodes = self.get_second_line_nodes(grid)
+        # TODO решить проблему... может быть более одного ребра от вершины из ограничения до линии фронта
+        confrontation_nodes = self.get_confrontation_nodes(grid, 201)
         result = []
 
         cursor = _to_node(grid.border[0])
-        while len(second_line_nodes):
-            nodes = cursor.neighbors & second_line_nodes
+        while len(confrontation_nodes):
+            nodes = cursor.neighbors & confrontation_nodes
             neutrals = list(x for x in nodes if x.country == 0)
             airfields = list(x for x in nodes if x.country != 0)
             if len(neutrals) == 1:
                 cursor = neutrals[0]
                 result.append(cursor)
-                second_line_nodes.remove(cursor)
+                confrontation_nodes.remove(cursor)
             elif len(airfields) >= 1:
                 cursor = airfields[0]
                 result.append(cursor)
-                second_line_nodes.remove(cursor)
+                confrontation_nodes.remove(cursor)
 
         return result
 
