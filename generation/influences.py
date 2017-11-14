@@ -54,6 +54,8 @@ class BoundaryBuilder:
             if len(nodes):
                 nodes.sort(key=lambda x: len(x.not_border_neighbors - confrontation_nodes))
                 end = nodes.pop()
+                if not len({node for node in end.neighbors if not node.is_border} - set(result)):
+                    end = nodes.pop()
                 result.append(end)
                 confrontation_nodes.remove(end)
             else:

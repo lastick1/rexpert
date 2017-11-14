@@ -130,7 +130,7 @@ class TestBoundaryBuilder(unittest.TestCase):
         xgml = Xgml(STALIN, MGEN)
         xgml.parse()
         expected_keys = (
-            192, 195, 196, 197, 185, 77, 188, 187, 155, 48, 109, 110, 25, 102, 19, 97, 3, 191, 209, 94, 93, 96,
+            192, 57, 196, 197, 185, 188, 187, 48, 110, 25, 102, 19, 95, 3, 191, 209, 94, 93, 96,
             101, 100, 99, 137, 139, 138, 157, 186, 163, 164, 165, 184, 183, 182, 194, 193, 177
         )
         builder = generation.BoundaryBuilder(self.north, self.east, self.south, self.west)
