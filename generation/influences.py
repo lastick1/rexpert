@@ -46,14 +46,9 @@ class BoundaryBuilder:
             {x for x in grid.get_neighbors_of(border_nodes) if x.country == country or x.related_country == country}
         )
 
-    def confrontation_west(self, grid: Grid) -> list:
-        """Построить вершины для западной прифронтовой зоны"""
-        confrontation_nodes = self.get_confrontation_nodes(grid, 201)
-        border = grid.border
-        start = _to_node(border[0])
-        end = _to_node(border[-1])
+    def _foo(self, start: Node, end: Node, confrontation_nodes: set) -> list:
+        """Построить цепочку, ограничивающую прифронтовую зону"""
         result = []
-
         while start not in end.neighbors:
             nodes = list(end.neighbors & confrontation_nodes)
             if len(nodes):
@@ -63,29 +58,20 @@ class BoundaryBuilder:
                 confrontation_nodes.remove(end)
             else:
                 break
+        return result
 
+    def confrontation_west(self, grid: Grid) -> list:
+        """Построить вершины для западной прифронтовой зоны"""
+        border = grid.border
+        result = self._foo(start=border[0], end=border[-1], confrontation_nodes=self.get_confrontation_nodes(grid, 201))
         result = border + result
         result.reverse()
         return result
 
     def confrontation_east(self, grid: Grid) -> list:
         """Построить вершины для западной прифронтовой зоны"""
-        confrontation_nodes = self.get_confrontation_nodes(grid, 101)
         border = grid.border
-        start = _to_node(border[-1])
-        end = _to_node(border[0])
-        result = []
-
-        while start not in end.neighbors:
-            nodes = list(end.neighbors & confrontation_nodes)
-            if len(nodes):
-                nodes.sort(key=lambda x: len(x.not_border_neighbors - confrontation_nodes))
-                end = nodes.pop()
-                result.append(end)
-                confrontation_nodes.remove(end)
-            else:
-                break
-
+        result = self._foo(start=border[-1], end=border[0], confrontation_nodes=self.get_confrontation_nodes(grid, 101))
         result.reverse()
         result = result + border
         return result
