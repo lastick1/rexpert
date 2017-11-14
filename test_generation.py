@@ -20,8 +20,8 @@ class TestGrid(unittest.TestCase):
         """Настройка тестов"""
         self.iterations = 25
 
-    def test_neutral_line_property(self):
-        """Упорядочиваются вершины линии фронта"""
+    def test_border_test(self):
+        """Упорядочиваются вершины линии фронта в тестовом графе"""
         # Arrange
         xgml = generation.Xgml(TEST, MGEN)
         xgml.parse()
@@ -33,6 +33,19 @@ class TestGrid(unittest.TestCase):
         self.assertEqual(len(frontline), 9)
         self.assertEqual(len(border), 9)
         self.assertEqual(border[0].text, 'L1')
+
+    def test_border_stalin(self):
+        """Упорядочиваются вершины линии фронта в сталинградском графе"""
+        # Arrange
+        xgml = generation.Xgml(STALIN, MGEN)
+        xgml.parse()
+        grid = generation.Grid(STALIN, xgml.nodes, xgml.edges, MGEN)
+        expected = (209, 94, 93, 96, 101, 100, 99, 137, 139, 138, 157, 186, 163, 164, 165, 184, 183, 182, 194, 193, 177)
+        # Act
+        border = grid.border
+        # Assert
+        self.assertCountEqual(tuple(int(x.key) for x in border), expected)
+        self.assertSequenceEqual(tuple(int(x.key) for x in border), expected)
 
     def test_grid_capturing_test(self):
         """Выполняется захват в тестовом графе"""
@@ -138,6 +151,7 @@ class TestTvd(unittest.TestCase):
         MGEN.icons_group_files[STALIN] = pathlib.Path('./tmp/FL_icon_stalin.Group').absolute()
         tvd = generation.Tvd(STALIN, '10.11.1942', MGEN, MAIN, None, None)
         tvd.update_icons()
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

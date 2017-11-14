@@ -20,3 +20,8 @@ def get_nodes(points: list) -> list:
         nodes.append(generation.Node(key=key, text=key, pos=point.to_dict(), color='#FFFFFF'))
         key += 1
     return nodes
+
+
+def get_nodes_by_keys(keys: list, grid: generation.Grid) -> list:
+    """Получить ключи узлов из списка узлов"""
+    return list(grid.node(key) for key in keys)

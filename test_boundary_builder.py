@@ -3,11 +3,14 @@ import unittest
 import pathlib
 import generation
 import geometry
+from generation import Xgml
 
 from tests import mocks, utils
 
 MAIN = mocks.MainMock(pathlib.Path(r'.\testdata\conf.ini'))
 MGEN = mocks.MgenMock(MAIN)
+
+STALIN = 'stalingrad'
 
 
 class TestBoundaryBuilder(unittest.TestCase):
@@ -117,6 +120,23 @@ class TestBoundaryBuilder(unittest.TestCase):
         expected_keys = (7, 34, 35, 36, 46, 45, 40, 11, 1, 25, 41, 43, 44, 31, 32, 18, 6)
         builder = generation.BoundaryBuilder(self.north, self.east, self.south, self.west)
         grid = mocks.get_test_grid(MGEN)
+        # Act
+        result = builder.confrontation_east(grid)
+        # Assert
+        self.assertSequenceEqual(tuple(int(x.key) for x in result), expected_keys)
+
+    def test_confrontation_area_stalingrad_east(self):
+        """Создаётся многоугольник западной прифронтовой полосы"""
+        xgml = Xgml(STALIN, MGEN)
+        xgml.parse()
+        expected_keys = (
+            192, 195, 196, 197, 185, 77, 188, 187, 155, 48, 109, 110, 25, 102, 19, 97, 3, 191, 209, 94, 93, 96,
+            101, 100, 99, 137, 139, 138, 157, 186, 163, 164, 165, 184, 183, 182, 194, 193, 177
+        )
+        builder = generation.BoundaryBuilder(self.north, self.east, self.south, self.west)
+        grid = generation.Grid(STALIN, xgml.nodes, xgml.edges, MGEN)
+        path = pathlib.Path(r'./tmp/{}_{}.xgml'.format(STALIN, 0))
+        xgml.save_file(str(path), grid.nodes, grid.edges)
         # Act
         result = builder.confrontation_east(grid)
         # Assert
