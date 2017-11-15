@@ -13,4 +13,5 @@ sandbox.py
 .venv/
 .vscode/.ropeproject/
 .vs/
+.noseids
 /tmp/
