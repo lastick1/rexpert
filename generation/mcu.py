@@ -43,3 +43,8 @@ class InfluenceArea(Point):
             boundary_text += '    {:.2f}, {:.2f};\n'.format(point.x, point.z)
         return influence_text.format(self.id, float(self.x), float(self.z), self.country, boundary_text)
 
+
+class Airfield(Point):
+    """Класс для генерации аэродрома"""
+    def __init__(self, x: float, z: float, _id: int, aircrafts: list, country: int):
+        super().__init__(x=x, z=z)
