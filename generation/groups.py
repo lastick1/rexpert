@@ -1,3 +1,4 @@
+"""Манипуляции с файлами групп"""
 import shutil
 import os
 import pathlib
@@ -9,10 +10,8 @@ from .mcu import FrontLineIcon, InfluenceArea
 
 
 class Group:
-    def __init__(self, group_file):
-        """
-        Класс групп-файлов, из которых генератор по шаблону собирает миссию
-        :param group_file: Path """
+    """Класс групп-файлов, из которых генератор по шаблону собирает миссию"""
+    def __init__(self, group_file: pathlib.Path):
         tmp = group_file.absolute()
         self.files = {
             'Group': tmp,
@@ -26,9 +25,9 @@ class Group:
 
     def clone_to(self, folder):
         """ Копирование файлов группы в указанную папку """
-        f = str(folder)
+        dest = str(folder)
         for file_ext in self.files:
-            self.files[file_ext] = pathlib.Path(shutil.copy(str(self.files[file_ext]), f))
+            self.files[file_ext] = pathlib.Path(shutil.copy(str(self.files[file_ext]), dest))
 
     def rename(self, dst):
         """ Смена имён файлов на dst """
@@ -53,7 +52,7 @@ class Group:
 
 class FrontLineGroup(Group):
     """Класс группы линии фронта"""
-    def __init__(self, tvd_name, line, areas, mgen: configs.Mgen):
+    def __init__(self, tvd_name: str, line: list, areas: dict, mgen: configs.Mgen):
         """
         :param tvd_name: имя ТВД
         :param line: линия фронта (снизу вверх)
@@ -70,14 +69,15 @@ class FrontLineGroup(Group):
         self.icons[len(self.icons)-1].target = None
         for country in areas.keys():
             for boundary in areas[country]:
-                self.influences.append(InfluenceArea(boundary.x, boundary.z, i, boundary.polygon, country))
+                self.influences.append(
+                    InfluenceArea(boundary.x, boundary.z, i, boundary.polygon, country))
                 i += 1
         ref_point = mgen.cfg[tvd_name]['right_top']
         self.ref_point_text = ref_point_helper_format.format(i, ref_point['x'], ref_point['z'])
 
     def make(self):
         """ Записать файлы группы (включая локализацию) """
-        for file_ext in self.files.keys():
+        for file_ext in self.files:
             if file_ext == 'Group':
                 text = ''
                 for icon in self.icons:
@@ -88,16 +88,17 @@ class FrontLineGroup(Group):
                 self.files[file_ext].write_text(text, encoding='utf-8')
             else:
                 # файлы локализации нужны, чтобы уменьшить вероятные проблемы (фризы)
+                file = pathlib.Path(self.files[file_ext])
                 content = '{}\n{}'.format('\ufeff', self.loc_text)
-                self.files[file_ext].write_text(content, encoding='utf-16-le')
+                if file.exists():
+                    file.write_text(content, encoding='utf-16-le')
 
     @property
     def loc_text(self):
         """ Текст файлов локализации (пустые строки) """
         if self._loc_text:
             return self._loc_text
-        else:
-            self._loc_text = ''
-            for icon in self.icons:
-                self._loc_text += '{}:\n{}:\n'.format(icon.lc_name, icon.lc_desc)
-            return self._loc_text
+        self._loc_text = ''
+        for icon in self.icons:
+            self._loc_text += '{}:\n{}:\n'.format(icon.lc_name, icon.lc_desc)
+        return self._loc_text
