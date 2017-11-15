@@ -1,4 +1,4 @@
-""" Основной файл для запуска """
+"""Основной файл для запуска"""
 import pathlib
 import datetime
 import codecs
@@ -13,14 +13,14 @@ PARAMS = GeneratorParamsConfig()
 LOCATIONS = LocationsConfig()
 
 def create_divisions_ldb():
-    "Создать базу локаций, обозначающих расположения дивизий"
+    """Создать базу локаций, обозначающих расположения дивизий"""
     campaign = Campaign(MAIN, MGEN, STATS, LOCATIONS, PARAMS)
     for name in campaign.tvds.keys():
         campaign.tvds[name].create_divisions()
 
 
 def export(name: str):
-    "Экспортировать граф в XGML формате"
+    """Экспортировать граф в XGML формате"""
     campaign = Campaign(MAIN, MGEN, STATS, LOCATIONS, PARAMS)
     with codecs.open(name + "_export.xgml", "w", encoding="cp1251") as stream:
         stream.write(campaign.tvds[name].grid.serialize_xgml())
@@ -28,7 +28,7 @@ def export(name: str):
 
 
 def reset():
-    "Сбросить состояние кампании"
+    """Сбросить состояние кампании"""
     raise NotImplementedError
     campaign = Campaign(MAIN, MGEN, STATS, LOCATIONS, PARAMS)
     for name in campaign.tvds.keys():
@@ -38,7 +38,7 @@ def reset():
 
 
 def generate(name: str, tvd_name: str):
-    "Сгенерировать миссию"
+    """Сгенерировать миссию"""
     campaign = Campaign(MAIN, MGEN, STATS, LOCATIONS, PARAMS)
     campaign.tvds[tvd_name].update()
     generation.Generator(MAIN, MGEN).make_mission(name, tvd_name)

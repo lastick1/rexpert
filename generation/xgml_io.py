@@ -7,6 +7,7 @@ from .grid_io import GridIO
 
 
 class Xgml(GridIO):
+    """Класс ввода-вывода графа в xgml формате"""
     def __init__(self, name: str, config: configs.Mgen):
         self._nodes, self._edges, self.name = None, None, name
         self.file = str(config.xgml[name])

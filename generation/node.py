@@ -2,10 +2,10 @@
 import queue
 import geometry
 
+COLOR_MAP = {0: '#FFFFFF', 101: '#FF0000', 201: '#00CCFF'}
+
 
 class Node(geometry.Point):
-    color_map = {0: '#FFFFFF', 101: '#FF0000', 201: '#00CCFF'}
-
     """Узел графа"""
     def __init__(self, key: str, text: str, pos: dict, color: str):
         super().__init__(x=pos['x'], z=pos['z'])
@@ -15,10 +15,10 @@ class Node(geometry.Point):
         self.text = text
         self._country = 0
         self._is_airfield = False
-        if color == '#FF0000':
+        if color == COLOR_MAP[101]:
             self._country = 101
             self._is_airfield = True
-        if color == '#00CCFF':
+        if color == COLOR_MAP[201]:
             self._country = 201
             self._is_airfield = True
 
@@ -35,7 +35,7 @@ class Node(geometry.Point):
     @property
     def color(self) -> str:
         """Цвет вершины"""
-        return Node.color_map[self._country]
+        return COLOR_MAP[self._country]
 
     @property
     def is_border(self) -> bool:
