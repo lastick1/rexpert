@@ -3,7 +3,7 @@ import math
 
 
 # http://www.ariel.com.au/a/python-point-int-poly.html
-#pylint: disable=C0103
+# pylint: disable=C0103
 def point_in_polygon(point, polygon):
     "Проверка вхождения точки в многоугольник"
     x, y = point['x'], point['z']

@@ -8,12 +8,12 @@ from .objects import BotPilot
 
 
 def _filter_by_account_id(account_id: str) -> dict:
-    "Получить фильтр документов по ИД игрока"
+    """Получить фильтр документов по ИД игрока"""
     return {ID: account_id}
 
 
 def _update_request_body(document: dict) -> dict:
-    "Построить запрос обновления документа"
+    """Построить запрос обновления документа"""
     return {'$set': document}
 
 
@@ -33,23 +33,23 @@ class PlayersController:
         self.__squads = squads
 
     def _count(self, account_id) -> int:
-        "Посчитать документы игрока в БД"
+        """Посчитать документы игрока в БД"""
         _filter = _filter_by_account_id(account_id)
         return self.__players.count(_filter)
 
     def _find(self, account_id) -> dict:
-        "Найти документ игрока в БД"
+        """Найти документ игрока в БД"""
         _filter = _filter_by_account_id(account_id)
         return self.__players.find_one(_filter)
 
     def _update(self, player: Player):
-        "Обновить/создать игрока в БД"
+        """Обновить/создать игрока в БД"""
         _filter = _filter_by_account_id(player.account_id)
         document = _update_request_body(player.to_dict())
         self.__players.update_one(_filter, document, upsert=True)
 
     def spawn(self, bot: BotPilot, account_id: str, name: str) -> None:
-        "Обработка появления игрока"
+        """Обработка появления игрока"""
 
         document = self._find(account_id)
         player = Player(account_id, document, bot)
@@ -61,7 +61,7 @@ class PlayersController:
         self.player_by_bot_id[bot.obj_id] = player
 
     def finish(self, bot: BotPilot):
-        "Обработать конец вылета (деинициализация бота)"
+        """Обработать конец вылета (деинициализация бота)"""
         changed = False
 
         has_kills = len(bot.aircraft.killboard) > 0
@@ -84,11 +84,11 @@ class PlayersController:
             self._update(player)
 
     def _get_player(self, bot: BotPilot) -> Player:
-        "Получить игрока по его боту - пилоту в самолёте"
+        """Получить игрока по его боту - пилоту в самолёте"""
         return self.player_by_bot_id[bot.obj_id]
 
     def connect(self, account_id: str) -> None:
-        "AType 20"
+        """AType 20"""
 
         if self._count(account_id) == 0:
             document = Player.create_document(account_id, online=True)
@@ -101,7 +101,7 @@ class PlayersController:
             self._commands.banuser(player.account_id)
 
     def disconnect(self, account_id: str) -> None:
-        "AType 21"
+        """AType 21"""
         document = self._find(account_id)
         player = Player(account_id, document)
         player.online = False

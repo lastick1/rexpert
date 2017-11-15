@@ -1,4 +1,4 @@
-"Контроль миссий и хода кампании"
+"""Контроль миссий и хода кампании"""
 from pathlib import Path
 from datetime import datetime
 from configs import Main, Mgen
@@ -6,7 +6,7 @@ from generation import Generator
 
 
 class Mission:
-    "Миссия"
+    """Миссия"""
     def __init__(self, name: str, source: Path, additional: dict):
         self.name = name
         self.source = source
@@ -14,7 +14,7 @@ class Mission:
 
 
 class CampaignController:
-    "Контролеер"
+    """Контролеер"""
     def __init__(self, main: Main, mgen: Mgen, generator: Generator):
         self._dogfight = main.dogfight_folder
         self.missions = list()
@@ -29,7 +29,7 @@ class CampaignController:
                       settings: tuple,
                       mods: bool,
                       preset_id: int):
-        "AType:0"
+        """AType:0"""
         name = file_path.replace(r'Multiplayer/Dogfight', '').replace('\\', '')
         name = name.replace(r'.msnbin', '')
         source = Path(self._dogfight.joinpath(name + '_src.Mission')).absolute()
@@ -46,5 +46,5 @@ class CampaignController:
         self.generator.make_mission(next_name, 'moscow')
 
     def end_mission(self):
-        "AType:7"
+        """AType:7"""
         pass

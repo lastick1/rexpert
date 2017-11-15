@@ -1,4 +1,4 @@
-"Контроль ТВД"
+"""Контроль ТВД"""
 
 DEFAULT_VALUE = 100
 DIVISIONS_COUNT = 4
@@ -6,7 +6,7 @@ SUPPLY_COUNT = 2
 
 
 class Division:
-    "Повреждаемый объект"
+    """Повреждаемый объект"""
     def __init__(self, value: int, coal_id: int, name: str):
         self.value = value
         self.max = value
@@ -17,21 +17,21 @@ class Division:
         return '{}:{}.'.format(self.name, self.value)
 
     def damage(self, amount: int):
-        "Принять урон"
+        """Принять урон"""
         if amount > self.value:
             self.value = 0
         else:
             self.value -= amount
 
 class Supply(Division):
-    "Объект снабжения"
+    """Объект снабжения"""
     def __init__(self, value: int, coal_id: int, name: str, divisions: list):
         super().__init__(value, coal_id, name)
         self._default = value
         self.divisions = divisions
 
     def repair(self, objects: list, power: float) -> None:
-        "Отремонтировать объекты"
+        """Отремонтировать объекты"""
         repair = int(self.value / len(objects)  * power)
         self.value = 0
         for obj in sorted(objects, key=lambda x: x.value):
@@ -43,11 +43,11 @@ class Supply(Division):
                 repair = 0
 
     def resupply(self):
-        "Восполнить ресурсы"
+        """Восполнить ресурсы"""
         self.value = self._default
 
 class DivisionsManager:
-    "Управление дивизиями"
+    """Управление дивизиями"""
     def __init__(self, value: int, repair: int, power: float):
         self.value = value
         self.power = power
@@ -81,14 +81,14 @@ class DivisionsManager:
         self.supply[name] = Supply(repair, 2, name, [self.divisions['B3'], self.divisions['B4']])
 
     def damage_division(self, name: str, amount: int) -> None:
-        "Нанести урон дивизии"
+        """Нанести урон дивизии"""
         # self.divisions[name].damage(amount)
         if name not in self.divisions_damage:
             self.divisions_damage[name] = 0
         self.divisions_damage[name] += amount
 
     def damage_supply(self, name: str, amount: int) -> None:
-        "Нанести урон снабжению"
+        """Нанести урон снабжению"""
         if name not in self.supply_damage:
             self.supply_damage[name] = 0
         self.supply_damage[name] += amount
@@ -104,7 +104,7 @@ class DivisionsManager:
             print(division)
 
     def end_mission(self):
-        "Обсчитать завершение миссиии"
+        """Обсчитать завершение миссиии"""
         print('X')
         for name in  sorted(self.divisions_damage):
             print('{}: -{}'.format(name, self.divisions_damage[name]))

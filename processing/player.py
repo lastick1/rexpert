@@ -1,4 +1,4 @@
-"Модель данных игрока"
+"""Модель данных игрока"""
 from .objects import BotPilot
 
 ID = '_id'
@@ -13,7 +13,7 @@ LIGHT = 'light'
 
 
 class Player:
-    "Класс игрока"
+    """Класс игрока"""
     def __init__(self, account_id: str, data: dict, bot: BotPilot = None):
         self.account_id = account_id
         self.current_bot = bot
@@ -25,7 +25,7 @@ class Player:
         self.planes = data[PLANES]
 
     def to_dict(self) -> dict:
-        "Сериализация в словарь для MongoDB"
+        """Сериализация в словарь для MongoDB"""
         return {
             ID: self.account_id,
             NICKNAME: self._nickname,
@@ -38,18 +38,18 @@ class Player:
 
     @staticmethod
     def create_document(account_id: str, online: bool = True) -> dict:
-        "Инициализировать объект-документ для MongoDB"
+        """Инициализировать объект-документ для MongoDB"""
         return {
             ID: account_id, NICKNAME: None, BAN_DATE: None, KNOWN_NICKNAMES: [], UNLOCKS: 1,
             ONLINE: online, PLANES: {HEAVY: 2, LIGHT: 3}
         }
 
     def get_nickname(self) -> str:
-        "Полчить ник"
+        """Полчить ник"""
         return self._nickname
 
     def set_nickname(self, value: str) -> None:
-        "Присвоить ник"
+        """Присвоить ник"""
         if not self.previous_nicknames:
             self.previous_nicknames = list()
         if self._nickname and value != self._nickname:
