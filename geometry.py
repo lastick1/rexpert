@@ -127,7 +127,8 @@ class Point:  # pylint: disable=C0103,C0111
         return ((self.x - x) ** 2 + (self.z - z) ** 2) ** .5
 
 
-def sort_points_clockwise(points, middle_point):
+def sort_points_clockwise(points, middle_point) -> list:
+    """Сортировка точек по часовой стрелке вокруг центра"""
     def cmp_to_key(mycmp):
         """Convert a cmp= function into a key= function"""
 

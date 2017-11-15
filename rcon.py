@@ -1,10 +1,10 @@
-"Модуль взаимодействия с консолью DServer"
+"""Модуль взаимодействия с консолью DServer"""
 from socket import socket, AF_INET, SOCK_STREAM
 
 
 class DServerRcon:
-    """ Взаимеодействие с сервером Ил-2 Штурмовик: Битва за Сталинград
-    через Server Remote Console - 'RCon' """
+    """Взаимеодействие с сервером Ил-2 Штурмовик: Битва за Сталинград
+    через Server Remote Console - 'RCon'"""
 
     def __init__(self, tcp_ip: str, tcp_port: str, buffer_size: int = 1024):
         self.tcp_ip = tcp_ip
@@ -17,7 +17,7 @@ class DServerRcon:
         self.response_list = []
 
     def __rcon_send_raw_command(self, command: str = 'mystatus'):
-        "Отправка команды на сервер 'as is', может вызывать ошибки"
+        """Отправка команды на сервер 'as is', может вызывать ошибки"""
         if not self.connected:
             raise NameError('Not connected')
 
@@ -41,7 +41,7 @@ class DServerRcon:
         return str(resp[2:-1], encoding="ascii")
 
     def connect(self):
-        "Подключиться к консоли"
+        """Подключиться к консоли"""
         if not hasattr(self, 'tcp_ip') or not hasattr(self, 'tcp_port') \
         or not hasattr(self, 'buffer_size') or not hasattr(self, 'socket'):
             raise NameError('Not initialized')
@@ -57,7 +57,7 @@ class DServerRcon:
                 self.authed = False
 
     def reconnect(self):
-        "Переподключение к консоли"
+        """Переподключение к консоли"""
         self.socket.close()
         self.socket = socket(AF_INET, SOCK_STREAM)
         self.socket.settimeout(500)
@@ -69,7 +69,7 @@ class DServerRcon:
             self.authed = False
 
     def auth(self, user, password):
-        "Авторизация в консоли для дополнительных команд"
+        """Авторизация в консоли для дополнительных команд"""
         if not self.connected:
             return False
 
@@ -90,21 +90,21 @@ class DServerRcon:
             return False
 
     def server_status(self):
-        "Статус сервера (типа пинг)"
+        """Статус сервера (типа пинг)"""
         if not self.connected:
             raise NameError("Not connected")
         resp = self.__rcon_send_raw_command("serverstatus")
         return resp
 
     def player_list(self):
-        "Получение списка игроков (тяжёлая команда)"
+        """Получение списка игроков (тяжёлая команда)"""
         if not self.connected:
             raise NameError("Not connected")
         resp = self.__rcon_send_raw_command("getplayerlist")
         return resp
 
     def chatmsg(self, roomtype, identifier, message):
-        "Отправка сообщения в чат сервера"
+        """Отправка сообщения в чат сервера"""
         if not self.connected:
             raise NameError("Not connected")
         resp = self.__rcon_send_raw_command(
@@ -112,53 +112,53 @@ class DServerRcon:
         return resp
 
     def info_message(self, message):
-        "Сообщение всем пользователям"
+        """Сообщение всем пользователям"""
         if not self.connected:
             raise NameError("Not connected")
         resp = self.__rcon_send_raw_command("chatmsg 0 0 {}".format(message))
         return resp
 
     def private_message(self, account_id: str, message: str):
-        "Сообщение конкретному пользователю"
+        """Сообщение конкретному пользователю"""
         if not self.connected:
             raise NameError("Not connected")
         return self.chatmsg(3, account_id, message)
 
     def allies_message(self, message):
-        "Сообщение команде союзников"
+        """Сообщение команде союзников"""
         if not self.connected:
             raise NameError("Not connected")
         return self.chatmsg(2, 1, message)
 
     def axis_message(self, message):
-        "Сообщение команде люфтваффе"
+        """Сообщение команде люфтваффе"""
         if not self.connected:
             raise NameError("Not connected")
         return self.chatmsg(2, 2, message)
 
     def kick(self, name):
-        "Кик пользователя"
+        """Кик пользователя"""
         if not self.connected:
             raise NameError("Not connected")
         resp = self.__rcon_send_raw_command("kick name {0}".format(name))
         return resp
 
     def ban(self, name):
-        "Бан пользователя на 7 дней"
+        """Бан пользователя на 7 дней"""
         if not self.connected:
             raise NameError("Not connected")
         resp = self.__rcon_send_raw_command("ban name {0}".format(name))
         return resp
 
     def banuser(self, name):
-        "Бан пользователя на 15 минут"
+        """Бан пользователя на 15 минут"""
         if not self.connected:
             raise NameError("Not connected")
         resp = self.__rcon_send_raw_command("banuser playerid {0}".format(name))
         return resp
 
     def server_input(self, server_input):
-        "Отправка сервер-инпута в логику миссии"
+        """Отправка сервер-инпута в логику миссии"""
         if not self.connected:
             raise NameError("Not connected")
         resp = self.__rcon_send_raw_command("serverinput {0}".format(server_input))
