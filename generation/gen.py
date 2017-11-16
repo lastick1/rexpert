@@ -27,6 +27,7 @@ air_objective_raw_re = re.compile(
 
 
 class Generator:
+    """Класс управления сборкой миссий"""
     def __init__(self, main: Main, mgen: Mgen):
         self.cfg = mgen.cfg
         self.game_folder = main.game_folder
@@ -90,7 +91,15 @@ class Generator:
 
 class Ldb:
     """Класс для присвоения наций локациям в базе по заданным параметрам"""
-    def __init__(self, tvd_name, areas, objective_nodes, frontline, main: Main, mgen: Mgen, loc_cfg: LocationsConfig):
+    def __init__(
+            self,
+            tvd_name: str,
+            areas: dict,
+            objective_nodes: list,
+            frontline: list,
+            main: Main,
+            mgen: Mgen,
+            loc_cfg: LocationsConfig):
         """
         :param tvd_name: имя ТВД для получения конфига локаций
         :param areas: зоны влияния стран для покраски локаций
