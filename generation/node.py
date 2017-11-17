@@ -88,10 +88,10 @@ class Node(geometry.Point):
     def related_country(self):
         """Страна соседей (все ли соседи одной страны). 0 если страны отличаются"""
         nodes = list(node for node in self.neighbors if node.country)
-        if not len(nodes):
+        if not nodes:
             return self.country
         first = nodes.pop().country
-        while len(nodes):
+        while nodes:
             current = nodes.pop().country
             if first != current:
                 return 0
