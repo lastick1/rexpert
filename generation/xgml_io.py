@@ -5,8 +5,52 @@ import configs
 from generation import Node
 from .grid_io import GridIO
 
+FILE_FORMAT = """<?xml version="1.0" encoding="Cp1251"?>
+<section name="xgml">
+\t<attribute key="Creator" type="String">yFiles</attribute>
+\t<attribute key="Version" type="String">2.14</attribute>
+\t<section name="graph">
+\t\t<attribute key="hierarchic" type="int">1</attribute>
+\t\t<attribute key="label" type="String"></attribute>
+\t\t<attribute key="directed" type="int">1</attribute>
+{0}{1}
+\t</section>
+</section>"""
 
-class Xgml(GridIO):
+NODE_FORMAT = """\t\t<section name="node">
+\t\t\t<attribute key="id" type="int">{0}</attribute>
+\t\t\t<attribute key="label" type="String">{1}</attribute>
+\t\t\t<section name="graphics">
+\t\t\t\t<attribute key="x" type="double">{2}</attribute>
+\t\t\t\t<attribute key="y" type="double">{3}</attribute>
+\t\t\t\t<attribute key="w" type="double">15.0</attribute>
+\t\t\t\t<attribute key="h" type="double">15.0</attribute>
+\t\t\t\t<attribute key="type" type="String">ellipse</attribute>
+\t\t\t\t<attribute key="raisedBorder" type="boolean">false</attribute>
+\t\t\t\t<attribute key="fill" type="String">{4}</attribute>
+\t\t\t\t<attribute key="outline" type="String">#000000</attribute>
+\t\t\t\t<attribute key="outlineWidth" type="int">1</attribute>
+\t\t\t</section>
+\t\t\t<section name="LabelGraphics">
+\t\t\t\t<attribute key="text" type="String">{1}</attribute>
+\t\t\t\t<attribute key="fontSize" type="int">12</attribute>
+\t\t\t\t<attribute key="fontName" type="String">Dialog</attribute>
+\t\t\t\t<attribute key="anchor" type="String">c</attribute>
+\t\t\t</section>
+\t\t</section>"""
+
+EDGE_FORMAT = """
+\t\t<section name="edge">
+\t\t\t<attribute key="source" type="int">{0}</attribute>
+\t\t\t<attribute key="target" type="int">{1}</attribute>
+\t\t<section name="graphics">
+\t\t\t<attribute key="width" type="int">1</attribute>
+\t\t\t<attribute key="fill" type="String">#000000</attribute>
+\t\t</section>
+\t\t</section>"""
+
+
+class Xgml(GridIO):  # pylint: disable=R0902
     """Класс ввода-вывода графа в xgml формате"""
     def __init__(self, name: str, config: configs.Mgen):
         self._nodes, self._edges, self.name = None, None, name
@@ -79,27 +123,7 @@ class Xgml(GridIO):
     @staticmethod
     def serialize_node_xgml(c_x, c_z, offset, node: Node) -> str:
         """Сериализовать в формат XGML"""
-        return """\t\t<section name="node">
-\t\t\t<attribute key="id" type="int">{0}</attribute>
-\t\t\t<attribute key="label" type="String">{1}</attribute>
-\t\t\t<section name="graphics">
-\t\t\t\t<attribute key="x" type="double">{2}</attribute>
-\t\t\t\t<attribute key="y" type="double">{3}</attribute>
-\t\t\t\t<attribute key="w" type="double">15.0</attribute>
-\t\t\t\t<attribute key="h" type="double">15.0</attribute>
-\t\t\t\t<attribute key="type" type="String">ellipse</attribute>
-\t\t\t\t<attribute key="raisedBorder" type="boolean">false</attribute>
-\t\t\t\t<attribute key="fill" type="String">{4}</attribute>
-\t\t\t\t<attribute key="outline" type="String">#000000</attribute>
-\t\t\t\t<attribute key="outlineWidth" type="int">1</attribute>
-\t\t\t</section>
-\t\t\t<section name="LabelGraphics">
-\t\t\t\t<attribute key="text" type="String">{1}</attribute>
-\t\t\t\t<attribute key="fontSize" type="int">12</attribute>
-\t\t\t\t<attribute key="fontName" type="String">Dialog</attribute>
-\t\t\t\t<attribute key="anchor" type="String">c</attribute>
-\t\t\t</section>
-\t\t</section>""".format(node.key, node.text + ' ' + node.key, c_z * node.z, offset - c_x * node.x, node.color)
+        return NODE_FORMAT.format(node.key, node.text + ' ' + node.key, c_z * node.z, offset - c_x * node.x, node.color)
     # TODO не забыть убрать запись ключа в текст узла тут ^
 
     @staticmethod
@@ -107,15 +131,7 @@ class Xgml(GridIO):
         """Сериализация рёбер"""
         string = ""
         for edge in edges:
-            string += """
-\t\t<section name="edge">
-\t\t\t<attribute key="source" type="int">{0}</attribute>
-\t\t\t<attribute key="target" type="int">{1}</attribute>
-\t\t<section name="graphics">
-\t\t\t<attribute key="width" type="int">1</attribute>
-\t\t\t<attribute key="fill" type="String">#000000</attribute>
-\t\t</section>
-\t\t</section>""".format(edge[0].key, edge[1].key)
+            string += EDGE_FORMAT.format(edge[0].key, edge[1].key)
         return string
 
     def serialize_nodes_xgml(self, nodes: dict) -> str:
@@ -129,14 +145,4 @@ class Xgml(GridIO):
         return string
 
     def serialize(self, nodes: dict, edges: list) -> str:
-        return """<?xml version="1.0" encoding="Cp1251"?>
-<section name="xgml">
-\t<attribute key="Creator" type="String">yFiles</attribute>
-\t<attribute key="Version" type="String">2.14</attribute>
-\t<section name="graph">
-\t\t<attribute key="hierarchic" type="int">1</attribute>
-\t\t<attribute key="label" type="String"></attribute>
-\t\t<attribute key="directed" type="int">1</attribute>
-{0}{1}
-\t</section>
-</section>""".format(self.serialize_nodes_xgml(nodes), self.serialize_edges_xgml(edges))
+        return FILE_FORMAT.format(self.serialize_nodes_xgml(nodes), self.serialize_edges_xgml(edges))
