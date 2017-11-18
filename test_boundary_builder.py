@@ -1,8 +1,8 @@
 """Тестирование построения многоугольников зон влияния"""
 import unittest
 import pathlib
-import generation
 import geometry
+import generation
 from generation import Xgml
 
 from tests import mocks, utils

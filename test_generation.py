@@ -1,4 +1,5 @@
 """Тестирование генерации миссий и работы графа"""
+# pylint: disable=C1801
 import unittest
 import pathlib
 import random
@@ -40,7 +41,10 @@ class TestGrid(unittest.TestCase):
         xgml = generation.Xgml(STALIN, MGEN)
         xgml.parse()
         grid = generation.Grid(STALIN, xgml.nodes, xgml.edges, MGEN)
-        expected = (209, 94, 93, 96, 101, 100, 99, 137, 139, 138, 157, 186, 163, 164, 165, 184, 183, 182, 194, 193, 177)
+        expected = (
+            209, 94, 93, 96, 101, 100, 99, 137, 139, 138, 157,
+            186, 163, 164, 165, 184, 183, 182, 194, 193, 177
+        )
         # Act
         border = grid.border
         # Assert
@@ -73,9 +77,10 @@ class TestGrid(unittest.TestCase):
         xgml.parse()
         grid = generation.Grid(TEST, xgml.nodes, xgml.edges, MGEN)
         expected = utils.get_nodes_keys([
-            grid.node(18), grid.node(19), grid.node(1), grid.node(0), grid.node(21), grid.node(5), grid.node(24),
-            grid.node(7), grid.node(6), grid.node(39), grid.node(8), grid.node(29), grid.node(12), grid.node(33),
-            grid.node(15), grid.node(37), grid.node(14), grid.node(41), grid.node(13)
+            grid.node(18), grid.node(19), grid.node(1), grid.node(0), grid.node(21), grid.node(5),
+            grid.node(24), grid.node(7), grid.node(6), grid.node(39), grid.node(8), grid.node(29),
+            grid.node(12), grid.node(33), grid.node(15), grid.node(37), grid.node(14),
+            grid.node(41), grid.node(13)
         ])
         # act
         result = utils.get_nodes_keys(grid.get_neighbors_of(grid.border_nodes))
@@ -125,7 +130,8 @@ class TestNode(unittest.TestCase):
         """Сортируются соседи по часовой стрелке"""
         grid = mocks.get_test_grid(MGEN)
         expected = utils.get_nodes_keys([
-            grid.node(5), grid.node(16), grid.node(29), grid.node(42), grid.node(26), grid.node(13), grid.node(27)
+            grid.node(5), grid.node(16), grid.node(29), grid.node(42),
+            grid.node(26), grid.node(13), grid.node(27)
         ])
         # act
         result = utils.get_nodes_keys(grid.node(28).neighbors_sorted)
@@ -143,6 +149,7 @@ class TestTvd(unittest.TestCase):
         MGEN.icons_group_files[MOSCOW] = pathlib.Path('./tmp/FL_icon_moscow.Group').absolute()
         tvd = generation.Tvd(MOSCOW, '10.11.1942', MGEN, MAIN, None, None)
         tvd.update_icons()
+        self.assertEqual(True, True)
 
     def test_influences_stalin(self):
         """Генерируются зоны влияния филдов"""
@@ -151,6 +158,7 @@ class TestTvd(unittest.TestCase):
         MGEN.icons_group_files[STALIN] = pathlib.Path('./tmp/FL_icon_stalin.Group').absolute()
         tvd = generation.Tvd(STALIN, '10.11.1942', MGEN, MAIN, None, None)
         tvd.update_icons()
+        self.assertEqual(True, True)
 
 
 if __name__ == '__main__':

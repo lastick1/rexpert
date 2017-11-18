@@ -4,5 +4,8 @@
     "python.unitTest.unittestArgs": [
     ],
     "python.unitTest.unittestEnabled": false,
-    "python.unitTest.nosetestsEnabled": true
+    "python.unitTest.nosetestsEnabled": true,
+    "python.linting.pylintArgs": [
+        "--rcfile=.rcfile"
+    ]
 }
