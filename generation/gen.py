@@ -9,7 +9,6 @@ from datetime import datetime
 from configs import Main, Mgen
 
 from .mission_files import MissionFiles
-from .locations import *
 
 
 airfields_raw_re = re.compile(
@@ -98,8 +97,7 @@ class Ldb:
             objective_nodes: list,
             frontline: list,
             main: Main,
-            mgen: Mgen,
-            loc_cfg: LocationsConfig):
+            mgen: Mgen):
         """
         :param tvd_name: имя ТВД для получения конфига локаций
         :param areas: зоны влияния стран для покраски локаций

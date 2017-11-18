@@ -29,6 +29,22 @@ decorations_format = """Decoration
   Parking = {24};
 }}"""
 
+reference_location_format = """ReferenceLocation
+{
+  Name = "{0}";
+  Desc = "{1}";
+  XPos = {2};
+  YPos = {3};
+  ZPos = {4};
+  OY = {5};
+  Length = {6:.0f};
+  Width = {7:.0f};
+  HWArtillery = {8};
+  ATArtillery = {9};
+  RL_FiringPoint = {10};
+  RL_FrontLine = {11};
+}"""
+
 ground_objective_format = """GroundObjective
 {{
   Name = {0};
@@ -56,34 +72,33 @@ ground_objective_format = """GroundObjective
 }}"""
 airfields_format = """Airfield
 {{
-  Name = "Airfield";
-  Desc = "";
-  XPos = {0:.3f};
-  YPos = {1:.3f};
-  ZPos = {2:.3f};
+  Name = {0};
+  Desc = {1};
+  XPos = {2:.3f};
+  YPos = {3:.3f};
+  ZPos = {4:.3f};
   OY = 0.000;
   Length = 10;
-  Width = 10;{3}
+  Width = 10;{5}
   GrassField = 0;
   WaterField = 0;
 }}"""
 air_objectives_format = """AirObjective
 {{
-  Name = "AirObjective";
-  Desc = "";
-  XPos = {0:.3f};
-  YPos = 75.515;
-  ZPos = {1:.3f};
-  OY = 0.000;
-  Length = 1000;
-  Width = 1000;
-  Country = {2};
-  ReconFlight = 0;
-  BomberFlight = 0;
-  FighterPatrolFlight = 0;
-  Dogfight = 0;
-  DuelOpponent = 0;
-  Balloon = 1;
+  Name = {0};
+  Desc = {1};
+  XPos = {2};
+  YPos = {3};
+  ZPos = {4};
+  OY = {5};
+  Length = {6:.0f};
+  Width = {7:.0f};{8}
+  ReconFlight = {9};
+  BomberFlight = {10};
+  FighterPatrolFlight = {11};
+  Dogfight = {12};
+  DuelOpponent = {13};
+  Balloon = {14};
 }}"""
 
 division_format = """AirObjective

@@ -1,221 +1,192 @@
-"""Классы типов локаций в текстовых базах локаций"""
-from geometry import Point, Segment
-from configs import LocationsConfig
-from .formats import decorations_format, ground_objective_format, air_objectives_format, division_format
+"""Класс локаций и форматирование локаций"""
+import geometry
+from .formats import air_objectives_format, ground_objective_format, airfields_format
+from .formats import decorations_format, reference_location_format
 
 
-class AirObjectiveRecon:
-    def __init__(self, string):
-        self.cls = 'air_objective_recon'
-        self.string = string
+AIR_OBJECTIVE = 'AirObjective'
+AIRFIELD = 'Airfield'
+DECORATION = 'Decoration'
+GROUND_OBJECTIVE = 'GroundObjective'
+REFERENCE_LOCATION = 'ReferenceLocation'
+TYPES = (AIR_OBJECTIVE, AIRFIELD, DECORATION, GROUND_OBJECTIVE, REFERENCE_LOCATION)
+
+RECON_FLIGHT = 'recon_flight'
+BOMBER_FLIGHT = 'bomber_flight'
+FIGHTER_PATROL_FLIGHT = 'fighter_patrol_flight'
+DUEL_OPPONENT = 'duel_opponent'
+ARMOURED = 'armoured'
+BUILDING = 'building'
+RAILWAY_STATION = 'railway_station'
+SUPPLY_DUMP = 'supply_dump'
+FACTORY = 'factory'
+PORT = 'port'
+RECON_AREA = 'recon_area'
+DOGFIGHT = 'dogfight'
+TRANSPORT = 'transport'
+TRAIN = 'train'
+TANK = 'tank'
+ARTILLERY = 'artillery'
+AAA_POSITION = 'aaa_position'
+SHIP = 'ship'
+BALLOON = 'balloon'
+WINDSOCK = 'windsock'
+CITY_FIRE = 'city_fire'
+SPOTTER = 'spotter'
+BRIDGE = 'bridge'
+AT_ART_POSITION = 'at_art_position'
+FIRING_POINT = 'firing_point'
+SIREN = 'siren'
+PARKING = 'parking'
+HW_ARTILLERY = 'hw_artillery'
+AT_ARTILLERY = 'at_artillery'
+RL_FIRING_POINT = 'rl_firing_point'
+RL_FRONT_LINE = 'rl_front_line'
+
+
+def format_air_objective(location) -> str:
+    """Форматировать AirObjective локацию"""
+    return air_objectives_format.format(
+        '"{}"'.format(location.name),  # Name
+        '"{}"'.format(location.desc),  # Desc
+        location.x,  # XPos
+        location.y,  # YPos
+        location.z,  # ZPos
+        location.oy,  # OY
+        location.length,  # Length
+        location.width,  # Width
+        location.str_country,  # Country
+        1 if RECON_FLIGHT in location.types else 0,  # ReconFlight
+        1 if BOMBER_FLIGHT in location.types else 0,  # BomberFlight
+        1 if FIGHTER_PATROL_FLIGHT in location.types else 0,  # FighterPatrolFlight
+        1 if DOGFIGHT in location.types else 0,  # Dogfight
+        1 if DUEL_OPPONENT in location.types else 0,  # DuelOpponent
+        1 if BALLOON in location.types else 0  # Balloon
+    )
+
+
+def format_airfield(location) -> str:
+    """Форматировать Airfield локацию"""
+    return airfields_format.format(
+        '"{}"'.format(location.name),  # Name
+        '"{}"'.format(location.desc),  # Desc
+        location.x,  # XPos
+        location.y,  # YPos
+        location.z,  # ZPos
+        location.str_country  # Country
+    )
+
+
+def format_ground_objective(location) -> str:
+    """Форматировать GroundObjective локацию"""
+    return ground_objective_format.format(
+        '"{}"'.format(location.name),  # Name
+        '"{}"'.format(location.desc),  # Desc
+        location.x,  # XPos
+        location.y,  # YPos
+        location.z,  # ZPos
+        location.oy,  # OY
+        location.length,  # Length
+        location.width,  # Width
+        1 if TRANSPORT in location.types else 0,  # Transport
+        1 if ARMOURED in location.types else 0,  # Armoured
+        1 if TANK in location.types else 0,  # Tank
+        1 if AAA_POSITION in location.types else 0,  # AAAPosition
+        1 if ARTILLERY in location.types else 0,  # Artillery
+        1 if BUILDING in location.types else 0,  # Building
+        1 if SHIP in location.types else 0,  # Ship
+        1 if TRAIN in location.types else 0,  # Train
+        1 if RAILWAY_STATION in location.types else 0,  # RailwayStation
+        1 if SUPPLY_DUMP in location.types else 0,  # SupplyDump
+        1 if FACTORY in location.types else 0,  # Factory
+        1 if AIRFIELD in location.types else 0,  # Airfield
+        1 if PORT in location.types else 0,  # Port
+        1 if RECON_AREA in location.types else 0  # ReconArea
+    )
+
+
+def format_decoration(location) -> str:
+    """Форматировать Decoration локацию"""
+    return decorations_format.format(
+        '"{}"'.format(location.name),  # Name
+        '"{}"'.format(location.desc),  # Desc
+        location.x,  # XPos
+        location.y,  # YPos
+        location.z,  # ZPos
+        location.oy,  # OY
+        location.length,  # Length
+        location.width,  # Width
+        location.str_country,  # Country
+        1 if DOGFIGHT in location.types else 0,  # Dogfight
+        1 if TRANSPORT in location.types else 0,  # Transport
+        1 if TRAIN in location.types else 0,  # Train
+        1 if TANK in location.types else 0,  # Tank
+        1 if ARTILLERY in location.types else 0,  # Artillery
+        1 if AAA_POSITION in location.types else 0,  # AAAPosition
+        1 if SHIP in location.types else 0,  # Ship
+        1 if BALLOON in location.types else 0,  # Balloon
+        1 if WINDSOCK in location.types else 0,  # Windsock
+        1 if CITY_FIRE in location.types else 0,  # CityFire
+        1 if SPOTTER in location.types else 0,  # Spotter
+        1 if BRIDGE in location.types else 0,  # Bridge
+        1 if AT_ART_POSITION in location.types else 0,  # AtArtPosition
+        1 if FIRING_POINT in location.types else 0,  # FiringPoint
+        1 if SIREN in location.types else 0,  # Siren
+        1 if PARKING in location.types else 0  # Parking
+    )
+
+
+def format_reference_location(location) -> str:
+    """Форматировать ReferenceLocation локацию"""
+    return reference_location_format.format(
+        location.x,  # XPos
+        location.y,  # YPos
+        location.z,  # ZPos
+        location.oy,  # OY
+        location.length,  # Length
+        location.width,  # Width
+        1 if HW_ARTILLERY in location.types else 0,  # HWArtillery
+        1 if AT_ARTILLERY in location.types else 0,  # ATArtillery
+        1 if RL_FIRING_POINT in location.types else 0,  # RL_FiringPoint
+        1 if RL_FRONT_LINE in location.types else 0  # RL_FrontLine
+    )
+
+
+FORMATTER = {
+    AIR_OBJECTIVE: format_air_objective,
+    AIRFIELD: format_airfield,
+    GROUND_OBJECTIVE: format_ground_objective,
+    DECORATION: format_decoration,
+    REFERENCE_LOCATION: format_reference_location
+}
+
+
+class Location(geometry.Point):
+    """Класс локации"""
+    def __init__(self,
+                 name: str,
+                 x: float,
+                 z: float,
+                 y: float,
+                 oy: float,
+                 length: float,
+                 width: float,
+                 desc=''):
+        super().__init__(x=x, z=z)
+        if name not in TYPES:
+            raise NameError('Incorrect location name')
+        self.name = name
+        self.y = y
+        self.oy = oy
+        self.length = length
+        self.width = width
+        self.desc = desc
+        self.country = 0
+        self.types = set()
 
     def __str__(self):
-        return self.string
-
-
-class AirObjectiveLocation(Point):
-    def __init__(self, node):
-        super().__init__(x=node.x, z=node.z)
-        self.loc_country = None
-
-    def __str__(self):
-        if not self.loc_country:
-            raise NameError('AirObjectiveLocation must have loc_country')
-        return air_objectives_format.format(
-            self.x, self.z, self.loc_country
-        )
-
-
-class DecorationLocation(Point):
-    def __init__(self, string, tvd_name, areas, frontline, objective_nodes, config: LocationsConfig):
-        tmp = str(string).split(';')
-        super().__init__(x=float(tmp[2].partition('= ')[-1]), z=float(tmp[4].partition('= ')[-1]))
-        self.cls = 'decoration'
-        self.cfg = config.cfg
-        self.tvd_name = tvd_name
-        self.frontline = frontline
-        self.objective_nodes = objective_nodes
-        self.name = str(tmp[0].partition('= ')[-1])
-        self.desc = str(tmp[1].partition('= ')[-1])
-        self.y = float(tmp[3].partition('= ')[-1])
-        self.oy = float(tmp[5].partition('= ')[-1])
-        self.length = float(tmp[6].partition('= ')[-1])
-        self.width = float(tmp[7].partition('= ')[-1])
-        self.types = {
-            'dogfight': int(tmp[-17].partition('= ')[-1]),
-            'transport': int(tmp[-16].partition('= ')[-1]),
-            'train': int(tmp[-15].partition('= ')[-1]),
-            'tank': int(tmp[-14].partition('= ')[-1]),
-            'artillery': int(tmp[-13].partition('= ')[-1]),
-            'aaa_position': int(tmp[-12].partition('= ')[-1]),
-            'ship': int(tmp[-11].partition('= ')[-1]),
-            'balloon': int(tmp[-10].partition('= ')[-1]),
-            'windsock': int(tmp[-9].partition('= ')[-1]),
-            'city_fire': int(tmp[-8].partition('= ')[-1]),
-            'spotter': int(tmp[-7].partition('= ')[-1]),
-            'bridge': int(tmp[-6].partition('= ')[-1]),
-            'at_art_position': int(tmp[-5].partition('= ')[-1]),
-            'firing_point': int(tmp[-4].partition('= ')[-1]),
-            'siren': int(tmp[-3].partition('= ')[-1]),
-            'parking': int(tmp[-2].partition('= ')[-1])
-        }
-        self.areas = areas
+        return FORMATTER[self.name](self)
 
     @property
-    def loc_country(self):
-        fl_first = self.frontline[0]
-        for country in self.areas:
-            for area in self.areas[country]:
-                if self.is_in_area(area):
-                    for t in (x for x in self.types.keys() if self.types[x] == 1):
-                        fl_rule = self.cfg[self.cls][self.tvd_name][str(country)]['frontline'][t]
-                        on_rule = self.cfg[self.cls][self.tvd_name][str(country)]['scenario'][t]
-                        if len(fl_rule) or len(on_rule):
-                            if len(fl_rule) and not len(on_rule):
-                                # только правило "от линии фронта"
-                                closest = fl_first
-                                for node in self.frontline:
-                                    if self.distance_to(closest.x, closest.z) > self.distance_to(node.x, node.z):
-                                        closest = node
-                                if fl_rule[0] < self.distance_to(closest.x, closest.z) < fl_rule[1]:
-                                    return country
-                            if len(on_rule) and not len(fl_rule):
-                                for node in self.objective_nodes[country]:
-                                    if on_rule[0] < self.distance_to(node.x, node.z) < on_rule[1]:
-                                        return country
-                            if len(on_rule) and len(fl_rule):
-                                on = []
-                                for c in self.objective_nodes.keys():
-                                    on += self.objective_nodes[c]
-                                for node in on:
-                                    if self.distance_to(node.x, node.z) < on_rule[1]:
-                                        for fl_node in self.frontline:
-                                            if self.distance_to(fl_node.x, fl_node.z) < fl_rule[0]:
-                                                return
-                                        return country
-                            return
-                        else:
-                            return country
-        return
-
-    def __str__(self):
-        c = '' if not self.loc_country else '\n  Country = {};'.format(self.loc_country)
-        return decorations_format.format(
-            self.name, self.desc, self.x, self.y, self.z, self.oy, self.length, self.width,
-            c,
-            self.types['dogfight'], self.types['transport'], self.types['train'], self.types['tank'],
-            self.types['artillery'], self.types['aaa_position'], self.types['ship'], self.types['balloon'],
-            self.types['windsock'], self.types['city_fire'], self.types['spotter'], self.types['bridge'],
-            self.types['at_art_position'], self.types['firing_point'], self.types['siren'], self.types['parking']
-        )
-
-
-# TODO объединить классы GroundObjectiveLocation и DecorationLocation в один класс
-class GroundObjectiveLocation(Point):
-    def __init__(self, string, tvd_name, areas, frontline, objective_nodes, config: LocationsConfig):
-        tmp = str(string).split(';')
-        super().__init__(x=float(tmp[2].partition('= ')[-1]), z=float(tmp[4].partition('= ')[-1]))
-        self.cls = 'ground_objective'
-        self.cfg = config.cfg
-        self.tvd_name = tvd_name
-        self.frontline = frontline
-        self.objective_nodes = objective_nodes
-        self.name = str(tmp[0].partition('= ')[-1])
-        self.desc = str(tmp[1].partition('= ')[-1])
-        self.y = float(tmp[3].partition('= ')[-1])
-        self.oy = float(tmp[5].partition('= ')[-1])
-        self.length = float(tmp[6].partition('= ')[-1])
-        self.width = float(tmp[7].partition('= ')[-1])
-        self.types = {
-            'transport': int(tmp[-15].partition('= ')[-1]),
-            'armoured': int(tmp[-14].partition('= ')[-1]),
-            'tank': int(tmp[-13].partition('= ')[-1]),
-            'aaa_position': int(tmp[-12].partition('= ')[-1]),
-            'artillery': int(tmp[-11].partition('= ')[-1]),
-            'building': int(tmp[-10].partition('= ')[-1]),
-            'ship': int(tmp[-9].partition('= ')[-1]),
-            'train': int(tmp[-8].partition('= ')[-1]),
-            'railway_station': int(tmp[-7].partition('= ')[-1]),
-            'supply_dump': int(tmp[-6].partition('= ')[-1]),
-            'factory': int(tmp[-5].partition('= ')[-1]),
-            'airfield': int(tmp[-4].partition('= ')[-1]),
-            'port': int(tmp[-3].partition('= ')[-1]),
-            'recon_area': int(tmp[-2].partition('= ')[-1])
-        }
-        self.areas = areas
-        self._loc_country = None
-
-    @property
-    def loc_country(self):
-        fl_first = self.frontline[0]
-        for country in self.areas:
-            for area in self.areas[country]:
-                if self.is_in_area(area):
-                    for t in (x for x in self.types.keys() if self.types[x] == 1):
-                        fl_rule = self.cfg[self.cls][self.tvd_name][str(country)]['frontline'][t]
-                        on_rule = self.cfg[self.cls][self.tvd_name][str(country)]['scenario'][t]
-                        if len(fl_rule) or len(on_rule):
-                            if len(fl_rule) and not len(on_rule):
-                                # только правило "от линии фронта"
-                                closest = fl_first
-                                for node in self.frontline:
-                                    if self.distance_to(closest.x, closest.z) > self.distance_to(node.x, node.z):
-                                        closest = node
-                                if fl_rule[0] < self.distance_to(closest.x, closest.z) < fl_rule[1]:
-                                    return country
-                            if len(on_rule) and not len(fl_rule):
-                                for node in self.objective_nodes[country]:
-                                    if on_rule[0] < self.distance_to(node.x, node.z) < on_rule[1]:
-                                        return country
-                            if len(on_rule) and len(fl_rule):
-                                on = []
-                                for c in self.objective_nodes.keys():
-                                    on += self.objective_nodes[c]
-                                for node in on:
-                                    if self.distance_to(node.x, node.z) < on_rule[1]:
-                                        for fl_node in self.frontline:
-                                            if self.distance_to(fl_node.x, fl_node.z) < fl_rule[0]:
-                                                return
-                                        return country
-                            return
-                        else:
-                            return country
-        return
-
-    def __str__(self):
-        c = '' if not self.loc_country else '\n  Country = {};'.format(self.loc_country)
-        return ground_objective_format.format(
-            self.name, self.desc, self.x, self.y, self.z, self.oy, self.length, self.width,
-            c,
-            self.types['transport'], self.types['armoured'], self.types['tank'], self.types['aaa_position'],
-            self.types['artillery'], self.types['building'], self.types['ship'], self.types['train'],
-            self.types['railway_station'], self.types['supply_dump'], self.types['factory'], self.types['airfield'],
-            self.types['port'], self.types['recon_area']
-        )
-
-
-class Division(Segment):
-    def __init__(self, segment_coordinates, frontline_margin_distance, depth):
-        super().__init__(
-            segment_coordinates[0][0],
-            segment_coordinates[0][1],
-            segment_coordinates[1][0],
-            segment_coordinates[1][1]
-        )
-        self.frame = super().parallel_segments(frontline_margin_distance)
-        self.depth = depth
-
-    def __str__(self):
-        return division_format.format(
-            self.frame[0].center[0],
-            self.frame[0].center[1],
-            self.frame[0].angle,
-            self.depth,
-            self.frame[0].length
-        ) + '\n\n' + division_format.format(
-            self.frame[1].center[0],
-            self.frame[1].center[1],
-            self.frame[1].angle,
-            self.depth,
-            self.frame[1].length
-        )
+    def str_country(self):
+        return '\n  Country = {};'.format(self.country) if self.country else ''
