@@ -13,6 +13,7 @@
 
 **В планах:**
 
+* Генерация аэродромов (плейнсетов с анлоками)
 * Запуск DServer из-под коммандера
   C:\DServer\Normal\bin\game\normal.exe C:\DServer\Normal\data\normal.sds
 * Grid.IsValidForGeneration()
