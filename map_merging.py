@@ -3,11 +3,11 @@ import os
 import re
 
 
-def merge_map(map_dir=r'./01/', output='map.png'):
+def merge_map(map_dir=r'./tiles/kuban/tiles/04/', output='map.png'):
     """Склейка карты из тайлов"""
     # Выборка файлов-тайлов
     files = os.listdir(map_dir)
-    tiles = [p for p in filter(lambda x: x.endswith('.gif'), files)]
+    tiles = [p for p in filter(lambda x: x.endswith('.dds'), files)]
     tiles.sort(key=lambda x: x[0])
     print(tiles)
     # Формирование матрицы тайлов
@@ -56,3 +56,6 @@ def merge_map(map_dir=r'./01/', output='map.png'):
         j += 1
     res_img.save(output, 'PNG')
     return None
+
+
+merge_map()
