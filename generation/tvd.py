@@ -6,7 +6,6 @@ from random import randint
 from geometry import Point
 from .influences import BoundaryBuilder
 from .grid import Grid
-from .gen import Ldb, Divisions
 from .groups import Group, FrontLineGroup
 from .weather import presets, WeatherPreset
 from .xgml_io import Xgml
@@ -122,11 +121,6 @@ class Tvd:
         if not self.grid.border_nodes:
             # self.grid.restore_neutral_line()
             pass
-
-    def create_divisions(self):
-        """Обновление базы локаций с обозначением расположения дивизий"""
-        ldf = Divisions(self.name, self.grid.edges_raw, self.main, self.mgen)
-        ldf.make()
 
     def update_icons(self):
         """Обновление группы иконок в соответствии с положением ЛФ"""
