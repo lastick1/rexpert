@@ -1,5 +1,67 @@
 """Форматы MCU в исходниках миссий"""
 
+plane_format = """Plane
+    {{
+      SetIndex = {0};
+      Number = {1};
+      AILevel = {2};
+      StartInAir = {3};
+      Engageable = {4};
+      Vulnerable = {5};
+      LimitAmmo = {6};
+      AIRTBDecision = {7};
+      Renewable = {8};
+      PayloadId = {9};
+      WMMask = {10};
+      Fuel = {11};
+      RouteTime = {12};
+      RenewTime = {13};
+      Altitude = {14};
+      Spotter = {15};
+      Model = "{16}";
+      Script = "{17}";
+      Name = "{18}";
+      Skin = "{19}";
+      AvMods = "{20}";
+      AvSkins = "{21}";
+      AvPayloads = "{22}";
+      Callsign = {23};
+      Callnum = {24};
+    }}"""
+
+airfield_format = """Airfield
+{{
+  Name = "{0}";
+  Index = 2;
+  LinkTrId = 5;
+  XPos = 0.000;
+  YPos = 0.000;
+  ZPos = 0.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Model = "graphics\\airfields\\fakefield.mgm";
+  Script = "LuaScripts\\WorldObjects\\Airfields\\fakefield.txt";
+  Country = {1};
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  Callsign = 0;
+  Callnum = 0;
+  Planes
+  {}
+  ReturnPlanes = 1;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = {2};
+}}"""
 
 decorations_format = """Decoration
 {{
