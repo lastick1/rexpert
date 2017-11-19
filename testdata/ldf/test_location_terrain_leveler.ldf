@@ -1,0 +1,15 @@
+#1CGS Location Database file
+
+TerrainLeveler
+{
+  Name = "TerrainLeveler";
+  Desc = "";
+  XPos = 11972.730;
+  YPos = 107.190;
+  ZPos = 25988.995;
+  OY = 0.000;
+  Length = 400;
+  Width = 400;
+}
+
+#end of file

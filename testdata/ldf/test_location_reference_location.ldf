@@ -1,0 +1,19 @@
+#1CGS Location Database file
+
+ReferenceLocation
+{
+  Name = "ReferenceLocation";
+  Desc = "";
+  XPos = 15310.148;
+  YPos = 102.111;
+  ZPos = 26007.664;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  HWArtillery = 1;
+  ATArtillery = 1;
+  RL_FiringPoint = 1;
+  RL_FrontLine = 1;
+}
+
+#end of file

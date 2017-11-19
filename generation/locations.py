@@ -1,7 +1,7 @@
 """Класс локаций и форматирование локаций"""
 import geometry
-from .formats import air_objectives_format, ground_objective_format, airfields_format
-from .formats import decorations_format, reference_location_format
+from .formats import air_objectives_format, ground_objective_format, airfields_format, navigation_format
+from .formats import decorations_format, reference_location_format, substrate_format, terrain_leveler_format
 
 
 AIR_OBJECTIVE = 'AirObjective'
@@ -9,7 +9,12 @@ AIRFIELD = 'Airfield'
 DECORATION = 'Decoration'
 GROUND_OBJECTIVE = 'GroundObjective'
 REFERENCE_LOCATION = 'ReferenceLocation'
-LOCATION_TYPES = (AIR_OBJECTIVE, AIRFIELD, DECORATION, GROUND_OBJECTIVE, REFERENCE_LOCATION)
+SUBSTRATE = 'Substrate'
+TERRAIN_LEVELER = 'TerrainLeveler'
+NAVIGATION = 'Navigation'
+LOCATION_TYPES = (
+    AIR_OBJECTIVE, AIRFIELD, DECORATION, GROUND_OBJECTIVE, NAVIGATION, REFERENCE_LOCATION, SUBSTRATE, TERRAIN_LEVELER
+)
 
 RECON_FLIGHT = 'recon_flight'
 BOMBER_FLIGHT = 'bomber_flight'
@@ -42,13 +47,26 @@ HW_ARTILLERY = 'hw_artillery'
 AT_ARTILLERY = 'at_artillery'
 RL_FIRING_POINT = 'rl_firing_point'
 RL_FRONT_LINE = 'rl_front_line'
+GRASS_FIELD = 'grass_field'
+WATER_FIELD = 'water_field'
+NDB = 'ndb'
+AIRFIELD_DECORATION = 'airfield_decoration'
+STATIC_AIRPLANE = 'static_airplane'
+STATIC_VECHICLE = 'static_vechicle'
+SEARCHLIGHT = 'searchlight'
+LANDING_LIGHT = 'landing_light'
+LANDING_SIGN = 'landing_sign'
+TEXTURE_INDEX = 'texture_index'
+FILTER_TREES = 'filter_trees'
+FRONT_LINE = 'front_line'
+PLANE_WAYPOINT = 'plane_waypoint'
 
 
 def format_air_objective(location) -> str:
     """Форматировать AirObjective локацию"""
     return air_objectives_format.format(
-        '"{}"'.format(location.name),  # Name
-        '"{}"'.format(location.desc),  # Desc
+        location.name,  # Name
+        location.desc,  # Desc
         location.x,  # XPos
         location.y,  # YPos
         location.z,  # ZPos
@@ -68,26 +86,29 @@ def format_air_objective(location) -> str:
 def format_airfield(location) -> str:
     """Форматировать Airfield локацию"""
     return airfields_format.format(
-        '"{}"'.format(location.name),  # Name
-        '"{}"'.format(location.desc),  # Desc
+        location.name,  # Name
+        location.desc,  # Desc
         location.x,  # XPos
         location.y,  # YPos
         location.z,  # ZPos
-        location.str_country  # Country
+        location.str_country,  # Country
+        1 if GRASS_FIELD in location.types else 0,  # Transport
+        1 if WATER_FIELD in location.types else 0  # Transport
     )
 
 
 def format_ground_objective(location) -> str:
     """Форматировать GroundObjective локацию"""
     return ground_objective_format.format(
-        '"{}"'.format(location.name),  # Name
-        '"{}"'.format(location.desc),  # Desc
+        location.name,  # Name
+        location.desc,  # Desc
         location.x,  # XPos
         location.y,  # YPos
         location.z,  # ZPos
         location.oy,  # OY
         location.length,  # Length
         location.width,  # Width
+        location.str_country,  # Country
         1 if TRANSPORT in location.types else 0,  # Transport
         1 if ARMOURED in location.types else 0,  # Armoured
         1 if TANK in location.types else 0,  # Tank
@@ -108,8 +129,8 @@ def format_ground_objective(location) -> str:
 def format_decoration(location) -> str:
     """Форматировать Decoration локацию"""
     return decorations_format.format(
-        '"{}"'.format(location.name),  # Name
-        '"{}"'.format(location.desc),  # Desc
+        location.name,  # Name
+        location.desc,  # Desc
         location.x,  # XPos
         location.y,  # YPos
         location.z,  # ZPos
@@ -132,13 +153,22 @@ def format_decoration(location) -> str:
         1 if AT_ART_POSITION in location.types else 0,  # AtArtPosition
         1 if FIRING_POINT in location.types else 0,  # FiringPoint
         1 if SIREN in location.types else 0,  # Siren
-        1 if PARKING in location.types else 0  # Parking
+        1 if PARKING in location.types else 0,  # Parking
+        1 if NDB in location.types else 0,  # NDB
+        1 if AIRFIELD_DECORATION in location.types else 0,  # AirfieldDecoration
+        1 if STATIC_AIRPLANE in location.types else 0,  # StaticAirplane
+        1 if STATIC_VECHICLE in location.types else 0,  # StaticVechicle
+        1 if SEARCHLIGHT in location.types else 0,  # Searchlight
+        1 if LANDING_LIGHT in location.types else 0,  # LandingLight
+        1 if LANDING_SIGN in location.types else 0  # LandingSign
     )
 
 
 def format_reference_location(location) -> str:
     """Форматировать ReferenceLocation локацию"""
     return reference_location_format.format(
+        location.name,  # Name
+        location.desc,  # Desc
         location.x,  # XPos
         location.y,  # YPos
         location.z,  # ZPos
@@ -152,12 +182,61 @@ def format_reference_location(location) -> str:
     )
 
 
+def format_substrate(location) -> str:
+    """Форматировать ReferenceLocation локацию"""
+    return substrate_format.format(
+        location.name,  # Name
+        location.desc,  # Desc
+        location.x,  # XPos
+        location.y,  # YPos
+        location.z,  # ZPos
+        location.oy,  # OY
+        location.length,  # Length
+        location.width,  # Width
+        1 if TEXTURE_INDEX in location.types else 0,  # TextureIndex
+        1 if FILTER_TREES in location.types else 0  # FilterTrees
+    )
+
+
+def format_terrain_leveler(location) -> str:
+    """Форматировать TerrainLeveler локацию"""
+    return terrain_leveler_format.format(
+        location.name,  # Name
+        location.desc,  # Desc
+        location.x,  # XPos
+        location.y,  # YPos
+        location.z,  # ZPos
+        location.oy,  # OY
+        location.length,  # Length
+        location.width  # Width
+    )
+
+
+def format_navigation(location) -> str:
+    """Форматировать Navigation локацию"""
+    return navigation_format.format(
+        location.name,  # Name
+        location.desc,  # Desc
+        location.x,  # XPos
+        location.y,  # YPos
+        location.z,  # ZPos
+        location.oy,  # OY
+        location.length,  # Length
+        location.width,  # Width
+        1 if PLANE_WAYPOINT in location.types else 0,  # PlaneWaypoint
+        1 if FRONT_LINE in location.types else 0  # FrontLine
+    )
+
+
 FORMATTER = {
     AIR_OBJECTIVE: format_air_objective,
     AIRFIELD: format_airfield,
     GROUND_OBJECTIVE: format_ground_objective,
     DECORATION: format_decoration,
-    REFERENCE_LOCATION: format_reference_location
+    REFERENCE_LOCATION: format_reference_location,
+    SUBSTRATE: format_substrate,
+    TERRAIN_LEVELER: format_terrain_leveler,
+    NAVIGATION: format_navigation
 }
 
 

@@ -1,0 +1,21 @@
+#1CGS Location Database file
+
+AirObjective
+{
+  Name = "AirObjective";
+  Desc = "";
+  XPos = 22689.207;
+  YPos = 121.404;
+  ZPos = 25951.867;
+  OY = 0.000;
+  Length = 1000;
+  Width = 1000;
+  ReconFlight = 1;
+  BomberFlight = 1;
+  FighterPatrolFlight = 1;
+  Dogfight = 1;
+  DuelOpponent = 1;
+  Balloon = 1;
+}
+
+#end of file

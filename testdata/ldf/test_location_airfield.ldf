@@ -1,0 +1,17 @@
+#1CGS Location Database file
+
+Airfield
+{
+  Name = "Airfield";
+  Desc = "";
+  XPos = 21077.620;
+  YPos = 114.382;
+  ZPos = 26001.454;
+  OY = 0.000;
+  Length = 10;
+  Width = 10;
+  GrassField = 1;
+  WaterField = 1;
+}
+
+#end of file

@@ -3,12 +3,12 @@
 
 decorations_format = """Decoration
 {{
-  Name = {0};
-  Desc = {1};
+  Name = "{0}";
+  Desc = "{1}";
   XPos = {2};
   YPos = {3};
   ZPos = {4};
-  OY = {5};
+  OY = {5:.3f};
   Length = {6:.0f};
   Width = {7:.0f};{8}
   Dogfight = {9};
@@ -27,34 +27,41 @@ decorations_format = """Decoration
   FiringPoint = {22};
   Siren = {23};
   Parking = {24};
+  NDB = {25};
+  AirfieldDecoration = {26};
+  StaticAirplane = {27};
+  StaticVechicle = {28};
+  Searchlight = {29};
+  LandingLight = {30};
+  LandingSign = {31};
 }}"""
 
 reference_location_format = """ReferenceLocation
-{
+{{
   Name = "{0}";
   Desc = "{1}";
   XPos = {2};
   YPos = {3};
   ZPos = {4};
-  OY = {5};
+  OY = {5:.3f};
   Length = {6:.0f};
   Width = {7:.0f};
   HWArtillery = {8};
   ATArtillery = {9};
   RL_FiringPoint = {10};
   RL_FrontLine = {11};
-}"""
+}}"""
 
 ground_objective_format = """GroundObjective
 {{
-  Name = {0};
-  Desc = {1};
+  Name = "{0}";
+  Desc = "{1}";
   XPos = {2};
   YPos = {3};
   ZPos = {4};
-  OY = {5};
-  Length = {6};
-  Width = {7};{8}
+  OY = {5:.3f};
+  Length = {6:.0f};
+  Width = {7:.0f};{8}
   Transport = {9};
   Armoured = {10};
   Tank = {11};
@@ -72,25 +79,25 @@ ground_objective_format = """GroundObjective
 }}"""
 airfields_format = """Airfield
 {{
-  Name = {0};
-  Desc = {1};
+  Name = "{0}";
+  Desc = "{1}";
   XPos = {2:.3f};
   YPos = {3:.3f};
   ZPos = {4:.3f};
   OY = 0.000;
   Length = 10;
   Width = 10;{5}
-  GrassField = 0;
-  WaterField = 0;
+  GrassField = {6};
+  WaterField = {7};
 }}"""
 air_objectives_format = """AirObjective
 {{
-  Name = {0};
-  Desc = {1};
+  Name = "{0}";
+  Desc = "{1}";
   XPos = {2};
   YPos = {3};
   ZPos = {4};
-  OY = {5};
+  OY = {5:.3f};
   Length = {6:.0f};
   Width = {7:.0f};{8}
   ReconFlight = {9};
@@ -100,25 +107,44 @@ air_objectives_format = """AirObjective
   DuelOpponent = {13};
   Balloon = {14};
 }}"""
-
-division_format = """AirObjective
+substrate_format = """Substrate
 {{
-  Name = "AirObjective";
-  Desc = "";
-  XPos = {0:.3f};
-  YPos = 75.515;
-  ZPos = {1:.3f};
-  OY = {2:.3f};
-  Length = {3:.3f};
-  Width = {4:.3f};
-  ReconFlight = 0;
-  BomberFlight = 0;
-  FighterPatrolFlight = 0;
-  Dogfight = 0;
-  DuelOpponent = 1;
-  Balloon = 0;
+  Name = "{0}";
+  Desc = "{1}";
+  XPos = {2};
+  YPos = {3};
+  ZPos = {4};
+  OY = {5:.3f};
+  Length = {6:.0f};
+  Width = {7:.0f};
+  TextureIndex = {8};
+  FilterTrees = {9};
 }}"""
 
+terrain_leveler_format = """TerrainLeveler
+{{
+  Name = "{0}";
+  Desc = "{1}";
+  XPos = {2:.3f};
+  YPos = {3:.3f};
+  ZPos = {4:.3f};
+  OY = {5:.3f};
+  Length = {6:.0f};
+  Width = {7:.0f};
+}}"""
+navigation_format = """Navigation
+{{
+  Name = "{0}";
+  Desc = "{1}";
+  XPos = {2:.3f};
+  YPos = {3:.3f};
+  ZPos = {4:.3f};
+  OY = {5:.3f};
+  Length = {6:.0f};
+  Width = {7:.0f};
+  PlaneWaypoint = {8};
+  FrontLine = {9};
+}}"""
 influence_text = """MCU_TR_InfluenceArea
 {{
   Index = {};

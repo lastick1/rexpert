@@ -1,0 +1,17 @@
+#1CGS Location Database file
+
+Substrate
+{
+  Name = "Substrate";
+  Desc = "";
+  XPos = 13562.196;
+  YPos = 108.828;
+  ZPos = 26069.648;
+  OY = 0.000;
+  Length = 400;
+  Width = 400;
+  TextureIndex = 0;
+  FilterTrees = 1;
+}
+
+#end of file
