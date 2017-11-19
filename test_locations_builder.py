@@ -92,7 +92,7 @@ class TestLocationBuilder(unittest.TestCase):
         self.assertEqual(result, ldf)
 
     def test_locations_substrate(self):
-        """Обрабатываются локации ReferenceLocation"""
+        """Обрабатываются локации Substrate"""
         with pathlib.Path('./testdata/ldf/test_location_substrate.ldf').absolute().open() as stream:
             ldf = stream.read()
         builder = generation.LocationsBuilder(ldf_base=ldf)
@@ -100,7 +100,7 @@ class TestLocationBuilder(unittest.TestCase):
         self.assertEqual(result, ldf)
 
     def test_locations_terrain_leveler(self):
-        """Обрабатываются локации ReferenceLocation"""
+        """Обрабатываются локации TerrainLeveler"""
         with pathlib.Path('./testdata/ldf/test_location_terrain_leveler.ldf').absolute().open() as stream:
             ldf = stream.read()
         builder = generation.LocationsBuilder(ldf_base=ldf)
@@ -108,7 +108,7 @@ class TestLocationBuilder(unittest.TestCase):
         self.assertEqual(result, ldf)
 
     def test_locations_navigation(self):
-        """Обрабатываются локации ReferenceLocation"""
+        """Обрабатываются локации Navigation"""
         with pathlib.Path('./testdata/ldf/test_location_navigation.ldf').absolute().open() as stream:
             ldf = stream.read()
         builder = generation.LocationsBuilder(ldf_base=ldf)
