@@ -2,10 +2,6 @@
 import unittest
 import pathlib
 import generation
-from tests import mocks
-
-MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
-MGEN = mocks.MgenMock(MAIN)
 
 
 class TestLocation(unittest.TestCase):
