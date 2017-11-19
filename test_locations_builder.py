@@ -49,7 +49,6 @@ class TestLocationBuilder(unittest.TestCase):
             ldf = stream.read()
         builder = generation.LocationsBuilder(ldf_base=ldf)
         result = builder.make()
-        self.maxDiff = None
         self.assertEqual(result, ldf)
 
     def test_locations_air_objective(self):
@@ -114,7 +113,6 @@ class TestLocationBuilder(unittest.TestCase):
             ldf = stream.read()
         builder = generation.LocationsBuilder(ldf_base=ldf)
         result = builder.make()
-        self.maxDiff = None
         self.assertEqual(result, ldf)
 
 
