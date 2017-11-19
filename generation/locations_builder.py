@@ -197,7 +197,6 @@ air_objective_raw_re = re.compile(
 reference_location_raw_re = re.compile(
     '\nReferenceLocation\n\{[\n\sa-zA-Z0-9=;._ "]*\n\s*}'
 )
-
 substrate_raw_re = re.compile(
     '\nSubstrate\n\{[\n\sa-zA-Z0-9=;._ "]*\n\s*}'
 )
@@ -234,7 +233,6 @@ class LocationsBuilder:
                 self.locations[DECORATION].append(parse_decoration(match))
             for match in reference_location_raw_re.findall(ldf_base):
                 self.locations[REFERENCE_LOCATION].append(parse_reference_location(match))
-
             for match in substrate_raw_re.findall(ldf_base):
                 self.locations[SUBSTRATE].append(parse_substrate(match))
             for match in terrain_leveler_raw_re.findall(ldf_base):

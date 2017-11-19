@@ -1,28 +1,12 @@
 """Сборка бинарных файлов в scg и генерация миссий"""
-import re
 import subprocess
 import time
 import shutil
 
-from pathlib import Path
 from datetime import datetime
 from configs import Main, Mgen
 
 from .mission_files import MissionFiles
-
-
-airfields_raw_re = re.compile(
-    '\nAirfield\n\{[\n\sa-zA-Z0-9=;._ "]*\n\s*}'
-)
-decorations_raw_re = re.compile(
-    '\nDecoration\n\{[\n\sa-zA-Z0-9=;._ "]*\n\s*}'
-)
-ground_objective_raw_re = re.compile(
-    '\nGroundObjective\n\{[\n\sa-zA-Z0-9=;._ "]*\n\s*}'
-)
-air_objective_raw_re = re.compile(
-    '\nAirObjective\n\{[\n\sa-zA-Z0-9=;._ "]*\n\s*}'
-)
 
 
 class Generator:
@@ -86,95 +70,3 @@ class Generator:
         src_file = self.dogfight_folder.joinpath(src + suffix + mission)
         dst_file = self.msrc_directory.joinpath(src + mission)
         shutil.copyfile(str(src_file), str(dst_file))
-
-
-class Ldb:
-    """Класс для присвоения наций локациям в базе по заданным параметрам"""
-    def __init__(
-            self,
-            tvd_name: str,
-            areas: dict,
-            objective_nodes: list,
-            frontline: list,
-            main: Main,
-            mgen: Mgen):
-        """
-        :param tvd_name: имя ТВД для получения конфига локаций
-        :param areas: зоны влияния стран для покраски локаций
-        :param objective_nodes: активные узлы
-        :param frontline: линия фронта
-        """
-        folder = main.game_folder.joinpath(Path(mgen.cfg[tvd_name]['tvd_folder']))
-        self.ldf_file = folder.joinpath(mgen.cfg[tvd_name]['ldf_file'])
-        self.make_ldb_folder = mgen.make_ldb_folder
-        with folder.joinpath(mgen.cfg[tvd_name]['ldf_base_file']).open() as f:
-            self.ldf_base = f.read()
-        self.locations = {
-            'airfields': [],
-            'air_objectives_recons': [],
-            'ground_objectives': [],
-            'decorations': [],
-            'objective_nodes': []
-        }
-        for match in air_objective_raw_re.findall(self.ldf_base):
-            self.locations['air_objectives_recons'].append(AirObjectiveRecon(str(match)))
-        for match in ground_objective_raw_re.findall(self.ldf_base):
-            self.locations['ground_objectives'].append(
-                GroundObjectiveLocation(str(match), tvd_name, areas, frontline, objective_nodes, loc_cfg))
-        for match in decorations_raw_re.findall(self.ldf_base):
-            self.locations['decorations'].append(
-                DecorationLocation(str(match), tvd_name, areas, frontline, objective_nodes, loc_cfg))
-
-        for country in objective_nodes.keys():
-            for node in objective_nodes[country]:
-                self.locations['objective_nodes'].append(AirObjectiveLocation(node))
-                self.locations['objective_nodes'][-1].loc_country = country
-
-    @property
-    def text(self):
-        """Текст исходного файла базы локаций"""
-        text = '#1CGS Location Database file'
-        for k in self.locations:
-            for loc in self.locations[k]:
-                text += '\n\n{}'.format(loc)
-        text += '\n\n#end of file'
-        return text
-
-    def make(self):
-        """Записать текстовый файл базы локаций и скомпилировать бинарный файл с помощью make_ldb.exe"""
-        self.ldf_file.write_text(self.text)
-        args = [
-            str(self.make_ldb_folder.joinpath('.\\make_ldb.exe').absolute()),
-            str(self.ldf_file)
-        ]
-        # запуск утилиты make_ldb_folder
-        generator = subprocess.Popen(args, cwd=str(self.make_ldb_folder), stdout=subprocess.DEVNULL)
-        generator.wait()
-        time.sleep(3)
-
-
-class Divisions:
-    """Дивизии"""
-    def __init__(self, tvd_name, edges, main: Main, mgen: Mgen):
-        folder = main.game_folder.joinpath(Path(mgen.cfg[tvd_name]['tvd_folder']))
-        self.ldf_file = folder.joinpath(mgen.cfg[tvd_name]['ldf_file'])
-        self.divisions = []
-        for edge in edges:
-            self.divisions.append(Division(
-                edge,
-                mgen.cfg[tvd_name]['division_margin'],
-                mgen.cfg[tvd_name]['division_depth']
-            ))
-
-    @property
-    def text(self):
-        """Текст исходного файла базы локаций"""
-        text = '#1CGS Location Database file'
-        for division in self.divisions:
-            text += '\n\n{}'.format(division)
-        text += '\n\n#end of file'
-        return text
-
-    def make(self):
-        """Записать текстовый файл базы локаций и скомпилировать бинарный файл с помощью make_ldb.exe"""
-        self.ldf_file.write_text(self.text)
