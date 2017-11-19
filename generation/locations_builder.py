@@ -172,7 +172,10 @@ class LocationsBuilder:
             for match in reference_location_raw_re.findall(ldf_base):
                 self.locations[REFERENCE_LOCATION].append(parse_reference_location(match))
 
-    def add(self, x: float, z: float, country: int, name: str):
+    def add(self, name: str, x: float, z: float, country: int, y=0.0, oy=0.0, length=100, width=100):
         """Добавить локацию"""
         if name not in self.locations:
             raise NameError('Incorrect location name')
+        location = Location(name=name, x=x, z=z, y=y, oy=oy, length=length, width=width)
+        location.country = country
+        self.locations[name].append(location)

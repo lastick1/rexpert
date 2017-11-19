@@ -9,7 +9,7 @@ AIRFIELD = 'Airfield'
 DECORATION = 'Decoration'
 GROUND_OBJECTIVE = 'GroundObjective'
 REFERENCE_LOCATION = 'ReferenceLocation'
-TYPES = (AIR_OBJECTIVE, AIRFIELD, DECORATION, GROUND_OBJECTIVE, REFERENCE_LOCATION)
+LOCATION_TYPES = (AIR_OBJECTIVE, AIRFIELD, DECORATION, GROUND_OBJECTIVE, REFERENCE_LOCATION)
 
 RECON_FLIGHT = 'recon_flight'
 BOMBER_FLIGHT = 'bomber_flight'
@@ -173,7 +173,7 @@ class Location(geometry.Point):
                  width: float,
                  desc=''):
         super().__init__(x=x, z=z)
-        if name not in TYPES:
+        if name not in LOCATION_TYPES:
             raise NameError('Incorrect location name')
         self.name = name
         self.y = y
