@@ -33,7 +33,7 @@ airfield_format = """Airfield
 {{
   Name = "{0}";
   Index = 2;
-  LinkTrId = 5;
+  LinkTrId = 3;
   XPos = 0.000;
   YPos = 0.000;
   ZPos = 0.000;
