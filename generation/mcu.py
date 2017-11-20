@@ -5,9 +5,9 @@ from .formats import icon_text, influence_text
 
 
 class FrontLineIcon(Point):
+    """Класс иконки, из которых состоит линия фронта"""
     def __init__(self, _id, point, target=None):
         """
-        Класс иконки, из которых состоит линия фронта
         :param _id: ИД объекта MCU_Icon
         :param point: узел, иконки
         :param target: ИД следующей иконки в цепочке
@@ -26,8 +26,9 @@ class FrontLineIcon(Point):
 
 
 class InfluenceArea(Point):
+    """Класс зоны влияния, которая определяет принадлежность территории к какой-то стране"""
     def __init__(self, x: float, z: float, _id: int, boundary: list, country: int):
-        """Класс зоны влияния, которая определяет принадлежность территории к какой-то стране
+        """
         :param _id: ИД объекта MCU_TR_InfluenceArea
         :param boundary: список вершин многоугольника зоны (по часовой стрелке)
         :param country: страна, к которой относится территория зоны
