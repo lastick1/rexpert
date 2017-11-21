@@ -142,6 +142,9 @@ class TestBoundaryBuilder(unittest.TestCase):
         # Assert
         self.assertSequenceEqual(tuple(int(x.key) for x in result), expected_keys)
 
+    def test_confrontation_area_complex(self):
+        """Создаётся многоугольник западной прифронтовой полосы с длинным выступом"""
+        self.fail()
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
