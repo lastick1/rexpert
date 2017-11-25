@@ -20,13 +20,39 @@ class TestAirfield(unittest.TestCase):
         # act
         result = generation.Plane(10, common, uncommon)
         # assert
+        self.assertEqual(result.format(), expected)
+
+    def test_airfield_formatting(self):
+        """Сериализуется MCU аэродрома"""
+        expected = pathlib.Path(r'./testdata/mcu/airfield.txt').read_text(encoding='utf-8')
+        test_plane = 'lagg-3 ser.29'
+        common = PLANES.cfg[COMMON]
+        uncommon = PLANES.cfg[UNCOMMON][test_plane]
+        # act
+        result = generation.Airfield(
+            name='Airfield',
+            country=101,
+            radius=1000,
+            planes=[generation.Plane(10, common, uncommon)])
         self.maxDiff = None
         self.assertEqual(result.format(), expected)
 
-    def test_airfield_ctor(self):
-        """Создаётся класс MCU аэродрома"""
-        airfield = generation.Airfield(0, 0, 0, [], 0)
-        self.fail()
+    def test_airfield_formatting_two_planes(self):
+        """Сериализуется MCU аэродрома с 2мя самолётами"""
+        expected = pathlib.Path(r'./testdata/mcu/airfield_two_planes.txt').read_text(encoding='utf-8')
+        test_plane = 'lagg-3 ser.29'
+        common = PLANES.cfg[COMMON]
+        uncommon = PLANES.cfg[UNCOMMON][test_plane]
+        # act
+        result = generation.Airfield(
+            name='Airfield',
+            country=101,
+            radius=1000,
+            planes=[
+                generation.Plane(10, common, uncommon),
+                generation.Plane(10, common, uncommon)
+            ])
+        self.assertEqual(result.format(), expected)
 
 
 class TestAirfieldsBuilder(unittest.TestCase):

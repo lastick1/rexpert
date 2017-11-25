@@ -40,6 +40,7 @@ class Plane:
         return '{}: {}'.format(self.name, self.number)
 
     def format(self) -> str:
+        """Сформатировать в строку для MCU аэродрома"""
         return plane_format.format(
             self.common[SET_INDEX],
             self.number,

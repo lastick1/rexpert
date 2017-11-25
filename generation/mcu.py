@@ -1,7 +1,6 @@
 """Классы объектов миссии"""
-
 from geometry import Point
-from .formats import icon_text, influence_text
+from .formats import icon_text, influence_text, airfield_group_format
 
 
 class FrontLineIcon(Point):
@@ -45,7 +44,17 @@ class InfluenceArea(Point):
         return influence_text.format(self.id, float(self.x), float(self.z), self.country, boundary_text)
 
 
-class Airfield(Point):
+class Airfield:
     """Класс для генерации аэродрома"""
-    def __init__(self, x: float, z: float, _id: int, planes: list, country: int):
-        super().__init__(x=x, z=z)
+    def __init__(self, name: str, country: int, radius: int, planes: list):
+        self.name = name
+        self.country = country
+        self.planes = planes
+        self.radius = radius
+
+    def format(self) -> str:
+        """Сформатировать MCU"""
+        planes = ''
+        for plane in self.planes:
+            planes += plane.format()
+        return airfield_group_format.format(self.name, self.country, planes, self.radius)

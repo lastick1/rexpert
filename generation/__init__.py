@@ -7,4 +7,4 @@ from .influences import BoundaryBuilder
 from .locations_builder import LocationsBuilder
 from .locations import LOCATION_TYPES, Location
 from .mcu import Airfield
-from .planes import Plane
+from .plane import Plane

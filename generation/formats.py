@@ -30,7 +30,7 @@ plane_format = """    Plane
     }}
 """
 
-airfield_format = """Airfield
+airfield_group_format = """Airfield
 {{
   Name = "{0}";
   Index = 2;
@@ -53,7 +53,7 @@ airfield_format = """Airfield
   Callnum = 0;
   Planes
   {{
-  {}  }}
+{2}  }}
   ReturnPlanes = 1;
   Hydrodrome = 0;
   RepairFriendlies = 0;
@@ -62,8 +62,75 @@ airfield_format = """Airfield
   RepairTime = 0;
   RearmTime = 0;
   RefuelTime = 0;
-  MaintenanceRadius = {2};
-}}"""
+  MaintenanceRadius = {3};
+}}
+
+MCU_TR_Entity
+{{
+  Index = 3;
+  Name = "Airfield entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 0.000;
+  YPos = 0.000;
+  ZPos = 0.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 2;
+}}
+
+MCU_H_Input
+{{
+  Index = 5;
+  Name = "AF_MCU_INPUT_OBJECT";
+  Desc = "";
+  Targets = [];
+  Objects = [3];
+  XPos = 10.000;
+  YPos = 0.000;
+  ZPos = 0.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}}
+
+MCU_H_Input
+{{
+  Index = 6;
+  Name = "AF_MCU_INPUT_TARGET";
+  Desc = "";
+  Targets = [3];
+  Objects = [];
+  XPos = 0.000;
+  YPos = 0.000;
+  ZPos = 10.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}}
+
+MCU_H_ReferencePoint
+{{
+  Index = 10;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 0.000;
+  YPos = 0.000;
+  ZPos = 0.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 11;
+  Backward = 11;
+  Left = 11;
+  Right = 11;
+}}
+"""  # не двигать кавычки!
 
 decorations_format = """Decoration
 {{
