@@ -1,6 +1,6 @@
 """Форматы MCU в исходниках миссий"""
 
-plane_format = """Plane
+plane_format = """    Plane
     {{
       SetIndex = {0};
       Number = {1};
@@ -27,7 +27,8 @@ plane_format = """Plane
       AvPayloads = "{22}";
       Callsign = {23};
       Callnum = {24};
-    }}"""
+    }}
+"""
 
 airfield_format = """Airfield
 {{
@@ -51,7 +52,8 @@ airfield_format = """Airfield
   Callsign = 0;
   Callnum = 0;
   Planes
-  {}
+  {{
+  {}  }}
   ReturnPlanes = 1;
   Hydrodrome = 0;
   RepairFriendlies = 0;

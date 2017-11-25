@@ -30,6 +30,12 @@ class MgenMock(configs.Mgen):
         }
 
 
+class PlanesMock(configs.Planes):
+    """Заглушка конфига самолётов"""
+    def __init__(self):
+        super().__init__(path='.\\testdata\\planes.json')
+
+
 class ConsoleMock(rcon.DServerRcon):
     """Заглушка коммандера"""
 

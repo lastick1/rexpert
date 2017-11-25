@@ -1,9 +1,10 @@
-"Конфиг работы со статистикой"
+"""Конфиг работы со статистикой"""
 import json
 from .main import Main
 
+
 class Stats:
-    "Конфиг"
+    """Конфиг"""
     def __init__(self, main: Main):
         with open('.\\configs\\stats_custom.json') as stream:
             src = json.load(stream)

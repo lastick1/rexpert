@@ -1,0 +1,34 @@
+{
+  "planes": ["lagg-3 ser.29"],
+  "common": {
+    "SetIndex": 0,
+    "Number": -1,
+    "AILevel": 1,
+    "StartInAir": 2,
+    "Engageable": 1,
+    "Vulnerable": 1,
+    "LimitAmmo": 1,
+    "AIRTBDecision": 1,
+    "Renewable": 0,
+    "PayloadId": 0,
+    "WMMask": 1,
+    "Fuel": 1,
+    "RouteTime": 0,
+    "RenewTime": 1800,
+    "Altitude": 500,
+    "Spotter": -1,
+    "Skin": "",
+    "Callsign": 0,
+    "Callnum": 0
+  },
+  "uncommon": {
+    "lagg-3 ser.29": {
+      "Name": "",
+      "Model": "graphics\\planes\\lagg3s29\\lagg3s29.mgm",
+      "Script": "LuaScripts\\WorldObjects\\Planes\\lagg3s29.txt",
+      "AvMods": "",
+      "AvSkins": "",
+      "AvPayloads": ""
+    }
+  }
+}

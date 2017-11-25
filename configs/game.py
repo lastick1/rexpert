@@ -1,9 +1,11 @@
-"Настройки игрового процесса"
+"""Настройки игрового процесса"""
 import json
 
+
 class Gameplay:
-    "Класс настроек игрового процесса"
+    """Класс настроек игрового процесса"""
     _instances = 0
+
     def __init__(self):
         Gameplay._instances += 1
         if Gameplay._instances > 1:

@@ -1,15 +1,34 @@
 {
   "planes": [
-    "bf 109 e-7", "bf 109 f-2", "bf 109 f-4", "bf 109 g-2", "bf 109 g-4", "bf 110 e-2", "bf 110 g-2",
-    "fw 190 a-3", "fw 190 a-5",
-    "he 111 h-6", "he 111 h-16", "hs 129 b-2",
-    "i-16 type 24", "il-2 mod.1941", "il-2 mod.1942", "il-2 mod.1943",
-    "ju 52 3mg4e", "ju 87 d-3", "ju 88 a-4",
-    "la-5 ser.8", "lagg-3 ser.29",
-    "mc.202 ser.viii", "mig-3 ser.24",
-    "p-40e-1", "pe-2 ser.35", "pe-2 ser.87",
+    "bf 109 e-7",
+    "bf 109 f-2",
+    "bf 109 f-4",
+    "bf 109 g-2",
+    "bf 109 g-4",
+    "bf 110 e-2",
+    "bf 110 g-2",
+    "fw 190 a-3",
+    "fw 190 a-5",
+    "he 111 h-6",
+    "he 111 h-16",
+    "hs 129 b-2",
+    "i-16 type 24",
+    "il-2 mod.1941",
+    "il-2 mod.1942",
+    "il-2 mod.1943",
+    "ju 52 3mg4e",
+    "ju 87 d-3",
+    "ju 88 a-4",
+    "la-5 ser.8",
+    "lagg-3 ser.29",
+    "mc.202 ser.viii",
+    "mig-3 ser.24",
+    "p-40e-1",
+    "pe-2 ser.35",
+    "pe-2 ser.87",
     "spitfire mk.vb",
-    "yak-1 ser.69", "yak-1b ser.127"
+    "yak-1 ser.69",
+    "yak-1b ser.127"
   ],
   "common": {
     "SetIndex": 0,
@@ -28,13 +47,13 @@
     "RenewTime": 1800,
     "Altitude": 500,
     "Spotter": -1,
-    "Name": "",
     "Skin": "",
     "Callsign": 0,
     "Callnum": 0
   },
   "uncommon": {
     "bf 109 e-7": {
+      "Name": "",
       "Model": "graphics\\get_planes\\bf109e7\\bf109e7.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\bf109e7.txt",
       "AvMods": "",
@@ -42,6 +61,7 @@
       "AvPayloads": ""
     },
     "bf 109 f-2": {
+      "Name": "",
       "Model": "graphics\\get_planes\\bf109f2\\bf109f2.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\bf109f2.txt",
       "AvMods": "",
@@ -49,6 +69,7 @@
       "AvPayloads": ""
     },
     "bf 109 f-4": {
+      "Name": "",
       "Model": "graphics\\get_planes\\bf109f4\\bf109f4.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\bf109f4.txt",
       "AvMods": "",
@@ -56,6 +77,7 @@
       "AvPayloads": ""
     },
     "bf 109 g-2": {
+      "Name": "",
       "Model": "graphics\\get_planes\\bf109g2\\bf109g2.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\bf109g2.txt",
       "AvMods": "",
@@ -63,6 +85,7 @@
       "AvPayloads": ""
     },
     "bf 109 g-4": {
+      "Name": "",
       "Model": "graphics\\get_planes\\bf109g4\\bf109g4.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\bf109g4.txt",
       "AvMods": "",
@@ -70,6 +93,7 @@
       "AvPayloads": ""
     },
     "bf 110 e-2": {
+      "Name": "",
       "Model": "graphics\\get_planes\\bf110e2\\bf110e2.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\bf110e2.txt",
       "AvMods": "",
@@ -77,6 +101,7 @@
       "AvPayloads": ""
     },
     "bf 110 g-2": {
+      "Name": "",
       "Model": "graphics\\planes\\bf110g2\\bf110g2.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\bf110g2.txt",
       "AvMods": "",
@@ -84,6 +109,7 @@
       "AvPayloads": ""
     },
     "fw 190 a-3": {
+      "Name": "",
       "Model": "graphics\\get_planes\\fw190a3\\fw190a3.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\fw190a3.txt",
       "AvMods": "",
@@ -91,6 +117,7 @@
       "AvPayloads": ""
     },
     "fw 190 a-5": {
+      "Name": "",
       "Model": "graphics\\planes\\fw190a5\\fw190a5.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\fw190a5.txt",
       "AvMods": "",
@@ -98,6 +125,7 @@
       "AvPayloads": ""
     },
     "he 111 h-6": {
+      "Name": "",
       "Model": "graphics\\get_planes\\he111h6\\he111h6.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\he111h6.txt",
       "AvMods": "",
@@ -105,6 +133,7 @@
       "AvPayloads": ""
     },
     "he 111 h-16": {
+      "Name": "",
       "Model": "graphics\\planes\\he111h16\\he111h16.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\he111h16.txt",
       "AvMods": "",
@@ -112,6 +141,7 @@
       "AvPayloads": ""
     },
     "hs 129 b-2": {
+      "Name": "",
       "Model": "graphics\\planes\\hs129b2\\hs129b2.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\hs129b2.txt",
       "AvMods": "",
@@ -119,6 +149,7 @@
       "AvPayloads": ""
     },
     "i-16 type 24": {
+      "Name": "",
       "Model": "graphics\\planes\\i16t24\\i16t24.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\i16t24.txt",
       "AvMods": "",
@@ -126,6 +157,7 @@
       "AvPayloads": ""
     },
     "il-2 mod.1941": {
+      "Name": "",
       "Model": "graphics\\planes\\il2m41\\il2m41.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\il2m41.txt",
       "AvMods": "",
@@ -133,6 +165,7 @@
       "AvPayloads": ""
     },
     "il-2 mod.1942": {
+      "Name": "",
       "Model": "graphics\\planes\\il2m42\\il2m42.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\il2m42.txt",
       "AvMods": "",
@@ -140,6 +173,7 @@
       "AvPayloads": ""
     },
     "il-2 mod.1943": {
+      "Name": "",
       "Model": "graphics\\planes\\il2m43\\il2m43.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\il2m43.txt",
       "AvMods": "",
@@ -147,6 +181,7 @@
       "AvPayloads": ""
     },
     "ju 52 3mg4e": {
+      "Name": "",
       "Model": "graphics\\get_planes\\ju523mg4e\\ju523mg4e.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\ju523mg4e.txt",
       "AvMods": "",
@@ -154,6 +189,7 @@
       "AvPayloads": ""
     },
     "ju 87 d-3": {
+      "Name": "",
       "Model": "graphics\\get_planes\\ju87d3\\ju87d3.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\ju87d3.txt",
       "AvMods": "",
@@ -161,6 +197,7 @@
       "AvPayloads": ""
     },
     "ju 88 a-4": {
+      "Name": "",
       "Model": "graphics\\get_planes\\ju88a4\\ju88a4.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\ju88a4.txt",
       "AvMods": "",
@@ -168,6 +205,7 @@
       "AvPayloads": ""
     },
     "la-5 ser.8": {
+      "Name": "",
       "Model": "graphics\\planes\\la5s8\\la5s8.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\la5s8.txt",
       "AvMods": "",
@@ -175,6 +213,7 @@
       "AvPayloads": ""
     },
     "lagg-3 ser.29": {
+      "Name": "",
       "Model": "graphics\\planes\\lagg3s29\\lagg3s29.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\lagg3s29.txt",
       "AvMods": "",
@@ -182,6 +221,7 @@
       "AvPayloads": ""
     },
     "mc.202 ser.viii": {
+      "Name": "",
       "Model": "graphics\\get_planes\\mc202s8\\mc202s8.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\mc202s8.txt",
       "AvMods": "",
@@ -189,6 +229,7 @@
       "AvPayloads": ""
     },
     "mig-3 ser.24": {
+      "Name": "",
       "Model": "graphics\\planes\\mig3s24\\mig3s24.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\mig3s24.txt",
       "AvMods": "",
@@ -196,6 +237,7 @@
       "AvPayloads": ""
     },
     "p-40e-1": {
+      "Name": "",
       "Model": "graphics\\planes\\p40e1\\p40e1.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\p40e1.txt",
       "AvMods": "",
@@ -203,6 +245,7 @@
       "AvPayloads": ""
     },
     "pe-2 ser.35": {
+      "Name": "",
       "Model": "graphics\\planes\\pe2s35\\pe2s35.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\pe2s35.txt",
       "AvMods": "",
@@ -210,6 +253,7 @@
       "AvPayloads": ""
     },
     "pe-2 ser.87": {
+      "Name": "",
       "Model": "graphics\\planes\\pe2s87\\pe2s87.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\pe2s87.txt",
       "AvMods": "",
@@ -217,6 +261,7 @@
       "AvPayloads": ""
     },
     "spitfire mk.vb": {
+      "Name": "",
       "Model": "graphics\\planes\\spitfiremkvb\\spitfiremkvb.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\spitfiremkvb.txt",
       "AvMods": "",
@@ -224,6 +269,7 @@
       "AvPayloads": ""
     },
     "yak-1 ser.69": {
+      "Name": "",
       "Model": "graphics\\planes\\yak1s69\\yak1s69.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\yak1s69.txt",
       "AvMods": "",
@@ -231,6 +277,7 @@
       "AvPayloads": ""
     },
     "yak-1b ser.127": {
+      "Name": "",
       "Model": "graphics\\planes\\yak1s127\\yak1s127.mgm",
       "Script": "LuaScripts\\WorldObjects\\Planes\\yak1s127.txt",
       "AvMods": "",

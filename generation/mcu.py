@@ -47,5 +47,5 @@ class InfluenceArea(Point):
 
 class Airfield(Point):
     """Класс для генерации аэродрома"""
-    def __init__(self, x: float, z: float, _id: int, aircrafts: list, country: int):
+    def __init__(self, x: float, z: float, _id: int, planes: list, country: int):
         super().__init__(x=x, z=z)
