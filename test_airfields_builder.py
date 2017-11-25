@@ -11,7 +11,6 @@ class TestAirfield(unittest.TestCase):
         self.fail()
 
 
-
 class TestAirfieldsBuilder(unittest.TestCase):
     """Тестирование сборщика аэродромов"""
 
