@@ -143,7 +143,9 @@ class Tvd:
             101: east_influences,
             201: west_influences
         }
-        flg = FrontLineGroup(self.name, self.grid.border, areas, self.mgen)
+        flg = FrontLineGroup(
+            self.grid.border, areas, self.mgen.icons_group_files[self.name], self.mgen.cfg[self.name]['right_top']
+        )
         flg.make()
         print('... icons done')
 
