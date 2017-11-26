@@ -123,7 +123,7 @@ class Point:  # pylint: disable=C0103,C0111
             p1x, p1y = p2x, p2y
         return inside
 
-    def distance_to(self, x, z):
+    def distance_to(self, x: float, z: float):
         return ((self.x - x) ** 2 + (self.z - z) ** 2) ** .5
 
 

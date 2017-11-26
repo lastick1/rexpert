@@ -1,7 +1,6 @@
 """ Обработка игроков """
 import datetime
 from processing.player import Player, ID
-from processing.squad import Squad
 import rcon
 import pymongo
 from .objects import BotPilot
@@ -18,7 +17,7 @@ def _update_request_body(document: dict) -> dict:
 
 
 class PlayersController:
-    """ Контроллер обработки событий, связанных с игроками """
+    """Контроллер обработки событий, связанных с игроками"""
     def __init__(
             self,
             offline_mode: bool,
@@ -62,6 +61,7 @@ class PlayersController:
 
     def finish(self, bot: BotPilot):
         """Обработать конец вылета (деинициализация бота)"""
+        player = None
         changed = False
 
         has_kills = len(bot.aircraft.killboard) > 0
@@ -80,7 +80,7 @@ class PlayersController:
             player = self._get_player(bot)
             player.planes[bot.aircraft.type] -= 1
 
-        if changed:
+        if player and changed:
             self._update(player)
 
     def _get_player(self, bot: BotPilot) -> Player:

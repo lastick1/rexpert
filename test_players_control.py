@@ -1,4 +1,4 @@
-"Тестирование событий, связанных с игроками"
+"""Тестирование событий, связанных с игроками"""
 import unittest
 import datetime
 import pathlib
@@ -20,8 +20,9 @@ TEST_PLAYER = Player.create_document(TEST_ACCOUNT_ID)
 FILTER = {ID: TEST_ACCOUNT_ID}
 OBJECTS = Objects()
 
+
 class TestPlayersController(unittest.TestCase):
-    "Тесты событий с обработкой данных игроков"
+    """Тесты событий с обработкой данных игроков"""
     def setUp(self):
         self.mongo = pymongo.MongoClient(MAIN.mongo_host, MAIN.mongo_port)
         rexpert = self.mongo[DB_NAME]
@@ -39,7 +40,7 @@ class TestPlayersController(unittest.TestCase):
         self.players.update_one(_filter, {'$set': _player}, upsert=True)
 
     def test_connect_player_init(self):
-        "Инициализируется игрок на первом входе на сервер"
+        """Инициализируется игрок на первом входе на сервер"""
         # Act
         self.controller.connect(TEST_ACCOUNT_ID)
         document = self.players.find_one(FILTER)
@@ -47,7 +48,7 @@ class TestPlayersController(unittest.TestCase):
         self.assertNotEqual(None, document)
 
     def test_connect_player_check_ban(self):
-        "Отправляется команда бана забаненого пользователя через консоль"
+        """Отправляется команда бана забаненого пользователя через консоль"""
         # Arrange
         self._create(FILTER, TEST_PLAYER)
         date = datetime.datetime.now() + datetime.timedelta(days=1)
@@ -58,7 +59,7 @@ class TestPlayersController(unittest.TestCase):
         self.assertIn(TEST_ACCOUNT_ID, self.console_mock.banned)
 
     def test_player_initialization(self):
-        "Обновляется ник игрока на спауне"
+        """Обновляется ник игрока на спауне"""
         # Arrange
         self._create(FILTER, TEST_PLAYER)
         aircraft = Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
@@ -70,7 +71,7 @@ class TestPlayersController(unittest.TestCase):
         self.assertEqual(TEST_NICKNAME, player[NICKNAME])
 
     def test_spawn_player(self):
-        "Отправляется приветственное сообщение игроку на спауне"
+        """Отправляется приветственное сообщение игроку на спауне"""
         # Arrange
         self._create(FILTER, TEST_PLAYER)
         aircraft = Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
@@ -83,7 +84,7 @@ class TestPlayersController(unittest.TestCase):
             self.console_mock.received_private_messages)
 
     def test_multiple_spawn_nickname(self):
-        "Не добавляетcя лишний известный ник при неоднократном спауне"
+        """Не добавляетcя лишний известный ник при неоднократном спауне"""
         # Arrange
         self._create(FILTER, TEST_PLAYER)
         aircraft = Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
@@ -96,7 +97,7 @@ class TestPlayersController(unittest.TestCase):
         self.assertEqual([], document[KNOWN_NICKNAMES])
 
     def test_multiple_spawn_new_nick(self):
-        "Пополняются известные ники при спауне с новым ником"
+        """Пополняются известные ники при спауне с новым ником"""
         # Arrange
         self._create(FILTER, TEST_PLAYER)
         aircraft = Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
@@ -109,7 +110,7 @@ class TestPlayersController(unittest.TestCase):
         self.assertEqual([TEST_NICKNAME], document[KNOWN_NICKNAMES])
 
     def test_disconnect_player(self):
-        "Ставится статус offline при дисконнекте игрока"
+        """Ставится статус offline при дисконнекте игрока"""
         # Arrange
         self._create(FILTER, TEST_PLAYER)
         # Act
@@ -119,7 +120,7 @@ class TestPlayersController(unittest.TestCase):
         self.assertEqual(False, document[ONLINE])
 
     def test_give_unlock_for_damage(self):
-        "Даётся модификация за вылет с уроном"
+        """Даётся модификация за вылет с уроном"""
         # Arrange
         self._create(FILTER, TEST_PLAYER)
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
@@ -137,7 +138,7 @@ class TestPlayersController(unittest.TestCase):
         self.assertEqual(expect, document[UNLOCKS])
 
     def test_give_unlock_for_kill(self):
-        "Даётся модификация за вылет с килом"
+        """Даётся модификация за вылет с килом"""
         # Arrange
         self._create(FILTER, TEST_PLAYER)
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
@@ -154,7 +155,7 @@ class TestPlayersController(unittest.TestCase):
         self.assertEqual(expect, document[UNLOCKS])
 
     def test_dont_give_for_disco(self):
-        "Не даётся модификация за вылет с килом и диско"
+        """Не даётся модификация за вылет с килом и диско"""
         # Arrange
         self._create(FILTER, TEST_PLAYER)
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
@@ -172,7 +173,7 @@ class TestPlayersController(unittest.TestCase):
         self.assertEqual(expect, document[UNLOCKS])
 
     def test_dont_give_for_friendly(self):
-        "Не даётся модификация за вылет со стрельбой по своим"
+        """Не даётся модификация за вылет со стрельбой по своим"""
         # Arrange
         self._create(FILTER, TEST_PLAYER)
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
@@ -190,7 +191,7 @@ class TestPlayersController(unittest.TestCase):
         self.assertEqual(expect, document[UNLOCKS])
 
     def test_withdraw_plane_for_disco(self):
-        "Списывается повреждённый противником самолёт при диско в воздухе"
+        """Списывается повреждённый противником самолёт при диско в воздухе"""
         # Arrange
         self._create(FILTER, TEST_PLAYER)
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
@@ -208,7 +209,7 @@ class TestPlayersController(unittest.TestCase):
         self.assertEqual(expect, document[PLANES][aircraft.type])
 
     def test_stay_plane_for_disco_on_af(self):
-        "НЕ списывается повреждённый противником самолёт при диско на аэродроме"
+        """НЕ списывается повреждённый противником самолёт при диско на аэродроме"""
         # Arrange
         self._create(FILTER, TEST_PLAYER)
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
@@ -228,7 +229,7 @@ class TestPlayersController(unittest.TestCase):
         self.assertEqual(expect, document[PLANES][aircraft.type])
 
     def test_stay_plane_for_disco_ditch(self):
-        "Списывается повреждённый противником самолёт при диско на земле вне аэродрома"
+        """Списывается повреждённый противником самолёт при диско на земле вне аэродрома"""
         # Arrange
         self._create(FILTER, TEST_PLAYER)
         pos_aircraft = {'x': 100.0, 'y': 100.0, 'z': 200.0 + MAIN.airfield_radius}
@@ -247,6 +248,7 @@ class TestPlayersController(unittest.TestCase):
         # Assert
         document = self.players.find_one(FILTER)
         self.assertEqual(expect, document[PLANES][aircraft.type])
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
