@@ -15,7 +15,11 @@ def _get_group_file_name(x: float, z: float, folder: pathlib.Path) -> pathlib.Pa
 
 class AirfieldsBuilder:
     """Сборщик групп аэродромов"""
-    def __init__(self, airfields_groups_folders: dict, subtitle_groups_folder: pathlib.Path, airfield_radius: int, config: configs.Planes):
+    def __init__(self,
+                 airfields_groups_folders: dict,
+                 subtitle_groups_folder: pathlib.Path,
+                 airfield_radius: int,
+                 config: configs.Planes):
         self.planes_config = config.cfg
         self.airfield_radius = airfield_radius
         self.airfields_groups_folders = airfields_groups_folders
