@@ -1,5 +1,5 @@
 {
-  "planes": ["lagg-3 ser.29"],
+  "planes": ["lagg-3 ser.29", "bf 109 f-4"],
   "common": {
     "SetIndex": 0,
     "Number": -1,
@@ -28,7 +28,17 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\lagg3s29.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 101
+    },
+    "bf 109 f-4": {
+      "Name": "",
+      "Model": "graphics\\get_planes\\bf109f4\\bf109f4.mgm",
+      "Script": "LuaScripts\\WorldObjects\\Planes\\bf109f4.txt",
+      "AvMods": "",
+      "AvSkins": "",
+      "AvPayloads": "",
+      "country": 201
     }
   }
 }

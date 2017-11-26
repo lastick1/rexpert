@@ -8,3 +8,4 @@ from .locations_builder import LocationsBuilder
 from .locations import LOCATION_TYPES, Location
 from .mcu import Airfield
 from .plane import Plane
+from .airfields_builder import AirfieldsBuilder

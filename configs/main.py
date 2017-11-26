@@ -5,10 +5,7 @@ import configparser
 
 class Main:  # pylint: disable=R0903,R0902,C0301
     """Класс конфига"""
-    _instances = 0
-
     def __init__(self, path: Path):
-        Main._instances += 1
         src = configparser.ConfigParser()
         src.read(str(path.absolute()))
         self.game_folder = Path(src['PROGRAM']['game_folder']).absolute()

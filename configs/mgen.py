@@ -1,14 +1,12 @@
-"Парсер конфигов генерации миссий"
+"""Парсер конфигов генерации миссий"""
 from pathlib import Path
 import json
 from .main import Main
 
-class Mgen:
-    "Класс конфига генератора"
-    _instances = 0
 
+class Mgen:
+    """Класс конфига генератора"""
     def __init__(self, main: Main):
-        Mgen._instances += 1
         with open('.\\configs\\missiongen.json') as stream:
             src = json.load(stream)
         self.cfg = src
@@ -22,7 +20,7 @@ class Mgen:
         self.ldf_templates = {x: self.tvd_folders[x].joinpath(src[x]['ldf_base_file']).absolute()
                               for x in self.maps}
         self.daytime_files = {x: Path(Path('.\\configs\\').joinpath(src[x]['daytime_csv'])).absolute()
-                          for x in self.maps}
+                              for x in self.maps}
         self.af_groups_folders = {x: {z: self.tvd_folders[x].joinpath(src[x]['af_groups_folders'][z]).absolute()
                                       for z in src['sides']}
                                   for x in self.maps}
@@ -36,12 +34,14 @@ class Mgen:
         self.af_csv = {x: Path(Path('.\\configs\\').joinpath(src[x]['airfields_csv'])).absolute()
                        for x in self.maps}
 
+
 class LocationsConfig:
-    "Конфиг генерации базы локаций"
+    """Конфиг генерации базы локаций"""
     def __init__(self):
         self.cfg = json.load(open('.\\configs\\loc_cfg.json'))
 
+
 class GeneratorParamsConfig:
-    "Конфиг дефолтпарамсов"
+    """Конфиг дефолтпарамсов"""
     def __init__(self):
         self.cfg = json.load(open('.\\configs\\dfpr.json'))

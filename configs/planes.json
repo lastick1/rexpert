@@ -1,4 +1,5 @@
 {
+  "readme": "planes - играбельные самолёты, common - общие настройки самолётов, uncommon - детальные настройки самолётов",
   "planes": [
     "bf 109 e-7",
     "bf 109 f-2",
@@ -58,7 +59,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\bf109e7.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 201
     },
     "bf 109 f-2": {
       "Name": "",
@@ -66,7 +68,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\bf109f2.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 201
     },
     "bf 109 f-4": {
       "Name": "",
@@ -74,7 +77,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\bf109f4.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 201
     },
     "bf 109 g-2": {
       "Name": "",
@@ -82,7 +86,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\bf109g2.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 201
     },
     "bf 109 g-4": {
       "Name": "",
@@ -90,7 +95,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\bf109g4.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 201
     },
     "bf 110 e-2": {
       "Name": "",
@@ -98,7 +104,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\bf110e2.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 201
     },
     "bf 110 g-2": {
       "Name": "",
@@ -106,7 +113,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\bf110g2.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 201
     },
     "fw 190 a-3": {
       "Name": "",
@@ -114,7 +122,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\fw190a3.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 201
     },
     "fw 190 a-5": {
       "Name": "",
@@ -122,7 +131,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\fw190a5.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 201
     },
     "he 111 h-6": {
       "Name": "",
@@ -130,7 +140,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\he111h6.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 201
     },
     "he 111 h-16": {
       "Name": "",
@@ -138,7 +149,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\he111h16.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 201
     },
     "hs 129 b-2": {
       "Name": "",
@@ -146,7 +158,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\hs129b2.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 201
     },
     "i-16 type 24": {
       "Name": "",
@@ -154,7 +167,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\i16t24.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 101
     },
     "il-2 mod.1941": {
       "Name": "",
@@ -162,7 +176,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\il2m41.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 101
     },
     "il-2 mod.1942": {
       "Name": "",
@@ -170,7 +185,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\il2m42.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 101
     },
     "il-2 mod.1943": {
       "Name": "",
@@ -178,7 +194,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\il2m43.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 101
     },
     "ju 52 3mg4e": {
       "Name": "",
@@ -186,7 +203,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\ju523mg4e.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 201
     },
     "ju 87 d-3": {
       "Name": "",
@@ -194,7 +212,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\ju87d3.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 201
     },
     "ju 88 a-4": {
       "Name": "",
@@ -202,7 +221,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\ju88a4.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 201
     },
     "la-5 ser.8": {
       "Name": "",
@@ -210,7 +230,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\la5s8.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 101
     },
     "lagg-3 ser.29": {
       "Name": "",
@@ -218,7 +239,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\lagg3s29.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 101
     },
     "mc.202 ser.viii": {
       "Name": "",
@@ -226,7 +248,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\mc202s8.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 201
     },
     "mig-3 ser.24": {
       "Name": "",
@@ -234,7 +257,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\mig3s24.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 101
     },
     "p-40e-1": {
       "Name": "",
@@ -242,7 +266,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\p40e1.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 101
     },
     "pe-2 ser.35": {
       "Name": "",
@@ -250,7 +275,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\pe2s35.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 101
     },
     "pe-2 ser.87": {
       "Name": "",
@@ -258,7 +284,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\pe2s87.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 101
     },
     "spitfire mk.vb": {
       "Name": "",
@@ -266,7 +293,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\spitfiremkvb.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 101
     },
     "yak-1 ser.69": {
       "Name": "",
@@ -274,7 +302,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\yak1s69.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 101
     },
     "yak-1b ser.127": {
       "Name": "",
@@ -282,7 +311,8 @@
       "Script": "LuaScripts\\WorldObjects\\Planes\\yak1s127.txt",
       "AvMods": "",
       "AvSkins": "",
-      "AvPayloads": ""
+      "AvPayloads": "",
+      "country": 101
     }
   }
 }
