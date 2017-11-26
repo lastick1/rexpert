@@ -13,7 +13,7 @@ TEST_LOG4 = './testdata/gkills_with_disconnect_missionReport(2017-09-26_20-37-23
 TEST_LOG5 = './testdata/gkill_with_altf4_disco_missionReport(2017-09-26_21-10-48)[0].txt'
 DB_NAME = 'test_rexpert'
 
-MAIN = mocks.MainMock(pathlib.Path(r'.\testdata\conf.ini'))
+MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
 MGEN = mocks.MgenMock(MAIN)
 OBJECTS = Objects()
 

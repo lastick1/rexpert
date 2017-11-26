@@ -7,7 +7,7 @@ from generation import Xgml
 
 from tests import mocks, utils
 
-MAIN = mocks.MainMock(pathlib.Path(r'.\testdata\conf.ini'))
+MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
 MGEN = mocks.MgenMock(MAIN)
 
 STALIN = 'stalingrad'

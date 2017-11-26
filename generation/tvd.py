@@ -69,29 +69,31 @@ class Tvd:
         xgml.parse()
         self.grid = Grid(name, xgml.nodes, xgml.edges, mgen)
         # таблица аэродромов с координатами
-        self.airfields_data = tuple(
-            (lambda z:
-             {
-                 'name': z[0],
-                 'xpos': z[1],
-                 'zpos': z[2]
-             })(x.split(sep=';'))
-            for x in mgen.af_csv[name].open().readlines()
-        )
+        with mgen.af_csv[name].open() as stream:
+            self.airfields_data = tuple(
+                (lambda z:
+                 {
+                     'name': z[0],
+                     'xpos': z[1],
+                     'zpos': z[2]
+                 })(x.split(sep=';'))
+                for x in stream.readlines()
+            )
         # данные по сезонам из daytime.csv
-        self.seasons_data = tuple(
-            (lambda z:
-             {
-                 'start': z[0],
-                 'end': z[1],
-                 'sunrise': z[2],
-                 'sunset': z[3],
-                 'min_temp': int(z[4]),
-                 'max_temp': int(z[5]),
-                 'season_prefix': str(z[6]).rstrip()
-             })(x.split(sep=';'))
-            for x in mgen.daytime_files[name].open().readlines()
-        )
+        with mgen.daytime_files[name].open() as stream:
+            self.seasons_data = tuple(
+                (lambda z:
+                 {
+                     'start': z[0],
+                     'end': z[1],
+                     'sunrise': z[2],
+                     'sunset': z[3],
+                     'min_temp': int(z[4]),
+                     'max_temp': int(z[5]),
+                     'season_prefix': str(z[6]).rstrip()
+                 })(x.split(sep=';'))
+                for x in stream.readlines()
+            )
         self.stages = tuple(
             Stage(x, self.sides, mgen.af_templates_folder) for x in mgen.stages[name]
         )

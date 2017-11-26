@@ -5,7 +5,7 @@ import pymongo
 from processing import AirfieldsController
 from tests import mocks
 
-MAIN = mocks.MainMock(pathlib.Path(r'.\testdata\conf.ini'))
+MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
 DB_NAME = 'test_rexpert'
 TEST_TVD_NAME = 'test_tvd'
 TEST_FIELDS = pathlib.Path(r'./testdata/test_fields.csv')

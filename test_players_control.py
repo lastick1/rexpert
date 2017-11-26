@@ -11,7 +11,7 @@ from configs.objects import Objects
 from tests import mocks
 from tests import ConsoleMock
 
-MAIN = mocks.MainMock(pathlib.Path(r'.\testdata\conf.ini'))
+MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
 DB_NAME = 'test_rexpert'
 TEST_NICKNAME = '_test_nickname'
 TEST_ACCOUNT_ID = '_test_id1'

@@ -7,7 +7,7 @@ from processing import CampaignController
 
 DATE_FORMAT = '%d.%m.%Y'
 
-MAIN = mocks.MainMock(pathlib.Path(r'.\testdata\conf.ini'))
+MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
 MGEN = mocks.MgenMock(MAIN)
 
 
