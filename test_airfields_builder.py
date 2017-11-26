@@ -62,8 +62,15 @@ class TestAirfieldsBuilder(unittest.TestCase):
             generation.Plane(10, common, PLANES.cfg[UNCOMMON][TEST_PLANE_1]),
             generation.Plane(10, common, PLANES.cfg[UNCOMMON][TEST_PLANE_2])
         ]
-        builder = generation.AirfieldsBuilder({101: pathlib.Path(r'./tmp')}, 1000, PLANES)
+        builder = generation.AirfieldsBuilder({101: pathlib.Path(r'./tmp')}, pathlib.Path('r./tmp'), 1000, PLANES)
+        # act
         builder.make_airfield_group('test_airfield', 101, 25001.1, 25001.1, planes)
+
+    def test_make_subtitle_group(self):
+        """Создаётся координатная группа субтитров"""
+        builder = generation.AirfieldsBuilder({101: pathlib.Path(r'./tmp')}, pathlib.Path(r'./tmp'), 1000, PLANES)
+        # act
+        builder.make_subtitle_group('test_airfield', 24001.1, 24001.1, pathlib.Path(r'./templates/fields_sub.Group'))
 
 
 if __name__ == '__main__':
