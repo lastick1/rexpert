@@ -131,7 +131,6 @@ def sort_points_clockwise(points, middle_point) -> list:
     """Сортировка точек по часовой стрелке вокруг центра"""
     def cmp_to_key(mycmp):
         """Convert a cmp= function into a key= function"""
-
         class K:
             def __init__(self, obj, *args):
                 self.obj = obj

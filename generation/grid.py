@@ -70,7 +70,7 @@ class Grid:
         nodes = list(self.border_nodes)
         first = nodes.pop()
         result = [first]
-        while len(nodes):
+        while nodes:
             # пока список не опустеет, повторяем
             # вытаскиваем вершину с головы списка, добавляем её к концу или к началу результата
             # либо в конец списка

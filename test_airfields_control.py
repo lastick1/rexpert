@@ -33,6 +33,7 @@ class TestAirfieldsController(unittest.TestCase):
         self.assertEqual(result.name, 'Verbovka')
 
     def test_get_airfield_by_name(self):
+        """Определяется аэродром по его наименованию"""
         self.controller.initialize(TEST_TVD_NAME, TEST_FIELDS)
         result = self.controller.get_airfield_by_name(tvd_name=TEST_TVD_NAME, name='Verbovka')
         self.assertEqual(result.name, 'Verbovka')
