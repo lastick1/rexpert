@@ -47,7 +47,9 @@ class TestAirfieldsController(unittest.TestCase):
         result = self.controller.get_airfield_by_name(tvd_name=TEST_TVD_NAME, name=TEST_AIRFIELD_NAME)
         aircraft_name = 'Pe-2 ser.35'
         aircraft_key = PLANES.name_to_key(aircraft_name)
+        # Act
         self.controller.spawn(aircraft_name, TEST_TVD_NAME, Airfield(1, 101, 1, {'x': 112687, 'z': 184308}))
+        # Assert
         document = self.airfields.find_one({'_id': result.id})
         self.assertEqual(result.planes[aircraft_key], document['planes'][aircraft_key])
 
