@@ -42,16 +42,21 @@ class TestAirfieldsController(unittest.TestCase):
         # Assert
         self.assertEqual(result.name, 'Verbovka')
 
-    def test_decrease_planes(self):
+    def test_spawn_planes(self):
         """Уменьшается количество самолётов на аэродроме при появлении на нём"""
-        result = self.controller.get_airfield_by_name(tvd_name=TEST_TVD_NAME, name=TEST_AIRFIELD_NAME)
+        managed_airfield = self.controller.get_airfield_by_name(tvd_name=TEST_TVD_NAME, name=TEST_AIRFIELD_NAME)
         aircraft_name = 'Pe-2 ser.35'
         aircraft_key = PLANES.name_to_key(aircraft_name)
         # Act
         self.controller.spawn(aircraft_name, TEST_TVD_NAME, Airfield(1, 101, 1, {'x': 112687, 'z': 184308}))
         # Assert
-        document = self.airfields.find_one({'_id': result.id})
-        self.assertEqual(result.planes[aircraft_key], document['planes'][aircraft_key])
+        document = self.airfields.find_one({'_id': managed_airfield.id})
+        self.assertEqual(managed_airfield.planes[aircraft_key], document['planes'][aircraft_key])
+
+    def test_return_planes(self):
+        """Восполняется количество самолётов на аэродроме при возврате на него (деспаун)"""
+        managed_airfield = self.controller.get_airfield_by_name(tvd_name=TEST_TVD_NAME, name=TEST_AIRFIELD_NAME)
+        self.fail('not implemented')
 
 
 if __name__ == '__main__':
