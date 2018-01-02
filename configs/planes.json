@@ -1,5 +1,6 @@
 {
   "readme": "planes - играбельные самолёты, common - общие настройки самолётов, uncommon - детальные настройки самолётов",
+  "setup": "настройки вида '_property' - это конфигурация",
   "planes": [
     "bf 109 e-7",
     "bf 109 f-2",
@@ -60,7 +61,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 201
+      "country": 201,
+      "_default_number": 150
     },
     "bf 109 f-2": {
       "Name": "",
@@ -69,7 +71,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 201
+      "country": 201,
+      "_default_number": 150
     },
     "bf 109 f-4": {
       "Name": "",
@@ -78,7 +81,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 201
+      "country": 201,
+      "_default_number": 150
     },
     "bf 109 g-2": {
       "Name": "",
@@ -87,7 +91,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 201
+      "country": 201,
+      "_default_number": 150
     },
     "bf 109 g-4": {
       "Name": "",
@@ -96,7 +101,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 201
+      "country": 201,
+      "_default_number": 150
     },
     "bf 110 e-2": {
       "Name": "",
@@ -105,7 +111,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 201
+      "country": 201,
+      "_default_number": 150
     },
     "bf 110 g-2": {
       "Name": "",
@@ -114,7 +121,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 201
+      "country": 201,
+      "_default_number": 150
     },
     "fw 190 a-3": {
       "Name": "",
@@ -123,7 +131,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 201
+      "country": 201,
+      "_default_number": 150
     },
     "fw 190 a-5": {
       "Name": "",
@@ -132,7 +141,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 201
+      "country": 201,
+      "_default_number": 150
     },
     "he 111 h-6": {
       "Name": "",
@@ -141,7 +151,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 201
+      "country": 201,
+      "_default_number": 150
     },
     "he 111 h-16": {
       "Name": "",
@@ -150,7 +161,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 201
+      "country": 201,
+      "_default_number": 150
     },
     "hs 129 b-2": {
       "Name": "",
@@ -159,7 +171,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 201
+      "country": 201,
+      "_default_number": 150
     },
     "i-16 type 24": {
       "Name": "",
@@ -168,7 +181,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 101
+      "country": 101,
+      "_default_number": 150
     },
     "il-2 mod.1941": {
       "Name": "",
@@ -177,7 +191,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 101
+      "country": 101,
+      "_default_number": 150
     },
     "il-2 mod.1942": {
       "Name": "",
@@ -186,7 +201,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 101
+      "country": 101,
+      "_default_number": 150
     },
     "il-2 mod.1943": {
       "Name": "",
@@ -195,7 +211,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 101
+      "country": 101,
+      "_default_number": 150
     },
     "ju 52 3mg4e": {
       "Name": "",
@@ -204,7 +221,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 201
+      "country": 201,
+      "_default_number": 150
     },
     "ju 87 d-3": {
       "Name": "",
@@ -213,7 +231,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 201
+      "country": 201,
+      "_default_number": 150
     },
     "ju 88 a-4": {
       "Name": "",
@@ -222,7 +241,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 201
+      "country": 201,
+      "_default_number": 150
     },
     "la-5 ser.8": {
       "Name": "",
@@ -231,7 +251,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 101
+      "country": 101,
+      "_default_number": 150
     },
     "lagg-3 ser.29": {
       "Name": "",
@@ -240,7 +261,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 101
+      "country": 101,
+      "_default_number": 150
     },
     "mc.202 ser.viii": {
       "Name": "",
@@ -249,7 +271,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 201
+      "country": 201,
+      "_default_number": 150
     },
     "mig-3 ser.24": {
       "Name": "",
@@ -258,7 +281,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 101
+      "country": 101,
+      "_default_number": 150
     },
     "p-40e-1": {
       "Name": "",
@@ -267,7 +291,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 101
+      "country": 101,
+      "_default_number": 150
     },
     "pe-2 ser.35": {
       "Name": "",
@@ -276,7 +301,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 101
+      "country": 101,
+      "_default_number": 150
     },
     "pe-2 ser.87": {
       "Name": "",
@@ -285,7 +311,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 101
+      "country": 101,
+      "_default_number": 150
     },
     "spitfire mk.vb": {
       "Name": "",
@@ -294,7 +321,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 101
+      "country": 101,
+      "_default_number": 150
     },
     "yak-1 ser.69": {
       "Name": "",
@@ -303,7 +331,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 101
+      "country": 101,
+      "_default_number": 150
     },
     "yak-1b ser.127": {
       "Name": "",
@@ -312,7 +341,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 101
+      "country": 101,
+      "_default_number": 150
     }
   }
 }

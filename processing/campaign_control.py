@@ -16,6 +16,7 @@ class Mission:
 class CampaignController:
     """Контролеер"""
     def __init__(self, main: Main, mgen: Mgen, generator: Generator):
+        self.current_tvd = 'moscow'  # TODO убрать заглушку и реализовать свойство
         self._dogfight = main.dogfight_folder
         self.missions = list()
         self.main = main

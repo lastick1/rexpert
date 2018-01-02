@@ -1,9 +1,9 @@
 """Тестирование обработки событий"""
 import unittest
 import pathlib
-from processing import EventsController, PlayersController, CampaignController, GroundController
+from processing import EventsController, PlayersController, CampaignController, GroundController, AirfieldsController
 from tests import mocks
-from configs import Objects
+import configs
 import pymongo
 
 TEST_LOG1 = './testdata/spawn_takeoff_landing_despawn_missionReport(2017-09-17_09-05-09)[0].txt'
@@ -15,11 +15,16 @@ DB_NAME = 'test_rexpert'
 
 MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
 MGEN = mocks.MgenMock(MAIN)
-OBJECTS = Objects()
+PLANES = configs.Planes()
+OBJECTS = configs.Objects()
 
 
-class TestEventsController(unittest.TestCase):
-    """Тесты базовой обработки логов с новой базой на каждом тесте"""
+TEST_TVD_NAME = 'moscow'
+TEST_FIELDS = pathlib.Path(r'./configs/moscow_fields.csv')
+
+
+class TestIntegration(unittest.TestCase):
+    """Интеграционные тесты"""
     def setUp(self):
         """Настройка базы перед тестом"""
         self.mongo = pymongo.MongoClient(MAIN.mongo_host, MAIN.mongo_port)
@@ -28,6 +33,7 @@ class TestEventsController(unittest.TestCase):
         self.grounds = GroundController(OBJECTS)
         self.generator = mocks.GeneratorMock(MAIN, MGEN)
         self.players = PlayersController(True, console, rexpert['Players'], rexpert['Squads'])
+        self.airfields = AirfieldsController(MAIN, PLANES, rexpert['Airfields'])
         self.campaign = CampaignController(MAIN, MGEN, self.generator)
 
     def tearDown(self):
@@ -37,8 +43,8 @@ class TestEventsController(unittest.TestCase):
 
     def test_processing_with_atype_7(self):
         """Завершается корректно миссия с AType:7 в логе"""
-        # Arrange
-        controller = EventsController(OBJECTS, self.players, self.grounds, self.campaign, MAIN)
+        self.airfields.initialize(TEST_TVD_NAME, TEST_FIELDS)
+        controller = EventsController(OBJECTS, self.players, self.grounds, self.campaign, self.airfields, MAIN)
         # Act
         for line in pathlib.Path(TEST_LOG1).read_text().split('\n'):
             controller.process_line(line)
@@ -47,8 +53,8 @@ class TestEventsController(unittest.TestCase):
 
     def test_generate_next_with_atype_0(self):
         """Генерируется следующая миссия с AType:0 в логе"""
-        # Arrange
-        controller = EventsController(OBJECTS, self.players, self.grounds, self.campaign, MAIN)
+        self.airfields.initialize(TEST_TVD_NAME, TEST_FIELDS)
+        controller = EventsController(OBJECTS, self.players, self.grounds, self.campaign, self.airfields, MAIN)
         # Act
         for line in pathlib.Path(TEST_LOG1).read_text().split('\n'):
             controller.process_line(line)
@@ -58,13 +64,21 @@ class TestEventsController(unittest.TestCase):
 
     def test_bombing(self):
         """Учитываются наземные цели"""
-        # Arrange
-        controller = EventsController(OBJECTS, self.players, self.grounds, self.campaign, MAIN)
+        self.airfields.initialize(TEST_TVD_NAME, TEST_FIELDS)
+        controller = EventsController(OBJECTS, self.players, self.grounds, self.campaign, self.airfields, MAIN)
         # Act
         for line in pathlib.Path(TEST_LOG2).read_text().split('\n'):
             controller.process_line(line)
         # Assert
         self.assertGreater(len(controller.ground_controller.units), 0)
+
+    def test_take_off(self):
+        """Обрабатывается взлёт с аэродрома"""
+        self.fail('not implemented')
+
+    def test_landing(self):
+        """Обрабатывается возвращаение на аэродром"""
+        self.fail('not implemented')
 
     # TODO Отправляется предупреждение о запрете взлёта
     # TODO Отправляется команда кика при запрещённом взлёте

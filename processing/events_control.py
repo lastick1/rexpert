@@ -7,6 +7,7 @@ import configs
 from .players_control import PlayersController
 from .ground_control import GroundController
 from .campaign_control import CampaignController
+from .airfields_control import AirfieldsController
 from .objects import Aircraft, BotPilot, Airfield, Ground, Object, GROUND_CLASSES
 
 
@@ -18,6 +19,7 @@ class EventsController:
             players_controller: PlayersController,
             ground_controller: GroundController,
             campaign_controller: CampaignController,
+            airfields_controller: AirfieldsController,
             config: configs.Main
     ):
         """
@@ -32,6 +34,7 @@ class EventsController:
         self.players_controller = players_controller
         self.ground_controller = ground_controller
         self.campaign_controller = campaign_controller
+        self.airfields_controller = airfields_controller
         self.is_correctly_completed = False
         self.countries = dict()
         self.airfields = dict()
@@ -175,6 +178,7 @@ class EventsController:
         bot.update_pos(pos)
 
         self.players_controller.spawn(bot, account_id, name)
+        self.airfields_controller.spawn(aircraft_name, self.campaign_controller.current_tvd, self.airfields[airfield_id])
         self.update_tik(tik)
 
     def event_group(self, tik: int, group_id: int, members_id: int, leader_id: int) -> None:

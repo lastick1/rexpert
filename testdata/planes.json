@@ -1,5 +1,5 @@
 {
-  "planes": ["lagg-3 ser.29", "bf 109 f-4"],
+  "planes": ["lagg-3 ser.29", "bf 109 f-4", "pe-2 ser.35"],
   "common": {
     "SetIndex": 0,
     "Number": -1,
@@ -29,7 +29,8 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 101
+      "country": 101,
+      "_default_number": 150
     },
     "bf 109 f-4": {
       "Name": "",
@@ -38,7 +39,18 @@
       "AvMods": "",
       "AvSkins": "",
       "AvPayloads": "",
-      "country": 201
+      "country": 201,
+      "_default_number": 150
+    },
+    "pe-2 ser.35": {
+      "Name": "",
+      "Model": "graphics\\planes\\pe2s35\\pe2s35.mgm",
+      "Script": "LuaScripts\\WorldObjects\\Planes\\pe2s35.txt",
+      "AvMods": "",
+      "AvSkins": "",
+      "AvPayloads": "",
+      "country": 101,
+      "_default_number": 150
     }
   }
 }

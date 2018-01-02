@@ -7,7 +7,7 @@ from processing import PlayersController, Player
 from processing.player import ID, NICKNAME, KNOWN_NICKNAMES, ONLINE, BAN_DATE, UNLOCKS
 from processing.player import PLANES
 from processing.objects import Aircraft, BotPilot, Ground, Airfield
-from configs.objects import Objects
+import configs
 from tests import mocks
 from tests import ConsoleMock
 
@@ -18,7 +18,7 @@ TEST_ACCOUNT_ID = '_test_id1'
 TEST_PROFILE_ID = '_test_profile_id1'
 TEST_PLAYER = Player.create_document(TEST_ACCOUNT_ID)
 FILTER = {ID: TEST_ACCOUNT_ID}
-OBJECTS = Objects()
+OBJECTS = configs.Objects()
 
 
 class TestPlayersController(unittest.TestCase):
