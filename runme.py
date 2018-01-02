@@ -12,6 +12,7 @@ STATS = Stats(MAIN)
 PARAMS = GeneratorParamsConfig()
 LOCATIONS = LocationsConfig()
 
+
 def create_divisions_ldb():
     """Создать базу локаций, обозначающих расположения дивизий"""
     campaign = Campaign(MAIN, MGEN, STATS, LOCATIONS, PARAMS)

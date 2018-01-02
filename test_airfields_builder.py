@@ -2,6 +2,7 @@
 import unittest
 import pathlib
 import generation
+from generation import Airfield
 from tests.mocks import PlanesMock
 
 PLANES = PlanesMock()
@@ -55,22 +56,28 @@ class TestAirfield(unittest.TestCase):
 
 class TestAirfieldsBuilder(unittest.TestCase):
     """Тестирование сборщика аэродромов"""
+    def _get_planes(self) -> list:
+        """Получить тестовый список самолётов аэродрома"""
+        return [
+            generation.Plane(10, PLANES.cfg[COMMON], PLANES.cfg[UNCOMMON][TEST_PLANE_1]),
+            generation.Plane(10, PLANES.cfg[COMMON], PLANES.cfg[UNCOMMON][TEST_PLANE_2])
+        ]
+
     def test_make_airfield_group(self):
         """Создаётся координатная группа аэродрома"""
-        common = PLANES.cfg[COMMON]
-        planes = [
-            generation.Plane(10, common, PLANES.cfg[UNCOMMON][TEST_PLANE_1]),
-            generation.Plane(10, common, PLANES.cfg[UNCOMMON][TEST_PLANE_2])
-        ]
-        builder = generation.AirfieldsBuilder({101: pathlib.Path(r'./tmp')}, pathlib.Path('r./tmp'), 1000, PLANES)
+        planes = self._get_planes()
+        airfield = Airfield(name='test_af', country=101, radius=4000, planes=planes)
+        builder = generation.AirfieldsBuilder({101: pathlib.Path(r'./tmp')}, pathlib.Path('r./tmp'), PLANES)
         # act
-        builder.make_airfield_group('test_airfield', 101, 25001.1, 25001.1, planes)
+        builder.make_airfield_group(airfield, 25001.1, 25001.1)
 
     def test_make_subtitle_group(self):
         """Создаётся координатная группа субтитров"""
-        builder = generation.AirfieldsBuilder({101: pathlib.Path(r'./tmp')}, pathlib.Path(r'./tmp'), 1000, PLANES)
+        planes = self._get_planes()
+        builder = generation.AirfieldsBuilder({101: pathlib.Path(r'./tmp')}, pathlib.Path(r'./tmp'), PLANES)
+        airfield = Airfield(name='test_af', country=101, radius=4000, planes=planes)
         # act
-        builder.make_subtitle_group('test_airfield', 24001.1, 24001.1, pathlib.Path(r'./templates/fields_sub.Group'))
+        builder.make_subtitle_group(airfield, 24001.1, 24001.1, pathlib.Path(r'./templates/fields_sub.Group'))
 
 
 if __name__ == '__main__':
