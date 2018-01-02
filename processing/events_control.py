@@ -214,7 +214,7 @@ class EventsController:
         bot = self.objects_id_ref[bot_id]
         bot.update_pos(pos)
         self.players_controller.finish(bot)
-        self.airfields_controller.finish(bot)
+        self.airfields_controller.finish(self.campaign_controller.current_tvd, bot)
         self.update_tik(tik)
 
     def event_pos_changed(self, tik: int, object_id: int, pos: dict) -> None:

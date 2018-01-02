@@ -72,14 +72,6 @@ class TestIntegration(unittest.TestCase):
         # Assert
         self.assertGreater(len(controller.ground_controller.units), 0)
 
-    def test_take_off(self):
-        """Обрабатывается взлёт с аэродрома"""
-        self.fail('not implemented')
-
-    def test_landing(self):
-        """Обрабатывается возвращаение на аэродром"""
-        self.fail('not implemented')
-
     # TODO Отправляется предупреждение о запрете взлёта
     # TODO Отправляется команда кика при запрещённом взлёте
 
