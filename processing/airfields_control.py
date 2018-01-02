@@ -2,7 +2,7 @@
 import pathlib
 import pymongo
 import configs
-from processing.objects import Airfield
+from processing.objects import Airfield, BotPilot
 from .airfield import ManagedAirfield, ID, NAME, TVD_NAME, POS
 
 
@@ -97,3 +97,12 @@ class AirfieldsController:
         managed_airfield = self.get_airfield_in_radius(tvd_name, xpos, zpos, self.main.airfield_radius)
         managed_airfield.planes[configs.Planes.name_to_key(aircraft_name)] -= 1
         self._update(managed_airfield)
+
+    def finish(self, tvd_name: str, bot: BotPilot):
+        """Обработать деспаун самолёта на аэродроме"""
+        xpos = bot.aircraft.pos['x']
+        zpos = bot.aircraft.pos['z']
+        managed_airfield = self.get_airfield_in_radius(tvd_name, xpos, zpos, self.main.airfield_radius)
+        if managed_airfield:
+            managed_airfield.planes[configs.Planes.name_to_key(bot.aircraft.log_name)] += 1
+            self._update(managed_airfield)

@@ -2,8 +2,9 @@
 import unittest
 import pathlib
 import pymongo
+import configs
 from processing import AirfieldsController
-from processing.objects import Airfield
+from processing.objects import Airfield, BotPilot, Aircraft
 from tests import mocks
 
 MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
@@ -12,6 +13,7 @@ DB_NAME = 'test_rexpert'
 TEST_TVD_NAME = 'test_tvd'
 TEST_FIELDS = pathlib.Path(r'./testdata/test_fields.csv')
 TEST_AIRFIELD_NAME = 'Verbovka'
+OBJECTS = configs.Objects()
 
 
 class TestAirfieldsController(unittest.TestCase):
@@ -47,16 +49,31 @@ class TestAirfieldsController(unittest.TestCase):
         managed_airfield = self.controller.get_airfield_by_name(tvd_name=TEST_TVD_NAME, name=TEST_AIRFIELD_NAME)
         aircraft_name = 'Pe-2 ser.35'
         aircraft_key = PLANES.name_to_key(aircraft_name)
+        document = self.airfields.find_one({'_id': managed_airfield.id})
         # Act
         self.controller.spawn(aircraft_name, TEST_TVD_NAME, Airfield(1, 101, 1, {'x': 112687, 'z': 184308}))
         # Assert
+        self.assertEqual(managed_airfield.planes[aircraft_key], document['planes'][aircraft_key] - 1)
         document = self.airfields.find_one({'_id': managed_airfield.id})
         self.assertEqual(managed_airfield.planes[aircraft_key], document['planes'][aircraft_key])
 
     def test_return_planes(self):
         """Восполняется количество самолётов на аэродроме при возврате на него (деспаун)"""
+        aircraft_name = 'Pe-2 ser.35'
+        aircraft_key = PLANES.name_to_key(aircraft_name)
+        bot_name = 'BotPilot_Pe2'
         managed_airfield = self.controller.get_airfield_by_name(tvd_name=TEST_TVD_NAME, name=TEST_AIRFIELD_NAME)
-        self.fail('not implemented')
+        document = self.airfields.find_one({'_id': managed_airfield.id})
+        aircraft = Aircraft(
+            1, OBJECTS[aircraft_name], 101, 1, aircraft_name, pos={'x': managed_airfield.x, 'z': managed_airfield.z})
+        bot = BotPilot(
+            2, OBJECTS[bot_name], aircraft, 101, 1, bot_name, pos={'x': managed_airfield.x, 'z': managed_airfield.z})
+        # Act
+        self.controller.finish(TEST_TVD_NAME, bot)
+        # Assert
+        self.assertEqual(managed_airfield.planes[aircraft_key], document['planes'][aircraft_key] + 1)
+        document = self.airfields.find_one({'_id': managed_airfield.id})
+        self.assertEqual(managed_airfield.planes[aircraft_key], document['planes'][aircraft_key])
 
 
 if __name__ == '__main__':
