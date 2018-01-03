@@ -75,7 +75,7 @@ class BoundaryBuilder:
         return result
 
     def confrontation_east(self, grid: Grid) -> list:
-        """Построить вершины для западной прифронтовой зоны"""
+        """Построить вершины для восточной прифронтовой зоны"""
         border = grid.border
         result = self._make_chain(
             start=border[-1],

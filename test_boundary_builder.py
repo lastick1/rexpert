@@ -116,7 +116,7 @@ class TestBoundaryBuilder(unittest.TestCase):
         self.assertSequenceEqual(tuple(int(x.key) for x in result), expected_keys)
 
     def test_confrontation_area_east(self):
-        """Создаётся многоугольник западной прифронтовой полосы"""
+        """Создаётся многоугольник восточной прифронтовой полосы"""
         expected_keys = (7, 34, 35, 36, 46, 45, 40, 11, 1, 25, 41, 43, 44, 31, 32, 18, 6)
         builder = generation.BoundaryBuilder(self.north, self.east, self.south, self.west)
         grid = mocks.get_test_grid(MGEN)
@@ -126,7 +126,7 @@ class TestBoundaryBuilder(unittest.TestCase):
         self.assertSequenceEqual(tuple(int(x.key) for x in result), expected_keys)
 
     def test_confrontation_area_stalingrad_east(self):
-        """Создаётся многоугольник западной прифронтовой полосы"""
+        """Создаётся многоугольник восточной прифронтовой полосы"""
         xgml = Xgml(STALIN, MGEN)
         xgml.parse()
         expected_keys = (

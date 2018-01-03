@@ -1,5 +1,6 @@
 """Расчёт координат"""
 import math
+import utils
 
 
 def rotate(v, b, c):  # pylint: disable=C0103
@@ -129,32 +130,6 @@ class Point:  # pylint: disable=C0103,C0111
 
 def sort_points_clockwise(points, middle_point) -> list:
     """Сортировка точек по часовой стрелке вокруг центра"""
-    def cmp_to_key(mycmp):
-        """Convert a cmp= function into a key= function"""
-        class K:
-            def __init__(self, obj, *args):
-                self.obj = obj
-
-            def __lt__(self, other):
-                return mycmp(self.obj, other.obj) < 0
-
-            def __gt__(self, other):
-                return mycmp(self.obj, other.obj) > 0
-
-            def __eq__(self, other):
-                return mycmp(self.obj, other.obj) == 0
-
-            def __le__(self, other):
-                return mycmp(self.obj, other.obj) <= 0
-
-            def __ge__(self, other):
-                return mycmp(self.obj, other.obj) >= 0
-
-            def __ne__(self, other):
-                return mycmp(self.obj, other.obj) != 0
-
-        return K
-
     def comparator(lhs, rhs):
         lhs_angle = math.atan2(lhs.z - average_z, lhs.x - average_x)
         rhs_angle = math.atan2(rhs.z - average_z, rhs.x - average_x)
@@ -166,7 +141,7 @@ def sort_points_clockwise(points, middle_point) -> list:
 
     average_x = middle_point.x
     average_z = middle_point.z
-    return sorted(points, key=cmp_to_key(comparator))
+    return sorted(points, key=utils.cmp_to_key(comparator))
 
 
 def jarvis_march(array: list) -> list:

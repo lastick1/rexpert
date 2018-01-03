@@ -13,12 +13,15 @@ DB_NAME = 'test_rexpert'
 TEST_TVD_NAME = 'test_tvd'
 TEST_FIELDS = pathlib.Path(r'./testdata/test_fields.csv')
 TEST_AIRFIELD_NAME = 'Verbovka'
+TEST_AIRFIELD_X = 112687
+TEST_AIRFIELD_Z = 184308
 OBJECTS = configs.Objects()
 
 
 class TestAirfieldsController(unittest.TestCase):
     """Тестовый класс контроллера"""
     def setUp(self):
+        """Настройка базы перед тестом"""
         self.mongo = pymongo.MongoClient(MAIN.mongo_host, MAIN.mongo_port)
         rexpert = self.mongo[DB_NAME]
         self.airfields = rexpert['Airfields']
@@ -33,7 +36,8 @@ class TestAirfieldsController(unittest.TestCase):
     def test_get_airfield_in_radius(self):
         """Определяется аэродром в радиусе от координат"""
         # Act
-        result = self.controller.get_airfield_in_radius(tvd_name=TEST_TVD_NAME, x=112687, z=184308, radius=1000)
+        result = self.controller.get_airfield_in_radius(
+            tvd_name=TEST_TVD_NAME, x=TEST_AIRFIELD_X, z=TEST_AIRFIELD_Z, radius=1000)
         # Assert
         self.assertEqual(result.name, 'Verbovka')
 
@@ -51,7 +55,8 @@ class TestAirfieldsController(unittest.TestCase):
         aircraft_key = PLANES.name_to_key(aircraft_name)
         document = self.airfields.find_one({'_id': managed_airfield.id})
         # Act
-        self.controller.spawn(aircraft_name, TEST_TVD_NAME, Airfield(1, 101, 1, {'x': 112687, 'z': 184308}))
+        self.controller.spawn(
+            aircraft_name, TEST_TVD_NAME, Airfield(1, 101, 1, {'x': TEST_AIRFIELD_X, 'z': TEST_AIRFIELD_Z}))
         # Assert
         self.assertEqual(managed_airfield.planes[aircraft_key], document['planes'][aircraft_key] - 1)
         document = self.airfields.find_one({'_id': managed_airfield.id})

@@ -29,7 +29,7 @@ class AirfieldsController:
             airfields: pymongo.collection.Collection
     ):
         self.__airfields = airfields
-        self.airfields = dict()
+        self._airfields = dict()
         self.planes = config
         self.main = main
         self._loaded_tvds = set()
@@ -46,7 +46,7 @@ class AirfieldsController:
 
     def _load_by_tvd(self, tvd_name: str):
         """Загрузить аэродромы для ТВД из базы данных"""
-        self.airfields[tvd_name] = list(
+        self._airfields[tvd_name] = list(
             ManagedAirfield(
                 name=data[NAME],
                 tvd_name=data[TVD_NAME],
@@ -61,7 +61,7 @@ class AirfieldsController:
         """Получить аэродром по его координатам с заданным отклонением"""
         if tvd_name not in self._loaded_tvds:
             self._load_by_tvd(tvd_name=tvd_name)
-        for airfield in self.airfields[tvd_name]:
+        for airfield in self._airfields[tvd_name]:
             if airfield.distance_to(x=x, z=z) < radius:
                 return airfield
 
@@ -69,7 +69,7 @@ class AirfieldsController:
         """Получить аэродром по его координатам с заданным отклонением"""
         if tvd_name not in self._loaded_tvds:
             self._load_by_tvd(tvd_name=tvd_name)
-        for airfield in self.airfields[tvd_name]:
+        for airfield in self._airfields[tvd_name]:
             if airfield.name == name:
                 return airfield
 
@@ -106,3 +106,19 @@ class AirfieldsController:
         if managed_airfield:
             managed_airfield.planes[configs.Planes.name_to_key(bot.aircraft.log_name)] += 1
             self._update(managed_airfield)
+
+    def get_airfields(self, tvd_name: str) -> list:
+        """Получить аэродромы для указанного ТВД"""
+        if tvd_name in self._airfields:
+            return self._airfields[tvd_name]
+        self._airfields[tvd_name] = list(
+            ManagedAirfield(
+                name=data[NAME],
+                tvd_name=data[TVD_NAME],
+                x=float(data[POS]['x']),
+                z=float(data[POS]['z']),
+                planes=self._get_default_planes()
+            )
+            for data in self.__airfields.find(_filter_by_tvd(tvd_name=tvd_name))
+        )
+        return self._airfields[tvd_name]
