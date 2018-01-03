@@ -46,7 +46,8 @@ class BoundaryBuilder:
             {x for x in grid.get_neighbors_of(border_nodes) if x.country == country or x.related_country == country}
         )
 
-    def _foo(self, start: Node, end: Node, confrontation_nodes: set) -> list:
+    @staticmethod
+    def _make_chain(start: Node, end: Node, confrontation_nodes: set) -> list:
         """Построить цепочку, ограничивающую прифронтовую зону"""
         result = []
         while start not in end.neighbors:
@@ -65,7 +66,10 @@ class BoundaryBuilder:
     def confrontation_west(self, grid: Grid) -> list:
         """Построить вершины для западной прифронтовой зоны"""
         border = grid.border
-        result = self._foo(start=border[0], end=border[-1], confrontation_nodes=self.get_confrontation_nodes(grid, 201))
+        result = self._make_chain(
+            start=border[0],
+            end=border[-1],
+            confrontation_nodes=self.get_confrontation_nodes(grid, 201))
         result = border + result
         result.reverse()
         return result
@@ -73,7 +77,10 @@ class BoundaryBuilder:
     def confrontation_east(self, grid: Grid) -> list:
         """Построить вершины для западной прифронтовой зоны"""
         border = grid.border
-        result = self._foo(start=border[-1], end=border[0], confrontation_nodes=self.get_confrontation_nodes(grid, 101))
+        result = self._make_chain(
+            start=border[-1],
+            end=border[0],
+            confrontation_nodes=self.get_confrontation_nodes(grid, 101))
         result.reverse()
         result = result + border
         return result
