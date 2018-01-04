@@ -290,7 +290,7 @@ class TvdBuilder:
                         setting, params_config[season['season_prefix']][setting])
         weather_type = randint(*params_config[season['season_prefix']]['wtype_diapason'])
 
-        w_preset = WeatherPreset(presets[weather_type])
+        w_preset = generation.WeatherPreset(generation.presets[weather_type])
         # задаём параметры defaultparams в соответствии с конфигом
         for y in range(len(dfpr_lines)):
             if dfpr_lines[y].startswith('$date ='):
