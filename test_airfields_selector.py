@@ -68,7 +68,24 @@ class TestAirfieldsSelector(unittest.TestCase):
 
     def test_select_front(self):
         """Выбираются фронтовые аэродромы"""
-        self.fail('not implemented')
+        selector = generation.AirfieldsSelector(MAIN)
+        north = MGEN.cfg[MOSCOW]['right_top']['x']
+        east = MGEN.cfg[MOSCOW]['right_top']['z']
+        xgml = generation.Xgml(MOSCOW, MGEN)
+        xgml.parse()
+        grid = generation.Grid(MOSCOW, xgml.nodes, xgml.edges, MGEN)
+        boundary_builder = generation.BoundaryBuilder(north=north, east=east, south=0, west=0)
+        include = boundary_builder.confrontation_east(grid=grid)
+        airfields = self.controller.get_airfields(MOSCOW)
+        airfield1, airfield2 = (x for x in airfields if x.name in ('kholm', 'kalinin'))
+        airfield1.planes[TEST_AIRCRAFT_KEY] += 10
+        airfield2.supplies -= 40
+        # Act
+        result = selector.select_front(front_area=include, airfields=airfields)
+        # Assert
+        self.assertEqual(3, len(result))
+        self.assertIn(airfield1, result)
+        self.assertIn(airfield2, result)
 
 
 if __name__ == '__main__':
