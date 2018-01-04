@@ -3,12 +3,19 @@
 import unittest
 import pathlib
 import random
+
+import pymongo
+
 import generation
+import processing
 from tests import mocks, utils
 
 MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
 MGEN = mocks.MgenMock(MAIN)
+PLANES = mocks.PlanesMock()
+MOSCOW_FIELDS = pathlib.Path(r'./configs/moscow_fields.csv')
 
+DB_NAME = 'test_rexpert'
 MOSCOW = 'moscow'
 STALIN = 'stalingrad'
 KUBAN = 'kuban'
@@ -141,24 +148,40 @@ class TestNode(unittest.TestCase):
 
 class TestTvd(unittest.TestCase):
     """Тесты ТВД"""
+    def setUp(self):
+        """Настройка БД"""
+        self.mongo = pymongo.MongoClient(MAIN.mongo_host, MAIN.mongo_port)
+        rexpert = self.mongo[DB_NAME]
+        self.airfields = rexpert['Airfields']
 
     def test_influences_moscow(self):
-        """Генерируются зоны влияния филдов"""
+        """Генерируются зоны влияния филдов Москвы"""
         xgml = generation.Xgml(MOSCOW, MGEN)
         xgml.parse()
         MGEN.icons_group_files[MOSCOW] = pathlib.Path('./tmp/FL_icon_moscow.Group').absolute()
-        tvd = generation.Tvd(MOSCOW, '10.11.1942', MGEN, MAIN, None, None)
+        tvd = generation.TvdBuilder(MOSCOW, '10.11.1942', MGEN, MAIN, None, None)
         tvd.update_icons()
         self.assertEqual(True, True)
 
     def test_influences_stalin(self):
-        """Генерируются зоны влияния филдов"""
+        """Генерируются зоны влияния филдов Сталинграда"""
         xgml = generation.Xgml(STALIN, MGEN)
         xgml.parse()
         MGEN.icons_group_files[STALIN] = pathlib.Path('./tmp/FL_icon_stalin.Group').absolute()
-        tvd = generation.Tvd(STALIN, '10.11.1942', MGEN, MAIN, None, None)
+        tvd = generation.TvdBuilder(STALIN, '10.11.1942', MGEN, MAIN, None, None)
         tvd.update_icons()
-        self.assertEqual(True, True)
+
+    def test_airfields(self):
+        """Генерируются координатные группы аэродромов"""
+        controller = processing.AirfieldsController(main=MAIN, config=PLANES, airfields=self.airfields)
+        controller.initialize(MOSCOW, MOSCOW_FIELDS)
+        airfields = controller.get_airfields(MOSCOW)
+        xgml = generation.Xgml(MOSCOW, MGEN)
+        xgml.parse()
+        tvd = generation.TvdBuilder(MOSCOW, '10.11.1941', MGEN, MAIN, None, None)
+        red = list(x for x in airfields if x.name in ('kholm', 'kalinin', 'alferevo', 'ruza'))
+        blue = list(x for x in airfields if x.name in ('losinki', 'lotoshino', 'migalovo', 'karpovo'))
+        tvd.update_airfields(red, blue)
 
 
 if __name__ == '__main__':

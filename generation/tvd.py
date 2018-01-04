@@ -11,15 +11,15 @@ from .weather import presets, WeatherPreset
 from .xgml_io import Xgml
 import configs
 
-date_format = '%d.%m.%Y'
+DATE_FORMAT = '%d.%m.%Y'
 default_af_cache = {'moscow': '30.09.2016', 'stalingrad': '30.09.2016'}
 
 
 class Stage:
     def __init__(self, raw, sides, af_templates_folder):
         """Класс этапа кампании, для которого создаются группы аэродромов с заданными самолётами"""
-        self.start = datetime.datetime.strptime(raw['start'], date_format)
-        self.end = datetime.datetime.strptime(raw['end'], date_format)
+        self.start = datetime.datetime.strptime(raw['start'], DATE_FORMAT)
+        self.end = datetime.datetime.strptime(raw['end'], DATE_FORMAT)
         self.id = int(raw['id'])
         self.af_templates = dict()
         for side in sides:
@@ -36,9 +36,9 @@ class Boundary(Point):
         self.polygon = polygon
 
 
-class Tvd:
+class TvdBuilder:
+    """Класс подготовки папки ТВД, в которой лежат ресурсы для генерации миссии"""
     def __init__(self, name, date, mgen: configs.Mgen, main: configs.Main, loc_cfg: configs.LocationsConfig, params: configs.GeneratorParamsConfig):
-        """Класс театра военных действий (ТВД) кампании, для которого генерируются миссии"""
         self.name = name
         self.main = main
         self.mgen = mgen
@@ -57,7 +57,7 @@ class Tvd:
         west = 0 - offset
         self.boundary_builder = BoundaryBuilder(north=north, east=east, south=south, west=west)
 
-        self.date = datetime.datetime.strptime(date, date_format)
+        self.date = datetime.datetime.strptime(date, DATE_FORMAT)
         self.id = mgen.cfg[name]['tvd']
         folder = main.game_folder.joinpath(Path(mgen.cfg[name]['tvd_folder']))
         self.default_params_file = folder.joinpath(mgen.cfg[name]['default_params_dest'])
@@ -68,17 +68,6 @@ class Tvd:
         xgml = Xgml(name, mgen)
         xgml.parse()
         self.grid = Grid(name, xgml.nodes, xgml.edges, mgen)
-        # таблица аэродромов с координатами
-        with mgen.af_csv[name].open() as stream:
-            self.airfields_data = tuple(
-                (lambda z:
-                 {
-                     'name': z[0],
-                     'xpos': z[1],
-                     'zpos': z[2]
-                 })(x.split(sep=';'))
-                for x in stream.readlines()
-            )
         # данные по сезонам из daytime.csv
         with mgen.daytime_files[name].open() as stream:
             self.seasons_data = tuple(
@@ -107,7 +96,7 @@ class Tvd:
             datetime.datetime.now().strftime("%H:%M:%S"),
             self.tvd_folder,
             self.name,
-            self.date_next.strftime(date_format)
+            self.date_next.strftime(DATE_FORMAT)
         ))
         if self.is_ended:
             print('WARNING! Updating ended TVD: {}'.format(self.name))
@@ -164,7 +153,7 @@ class Tvd:
         ldf.make()
         print('... LDB done')
 
-    def update_airfields(self):
+    def update_airfields(self, red_airfields: list, blue_airfields: list):
         """Генерация групп аэродромов для ТВД"""
         print('[{}] generating airfields groups...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
         m_date_cache_file = Path(r'.\cache\airfields.json')
@@ -172,7 +161,7 @@ class Tvd:
             m_date_cache_file.write_text(json.dumps(default_af_cache), encoding='utf-8')
         cache_data = json.load(m_date_cache_file.open())
         # with m_date_cache_file.open(mode='r') as f:
-        cached_date = datetime.datetime.strptime(cache_data[self.name], date_format)
+        cached_date = datetime.datetime.strptime(cache_data[self.name], DATE_FORMAT)
 
         d = datetime.timedelta(seconds=1)
         for side in self.sides:
@@ -184,7 +173,7 @@ class Tvd:
                 if self.date_next + d in stage:
                     if cached_date in stage:
                         print('... airfields generation skipped - same airfields generated already [{}]'.format(
-                            cached_date.strftime(date_format)))
+                            cached_date.strftime(DATE_FORMAT)))
                         return
                     template_group = stage.af_templates[side]
                     print('... dated plane set [{}]'.format(side))
@@ -195,7 +184,7 @@ class Tvd:
                 group.rename('!x{}z{}'.format(row['xpos'], row['zpos']))
                 group.replace_content('!AFNAME!', row['name'].title())
 
-        cache_data[self.name] = self.date_next.strftime(date_format)
+        cache_data[self.name] = self.date_next.strftime(DATE_FORMAT)
         m_date_cache_file.write_text(json.dumps(cache_data), encoding='utf-8')
 
     def date_day_duration(self, date):
@@ -291,7 +280,7 @@ class Tvd:
         wind_direction0000 = randint(0, 360)
         wind_power0000 = randint(0, 2)
 
-        date = Tvd.random_datetime(*self.date_next_day_duration)
+        date = TvdBuilder.random_datetime(*self.date_next_day_duration)
         season = self.date_next_season_data
         # Случайная температура для сезона
         temperature = randint(season['min_temp'], season['max_temp'])
@@ -307,7 +296,7 @@ class Tvd:
         # задаём параметры defaultparams в соответствии с конфигом
         for y in range(len(dfpr_lines)):
             if dfpr_lines[y].startswith('$date ='):
-                dfpr_lines[y] = '$date = {}\n'.format(date.strftime(date_format))
+                dfpr_lines[y] = '$date = {}\n'.format(date.strftime(DATE_FORMAT))
             elif dfpr_lines[y].startswith('$time ='):
                 dfpr_lines[y] = '$time = {}\n'.format(date.strftime('%H:%M:%S'))
             elif dfpr_lines[y].startswith('$seasonprefix ='):

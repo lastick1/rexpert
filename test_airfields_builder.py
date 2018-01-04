@@ -56,7 +56,8 @@ class TestAirfield(unittest.TestCase):
 
 class TestAirfieldsBuilder(unittest.TestCase):
     """Тестирование сборщика аэродромов"""
-    def _get_planes(self) -> list:
+    @staticmethod
+    def _get_planes() -> list:
         """Получить тестовый список самолётов аэродрома"""
         return [
             generation.Plane(10, PLANES.cfg[COMMON], PLANES.cfg[UNCOMMON][TEST_PLANE_1]),

@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 import processing
 import rcon
-from generation import Tvd
+from generation import TvdBuilder
 from configs import Main, Mgen, Stats, LocationsConfig, GeneratorParamsConfig
 date_format = '%d.%m.%Y'
 
@@ -209,7 +209,7 @@ class Campaign:
         self.main = main
         self.mgen = mgen
         self.params = params
-        self.tvds = {x: Tvd(x, self.data[x]['current_date'], mgen, main, loc_cfg, params) for x in mgen.maps}
+        self.tvds = {x: TvdBuilder(x, self.data[x]['current_date'], mgen, main, loc_cfg, params) for x in mgen.maps}
         self.generations = dict()
         self.captures = dict()
         self._saved_plans = set()
