@@ -5,6 +5,14 @@ from .mcu import Airfield
 from .groups import AirfieldGroup, Group
 
 
+CONVERT_KEY = {
+    101: 'red',
+    201: 'blue',
+    'red': 'red',
+    'blue': 'blue'
+}
+
+
 def _format_name(x: float, z: float) -> str:
     return '!x{0:.0f}z{1:.0f}'.format(x, z)
 
@@ -25,7 +33,7 @@ class AirfieldsBuilder:
 
     def make_airfield_group(self, airfield: Airfield, x: float, z: float) -> AirfieldGroup:
         """Создать координатную группу аэродрома"""
-        group_file = _get_group_file_name(x=x, z=z, folder=self.airfields_groups_folders[airfield.country])
+        group_file = _get_group_file_name(x=x, z=z, folder=self.airfields_groups_folders[CONVERT_KEY[airfield.country]])
         result = AirfieldGroup(airfield.format(), group_file)
         result.make()
         return result

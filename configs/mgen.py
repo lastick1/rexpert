@@ -24,6 +24,7 @@ class Mgen:
         self.af_groups_folders = {x: {z: self.tvd_folders[x].joinpath(src[x]['af_groups_folders'][z]).absolute()
                                       for z in src['sides']}
                                   for x in self.maps}
+        self.subtitle_groups_folder = Path('r./tmp')
         self.stages = {x: src[x]['stages'] for x in self.maps}
         self.default_stages = {x: {z: self.af_templates_folder.joinpath(src[x]['default_templates'][z]).absolute()
                                    for z in src['sides']}

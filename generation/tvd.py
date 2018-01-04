@@ -3,13 +3,10 @@ import datetime
 from pathlib import Path
 from random import randint
 
-from geometry import Point
-from .influences import BoundaryBuilder
-from .grid import Grid
-from .groups import Group, FrontLineGroup
-from .weather import presets, WeatherPreset
-from .xgml_io import Xgml
+import geometry
+import generation
 import configs
+import processing
 
 DATE_FORMAT = '%d.%m.%Y'
 default_af_cache = {'moscow': '30.09.2016', 'stalingrad': '30.09.2016'}
@@ -29,7 +26,7 @@ class Stage:
         return self.start <= item < self.end
 
 
-class Boundary(Point):
+class Boundary(geometry.Point):
     """Класс зоны влияния"""
     def __init__(self, x: float, z: float, polygon: list):
         super().__init__(x=x, z=z)
@@ -38,12 +35,22 @@ class Boundary(Point):
 
 class TvdBuilder:
     """Класс подготовки папки ТВД, в которой лежат ресурсы для генерации миссии"""
-    def __init__(self, name, date, mgen: configs.Mgen, main: configs.Main, loc_cfg: configs.LocationsConfig, params: configs.GeneratorParamsConfig):
+    def __init__(
+            self,
+            name,
+            date,
+            mgen: configs.Mgen,
+            main: configs.Main,
+            loc_cfg: configs.LocationsConfig,
+            params: configs.GeneratorParamsConfig,
+            planes: configs.Planes
+    ):
         self.name = name
         self.main = main
         self.mgen = mgen
         self.loc_cfg = loc_cfg
         self.params = params
+        self.planes = planes
         self.sides = mgen.cfg['sides']
         self.default_stages = mgen.default_stages[name]
         self.af_groups_folders = mgen.af_groups_folders[name]
@@ -55,7 +62,8 @@ class TvdBuilder:
         east = self.mgen.cfg[name]['right_top']['z'] + offset
         south = 0 - offset
         west = 0 - offset
-        self.boundary_builder = BoundaryBuilder(north=north, east=east, south=south, west=west)
+        self.boundary_builder = generation.BoundaryBuilder(north=north, east=east, south=south, west=west)
+        self.airfields_builder = generation.AirfieldsBuilder(self.af_groups_folders, mgen.subtitle_groups_folder, planes)
 
         self.date = datetime.datetime.strptime(date, DATE_FORMAT)
         self.id = mgen.cfg[name]['tvd']
@@ -65,9 +73,9 @@ class TvdBuilder:
             mgen.cfg[name]['default_params_source'])
         self.icons_group_file = folder.joinpath(mgen.cfg[name]['icons_group_file'])
         self.right_top = mgen.cfg[name]['right_top']
-        xgml = Xgml(name, mgen)
+        xgml = generation.Xgml(name, mgen)
         xgml.parse()
-        self.grid = Grid(name, xgml.nodes, xgml.edges, mgen)
+        self.grid = generation.Grid(name, xgml.nodes, xgml.edges, mgen)
         # данные по сезонам из daytime.csv
         with mgen.daytime_files[name].open() as stream:
             self.seasons_data = tuple(
@@ -134,7 +142,7 @@ class TvdBuilder:
             101: east_influences,
             201: west_influences
         }
-        flg = FrontLineGroup(
+        flg = generation.FrontLineGroup(
             self.grid.border, areas, self.mgen.icons_group_files[self.name], self.mgen.cfg[self.name]['right_top']
         )
         flg.make()
@@ -156,36 +164,26 @@ class TvdBuilder:
     def update_airfields(self, red_airfields: list, blue_airfields: list):
         """Генерация групп аэродромов для ТВД"""
         print('[{}] generating airfields groups...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
-        m_date_cache_file = Path(r'.\cache\airfields.json')
-        if not m_date_cache_file.exists():
-            m_date_cache_file.write_text(json.dumps(default_af_cache), encoding='utf-8')
-        cache_data = json.load(m_date_cache_file.open())
-        # with m_date_cache_file.open(mode='r') as f:
-        cached_date = datetime.datetime.strptime(cache_data[self.name], DATE_FORMAT)
+        for airfield in red_airfields:
+            data = self._convert_airfield(airfield, 101)
+            self.airfields_builder.make_airfield_group(data, airfield.x, airfield.z)
+        for airfield in blue_airfields:
+            data = self._convert_airfield(airfield, 201)
+            self.airfields_builder.make_airfield_group(data, airfield.x, airfield.z)
 
-        d = datetime.timedelta(seconds=1)
-        for side in self.sides:
-            folder = self.af_groups_folders[side]
-            # шаблон по-умолчанию
-            template_group = self.default_stages[side]
-            # ищем период для текущей даты ТВД
-            for stage in self.stages:
-                if self.date_next + d in stage:
-                    if cached_date in stage:
-                        print('... airfields generation skipped - same airfields generated already [{}]'.format(
-                            cached_date.strftime(DATE_FORMAT)))
-                        return
-                    template_group = stage.af_templates[side]
-                    print('... dated plane set [{}]'.format(side))
-                    break
-            for row in self.airfields_data:
-                group = Group(template_group)
-                group.clone_to(folder)
-                group.rename('!x{}z{}'.format(row['xpos'], row['zpos']))
-                group.replace_content('!AFNAME!', row['name'].title())
+    def _convert_airfield(self, airfield: processing.ManagedAirfield, country: int) -> generation.Airfield:
+        """Конвертировать тип управляемого аэродрома в тип генерируемого аэродрома"""
+        def find_plane_in_config(config: dict, key_name: str, number: int) -> generation.Plane:
+            """Найти соответствующий самолёт в конфиге для генерации аэродрома"""
+            for name in config['uncommon']:
+                if self.planes.name_to_key(name) == key_name:
+                    return generation.Plane(number, config['common'], config['uncommon'][name])
+            raise NameError('Plane {} not found in config'.format(key_name))
 
-        cache_data[self.name] = self.date_next.strftime(DATE_FORMAT)
-        m_date_cache_file.write_text(json.dumps(cache_data), encoding='utf-8')
+        planes = list()
+        for key in airfield.planes:
+            planes.append(find_plane_in_config(self.planes.cfg, key, airfield.planes[key]))
+        return generation.Airfield(airfield.name, country, self.main.airfield_radius, planes)
 
     def date_day_duration(self, date):
         """Рассвет и закат для указанной даты"""

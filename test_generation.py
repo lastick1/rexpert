@@ -159,7 +159,7 @@ class TestTvd(unittest.TestCase):
         xgml = generation.Xgml(MOSCOW, MGEN)
         xgml.parse()
         MGEN.icons_group_files[MOSCOW] = pathlib.Path('./tmp/FL_icon_moscow.Group').absolute()
-        tvd = generation.TvdBuilder(MOSCOW, '10.11.1942', MGEN, MAIN, None, None)
+        tvd = generation.TvdBuilder(MOSCOW, '10.11.1942', MGEN, MAIN, None, None, PLANES)
         tvd.update_icons()
         self.assertEqual(True, True)
 
@@ -168,7 +168,7 @@ class TestTvd(unittest.TestCase):
         xgml = generation.Xgml(STALIN, MGEN)
         xgml.parse()
         MGEN.icons_group_files[STALIN] = pathlib.Path('./tmp/FL_icon_stalin.Group').absolute()
-        tvd = generation.TvdBuilder(STALIN, '10.11.1942', MGEN, MAIN, None, None)
+        tvd = generation.TvdBuilder(STALIN, '10.11.1942', MGEN, MAIN, None, None, PLANES)
         tvd.update_icons()
 
     def test_airfields(self):
@@ -178,7 +178,7 @@ class TestTvd(unittest.TestCase):
         airfields = controller.get_airfields(MOSCOW)
         xgml = generation.Xgml(MOSCOW, MGEN)
         xgml.parse()
-        tvd = generation.TvdBuilder(MOSCOW, '10.11.1941', MGEN, MAIN, None, None)
+        tvd = generation.TvdBuilder(MOSCOW, '10.11.1941', MGEN, MAIN, None, None, PLANES)
         red = list(x for x in airfields if x.name in ('kholm', 'kalinin', 'alferevo', 'ruza'))
         blue = list(x for x in airfields if x.name in ('losinki', 'lotoshino', 'migalovo', 'karpovo'))
         tvd.update_airfields(red, blue)

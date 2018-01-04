@@ -29,6 +29,11 @@ class MgenMock(configs.Mgen):
             'kuban': pathlib.Path(r'./testdata/kuban.xgml'),
             'test': pathlib.Path(r'./testdata/test_w4f.xgml')
         }
+        folders = {'red': pathlib.Path(r'./tmp/red/'), 'blue': pathlib.Path(r'./tmp/blue/')}
+        self.af_groups_folders = {
+            'moscow': folders,
+            'stalingrad': folders
+        }
 
 
 class PlanesMock(configs.Planes):
