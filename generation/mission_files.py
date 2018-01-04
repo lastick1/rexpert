@@ -7,8 +7,8 @@ from pathlib import Path
 
 
 class MissionFiles:
+    """Класс миссии в файловой системе, для перемещения и переименования файлов миссии"""
     def __init__(self, mission_file: Path, game_folder: Path, resaver_folder: Path):
-        """Класс миссии в файловой системе, для перемещения и переименования файлов миссии"""
         tmp = mission_file.absolute()
         self.files = {
             'Mission': tmp,

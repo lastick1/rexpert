@@ -44,7 +44,7 @@ class TestLocationBuilder(unittest.TestCase):
         with pathlib.Path('./testdata/ldf/test_locations.ldf').absolute().open() as stream:
             ldf = stream.read()
         builder = generation.LocationsBuilder(ldf_base=ldf)
-        result = builder.make()
+        result = builder.make_text()
         self.assertEqual(result, ldf)
 
     def test_locations_air_objective(self):
@@ -52,7 +52,7 @@ class TestLocationBuilder(unittest.TestCase):
         with pathlib.Path('./testdata/ldf/test_location_air_objective.ldf').absolute().open() as stream:
             ldf = stream.read()
         builder = generation.LocationsBuilder(ldf_base=ldf)
-        result = builder.make()
+        result = builder.make_text()
         self.assertEqual(result, ldf)
 
     def test_locations_airfield(self):
@@ -60,7 +60,7 @@ class TestLocationBuilder(unittest.TestCase):
         with pathlib.Path('./testdata/ldf/test_location_airfield.ldf').absolute().open() as stream:
             ldf = stream.read()
         builder = generation.LocationsBuilder(ldf_base=ldf)
-        result = builder.make()
+        result = builder.make_text()
         self.assertEqual(result, ldf)
 
     def test_locations_decoration(self):
@@ -68,7 +68,7 @@ class TestLocationBuilder(unittest.TestCase):
         with pathlib.Path('./testdata/ldf/test_location_decoration.ldf').absolute().open() as stream:
             ldf = stream.read()
         builder = generation.LocationsBuilder(ldf_base=ldf)
-        result = builder.make()
+        result = builder.make_text()
         self.assertEqual(result, ldf)
 
     def test_locations_ground_objective(self):
@@ -76,7 +76,7 @@ class TestLocationBuilder(unittest.TestCase):
         with pathlib.Path('./testdata/ldf/test_location_ground_objective.ldf').absolute().open() as stream:
             ldf = stream.read()
         builder = generation.LocationsBuilder(ldf_base=ldf)
-        result = builder.make()
+        result = builder.make_text()
         self.assertEqual(result, ldf)
 
     def test_locations_reference_location(self):
@@ -84,7 +84,7 @@ class TestLocationBuilder(unittest.TestCase):
         with pathlib.Path('./testdata/ldf/test_location_reference_location.ldf').absolute().open() as stream:
             ldf = stream.read()
         builder = generation.LocationsBuilder(ldf_base=ldf)
-        result = builder.make()
+        result = builder.make_text()
         self.assertEqual(result, ldf)
 
     def test_locations_substrate(self):
@@ -92,7 +92,7 @@ class TestLocationBuilder(unittest.TestCase):
         with pathlib.Path('./testdata/ldf/test_location_substrate.ldf').absolute().open() as stream:
             ldf = stream.read()
         builder = generation.LocationsBuilder(ldf_base=ldf)
-        result = builder.make()
+        result = builder.make_text()
         self.assertEqual(result, ldf)
 
     def test_locations_terrain_leveler(self):
@@ -100,7 +100,7 @@ class TestLocationBuilder(unittest.TestCase):
         with pathlib.Path('./testdata/ldf/test_location_terrain_leveler.ldf').absolute().open() as stream:
             ldf = stream.read()
         builder = generation.LocationsBuilder(ldf_base=ldf)
-        result = builder.make()
+        result = builder.make_text()
         self.assertEqual(result, ldf)
 
     def test_locations_navigation(self):
@@ -108,7 +108,7 @@ class TestLocationBuilder(unittest.TestCase):
         with pathlib.Path('./testdata/ldf/test_location_navigation.ldf').absolute().open() as stream:
             ldf = stream.read()
         builder = generation.LocationsBuilder(ldf_base=ldf)
-        result = builder.make()
+        result = builder.make_text()
         self.assertEqual(result, ldf)
 
 

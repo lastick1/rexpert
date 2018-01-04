@@ -42,6 +42,11 @@ class PlanesMock(configs.Planes):
         super().__init__(path='.\\testdata\\planes.json')
 
 
+class ParamsMock(configs.GeneratorParamsConfig):
+    def __init__(self):
+        super().__init__()
+
+
 class ConsoleMock(rcon.DServerRcon):
     """Заглушка коммандера"""
 

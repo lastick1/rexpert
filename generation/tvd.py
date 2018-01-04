@@ -1,4 +1,5 @@
 import datetime
+import pathlib
 from pathlib import Path
 from random import randint
 
@@ -27,13 +28,41 @@ class Stage:
 
 class Boundary(geometry.Point):
     """Класс зоны влияния"""
+
     def __init__(self, x: float, z: float, polygon: list):
         super().__init__(x=x, z=z)
         self.polygon = polygon
 
 
+class Tvd:
+    """Настройки ТВД для генерации миссии"""
+
+    def __init__(
+            self,
+            name: str,
+            folder: str,
+            date: str,
+            right_top: dict,
+            icons_group_file: pathlib.Path
+    ):
+        self.name = name  # имя твд
+        self.folder = folder  # папка твд
+        self.date = datetime.datetime.strptime(date, DATE_FORMAT)  # дата миссии
+        self.right_top = right_top  # правый верхний угол карты
+        self.icons_group_file = icons_group_file  # файл группы иконок
+        self.border = list()  # упорядоченный список узлов линии фронта
+        self.confrontation_east = list()  # восточная прифронтовая зона
+        self.confrontation_west = list()  # западная прифронтовая зона
+        self.influences = dict()  # инфлюенсы СССР и Германии
+        self.red_front_airfields = list()  # советские аэродромы в миссии
+        self.red_rear_airfield = None  # советский тыловой аэродром в миссии
+        self.blue_front_airfields = list()  # немецкие аэродромы в миссии
+        self.blue_rear_airfield = None  # немецкий тыловой аэродром в миссии
+
+
 class TvdBuilder:
     """Класс подготовки папки ТВД, в которой лежат ресурсы для генерации миссии"""
+
     def __init__(
             self,
             name,
@@ -42,7 +71,8 @@ class TvdBuilder:
             main: configs.Main,
             loc_cfg: configs.LocationsConfig,
             params: configs.GeneratorParamsConfig,
-            planes: configs.Planes
+            planes: configs.Planes,
+            airfields_controller: processing.AirfieldsController
     ):
         self.name = name
         self.main = main
@@ -53,8 +83,10 @@ class TvdBuilder:
         self.sides = mgen.cfg['sides']
         self.default_stages = mgen.default_stages[name]
         self.af_groups_folders = mgen.af_groups_folders[name]
-        self.ldf_file = mgen.cfg[name]['ldf_file']
+        self.ldf_file = mgen.ldf_files[name]
+        self.ldf_template = mgen.ldf_templates[name]
         self.tvd_folder = mgen.cfg[name]['tvd_folder']
+        self.airfields_controller = airfields_controller
 
         offset = 10000
         north = self.mgen.cfg[name]['right_top']['x'] + offset
@@ -62,7 +94,9 @@ class TvdBuilder:
         south = 0 - offset
         west = 0 - offset
         self.boundary_builder = generation.BoundaryBuilder(north=north, east=east, south=south, west=west)
-        self.airfields_builder = generation.AirfieldsBuilder(self.af_groups_folders, mgen.subtitle_groups_folder, planes)
+        self.airfields_builder = generation.AirfieldsBuilder(self.af_groups_folders, mgen.subtitle_groups_folder,
+                                                             planes)
+        self.airfields_selector = generation.AirfieldsSelector(main=main)
 
         self.date = datetime.datetime.strptime(date, DATE_FORMAT)
         self.id = mgen.cfg[name]['tvd']
@@ -78,16 +112,15 @@ class TvdBuilder:
         # данные по сезонам из daytime.csv
         with mgen.daytime_files[name].open() as stream:
             self.seasons_data = tuple(
-                (lambda z:
-                 {
-                     'start': z[0],
-                     'end': z[1],
-                     'sunrise': z[2],
-                     'sunset': z[3],
-                     'min_temp': int(z[4]),
-                     'max_temp': int(z[5]),
-                     'season_prefix': str(z[6]).rstrip()
-                 })(x.split(sep=';'))
+                (lambda z: {
+                    'start': z[0],
+                    'end': z[1],
+                    'sunrise': z[2],
+                    'sunset': z[3],
+                    'min_temp': int(z[4]),
+                    'max_temp': int(z[5]),
+                    'season_prefix': str(z[6]).rstrip()
+                })(x.split(sep=';'))
                 for x in stream.readlines()
             )
         self.stages = tuple(
@@ -97,81 +130,104 @@ class TvdBuilder:
     def capture(self, x, z, coal_id):
         self.grid.capture(x, z, coal_id)
 
-    def update(self):
-        """Обновление групп, баз локаций и файла параметров генерации в папке ТВД (data/scg/x)"""
-        print('[{}] Updating TVD folder: {} ({}) {}'.format(
-            datetime.datetime.now().strftime("%H:%M:%S"),
-            self.tvd_folder,
+    def get_tvd(self):
+        """Построить объект настроек ТВД"""
+        tvd = Tvd(
             self.name,
-            self.date_next.strftime(DATE_FORMAT)
-        ))
-        if self.is_ended:
-            print('WARNING! Updating ended TVD: {}'.format(self.name))
-        self.verify_grid()
-        self.update_icons()
-        self.update_ldb()
-        self.update_airfields()
-        self.randomize_defaultparams(self.params.cfg[self.name])
-
-    def verify_grid(self):
-        """Проверка и самопочинка графа"""
-        # TODO доделать
-        if not self.grid.border_nodes:
-            # self.grid.restore_neutral_line()
-            pass
-
-    def update_icons(self):
-        """Обновление группы иконок в соответствии с положением ЛФ"""
-        print('[{}] generating icons group...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
-        border = self.grid.border
+            self.tvd_folder,
+            self.date_next.strftime(DATE_FORMAT),
+            self.mgen.cfg[self.name]['right_top'],
+            self.mgen.icons_group_files[self.name]
+        )
+        tvd.border = self.grid.border
         nodes = self.grid.nodes_list
-        influence_east = self.boundary_builder.influence_east(border)
-        influence_west = self.boundary_builder.influence_west(border)
-        confrontation_east = self.boundary_builder.confrontation_east(self.grid)
-        confrontation_west = self.boundary_builder.confrontation_west(self.grid)
+        influence_east = self.boundary_builder.influence_east(tvd.border)
+        influence_west = self.boundary_builder.influence_west(tvd.border)
+        tvd.confrontation_east = self.boundary_builder.confrontation_east(self.grid)
+        tvd.confrontation_west = self.boundary_builder.confrontation_west(self.grid)
         east_boundary = Boundary(influence_east[0].x, influence_east[0].z, influence_east)
         west_boundary = Boundary(influence_west[0].x, influence_west[0].z, influence_west)
         east_influences = list(Boundary(node.x, node.z, node.neighbors_sorted) for node in nodes if node.country == 101)
         west_influences = list(Boundary(node.x, node.z, node.neighbors_sorted) for node in nodes if node.country == 201)
         east_influences.append(east_boundary)
         west_influences.append(west_boundary)
-        east_influences.append(Boundary(confrontation_east[0].x, confrontation_east[0].z, confrontation_east))
-        west_influences.append(Boundary(confrontation_west[0].x, confrontation_west[0].z, confrontation_west))
-        areas = {
-            101: east_influences,
-            201: west_influences
-        }
-        flg = generation.FrontLineGroup(
-            self.grid.border, areas, self.mgen.icons_group_files[self.name], self.mgen.cfg[self.name]['right_top']
-        )
+        east_influences.append(
+            Boundary(tvd.confrontation_east[0].x, tvd.confrontation_east[0].z, tvd.confrontation_east))
+        west_influences.append(
+            Boundary(tvd.confrontation_west[0].x, tvd.confrontation_west[0].z, tvd.confrontation_west))
+        if self.main.special_influences:
+            areas = {
+                101: east_influences,
+                201: west_influences
+            }
+        else:
+            areas = {
+                101: [east_boundary],
+                201: [west_boundary]
+            }
+        tvd.influences = areas
+        return tvd
+
+    def update(self):
+        """Обновление групп, баз локаций и файла параметров генерации в папке ТВД (data/scg/x)"""
+        tvd = self.get_tvd()
+        print('[{}] Updating TVD folder: {} ({}) {}'.format(
+            datetime.datetime.now().strftime("%H:%M:%S"),
+            tvd.folder,
+            tvd.name,
+            tvd.date.strftime(DATE_FORMAT)
+        ))
+        self.update_icons(tvd)
+        airfields = self.airfields_controller.get_airfields(tvd.name)
+        tvd.red_front_airfields.extend(self.airfields_selector.select_front(tvd.confrontation_east, airfields))
+        tvd.blue_front_airfields.extend(self.airfields_selector.select_front(tvd.confrontation_west, airfields))
+        tvd.red_rear_airfield = self.airfields_selector.select_rear(
+                influence=tvd.influences[101][0].polygon,
+                front_area=tvd.confrontation_east,
+                airfields=airfields
+            )
+        tvd.blue_rear_airfield = self.airfields_selector.select_rear(
+                influence=tvd.influences[201][0].polygon,
+                front_area=tvd.confrontation_west,
+                airfields=airfields
+            )
+        self.update_airfields(tvd)
+        self.update_ldb(tvd)
+        self.randomize_defaultparams(self.params.cfg[self.name])
+
+    @staticmethod
+    def update_icons(tvd: Tvd):
+        """Обновление группы иконок в соответствии с положением ЛФ"""
+        print('[{}] generating icons group...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
+        flg = generation.FrontLineGroup(tvd.border, tvd.influences, tvd.icons_group_file, tvd.right_top)
         flg.make()
         print('... icons done')
 
-    def update_ldb(self):
+    def update_ldb(self, tvd: Tvd):
         """Обновление базы локаций до актуального состояния"""
         print('[{}] generating Locations Data Base (LDB)...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
-        border = self.grid.border
-        areas = {
-            101: self.boundary_builder.influence_east(border),
-            201: self.boundary_builder.influence_west(border)
-        }
-        # TODO добавить модуль, который будет отвечать за выбор аэродромов и их глобальное состояние
-        ldf = Ldb(self.name, areas, self.grid.scenarios, self.grid.border_nodes, self.main, self.mgen, self.loc_cfg)
-        ldf.make()
+        with self.ldf_template.open() as stream:
+            ldf = stream.read()
+        builder = generation.LocationsBuilder(ldf_base=ldf)
+        builder.paint(tvd)
+        ldf_text = builder.make_text()
+        with Path(self.ldf_file).open(mode='w') as stream:
+            stream.write(ldf_text)
         print('... LDB done')
 
-    def update_airfields(self, red_airfields: list, blue_airfields: list):
+    def update_airfields(self, tvd: Tvd):
         """Генерация групп аэродромов для ТВД"""
         print('[{}] generating airfields groups...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
-        for airfield in red_airfields:
+        for airfield in tvd.red_front_airfields + [tvd.red_rear_airfield]:
             data = self._convert_airfield(airfield, 101)
             self.airfields_builder.make_airfield_group(data, airfield.x, airfield.z)
-        for airfield in blue_airfields:
+        for airfield in tvd.blue_front_airfields + [tvd.blue_rear_airfield]:
             data = self._convert_airfield(airfield, 201)
             self.airfields_builder.make_airfield_group(data, airfield.x, airfield.z)
 
     def _convert_airfield(self, airfield: processing.ManagedAirfield, country: int) -> generation.Airfield:
         """Конвертировать тип управляемого аэродрома в тип генерируемого аэродрома"""
+
         def find_plane_in_config(config: dict, key_name: str, number: int) -> generation.Plane:
             """Найти соответствующий самолёт в конфиге для генерации аэродрома"""
             for name in config['uncommon']:
@@ -246,10 +302,6 @@ class TvdBuilder:
         # TODO добавить проверку на завершение по территории
         return self.date_next > self.date_end
 
-    @property
-    def score(self):
-        return NotImplemented
-
     @staticmethod
     def random_datetime(start, end):
         """Случайный момент времени между указанными значениями"""
@@ -277,7 +329,7 @@ class TvdBuilder:
         wind_direction0000 = randint(0, 360)
         wind_power0000 = randint(0, 2)
 
-        date = TvdBuilder.random_datetime(*self.date_next_day_duration)
+        date = self.random_datetime(*self.date_next_day_duration)
         season = self.date_next_season_data
         # Случайная температура для сезона
         temperature = randint(season['min_temp'], season['max_temp'])

@@ -12,6 +12,7 @@ from tests import mocks, utils
 
 MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
 MGEN = mocks.MgenMock(MAIN)
+PARAMS = mocks.ParamsMock()
 PLANES = mocks.PlanesMock()
 MOSCOW_FIELDS = pathlib.Path(r'./configs/moscow_fields.csv')
 
@@ -146,21 +147,28 @@ class TestNode(unittest.TestCase):
         self.assertSequenceEqual(result, expected)
 
 
-class TestTvd(unittest.TestCase):
-    """Тесты ТВД"""
+class TestTvdBuilder(unittest.TestCase):
+    """Тесты сборки ТВД"""
     def setUp(self):
         """Настройка БД"""
         self.mongo = pymongo.MongoClient(MAIN.mongo_host, MAIN.mongo_port)
         rexpert = self.mongo[DB_NAME]
         self.airfields = rexpert['Airfields']
+        self.airfields_controller = processing.AirfieldsController(MAIN, PLANES, self.airfields)
+        self.airfields_controller.initialize(MOSCOW, MOSCOW_FIELDS)
+
+    def tearDown(self):
+        """Удаление базы после теста"""
+        self.mongo.drop_database(DB_NAME)
+        self.mongo.close()
 
     def test_influences_moscow(self):
         """Генерируются зоны влияния филдов Москвы"""
         xgml = generation.Xgml(MOSCOW, MGEN)
         xgml.parse()
         MGEN.icons_group_files[MOSCOW] = pathlib.Path('./tmp/FL_icon_moscow.Group').absolute()
-        tvd = generation.TvdBuilder(MOSCOW, '10.11.1942', MGEN, MAIN, None, None, PLANES)
-        tvd.update_icons()
+        builder = generation.TvdBuilder(MOSCOW, '10.11.1942', MGEN, MAIN, None, None, PLANES, self.airfields_controller)
+        builder.update_icons(builder.get_tvd())
         self.assertEqual(True, True)
 
     def test_influences_stalin(self):
@@ -168,20 +176,25 @@ class TestTvd(unittest.TestCase):
         xgml = generation.Xgml(STALIN, MGEN)
         xgml.parse()
         MGEN.icons_group_files[STALIN] = pathlib.Path('./tmp/FL_icon_stalin.Group').absolute()
-        tvd = generation.TvdBuilder(STALIN, '10.11.1942', MGEN, MAIN, None, None, PLANES)
-        tvd.update_icons()
+        builder = generation.TvdBuilder(STALIN, '10.11.1942', MGEN, MAIN, None, None, PLANES, self.airfields_controller)
+        builder.update_icons(builder.get_tvd())
 
     def test_airfields(self):
         """Генерируются координатные группы аэродромов"""
-        controller = processing.AirfieldsController(main=MAIN, config=PLANES, airfields=self.airfields)
-        controller.initialize(MOSCOW, MOSCOW_FIELDS)
-        airfields = controller.get_airfields(MOSCOW)
-        xgml = generation.Xgml(MOSCOW, MGEN)
-        xgml.parse()
-        tvd = generation.TvdBuilder(MOSCOW, '10.11.1941', MGEN, MAIN, None, None, PLANES)
-        red = list(x for x in airfields if x.name in ('kholm', 'kalinin', 'alferevo', 'ruza'))
-        blue = list(x for x in airfields if x.name in ('losinki', 'lotoshino', 'migalovo', 'karpovo'))
-        tvd.update_airfields(red, blue)
+        airfields = self.airfields_controller.get_airfields(MOSCOW)
+        builder = generation.TvdBuilder(MOSCOW, '10.11.1941', MGEN, MAIN, None, None, PLANES, self.airfields_controller)
+        tvd = generation.Tvd(MOSCOW, 'test', '10.11.1941', {'x': 281600, 'z': 281600}, pathlib.Path(r'./tmp/'))
+        tvd.red_front_airfields = list(x for x in airfields if x.name in ('kholm', 'kalinin', 'alferevo'))
+        tvd.blue_front_airfields = list(x for x in airfields if x.name in ('losinki', 'lotoshino', 'migalovo'))
+        tvd.red_rear_airfield = list(x for x in airfields if x.name == 'ruza')[0]
+        tvd.blue_rear_airfield = list(x for x in airfields if x.name == 'karpovo')[0]
+        builder.update_airfields(tvd)
+
+    def test_update(self):
+        """Генерируется папка ТВД"""
+        builder = generation.TvdBuilder(
+            MOSCOW, '10.11.1941', MGEN, MAIN, None, PARAMS, PLANES, self.airfields_controller)
+        builder.update()
 
 
 if __name__ == '__main__':

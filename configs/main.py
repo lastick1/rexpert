@@ -19,6 +19,7 @@ class Main:  # pylint: disable=R0903,R0902,C0301
         self.cache_folder = Path('.\\cache\\').absolute()
         self.resaver_folder = Path(src['MISSIONGEN']['resaver_folder'])
         self.generate_missions = True if "true" in src['MISSIONGEN']['generate_missions'].lower() else False
+        self.special_influences = True if "true" in src['MISSIONGEN']['special_influences'].lower() else False
         self.use_resaver = True if "true" in src['MISSIONGEN']['use_resaver'].lower() else False
         self.test_mode = True if "true" in src['PROGRAM']['test_mode'].lower() else False
         self.offline_mode = True if "true" in src['PROGRAM']['offline_mode'].lower() else False

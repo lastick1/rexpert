@@ -1,5 +1,6 @@
 """Сборка базы локаций"""
 import re
+import generation
 from .locations import Location, AIR_OBJECTIVE, AIRFIELD, DECORATION, GROUND_OBJECTIVE, REFERENCE_LOCATION, NAVIGATION
 from .locations import LOCATION_TYPES, PLANE_WAYPOINT, FRONT_LINE
 from .locations import SUBSTRATE, TERRAIN_LEVELER, GRASS_FIELD, WATER_FIELD, LANDING_SIGN, FILTER_TREES, TEXTURE_INDEX
@@ -90,52 +91,55 @@ def parse_decoration(text: str) -> Location:
     """Считать Decoration локацию из текста"""
     tmp = str(text).split(';')
     result = _parse_location(name=DECORATION, _list=tmp)
-    if int(tmp[-24].partition('= ')[-1]):
-        result.types.add(DOGFIGHT)
-    if int(tmp[-23].partition('= ')[-1]):
-        result.types.add(TRANSPORT)
-    if int(tmp[-22].partition('= ')[-1]):
-        result.types.add(TRAIN)
-    if int(tmp[-21].partition('= ')[-1]):
-        result.types.add(TANK)
-    if int(tmp[-20].partition('= ')[-1]):
-        result.types.add(ARTILLERY)
-    if int(tmp[-19].partition('= ')[-1]):
-        result.types.add(AAA_POSITION)
-    if int(tmp[-18].partition('= ')[-1]):
-        result.types.add(SHIP)
-    if int(tmp[-17].partition('= ')[-1]):
-        result.types.add(BALLOON)
-    if int(tmp[-16].partition('= ')[-1]):
-        result.types.add(WINDSOCK)
-    if int(tmp[-15].partition('= ')[-1]):
-        result.types.add(CITY_FIRE)
-    if int(tmp[-14].partition('= ')[-1]):
-        result.types.add(SPOTTER)
-    if int(tmp[-13].partition('= ')[-1]):
-        result.types.add(BRIDGE)
-    if int(tmp[-12].partition('= ')[-1]):
-        result.types.add(AT_ART_POSITION)
-    if int(tmp[-11].partition('= ')[-1]):
-        result.types.add(FIRING_POINT)
-    if int(tmp[-10].partition('= ')[-1]):
-        result.types.add(SIREN)
-    if int(tmp[-9].partition('= ')[-1]):
-        result.types.add(PARKING)
-    if int(tmp[-8].partition('= ')[-1]):
-        result.types.add(NDB)
-    if int(tmp[-7].partition('= ')[-1]):
-        result.types.add(AIRFIELD_DECORATION)
-    if int(tmp[-6].partition('= ')[-1]):
-        result.types.add(STATIC_AIRPLANE)
-    if int(tmp[-5].partition('= ')[-1]):
-        result.types.add(STATIC_VECHICLE)
-    if int(tmp[-4].partition('= ')[-1]):
-        result.types.add(SEARCHLIGHT)
-    if int(tmp[-3].partition('= ')[-1]):
-        result.types.add(LANDING_LIGHT)
-    if int(tmp[-2].partition('= ')[-1]):
-        result.types.add(LANDING_SIGN)
+    try:
+        if int(tmp[-24].partition('= ')[-1]):
+            result.types.add(DOGFIGHT)
+        if int(tmp[-23].partition('= ')[-1]):
+            result.types.add(TRANSPORT)
+        if int(tmp[-22].partition('= ')[-1]):
+            result.types.add(TRAIN)
+        if int(tmp[-21].partition('= ')[-1]):
+            result.types.add(TANK)
+        if int(tmp[-20].partition('= ')[-1]):
+            result.types.add(ARTILLERY)
+        if int(tmp[-19].partition('= ')[-1]):
+            result.types.add(AAA_POSITION)
+        if int(tmp[-18].partition('= ')[-1]):
+            result.types.add(SHIP)
+        if int(tmp[-17].partition('= ')[-1]):
+            result.types.add(BALLOON)
+        if int(tmp[-16].partition('= ')[-1]):
+            result.types.add(WINDSOCK)
+        if int(tmp[-15].partition('= ')[-1]):
+            result.types.add(CITY_FIRE)
+        if int(tmp[-14].partition('= ')[-1]):
+            result.types.add(SPOTTER)
+        if int(tmp[-13].partition('= ')[-1]):
+            result.types.add(BRIDGE)
+        if int(tmp[-12].partition('= ')[-1]):
+            result.types.add(AT_ART_POSITION)
+        if int(tmp[-11].partition('= ')[-1]):
+            result.types.add(FIRING_POINT)
+        if int(tmp[-10].partition('= ')[-1]):
+            result.types.add(SIREN)
+        if int(tmp[-9].partition('= ')[-1]):
+            result.types.add(PARKING)
+        if int(tmp[-8].partition('= ')[-1]):
+            result.types.add(NDB)
+        if int(tmp[-7].partition('= ')[-1]):
+            result.types.add(AIRFIELD_DECORATION)
+        if int(tmp[-6].partition('= ')[-1]):
+            result.types.add(STATIC_AIRPLANE)
+        if int(tmp[-5].partition('= ')[-1]):
+            result.types.add(STATIC_VECHICLE)
+        if int(tmp[-4].partition('= ')[-1]):
+            result.types.add(SEARCHLIGHT)
+        if int(tmp[-3].partition('= ')[-1]):
+            result.types.add(LANDING_LIGHT)
+        if int(tmp[-2].partition('= ')[-1]):
+            result.types.add(LANDING_SIGN)
+    except ValueError as error:
+        print(error)
     return result
 
 
@@ -248,7 +252,8 @@ class LocationsBuilder:
         location.country = country
         self.locations[name].append(location)
 
-    def make(self) -> str:
+    def make_text(self) -> str:
+        """Собрать файл базы локаций (*.ldf)"""
         result = '#1CGS Location Database file'
         for location_type in LOCATION_TYPES:
             result += self._serialize_locations(self.locations[location_type])
@@ -256,10 +261,61 @@ class LocationsBuilder:
         return result
 
     def _serialize_locations(self, locations: list) -> str:
+        """Сериализовать локации"""
         result = ''
         for location in locations:
             result += '\n\n' + self._serialize_location(location)
         return result
 
-    def _serialize_location(self, location: Location) -> str:
+    @staticmethod
+    def _serialize_location(location: Location) -> str:
+        """Сериализовать локацию"""
         return str(location)
+
+    @staticmethod
+    def _is_in_influences(point, influences) -> bool:
+        """Находится ли точка в инфлюенсах страны"""
+        for boundary in influences:
+            if point.is_in_area(boundary.polygon):
+                return True
+        return False
+
+    def _is_rear(self, confrontation_area, influences, point):
+        """Расположена ли точка вне фронтовой зоны но на территории инфлюенса"""
+        return self._is_in_influences(point, influences) and not point.is_in_area(confrontation_area)
+
+    def paint(self, tvd: generation.Tvd):
+        """Покраска локаций в соответствии с их расположением в зоне влияния"""
+        front_airfields = {101: tvd.red_front_airfields, 201: tvd.blue_front_airfields}
+        confrontations = {101: tvd.confrontation_east, 201: tvd.confrontation_west}
+        for location in self.locations[DECORATION]:
+            if PARKING in location.types:
+                for country in front_airfields:
+                    for airfield in front_airfields[country]:
+                        if location.distance_to(airfield.x, airfield.z) < 10:
+                            location.country = country
+                continue
+            if {ARTILLERY}.intersection(location.types):
+                for country in confrontations:
+                    if location.is_in_area(confrontations[country]):
+                        location.country = country
+                        break
+                continue
+            if {TRANSPORT, FACTORY}.intersection(location.types):
+                for country in confrontations:
+                    if self._is_rear(confrontations[country], tvd.influences[country], location):
+                        location.country = country
+                        break
+                continue
+            for country in confrontations:
+                if location.is_in_area(confrontations[country]):
+                    location.country = country
+                    break
+
+        for location in self.locations[GROUND_OBJECTIVE]:
+            if {FACTORY}.intersection(location.types):
+                for country in confrontations:
+                    if self._is_rear(confrontations[country], tvd.influences[country], location):
+                        location.country = country
+                        break
+                continue
