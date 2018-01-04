@@ -68,7 +68,7 @@ class TestAirfieldsBuilder(unittest.TestCase):
         """Создаётся координатная группа аэродрома"""
         planes = self._get_planes()
         airfield = Airfield(name='test_af', country=101, radius=4000, planes=planes)
-        builder = generation.AirfieldsBuilder({101: pathlib.Path(r'./tmp')}, pathlib.Path('r./tmp'), PLANES)
+        builder = generation.AirfieldsBuilder({'red': pathlib.Path(r'./tmp')}, pathlib.Path('r./tmp'), PLANES)
         # act
         builder.make_airfield_group(airfield, 25001.1, 25001.1)
 
