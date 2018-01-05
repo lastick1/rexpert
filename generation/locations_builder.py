@@ -319,3 +319,15 @@ class LocationsBuilder:
                         location.country = country
                         break
                 continue
+        red_rear_af = Location(
+            name=AIRFIELD, x=tvd.red_rear_airfield.x, z=tvd.red_rear_airfield.z, y=0, oy=0, length=10, width=10)
+        red_rear_af.country = 101
+        red_rear_af.types.add(GRASS_FIELD)
+
+        blue_rear_af = Location(
+            name=AIRFIELD, x=tvd.blue_rear_airfield.x, z=tvd.blue_rear_airfield.z, y=0, oy=0, length=10, width=10)
+        blue_rear_af.country = 201
+        blue_rear_af.types.add(GRASS_FIELD)
+
+        self.locations[AIRFIELD].append(red_rear_af)
+        self.locations[AIRFIELD].append(blue_rear_af)

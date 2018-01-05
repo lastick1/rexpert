@@ -20,6 +20,19 @@ class Generator:
         self.msrc_directory = main.msrc_directory
         self.use_resaver = main.use_resaver
         self.tvd_folders = mgen.tvd_folders
+        self.make_ldb_folder = mgen.make_ldb_folder
+        self.ldf_files = mgen.ldf_files
+
+    def make_ldb(self, tvd_name: str):
+        """ Записать текстовый файл базы локаций и скомпилировать бинарный файл с помощью make_ldb.exe """
+        args = [
+            str(self.make_ldb_folder.joinpath('.\\make_ldb.exe').absolute()),
+            str(self.ldf_files[tvd_name])
+        ]
+        # запуск утилиты make_ldb_folder
+        generator = subprocess.Popen(args, cwd=str(self.make_ldb_folder), stdout=subprocess.DEVNULL)
+        generator.wait()
+        time.sleep(3)
 
     def make_mission(self, file_name: str, tvd_name: str):
         """

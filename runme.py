@@ -3,13 +3,20 @@ import pathlib
 import datetime
 import codecs
 import generation
-from configs import Main, Mgen, Stats, GeneratorParamsConfig, LocationsConfig
+import configs
+import processing
+import pymongo
 
-MAIN = Main(pathlib.Path(r'.\configs\conf.ini'))
-MGEN = Mgen(MAIN)
-STATS = Stats(MAIN)
-PARAMS = GeneratorParamsConfig()
-LOCATIONS = LocationsConfig()
+
+DB_NAME = 'rexpert'
+MAIN = configs.Main(pathlib.Path(r'.\configs\conf.ini'))
+MGEN = configs.Mgen(MAIN)
+STATS = configs.Stats(MAIN)
+PARAMS = configs.GeneratorParamsConfig()
+LOCATIONS = configs.LocationsConfig()
+PLANES = configs.Planes()
+
+MOSCOW_FIELDS = pathlib.Path(r'./data/moscow_fields.csv')
 
 
 def export(name: str):
@@ -20,28 +27,32 @@ def export(name: str):
         stream.close()
 
 
-def reset():
+def initialize_airfields(tvd_name: str, fields_csv: pathlib.Path):
     """Сбросить состояние кампании"""
-    raise NotImplementedError
-    campaign = Campaign(MAIN, MGEN, STATS, LOCATIONS, PARAMS)
-    for name in campaign.tvds.keys():
-        campaign.tvds[name].grid.read_file()
-        campaign.tvds[name].grid.write_db()
-        campaign.tvds[name].grid.read_db()
+    mongo = pymongo.MongoClient(MAIN.mongo_host, MAIN.mongo_port)
+    rexpert = mongo[DB_NAME]
+    airfields_controller = processing.AirfieldsController(MAIN, PLANES, rexpert['Airfields'])
+    airfields_controller.initialize(tvd_name, fields_csv)
 
 
 def generate(name: str, tvd_name: str):
     """Сгенерировать миссию"""
-    campaign = Campaign(MAIN, MGEN, STATS, LOCATIONS, PARAMS)
-    campaign.tvds[tvd_name].update()
-    generation.Generator(MAIN, MGEN).make_mission(name, tvd_name)
+    mongo = pymongo.MongoClient(MAIN.mongo_host, MAIN.mongo_port)
+    rexpert = mongo[DB_NAME]
+    airfields_controller = processing.AirfieldsController(MAIN, PLANES, rexpert['Airfields'])
+    tvd_builder = generation.TvdBuilder(
+        tvd_name, '19.11.1941', MGEN, MAIN, LOCATIONS, PARAMS, PLANES, airfields_controller)
+    tvd_builder.update()
+    generator = generation.Generator(MAIN, MGEN)
+    generator.make_ldb(tvd_name)
+    generator.make_mission(name, tvd_name)
 
 
 print(datetime.datetime.now().strftime("[%H:%M:%S] Program Start."))
 # import helpers
 # helpers.compile_log('./tmp', 'missionReport*.txt', './tmp/compiled')
 
-# reset()
+# initialize_airfields('moscow', MOSCOW_FIELDS)
 # export('moscow')
 # export('stalingrad')
 # generate('result1', 'moscow')

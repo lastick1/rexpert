@@ -14,7 +14,7 @@ MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
 MGEN = mocks.MgenMock(MAIN)
 PARAMS = mocks.ParamsMock()
 PLANES = mocks.PlanesMock()
-MOSCOW_FIELDS = pathlib.Path(r'./configs/moscow_fields.csv')
+MOSCOW_FIELDS = pathlib.Path(r'./data/moscow_fields.csv')
 
 DB_NAME = 'test_rexpert'
 MOSCOW = 'moscow'

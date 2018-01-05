@@ -386,7 +386,7 @@ class TvdBuilder:
             elif dfpr_lines[y].startswith('$ztargetposition ='):
                 dfpr_lines[y] = '$ztargetposition = {}\n'.format(params_config['ztargetposition'])
             elif dfpr_lines[y].startswith('$loc_filename ='):
-                dfpr_lines[y] = '$loc_filename = {}\n'.format(self.ldf_file)
+                dfpr_lines[y] = '$loc_filename = {}\n'.format(self.ldf_file.name)
             elif dfpr_lines[y].startswith('$period ='):
                 dfpr_lines[y] = '$period = {}\n'.format(self.next_date_stage_id)
         with self.default_params_file.open(mode='w', encoding='utf-8-sig') as f:
