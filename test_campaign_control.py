@@ -15,14 +15,14 @@ class TestCampaignController(unittest.TestCase):
     """Тесты бизнес-логики хода кампании"""
     def setUp(self):
         self.generator = mocks.GeneratorMock(MAIN, MGEN)
-        self.campaign = CampaignController(MAIN, MGEN, self.generator)
 
     def test_next_mission_bin_name(self):
         """Отличается имя следующей миссии от имени текущей"""
+        campaign = CampaignController(MAIN, MGEN, self.generator)
         date = datetime.datetime.strptime('01.10.1941', DATE_FORMAT)
         file_path = r'Multiplayer/Dogfight\result2.msnbin'
         # Act
-        self.campaign.start_mission(date, file_path, 2, dict(), (0, 0), False, 0)
+        campaign.start_mission(date, file_path, 2, dict(), (0, 0), False, 0)
         # Assert
         self.assertEqual(self.generator.generations[0][0], 'result1')
 
