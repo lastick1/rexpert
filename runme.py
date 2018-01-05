@@ -3,7 +3,6 @@ import pathlib
 import datetime
 import codecs
 import generation
-from campaign import Campaign
 from configs import Main, Mgen, Stats, GeneratorParamsConfig, LocationsConfig
 
 MAIN = Main(pathlib.Path(r'.\configs\conf.ini'))
@@ -11,13 +10,6 @@ MGEN = Mgen(MAIN)
 STATS = Stats(MAIN)
 PARAMS = GeneratorParamsConfig()
 LOCATIONS = LocationsConfig()
-
-
-def create_divisions_ldb():
-    """Создать базу локаций, обозначающих расположения дивизий"""
-    campaign = Campaign(MAIN, MGEN, STATS, LOCATIONS, PARAMS)
-    for name in campaign.tvds.keys():
-        campaign.tvds[name].create_divisions()
 
 
 def export(name: str):
@@ -50,7 +42,6 @@ print(datetime.datetime.now().strftime("[%H:%M:%S] Program Start."))
 # helpers.compile_log('./tmp', 'missionReport*.txt', './tmp/compiled')
 
 # reset()
-# create_divisions_ldb()
 # export('moscow')
 # export('stalingrad')
 # generate('result1', 'moscow')

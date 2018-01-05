@@ -19,7 +19,6 @@ class TestCampaignController(unittest.TestCase):
 
     def test_next_mission_bin_name(self):
         """Отличается имя следующей миссии от имени текущей"""
-        # Arrange
         date = datetime.datetime.strptime('01.10.1941', DATE_FORMAT)
         file_path = r'Multiplayer/Dogfight\result2.msnbin'
         # Act
