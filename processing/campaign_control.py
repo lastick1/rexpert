@@ -5,9 +5,8 @@ import datetime
 
 import pytz
 
-import draw
-from configs import Main, Mgen
-from generation import Generator
+import configs
+import generation
 
 
 class Mission:
@@ -20,7 +19,7 @@ class Mission:
 
 class CampaignController:
     """Контролеер"""
-    def __init__(self, main: Main, mgen: Mgen, generator: Generator):
+    def __init__(self, main: configs.Main, mgen: configs.Mgen, generator: generation.Generator):
         self.current_tvd = 'moscow'  # TODO убрать заглушку и реализовать свойство
         self._dogfight = main.dogfight_folder
         self.missions = list()
