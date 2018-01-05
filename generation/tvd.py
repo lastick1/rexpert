@@ -209,7 +209,7 @@ class TvdBuilder:
         with self.ldf_template.open() as stream:
             ldf = stream.read()
         builder = generation.LocationsBuilder(ldf_base=ldf)
-        builder.paint(tvd)
+        builder.apply_tvd_setup(tvd)
         ldf_text = builder.make_text()
         with Path(self.ldf_file).open(mode='w') as stream:
             stream.write(ldf_text)
