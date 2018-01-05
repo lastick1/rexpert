@@ -78,7 +78,7 @@ class TestAirfieldsBuilder(unittest.TestCase):
         builder = generation.AirfieldsBuilder({101: pathlib.Path(r'./tmp')}, pathlib.Path(r'./tmp'), PLANES)
         airfield = Airfield(name='test_af', country=101, radius=4000, planes=planes)
         # act
-        builder.make_subtitle_group(airfield, 24001.1, 24001.1, pathlib.Path(r'./templates/fields_sub.Group'))
+        builder.make_subtitle_group(airfield, 24001.1, 24001.1, pathlib.Path(r'./data/sub_templates/fields_sub.Group'))
 
 
 if __name__ == '__main__':
