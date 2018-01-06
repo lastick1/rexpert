@@ -7,6 +7,10 @@ import geometry
 import configs
 import processing
 
+
+from .airfield import ManagedAirfield
+from .mcu import Airfield
+
 DATE_FORMAT = '%d.%m.%Y'
 
 
@@ -82,7 +86,6 @@ class TvdBuilder:
         self.params = params
         self.planes = planes
         self.sides = mgen.cfg['sides']
-        self.default_stages = mgen.default_stages[name]
         self.af_groups_folders = mgen.af_groups_folders[name]
         self.ldf_file = mgen.ldf_files[name]
         self.ldf_template = mgen.ldf_templates[name]
@@ -122,9 +125,6 @@ class TvdBuilder:
                 })(x.split(sep=';'))
                 for x in stream.readlines()
             )
-        self.stages = tuple(
-            Stage(x, self.sides, mgen.af_templates_folder) for x in mgen.stages[name]
-        )
 
     def capture(self, x, z, coal_id):
         self.grid.capture(x, z, coal_id)
@@ -223,7 +223,7 @@ class TvdBuilder:
             data = self._convert_airfield(airfield, 201)
             self.airfields_builder.make_airfield_group(data, airfield.x, airfield.z)
 
-    def _convert_airfield(self, airfield: processing.ManagedAirfield, country: int) -> processing.Airfield:
+    def _convert_airfield(self, airfield: ManagedAirfield, country: int) -> Airfield:
         """Конвертировать тип управляемого аэродрома в тип генерируемого аэродрома"""
 
         def find_plane_in_config(config: dict, key_name: str, number: int) -> processing.Plane:

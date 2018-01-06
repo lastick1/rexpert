@@ -1,5 +1,6 @@
 """ Обработка игроков """
 import datetime
+import configs
 from processing.player import Player, ID
 import rcon
 import pymongo
@@ -20,16 +21,14 @@ class PlayersController:
     """Контроллер обработки событий, связанных с игроками"""
     def __init__(
             self,
-            offline_mode: bool,
+            main: configs.Main,
             commands: rcon.DServerRcon,
-            players: pymongo.collection.Collection,
-            squads: pymongo.collection.Collection
+            players: pymongo.collection.Collection
     ):
-        self.use_rcon = not offline_mode
+        self.main = main
         self.player_by_bot_id = dict()
         self._commands = commands
         self.__players = players
-        self.__squads = squads
 
     def _count(self, account_id) -> int:
         """Посчитать документы игрока в БД"""
@@ -53,7 +52,10 @@ class PlayersController:
         document = self._find(account_id)
         player = Player(account_id, document, bot)
         player.nickname = name
-        if self.use_rcon:
+        if not self.main.offline_mode:
+            if not self._commands.connected:
+                self._commands.connect()
+                self._commands.auth(self.main.rcon_login, self.main.rcon_password)
             self._commands.private_message(account_id, 'Hello {}!'.format(name))
 
         self._update(player)

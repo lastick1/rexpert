@@ -4,6 +4,7 @@ import datetime
 import configs
 import processing
 import pymongo
+import rcon
 
 
 DB_NAME = 'rexpert'
@@ -24,6 +25,12 @@ def initialize_airfields(tvd_name: str):
     airfields_controller.initialize_airfields(builder.get_tvd('10.11.1941'))
 
 
+def initialize_campaign():
+    """Инициализация кампании"""
+    controller = processing.CampaignController(MAIN, MGEN, processing.Generator(MAIN, MGEN))
+    controller.initialize()
+
+
 def generate(name: str, tvd_name: str):
     """Сгенерировать миссию"""
     mongo = pymongo.MongoClient(MAIN.mongo_host, MAIN.mongo_port)
@@ -36,14 +43,35 @@ def generate(name: str, tvd_name: str):
     generator.make_mission(name, tvd_name)
 
 
+def run():
+    """Запуск"""
+    objects = configs.Objects()
+    mongo = pymongo.MongoClient(MAIN.mongo_host, MAIN.mongo_port)
+    rexpert = mongo['rexpert']
+    events_controller = processing.EventsController(
+        objects=objects,
+        players_controller=processing.PlayersController(
+            main=MAIN,
+            commands=rcon.DServerRcon(MAIN.rcon_ip, MAIN.rcon_port),
+            players=rexpert['Players']
+        ),
+        ground_controller=processing.GroundController(objects=objects),
+        campaign_controller=processing.CampaignController(MAIN, MGEN, processing.Generator(MAIN, MGEN)),
+        airfields_controller=processing.AirfieldsController(MAIN, MGEN, PLANES, rexpert['Airfields']),
+        config=MAIN
+    )
+    reader = processing.LogsReader(MAIN, events_controller)
+
+
 print(datetime.datetime.now().strftime("[%H:%M:%S] Program Start."))
 # import helpers
 # helpers.compile_log('./tmp', 'missionReport*.txt', './tmp/compiled')
 
 # initialize_airfields('moscow')
+# initialize_campaign()
 # export('moscow')
 # export('stalingrad')
 # generate('result1', 'moscow')
 # generate('result1', 'stalingrad')
-# run()
+run()
 print(datetime.datetime.now().strftime("[%H:%M:%S] Program Finish."))

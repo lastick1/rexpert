@@ -3,10 +3,19 @@ import json
 from pathlib import Path
 import datetime
 
+import pymongo
 import pytz
 
 import configs
 import processing
+
+from .tvd import Tvd
+from .campaign import ORDER, DATE, MISSION_DATE, TVD_NAME, MONTHS, CampaignMap, DATE_FORMAT
+
+DB_NAME = 'rexpert'
+CAMPAIGN = 'CampaignMap'
+START_DATE = 'start_date'
+END_DATE = 'end_date'
 
 
 class Mission:
@@ -20,7 +29,6 @@ class Mission:
 class CampaignController:
     """Контролеер"""
     def __init__(self, main: configs.Main, mgen: configs.Mgen, generator: processing.Generator):
-        self.current_tvd = 'moscow'  # TODO убрать заглушку и реализовать свойство
         self._dogfight = main.dogfight_folder
         self.missions = list()
         self.main = main
@@ -29,8 +37,44 @@ class CampaignController:
         self.tvd_builders = {x: processing.TvdBuilder(x, mgen, main, configs.GeneratorParamsConfig(), configs.Planes())
                              for x in mgen.maps}
 
+        mongo = pymongo.MongoClient(self.main.mongo_host, self.main.mongo_port)
+        self.__campaign = mongo[DB_NAME][CAMPAIGN]
+
     def initialize(self):
         """Инициализировать кампанию в БД"""
+        i = 1
+        for tvd_name in self.mgen.maps:
+            start = self.mgen.cfg[tvd_name][START_DATE]
+            self.__campaign.update_one(
+                {TVD_NAME: tvd_name},
+                {'$set': {ORDER: i, TVD_NAME: tvd_name, DATE: start, MISSION_DATE:start, MONTHS: list()}},
+                upsert=True)
+            i += 1
+
+    @property
+    def campaign_map(self) -> CampaignMap:
+        """Текущая карта кампании"""
+        campaigns = [
+            CampaignMap(
+                data[ORDER],
+                data[DATE],
+                data[MISSION_DATE],
+                data[TVD_NAME],
+                data[MONTHS]
+            )
+            for data in self.__campaign.find()]
+        campaigns.sort(key=lambda x: x.order)
+        for campaign in campaigns:
+            if not campaign.is_ended(self.mgen.cfg[campaign.tvd_name][END_DATE]):
+                return campaign
+        raise NameError('Campaign finished')
+
+    @property
+    def current_tvd(self) -> Tvd:
+        """Текущий ТВД"""
+        campaign_map = self.campaign_map
+        tvd_builder = self.tvd_builders[campaign_map.tvd_name]
+        return tvd_builder.get_tvd(campaign_map.date.strftime(DATE_FORMAT))
 
     def start_mission(self, date: datetime,
                       file_path: str,
