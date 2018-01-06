@@ -1,12 +1,14 @@
-"Настройки отрисовки карт"
+"""Настройки отрисовки карт"""
 import json
 import pathlib
 import configparser
 from .mgen import Mgen
 
+
 class Draw:
-    "Класс настроек отрисовки карт"
+    """Класс настроек отрисовки карт"""
     _instances = 0
+
     def __init__(self, config_path: pathlib.Path, mgen: Mgen):
         Draw._instances += 1
         if Draw._instances > 1:

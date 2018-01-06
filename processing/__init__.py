@@ -3,6 +3,7 @@ from .gen import Generator
 from .events_control import EventsController
 from .players_control import PlayersController, Player
 from .ground_control import GroundController
+from .aircraft_factory import AircraftFactory
 from .airfields_control import AirfieldsController
 from .airfield import ManagedAirfield
 from .grid import Node, Grid
@@ -17,5 +18,6 @@ from .airfields_selector import AirfieldsSelector
 from .groups import FrontLineGroup, Group
 from .tvd import *
 from .locations_builder import LocationsBuilder
+from .campaign import CampaignMap
 from .campaign_control import CampaignController, Mission
 from .reader import LogsReader

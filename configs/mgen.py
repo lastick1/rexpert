@@ -32,13 +32,6 @@ class Mgen:
                        for x in self.maps}
 
 
-class LocationsConfig:
-    """Конфиг генерации базы локаций"""
-    def __init__(self):
-        with open('.\\configs\\loc_cfg.json') as stream:
-            self.cfg = json.load(stream)
-
-
 class GeneratorParamsConfig:
     """Конфиг дефолтпарамсов"""
     def __init__(self):

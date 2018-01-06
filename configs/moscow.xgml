@@ -696,7 +696,7 @@
 				<attribute key="h" type="double">15.0</attribute>
 				<attribute key="type" type="String">ellipse</attribute>
 				<attribute key="raisedBorder" type="boolean">false</attribute>
-				<attribute key="fill" type="String">#FF0000</attribute>
+				<attribute key="fill" type="String">#00CCFF</attribute>
 				<attribute key="outline" type="String">#000000</attribute>
 			</section>
 			<section name="LabelGraphics">
@@ -796,7 +796,7 @@
 				<attribute key="h" type="double">15.0</attribute>
 				<attribute key="type" type="String">ellipse</attribute>
 				<attribute key="raisedBorder" type="boolean">false</attribute>
-				<attribute key="fill" type="String">#FF0000</attribute>
+				<attribute key="fill" type="String">#00CCFF</attribute>
 				<attribute key="outline" type="String">#000000</attribute>
 			</section>
 			<section name="LabelGraphics">
@@ -3801,7 +3801,6 @@
 			<attribute key="source" type="int">81</attribute>
 			<attribute key="target" type="int">80</attribute>
 			<section name="graphics">
-				<attribute key="width" type="int">7</attribute>
 				<attribute key="fill" type="String">#000000</attribute>
 			</section>
 		</section>
@@ -3900,7 +3899,6 @@
 			<attribute key="source" type="int">84</attribute>
 			<attribute key="target" type="int">83</attribute>
 			<section name="graphics">
-				<attribute key="width" type="int">7</attribute>
 				<attribute key="fill" type="String">#000000</attribute>
 			</section>
 		</section>
@@ -3908,6 +3906,7 @@
 			<attribute key="source" type="int">85</attribute>
 			<attribute key="target" type="int">82</attribute>
 			<section name="graphics">
+				<attribute key="width" type="int">7</attribute>
 				<attribute key="fill" type="String">#000000</attribute>
 			</section>
 		</section>
@@ -3922,6 +3921,7 @@
 			<attribute key="source" type="int">85</attribute>
 			<attribute key="target" type="int">84</attribute>
 			<section name="graphics">
+				<attribute key="width" type="int">7</attribute>
 				<attribute key="fill" type="String">#000000</attribute>
 			</section>
 		</section>
@@ -4686,7 +4686,6 @@
 			<attribute key="source" type="int">110</attribute>
 			<attribute key="target" type="int">81</attribute>
 			<section name="graphics">
-				<attribute key="width" type="int">7</attribute>
 				<attribute key="fill" type="String">#000000</attribute>
 			</section>
 		</section>
@@ -4694,7 +4693,6 @@
 			<attribute key="source" type="int">110</attribute>
 			<attribute key="target" type="int">83</attribute>
 			<section name="graphics">
-				<attribute key="width" type="int">7</attribute>
 				<attribute key="fill" type="String">#000000</attribute>
 			</section>
 		</section>
@@ -5898,6 +5896,7 @@
 			<attribute key="source" type="int">80</attribute>
 			<attribute key="target" type="int">82</attribute>
 			<section name="graphics">
+				<attribute key="width" type="int">7</attribute>
 				<attribute key="fill" type="String">#000000</attribute>
 			</section>
 		</section>
