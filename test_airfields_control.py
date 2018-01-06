@@ -107,6 +107,20 @@ class TestAirfieldsController(unittest.TestCase):
         document = self.airfields.find_one({'name': TEST_AIRFIELD_NAME})
         self.assertEqual(expected, document['planes'][aircraft_key])
 
+    def test_add_aircraft_wrong(self):
+        """НЕ добавляется самолёт на аэродром другой страны"""
+        aircraft_name = 'lagg-3 ser.29'
+        aircraft_key = PLANES.name_to_key(aircraft_name)
+        document = self.airfields.find_one({'name': TEST_AIRFIELD_NAME})
+        expected = document['planes'][aircraft_key]
+        builder = TvdBuilder(TEST_TVD_NAME, '10.11.1941', MGEN, MAIN, None, None, PLANES, self.controller)
+        tvd = builder.get_tvd()
+        # Act
+        self.controller.add_aircraft(tvd, TEST_AIRFIELD_NAME, aircraft_name, 5)
+        # Assert
+        document = self.airfields.find_one({'name': TEST_AIRFIELD_NAME})
+        self.assertEqual(expected, document['planes'][aircraft_key])
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
