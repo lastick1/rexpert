@@ -178,7 +178,7 @@ class EventsController:
         bot.update_pos(pos)
 
         self.players_controller.spawn(bot, account_id, name)
-        self.airfields_controller.spawn(aircraft_name, self.campaign_controller.current_tvd, self.airfields[airfield_id])
+        self.airfields_controller.spawn(self.campaign_controller.current_tvd, aircraft_name, pos['x'], pos['z'])
         self.update_tik(tik)
 
     def event_group(self, tik: int, group_id: int, members_id: int, leader_id: int) -> None:

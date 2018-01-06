@@ -23,6 +23,17 @@ TEST_TVD_NAME = 'moscow'
 TEST_FIELDS = pathlib.Path(r'./data/moscow_fields.csv')
 
 
+class AirfieldControllerMock(AirfieldsController):
+    def __init__(self):
+        pass
+
+    def spawn(self, tvd, aircraft_name: str, xpos: float, zpos: float):
+        pass
+
+    def finish(self, tvd, bot):
+        pass
+
+
 class TestIntegration(unittest.TestCase):
     """Интеграционные тесты"""
     def setUp(self):
@@ -33,8 +44,9 @@ class TestIntegration(unittest.TestCase):
         self.grounds = GroundController(OBJECTS)
         self.generator = mocks.GeneratorMock(MAIN, MGEN)
         self.players = PlayersController(True, console, rexpert['Players'], rexpert['Squads'])
-        self.airfields = AirfieldsController(MAIN, PLANES, rexpert['Airfields'])
         self.campaign = CampaignController(MAIN, MGEN, self.generator)
+        self.airfields = AirfieldsController(MAIN, MGEN, PLANES, rexpert['Airfields'])
+        self.airfields.initialize_airfields(mocks.TvdMock(TEST_TVD_NAME))
 
     def tearDown(self):
         """Удаление базы после теста"""
@@ -43,8 +55,8 @@ class TestIntegration(unittest.TestCase):
 
     def test_processing_with_atype_7(self):
         """Завершается корректно миссия с AType:7 в логе"""
-        self.airfields.initialize(TEST_TVD_NAME, TEST_FIELDS)
-        controller = EventsController(OBJECTS, self.players, self.grounds, self.campaign, self.airfields, MAIN)
+        controller = EventsController(
+            OBJECTS, self.players, self.grounds, self.campaign, AirfieldControllerMock(), MAIN)
         # Act
         for line in pathlib.Path(TEST_LOG1).read_text().split('\n'):
             controller.process_line(line)
@@ -53,8 +65,8 @@ class TestIntegration(unittest.TestCase):
 
     def test_generate_next_with_atype_0(self):
         """Генерируется следующая миссия с AType:0 в логе"""
-        self.airfields.initialize(TEST_TVD_NAME, TEST_FIELDS)
-        controller = EventsController(OBJECTS, self.players, self.grounds, self.campaign, self.airfields, MAIN)
+        controller = EventsController(
+            OBJECTS, self.players, self.grounds, self.campaign, AirfieldControllerMock(), MAIN)
         # Act
         for line in pathlib.Path(TEST_LOG1).read_text().split('\n'):
             controller.process_line(line)
@@ -64,8 +76,8 @@ class TestIntegration(unittest.TestCase):
 
     def test_bombing(self):
         """Учитываются наземные цели"""
-        self.airfields.initialize(TEST_TVD_NAME, TEST_FIELDS)
-        controller = EventsController(OBJECTS, self.players, self.grounds, self.campaign, self.airfields, MAIN)
+        controller = EventsController(
+            OBJECTS, self.players, self.grounds, self.campaign, AirfieldControllerMock(), MAIN)
         # Act
         for line in pathlib.Path(TEST_LOG2).read_text().split('\n'):
             controller.process_line(line)

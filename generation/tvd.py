@@ -72,12 +72,10 @@ class TvdBuilder:
     def __init__(
             self,
             name,
-            date,
             mgen: configs.Mgen,
             main: configs.Main,
             params: configs.GeneratorParamsConfig,
-            planes: configs.Planes,
-            airfields_controller: processing.AirfieldsController
+            planes: configs.Planes
     ):
         self.name = name
         self.main = main
@@ -90,7 +88,6 @@ class TvdBuilder:
         self.ldf_file = mgen.ldf_files[name]
         self.ldf_template = mgen.ldf_templates[name]
         self.tvd_folder = mgen.cfg[name]['tvd_folder']
-        self.airfields_controller = airfields_controller
 
         offset = 10000
         north = self.mgen.cfg[name]['right_top']['x'] + offset
@@ -102,7 +99,6 @@ class TvdBuilder:
                                                              planes)
         self.airfields_selector = generation.AirfieldsSelector(main=main)
 
-        self.date = datetime.datetime.strptime(date, DATE_FORMAT)
         self.id = mgen.cfg[name]['tvd']
         folder = main.game_folder.joinpath(Path(mgen.cfg[name]['tvd_folder']))
         self.default_params_file = folder.joinpath(mgen.cfg[name]['default_params_dest'])
@@ -134,12 +130,12 @@ class TvdBuilder:
     def capture(self, x, z, coal_id):
         self.grid.capture(x, z, coal_id)
 
-    def get_tvd(self):
+    def get_tvd(self, date):
         """Построить объект настроек ТВД"""
         tvd = Tvd(
             self.name,
             self.tvd_folder,
-            self.date_next.strftime(DATE_FORMAT),
+            date,
             self.mgen.cfg[self.name]['right_top'],
             self.mgen.icons_group_files[self.name]
         )
@@ -172,17 +168,16 @@ class TvdBuilder:
         tvd.influences = areas
         return tvd
 
-    def update(self):
+    def update(self, date, airfields):
         """Обновление групп, баз локаций и файла параметров генерации в папке ТВД (data/scg/x)"""
-        tvd = self.get_tvd()
+        tvd = self.get_tvd(date)
         print('[{}] Updating TVD folder: {} ({}) {}'.format(
             datetime.datetime.now().strftime("%H:%M:%S"),
             tvd.folder,
             tvd.name,
-            tvd.date.strftime(DATE_FORMAT)
+            tvd.date
         ))
         self.update_icons(tvd)
-        airfields = self.airfields_controller.get_airfields(tvd.name)
         tvd.red_front_airfields.extend(self.airfields_selector.select_front(tvd.confrontation_east, airfields))
         tvd.blue_front_airfields.extend(self.airfields_selector.select_front(tvd.confrontation_west, airfields))
         tvd.red_rear_airfield = self.airfields_selector.select_rear(
@@ -197,7 +192,7 @@ class TvdBuilder:
             )
         self.update_airfields(tvd)
         self.update_ldb(tvd)
-        self.randomize_defaultparams(self.params.cfg[self.name])
+        self.randomize_defaultparams(tvd.date, self.params.cfg[self.name])
 
     @staticmethod
     def update_icons(tvd: Tvd):
@@ -280,26 +275,24 @@ class TvdBuilder:
                 return season
         raise NameError('Season not found')
 
-    @property
-    def date_next_season_data(self):
+    def date_season_data(self, date):
         """Данные по сезону на дату следующей миссии"""
-        return self.season_data(self.date_next)
+        return self.season_data(date)
 
-    @property
-    def date_next(self):
+    def date_next(self, date: str) -> datetime.datetime:
         """Дата следующей миссии этого ТВД"""
+        _date = datetime.datetime.strptime(date, DATE_FORMAT)
         d = datetime.timedelta(days=1)
-        return self.date + d
+        return _date + d
 
     @property
     def date_end(self):
         """Дата окончания ТВД"""
         return self.stages[-1].end
 
-    @property
-    def date_next_day_duration(self):
+    def date_next_day_duration(self, date):
         """Интервал светового дня для даты следующей миссии"""
-        return self.date_day_duration(self.date_next)
+        return self.date_day_duration(date)
 
     @property
     def is_ended(self):
@@ -311,21 +304,7 @@ class TvdBuilder:
         """Случайный момент времени между указанными значениями"""
         return start + datetime.timedelta(seconds=randint(0, int((end - start).total_seconds())))
 
-    @property
-    def next_date_stage_id(self):
-        for stage in self.stages:
-            if self.date_next in stage:
-                return stage.id
-        raise NameError('Incorrect date for all stages: {}'.format(self.date_next))
-
-    @property
-    def current_date_stage_id(self):
-        for stage in self.stages:
-            if self.date in stage:
-                return stage.id
-        raise NameError('Incorrect date for all stages: {}'.format(self.date))
-
-    def randomize_defaultparams(self, params_config: dict):
+    def randomize_defaultparams(self, date, params_config: dict):
         """Задать случайные параметры погоды, времени года и суток"""
         with self.default_params_template_file.open(encoding='utf-8-sig') as f:
             dfpr_lines = f.readlines()
@@ -333,8 +312,8 @@ class TvdBuilder:
         wind_direction0000 = randint(0, 360)
         wind_power0000 = randint(0, 2)
 
-        date = self.random_datetime(*self.date_next_day_duration)
-        season = self.date_next_season_data
+        date = self.random_datetime(*self.date_next_day_duration(date))
+        season = self.date_season_data(date)
         # Случайная температура для сезона
         temperature = randint(season['min_temp'], season['max_temp'])
 
@@ -392,6 +371,6 @@ class TvdBuilder:
             elif dfpr_lines[y].startswith('$loc_filename ='):
                 dfpr_lines[y] = '$loc_filename = {}\n'.format(self.ldf_file.name)
             elif dfpr_lines[y].startswith('$period ='):
-                dfpr_lines[y] = '$period = {}\n'.format(self.next_date_stage_id)
+                dfpr_lines[y] = '$period = {}\n'.format(1)
         with self.default_params_file.open(mode='w', encoding='utf-8-sig') as f:
             f.writelines(dfpr_lines)

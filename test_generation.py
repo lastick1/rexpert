@@ -22,6 +22,8 @@ STALIN = 'stalingrad'
 KUBAN = 'kuban'
 TEST = 'test'
 
+TVD_DATE = '10.11.1942'
+
 
 class TestGrid(unittest.TestCase):
     """Тесты графа"""
@@ -154,8 +156,9 @@ class TestTvdBuilder(unittest.TestCase):
         self.mongo = pymongo.MongoClient(MAIN.mongo_host, MAIN.mongo_port)
         rexpert = self.mongo[DB_NAME]
         self.airfields = rexpert['Airfields']
-        self.airfields_controller = processing.AirfieldsController(MAIN, PLANES, self.airfields)
-        self.airfields_controller.initialize(MOSCOW, MOSCOW_FIELDS)
+        self.airfields_controller = processing.AirfieldsController(MAIN, MGEN, PLANES, self.airfields)
+        self.airfields_controller.initialize_airfields(mocks.TvdMock(MOSCOW))
+        self.airfields_controller.initialize_airfields(mocks.TvdMock(STALIN))
 
     def tearDown(self):
         """Удаление базы после теста"""
@@ -167,8 +170,8 @@ class TestTvdBuilder(unittest.TestCase):
         xgml = generation.Xgml(MOSCOW, MGEN)
         xgml.parse()
         MGEN.icons_group_files[MOSCOW] = pathlib.Path('./tmp/FL_icon_moscow.Group').absolute()
-        builder = generation.TvdBuilder(MOSCOW, '10.11.1942', MGEN, MAIN, PARAMS, PLANES, self.airfields_controller)
-        builder.update_icons(builder.get_tvd())
+        builder = generation.TvdBuilder(MOSCOW, MGEN, MAIN, PARAMS, PLANES)
+        builder.update_icons(builder.get_tvd(TVD_DATE))
         self.assertEqual(True, True)
 
     def test_influences_stalin(self):
@@ -176,14 +179,14 @@ class TestTvdBuilder(unittest.TestCase):
         xgml = generation.Xgml(STALIN, MGEN)
         xgml.parse()
         MGEN.icons_group_files[STALIN] = pathlib.Path('./tmp/FL_icon_stalin.Group').absolute()
-        builder = generation.TvdBuilder(STALIN, '10.11.1942', MGEN, MAIN, PARAMS, PLANES, self.airfields_controller)
-        builder.update_icons(builder.get_tvd())
+        builder = generation.TvdBuilder(STALIN, MGEN, MAIN, PARAMS, PLANES)
+        builder.update_icons(builder.get_tvd(TVD_DATE))
 
     def test_airfields(self):
         """Генерируются координатные группы аэродромов"""
         airfields = self.airfields_controller.get_airfields(MOSCOW)
-        builder = generation.TvdBuilder(MOSCOW, '10.11.1941', MGEN, MAIN, PARAMS, PLANES, self.airfields_controller)
-        tvd = generation.Tvd(MOSCOW, 'test', '10.11.1941', {'x': 281600, 'z': 281600}, pathlib.Path(r'./tmp/'))
+        builder = generation.TvdBuilder(MOSCOW, MGEN, MAIN, PARAMS, PLANES)
+        tvd = generation.Tvd(MOSCOW, 'test', TVD_DATE, {'x': 281600, 'z': 281600}, pathlib.Path(r'./tmp/'))
         tvd.red_front_airfields = list(x for x in airfields if x.name in ('kholm', 'kalinin', 'alferevo'))
         tvd.blue_front_airfields = list(x for x in airfields if x.name in ('losinki', 'lotoshino', 'migalovo'))
         tvd.red_rear_airfield = list(x for x in airfields if x.name == 'ruza')[0]
@@ -192,9 +195,8 @@ class TestTvdBuilder(unittest.TestCase):
 
     def test_update(self):
         """Генерируется папка ТВД"""
-        builder = generation.TvdBuilder(
-            MOSCOW, '10.11.1941', MGEN, MAIN, PARAMS, PLANES, self.airfields_controller)
-        builder.update()
+        builder = generation.TvdBuilder(MOSCOW, MGEN, MAIN, PARAMS, PLANES)
+        builder.update(TVD_DATE, self.airfields_controller.get_airfields(MOSCOW))
 
 
 if __name__ == '__main__':

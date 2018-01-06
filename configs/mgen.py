@@ -32,17 +32,19 @@ class Mgen:
         self.xgml = {x: main.configs_folder.joinpath(src[x]['graph_file']) for x in self.maps}
         self.icons_group_files = {x: self.tvd_folders[x].joinpath(src[x]['icons_group_file']).absolute()
                                   for x in self.maps}
-        self.af_csv = {x: Path(Path('.\\configs\\').joinpath(src[x]['airfields_csv'])).absolute()
+        self.af_csv = {x: Path(Path('.\\data\\').joinpath(src[x]['airfields_csv'])).absolute()
                        for x in self.maps}
 
 
 class LocationsConfig:
     """Конфиг генерации базы локаций"""
     def __init__(self):
-        self.cfg = json.load(open('.\\configs\\loc_cfg.json'))
+        with open('.\\configs\\loc_cfg.json') as stream:
+            self.cfg = json.load(stream)
 
 
 class GeneratorParamsConfig:
     """Конфиг дефолтпарамсов"""
     def __init__(self):
-        self.cfg = json.load(open('.\\configs\\dfpr.json'))
+        with open('.\\configs\\dfpr.json') as stream:
+            self.cfg = json.load(stream)

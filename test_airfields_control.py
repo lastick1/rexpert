@@ -15,6 +15,7 @@ PARAMS = mocks.ParamsMock()
 DB_NAME = 'test_rexpert'
 TEST = 'test'
 TEST_TVD_NAME = 'stalingrad'
+TEST_TVD_DATE = '10.11.1941'
 TEST_FIELDS = pathlib.Path(r'./testdata/test_fields.csv')
 TEST_AIRFIELD_NAME = 'Verbovka'
 TEST_AIRFIELD_X = 112687
@@ -29,8 +30,7 @@ class TestAirfieldsController(unittest.TestCase):
         self.mongo = pymongo.MongoClient(MAIN.mongo_host, MAIN.mongo_port)
         rexpert = self.mongo[DB_NAME]
         self.airfields = rexpert['Airfields']
-        self.controller = AirfieldsController(main=MAIN, config=PLANES, airfields=self.airfields)
-        self.controller.initialize(TEST_TVD_NAME, TEST_FIELDS)
+        self.controller = AirfieldsController(main=MAIN, mgen=MGEN, config=PLANES, airfields=self.airfields)
 
     def tearDown(self):
         """Удаление базы после теста"""
@@ -39,6 +39,9 @@ class TestAirfieldsController(unittest.TestCase):
 
     def test_get_airfield_in_radius(self):
         """Определяется аэродром в радиусе от координат"""
+        tvd = mocks.TvdMock(TEST_TVD_NAME)
+        tvd.country = 101
+        self.controller.initialize_airfields(tvd)
         # Act
         result = self.controller.get_airfield_in_radius(
             tvd_name=TEST_TVD_NAME, x=TEST_AIRFIELD_X, z=TEST_AIRFIELD_Z, radius=1000)
@@ -47,6 +50,9 @@ class TestAirfieldsController(unittest.TestCase):
 
     def test_get_airfield_by_name(self):
         """Определяется аэродром по его наименованию"""
+        tvd = mocks.TvdMock(TEST_TVD_NAME)
+        tvd.country = 101
+        self.controller.initialize_airfields(tvd)
         # Act
         result = self.controller.get_airfield_by_name(tvd_name=TEST_TVD_NAME, name=TEST_AIRFIELD_NAME)
         # Assert
@@ -54,20 +60,26 @@ class TestAirfieldsController(unittest.TestCase):
 
     def test_spawn_planes(self):
         """Уменьшается количество самолётов на аэродроме при появлении на нём"""
+        tvd = mocks.TvdMock(TEST_TVD_NAME)
+        tvd.country = 101
+        self.controller.initialize_airfields(tvd)
         managed_airfield = self.controller.get_airfield_by_name(tvd_name=TEST_TVD_NAME, name=TEST_AIRFIELD_NAME)
         aircraft_name = 'Pe-2 ser.35'
         aircraft_key = PLANES.name_to_key(aircraft_name)
-        document = self.airfields.find_one({'_id': managed_airfield.id})
+        expected = self.airfields.find_one({'_id': managed_airfield.id})['planes'][aircraft_key] - 1
         # Act
-        self.controller.spawn(
-            aircraft_name, TEST_TVD_NAME, Airfield(1, 101, 1, {'x': TEST_AIRFIELD_X, 'z': TEST_AIRFIELD_Z}))
+        self.controller.spawn(tvd, aircraft_name, TEST_AIRFIELD_X, TEST_AIRFIELD_Z)
         # Assert
-        self.assertEqual(managed_airfield.planes[aircraft_key], document['planes'][aircraft_key] - 1)
+        managed_airfield = self.controller.get_airfield_by_name(tvd_name=TEST_TVD_NAME, name=TEST_AIRFIELD_NAME)
+        self.assertEqual(managed_airfield.planes[aircraft_key], expected)
         document = self.airfields.find_one({'_id': managed_airfield.id})
-        self.assertEqual(managed_airfield.planes[aircraft_key], document['planes'][aircraft_key])
+        self.assertEqual(document['planes'][aircraft_key], expected)
 
     def test_return_planes(self):
         """Восполняется количество самолётов на аэродроме при возврате на него (деспаун)"""
+        tvd = mocks.TvdMock(TEST_TVD_NAME)
+        tvd.country = 101
+        self.controller.initialize_airfields(tvd)
         aircraft_name = 'Pe-2 ser.35'
         aircraft_key = PLANES.name_to_key(aircraft_name)
         bot_name = 'BotPilot_Pe2'
@@ -77,31 +89,35 @@ class TestAirfieldsController(unittest.TestCase):
             1, OBJECTS[aircraft_name], 101, 1, aircraft_name, pos={'x': managed_airfield.x, 'z': managed_airfield.z})
         bot = BotPilot(
             2, OBJECTS[bot_name], aircraft, 101, 1, bot_name, pos={'x': managed_airfield.x, 'z': managed_airfield.z})
+
         # Act
-        self.controller.finish(TEST_TVD_NAME, bot)
+        self.controller.finish(tvd, bot)
         # Assert
+        managed_airfield = self.controller.get_airfield_by_name(tvd_name=TEST_TVD_NAME, name=TEST_AIRFIELD_NAME)
         self.assertEqual(managed_airfield.planes[aircraft_key], document['planes'][aircraft_key] + 1)
         document = self.airfields.find_one({'_id': managed_airfield.id})
         self.assertEqual(managed_airfield.planes[aircraft_key], document['planes'][aircraft_key])
 
     def test_get_country(self):
         """Определяется страна аэродрома по узлу графа"""
-        builder = TvdBuilder(TEST_TVD_NAME, '10.11.1941', MGEN, MAIN, PARAMS, PLANES, self.controller)
+        builder = TvdBuilder(TEST_TVD_NAME, MGEN, MAIN, PARAMS, PLANES)
+        self.controller.initialize_airfields(builder.get_tvd(TEST_TVD_DATE))
         verbovka = self.controller.get_airfield_in_radius(
             tvd_name=TEST_TVD_NAME, x=TEST_AIRFIELD_X, z=TEST_AIRFIELD_Z, radius=10)
         # Act
-        result = self.controller.get_country(verbovka, builder.get_tvd())
+        result = self.controller.get_country(verbovka, builder.get_tvd(TEST_TVD_DATE))
         # Assert
         self.assertEqual(201, result)
 
     def test_add_aircraft(self):
         """Добавляется самолёт на аэродром"""
+        builder = TvdBuilder(TEST_TVD_NAME, MGEN, MAIN, PARAMS, PLANES)
+        tvd = builder.get_tvd(TEST_TVD_DATE)
+        self.controller.initialize_airfields(tvd)
         aircraft_name = 'bf 109 f-4'
         aircraft_key = PLANES.name_to_key(aircraft_name)
         document = self.airfields.find_one({'name': TEST_AIRFIELD_NAME})
         expected = document['planes'][aircraft_key] + 5
-        builder = TvdBuilder(TEST_TVD_NAME, '10.11.1941', MGEN, MAIN, PARAMS, PLANES, self.controller)
-        tvd = builder.get_tvd()
         # Act
         self.controller.add_aircraft(tvd, TEST_AIRFIELD_NAME, aircraft_name, 5)
         # Assert
@@ -110,17 +126,16 @@ class TestAirfieldsController(unittest.TestCase):
 
     def test_add_aircraft_wrong(self):
         """НЕ добавляется самолёт на аэродром другой страны"""
+        builder = TvdBuilder(TEST_TVD_NAME, MGEN, MAIN, PARAMS, PLANES)
+        tvd = builder.get_tvd(TEST_TVD_DATE)
         aircraft_name = 'lagg-3 ser.29'
         aircraft_key = PLANES.name_to_key(aircraft_name)
-        document = self.airfields.find_one({'name': TEST_AIRFIELD_NAME})
-        expected = document['planes'][aircraft_key]
-        builder = TvdBuilder(TEST_TVD_NAME, '10.11.1941', MGEN, MAIN, PARAMS, PLANES, self.controller)
-        tvd = builder.get_tvd()
+        self.controller.initialize_airfields(tvd)
         # Act
         self.controller.add_aircraft(tvd, TEST_AIRFIELD_NAME, aircraft_name, 5)
         # Assert
         document = self.airfields.find_one({'name': TEST_AIRFIELD_NAME})
-        self.assertEqual(expected, document['planes'][aircraft_key])
+        self.assertNotIn(aircraft_key, document['planes'])
 
 
 if __name__ == '__main__':

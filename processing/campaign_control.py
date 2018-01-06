@@ -26,6 +26,8 @@ class CampaignController:
         self.main = main
         self.mgen = mgen
         self.generator = generator
+        self.tvd_builders = {x: generation.TvdBuilder(x, mgen, main, configs.GeneratorParamsConfig(), configs.Planes())
+                             for x in mgen.maps}
 
     def initialize(self):
         """Инициализировать кампанию в БД"""

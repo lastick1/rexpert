@@ -12,11 +12,6 @@ class Planes:
         with open(path, encoding='utf-8') as stream:
             src = json.load(stream)
         self.cfg = src
-        available = list(_clean_aircraft_name(name) for name in src['planes'])
-        # самолёты, доступные на сервере
-        self.available = available
-        # стартовое кол-во
-        self.default = {_clean_aircraft_name(name): src['uncommon'][name]['_default_number'] for name in src['planes']}
 
     @staticmethod
     def name_to_key(name: str) -> str:
