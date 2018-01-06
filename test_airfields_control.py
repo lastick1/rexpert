@@ -11,6 +11,7 @@ from tests import mocks
 MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
 MGEN = mocks.MgenMock(MAIN)
 PLANES = mocks.PlanesMock()
+PARAMS = mocks.ParamsMock()
 DB_NAME = 'test_rexpert'
 TEST = 'test'
 TEST_TVD_NAME = 'stalingrad'
@@ -85,7 +86,7 @@ class TestAirfieldsController(unittest.TestCase):
 
     def test_get_country(self):
         """Определяется страна аэродрома по узлу графа"""
-        builder = TvdBuilder(TEST_TVD_NAME, '10.11.1941', MGEN, MAIN, None, PLANES, self.controller)
+        builder = TvdBuilder(TEST_TVD_NAME, '10.11.1941', MGEN, MAIN, PARAMS, PLANES, self.controller)
         verbovka = self.controller.get_airfield_in_radius(
             tvd_name=TEST_TVD_NAME, x=TEST_AIRFIELD_X, z=TEST_AIRFIELD_Z, radius=10)
         # Act
@@ -99,7 +100,7 @@ class TestAirfieldsController(unittest.TestCase):
         aircraft_key = PLANES.name_to_key(aircraft_name)
         document = self.airfields.find_one({'name': TEST_AIRFIELD_NAME})
         expected = document['planes'][aircraft_key] + 5
-        builder = TvdBuilder(TEST_TVD_NAME, '10.11.1941', MGEN, MAIN, None, PLANES, self.controller)
+        builder = TvdBuilder(TEST_TVD_NAME, '10.11.1941', MGEN, MAIN, PARAMS, PLANES, self.controller)
         tvd = builder.get_tvd()
         # Act
         self.controller.add_aircraft(tvd, TEST_AIRFIELD_NAME, aircraft_name, 5)
@@ -113,7 +114,7 @@ class TestAirfieldsController(unittest.TestCase):
         aircraft_key = PLANES.name_to_key(aircraft_name)
         document = self.airfields.find_one({'name': TEST_AIRFIELD_NAME})
         expected = document['planes'][aircraft_key]
-        builder = TvdBuilder(TEST_TVD_NAME, '10.11.1941', MGEN, MAIN, None, PLANES, self.controller)
+        builder = TvdBuilder(TEST_TVD_NAME, '10.11.1941', MGEN, MAIN, PARAMS, PLANES, self.controller)
         tvd = builder.get_tvd()
         # Act
         self.controller.add_aircraft(tvd, TEST_AIRFIELD_NAME, aircraft_name, 5)
