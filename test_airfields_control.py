@@ -3,8 +3,8 @@ import unittest
 import pathlib
 import pymongo
 import configs
-import generation
-from processing import AirfieldsController
+from generation import TvdBuilder, Grid, Xgml
+from processing import AirfieldsController, ManagedAirfield
 from processing.objects import Airfield, BotPilot, Aircraft
 from tests import mocks
 
@@ -13,14 +13,12 @@ MGEN = mocks.MgenMock(MAIN)
 PLANES = mocks.PlanesMock()
 DB_NAME = 'test_rexpert'
 TEST = 'test'
-TEST_TVD_NAME = 'test_tvd'
+TEST_TVD_NAME = 'stalingrad'
 TEST_FIELDS = pathlib.Path(r'./testdata/test_fields.csv')
 TEST_AIRFIELD_NAME = 'Verbovka'
 TEST_AIRFIELD_X = 112687
 TEST_AIRFIELD_Z = 184308
 OBJECTS = configs.Objects()
-
-STALIN = 'stalingrad'
 
 
 class TestAirfieldsController(unittest.TestCase):
@@ -87,15 +85,27 @@ class TestAirfieldsController(unittest.TestCase):
 
     def test_get_country(self):
         """Определяется страна аэродрома по узлу графа"""
-        xgml = generation.Xgml(STALIN, MGEN)
-        xgml.parse()
-        grid = generation.Grid(STALIN, xgml.nodes, xgml.edges, MGEN)
+        builder = TvdBuilder(TEST_TVD_NAME, '10.11.1941', MGEN, MAIN, None, None, PLANES, self.controller)
         verbovka = self.controller.get_airfield_in_radius(
             tvd_name=TEST_TVD_NAME, x=TEST_AIRFIELD_X, z=TEST_AIRFIELD_Z, radius=10)
         # Act
-        result = self.controller.get_country(verbovka, grid.nodes_list)
+        result = self.controller.get_country(verbovka, builder.get_tvd())
         # Assert
         self.assertEqual(201, result)
+
+    def test_add_aircraft(self):
+        """Добавляется самолёт на аэродром"""
+        aircraft_name = 'bf 109 f-4'
+        aircraft_key = PLANES.name_to_key(aircraft_name)
+        document = self.airfields.find_one({'name': TEST_AIRFIELD_NAME})
+        expected = document['planes'][aircraft_key] + 5
+        builder = TvdBuilder(TEST_TVD_NAME, '10.11.1941', MGEN, MAIN, None, None, PLANES, self.controller)
+        tvd = builder.get_tvd()
+        # Act
+        self.controller.add_aircraft(tvd, TEST_AIRFIELD_NAME, aircraft_name, 5)
+        # Assert
+        document = self.airfields.find_one({'name': TEST_AIRFIELD_NAME})
+        self.assertEqual(expected, document['planes'][aircraft_key])
 
 
 if __name__ == '__main__':

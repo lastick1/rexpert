@@ -124,10 +124,18 @@ class AirfieldsController:
         return self._airfields[tvd_name]
 
     @staticmethod
-    def get_country(airfield, nodes: list) -> int:
+    def get_country(airfield, tvd) -> int:
         """Получить страну аэродрома в соответствии с графом"""
-        closest_node = nodes[0]
-        for node in [x for x in nodes if x.country]:
-            if airfield.distance_to(closest_node.x, closest_node.z) > airfield.distance_to(node.x, node.z):
-                closest_node = node
-        return closest_node.country
+        return tvd.get_country(airfield)
+
+    def add_aircraft(self, tvd, airfield_name: str, aircraft_name: str, aircraft_count: int):
+        """Добавить самолёт на аэродром"""
+        airfield = self.get_airfield_by_name(tvd.name, airfield_name)
+        airfield_country = tvd.get_country(airfield)
+        aircraft_key = self.planes.name_to_key(aircraft_name)
+        aircraft_country = self.planes.cfg['uncommon'][aircraft_name]['country']
+        if aircraft_country == airfield_country:
+            if aircraft_key not in airfield.planes:
+                airfield.planes[aircraft_key] = 0
+            airfield.planes[aircraft_key] += aircraft_count
+        self._update(airfield)

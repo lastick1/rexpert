@@ -9,7 +9,6 @@ import configs
 import processing
 
 DATE_FORMAT = '%d.%m.%Y'
-default_af_cache = {'moscow': '30.09.2016', 'stalingrad': '30.09.2016'}
 
 
 class Stage:
@@ -36,7 +35,6 @@ class Boundary(geometry.Point):
 
 class Tvd:
     """Настройки ТВД для генерации миссии"""
-
     def __init__(
             self,
             name: str,
@@ -58,6 +56,14 @@ class Tvd:
         self.red_rear_airfield = None  # советский тыловой аэродром в миссии
         self.blue_front_airfields = list()  # немецкие аэродромы в миссии
         self.blue_rear_airfield = None  # немецкий тыловой аэродром в миссии
+
+    def get_country(self, point: geometry.Point) -> int:
+        """Определить страну, на территории которой находится точка"""
+        for country in self.influences:
+            for boundary in self.influences[country]:
+                if point.is_in_area(boundary.polygon):
+                    return country
+        return 0
 
 
 class TvdBuilder:

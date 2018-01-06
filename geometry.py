@@ -128,6 +128,11 @@ class Point:  # pylint: disable=C0103,C0111
         return ((self.x - x) ** 2 + (self.z - z) ** 2) ** .5
 
 
+def distance(point1: dict, point2: dict) -> float:
+    """Расстояние между точками"""
+    return math.hypot(point2['x'] - point1['x'], point2['z'] - point1['z'])
+
+
 def sort_points_clockwise(points, middle_point) -> list:
     """Сортировка точек по часовой стрелке вокруг центра"""
     def comparator(lhs, rhs):
@@ -167,3 +172,10 @@ def jarvis_march(array: list) -> list:
             h.append(p[right])
             del p[right]
     return [array[x] for x in h]
+
+
+def is_pos_correct(pos: dict) -> bool:
+    """Коррекная ли позиция"""
+    if not pos or pos == {'x': 0.0, 'y': 0.0, 'z': 0.0}:
+        return False
+    return True

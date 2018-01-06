@@ -1,6 +1,6 @@
 """Классы объектов в логах"""
 import configs
-from .helpers import is_pos_correct, distance
+import geometry
 
 
 class Object:
@@ -30,7 +30,7 @@ class Ground(Object):
 
     def update_pos(self, pos: dict) -> None:
         """Обновить позицию"""
-        if is_pos_correct(pos):
+        if geometry.is_pos_correct(pos):
             self.pos = pos
 
     def add_kill(self, pos: dict) -> None:
@@ -50,8 +50,8 @@ class Airfield(Object):
 
     def is_in_range(self, radius: float, pos: dict) -> bool:
         """Находится ли точка на аэродроме"""
-        if is_pos_correct(pos=self.pos) and is_pos_correct(pos=pos):
-            return distance(self.pos, pos) <= radius
+        if geometry.is_pos_correct(pos=self.pos) and geometry.is_pos_correct(pos=pos):
+            return geometry.distance(self.pos, pos) <= radius
         else:
             return False
 
@@ -62,7 +62,7 @@ class Airfield(Object):
 
     def update_pos(self, pos: dict) -> None:
         """Обновить позицию"""
-        if is_pos_correct(pos):
+        if geometry.is_pos_correct(pos):
             self.pos = pos
 
 
@@ -120,7 +120,7 @@ class Aircraft(Object):
 
     def update_pos(self, pos: dict) -> None:
         """Обновить позицию"""
-        if is_pos_correct(pos):
+        if geometry.is_pos_correct(pos):
             self.pos = pos
 
     def takeoff(self, pos: dict) -> None:
@@ -154,7 +154,7 @@ class BotPilot(Object):
 
     def update_pos(self, pos: dict) -> None:
         """Обновить позицию"""
-        if is_pos_correct(pos):
+        if geometry.is_pos_correct(pos):
             self.pos = pos
 
 

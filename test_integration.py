@@ -20,7 +20,7 @@ OBJECTS = configs.Objects()
 
 
 TEST_TVD_NAME = 'moscow'
-TEST_FIELDS = pathlib.Path(r'./configs/moscow_fields.csv')
+TEST_FIELDS = pathlib.Path(r'./data/moscow_fields.csv')
 
 
 class TestIntegration(unittest.TestCase):
