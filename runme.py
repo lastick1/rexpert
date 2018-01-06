@@ -1,8 +1,6 @@
 """Основной файл для запуска"""
 import pathlib
 import datetime
-import codecs
-import generation
 import configs
 import processing
 import pymongo
@@ -16,34 +14,24 @@ PARAMS = configs.GeneratorParamsConfig()
 LOCATIONS = configs.LocationsConfig()
 PLANES = configs.Planes()
 
-MOSCOW_FIELDS = pathlib.Path(r'./data/moscow_fields.csv')
 
-
-def export(name: str):
-    """Экспортировать граф в XGML формате"""
-    campaign = Campaign(MAIN, MGEN, STATS, LOCATIONS, PARAMS)
-    with codecs.open(name + "_export.xgml", "w", encoding="cp1251") as stream:
-        stream.write(campaign.tvds[name].grid.serialize_xgml())
-        stream.close()
-
-
-def initialize_airfields(tvd_name: str, fields_csv: pathlib.Path):
+def initialize_airfields(tvd_name: str):
     """Сбросить состояние кампании"""
+    builder = processing.TvdBuilder(tvd_name, MGEN, MAIN, PARAMS, PLANES)
     mongo = pymongo.MongoClient(MAIN.mongo_host, MAIN.mongo_port)
     rexpert = mongo[DB_NAME]
-    airfields_controller = processing.AirfieldsController(MAIN, PLANES, rexpert['Airfields'])
-    airfields_controller.initialize(tvd_name, fields_csv)
+    airfields_controller = processing.AirfieldsController(MAIN, MGEN, PLANES, rexpert['Airfields'])
+    airfields_controller.initialize_airfields(builder.get_tvd('10.11.1941'))
 
 
 def generate(name: str, tvd_name: str):
     """Сгенерировать миссию"""
     mongo = pymongo.MongoClient(MAIN.mongo_host, MAIN.mongo_port)
     rexpert = mongo[DB_NAME]
-    airfields_controller = processing.AirfieldsController(MAIN, PLANES, rexpert['Airfields'])
-    tvd_builder = generation.TvdBuilder(
-        tvd_name, '19.11.1941', MGEN, MAIN, LOCATIONS, PARAMS, PLANES, airfields_controller)
-    tvd_builder.update()
-    generator = generation.Generator(MAIN, MGEN)
+    airfields_controller = processing.AirfieldsController(MAIN, MGEN, PLANES, rexpert['Airfields'])
+    tvd_builder = processing.TvdBuilder(tvd_name, MGEN, MAIN, PARAMS, PLANES)
+    tvd_builder.update('19.11.1941', airfields_controller.get_airfields(tvd_name))
+    generator = processing.Generator(MAIN, MGEN)
     generator.make_ldb(tvd_name)
     generator.make_mission(name, tvd_name)
 
@@ -52,7 +40,7 @@ print(datetime.datetime.now().strftime("[%H:%M:%S] Program Start."))
 # import helpers
 # helpers.compile_log('./tmp', 'missionReport*.txt', './tmp/compiled')
 
-# initialize_airfields('moscow', MOSCOW_FIELDS)
+# initialize_airfields('moscow')
 # export('moscow')
 # export('stalingrad')
 # generate('result1', 'moscow')
