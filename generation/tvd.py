@@ -75,7 +75,6 @@ class TvdBuilder:
             date,
             mgen: configs.Mgen,
             main: configs.Main,
-            loc_cfg: configs.LocationsConfig,
             params: configs.GeneratorParamsConfig,
             planes: configs.Planes,
             airfields_controller: processing.AirfieldsController
@@ -83,7 +82,6 @@ class TvdBuilder:
         self.name = name
         self.main = main
         self.mgen = mgen
-        self.loc_cfg = loc_cfg
         self.params = params
         self.planes = planes
         self.sides = mgen.cfg['sides']

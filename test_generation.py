@@ -167,7 +167,7 @@ class TestTvdBuilder(unittest.TestCase):
         xgml = generation.Xgml(MOSCOW, MGEN)
         xgml.parse()
         MGEN.icons_group_files[MOSCOW] = pathlib.Path('./tmp/FL_icon_moscow.Group').absolute()
-        builder = generation.TvdBuilder(MOSCOW, '10.11.1942', MGEN, MAIN, None, None, PLANES, self.airfields_controller)
+        builder = generation.TvdBuilder(MOSCOW, '10.11.1942', MGEN, MAIN, None, PLANES, self.airfields_controller)
         builder.update_icons(builder.get_tvd())
         self.assertEqual(True, True)
 
@@ -176,13 +176,13 @@ class TestTvdBuilder(unittest.TestCase):
         xgml = generation.Xgml(STALIN, MGEN)
         xgml.parse()
         MGEN.icons_group_files[STALIN] = pathlib.Path('./tmp/FL_icon_stalin.Group').absolute()
-        builder = generation.TvdBuilder(STALIN, '10.11.1942', MGEN, MAIN, None, None, PLANES, self.airfields_controller)
+        builder = generation.TvdBuilder(STALIN, '10.11.1942', MGEN, MAIN, None, PLANES, self.airfields_controller)
         builder.update_icons(builder.get_tvd())
 
     def test_airfields(self):
         """Генерируются координатные группы аэродромов"""
         airfields = self.airfields_controller.get_airfields(MOSCOW)
-        builder = generation.TvdBuilder(MOSCOW, '10.11.1941', MGEN, MAIN, None, None, PLANES, self.airfields_controller)
+        builder = generation.TvdBuilder(MOSCOW, '10.11.1941', MGEN, MAIN, None, PLANES, self.airfields_controller)
         tvd = generation.Tvd(MOSCOW, 'test', '10.11.1941', {'x': 281600, 'z': 281600}, pathlib.Path(r'./tmp/'))
         tvd.red_front_airfields = list(x for x in airfields if x.name in ('kholm', 'kalinin', 'alferevo'))
         tvd.blue_front_airfields = list(x for x in airfields if x.name in ('losinki', 'lotoshino', 'migalovo'))
@@ -193,7 +193,7 @@ class TestTvdBuilder(unittest.TestCase):
     def test_update(self):
         """Генерируется папка ТВД"""
         builder = generation.TvdBuilder(
-            MOSCOW, '10.11.1941', MGEN, MAIN, None, PARAMS, PLANES, self.airfields_controller)
+            MOSCOW, '10.11.1941', MGEN, MAIN, PARAMS, PLANES, self.airfields_controller)
         builder.update()
 
 

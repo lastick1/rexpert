@@ -3,8 +3,8 @@ import unittest
 import pathlib
 import pymongo
 import configs
-from generation import TvdBuilder, Grid, Xgml
-from processing import AirfieldsController, ManagedAirfield
+from generation import TvdBuilder
+from processing import AirfieldsController
 from processing.objects import Airfield, BotPilot, Aircraft
 from tests import mocks
 
@@ -85,7 +85,7 @@ class TestAirfieldsController(unittest.TestCase):
 
     def test_get_country(self):
         """Определяется страна аэродрома по узлу графа"""
-        builder = TvdBuilder(TEST_TVD_NAME, '10.11.1941', MGEN, MAIN, None, None, PLANES, self.controller)
+        builder = TvdBuilder(TEST_TVD_NAME, '10.11.1941', MGEN, MAIN, None, PLANES, self.controller)
         verbovka = self.controller.get_airfield_in_radius(
             tvd_name=TEST_TVD_NAME, x=TEST_AIRFIELD_X, z=TEST_AIRFIELD_Z, radius=10)
         # Act
@@ -99,7 +99,7 @@ class TestAirfieldsController(unittest.TestCase):
         aircraft_key = PLANES.name_to_key(aircraft_name)
         document = self.airfields.find_one({'name': TEST_AIRFIELD_NAME})
         expected = document['planes'][aircraft_key] + 5
-        builder = TvdBuilder(TEST_TVD_NAME, '10.11.1941', MGEN, MAIN, None, None, PLANES, self.controller)
+        builder = TvdBuilder(TEST_TVD_NAME, '10.11.1941', MGEN, MAIN, None, PLANES, self.controller)
         tvd = builder.get_tvd()
         # Act
         self.controller.add_aircraft(tvd, TEST_AIRFIELD_NAME, aircraft_name, 5)
@@ -113,7 +113,7 @@ class TestAirfieldsController(unittest.TestCase):
         aircraft_key = PLANES.name_to_key(aircraft_name)
         document = self.airfields.find_one({'name': TEST_AIRFIELD_NAME})
         expected = document['planes'][aircraft_key]
-        builder = TvdBuilder(TEST_TVD_NAME, '10.11.1941', MGEN, MAIN, None, None, PLANES, self.controller)
+        builder = TvdBuilder(TEST_TVD_NAME, '10.11.1941', MGEN, MAIN, None, PLANES, self.controller)
         tvd = builder.get_tvd()
         # Act
         self.controller.add_aircraft(tvd, TEST_AIRFIELD_NAME, aircraft_name, 5)
