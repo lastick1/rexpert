@@ -1,8 +1,9 @@
 """Выбор аэродромов для миссии"""
 import random
 import configs
-import processing
 import utils
+
+from processing import ManagedAirfield
 
 
 def _compare(left: float, right: float) -> int:
@@ -20,25 +21,25 @@ class AirfieldsSelector:
         self._main = main
 
     @staticmethod
-    def _rear_airfields_comparator(airfield1: processing.ManagedAirfield, airfield2: processing.ManagedAirfield):
+    def _rear_airfields_comparator(airfield1: ManagedAirfield, airfield2: ManagedAirfield):
         """Сравнение тыловых аэродромов при выборе"""
         first_planes = sum(airfield1.planes[name] for name in airfield1.planes)
         second_planes = sum(airfield2.planes[name] for name in airfield2.planes)
         return _compare(first_planes, second_planes)
 
-    def _front_airfields_comparator(self, airfield1: processing.ManagedAirfield, airfield2: processing.ManagedAirfield):
+    def _front_airfields_comparator(self, airfield1: ManagedAirfield, airfield2: ManagedAirfield):
         """Сравнение фронтовых аэродромов при выборе"""
         return _compare(self.calc_power(airfield1), self.calc_power(airfield2))
 
     @staticmethod
-    def calc_power(airfield: processing.ManagedAirfield) -> float:
+    def calc_power(airfield: ManagedAirfield) -> float:
         """Рассчитать силу аэродрома в зависимости от его состояния"""
         result = airfield.supplies
         for name in airfield.planes:
             result += airfield.planes[name]
         return result
 
-    def select_rear(self, influence: list, front_area: list, airfields: list) -> processing.ManagedAirfield:
+    def select_rear(self, influence: list, front_area: list, airfields: list) -> ManagedAirfield:
         """Выбрать тыловой аэродром"""
         result = list()
         added = False
