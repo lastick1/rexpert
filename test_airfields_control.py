@@ -3,19 +3,24 @@ import unittest
 import pathlib
 import pymongo
 import configs
+import generation
 from processing import AirfieldsController
 from processing.objects import Airfield, BotPilot, Aircraft
 from tests import mocks
 
 MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
+MGEN = mocks.MgenMock(MAIN)
 PLANES = mocks.PlanesMock()
 DB_NAME = 'test_rexpert'
+TEST = 'test'
 TEST_TVD_NAME = 'test_tvd'
 TEST_FIELDS = pathlib.Path(r'./testdata/test_fields.csv')
 TEST_AIRFIELD_NAME = 'Verbovka'
 TEST_AIRFIELD_X = 112687
 TEST_AIRFIELD_Z = 184308
 OBJECTS = configs.Objects()
+
+STALIN = 'stalingrad'
 
 
 class TestAirfieldsController(unittest.TestCase):
@@ -79,6 +84,18 @@ class TestAirfieldsController(unittest.TestCase):
         self.assertEqual(managed_airfield.planes[aircraft_key], document['planes'][aircraft_key] + 1)
         document = self.airfields.find_one({'_id': managed_airfield.id})
         self.assertEqual(managed_airfield.planes[aircraft_key], document['planes'][aircraft_key])
+
+    def test_get_country(self):
+        """Определяется страна аэродрома по узлу графа"""
+        xgml = generation.Xgml(STALIN, MGEN)
+        xgml.parse()
+        grid = generation.Grid(STALIN, xgml.nodes, xgml.edges, MGEN)
+        verbovka = self.controller.get_airfield_in_radius(
+            tvd_name=TEST_TVD_NAME, x=TEST_AIRFIELD_X, z=TEST_AIRFIELD_Z, radius=10)
+        # Act
+        result = self.controller.get_country(verbovka, grid.nodes_list)
+        # Assert
+        self.assertEqual(201, result)
 
 
 if __name__ == '__main__':

@@ -122,3 +122,12 @@ class AirfieldsController:
             for data in self.__airfields.find(_filter_by_tvd(tvd_name=tvd_name))
         )
         return self._airfields[tvd_name]
+
+    @staticmethod
+    def get_country(airfield, nodes: list) -> int:
+        """Получить страну аэродрома в соответствии с графом"""
+        closest_node = nodes[0]
+        for node in [x for x in nodes if x.country]:
+            if airfield.distance_to(closest_node.x, closest_node.z) > airfield.distance_to(node.x, node.z):
+                closest_node = node
+        return closest_node.country
