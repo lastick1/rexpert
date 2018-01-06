@@ -1,7 +1,7 @@
 """Тестирование обработки событий"""
 import unittest
 import pathlib
-from processing import EventsController, PlayersController, CampaignController, GroundController, AirfieldsController
+from processing import EventsController, PlayersController, CampaignController, GroundController
 from tests import mocks
 import configs
 import pymongo
