@@ -1,6 +1,9 @@
 """Заглушки, фальшивки и т.п. для тестирования"""
 # pylint: disable=all
 import pathlib
+
+import pymongo
+
 import rcon
 import configs
 import processing
@@ -163,3 +166,15 @@ def get_test_grid(mgen: MgenMock) -> processing.Grid:
         nodes[source_id].neighbors.add(nodes[target_id])
         nodes[target_id].neighbors.add(nodes[source_id])
     return processing.Grid(name=TEST, nodes=nodes, edges=TEST_EDGES_LIST, config=mgen)
+
+
+class AirfieldsControllerMock(processing.AirfieldsController):
+    # noinspection PyTypeChecker
+    def __init__(self):
+        super().__init__(None, None, None, None)
+
+    def spawn(self, tvd, aircraft_name: str, xpos: float, zpos: float):
+        pass
+
+    def finish(self, tvd, bot):
+        pass

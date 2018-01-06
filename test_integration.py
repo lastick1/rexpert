@@ -34,8 +34,6 @@ class TestIntegration(unittest.TestCase):
         self.generator = mocks.GeneratorMock(MAIN, MGEN)
         self.players = PlayersController(True, console, rexpert['Players'], rexpert['Squads'])
         self.campaign = CampaignController(MAIN, MGEN, self.generator)
-        self.airfields = AirfieldsController(MAIN, MGEN, PLANES, rexpert['Airfields'])
-        self.airfields.initialize_airfields(mocks.TvdMock(TEST_TVD_NAME))
 
     def tearDown(self):
         """Удаление базы после теста"""
@@ -45,7 +43,7 @@ class TestIntegration(unittest.TestCase):
     def test_processing_with_atype_7(self):
         """Завершается корректно миссия с AType:7 в логе"""
         controller = EventsController(
-            OBJECTS, self.players, self.grounds, self.campaign, self.airfields, MAIN)
+            OBJECTS, self.players, self.grounds, self.campaign, mocks.AirfieldsControllerMock(), MAIN)
         # Act
         for line in pathlib.Path(TEST_LOG1).read_text().split('\n'):
             controller.process_line(line)
@@ -55,7 +53,7 @@ class TestIntegration(unittest.TestCase):
     def test_generate_next_with_atype_0(self):
         """Генерируется следующая миссия с AType:0 в логе"""
         controller = EventsController(
-            OBJECTS, self.players, self.grounds, self.campaign, self.airfields, MAIN)
+            OBJECTS, self.players, self.grounds, self.campaign, mocks.AirfieldsControllerMock(), MAIN)
         # Act
         for line in pathlib.Path(TEST_LOG1).read_text().split('\n'):
             controller.process_line(line)
@@ -66,7 +64,7 @@ class TestIntegration(unittest.TestCase):
     def test_bombing(self):
         """Учитываются наземные цели"""
         controller = EventsController(
-            OBJECTS, self.players, self.grounds, self.campaign, self.airfields, MAIN)
+            OBJECTS, self.players, self.grounds, self.campaign, mocks.AirfieldsControllerMock(), MAIN)
         # Act
         for line in pathlib.Path(TEST_LOG2).read_text().split('\n'):
             controller.process_line(line)
