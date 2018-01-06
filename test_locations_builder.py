@@ -1,7 +1,7 @@
 """Тестирование сборки базы локаций"""
 import unittest
 import pathlib
-import generation
+import processing
 
 
 class TestLocation(unittest.TestCase):
@@ -10,7 +10,7 @@ class TestLocation(unittest.TestCase):
     def test_location_type(self):
         """Выбрасывается исключение на создание локации недопустимого типа"""
         def init_location():
-            generation.Location('wrong_type', 0, 0, 0, 0, 10, 10)
+            processing.Location('wrong_type', 0, 0, 0, 0, 10, 10)
         self.assertRaises(Exception, init_location)
 
 
@@ -19,7 +19,7 @@ class TestLocationBuilder(unittest.TestCase):
 
     def test_add_incorrect(self):
         """Выбрасывается исключение на добавление локации недопустимого типа"""
-        builder = generation.LocationsBuilder()
+        builder = processing.LocationsBuilder()
 
         def add_location():
             builder.add('wrong_type', 0, 0, 0)
@@ -28,22 +28,22 @@ class TestLocationBuilder(unittest.TestCase):
 
     def test_add_correct(self):
         """Добавляются корректные локации"""
-        builder = generation.LocationsBuilder()
+        builder = processing.LocationsBuilder()
         try:
-            for name in generation.LOCATION_TYPES:
+            for name in processing.LOCATION_TYPES:
                 builder.add(name, 0, 0, 0)
         except Exception as exception:
             self.fail(exception)
         count = 0
         for name in builder.locations:
             count += len(builder.locations[name])
-        self.assertEqual(count, len(generation.LOCATION_TYPES))
+        self.assertEqual(count, len(processing.LOCATION_TYPES))
 
     def test_locations_database(self):
         """Создаётся база локаций"""
         with pathlib.Path('./testdata/ldf/test_locations.ldf').absolute().open() as stream:
             ldf = stream.read()
-        builder = generation.LocationsBuilder(ldf_base=ldf)
+        builder = processing.LocationsBuilder(ldf_base=ldf)
         result = builder.make_text()
         self.assertEqual(result, ldf)
 
@@ -51,7 +51,7 @@ class TestLocationBuilder(unittest.TestCase):
         """Обрабатываются локации AirObjective"""
         with pathlib.Path('./testdata/ldf/test_location_air_objective.ldf').absolute().open() as stream:
             ldf = stream.read()
-        builder = generation.LocationsBuilder(ldf_base=ldf)
+        builder = processing.LocationsBuilder(ldf_base=ldf)
         result = builder.make_text()
         self.assertEqual(result, ldf)
 
@@ -59,7 +59,7 @@ class TestLocationBuilder(unittest.TestCase):
         """Обрабатываются локации Airfield"""
         with pathlib.Path('./testdata/ldf/test_location_airfield.ldf').absolute().open() as stream:
             ldf = stream.read()
-        builder = generation.LocationsBuilder(ldf_base=ldf)
+        builder = processing.LocationsBuilder(ldf_base=ldf)
         result = builder.make_text()
         self.assertEqual(result, ldf)
 
@@ -67,7 +67,7 @@ class TestLocationBuilder(unittest.TestCase):
         """Обрабатываются локации Airfield"""
         with pathlib.Path('./testdata/ldf/test_location_decoration.ldf').absolute().open() as stream:
             ldf = stream.read()
-        builder = generation.LocationsBuilder(ldf_base=ldf)
+        builder = processing.LocationsBuilder(ldf_base=ldf)
         result = builder.make_text()
         self.assertEqual(result, ldf)
 
@@ -75,7 +75,7 @@ class TestLocationBuilder(unittest.TestCase):
         """Обрабатываются локации GroundObjective"""
         with pathlib.Path('./testdata/ldf/test_location_ground_objective.ldf').absolute().open() as stream:
             ldf = stream.read()
-        builder = generation.LocationsBuilder(ldf_base=ldf)
+        builder = processing.LocationsBuilder(ldf_base=ldf)
         result = builder.make_text()
         self.assertEqual(result, ldf)
 
@@ -83,7 +83,7 @@ class TestLocationBuilder(unittest.TestCase):
         """Обрабатываются локации ReferenceLocation"""
         with pathlib.Path('./testdata/ldf/test_location_reference_location.ldf').absolute().open() as stream:
             ldf = stream.read()
-        builder = generation.LocationsBuilder(ldf_base=ldf)
+        builder = processing.LocationsBuilder(ldf_base=ldf)
         result = builder.make_text()
         self.assertEqual(result, ldf)
 
@@ -91,7 +91,7 @@ class TestLocationBuilder(unittest.TestCase):
         """Обрабатываются локации Substrate"""
         with pathlib.Path('./testdata/ldf/test_location_substrate.ldf').absolute().open() as stream:
             ldf = stream.read()
-        builder = generation.LocationsBuilder(ldf_base=ldf)
+        builder = processing.LocationsBuilder(ldf_base=ldf)
         result = builder.make_text()
         self.assertEqual(result, ldf)
 
@@ -99,7 +99,7 @@ class TestLocationBuilder(unittest.TestCase):
         """Обрабатываются локации TerrainLeveler"""
         with pathlib.Path('./testdata/ldf/test_location_terrain_leveler.ldf').absolute().open() as stream:
             ldf = stream.read()
-        builder = generation.LocationsBuilder(ldf_base=ldf)
+        builder = processing.LocationsBuilder(ldf_base=ldf)
         result = builder.make_text()
         self.assertEqual(result, ldf)
 
@@ -107,7 +107,7 @@ class TestLocationBuilder(unittest.TestCase):
         """Обрабатываются локации Navigation"""
         with pathlib.Path('./testdata/ldf/test_location_navigation.ldf').absolute().open() as stream:
             ldf = stream.read()
-        builder = generation.LocationsBuilder(ldf_base=ldf)
+        builder = processing.LocationsBuilder(ldf_base=ldf)
         result = builder.make_text()
         self.assertEqual(result, ldf)
 

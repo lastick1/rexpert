@@ -1,8 +1,7 @@
 """Тесты сборки аэродромов"""
 import unittest
 import pathlib
-import generation
-from generation import Airfield
+import processing
 from tests.mocks import PlanesMock
 
 PLANES = PlanesMock()
@@ -20,7 +19,7 @@ class TestAirfield(unittest.TestCase):
         common = PLANES.cfg[COMMON]
         uncommon = PLANES.cfg[UNCOMMON][TEST_PLANE_1]
         # act
-        result = generation.Plane(10, common, uncommon)
+        result = processing.Plane(10, common, uncommon)
         # assert
         self.assertEqual(result.format(), expected)
 
@@ -30,11 +29,11 @@ class TestAirfield(unittest.TestCase):
         common = PLANES.cfg[COMMON]
         uncommon = PLANES.cfg[UNCOMMON][TEST_PLANE_1]
         # act
-        result = generation.Airfield(
+        result = processing.Airfield(
             name='Airfield',
             country=101,
             radius=1000,
-            planes=[generation.Plane(10, common, uncommon)])
+            planes=[processing.Plane(10, common, uncommon)])
         self.assertEqual(result.format(), expected)
 
     def test_airfield_formatting_two_planes(self):
@@ -43,13 +42,13 @@ class TestAirfield(unittest.TestCase):
         common = PLANES.cfg[COMMON]
         uncommon = PLANES.cfg[UNCOMMON][TEST_PLANE_1]
         # act
-        result = generation.Airfield(
+        result = processing.Airfield(
             name='Airfield',
             country=101,
             radius=1000,
             planes=[
-                generation.Plane(10, common, uncommon),
-                generation.Plane(10, common, uncommon)
+                processing.Plane(10, common, uncommon),
+                processing.Plane(10, common, uncommon)
             ])
         self.assertEqual(result.format(), expected)
 
@@ -60,23 +59,23 @@ class TestAirfieldsBuilder(unittest.TestCase):
     def _get_planes() -> list:
         """Получить тестовый список самолётов аэродрома"""
         return [
-            generation.Plane(10, PLANES.cfg[COMMON], PLANES.cfg[UNCOMMON][TEST_PLANE_1]),
-            generation.Plane(10, PLANES.cfg[COMMON], PLANES.cfg[UNCOMMON][TEST_PLANE_2])
+            processing.Plane(10, PLANES.cfg[COMMON], PLANES.cfg[UNCOMMON][TEST_PLANE_1]),
+            processing.Plane(10, PLANES.cfg[COMMON], PLANES.cfg[UNCOMMON][TEST_PLANE_2])
         ]
 
     def test_make_airfield_group(self):
         """Создаётся координатная группа аэродрома"""
         planes = self._get_planes()
-        airfield = Airfield(name='test_af', country=101, radius=4000, planes=planes)
-        builder = generation.AirfieldsBuilder({'red': pathlib.Path(r'./tmp')}, pathlib.Path('r./tmp'), PLANES)
+        airfield = processing.Airfield(name='test_af', country=101, radius=4000, planes=planes)
+        builder = processing.AirfieldsBuilder({'red': pathlib.Path(r'./tmp')}, pathlib.Path('r./tmp'), PLANES)
         # act
         builder.make_airfield_group(airfield, 25001.1, 25001.1)
 
     def test_make_subtitle_group(self):
         """Создаётся координатная группа субтитров"""
         planes = self._get_planes()
-        builder = generation.AirfieldsBuilder({101: pathlib.Path(r'./tmp')}, pathlib.Path(r'./tmp'), PLANES)
-        airfield = Airfield(name='test_af', country=101, radius=4000, planes=planes)
+        builder = processing.AirfieldsBuilder({101: pathlib.Path(r'./tmp')}, pathlib.Path(r'./tmp'), PLANES)
+        airfield = processing.Airfield(name='test_af', country=101, radius=4000, planes=planes)
         # act
         builder.make_subtitle_group(airfield, 24001.1, 24001.1, pathlib.Path(r'./data/sub_templates/fields_sub.Group'))
 

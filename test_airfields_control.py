@@ -3,9 +3,8 @@ import unittest
 import pathlib
 import pymongo
 import configs
-from generation import TvdBuilder
-from processing import AirfieldsController
-from processing.objects import Airfield, BotPilot, Aircraft
+from processing import AirfieldsController, TvdBuilder
+from processing.objects import BotPilot, Aircraft
 from tests import mocks
 
 MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))

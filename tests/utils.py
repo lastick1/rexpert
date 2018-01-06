@@ -1,5 +1,5 @@
 """Полезные функции для тестирования"""
-import generation
+import processing
 
 
 def get_nodes_keys(nodes: list) -> set:
@@ -17,11 +17,11 @@ def get_nodes(points: list) -> list:
     nodes = []
     key = 0
     for point in points:
-        nodes.append(generation.Node(key=key, text=key, pos=point.to_dict(), color='#FFFFFF'))
+        nodes.append(processing.Node(key=key, text=key, pos=point.to_dict(), color='#FFFFFF'))
         key += 1
     return nodes
 
 
-def get_nodes_by_keys(keys: list, grid: generation.Grid) -> list:
+def get_nodes_by_keys(keys: list, grid: processing.Grid) -> list:
     """Получить ключи узлов из списка узлов"""
     return list(grid.node(key) for key in keys)

@@ -4,7 +4,6 @@ from pathlib import Path
 from random import randint
 
 import geometry
-import generation
 import configs
 import processing
 
@@ -94,10 +93,10 @@ class TvdBuilder:
         east = self.mgen.cfg[name]['right_top']['z'] + offset
         south = 0 - offset
         west = 0 - offset
-        self.boundary_builder = generation.BoundaryBuilder(north=north, east=east, south=south, west=west)
-        self.airfields_builder = generation.AirfieldsBuilder(self.af_groups_folders, mgen.subtitle_groups_folder,
+        self.boundary_builder = processing.BoundaryBuilder(north=north, east=east, south=south, west=west)
+        self.airfields_builder = processing.AirfieldsBuilder(self.af_groups_folders, mgen.subtitle_groups_folder,
                                                              planes)
-        self.airfields_selector = generation.AirfieldsSelector(main=main)
+        self.airfields_selector = processing.AirfieldsSelector(main=main)
 
         self.id = mgen.cfg[name]['tvd']
         folder = main.game_folder.joinpath(Path(mgen.cfg[name]['tvd_folder']))
@@ -106,9 +105,9 @@ class TvdBuilder:
             mgen.cfg[name]['default_params_source'])
         self.icons_group_file = folder.joinpath(mgen.cfg[name]['icons_group_file'])
         self.right_top = mgen.cfg[name]['right_top']
-        xgml = generation.Xgml(name, mgen)
+        xgml = processing.Xgml(name, mgen)
         xgml.parse()
-        self.grid = generation.Grid(name, xgml.nodes, xgml.edges, mgen)
+        self.grid = processing.Grid(name, xgml.nodes, xgml.edges, mgen)
         # данные по сезонам из daytime.csv
         with mgen.daytime_files[name].open() as stream:
             self.seasons_data = tuple(
@@ -198,7 +197,7 @@ class TvdBuilder:
     def update_icons(tvd: Tvd):
         """Обновление группы иконок в соответствии с положением ЛФ"""
         print('[{}] generating icons group...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
-        flg = generation.FrontLineGroup(tvd.border, tvd.influences, tvd.icons_group_file, tvd.right_top)
+        flg = processing.FrontLineGroup(tvd.border, tvd.influences, tvd.icons_group_file, tvd.right_top)
         flg.make()
         print('... icons done')
 
@@ -207,7 +206,7 @@ class TvdBuilder:
         print('[{}] generating Locations Data Base (LDB)...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
         with self.ldf_template.open() as stream:
             ldf = stream.read()
-        builder = generation.LocationsBuilder(ldf_base=ldf)
+        builder = processing.LocationsBuilder(ldf_base=ldf)
         builder.apply_tvd_setup(tvd)
         ldf_text = builder.make_text()
         with Path(self.ldf_file).open(mode='w') as stream:
@@ -224,20 +223,20 @@ class TvdBuilder:
             data = self._convert_airfield(airfield, 201)
             self.airfields_builder.make_airfield_group(data, airfield.x, airfield.z)
 
-    def _convert_airfield(self, airfield: processing.ManagedAirfield, country: int) -> generation.Airfield:
+    def _convert_airfield(self, airfield: processing.ManagedAirfield, country: int) -> processing.Airfield:
         """Конвертировать тип управляемого аэродрома в тип генерируемого аэродрома"""
 
-        def find_plane_in_config(config: dict, key_name: str, number: int) -> generation.Plane:
+        def find_plane_in_config(config: dict, key_name: str, number: int) -> processing.Plane:
             """Найти соответствующий самолёт в конфиге для генерации аэродрома"""
             for name in config['uncommon']:
                 if self.planes.name_to_key(name) == key_name:
-                    return generation.Plane(number, config['common'], config['uncommon'][name])
+                    return processing.Plane(number, config['common'], config['uncommon'][name])
             raise NameError('Plane {} not found in config'.format(key_name))
 
         planes = list()
         for key in airfield.planes:
             planes.append(find_plane_in_config(self.planes.cfg, key, airfield.planes[key]))
-        return generation.Airfield(airfield.name, country, self.main.airfield_radius, planes)
+        return processing.Airfield(airfield.name, country, self.main.airfield_radius, planes)
 
     def date_day_duration(self, date):
         """Рассвет и закат для указанной даты"""
@@ -324,7 +323,7 @@ class TvdBuilder:
                         setting, params_config[season['season_prefix']][setting])
         weather_type = randint(*params_config[season['season_prefix']]['wtype_diapason'])
 
-        w_preset = generation.WeatherPreset(generation.presets[weather_type])
+        w_preset = processing.WeatherPreset(processing.presets[weather_type])
         # задаём параметры defaultparams в соответствии с конфигом
         for y in range(len(dfpr_lines)):
             if dfpr_lines[y].startswith('$date ='):

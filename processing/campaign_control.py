@@ -6,7 +6,7 @@ import datetime
 import pytz
 
 import configs
-import generation
+import processing
 
 
 class Mission:
@@ -19,14 +19,14 @@ class Mission:
 
 class CampaignController:
     """Контролеер"""
-    def __init__(self, main: configs.Main, mgen: configs.Mgen, generator: generation.Generator):
+    def __init__(self, main: configs.Main, mgen: configs.Mgen, generator: processing.Generator):
         self.current_tvd = 'moscow'  # TODO убрать заглушку и реализовать свойство
         self._dogfight = main.dogfight_folder
         self.missions = list()
         self.main = main
         self.mgen = mgen
         self.generator = generator
-        self.tvd_builders = {x: generation.TvdBuilder(x, mgen, main, configs.GeneratorParamsConfig(), configs.Planes())
+        self.tvd_builders = {x: processing.TvdBuilder(x, mgen, main, configs.GeneratorParamsConfig(), configs.Planes())
                              for x in mgen.maps}
 
     def initialize(self):

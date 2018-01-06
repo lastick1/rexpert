@@ -2,8 +2,7 @@
 import unittest
 import pathlib
 import geometry
-import generation
-from generation import Xgml
+import processing
 
 from tests import mocks, utils
 
@@ -20,7 +19,7 @@ class TestBoundaryBuilder(unittest.TestCase):
 
     def test_build_east(self):
         """Создаётся корректный многоугольник восточной InfluenceArea"""
-        builder = generation.BoundaryBuilder(self.north, self.east, self.south, self.west)
+        builder = processing.BoundaryBuilder(self.north, self.east, self.south, self.west)
         points = [
             geometry.Point(x=1, z=6),
             geometry.Point(x=4, z=3),
@@ -42,7 +41,7 @@ class TestBoundaryBuilder(unittest.TestCase):
 
     def test_build_west(self):
         """Создаётся корректный многоугольник западной InfluenceArea"""
-        builder = generation.BoundaryBuilder(self.north, self.east, self.south, self.west)
+        builder = processing.BoundaryBuilder(self.north, self.east, self.south, self.west)
         points = [
             geometry.Point(x=1, z=6),
             geometry.Point(x=4, z=3),
@@ -65,7 +64,7 @@ class TestBoundaryBuilder(unittest.TestCase):
 
     def test_build_west_complex(self):
         """Создаётся корректный многоугольник для 'сложной' линии фронта"""
-        builder = generation.BoundaryBuilder(self.north, self.east, self.south, self.west)
+        builder = processing.BoundaryBuilder(self.north, self.east, self.south, self.west)
         points = [
             geometry.Point(x=1, z=1),
             geometry.Point(x=1, z=9),
@@ -97,7 +96,7 @@ class TestBoundaryBuilder(unittest.TestCase):
             201: ('2', '12', '26', '42', '29', '16', '30', '17', '5')
         }
         countries = (101, 201)
-        builder = generation.BoundaryBuilder(self.north, self.east, self.south, self.west)
+        builder = processing.BoundaryBuilder(self.north, self.east, self.south, self.west)
         grid = mocks.get_test_grid(MGEN)
         for country in countries:
             # Act
@@ -108,7 +107,7 @@ class TestBoundaryBuilder(unittest.TestCase):
     def test_confrontation_area_west(self):
         """Создаётся многоугольник западной прифронтовой полосы"""
         expected_keys = (2, 26, 42, 29, 16, 5, 6, 18, 32, 31, 44, 43, 41, 25, 1)
-        builder = generation.BoundaryBuilder(self.north, self.east, self.south, self.west)
+        builder = processing.BoundaryBuilder(self.north, self.east, self.south, self.west)
         grid = mocks.get_test_grid(MGEN)
         # Act
         result = builder.confrontation_west(grid)
@@ -118,7 +117,7 @@ class TestBoundaryBuilder(unittest.TestCase):
     def test_confrontation_area_east(self):
         """Создаётся многоугольник восточной прифронтовой полосы"""
         expected_keys = (7, 34, 35, 36, 46, 45, 40, 11, 1, 25, 41, 43, 44, 31, 32, 18, 6)
-        builder = generation.BoundaryBuilder(self.north, self.east, self.south, self.west)
+        builder = processing.BoundaryBuilder(self.north, self.east, self.south, self.west)
         grid = mocks.get_test_grid(MGEN)
         # Act
         result = builder.confrontation_east(grid)
@@ -127,14 +126,14 @@ class TestBoundaryBuilder(unittest.TestCase):
 
     def test_confrontation_area_stalingrad_east(self):
         """Создаётся многоугольник восточной прифронтовой полосы"""
-        xgml = Xgml(STALIN, MGEN)
+        xgml = processing.Xgml(STALIN, MGEN)
         xgml.parse()
         expected_keys = (
             192, 57, 196, 197, 185, 188, 187, 48, 110, 25, 102, 19, 95, 3, 191, 209, 94, 93, 96,
             101, 100, 99, 137, 139, 138, 157, 186, 163, 164, 165, 184, 183, 182, 194, 193, 177
         )
-        builder = generation.BoundaryBuilder(self.north, self.east, self.south, self.west)
-        grid = generation.Grid(STALIN, xgml.nodes, xgml.edges, MGEN)
+        builder = processing.BoundaryBuilder(self.north, self.east, self.south, self.west)
+        grid = processing.Grid(STALIN, xgml.nodes, xgml.edges, MGEN)
         path = pathlib.Path(r'./tmp/{}_{}.xgml'.format(STALIN, 0))
         xgml.save_file(str(path), grid.nodes, grid.edges)
         # Act

@@ -6,7 +6,6 @@ import random
 
 import pymongo
 
-import generation
 import processing
 from tests import mocks, utils
 
@@ -34,9 +33,9 @@ class TestGrid(unittest.TestCase):
     def test_border_test(self):
         """Упорядочиваются вершины линии фронта в тестовом графе"""
         # Arrange
-        xgml = generation.Xgml(TEST, MGEN)
+        xgml = processing.Xgml(TEST, MGEN)
         xgml.parse()
-        grid = generation.Grid(TEST, xgml.nodes, xgml.edges, MGEN)
+        grid = processing.Grid(TEST, xgml.nodes, xgml.edges, MGEN)
         # Act
         frontline = grid.border_nodes
         border = grid.border
@@ -48,9 +47,9 @@ class TestGrid(unittest.TestCase):
     def test_border_stalin(self):
         """Упорядочиваются вершины линии фронта в сталинградском графе"""
         # Arrange
-        xgml = generation.Xgml(STALIN, MGEN)
+        xgml = processing.Xgml(STALIN, MGEN)
         xgml.parse()
-        grid = generation.Grid(STALIN, xgml.nodes, xgml.edges, MGEN)
+        grid = processing.Grid(STALIN, xgml.nodes, xgml.edges, MGEN)
         expected = (
             209, 94, 93, 96, 101, 100, 99, 137, 139, 138, 157,
             186, 163, 164, 165, 184, 183, 182, 194, 193, 177
@@ -63,9 +62,9 @@ class TestGrid(unittest.TestCase):
 
     def test_grid_capturing_test(self):
         """Выполняется захват в тестовом графе"""
-        xgml = generation.Xgml(TEST, MGEN)
+        xgml = processing.Xgml(TEST, MGEN)
         xgml.parse()
-        grid = generation.Grid(TEST, xgml.nodes, xgml.edges, MGEN)
+        grid = processing.Grid(TEST, xgml.nodes, xgml.edges, MGEN)
         path = pathlib.Path(r'./tmp/{}_{}.xgml'.format(TEST, 0))
         xgml.save_file(str(path), grid.nodes, grid.edges)
         # Act
@@ -83,9 +82,9 @@ class TestGrid(unittest.TestCase):
 
     def test_get_neighbors_of(self):
         """Находятся все соседи узлов из списка"""
-        xgml = generation.Xgml(TEST, MGEN)
+        xgml = processing.Xgml(TEST, MGEN)
         xgml.parse()
-        grid = generation.Grid(TEST, xgml.nodes, xgml.edges, MGEN)
+        grid = processing.Grid(TEST, xgml.nodes, xgml.edges, MGEN)
         expected = utils.get_nodes_keys([
             grid.node(18), grid.node(19), grid.node(1), grid.node(0), grid.node(21), grid.node(5),
             grid.node(24), grid.node(7), grid.node(6), grid.node(39), grid.node(8), grid.node(29),
@@ -99,9 +98,9 @@ class TestGrid(unittest.TestCase):
 
     def _test_grid_capturing_moscow(self):
         """Выполняется захват в графе Москвы"""
-        xgml = generation.Xgml(MOSCOW, MGEN)
+        xgml = processing.Xgml(MOSCOW, MGEN)
         xgml.parse()
-        grid = generation.Grid(MOSCOW, xgml.nodes, xgml.edges, MGEN)
+        grid = processing.Grid(MOSCOW, xgml.nodes, xgml.edges, MGEN)
         path = pathlib.Path(r'./tmp/{}_{}.xgml'.format(MOSCOW, 0))
         xgml.save_file(str(path), grid.nodes, grid.edges)
         # Act
@@ -109,9 +108,9 @@ class TestGrid(unittest.TestCase):
 
     def _test_grid_capturing_stalingrad(self):
         """Выполняется захват в графе Сталинграда"""
-        xgml = generation.Xgml(STALIN, MGEN)
+        xgml = processing.Xgml(STALIN, MGEN)
         xgml.parse()
-        grid = generation.Grid(STALIN, xgml.nodes, xgml.edges, MGEN)
+        grid = processing.Grid(STALIN, xgml.nodes, xgml.edges, MGEN)
         path = pathlib.Path(r'./tmp/{}_{}.xgml'.format(STALIN, 0))
         xgml.save_file(str(path), grid.nodes, grid.edges)
         # Act
@@ -167,26 +166,26 @@ class TestTvdBuilder(unittest.TestCase):
 
     def test_influences_moscow(self):
         """Генерируются зоны влияния филдов Москвы"""
-        xgml = generation.Xgml(MOSCOW, MGEN)
+        xgml = processing.Xgml(MOSCOW, MGEN)
         xgml.parse()
         MGEN.icons_group_files[MOSCOW] = pathlib.Path('./tmp/FL_icon_moscow.Group').absolute()
-        builder = generation.TvdBuilder(MOSCOW, MGEN, MAIN, PARAMS, PLANES)
+        builder = processing.TvdBuilder(MOSCOW, MGEN, MAIN, PARAMS, PLANES)
         builder.update_icons(builder.get_tvd(TVD_DATE))
         self.assertEqual(True, True)
 
     def test_influences_stalin(self):
         """Генерируются зоны влияния филдов Сталинграда"""
-        xgml = generation.Xgml(STALIN, MGEN)
+        xgml = processing.Xgml(STALIN, MGEN)
         xgml.parse()
         MGEN.icons_group_files[STALIN] = pathlib.Path('./tmp/FL_icon_stalin.Group').absolute()
-        builder = generation.TvdBuilder(STALIN, MGEN, MAIN, PARAMS, PLANES)
+        builder = processing.TvdBuilder(STALIN, MGEN, MAIN, PARAMS, PLANES)
         builder.update_icons(builder.get_tvd(TVD_DATE))
 
     def test_airfields(self):
         """Генерируются координатные группы аэродромов"""
         airfields = self.airfields_controller.get_airfields(MOSCOW)
-        builder = generation.TvdBuilder(MOSCOW, MGEN, MAIN, PARAMS, PLANES)
-        tvd = generation.Tvd(MOSCOW, 'test', TVD_DATE, {'x': 281600, 'z': 281600}, pathlib.Path(r'./tmp/'))
+        builder = processing.TvdBuilder(MOSCOW, MGEN, MAIN, PARAMS, PLANES)
+        tvd = processing.Tvd(MOSCOW, 'test', TVD_DATE, {'x': 281600, 'z': 281600}, pathlib.Path(r'./tmp/'))
         tvd.red_front_airfields = list(x for x in airfields if x.name in ('kholm', 'kalinin', 'alferevo'))
         tvd.blue_front_airfields = list(x for x in airfields if x.name in ('losinki', 'lotoshino', 'migalovo'))
         tvd.red_rear_airfield = list(x for x in airfields if x.name == 'ruza')[0]
@@ -195,7 +194,7 @@ class TestTvdBuilder(unittest.TestCase):
 
     def test_update(self):
         """Генерируется папка ТВД"""
-        builder = generation.TvdBuilder(MOSCOW, MGEN, MAIN, PARAMS, PLANES)
+        builder = processing.TvdBuilder(MOSCOW, MGEN, MAIN, PARAMS, PLANES)
         builder.update(TVD_DATE, self.airfields_controller.get_airfields(MOSCOW))
 
 

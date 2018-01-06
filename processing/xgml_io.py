@@ -2,7 +2,7 @@
 import codecs
 import xml.etree.ElementTree as Et
 import configs
-from generation import Node
+from .grid import Node
 from .grid_io import GridIO
 
 FILE_FORMAT = """<?xml version="1.0" encoding="Cp1251"?>
