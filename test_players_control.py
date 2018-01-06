@@ -154,7 +154,7 @@ class TestPlayersController(unittest.TestCase):
         document = self.players.find_one(FILTER)
         self.assertEqual(expect, document[UNLOCKS])
 
-    def test_dont_give_for_disco(self):
+    def test_do_not_give_for_disco(self):
         """Не даётся модификация за вылет с килом и диско"""
         # Arrange
         self._create(FILTER, TEST_PLAYER)
@@ -172,7 +172,7 @@ class TestPlayersController(unittest.TestCase):
         document = self.players.find_one(FILTER)
         self.assertEqual(expect, document[UNLOCKS])
 
-    def test_dont_give_for_friendly(self):
+    def test_do_not_give_for_friendly(self):
         """Не даётся модификация за вылет со стрельбой по своим"""
         # Arrange
         self._create(FILTER, TEST_PLAYER)
