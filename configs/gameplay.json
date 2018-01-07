@@ -4,6 +4,10 @@
     "moscow": ".\\configs\\supply_moscow.csv",
     "stalingrad": ".\\configs\\supply_stalin.csv"
   },
+  "supply_unit_size": 10,
+  "front_max_power": 200,
+  "front_start_power": 150,
+  "rear_max_power": 100,
   "objectives": {
     "airfield": 70,
     "hqs": 35,

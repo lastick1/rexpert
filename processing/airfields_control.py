@@ -129,3 +129,8 @@ class AirfieldsController:
         airfield_country = tvd.get_country(airfield)
         self._add_aircraft(airfield, airfield_country, aircraft_name, aircraft_count)
         self._update(airfield)
+
+    def update_airfields(self, managed_airfields: list):
+        """Обновить аэродромы"""
+        for airfield in managed_airfields:
+            self._update(airfield)

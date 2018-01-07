@@ -29,3 +29,19 @@ class ManagedAirfield(geometry.Point):
             PLANES: self.planes,
             SUPPLIES: self.supplies
         }
+
+    def __str__(self):
+        return '{} {} planes'.format(self.name, self.planes_count)
+
+    @property
+    def power(self) -> float:
+        """Рассчитанная сила аэродрома в зависимости от его состояния"""
+        result = self.supplies
+        for name in self.planes:
+            result += self.planes[name]
+        return result
+
+    @property
+    def planes_count(self) -> int:
+        """Общее количество самолётов на аэродроме"""
+        return sum(self.planes[name] for name in self.planes)

@@ -29,7 +29,7 @@ class TestPlayersController(unittest.TestCase):
         self.players = rexpert['Players']
         self.squads = rexpert['Squads']
         self.console_mock = ConsoleMock()
-        self.controller = PlayersController(False, self.console_mock, self.players, self.squads)
+        self.controller = PlayersController(MAIN, self.console_mock, self.players)
 
     def tearDown(self):
         self.console_mock.socket.close()
