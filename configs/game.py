@@ -1,5 +1,6 @@
 """Настройки игрового процесса"""
 import json
+import pathlib
 
 
 class Gameplay:
@@ -13,15 +14,5 @@ class Gameplay:
         with open('.\\configs\\gameplay.json') as stream:
             src = json.load(stream)
         self.cfg = src
-        self.penalties = src['penalties']
-        self.aircraft_lost = src['aircraft_lost']
-        self.grounds = src['grounds']
-        supply = src['supply']
-        self.free_plane_hours = supply['free_plane_hours']
-        self.renew_minutes = supply['renew_minutes']
-        self.aircraft_multipliers = {
-            'light': supply['aircraft_multipliers']['light'],
-            'medium': supply['aircraft_multipliers']['medium'],
-            'heavy': supply['aircraft_multipliers']['heavy'],
-            'transport': supply['aircraft_multipliers']['transport']
-        }
+        self.supply_csv = {tvd_name: pathlib.Path(r'./').joinpath(src['supply_schedule'][tvd_name])
+                           for tvd_name in src['maps']}
