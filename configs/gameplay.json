@@ -6,7 +6,7 @@
   },
   "transfer_percent": 0.6,
   "front_min_supply": 20,
-  "front_min_planes": 40,
+  "front_min_planes": 20,
   "front_max_planes": 200,
   "front_start_power": 150,
   "rear_max_power": 100,
