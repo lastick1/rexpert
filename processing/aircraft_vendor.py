@@ -114,16 +114,19 @@ class AircraftVendor:
 
     def transfer_to_front(self, front_airfields: list, rear_airfields: list):
         """Перевести самолёты с тыловых на фронтовые аэродромы"""
-        transfer = self.collect_aircrafts(rear_airfields)
-        while transfer:
-            key = random.choice(list(transfer.keys()))
-            if transfer[key] < self.squadron_sizes_keys[key]:
-                amount = transfer[key]
-                del transfer[key]
-            else:
-                amount = self.squadron_sizes_keys[key]
-                transfer[key] -= self.squadron_sizes_keys[key]
-            managed_airfield = random.choice(front_airfields)
-            if key not in managed_airfield.planes:
-                managed_airfield.planes[key] = 0
-            managed_airfield.planes[key] += amount
+        choice_airfields = list(x for x in front_airfields
+                                if self.gameplay.front_min_power < x.power < self.gameplay.front_max_power)
+        if choice_airfields:
+            transfer = self.collect_aircrafts(rear_airfields)
+            while transfer:
+                key = random.choice(list(transfer.keys()))
+                if transfer[key] < self.squadron_sizes_keys[key]:
+                    amount = transfer[key]
+                    del transfer[key]
+                else:
+                    amount = self.squadron_sizes_keys[key]
+                    transfer[key] -= self.squadron_sizes_keys[key]
+                managed_airfield = random.choice(choice_airfields)
+                if key not in managed_airfield.planes:
+                    managed_airfield.planes[key] = 0
+                managed_airfield.planes[key] += amount
