@@ -21,4 +21,4 @@ class Gameplay:
         self.front_min_supply = src['front_min_supply']
         self.front_min_planes = src['front_min_planes']
         self.front_max_planes = src['front_max_planes']
-        self.front_start_power = src['front_start_power']
+        self.front_start_planes = src['front_start_planes']

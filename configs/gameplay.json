@@ -8,7 +8,7 @@
   "front_min_supply": 20,
   "front_min_planes": 20,
   "front_max_planes": 200,
-  "front_start_power": 150,
+  "front_start_planes": 150,
   "rear_max_power": 100,
   "objectives": {
     "airfield": 70,
