@@ -16,7 +16,8 @@ class Gameplay:
         self.cfg = src
         self.supply_csv = {tvd_name: pathlib.Path(r'./').joinpath(src['supply_schedule'][tvd_name])
                            for tvd_name in src['maps']}
-        self.supply_unit_size = src['supply_unit_size']
+        self.transfer_percent = src['transfer_percent']
         self.rear_max_power = src['rear_max_power']
+        self.front_min_power = src['front_min_power']
         self.front_max_power = src['front_max_power']
         self.front_start_power = src['front_start_power']

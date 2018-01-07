@@ -62,7 +62,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 201,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 12
     },
     "bf 109 f-2": {
       "Name": "",
@@ -72,7 +73,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 201,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 12
     },
     "bf 109 f-4": {
       "Name": "",
@@ -82,7 +84,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 201,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 12
     },
     "bf 109 g-2": {
       "Name": "",
@@ -92,7 +95,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 201,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 12
     },
     "bf 109 g-4": {
       "Name": "",
@@ -102,7 +106,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 201,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 12
     },
     "bf 110 e-2": {
       "Name": "",
@@ -112,7 +117,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 201,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 8
     },
     "bf 110 g-2": {
       "Name": "",
@@ -122,7 +128,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 201,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 8
     },
     "fw 190 a-3": {
       "Name": "",
@@ -132,7 +139,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 201,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 12
     },
     "fw 190 a-5": {
       "Name": "",
@@ -142,7 +150,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 201,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 12
     },
     "he 111 h-6": {
       "Name": "",
@@ -152,7 +161,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 201,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 4
     },
     "he 111 h-16": {
       "Name": "",
@@ -162,7 +172,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 201,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 4
     },
     "hs 129 b-2": {
       "Name": "",
@@ -172,7 +183,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 201,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 8
     },
     "i-16 type 24": {
       "Name": "",
@@ -182,7 +194,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 101,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 12
     },
     "il-2 mod.1941": {
       "Name": "",
@@ -192,7 +205,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 101,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 8
     },
     "il-2 mod.1942": {
       "Name": "",
@@ -202,7 +216,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 101,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 8
     },
     "il-2 mod.1943": {
       "Name": "",
@@ -212,7 +227,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 101,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 8
     },
     "ju 52 3mg4e": {
       "Name": "",
@@ -222,7 +238,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 201,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 3
     },
     "ju 87 d-3": {
       "Name": "",
@@ -232,7 +249,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 201,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 8
     },
     "ju 88 a-4": {
       "Name": "",
@@ -242,7 +260,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 201,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 4
     },
     "la-5 ser.8": {
       "Name": "",
@@ -252,7 +271,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 101,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 12
     },
     "lagg-3 ser.29": {
       "Name": "",
@@ -262,7 +282,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 101,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 12
     },
     "mc.202 ser.viii": {
       "Name": "",
@@ -272,7 +293,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 201,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 12
     },
     "mig-3 ser.24": {
       "Name": "",
@@ -282,7 +304,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 101,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 12
     },
     "p-40e-1": {
       "Name": "",
@@ -292,7 +315,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 101,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 8
     },
     "pe-2 ser.35": {
       "Name": "",
@@ -302,7 +326,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 101,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 4
     },
     "pe-2 ser.87": {
       "Name": "",
@@ -312,7 +337,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 101,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 4
     },
     "spitfire mk.vb": {
       "Name": "",
@@ -322,7 +348,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 101,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 12
     },
     "yak-1 ser.69": {
       "Name": "",
@@ -332,7 +359,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 101,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 12
     },
     "yak-1b ser.127": {
       "Name": "",
@@ -342,7 +370,8 @@
       "AvSkins": "",
       "AvPayloads": "",
       "country": 101,
-      "_default_number": 150
+      "_default_number": 150,
+      "_squadron_size": 12
     }
   }
 }

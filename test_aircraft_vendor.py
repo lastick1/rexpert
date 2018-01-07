@@ -84,6 +84,31 @@ class TestAircraftVendor(unittest.TestCase):
         self.assertFalse(supply.has_aircrafts)
         self.assertIn(CAMPAIGN_DATE, campaign_map.months)
 
+    def test_transfer_to_front(self):
+        """Переводятся самолёты с тылового на фронтовой"""
+        front_airfields = [
+            processing.ManagedAirfield('test_blue_af1', TEST_TVD_NAME, 123, 321,
+                                       {'i-16type24': 20}, supplies=10),
+            processing.ManagedAirfield('test_blue_af1', TEST_TVD_NAME, 123, 321,
+                                       {'pe-2ser35': 20, 'p-40e-1': 10}),
+            processing.ManagedAirfield('test_blue_af1', TEST_TVD_NAME, 123, 321,
+                                       {'pe-2ser35': 10, 'il-2mod1941': 20})
+        ]
+        rear_airfields = [
+            processing.ManagedAirfield('test_blue_af1', TEST_TVD_NAME, 123, 321,
+                                       {'il-2mod1941': 29, 'i-16type24': 41, 'pe-2ser35': 11, 'p-40e-1': 19})
+        ]
+        front_planes_count_before = sum(x.planes_count for x in front_airfields)
+        rear_planes_count_before = sum(x.planes_count for x in rear_airfields)
+        vendor = processing.AircraftVendor(PLANES, GAMEPLAY)
+        # Act
+        vendor.transfer_to_front(front_airfields, rear_airfields)
+        # Assert
+        front_planes_count_after = sum(x.planes_count for x in front_airfields)
+        rear_planes_count_after = sum(x.planes_count for x in rear_airfields)
+        self.assertTrue(front_planes_count_before < front_planes_count_after)
+        self.assertTrue(rear_planes_count_before > rear_planes_count_after)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

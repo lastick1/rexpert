@@ -59,8 +59,7 @@ class AirfieldsSelector:
                 result.append(front.pop())
                 front.reverse()
                 result.append(front.pop())
-                random.shuffle(front)
-                result.append(front.pop())
+                result.append(random.choice(front))
                 return result
             else:
                 raise NameError('Невозможно выбрать фронтовые аэродромы')

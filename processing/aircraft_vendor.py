@@ -48,11 +48,27 @@ class MonthSupply:
         return amount
 
 
+def collect_aircraft(managed_airfield, aircraft_key: str, amount: int) -> int:
+    """Забрать самолёты с аэродрома"""
+    if managed_airfield.planes[aircraft_key] < amount:
+        result = managed_airfield.planes[aircraft_key]
+        managed_airfield.planes[aircraft_key] = 0
+        return result
+    managed_airfield.planes[aircraft_key] -= amount
+    return amount
+
+
 class AircraftVendor:
     """Класс, распределяющий самолёты по аэродромам"""
     def __init__(self, config: configs.Planes, gameplay: configs.Gameplay):
         self.config = config
         self.gameplay = gameplay
+        uncommon = config.cfg['uncommon']
+        # словарь размеров эскадрилий передаваемых на филды по типу самолёта
+        self.squadron_sizes_names = {name: uncommon[name]['_squadron_size'] for name in uncommon}
+        # словарь размеров эскадрилий передаваемых на филды по ключу из типа самолёта
+        self.squadron_sizes_keys = {self.config.name_to_key(name): uncommon[name]['_squadron_size']
+                                    for name in uncommon}
 
     def get_month_supply(self, month: str, campaign_map: CampaignMap):
         """Сформировать месячную поставку"""
@@ -76,7 +92,38 @@ class AircraftVendor:
                 country = self.config.cfg['uncommon'][aircraft_name]['country']
                 managed_airfield = random.choice(list(x for x in managed_airfields[country]
                                                       if x.planes_count < self.gameplay.rear_max_power))
-                self.transfer_aircrafts(aircraft_name, self.gameplay.supply_unit_size, supply, managed_airfield)
+                self.transfer_aircrafts(
+                    aircraft_name, self.squadron_sizes_names[aircraft_name], supply, managed_airfield)
             campaign_map.months.append(supply.month)
         else:
             raise NameError('нельзя применять поставку дважды на одной карте')
+
+    def collect_aircrafts(self, rear_airfields: list) -> dict:
+        """Собрать самолёты с тыловых аэродромов для перемещения на фронтовые"""
+
+        transfer = dict()
+        for managed_airfield in rear_airfields:
+            planes_before = managed_airfield.planes_count
+            while 1 - managed_airfield.planes_count / planes_before < self.gameplay.transfer_percent:
+                key = random.choice(managed_airfield.remain_planes)
+
+                if key not in transfer:
+                    transfer[key] = 0
+                transfer[key] += collect_aircraft(managed_airfield, key, self.squadron_sizes_keys[key])
+        return transfer
+
+    def transfer_to_front(self, front_airfields: list, rear_airfields: list):
+        """Перевести самолёты с тыловых на фронтовые аэродромы"""
+        transfer = self.collect_aircrafts(rear_airfields)
+        while transfer:
+            key = random.choice(list(transfer.keys()))
+            if transfer[key] < self.squadron_sizes_keys[key]:
+                amount = transfer[key]
+                del transfer[key]
+            else:
+                amount = self.squadron_sizes_keys[key]
+                transfer[key] -= self.squadron_sizes_keys[key]
+            managed_airfield = random.choice(front_airfields)
+            if key not in managed_airfield.planes:
+                managed_airfield.planes[key] = 0
+            managed_airfield.planes[key] += amount
