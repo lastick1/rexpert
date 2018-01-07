@@ -18,6 +18,6 @@ class Gameplay:
                            for tvd_name in src['maps']}
         self.transfer_percent = src['transfer_percent']
         self.rear_max_power = src['rear_max_power']
-        self.front_min_power = src['front_min_power']
-        self.front_max_power = src['front_max_power']
+        self.front_min_supply = src['front_min_supply']
+        self.front_max_planes = src['front_max_planes']
         self.front_start_power = src['front_start_power']
