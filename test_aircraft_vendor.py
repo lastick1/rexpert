@@ -109,6 +109,43 @@ class TestAircraftVendor(unittest.TestCase):
         self.assertTrue(front_planes_count_before < front_planes_count_after)
         self.assertTrue(rear_planes_count_before > rear_planes_count_after)
 
+    def test_initial_front_supply(self):
+        """Выполняется начальная поставка на фронтовые аэродромы"""
+        airfields = {
+            101: [
+                processing.ManagedAirfield('test_red_af1', TEST_TVD_NAME, 123, 321, dict()),
+                processing.ManagedAirfield('test_red_af2', TEST_TVD_NAME, 123, 321, dict()),
+                processing.ManagedAirfield('test_red_af3', TEST_TVD_NAME, 123, 321, dict()),
+                processing.ManagedAirfield('test_red_af4', TEST_TVD_NAME, 123, 321, dict()),
+                processing.ManagedAirfield('test_red_af5', TEST_TVD_NAME, 123, 321, dict()),
+                processing.ManagedAirfield('test_red_af6', TEST_TVD_NAME, 123, 321, dict()),
+                processing.ManagedAirfield('test_red_af7', TEST_TVD_NAME, 123, 321, dict()),
+                processing.ManagedAirfield('test_red_af8', TEST_TVD_NAME, 123, 321, dict()),
+                processing.ManagedAirfield('test_red_af9', TEST_TVD_NAME, 123, 321, dict()),
+                processing.ManagedAirfield('test_red_af10', TEST_TVD_NAME, 123, 321, dict())
+            ],
+            201: [
+                processing.ManagedAirfield('test_blue_af1', TEST_TVD_NAME, 123, 321, dict()),
+                processing.ManagedAirfield('test_blue_af2', TEST_TVD_NAME, 123, 321, dict()),
+                processing.ManagedAirfield('test_blue_af3', TEST_TVD_NAME, 123, 321, dict()),
+                processing.ManagedAirfield('test_blue_af4', TEST_TVD_NAME, 123, 321, dict()),
+                processing.ManagedAirfield('test_blue_af5', TEST_TVD_NAME, 123, 321, dict()),
+                processing.ManagedAirfield('test_blue_af6', TEST_TVD_NAME, 123, 321, dict()),
+                processing.ManagedAirfield('test_blue_af7', TEST_TVD_NAME, 123, 321, dict()),
+                processing.ManagedAirfield('test_blue_af8', TEST_TVD_NAME, 123, 321, dict()),
+                processing.ManagedAirfield('test_blue_af9', TEST_TVD_NAME, 123, 321, dict()),
+                processing.ManagedAirfield('test_blue_af10', TEST_TVD_NAME, 123, 321, dict())
+            ]
+        }
+        campaign_map = processing.CampaignMap(1, CAMPAIGN_DATE, CAMPAIGN_DATE, TEST_TVD_NAME, list())
+        vendor = processing.AircraftVendor(PLANES, GAMEPLAY)
+        # Act
+        vendor.initial_front_supply(campaign_map, airfields)
+        # Assert
+        for country in airfields:
+            for managed_airfield in airfields[country]:
+                self.assertEqual(managed_airfield.planes_count, GAMEPLAY.front_start_planes)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

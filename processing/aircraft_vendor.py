@@ -100,7 +100,6 @@ class AircraftVendor:
 
     def collect_aircrafts(self, rear_airfields: list) -> dict:
         """Собрать самолёты с тыловых аэродромов для перемещения на фронтовые"""
-
         transfer = dict()
         for managed_airfield in rear_airfields:
             planes_before = managed_airfield.planes_count
@@ -131,3 +130,12 @@ class AircraftVendor:
                 if key not in managed_airfield.planes:
                     managed_airfield.planes[key] = 0
                 managed_airfield.planes[key] += amount
+
+    def initial_front_supply(self, campaign_map: CampaignMap, airfields: dict):
+        """Выполнить начальную поставку на фронтовой аэродром"""
+        initial_supply = self.gameplay.cfg['initial_front_supply'][campaign_map.tvd_name]
+        for country in airfields:
+            for managed_airfield in airfields[country]:
+                for aircraft_name in initial_supply:
+                    if self.config.cfg['uncommon'][aircraft_name]['country'] == country:
+                        managed_airfield.planes[self.config.name_to_key(aircraft_name)] = initial_supply[aircraft_name]
