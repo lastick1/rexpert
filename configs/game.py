@@ -19,5 +19,6 @@ class Gameplay:
         self.transfer_percent = src['transfer_percent']
         self.rear_max_power = src['rear_max_power']
         self.front_min_supply = src['front_min_supply']
+        self.front_min_planes = src['front_min_planes']
         self.front_max_planes = src['front_max_planes']
         self.front_start_power = src['front_start_power']
