@@ -3,7 +3,7 @@ from .gen import Generator
 from .events_control import EventsController
 from .players_control import PlayersController, Player
 from .ground_control import GroundController
-from .aircraft_factory import AircraftFactory
+from .aircraft_vendor import AircraftVendor
 from .airfields_control import AirfieldsController
 from .airfield import ManagedAirfield
 from .grid import Node, Grid

@@ -48,7 +48,7 @@ class MonthSupply:
         return amount
 
 
-class AircraftFactory:
+class AircraftVendor:
     """Класс, распределяющий самолёты по аэродромам"""
     def __init__(self, config: configs.Planes, gameplay: configs.Gameplay):
         self.config = config

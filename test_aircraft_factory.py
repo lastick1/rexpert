@@ -16,22 +16,22 @@ TEST_MONTH = '01.09.1941'
 TEST_TVD_NAME = 'moscow'
 
 
-class TestAircraftFactory(unittest.TestCase):
+class TestAircraftVendor(unittest.TestCase):
     """Тестовый класс"""
     def test_get_month_supply(self):
         """Формируется месячная поставка самолётов"""
         campaign_map = processing.CampaignMap(1, CAMPAIGN_DATE, CAMPAIGN_DATE, TEST_TVD_NAME, list())
-        factory = processing.AircraftFactory(PLANES, GAMEPLAY)
+        vendor = processing.AircraftVendor(PLANES, GAMEPLAY)
         # Act
-        supply = factory.get_month_supply(TEST_MONTH, campaign_map)
+        supply = vendor.get_month_supply(TEST_MONTH, campaign_map)
         # Assert
         self.assertNotEqual(supply, None)
 
     def test_deliver_month_supply(self):
         """Начисляются самолёты ежемесячной поставки"""
         campaign_map = processing.CampaignMap(1, CAMPAIGN_DATE, CAMPAIGN_DATE, TEST_TVD_NAME, list())
-        factory = processing.AircraftFactory(PLANES, GAMEPLAY)
-        supply = factory.get_month_supply(CAMPAIGN_DATE, campaign_map)
+        vendor = processing.AircraftVendor(PLANES, GAMEPLAY)
+        supply = vendor.get_month_supply(CAMPAIGN_DATE, campaign_map)
         airfields = {
             101: [
                 processing.ManagedAirfield('test_red_af1', TEST_TVD_NAME, 123, 321, dict()),
@@ -79,7 +79,7 @@ class TestAircraftFactory(unittest.TestCase):
             ]
         }
         # Act
-        factory.deliver_month_supply(campaign_map, airfields, supply)
+        vendor.deliver_month_supply(campaign_map, airfields, supply)
         # Assert
         self.assertFalse(supply.has_aircrafts)
         self.assertIn(CAMPAIGN_DATE, campaign_map.months)
