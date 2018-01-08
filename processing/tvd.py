@@ -138,7 +138,7 @@ class TvdBuilder:
         self.id = mgen.cfg[name]['tvd']
         folder = main.game_folder.joinpath(Path(mgen.cfg[name]['tvd_folder']))
         self.default_params_file = folder.joinpath(mgen.cfg[name]['default_params_dest'])
-        self.default_params_template_file = main.configs_folder.joinpath(
+        self.default_params_template_file = mgen.data_folder.joinpath(
             mgen.cfg[name]['default_params_source'])
         self.icons_group_file = folder.joinpath(mgen.cfg[name]['icons_group_file'])
         self.right_top = mgen.cfg[name]['right_top']

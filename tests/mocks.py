@@ -2,8 +2,6 @@
 # pylint: disable=all
 import pathlib
 
-import pymongo
-
 import rcon
 import configs
 import processing
@@ -24,7 +22,7 @@ class MgenMock(configs.Mgen):
     """Заглушка конфига генерации миссий"""
 
     def __init__(self, main: MainMock):
-        super().__init__(main)
+        super().__init__(main.game_folder)
         self.xgml = {
             'stalingrad': pathlib.Path(r'./testdata/stalingrad.xgml'),
             'moscow': pathlib.Path(r'./testdata/moscow.xgml'),
@@ -171,7 +169,7 @@ def get_test_grid(mgen: MgenMock) -> processing.Grid:
 class AirfieldsControllerMock(processing.AirfieldsController):
     # noinspection PyTypeChecker
     def __init__(self):
-        super().__init__(None, None, None, None)
+        super().__init__(None, None, None)
 
     def spawn(self, tvd, aircraft_name: str, xpos: float, zpos: float):
         pass

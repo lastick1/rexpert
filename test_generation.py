@@ -189,7 +189,7 @@ class TestTvdBuilder(unittest.TestCase):
     def test_update(self):
         """Генерируется папка ТВД"""
         builder = processing.TvdBuilder(MOSCOW, MGEN, MAIN, PARAMS, PLANES)
-        builder.update(TVD_DATE, self.storage.airfields.load_by_tvd(MOSCOW))
+        builder.update(builder.get_tvd(TVD_DATE), self.storage.airfields.load_by_tvd(MOSCOW))
 
 
 if __name__ == '__main__':
