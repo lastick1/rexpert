@@ -53,6 +53,10 @@ class CampaignMaps(CollectionWrapper):
         self.collection.update_one(
             {TVD_NAME: campaign_map.tvd_name}, _update_request_body(campaign_map.to_dict()), upsert=True)
 
+    def count(self) -> int:
+        """Посчитать количество карт в кампании"""
+        return self.collection.count()
+
     def load_all(self):
         """Загрузить все данные по картам кампаний"""
         return list(self._convert_from_document(document)
