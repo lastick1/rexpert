@@ -1,11 +1,13 @@
 """Основной файл для запуска"""
 import datetime
+import pathlib
+
 import configs
 import processing
 import rcon
 
 
-CONFIG = configs.Config()
+CONFIG = configs.Config(pathlib.Path(r'./configs/conf.ini'))
 
 
 def reset():

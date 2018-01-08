@@ -9,8 +9,8 @@ from .stat import Stats
 
 class Config:
     """Контейнер конфигурации"""
-    def __init__(self):
-        self.main = Main(pathlib.Path(r'./configs/conf.ini'))  # основной конфиг приложения
+    def __init__(self, conf_ini: pathlib.Path):
+        self.main = Main(conf_ini)  # основной конфиг приложения
         self.mgen = Mgen(self.main.game_folder)  # настройки генерации миссий
         self.planes = Planes()  # конфигурация самолётов
         self.gameplay = Gameplay()  # настройки игрового процесса

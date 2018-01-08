@@ -13,7 +13,6 @@ COLOR_BLUE = '#00CCFF'
 
 class MainMock(configs.Main):
     """Заглушка конфига"""
-
     def __init__(self, path: pathlib.Path):
         super().__init__(path=path)
 
@@ -45,6 +44,11 @@ class PlanesMock(configs.Planes):
 class ParamsMock(configs.GeneratorParamsConfig):
     def __init__(self):
         super().__init__()
+
+
+class ConfigMock(configs.Config):
+    def __init__(self, conf_ini: pathlib.Path):
+        super().__init__(conf_ini)
 
 
 class TvdMock(processing.Tvd):
