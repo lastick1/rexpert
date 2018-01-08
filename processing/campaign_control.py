@@ -25,24 +25,64 @@ class Mission:
 
 class CampaignController:
     """Контролеер"""
-    def __init__(self, main: configs.Main, mgen: configs.Mgen, generator: processing.Generator):
+    def __init__(
+            self,
+            main: configs.Main,
+            mgen: configs.Mgen,
+            planes: configs.Planes,
+            gameplay: configs.Gameplay,
+            generator: processing.Generator
+    ):
         self._dogfight = main.dogfight_folder
         self.missions = list()
         self.main = main
         self.mgen = mgen
+        self.vendor = processing.AircraftVendor(planes, gameplay)
         self.generator = generator
         self.tvd_builders = {x: processing.TvdBuilder(x, mgen, main, configs.GeneratorParamsConfig(), configs.Planes())
                              for x in mgen.maps}
         self.storage = processing.Storage(main)
 
+    def load_airfields_from_file(self, tvd_name: str) -> list:
+        with self.mgen.af_csv[tvd_name].open() as stream:
+            return list(
+                (lambda string: processing.ManagedAirfield(
+                    name=string[0],
+                    tvd_name=tvd_name,
+                    x=float(string[1]),
+                    z=float(string[2]),
+                    planes=dict()
+                ))
+                (line.split(sep=';'))
+                for line in stream.readlines()
+            )
+
+    def initialize_map(self, tvd_name: str):
+        """Инициализировать карту кампании"""
+        start = self.mgen.cfg[tvd_name][START_DATE]
+        order = list(self.mgen.maps).index(tvd_name) + 1
+        campaign_map = CampaignMap(order=order, date=start, mission_date=start, tvd_name=tvd_name, months=list())
+        airfields = self.load_airfields_from_file(campaign_map.tvd_name)
+        tvd_builder = self.tvd_builders[campaign_map.tvd_name]
+        tvd = tvd_builder.get_tvd(campaign_map.date.strftime(DATE_FORMAT))
+        supply = self.vendor.get_month_supply(campaign_map.current_month, campaign_map)
+        self.vendor.deliver_month_supply(campaign_map, tvd.to_country_dict_rear(airfields), supply)
+        self.vendor.initial_front_supply(campaign_map, tvd.to_country_dict_front(airfields))
+        self.storage.campaign_maps.update(campaign_map)
+        self.storage.airfields.update_airfields(airfields)
+
     def initialize(self):
         """Инициализировать кампанию в БД"""
-        i = 1
         for tvd_name in self.mgen.maps:
-            start = self.mgen.cfg[tvd_name][START_DATE]
-            self.storage.campaign_maps.update(
-                CampaignMap(order=i, date=start, mission_date=start, tvd_name=tvd_name, months=list()))
-            i += 1
+            self.initialize_map(tvd_name)
+
+        campaign_map = self.storage.campaign_maps.load_by_order(1)
+        tvd_builder = self.tvd_builders[campaign_map.tvd_name]
+        tvd = tvd_builder.get_tvd(campaign_map.date.strftime(DATE_FORMAT))
+        # Генерация первой миссии
+        tvd_builder.update(tvd, self.storage.airfields.load_by_tvd(campaign_map.tvd_name))
+        self.generator.make_ldb(campaign_map.tvd_name)
+        self.generator.make_mission('result1', campaign_map.tvd_name)
 
     @property
     def campaign_map(self) -> CampaignMap:

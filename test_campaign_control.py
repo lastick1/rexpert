@@ -2,6 +2,7 @@
 import unittest
 import datetime
 import pathlib
+import configs
 import processing
 
 from tests import mocks
@@ -10,6 +11,11 @@ DATE_FORMAT = '%d.%m.%Y'
 
 MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
 MGEN = mocks.MgenMock(MAIN)
+PLANES = configs.Planes()
+GAMEPLAY = configs.Gameplay()
+
+TEST_TVD_DATE = '01.09.1941'
+TEST_TVD_NAME = 'moscow'
 
 
 class TestCampaignController(unittest.TestCase):
@@ -25,7 +31,7 @@ class TestCampaignController(unittest.TestCase):
 
     def test_next_mission_bin_name(self):
         """Отличается имя следующей миссии от имени текущей"""
-        campaign = processing.CampaignController(MAIN, MGEN, self.generator)
+        campaign = processing.CampaignController(MAIN, MGEN, PLANES, GAMEPLAY, self.generator)
         date = datetime.datetime.strptime('01.10.1941', DATE_FORMAT)
         file_path = r'Multiplayer/Dogfight\result2.msnbin'
         # Act
@@ -33,13 +39,25 @@ class TestCampaignController(unittest.TestCase):
         # Assert
         self.assertEqual(self.generator.generations[0][0], 'result1')
 
+    def test_initialize_map(self):
+        """Инициализируется карта кампании"""
+        order = 1
+        campaign = processing.CampaignController(MAIN, MGEN, PLANES, GAMEPLAY, self.generator)
+        # Act
+        campaign.initialize_map(TEST_TVD_NAME)
+        # Assert
+        campaign_map = self.storage.campaign_maps.load_by_order(order)
+        self.assertSequenceEqual(campaign_map.months, [campaign_map.date.strftime(DATE_FORMAT)])
+
     def test_initialize(self):
         """Инициализируется кампания"""
-        campaign = processing.CampaignController(MAIN, MGEN, self.generator)
+        campaign = processing.CampaignController(MAIN, MGEN, PLANES, GAMEPLAY, self.generator)
         # Act
         campaign.initialize()
         # Assert
         self.assertEqual(self.storage.campaign_maps.count(), len(MGEN.maps))
+        campaign_map = self.storage.campaign_maps.load_by_order(1)
+        self.assertSequenceEqual(campaign_map.months, [campaign_map.date.strftime(DATE_FORMAT)])
 
 
 if __name__ == '__main__':

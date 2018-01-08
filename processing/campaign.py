@@ -28,6 +28,11 @@ class CampaignMap:
             MONTHS: self.months
         }
 
+    @property
+    def current_month(self) -> str:
+        """Текущий месяц карты кампании"""
+        return self.date.strftime('01.%m.%Y')
+
     def is_ended(self, end_date: str):
         """Закончена ли карта по дате"""
         end = datetime.datetime.strptime(end_date, DATE_FORMAT)

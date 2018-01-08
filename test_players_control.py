@@ -186,7 +186,8 @@ class TestPlayersController(unittest.TestCase):
         document = self.storage.players.collection.find_one(FILTER)
         self.assertEqual(expect, document[UNLOCKS])
 
-    def test_withdraw_plane_for_disco(self):
+    # TODO Проверить актуальность
+    def _test_withdraw_plane_for_disco(self):
         """Списывается повреждённый противником самолёт при диско в воздухе"""
         # Arrange
         self._create(FILTER, TEST_PLAYER)
@@ -204,7 +205,8 @@ class TestPlayersController(unittest.TestCase):
         document = self.storage.players.collection.find_one(FILTER)
         self.assertEqual(expect, document[PLANES][aircraft.type])
 
-    def test_stay_plane_for_disco_on_af(self):
+    # TODO Проверить актуальность
+    def _test_stay_plane_for_disco_on_af(self):
         """НЕ списывается повреждённый противником самолёт при диско на аэродроме"""
         # Arrange
         self._create(FILTER, TEST_PLAYER)
@@ -224,7 +226,8 @@ class TestPlayersController(unittest.TestCase):
         document = self.storage.players.collection.find_one(FILTER)
         self.assertEqual(expect, document[PLANES][aircraft.type])
 
-    def test_stay_plane_for_disco_ditch(self):
+    # TODO Проверить актуальность
+    def _test_stay_plane_for_disco_ditch(self):
         """Списывается повреждённый противником самолёт при диско на земле вне аэродрома"""
         # Arrange
         self._create(FILTER, TEST_PLAYER)

@@ -63,6 +63,14 @@ class CampaignMaps(CollectionWrapper):
                     for document in self.collection.find()
                     .sort(ORDER, pymongo.ASCENDING))
 
+    def load_by_order(self, order: int) -> CampaignMap:
+        """Загрузить карту кампании по её порядковому номеру"""
+        return self._convert_from_document(self.collection.find_one({ORDER: order}))
+
+    def load_by_tvd_name(self, tvd_name: str) -> CampaignMap:
+        """Загрузить карту кампании по имени её ТВД (карты)"""
+        return self._convert_from_document(self.collection.find_one({TVD_NAME: tvd_name}))
+
 
 class Players(CollectionWrapper):
     """Работа с документами игроков в БД"""
@@ -96,6 +104,11 @@ class Airfields(CollectionWrapper):
         _filter = _filter_by_id(managed_airfield.id)
         update = _update_request_body(managed_airfield.to_dict())
         self.update_one(_filter, update)
+
+    def update_airfields(self, managed_airfields: list):
+        """Обновить аэродромы"""
+        for managed_airfield in managed_airfields:
+            self.update_airfield(managed_airfield)
 
     @staticmethod
     def _convert_from_document(document) -> ManagedAirfield:

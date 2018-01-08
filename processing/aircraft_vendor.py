@@ -11,15 +11,16 @@ class MonthSupply:
         self.month = date
         self.amounts = list()
         csv_lines.reverse()
-        self.aircrafts = csv_lines.pop().split(';')[1:]
+        self.aircrafts = list(x.replace('\n', '') for x in csv_lines.pop().split(';')[1:])
         csv_lines.reverse()
         for line in csv_lines:
             split = line.split(';')
             month = split[0]
             if date == month:
-                self.amounts.extend(int(x) for x in split[1:])
+                amount = list(int(x.replace('\n', '')) for x in split[1:])
+                self.amounts.extend(amount)
         if len(self.amounts) != len(self.aircrafts):
-            raise NameError('Некорректная поставка')
+            raise NameError('Некорректная поставка для даты {}'.format(date))
 
     def get_amounts_dict(self, name_convert) -> dict:
         """Сформировать поставку в формате словаря для MongoDB"""

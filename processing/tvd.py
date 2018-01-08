@@ -68,6 +68,40 @@ class Tvd:
                     return country
         return 0
 
+    def to_country_dict(self, points: list) -> dict:
+        """Рассортировать точки в словарь стран"""
+        result = dict()
+        for point in points:
+            country = self.get_country(point)
+            if country not in result:
+                result[country] = list()
+            result[country].append(point)
+        return result
+
+    def to_country_dict_rear(self, points: list) -> dict:
+        """Рассортировать тыловые точки в словарь стран"""
+        front_areas = {101: self.confrontation_east, 201: self.confrontation_west}
+        result = dict()
+        for point in points:
+            country = self.get_country(point)
+            if country not in result:
+                result[country] = list()
+            if not point.is_in_area(front_areas[country]):
+                result[country].append(point)
+        return result
+
+    def to_country_dict_front(self, points: list) -> dict:
+        """Рассортировать фронтовые точки в словарь стран"""
+        front_areas = {101: self.confrontation_east, 201: self.confrontation_west}
+        result = dict()
+        for point in points:
+            country = self.get_country(point)
+            if country not in result:
+                result[country] = list()
+            if point.is_in_area(front_areas[country]):
+                result[country].append(point)
+        return result
+
 
 class TvdBuilder:
     """Класс подготовки папки ТВД, в которой лежат ресурсы для генерации миссии"""
@@ -167,9 +201,8 @@ class TvdBuilder:
         tvd.influences = areas
         return tvd
 
-    def update(self, date, airfields):
+    def update(self, tvd, airfields: list):
         """Обновление групп, баз локаций и файла параметров генерации в папке ТВД (data/scg/x)"""
-        tvd = self.get_tvd(date)
         print('[{}] Updating TVD folder: {} ({}) {}'.format(
             datetime.datetime.now().strftime("%H:%M:%S"),
             tvd.folder,

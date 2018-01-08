@@ -1,10 +1,9 @@
 """Тестирование обработки событий"""
 import unittest
 import pathlib
-from processing import EventsController, PlayersController, CampaignController, GroundController
+from processing import EventsController, PlayersController, CampaignController, GroundController, Storage
 from tests import mocks
 import configs
-import pymongo
 
 TEST_LOG1 = './testdata/spawn_takeoff_landing_despawn_missionReport(2017-09-17_09-05-09)[0].txt'
 TEST_LOG2 = './testdata/target_bombing_crashlanded_on_af_missionReport(2017-09-23_19-31-30)[0].txt'
@@ -16,6 +15,7 @@ DB_NAME = 'test_rexpert'
 MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
 MGEN = mocks.MgenMock(MAIN)
 PLANES = configs.Planes()
+GAMEPLAY = configs.Gameplay()
 OBJECTS = configs.Objects()
 
 
@@ -27,18 +27,16 @@ class TestIntegration(unittest.TestCase):
     """Интеграционные тесты"""
     def setUp(self):
         """Настройка базы перед тестом"""
-        self.mongo = pymongo.MongoClient(MAIN.mongo_host, MAIN.mongo_port)
-        rexpert = self.mongo[DB_NAME]
         console = mocks.ConsoleMock()
         self.grounds = GroundController(OBJECTS)
         self.generator = mocks.GeneratorMock(MAIN, MGEN)
-        self.players = PlayersController(True, console, rexpert['Players'], rexpert['Squads'])
-        self.campaign = CampaignController(MAIN, MGEN, self.generator)
+        self.players = PlayersController(MAIN, console)
+        self.campaign = CampaignController(MAIN, MGEN, PLANES, GAMEPLAY, self.generator)
+        self.storage = Storage(MAIN)
 
     def tearDown(self):
         """Удаление базы после теста"""
-        self.mongo.drop_database(DB_NAME)
-        self.mongo.close()
+        self.storage.drop_database()
 
     def test_processing_with_atype_7(self):
         """Завершается корректно миссия с AType:7 в логе"""
