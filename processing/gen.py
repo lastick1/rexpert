@@ -4,24 +4,24 @@ import time
 import shutil
 
 from datetime import datetime
-from configs import Main, Mgen
+import configs
 
 from .mission_files import MissionFiles
 
 
 class Generator:
     """Класс управления сборкой миссий"""
-    def __init__(self, main: Main, mgen: Mgen):
-        self.cfg = mgen.cfg
-        self.game_folder = main.game_folder
-        self.mission_gen_folder = main.mission_gen_folder
-        self.resaver_folder = main.resaver_folder
-        self.dogfight_folder = main.dogfight_folder
-        self.msrc_directory = main.msrc_directory
-        self.use_resaver = main.use_resaver
-        self.tvd_folders = mgen.tvd_folders
-        self.make_ldb_folder = mgen.make_ldb_folder
-        self.ldf_files = mgen.ldf_files
+    def __init__(self, config: configs.Config):
+        self.cfg = config.mgen.cfg
+        self.game_folder = config.main.game_folder
+        self.mission_gen_folder = config.main.mission_gen_folder
+        self.resaver_folder = config.main.resaver_folder
+        self.dogfight_folder = config.main.dogfight_folder
+        self.msrc_directory = config.main.msrc_directory
+        self.use_resaver = config.main.use_resaver
+        self.tvd_folders = config.mgen.tvd_folders
+        self.make_ldb_folder = config.mgen.make_ldb_folder
+        self.ldf_files = config.mgen.ldf_files
 
     def make_ldb(self, tvd_name: str):
         """ Записать текстовый файл базы локаций и скомпилировать бинарный файл с помощью make_ldb.exe """

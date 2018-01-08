@@ -9,8 +9,7 @@ from tests import mocks
 
 DATE_FORMAT = '%d.%m.%Y'
 
-MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
-MGEN = mocks.MgenMock(MAIN.game_folder)
+CONFIG = mocks.ConfigMock(pathlib.Path(r'./testdata/conf.ini'))
 PLANES = configs.Planes()
 GAMEPLAY = configs.Gameplay()
 
@@ -22,7 +21,7 @@ class TestCampaignController(unittest.TestCase):
     """Тесты бизнес-логики хода кампании"""
     def setUp(self):
         """Настройка перед тестом"""
-        self.storage = processing.Storage(MAIN)
+        self.storage = processing.Storage(CONFIG.main)
 
     def tearDown(self):
         """Удаление базы после теста"""
@@ -30,8 +29,8 @@ class TestCampaignController(unittest.TestCase):
 
     def test_next_mission_bin_name(self):
         """Отличается имя следующей миссии от имени текущей"""
-        generator = mocks.GeneratorMock(MAIN, MGEN)
-        campaign = processing.CampaignController(MAIN, MGEN, PLANES, GAMEPLAY, generator)
+        generator = mocks.GeneratorMock(CONFIG)
+        campaign = processing.CampaignController(CONFIG, generator)
         date = datetime.datetime.strptime('01.10.1941', DATE_FORMAT)
         file_path = r'Multiplayer/Dogfight\result2.msnbin'
         # Act
@@ -41,9 +40,9 @@ class TestCampaignController(unittest.TestCase):
 
     def test_initialize_map(self):
         """Инициализируется карта кампании"""
-        generator = mocks.GeneratorMock(MAIN, MGEN)
+        generator = mocks.GeneratorMock(CONFIG)
         order = 1
-        campaign = processing.CampaignController(MAIN, MGEN, PLANES, GAMEPLAY, generator)
+        campaign = processing.CampaignController(CONFIG, generator)
         # Act
         campaign.initialize_map(TEST_TVD_NAME)
         # Assert
@@ -56,8 +55,8 @@ class TestCampaignController(unittest.TestCase):
         main = configs.Main(pathlib.Path(r'./configs/conf.ini'))
         mgen = configs.Mgen(main.game_folder)
         storage = processing.Storage(main)
-        generator = processing.Generator(main, mgen)
-        campaign = processing.CampaignController(main, mgen, PLANES, GAMEPLAY, generator)
+        generator = processing.Generator(CONFIG)
+        campaign = processing.CampaignController(CONFIG, generator)
         # Act
         campaign.initialize()
         # Assert

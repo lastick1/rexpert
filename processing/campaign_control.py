@@ -24,24 +24,17 @@ class Mission:
 
 
 class CampaignController:
-    """Контролеер"""
-    def __init__(
-            self,
-            main: configs.Main,
-            mgen: configs.Mgen,
-            planes: configs.Planes,
-            gameplay: configs.Gameplay,
-            generator: processing.Generator
-    ):
-        self._dogfight = main.dogfight_folder
+    """Контролеер кампании"""
+    def __init__(self, config: configs.Config, generator: processing.Generator):
+        self._dogfight = config.main.dogfight_folder
         self.missions = list()
-        self.main = main
-        self.mgen = mgen
-        self.vendor = processing.AircraftVendor(planes, gameplay)
+        self.main = config.main
+        self.mgen = config.mgen
+        self.vendor = processing.AircraftVendor(config.planes, config.gameplay)
         self.generator = generator
-        self.tvd_builders = {x: processing.TvdBuilder(x, mgen, main, configs.GeneratorParamsConfig(), configs.Planes())
-                             for x in mgen.maps}
-        self.storage = processing.Storage(main)
+        self.tvd_builders = {x: processing.TvdBuilder(x, config.mgen, config.main, config.generator, config.planes)
+                             for x in config.mgen.maps}
+        self.storage = processing.Storage(config.main)
 
     def load_airfields_from_file(self, tvd_name: str) -> list:
         with self.mgen.af_csv[tvd_name].open() as stream:

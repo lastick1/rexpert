@@ -20,8 +20,7 @@ def reset():
 
 def initialize_campaign():
     """Инициализация кампании"""
-    controller = processing.CampaignController(
-        CONFIG.main, CONFIG.mgen, CONFIG.planes, CONFIG.gameplay, processing.Generator(CONFIG.main, CONFIG.mgen))
+    controller = processing.CampaignController(CONFIG, processing.Generator(CONFIG))
     controller.initialize()
 
 
@@ -30,7 +29,7 @@ def generate(name: str, tvd_name: str):
     storage = processing.Storage(CONFIG.main)
     tvd_builder = processing.TvdBuilder(tvd_name, CONFIG.mgen, CONFIG.main, CONFIG.generator, CONFIG.planes)
     tvd_builder.update('19.11.1941', storage.airfields.load_by_tvd(tvd_name))
-    generator = processing.Generator(CONFIG.main, CONFIG.mgen)
+    generator = processing.Generator(CONFIG)
     generator.make_ldb(tvd_name)
     generator.make_mission(name, tvd_name)
 
@@ -46,11 +45,8 @@ def run():
         ),
         ground_controller=processing.GroundController(objects=objects),
         campaign_controller=processing.CampaignController(
-            main=CONFIG.main,
-            mgen=CONFIG.mgen,
-            planes=CONFIG.planes,
-            gameplay=CONFIG.gameplay,
-            generator=processing.Generator(CONFIG.main, CONFIG.mgen)
+            config=CONFIG,
+            generator=processing.Generator(CONFIG)
         ),
         airfields_controller=processing.AirfieldsController(CONFIG.main, CONFIG.mgen, CONFIG.planes),
         config=CONFIG.main

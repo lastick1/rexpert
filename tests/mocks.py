@@ -49,6 +49,8 @@ class ParamsMock(configs.GeneratorParamsConfig):
 class ConfigMock(configs.Config):
     def __init__(self, conf_ini: pathlib.Path):
         super().__init__(conf_ini)
+        self.main = MainMock(conf_ini)
+        self.mgen = MgenMock(self.main.game_folder)
 
 
 class TvdMock(processing.Tvd):
@@ -78,8 +80,8 @@ class ConsoleMock(rcon.DServerRcon):
 class GeneratorMock(processing.Generator):
     """Заглушка генератора миссий"""
 
-    def __init__(self, main: MainMock, mgen: MgenMock):
-        super().__init__(main, mgen)
+    def __init__(self, config: ConfigMock):
+        super().__init__(config)
         self.generations = []
 
     def make_mission(self, file_name: str, tvd_name: str):
