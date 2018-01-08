@@ -307,29 +307,9 @@ class TvdBuilder:
                 return season
         raise NameError('Season not found')
 
-    def date_season_data(self, date):
-        """Данные по сезону на дату следующей миссии"""
-        return self.season_data(date)
-
-    def date_next(self, date: str) -> datetime.datetime:
-        """Дата следующей миссии этого ТВД"""
-        _date = datetime.datetime.strptime(date, DATE_FORMAT)
-        d = datetime.timedelta(days=1)
-        return _date + d
-
-    @property
-    def date_end(self):
-        """Дата окончания ТВД"""
-        return self.stages[-1].end
-
-    def date_next_day_duration(self, date):
-        """Интервал светового дня для даты следующей миссии"""
-        return self.date_day_duration(date)
-
-    @property
-    def is_ended(self):
-        # TODO добавить проверку на завершение по территории
-        return self.date_next > self.date_end
+    def date_season_data(self, date: datetime.datetime):
+        """Данные по сезону на указанную дату"""
+        return self.season_data(datetime.datetime(date.year, date.month, date.day))
 
     @staticmethod
     def random_datetime(start, end):
@@ -344,7 +324,7 @@ class TvdBuilder:
         wind_direction0000 = randint(0, 360)
         wind_power0000 = randint(0, 2)
 
-        date = self.random_datetime(*self.date_next_day_duration(date))
+        date = self.random_datetime(*self.date_day_duration(date))
         season = self.date_season_data(date)
         # Случайная температура для сезона
         temperature = randint(season['min_temp'], season['max_temp'])
@@ -377,7 +357,7 @@ class TvdBuilder:
             elif dfpr_lines[y].startswith('$windpower ='):
                 dfpr_lines[y] = '$windpower = {}\n'.format(wind_power0000)
             elif dfpr_lines[y].startswith('$turbulence ='):
-                dfpr_lines[y] = '$turbulence = {}\n'.format(w_preset.turbulence)
+                dfpr_lines[y] = '$turbulence = {}\n'.format(0)  # В топку турбулентность
             elif dfpr_lines[y].startswith('$cloudlevel ='):
                 dfpr_lines[y] = '$cloudlevel = {}\n'.format(w_preset.cloudlevel)
             elif dfpr_lines[y].startswith('$cloudheight ='):

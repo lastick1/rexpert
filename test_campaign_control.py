@@ -22,7 +22,6 @@ class TestCampaignController(unittest.TestCase):
     """Тесты бизнес-логики хода кампании"""
     def setUp(self):
         """Настройка перед тестом"""
-        self.generator = mocks.GeneratorMock(MAIN, MGEN)
         self.storage = processing.Storage(MAIN)
 
     def tearDown(self):
@@ -31,18 +30,20 @@ class TestCampaignController(unittest.TestCase):
 
     def test_next_mission_bin_name(self):
         """Отличается имя следующей миссии от имени текущей"""
-        campaign = processing.CampaignController(MAIN, MGEN, PLANES, GAMEPLAY, self.generator)
+        generator = mocks.GeneratorMock(MAIN, MGEN)
+        campaign = processing.CampaignController(MAIN, MGEN, PLANES, GAMEPLAY, generator)
         date = datetime.datetime.strptime('01.10.1941', DATE_FORMAT)
         file_path = r'Multiplayer/Dogfight\result2.msnbin'
         # Act
         campaign.start_mission(date, file_path, 2, dict(), (0, 0), False, 0)
         # Assert
-        self.assertEqual(self.generator.generations[0][0], 'result1')
+        self.assertEqual(generator.generations[0][0], 'result1')
 
     def test_initialize_map(self):
         """Инициализируется карта кампании"""
+        generator = mocks.GeneratorMock(MAIN, MGEN)
         order = 1
-        campaign = processing.CampaignController(MAIN, MGEN, PLANES, GAMEPLAY, self.generator)
+        campaign = processing.CampaignController(MAIN, MGEN, PLANES, GAMEPLAY, generator)
         # Act
         campaign.initialize_map(TEST_TVD_NAME)
         # Assert
@@ -51,7 +52,10 @@ class TestCampaignController(unittest.TestCase):
 
     def test_initialize(self):
         """Инициализируется кампания"""
-        campaign = processing.CampaignController(MAIN, MGEN, PLANES, GAMEPLAY, self.generator)
+        main = configs.Main(pathlib.Path(r'./configs/conf.ini'))
+        mgen = configs.Mgen(main)
+        generator = processing.Generator(main, mgen)
+        campaign = processing.CampaignController(MAIN, MGEN, PLANES, GAMEPLAY, generator)
         # Act
         campaign.initialize()
         # Assert
