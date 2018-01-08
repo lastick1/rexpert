@@ -3,6 +3,7 @@ import pymongo
 
 import configs
 from .airfield import ManagedAirfield, NAME, PLANES, POS
+from .player import Player
 
 ID = '_id'
 TVD_NAME = 'tvd_name'
@@ -33,8 +34,28 @@ class CollectionWrapper:
         self.collection.update_one(_filter, document, upsert=True)
 
 
+class Players(CollectionWrapper):
+    """Работа с документами игроков в БД"""
+    def count(self, account_id) -> int:
+        """Посчитать документы игрока в БД"""
+        _filter = _filter_by_id(account_id)
+        return self.collection.count(_filter)
+
+    def find(self, account_id) -> Player:
+        """Найти документ игрока в БД"""
+        _filter = _filter_by_id(account_id)
+        document = self.collection.find_one(_filter)
+        return Player(account_id, document)
+
+    def update(self, player: Player):
+        """Обновить/создать игрока в БД"""
+        _filter = _filter_by_id(player.account_id)
+        document = _update_request_body(player.to_dict())
+        self.collection.update_one(_filter, document, upsert=True)
+
+
 class Airfields(CollectionWrapper):
-    """Работа с аэродромами"""
+    """Работа с документами аэродромов в БД"""
     @staticmethod
     def _filter_by_tvd(tvd_name: str) -> dict:
         """Получить фильтр по театру военных действий"""
@@ -74,6 +95,7 @@ class Storage:
         self._mongo = pymongo.MongoClient(self._main.mongo_host, self._main.mongo_port)
         self._database = self._mongo[main.mongo_database]
         self.airfields = Airfields(self._database['Airfields'])
+        self.players = Players(self._database['Players'])
 
     def drop_database(self):
         """Удалить базу данных (использовать только в тестах)"""

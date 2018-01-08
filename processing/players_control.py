@@ -1,15 +1,10 @@
 """ Обработка игроков """
 import datetime
 import configs
-from processing.player import Player, ID
+from processing.player import Player
+from .storage import Storage
 import rcon
-import pymongo
 from .objects import BotPilot
-
-
-def _filter_by_account_id(account_id: str) -> dict:
-    """Получить фильтр документов по ИД игрока"""
-    return {ID: account_id}
 
 
 def _update_request_body(document: dict) -> dict:
@@ -22,35 +17,16 @@ class PlayersController:
     def __init__(
             self,
             main: configs.Main,
-            commands: rcon.DServerRcon,
-            players: pymongo.collection.Collection
+            commands: rcon.DServerRcon
     ):
         self.main = main
         self.player_by_bot_id = dict()
         self._commands = commands
-        self.__players = players
-
-    def _count(self, account_id) -> int:
-        """Посчитать документы игрока в БД"""
-        _filter = _filter_by_account_id(account_id)
-        return self.__players.count(_filter)
-
-    def _find(self, account_id) -> dict:
-        """Найти документ игрока в БД"""
-        _filter = _filter_by_account_id(account_id)
-        return self.__players.find_one(_filter)
-
-    def _update(self, player: Player):
-        """Обновить/создать игрока в БД"""
-        _filter = _filter_by_account_id(player.account_id)
-        document = _update_request_body(player.to_dict())
-        self.__players.update_one(_filter, document, upsert=True)
+        self.storage = Storage(main)
 
     def spawn(self, bot: BotPilot, account_id: str, name: str) -> None:
         """Обработка появления игрока"""
-
-        document = self._find(account_id)
-        player = Player(account_id, document, bot)
+        player = self.storage.players.find(account_id)
         player.nickname = name
         if not self.main.offline_mode:
             if not self._commands.connected:
@@ -58,7 +34,7 @@ class PlayersController:
                 self._commands.auth(self.main.rcon_login, self.main.rcon_password)
             self._commands.private_message(account_id, 'Hello {}!'.format(name))
 
-        self._update(player)
+        self.storage.players.update(player)
         self.player_by_bot_id[bot.obj_id] = player
 
     def finish(self, bot: BotPilot):
@@ -83,7 +59,7 @@ class PlayersController:
             player.planes[bot.aircraft.type] -= 1
 
         if player and changed:
-            self._update(player)
+            self.storage.players.update(player)
 
     def _get_player(self, bot: BotPilot) -> Player:
         """Получить игрока по его боту - пилоту в самолёте"""
@@ -92,19 +68,18 @@ class PlayersController:
     def connect(self, account_id: str) -> None:
         """AType 20"""
 
-        if self._count(account_id) == 0:
+        if self.storage.players.count(account_id) == 0:
             document = Player.create_document(account_id, online=True)
             player = Player(account_id, document)
-            self._update(player)
+            self.storage.players.update(player)
 
-        document = self._find(account_id)
-        player = Player(account_id, document)
+        player = self.storage.players.find(account_id)
+
         if player.ban_expire_date and player.ban_expire_date > datetime.datetime.now():
             self._commands.banuser(player.account_id)
 
     def disconnect(self, account_id: str) -> None:
         """AType 21"""
-        document = self._find(account_id)
-        player = Player(account_id, document)
+        player = self.storage.players.find(account_id)
         player.online = False
-        self._update(player)
+        self.storage.players.update(player)
