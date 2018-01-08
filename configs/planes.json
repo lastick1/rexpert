@@ -162,7 +162,7 @@
       "AvPayloads": "",
       "country": 201,
       "_default_number": 150,
-      "_squadron_size": 4
+      "_squadron_size": 6
     },
     "he 111 h-16": {
       "Name": "",
@@ -173,7 +173,7 @@
       "AvPayloads": "",
       "country": 201,
       "_default_number": 150,
-      "_squadron_size": 4
+      "_squadron_size": 6
     },
     "hs 129 b-2": {
       "Name": "",
@@ -261,7 +261,7 @@
       "AvPayloads": "",
       "country": 201,
       "_default_number": 150,
-      "_squadron_size": 4
+      "_squadron_size": 6
     },
     "la-5 ser.8": {
       "Name": "",
@@ -327,7 +327,7 @@
       "AvPayloads": "",
       "country": 101,
       "_default_number": 150,
-      "_squadron_size": 4
+      "_squadron_size": 6
     },
     "pe-2 ser.87": {
       "Name": "",
@@ -338,7 +338,7 @@
       "AvPayloads": "",
       "country": 101,
       "_default_number": 150,
-      "_squadron_size": 4
+      "_squadron_size": 6
     },
     "spitfire mk.vb": {
       "Name": "",

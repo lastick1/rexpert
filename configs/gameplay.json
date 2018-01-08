@@ -12,18 +12,18 @@
   "rear_max_power": 100,
   "initial_front_supply":{
     "moscow": {
-      "bf 109 e-7": 70,
-      "bf 110 e-2": 20,
+      "bf 109 e-7": 82,
+      "bf 110 e-2": 8,
       "ju 87 d-3": 60,
-      "i-16 type 24": 70,
+      "i-16 type 24": 86,
       "il-2 mod.1941": 60,
-      "pe-2 ser.35": 20
+      "pe-2 ser.35": 4
     },
     "stalingrad": {
       "bf 109 f-2": 12,
-      "bf 109 f-4": 24,
-      "bf 109 g-2": 36,
-      "bf 110 e-2": 20,
+      "bf 109 f-4": 28,
+      "bf 109 g-2": 40,
+      "bf 110 e-2": 12,
       "hs 129 b-2": 12,
       "ju 87 d-3": 46,
       "i-16 type 24": 12,
