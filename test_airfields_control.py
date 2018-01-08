@@ -10,7 +10,6 @@ MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
 MGEN = mocks.MgenMock(MAIN)
 PLANES = mocks.PlanesMock()
 PARAMS = mocks.ParamsMock()
-DB_NAME = 'test_rexpert'
 TEST = 'test'
 TEST_TVD_NAME = 'stalingrad'
 TEST_TVD_DATE = '10.11.1941'

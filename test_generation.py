@@ -4,8 +4,6 @@ import unittest
 import pathlib
 import random
 
-import pymongo
-
 import processing
 from tests import mocks, utils
 
@@ -15,7 +13,6 @@ PARAMS = mocks.ParamsMock()
 PLANES = mocks.PlanesMock()
 MOSCOW_FIELDS = pathlib.Path(r'./data/moscow_fields.csv')
 
-DB_NAME = 'test_rexpert'
 MOSCOW = 'moscow'
 STALIN = 'stalingrad'
 KUBAN = 'kuban'
@@ -152,17 +149,14 @@ class TestTvdBuilder(unittest.TestCase):
     """Тесты сборки ТВД"""
     def setUp(self):
         """Настройка БД"""
-        self.mongo = pymongo.MongoClient(MAIN.mongo_host, MAIN.mongo_port)
-        rexpert = self.mongo[DB_NAME]
-        self.airfields = rexpert['Airfields']
-        self.airfields_controller = processing.AirfieldsController(MAIN, MGEN, PLANES, self.airfields)
+        self.storage = processing.Storage(MAIN)
+        self.airfields_controller = processing.AirfieldsController(MAIN, MGEN, PLANES)
         self.airfields_controller.initialize_airfields(mocks.TvdMock(MOSCOW))
         self.airfields_controller.initialize_airfields(mocks.TvdMock(STALIN))
 
     def tearDown(self):
         """Удаление базы после теста"""
-        self.mongo.drop_database(DB_NAME)
-        self.mongo.close()
+        self.storage.drop_database()
 
     def test_influences_moscow(self):
         """Генерируются зоны влияния филдов Москвы"""
@@ -183,7 +177,7 @@ class TestTvdBuilder(unittest.TestCase):
 
     def test_airfields(self):
         """Генерируются координатные группы аэродромов"""
-        airfields = self.airfields_controller.get_airfields(MOSCOW)
+        airfields = self.storage.airfields.load_by_tvd(MOSCOW)
         builder = processing.TvdBuilder(MOSCOW, MGEN, MAIN, PARAMS, PLANES)
         tvd = processing.Tvd(MOSCOW, 'test', TVD_DATE, {'x': 281600, 'z': 281600}, pathlib.Path(r'./tmp/'))
         tvd.red_front_airfields = list(x for x in airfields if x.name in ('kholm', 'kalinin', 'alferevo'))
@@ -195,7 +189,7 @@ class TestTvdBuilder(unittest.TestCase):
     def test_update(self):
         """Генерируется папка ТВД"""
         builder = processing.TvdBuilder(MOSCOW, MGEN, MAIN, PARAMS, PLANES)
-        builder.update(TVD_DATE, self.airfields_controller.get_airfields(MOSCOW))
+        builder.update(TVD_DATE, self.storage.airfields.load_by_tvd(MOSCOW))
 
 
 if __name__ == '__main__':
