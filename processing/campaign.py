@@ -1,11 +1,11 @@
 import datetime
-from .storage import TVD_NAME
 DATE_FORMAT = '%d.%m.%Y'
 
 
 ORDER = 'order'
 DATE = 'current_date'
 MISSION_DATE = 'mission_date'
+TVD_NAME = 'tvd_name'
 MONTHS = 'months'
 
 

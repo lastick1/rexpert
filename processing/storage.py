@@ -4,6 +4,7 @@ import pymongo
 import configs
 from .airfield import ManagedAirfield, NAME, PLANES, POS
 from .player import Player
+from .campaign import CampaignMap, ORDER, DATE, MISSION_DATE, MONTHS
 
 ID = '_id'
 TVD_NAME = 'tvd_name'
@@ -32,6 +33,31 @@ class CollectionWrapper:
     def update_one(self, _filter, document):
         """Обновить документ в коллекции"""
         self.collection.update_one(_filter, document, upsert=True)
+
+
+class CampaignMaps(CollectionWrapper):
+    """Работа с документами карт кампании в БД"""
+    @staticmethod
+    def _convert_from_document(document) -> CampaignMap:
+        """Конвертировать документ из БД в объект класса карты кампании"""
+        return CampaignMap(
+            order=document[ORDER],
+            date=document[DATE],
+            mission_date=document[MISSION_DATE],
+            tvd_name=document[TVD_NAME],
+            months=document[MONTHS]
+        )
+
+    def update(self, campaign_map: CampaignMap):
+        """Обновить/создать документ в БД"""
+        self.collection.update_one(
+            {TVD_NAME: campaign_map.tvd_name}, _update_request_body(campaign_map.to_dict()), upsert=True)
+
+    def load_all(self):
+        """Загрузить все данные по картам кампаний"""
+        return list(self._convert_from_document(document)
+                    for document in self.collection.find()
+                    .sort(ORDER, pymongo.ASCENDING))
 
 
 class Players(CollectionWrapper):
@@ -69,7 +95,7 @@ class Airfields(CollectionWrapper):
 
     @staticmethod
     def _convert_from_document(document) -> ManagedAirfield:
-        """Конвертировать документ из БД в класс управляемого аэродрома"""
+        """Конвертировать документ из БД в объект класса управляемого аэродрома"""
         return ManagedAirfield(
             name=document[NAME],
             tvd_name=document[TVD_NAME],
@@ -96,6 +122,7 @@ class Storage:
         self._database = self._mongo[main.mongo_database]
         self.airfields = Airfields(self._database['Airfields'])
         self.players = Players(self._database['Players'])
+        self.campaign_maps = CampaignMaps(self._database['CampaignMaps'])
 
     def drop_database(self):
         """Удалить базу данных (использовать только в тестах)"""

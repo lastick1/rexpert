@@ -3,7 +3,6 @@ import json
 from pathlib import Path
 import datetime
 
-import pymongo
 import pytz
 
 import configs
@@ -12,8 +11,6 @@ import processing
 from .tvd import Tvd
 from .campaign import ORDER, DATE, MISSION_DATE, TVD_NAME, MONTHS, CampaignMap, DATE_FORMAT
 
-DB_NAME = 'rexpert'
-CAMPAIGN = 'CampaignMap'
 START_DATE = 'start_date'
 END_DATE = 'end_date'
 
@@ -36,35 +33,21 @@ class CampaignController:
         self.generator = generator
         self.tvd_builders = {x: processing.TvdBuilder(x, mgen, main, configs.GeneratorParamsConfig(), configs.Planes())
                              for x in mgen.maps}
-
-        mongo = pymongo.MongoClient(self.main.mongo_host, self.main.mongo_port)
-        self.__campaign = mongo[DB_NAME][CAMPAIGN]
+        self.storage = processing.Storage(main)
 
     def initialize(self):
         """Инициализировать кампанию в БД"""
         i = 1
         for tvd_name in self.mgen.maps:
             start = self.mgen.cfg[tvd_name][START_DATE]
-            self.__campaign.update_one(
-                {TVD_NAME: tvd_name},
-                {'$set': {ORDER: i, TVD_NAME: tvd_name, DATE: start, MISSION_DATE:start, MONTHS: list()}},
-                upsert=True)
+            self.storage.campaign_maps.update(
+                CampaignMap(order=i, date=start, mission_date=start, tvd_name=tvd_name, months=list()))
             i += 1
 
     @property
     def campaign_map(self) -> CampaignMap:
         """Текущая карта кампании"""
-        campaigns = [
-            CampaignMap(
-                data[ORDER],
-                data[DATE],
-                data[MISSION_DATE],
-                data[TVD_NAME],
-                data[MONTHS]
-            )
-            for data in self.__campaign.find()]
-        campaigns.sort(key=lambda x: x.order)
-        for campaign in campaigns:
+        for campaign in self.storage.campaign_maps.load_all():
             if not campaign.is_ended(self.mgen.cfg[campaign.tvd_name][END_DATE]):
                 return campaign
         raise NameError('Campaign finished')
