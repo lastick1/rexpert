@@ -10,7 +10,7 @@ from tests import mocks
 DATE_FORMAT = '%d.%m.%Y'
 
 MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
-MGEN = mocks.MgenMock(MAIN)
+MGEN = mocks.MgenMock(MAIN.game_folder)
 PLANES = configs.Planes()
 GAMEPLAY = configs.Gameplay()
 

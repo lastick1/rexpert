@@ -8,7 +8,7 @@ import processing
 from tests import mocks, utils
 
 MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
-MGEN = mocks.MgenMock(MAIN)
+MGEN = mocks.MgenMock(MAIN.game_folder)
 PARAMS = mocks.ParamsMock()
 PLANES = mocks.PlanesMock()
 MOSCOW_FIELDS = pathlib.Path(r'./data/moscow_fields.csv')

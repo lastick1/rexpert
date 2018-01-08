@@ -21,8 +21,8 @@ class MainMock(configs.Main):
 class MgenMock(configs.Mgen):
     """Заглушка конфига генерации миссий"""
 
-    def __init__(self, main: MainMock):
-        super().__init__(main.game_folder)
+    def __init__(self, game_folder: pathlib.Path):
+        super().__init__(game_folder)
         self.xgml = {
             'stalingrad': pathlib.Path(r'./testdata/stalingrad.xgml'),
             'moscow': pathlib.Path(r'./testdata/moscow.xgml'),

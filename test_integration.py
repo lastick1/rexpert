@@ -13,7 +13,7 @@ TEST_LOG5 = './testdata/gkill_with_altf4_disco_missionReport(2017-09-26_21-10-48
 DB_NAME = 'test_rexpert'
 
 MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
-MGEN = mocks.MgenMock(MAIN)
+MGEN = mocks.MgenMock(MAIN.game_folder)
 PLANES = configs.Planes()
 GAMEPLAY = configs.Gameplay()
 OBJECTS = configs.Objects()

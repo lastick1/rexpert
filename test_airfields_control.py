@@ -7,7 +7,7 @@ from processing.objects import BotPilot, Aircraft
 from tests import mocks
 
 MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
-MGEN = mocks.MgenMock(MAIN)
+MGEN = mocks.MgenMock(MAIN.game_folder)
 PLANES = mocks.PlanesMock()
 PARAMS = mocks.ParamsMock()
 TEST = 'test'

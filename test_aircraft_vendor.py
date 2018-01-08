@@ -7,7 +7,7 @@ import configs
 import tests
 
 MAIN = tests.mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
-MGEN = tests.mocks.MgenMock(MAIN)
+MGEN = tests.mocks.MgenMock(MAIN.game_folder)
 
 PLANES = configs.Planes()
 GAMEPLAY = configs.Gameplay()
