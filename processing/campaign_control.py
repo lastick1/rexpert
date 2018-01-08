@@ -9,7 +9,7 @@ import configs
 import processing
 
 from .tvd import Tvd
-from .campaign import ORDER, DATE, MISSION_DATE, TVD_NAME, MONTHS, CampaignMap, DATE_FORMAT
+from .campaign import CampaignMap, DATE_FORMAT
 
 START_DATE = 'start_date'
 END_DATE = 'end_date'
