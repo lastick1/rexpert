@@ -54,7 +54,7 @@ class TestCampaignController(unittest.TestCase):
     def _test_initialize(self):
         """Инициализируется кампания"""
         main = configs.Main(pathlib.Path(r'./configs/conf.ini'))
-        mgen = configs.Mgen(main)
+        mgen = configs.Mgen(main.game_folder)
         storage = processing.Storage(main)
         generator = processing.Generator(main, mgen)
         campaign = processing.CampaignController(main, mgen, PLANES, GAMEPLAY, generator)

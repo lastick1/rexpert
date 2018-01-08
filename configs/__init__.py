@@ -6,3 +6,4 @@ from .draw import Draw
 from .stat import Stats
 from .objects import Objects, Object
 from .planes import Planes
+from .config import Config
