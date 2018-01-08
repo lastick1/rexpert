@@ -87,6 +87,9 @@ class GeneratorMock(processing.Generator):
     def make_mission(self, file_name: str, tvd_name: str):
         self.generations.append((file_name, tvd_name))
 
+    def make_ldb(self, tvd_name: str):
+        pass
+
 
 TEST = 'test'
 TEST_NODES_LIST = [

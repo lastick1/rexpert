@@ -37,3 +37,7 @@ class CampaignMap:
         """Закончена ли карта по дате"""
         end = datetime.datetime.strptime(end_date, DATE_FORMAT)
         return self.date >= end
+
+    def set_date(self, date: str):
+        """Установить текущую дату карты"""
+        self.date = datetime.datetime.strptime(date, DATE_FORMAT)

@@ -12,10 +12,8 @@ CONFIG = configs.Config(pathlib.Path(r'./configs/conf.ini'))
 
 def reset():
     """Сбросить состояние кампании"""
-    for tvd_name in CONFIG.mgen.maps:
-        builder = processing.TvdBuilder(tvd_name, CONFIG.mgen, CONFIG.main, CONFIG.generator, CONFIG.planes)
-        airfields_controller = processing.AirfieldsController(CONFIG.main, CONFIG.mgen, CONFIG.planes)
-        airfields_controller.initialize_airfields(builder.get_tvd('10.11.1941'))
+    controller = processing.CampaignController(CONFIG, processing.Generator(CONFIG))
+    controller.reset()
 
 
 def initialize_campaign():
@@ -24,14 +22,10 @@ def initialize_campaign():
     controller.initialize()
 
 
-def generate(name: str, tvd_name: str):
+def generate(name: str):
     """Сгенерировать миссию"""
-    storage = processing.Storage(CONFIG.main)
-    tvd_builder = processing.TvdBuilder(tvd_name, CONFIG.mgen, CONFIG.main, CONFIG.generator, CONFIG.planes)
-    tvd_builder.update('19.11.1941', storage.airfields.load_by_tvd(tvd_name))
-    generator = processing.Generator(CONFIG)
-    generator.make_ldb(tvd_name)
-    generator.make_mission(name, tvd_name)
+    controller = processing.CampaignController(CONFIG, processing.Generator(CONFIG))
+    controller.generate(name)
 
 
 def run():
@@ -61,7 +55,6 @@ print(datetime.datetime.now().strftime("[%H:%M:%S] Program Start."))
 # reset()
 # export('moscow')
 # export('stalingrad')
-# generate('result1', 'moscow')
-# generate('result1', 'stalingrad')
+# generate('result1')
 run()
 print(datetime.datetime.now().strftime("[%H:%M:%S] Program Finish."))
