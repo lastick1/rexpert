@@ -248,6 +248,8 @@ class TestPlayersController(unittest.TestCase):
         document = self.storage.players.collection.find_one(FILTER)
         self.assertEqual(expect, document[PLANES][aircraft.type])
 
+    # TODO test_reset_players
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
