@@ -22,7 +22,6 @@ class Player:
         self.previous_nicknames = data[KNOWN_NICKNAMES]
         self.unlocks = data[UNLOCKS]
         self.online = data[ONLINE]
-        self.planes = data[PLANES]
 
     def to_dict(self) -> dict:
         """Сериализация в словарь для MongoDB"""
@@ -32,16 +31,19 @@ class Player:
             BAN_DATE: self.ban_expire_date,
             KNOWN_NICKNAMES: self.previous_nicknames,
             UNLOCKS: self.unlocks,
-            ONLINE: self.online,
-            PLANES: self.planes
+            ONLINE: self.online
         }
 
     @staticmethod
-    def create_document(account_id: str, online: bool = True) -> dict:
+    def initialize(account_id: str, online: bool = True) -> dict:
         """Инициализировать объект-документ для MongoDB"""
         return {
-            ID: account_id, NICKNAME: None, BAN_DATE: None, KNOWN_NICKNAMES: [], UNLOCKS: 1,
-            ONLINE: online, PLANES: {HEAVY: 2, LIGHT: 3}
+            ID: account_id,
+            NICKNAME: None,
+            BAN_DATE: None,
+            KNOWN_NICKNAMES: [],
+            UNLOCKS: 1,
+            ONLINE: online
         }
 
     def get_nickname(self) -> str:

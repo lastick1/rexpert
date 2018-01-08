@@ -69,8 +69,7 @@ class PlayersController:
         """AType 20"""
 
         if self.storage.players.count(account_id) == 0:
-            document = Player.create_document(account_id, online=True)
-            player = Player(account_id, document)
+            player = Player(account_id, Player.initialize(account_id, online=True))
             self.storage.players.update(player)
 
         player = self.storage.players.find(account_id)

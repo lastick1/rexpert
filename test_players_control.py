@@ -15,7 +15,7 @@ MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
 TEST_NICKNAME = '_test_nickname'
 TEST_ACCOUNT_ID = '_test_id1'
 TEST_PROFILE_ID = '_test_profile_id1'
-TEST_PLAYER = Player.create_document(TEST_ACCOUNT_ID)
+TEST_PLAYER = Player.initialize(TEST_ACCOUNT_ID)
 FILTER = {ID: TEST_ACCOUNT_ID}
 OBJECTS = configs.Objects()
 
