@@ -1,7 +1,7 @@
 """Контроль состояния аэродромов (доступные самолёты, повреждения)"""
 import pymongo
 import configs
-from processing.objects import Airfield, BotPilot
+from processing.objects import BotPilot
 from .airfield import ManagedAirfield, ID, NAME, TVD_NAME, POS, PLANES
 
 
