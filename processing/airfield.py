@@ -1,8 +1,9 @@
 """Модель данных управляемого аэродрома"""
 import geometry
-from .storage import ID, TVD_NAME
 
 
+ID = '_id'
+TVD_NAME = 'tvd_name'
 NAME = 'name'
 POS = 'pos'
 PLANES = 'planes'

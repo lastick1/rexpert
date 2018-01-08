@@ -2,15 +2,12 @@
 import unittest
 import pathlib
 
-import pymongo
-
 import processing
 from tests import mocks
 
 MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
 MGEN = mocks.MgenMock(MAIN)
 PLANES = mocks.PlanesMock()
-DB_NAME = 'test_rexpert'
 MOSCOW = 'moscow'
 TEST_FIELDS = pathlib.Path(r'./data/moscow_fields.csv')
 TEST_TVD_NAME = MOSCOW
@@ -25,10 +22,11 @@ class TestAirfieldsSelector(unittest.TestCase):
     """Тестовый класс"""
     def setUp(self):
         """Настройка базы перед тестом"""
-        self.mongo = pymongo.MongoClient(MAIN.mongo_host, MAIN.mongo_port)
-        rexpert = self.mongo[DB_NAME]
-        self.airfields = rexpert['Airfields']
-        self.controller = processing.AirfieldsController(main=MAIN, mgen=MGEN, config=PLANES, airfields=self.airfields)
+        self.storage = processing.Storage(MAIN)
+        self.controller = processing.AirfieldsController(main=MAIN, mgen=MGEN, config=PLANES)
+
+    def tearDown(self):
+        self.storage.drop_database()
 
     def test_select_rear_east(self):
         """Выбираются тыловые аэродромы для красных"""
@@ -44,14 +42,14 @@ class TestAirfieldsSelector(unittest.TestCase):
         boundary_builder = processing.BoundaryBuilder(north=north, east=east, south=0, west=0)
         exclude = boundary_builder.confrontation_east(grid=grid)
         include = boundary_builder.influence_east(border=grid.border)
-        airfield1, airfield2, airfield3 = (x for x in self.controller.get_airfields(MOSCOW)
+        airfield1, airfield2, airfield3 = (x for x in self.storage.airfields.load_by_tvd(MOSCOW)
                                            if x.name in ('klin', 'kubinka', 'ruza'))
         self.controller.add_aircraft(tvd, airfield1.name, TEST_AIRCRAFT_NAME1, 10)
         self.controller.add_aircraft(tvd, airfield2.name, TEST_AIRCRAFT_NAME1, 15)
         self.controller.add_aircraft(tvd, airfield3.name, TEST_AIRCRAFT_NAME1, 20)
         # Act
         result = selector.select_rear(
-            influence=include, front_area=exclude, airfields=self.controller.get_airfields(MOSCOW))
+            influence=include, front_area=exclude, airfields=self.storage.airfields.load_by_tvd(MOSCOW))
         # Assert
         self.assertIn(result, [airfield1, airfield2, airfield3])
 
@@ -69,14 +67,14 @@ class TestAirfieldsSelector(unittest.TestCase):
         boundary_builder = processing.BoundaryBuilder(north=north, east=east, south=0, west=0)
         exclude = boundary_builder.confrontation_west(grid=grid)
         include = boundary_builder.influence_west(border=grid.border)
-        airfield1, airfield2, airfield3 = (x for x in self.controller.get_airfields(MOSCOW)
+        airfield1, airfield2, airfield3 = (x for x in self.storage.airfields.load_by_tvd(MOSCOW)
                                            if x.name in ('rjev', 'sychevka', 'karpovo'))
         self.controller.add_aircraft(tvd, airfield1.name, TEST_AIRCRAFT_NAME2, 10)
         self.controller.add_aircraft(tvd, airfield2.name, TEST_AIRCRAFT_NAME2, 15)
         self.controller.add_aircraft(tvd, airfield3.name, TEST_AIRCRAFT_NAME2, 20)
         # Act
         result = selector.select_rear(
-            influence=include, front_area=exclude, airfields=self.controller.get_airfields(MOSCOW))
+            influence=include, front_area=exclude, airfields=self.storage.airfields.load_by_tvd(MOSCOW))
         # Assert
         self.assertIn(result, [airfield1, airfield2, airfield3])
 
@@ -93,11 +91,11 @@ class TestAirfieldsSelector(unittest.TestCase):
         grid = processing.Grid(MOSCOW, xgml.nodes, xgml.edges, MGEN)
         boundary_builder = processing.BoundaryBuilder(north=north, east=east, south=0, west=0)
         include = boundary_builder.confrontation_east(grid=grid)
-        airfield1, airfield2 = (x for x in self.controller.get_airfields(MOSCOW) if x.name in ('kholm', 'kalinin'))
+        airfield1, airfield2 = (x for x in self.storage.airfields.load_by_tvd(MOSCOW) if x.name in ('kholm', 'kalinin'))
         self.controller.add_aircraft(tvd, airfield1.name, TEST_AIRCRAFT_NAME1, 10)
         self.controller.add_aircraft(tvd, airfield2.name, TEST_AIRCRAFT_NAME1, -10)
         # Act
-        result = selector.select_front(front_area=include, airfields=self.controller.get_airfields(MOSCOW))
+        result = selector.select_front(front_area=include, airfields=self.storage.airfields.load_by_tvd(MOSCOW))
         # Assert
         self.assertEqual(3, len(result))
         self.assertIn(airfield1, result)
@@ -116,11 +114,11 @@ class TestAirfieldsSelector(unittest.TestCase):
         grid = processing.Grid(MOSCOW, xgml.nodes, xgml.edges, MGEN)
         boundary_builder = processing.BoundaryBuilder(north=north, east=east, south=0, west=0)
         include = boundary_builder.confrontation_west(grid=grid)
-        airfield1, airfield2 = (x for x in self.controller.get_airfields(MOSCOW) if x.name in ('lotoshino', 'migalovo'))
+        airfield1, airfield2 = (x for x in self.storage.airfields.load_by_tvd(MOSCOW) if x.name in ('lotoshino', 'migalovo'))
         self.controller.add_aircraft(tvd, airfield1.name, TEST_AIRCRAFT_NAME2, 10)
         self.controller.add_aircraft(tvd, airfield2.name, TEST_AIRCRAFT_NAME2, -10)
         # Act
-        result = selector.select_front(front_area=include, airfields=self.controller.get_airfields(MOSCOW))
+        result = selector.select_front(front_area=include, airfields=self.storage.airfields.load_by_tvd(MOSCOW))
         # Assert
         self.assertEqual(3, len(result))
         self.assertIn(airfield1, result)

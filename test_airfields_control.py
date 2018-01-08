@@ -1,9 +1,8 @@
 """Тестирование управления аэродромами"""
 import unittest
 import pathlib
-import pymongo
 import configs
-from processing import AirfieldsController, TvdBuilder
+from processing import AirfieldsController, TvdBuilder, Storage
 from processing.objects import BotPilot, Aircraft
 from tests import mocks
 
@@ -17,6 +16,7 @@ TEST_TVD_NAME = 'stalingrad'
 TEST_TVD_DATE = '10.11.1941'
 TEST_FIELDS = pathlib.Path(r'./testdata/test_fields.csv')
 TEST_AIRFIELD_NAME = 'Verbovka'
+TEST_AIRFIELD_KEY = '{}_{}'.format(TEST_TVD_NAME, TEST_AIRFIELD_NAME)
 TEST_AIRFIELD_X = 112687
 TEST_AIRFIELD_Z = 184308
 OBJECTS = configs.Objects()
@@ -26,15 +26,12 @@ class TestAirfieldsController(unittest.TestCase):
     """Тестовый класс контроллера"""
     def setUp(self):
         """Настройка базы перед тестом"""
-        self.mongo = pymongo.MongoClient(MAIN.mongo_host, MAIN.mongo_port)
-        rexpert = self.mongo[DB_NAME]
-        self.airfields = rexpert['Airfields']
-        self.controller = AirfieldsController(main=MAIN, mgen=MGEN, config=PLANES, airfields=self.airfields)
+        self.storage = Storage(MAIN)
+        self.controller = AirfieldsController(main=MAIN, mgen=MGEN, config=PLANES)
 
     def tearDown(self):
         """Удаление базы после теста"""
-        self.mongo.drop_database(DB_NAME)
-        self.mongo.close()
+        self.storage.drop_database()
 
     def test_get_airfield_in_radius(self):
         """Определяется аэродром в радиусе от координат"""
@@ -65,14 +62,14 @@ class TestAirfieldsController(unittest.TestCase):
         managed_airfield = self.controller.get_airfield_by_name(tvd_name=TEST_TVD_NAME, name=TEST_AIRFIELD_NAME)
         aircraft_name = 'Pe-2 ser.35'
         aircraft_key = PLANES.name_to_key(aircraft_name)
-        expected = self.airfields.find_one({'_id': managed_airfield.id})['planes'][aircraft_key] - 1
+        expected = self.storage.airfields.load_by_id(managed_airfield.id).planes[aircraft_key] - 1
         # Act
         self.controller.spawn(tvd, aircraft_name, TEST_AIRFIELD_X, TEST_AIRFIELD_Z)
         # Assert
         managed_airfield = self.controller.get_airfield_by_name(tvd_name=TEST_TVD_NAME, name=TEST_AIRFIELD_NAME)
         self.assertEqual(managed_airfield.planes[aircraft_key], expected)
-        document = self.airfields.find_one({'_id': managed_airfield.id})
-        self.assertEqual(document['planes'][aircraft_key], expected)
+        airfield = self.storage.airfields.load_by_id(managed_airfield.id)
+        self.assertEqual(airfield.planes[aircraft_key], expected)
 
     def test_return_planes(self):
         """Восполняется количество самолётов на аэродроме при возврате на него (деспаун)"""
@@ -83,7 +80,7 @@ class TestAirfieldsController(unittest.TestCase):
         aircraft_key = PLANES.name_to_key(aircraft_name)
         bot_name = 'BotPilot_Pe2'
         managed_airfield = self.controller.get_airfield_by_name(tvd_name=TEST_TVD_NAME, name=TEST_AIRFIELD_NAME)
-        document = self.airfields.find_one({'_id': managed_airfield.id})
+        airfield = self.storage.airfields.load_by_id(managed_airfield.id)
         aircraft = Aircraft(
             1, OBJECTS[aircraft_name], 101, 1, aircraft_name, pos={'x': managed_airfield.x, 'z': managed_airfield.z})
         bot = BotPilot(
@@ -93,9 +90,9 @@ class TestAirfieldsController(unittest.TestCase):
         self.controller.finish(tvd, bot)
         # Assert
         managed_airfield = self.controller.get_airfield_by_name(tvd_name=TEST_TVD_NAME, name=TEST_AIRFIELD_NAME)
-        self.assertEqual(managed_airfield.planes[aircraft_key], document['planes'][aircraft_key] + 1)
-        document = self.airfields.find_one({'_id': managed_airfield.id})
-        self.assertEqual(managed_airfield.planes[aircraft_key], document['planes'][aircraft_key])
+        self.assertEqual(managed_airfield.planes[aircraft_key], airfield.planes[aircraft_key] + 1)
+        airfield = self.storage.airfields.load_by_id(managed_airfield.id)
+        self.assertEqual(managed_airfield.planes[aircraft_key], airfield.planes[aircraft_key])
 
     def test_get_country(self):
         """Определяется страна аэродрома по узлу графа"""
@@ -115,13 +112,13 @@ class TestAirfieldsController(unittest.TestCase):
         self.controller.initialize_airfields(tvd)
         aircraft_name = 'bf 109 f-4'
         aircraft_key = PLANES.name_to_key(aircraft_name)
-        document = self.airfields.find_one({'name': TEST_AIRFIELD_NAME})
-        expected = document['planes'][aircraft_key] + 5
+        airfield = self.storage.airfields.load_by_id(TEST_AIRFIELD_KEY)
+        expected = airfield.planes[aircraft_key] + 5
         # Act
         self.controller.add_aircraft(tvd, TEST_AIRFIELD_NAME, aircraft_name, 5)
         # Assert
-        document = self.airfields.find_one({'name': TEST_AIRFIELD_NAME})
-        self.assertEqual(expected, document['planes'][aircraft_key])
+        airfield = self.storage.airfields.load_by_id(TEST_AIRFIELD_KEY)
+        self.assertEqual(expected, airfield.planes[aircraft_key])
 
     def test_add_aircraft_wrong(self):
         """НЕ добавляется самолёт на аэродром другой страны"""
@@ -133,8 +130,8 @@ class TestAirfieldsController(unittest.TestCase):
         # Act
         self.controller.add_aircraft(tvd, TEST_AIRFIELD_NAME, aircraft_name, 5)
         # Assert
-        document = self.airfields.find_one({'name': TEST_AIRFIELD_NAME})
-        self.assertNotIn(aircraft_key, document['planes'])
+        airfield = self.storage.airfields.load_by_id(TEST_AIRFIELD_KEY)
+        self.assertNotIn(aircraft_key, airfield.planes)
 
 
 if __name__ == '__main__':

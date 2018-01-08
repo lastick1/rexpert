@@ -1,4 +1,5 @@
 """ Обработка событий """
+from .storage import Storage
 from .gen import Generator
 from .events_control import EventsController
 from .players_control import PlayersController, Player

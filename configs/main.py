@@ -56,6 +56,7 @@ class Main:  # pylint: disable=R0903,R0902,C0301
         self.password = src['STATS']['password']
         self.mongo_host = src['MONGO']['host']
         self.mongo_port = int(src['MONGO']['port'])
+        self.mongo_database = src['MONGO']['database']
 
     @property
     def instances(self):

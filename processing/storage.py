@@ -2,7 +2,7 @@
 import pymongo
 
 import configs
-from processing import ManagedAirfield
+from .airfield import ManagedAirfield, NAME, PLANES, POS
 
 ID = '_id'
 TVD_NAME = 'tvd_name'
@@ -11,6 +11,11 @@ TVD_NAME = 'tvd_name'
 def _filter_by_id(_id: str) -> dict:
     """Получить фильтр документов по идентификатору"""
     return {ID: _id}
+
+
+def _filter_by_tvd(tvd_name: str) -> dict:
+    """Получить фильтр документов по театру военных действий (ТВД)"""
+    return {TVD_NAME: tvd_name}
 
 
 def _update_request_body(document: dict) -> dict:
@@ -41,10 +46,35 @@ class Airfields(CollectionWrapper):
         update = _update_request_body(managed_airfield.to_dict())
         self.update_one(_filter, update)
 
+    @staticmethod
+    def _convert_from_document(document) -> ManagedAirfield:
+        """Конвертировать документ из БД в класс управляемого аэродрома"""
+        return ManagedAirfield(
+            name=document[NAME],
+            tvd_name=document[TVD_NAME],
+            x=float(document[POS]['x']),
+            z=float(document[POS]['z']),
+            planes=document[PLANES]
+        )
+
+    def load_by_id(self, airfield_id) -> ManagedAirfield:
+        """Загрузить аэродром по его идентификатору из базы данных"""
+        return self._convert_from_document(self.collection.find_one(_filter_by_id(_id=airfield_id)))
+
+    def load_by_tvd(self, tvd_name: str) -> list:
+        """Загрузить аэродромы для ТВД из базы данных"""
+        return list(self._convert_from_document(document)
+                    for document in self.collection.find(_filter_by_tvd(tvd_name=tvd_name)))
+
 
 class Storage:
     """Класс работы с БД"""
     def __init__(self, main: configs.Main):
         self._main = main
         self._mongo = pymongo.MongoClient(self._main.mongo_host, self._main.mongo_port)
-        self.airfields = Airfields(self._mongo['Airfields'])
+        self._database = self._mongo[main.mongo_database]
+        self.airfields = Airfields(self._database['Airfields'])
+
+    def drop_database(self):
+        """Удалить базу данных (использовать только в тестах)"""
+        self._mongo.drop_database(self._main.mongo_database)

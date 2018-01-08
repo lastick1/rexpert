@@ -1,23 +1,8 @@
 """Контроль состояния аэродромов (доступные самолёты, повреждения)"""
-import pymongo
 import configs
 from processing.objects import BotPilot
-from .airfield import ManagedAirfield, ID, NAME, TVD_NAME, POS, PLANES
-
-
-def _filter_by_id(airfield_id: str) -> dict:
-    """Получить фильтр документов по ИД аэродрома"""
-    return {ID: airfield_id}
-
-
-def _filter_by_tvd(tvd_name: str) -> dict:
-    """Получить фильтр по театру военных действий"""
-    return {TVD_NAME: tvd_name}
-
-
-def _update_request_body(document: dict) -> dict:
-    """Построить запрос обновления документа"""
-    return {'$set': document}
+from .airfield import ManagedAirfield
+from .storage import Storage
 
 
 class AirfieldsController:
@@ -25,33 +10,12 @@ class AirfieldsController:
             self,
             main: configs.Main,
             mgen: configs.Mgen,
-            config: configs.Planes,
-            airfields: pymongo.collection.Collection
+            config: configs.Planes
     ):
-        self.__airfields = airfields
         self.planes = config
         self.main = main
         self.mgen = mgen
-        self._loaded_tvds = set()
-
-    def _update(self, airfield: ManagedAirfield):
-        """Обновить/создать аэродром в БД"""
-        _filter = _filter_by_id(airfield.id)
-        document = _update_request_body(airfield.to_dict())
-        self.__airfields.update_one(_filter, document, upsert=True)
-
-    def _load_by_tvd(self, tvd_name: str) -> list:
-        """Загрузить аэродромы для ТВД из базы данных"""
-        return list(
-            ManagedAirfield(
-                name=data[NAME],
-                tvd_name=data[TVD_NAME],
-                x=float(data[POS]['x']),
-                z=float(data[POS]['z']),
-                planes=data[PLANES]
-            )
-            for data in self.__airfields.find(_filter_by_tvd(tvd_name=tvd_name))
-        )
+        self.storage = Storage(main)
 
     def initialize_airfields(self, tvd):
         with self.mgen.af_csv[tvd.name].open() as stream:
@@ -70,17 +34,17 @@ class AirfieldsController:
             for aircraft_name in self.planes.cfg['uncommon']:
                 aircraft = self.planes.cfg['uncommon'][aircraft_name]
                 self._add_aircraft(airfield, tvd.get_country(airfield), aircraft_name, aircraft['_default_number'])
-            self._update(airfield)
+            self.storage.airfields.update_airfield(airfield)
 
     def get_airfield_in_radius(self, tvd_name: str, x: float, z: float, radius: int) -> ManagedAirfield:
         """Получить аэродром по его координатам с заданным отклонением"""
-        for airfield in self._load_by_tvd(tvd_name=tvd_name):
+        for airfield in self.storage.airfields.load_by_tvd(tvd_name=tvd_name):
             if airfield.distance_to(x=x, z=z) < radius:
                 return airfield
 
     def get_airfield_by_name(self, tvd_name: str, name: str) -> ManagedAirfield:
         """Получить аэродром по его координатам с заданным отклонением"""
-        for airfield in self._load_by_tvd(tvd_name=tvd_name):
+        for airfield in self.storage.airfields.load_by_tvd(tvd_name=tvd_name):
             if airfield.name == name:
                 return airfield
 
@@ -96,18 +60,6 @@ class AirfieldsController:
         managed_airfield = self.get_airfield_in_radius(tvd.name, xpos, zpos, self.main.airfield_radius)
         if managed_airfield:
             self.add_aircraft(tvd, managed_airfield.name, bot.aircraft.log_name, 1)
-
-    def get_airfields(self, tvd_name: str) -> list:
-        """Получить аэродромы для указанного ТВД"""
-        return list(
-            ManagedAirfield(
-                name=data[NAME],
-                tvd_name=data[TVD_NAME],
-                x=float(data[POS]['x']),
-                z=float(data[POS]['z']),
-                planes=data[PLANES]
-            )
-            for data in self.__airfields.find(_filter_by_tvd(tvd_name=tvd_name)))
 
     @staticmethod
     def get_country(airfield, tvd) -> int:
@@ -128,9 +80,4 @@ class AirfieldsController:
         airfield = self.get_airfield_by_name(tvd.name, airfield_name)
         airfield_country = tvd.get_country(airfield)
         self._add_aircraft(airfield, airfield_country, aircraft_name, aircraft_count)
-        self._update(airfield)
-
-    def update_airfields(self, managed_airfields: list):
-        """Обновить аэродромы"""
-        for airfield in managed_airfields:
-            self._update(airfield)
+        self.storage.airfields.update_airfield(airfield)
