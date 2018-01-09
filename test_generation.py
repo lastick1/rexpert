@@ -1,12 +1,16 @@
 """Тестирование генерации миссий и работы графа"""
 # pylint: disable=C1801
 import unittest
+import shutil
 import pathlib
 import random
 
+import utils
 import processing
 from tests import mocks, utils
 
+
+TEMP_DIRECTORY = pathlib.Path(r'./tmp/').absolute()
 MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
 MGEN = mocks.MgenMock(MAIN.game_folder)
 PARAMS = mocks.ParamsMock()
@@ -25,7 +29,13 @@ class TestGrid(unittest.TestCase):
     """Тесты графа"""
     def setUp(self):
         """Настройка тестов"""
+        if not TEMP_DIRECTORY.exists():
+            TEMP_DIRECTORY.mkdir(parents=True)
         self.iterations = 25
+
+    def tearDown(self):
+        """Очистка после тестов"""
+        utils.clean_directory(str(TEMP_DIRECTORY))
 
     def test_border_test(self):
         """Упорядочиваются вершины линии фронта в тестовом графе"""
@@ -148,7 +158,9 @@ class TestNode(unittest.TestCase):
 class TestTvdBuilder(unittest.TestCase):
     """Тесты сборки ТВД"""
     def setUp(self):
-        """Настройка БД"""
+        """Настройка перед тестами"""
+        if not TEMP_DIRECTORY.exists():
+            TEMP_DIRECTORY.mkdir(parents=True)
         self.storage = processing.Storage(MAIN)
         self.airfields_controller = processing.AirfieldsController(MAIN, MGEN, PLANES)
         self.airfields_controller.initialize_airfields(mocks.TvdMock(MOSCOW))
@@ -157,9 +169,12 @@ class TestTvdBuilder(unittest.TestCase):
     def tearDown(self):
         """Удаление базы после теста"""
         self.storage.drop_database()
+        utils.clean_directory(str(TEMP_DIRECTORY))
 
     def test_influences_moscow(self):
         """Генерируются зоны влияния филдов Москвы"""
+        pathlib.Path('./tmp/red/').mkdir(parents=True)
+        pathlib.Path('./tmp/blue/').mkdir(parents=True)
         xgml = processing.Xgml(MOSCOW, MGEN)
         xgml.parse()
         MGEN.icons_group_files[MOSCOW] = pathlib.Path('./tmp/FL_icon_moscow.Group').absolute()
@@ -169,6 +184,8 @@ class TestTvdBuilder(unittest.TestCase):
 
     def test_influences_stalin(self):
         """Генерируются зоны влияния филдов Сталинграда"""
+        pathlib.Path('./tmp/red/').mkdir(parents=True)
+        pathlib.Path('./tmp/blue/').mkdir(parents=True)
         xgml = processing.Xgml(STALIN, MGEN)
         xgml.parse()
         MGEN.icons_group_files[STALIN] = pathlib.Path('./tmp/FL_icon_stalin.Group').absolute()
@@ -177,6 +194,8 @@ class TestTvdBuilder(unittest.TestCase):
 
     def test_airfields(self):
         """Генерируются координатные группы аэродромов"""
+        pathlib.Path('./tmp/red/').mkdir(parents=True)
+        pathlib.Path('./tmp/blue/').mkdir(parents=True)
         airfields = self.storage.airfields.load_by_tvd(MOSCOW)
         builder = processing.TvdBuilder(MOSCOW, MGEN, MAIN, PARAMS, PLANES)
         tvd = processing.Tvd(MOSCOW, 'test', TVD_DATE, {'x': 281600, 'z': 281600}, pathlib.Path(r'./tmp/'))
@@ -188,6 +207,11 @@ class TestTvdBuilder(unittest.TestCase):
 
     def test_update(self):
         """Генерируется папка ТВД"""
+        pathlib.Path('./tmp/red/').mkdir(parents=True)
+        pathlib.Path('./tmp/blue/').mkdir(parents=True)
+        pathlib.Path('./tmp/data/scg/1/').mkdir(parents=True)
+        pathlib.Path('./tmp/data/scg/2/').mkdir(parents=True)
+        shutil.copy('./data/scg/2/moscow-base_v2.ldf', './tmp/data/scg/2/')
         builder = processing.TvdBuilder(MOSCOW, MGEN, MAIN, PARAMS, PLANES)
         builder.update(builder.get_tvd(TVD_DATE), self.storage.airfields.load_by_tvd(MOSCOW))
 

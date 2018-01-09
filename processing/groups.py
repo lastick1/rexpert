@@ -3,8 +3,6 @@ import shutil
 import os
 import pathlib
 
-import configs
-
 from .formats import ref_point_helper_format
 from .mcu import FrontLineIcon, InfluenceArea
 
@@ -12,15 +10,15 @@ from .mcu import FrontLineIcon, InfluenceArea
 class Group:
     """Класс групп-файлов, из которых генератор по шаблону собирает миссию"""
     def __init__(self, group_file: pathlib.Path):
-        tmp = group_file.absolute()
+        tmp = pathlib.Path(group_file.absolute())
         self.files = {
             'Group': tmp,
-            'eng': pathlib.Path(''.join(str(tmp).split('.')[:-1]) + '.eng'),
-            'fra': pathlib.Path(''.join(str(tmp).split('.')[:-1]) + '.fra'),
-            'rus': pathlib.Path(''.join(str(tmp).split('.')[:-1]) + '.rus'),
-            'ger': pathlib.Path(''.join(str(tmp).split('.')[:-1]) + '.ger'),
-            'pol': pathlib.Path(''.join(str(tmp).split('.')[:-1]) + '.pol'),
-            'spa': pathlib.Path(''.join(str(tmp).split('.')[:-1]) + '.spa')
+            'eng': tmp.parent.joinpath(tmp.stem + '.eng'),
+            'fra': tmp.parent.joinpath(tmp.stem + '.fra'),
+            'rus': tmp.parent.joinpath(tmp.stem + '.rus'),
+            'ger': tmp.parent.joinpath(tmp.stem + '.ger'),
+            'pol': tmp.parent.joinpath(tmp.stem + '.pol'),
+            'spa': tmp.parent.joinpath(tmp.stem + '.spa')
         }
 
     def clone_to(self, folder):

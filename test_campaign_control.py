@@ -2,13 +2,15 @@
 import unittest
 import datetime
 import pathlib
+import shutil
 import configs
 import processing
 
-from tests import mocks
+from tests import mocks, utils
 
 DATE_FORMAT = '%d.%m.%Y'
 
+TEMP_DIRECTORY = pathlib.Path(r'./tmp/').absolute()
 CONFIG = mocks.ConfigMock(pathlib.Path(r'./testdata/conf.ini'))
 PLANES = configs.Planes()
 GAMEPLAY = configs.Gameplay()
@@ -24,11 +26,14 @@ class TestCampaignController(unittest.TestCase):
     """Тесты бизнес-логики хода кампании"""
     def setUp(self):
         """Настройка перед тестом"""
+        if not TEMP_DIRECTORY.exists():
+            TEMP_DIRECTORY.mkdir(parents=True)
         self.storage = processing.Storage(CONFIG.main)
 
     def tearDown(self):
-        """Удаление базы после теста"""
+        """Удаление базы и очистка временной папки после теста"""
         self.storage.drop_database()
+        utils.clean_directory(str(TEMP_DIRECTORY))
 
     def test_next_mission_bin_name(self):
         """Отличается имя следующей миссии от имени текущей"""
@@ -55,6 +60,12 @@ class TestCampaignController(unittest.TestCase):
 
     def test_generate(self):
         """Генерируется указанная миссия"""
+        pathlib.Path('./tmp/red/').mkdir(parents=True)
+        pathlib.Path('./tmp/blue/').mkdir(parents=True)
+        pathlib.Path('./tmp/data/scg/1/blocks_quickmission/icons').mkdir(parents=True)
+        pathlib.Path('./tmp/data/scg/2/blocks_quickmission/icons').mkdir(parents=True)
+        shutil.copy('./data/scg/1/stalin-base.ldf', './tmp/data/scg/1/')
+        shutil.copy('./data/scg/2/moscow-base_v2.ldf', './tmp/data/scg/2/')
         generator = mocks.GeneratorMock(CONFIG)
         campaign = processing.CampaignController(CONFIG, generator)
         campaign.initialize()
@@ -78,7 +89,8 @@ class TestCampaignController(unittest.TestCase):
         self.assertSequenceEqual(campaign_map.months, [campaign_map.date.strftime(DATE_FORMAT)])
 
     # тест прогонять на рабочей конфигурации
-    def _test_initialize(self):
+    @unittest.skip("тест прогонять на рабочей конфигурации")
+    def test_initialize(self):
         """Инициализируется кампания"""
         main = configs.Main(pathlib.Path(r'./configs/conf.ini'))
         mgen = configs.Mgen(main.game_folder)

@@ -18,7 +18,7 @@ def _format_name(x: float, z: float) -> str:
 
 
 def _get_group_file_name(x: float, z: float, folder: pathlib.Path) -> pathlib.Path:
-    return folder.joinpath(_format_name(x=x, z=z) + '.Group'.format(x, z))
+    return folder.joinpath((_format_name(x=x, z=z) + '.Group').format(x, z)).absolute()
 
 
 class AirfieldsBuilder:
