@@ -11,9 +11,9 @@ class Gameplay:
         self.cfg = src
         self.supply_csv = {tvd_name: pathlib.Path(r'./').joinpath(src['supply_schedule'][tvd_name])
                            for tvd_name in src['maps']}
-        self.transfer_percent = src['transfer_percent']
+        self.transfer_amount = src['transfer_amount']
+        self.airfield_min_planes = src['airfield_min_planes']
         self.rear_max_power = src['rear_max_power']
         self.front_min_supply = src['front_min_supply']
-        self.front_min_planes = src['front_min_planes']
         self.front_max_planes = src['front_max_planes']
         self.front_start_planes = src['front_start_planes']

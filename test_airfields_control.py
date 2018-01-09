@@ -132,6 +132,7 @@ class TestAirfieldsController(unittest.TestCase):
         airfield = self.storage.airfields.load_by_id(TEST_AIRFIELD_KEY)
         self.assertNotIn(aircraft_key, airfield.planes)
 
+    @unittest.skip("реализовать")
     def test_return_disco_aircraft(self):
         """Возвращаются на аэродром при диско неповреждённые самолёты"""
         self.fail()

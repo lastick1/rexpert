@@ -88,7 +88,6 @@ class TestCampaignController(unittest.TestCase):
         campaign_map = self.storage.campaign_maps.load_by_order(order)
         self.assertSequenceEqual(campaign_map.months, [campaign_map.date.strftime(DATE_FORMAT)])
 
-    # тест прогонять на рабочей конфигурации
     @unittest.skip("тест прогонять на рабочей конфигурации")
     def test_initialize(self):
         """Инициализируется кампания"""
