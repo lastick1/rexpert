@@ -6,6 +6,7 @@ from .storage import Storage
 
 
 class AirfieldsController:
+    """Контроллер аэродромов"""
     def __init__(
             self,
             main: configs.Main,
@@ -18,6 +19,7 @@ class AirfieldsController:
         self.storage = Storage(main)
 
     def initialize_airfields(self, tvd):
+        """Инициализировать аэродромы из файла"""
         with self.mgen.af_csv[tvd.name].open() as stream:
             airfields = list(
                 (lambda string: ManagedAirfield(

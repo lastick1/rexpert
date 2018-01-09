@@ -93,7 +93,8 @@ class CampaignController:
     @property
     def campaign_map(self) -> CampaignMap:
         """Текущая карта кампании"""
-        for campaign in self.storage.campaign_maps.load_all():
+        maps = self.storage.campaign_maps.load_all()
+        for campaign in maps:
             if not campaign.is_ended(self.mgen.cfg[campaign.tvd_name][END_DATE]):
                 return campaign
         raise NameError('Campaign finished')

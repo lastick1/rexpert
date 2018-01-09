@@ -134,6 +134,8 @@ class Airfields(CollectionWrapper):
 class Storage:
     """Класс работы с БД"""
     def __init__(self, main: configs.Main):
+        if not main:
+            print('main: {}'.format(main))
         self._main = main
         self._mongo = pymongo.MongoClient(self._main.mongo_host, self._main.mongo_port)
         self._database = self._mongo[main.mongo_database]

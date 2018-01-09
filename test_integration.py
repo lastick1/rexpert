@@ -1,9 +1,11 @@
 """Тестирование обработки событий"""
 import unittest
 import pathlib
-from processing import EventsController, PlayersController, CampaignController, GroundController, Storage
-from tests import mocks
+
 import configs
+import processing
+
+from tests import mocks
 
 TEST_LOG1 = './testdata/spawn_takeoff_landing_despawn_missionReport(2017-09-17_09-05-09)[0].txt'
 TEST_LOG2 = './testdata/target_bombing_crashlanded_on_af_missionReport(2017-09-23_19-31-30)[0].txt'
@@ -12,14 +14,14 @@ TEST_LOG4 = './testdata/gkills_with_disconnect_missionReport(2017-09-26_20-37-23
 TEST_LOG5 = './testdata/gkill_with_altf4_disco_missionReport(2017-09-26_21-10-48)[0].txt'
 DB_NAME = 'test_rexpert'
 
-MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
-MGEN = mocks.MgenMock(MAIN.game_folder)
+CONFIG = mocks.ConfigMock(pathlib.Path(r'./testdata/conf.ini'))
 PLANES = configs.Planes()
 GAMEPLAY = configs.Gameplay()
 OBJECTS = configs.Objects()
 
 
 TEST_TVD_NAME = 'moscow'
+TEST_TVD_DATE = '01.01.1941'
 TEST_FIELDS = pathlib.Path(r'./data/moscow_fields.csv')
 
 
@@ -28,11 +30,17 @@ class TestIntegration(unittest.TestCase):
     def setUp(self):
         """Настройка базы перед тестом"""
         console = mocks.ConsoleMock()
-        self.grounds = GroundController(OBJECTS)
-        self.generator = mocks.GeneratorMock(MAIN, MGEN)
-        self.players = PlayersController(MAIN, console)
-        self.campaign = CampaignController(MAIN, MGEN, PLANES, GAMEPLAY, self.generator)
-        self.storage = Storage(MAIN)
+        self.grounds = processing.GroundController(OBJECTS)
+        self.generator = mocks.GeneratorMock(CONFIG)
+        self.players = processing.PlayersController(CONFIG.main, console)
+        self.campaign = processing.CampaignController(CONFIG, self.generator)
+        self.airfields = mocks.AirfieldsControllerMock(CONFIG.main)
+        self.storage = processing.Storage(CONFIG.main)
+        self.campaign.storage.campaign_maps.load_all = self._load_all_campaign_maps
+
+    def _load_all_campaign_maps(self):
+        """Фальшивый метод загрузки карт кампании"""
+        return [processing.CampaignMap(1, TEST_TVD_DATE, TEST_TVD_DATE, TEST_TVD_NAME, list())]
 
     def tearDown(self):
         """Удаление базы после теста"""
@@ -40,8 +48,8 @@ class TestIntegration(unittest.TestCase):
 
     def test_processing_with_atype_7(self):
         """Завершается корректно миссия с AType:7 в логе"""
-        controller = EventsController(
-            OBJECTS, self.players, self.grounds, self.campaign, mocks.AirfieldsControllerMock(), MAIN)
+        controller = processing.EventsController(
+            OBJECTS, self.players, self.grounds, self.campaign, self.airfields, CONFIG.main)
         # Act
         for line in pathlib.Path(TEST_LOG1).read_text().split('\n'):
             controller.process_line(line)
@@ -50,8 +58,8 @@ class TestIntegration(unittest.TestCase):
 
     def test_generate_next_with_atype_0(self):
         """Генерируется следующая миссия с AType:0 в логе"""
-        controller = EventsController(
-            OBJECTS, self.players, self.grounds, self.campaign, mocks.AirfieldsControllerMock(), MAIN)
+        controller = processing.EventsController(
+            OBJECTS, self.players, self.grounds, self.campaign, self.airfields, CONFIG.main)
         # Act
         for line in pathlib.Path(TEST_LOG1).read_text().split('\n'):
             controller.process_line(line)
@@ -61,8 +69,8 @@ class TestIntegration(unittest.TestCase):
 
     def test_bombing(self):
         """Учитываются наземные цели"""
-        controller = EventsController(
-            OBJECTS, self.players, self.grounds, self.campaign, mocks.AirfieldsControllerMock(), MAIN)
+        controller = processing.EventsController(
+            OBJECTS, self.players, self.grounds, self.campaign, self.airfields, CONFIG.main)
         # Act
         for line in pathlib.Path(TEST_LOG2).read_text().split('\n'):
             controller.process_line(line)

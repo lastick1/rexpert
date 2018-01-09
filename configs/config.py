@@ -1,3 +1,4 @@
+"""Конфигурация приложения"""
 import pathlib
 
 from .main import Main
