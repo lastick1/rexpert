@@ -35,6 +35,11 @@ class MonthSupply:
         return sum(self.amounts) > 0
 
     @property
+    def aircrafts_amount(self):
+        """Количество самолётов в поставке"""
+        return sum(self.amounts)
+
+    @property
     def remain_aircrafts(self) -> list:
         """Названия оставщихся самолётов"""
         result = list()
@@ -45,7 +50,12 @@ class MonthSupply:
 
     def take_aircrafts(self, aircraft_name, amount: int) -> int:
         """Взять самолёты из поставки"""
-        self.amounts[self.aircrafts.index(aircraft_name)] -= amount
+        index = self.aircrafts.index(aircraft_name)
+        if self.amounts[index] < amount:
+            result = self.amounts[index]
+            self.amounts[index] = 0
+            return result
+        self.amounts[index] -= amount
         return amount
 
 
@@ -77,24 +87,55 @@ class AircraftVendor:
         with map_supply_csv.open() as stream:
             return MonthSupply(month, stream.readlines())
 
-    def transfer_aircrafts(self, aircraft_name, amount, month_supply, managed_airfield):
-        """Переместить самолёты из поставки на аэродром"""
+    def deliver_squadron(self, aircraft_name, amount, month_supply, managed_airfield):
+        """Переместить эскадрилью самолётов из поставки на аэродром"""
         aircraft_key = self.config.name_to_key(aircraft_name)
         if aircraft_key not in managed_airfield.planes:
             managed_airfield.planes[aircraft_key] = 0
         managed_airfield.planes[aircraft_key] += month_supply.take_aircrafts(aircraft_name, amount)
 
+    def _deliver_month_supply(self, supply: MonthSupply, managed_airfields: dict):
+        """Распределить месячную поставку равномерно по всем тыловым аэродромам"""
+        while supply.has_aircrafts:
+            aircrafts = supply.remain_aircrafts
+            aircraft_name = random.choice(aircrafts)
+            country = self.config.cfg['uncommon'][aircraft_name]['country']
+            managed_airfield = random.choice(list(x for x in managed_airfields[country]
+                                                  if x.planes_count < self.gameplay.rear_max_power))
+            self.deliver_squadron(aircraft_name, self.squadron_sizes_names[aircraft_name], supply, managed_airfield)
+
+    def _deliver_first_month_supply(self, supply: MonthSupply, major_airfields: dict, minor_airfields: dict):
+        """Распределить месячную поставку по тыловым аэродромам с учётом приоритета"""
+        while supply.has_aircrafts:
+            aircrafts = supply.remain_aircrafts
+            aircraft_name = random.choice(aircrafts)
+            squadron_size = self.squadron_sizes_names[aircraft_name]
+            country = self.config.cfg['uncommon'][aircraft_name]['country']
+            managed_airfield = random.choice(major_airfields[country])
+            if managed_airfield.planes_count >= self.gameplay.rear_max_power * 2:
+                managed_airfield = random.choice(minor_airfields[country])
+            self.deliver_squadron(aircraft_name, squadron_size, supply, managed_airfield)
+
     def deliver_month_supply(self, campaign_map: CampaignMap, managed_airfields: dict, supply: MonthSupply):
         """Распределить месячную поставку на тыловые аэродромы"""
         if supply.month not in campaign_map.months:
-            while supply.has_aircrafts:
-                aircrafts = supply.remain_aircrafts
-                aircraft_name = random.choice(aircrafts)
-                country = self.config.cfg['uncommon'][aircraft_name]['country']
-                managed_airfield = random.choice(list(x for x in managed_airfields[country]
-                                                      if x.planes_count < self.gameplay.rear_max_power))
-                self.transfer_aircrafts(
-                    aircraft_name, self.squadron_sizes_names[aircraft_name], supply, managed_airfield)
+            if campaign_map.months:
+                self._deliver_month_supply(supply, managed_airfields)
+            else:
+                major_airfields = dict()
+                minor_airfields = dict()
+                for country in managed_airfields:
+                    if country not in major_airfields:
+                        major_airfields[country] = list()
+                    if country not in minor_airfields:
+                        minor_airfields[country] = list()
+                    for managed_airfield in managed_airfields[country]:
+                        if managed_airfield.name in self.gameplay.initial_priority[campaign_map.tvd_name]:
+                            major_airfields[country].append(managed_airfield)
+                        else:
+                            minor_airfields[country].append(managed_airfield)
+                self._deliver_first_month_supply(supply, major_airfields, minor_airfields)
+
             campaign_map.months.append(supply.month)
         else:
             raise NameError('нельзя применять поставку дважды на одной карте')

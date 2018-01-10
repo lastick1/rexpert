@@ -25,7 +25,7 @@ class Mgen:
                                   for x in self.maps}
         self.subtitle_groups_folder = pathlib.Path(r'./tmp/')
         self.data_folder = pathlib.Path(r'./data/')
-        self.xgml = {x: self.data_folder.joinpath(src[x]['graph_file']) for x in self.maps}
+        self.xgml = {x: self.data_folder.joinpath(src[x]['graph_file']).absolute() for x in self.maps}
         self.icons_group_files = {x: self.tvd_folders[x].joinpath(src[x]['icons_group_file']).absolute()
                                   for x in self.maps}
         self._af_csv = {x: pathlib.Path(pathlib.Path('.\\data\\').joinpath(src[x]['airfields_csv'])).absolute()

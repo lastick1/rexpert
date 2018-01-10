@@ -32,11 +32,15 @@ class TestAircraftVendor(unittest.TestCase):
         campaign_map = processing.CampaignMap(1, CAMPAIGN_DATE, CAMPAIGN_DATE, TEST_TVD_NAME, list())
         vendor = processing.AircraftVendor(PLANES, GAMEPLAY)
         supply = vendor.get_month_supply(CAMPAIGN_DATE, campaign_map)
+        prior_red_af_1 = processing.ManagedAirfield('test_red_af1', TEST_TVD_NAME, 123, 321, dict())
+        prior_red_af_2 = processing.ManagedAirfield('test_red_af2', TEST_TVD_NAME, 123, 321, dict())
+        prior_red_af_3 = processing.ManagedAirfield('test_red_af3', TEST_TVD_NAME, 123, 321, dict())
+        prior_blue_af_1 = processing.ManagedAirfield('test_blue_af1', TEST_TVD_NAME, 123, 321, dict())
+        prior_blue_af_2 = processing.ManagedAirfield('test_blue_af2', TEST_TVD_NAME, 123, 321, dict())
+        prior_blue_af_3 = processing.ManagedAirfield('test_blue_af3', TEST_TVD_NAME, 123, 321, dict())
         airfields = {
             101: [
-                processing.ManagedAirfield('test_red_af1', TEST_TVD_NAME, 123, 321, dict()),
-                processing.ManagedAirfield('test_red_af2', TEST_TVD_NAME, 123, 321, dict()),
-                processing.ManagedAirfield('test_red_af3', TEST_TVD_NAME, 123, 321, dict()),
+                prior_red_af_1, prior_red_af_2, prior_red_af_3,
                 processing.ManagedAirfield('test_red_af4', TEST_TVD_NAME, 123, 321, dict()),
                 processing.ManagedAirfield('test_red_af5', TEST_TVD_NAME, 123, 321, dict()),
                 processing.ManagedAirfield('test_red_af6', TEST_TVD_NAME, 123, 321, dict()),
@@ -56,9 +60,7 @@ class TestAircraftVendor(unittest.TestCase):
                 processing.ManagedAirfield('test_red_af20', TEST_TVD_NAME, 123, 321, dict())
             ],
             201: [
-                processing.ManagedAirfield('test_blue_af1', TEST_TVD_NAME, 123, 321, dict()),
-                processing.ManagedAirfield('test_blue_af2', TEST_TVD_NAME, 123, 321, dict()),
-                processing.ManagedAirfield('test_blue_af3', TEST_TVD_NAME, 123, 321, dict()),
+                prior_blue_af_1, prior_blue_af_2, prior_blue_af_3,
                 processing.ManagedAirfield('test_blue_af4', TEST_TVD_NAME, 123, 321, dict()),
                 processing.ManagedAirfield('test_blue_af5', TEST_TVD_NAME, 123, 321, dict()),
                 processing.ManagedAirfield('test_blue_af6', TEST_TVD_NAME, 123, 321, dict()),
@@ -78,11 +80,24 @@ class TestAircraftVendor(unittest.TestCase):
                 processing.ManagedAirfield('test_blue_af20', TEST_TVD_NAME, 123, 321, dict())
             ]
         }
+        priority = ['test_blue_af1', 'test_blue_af2', 'test_blue_af3', 'test_red_af1', 'test_red_af2', 'test_red_af3']
+        GAMEPLAY.initial_priority[TEST_TVD_NAME] = priority
         # Act
         vendor.deliver_month_supply(campaign_map, airfields, supply)
         # Assert
         self.assertFalse(supply.has_aircrafts)
         self.assertIn(CAMPAIGN_DATE, campaign_map.months)
+        self.assertSequenceEqual(supply.amounts, len(supply.amounts) * [0])
+        for country in airfields:
+            for airfield in airfields[country]:
+                for key in airfield.planes:
+                    for name in PLANES.cfg['uncommon']:
+                        if PLANES.name_to_key(name) == key:
+                            self.assertEqual(country, PLANES.cfg['uncommon'][name]['country'])
+        for airfield in (prior_red_af_1, prior_red_af_2, prior_red_af_3, prior_blue_af_1, prior_blue_af_2, prior_blue_af_3):
+            if airfield.planes_count <= GAMEPLAY.rear_max_power * 2:
+                print()
+            self.assertTrue(airfield.planes_count > GAMEPLAY.rear_max_power * 2)
 
     def test_transfer_to_front(self):
         """Переводятся самолёты с тылового на фронтовой"""

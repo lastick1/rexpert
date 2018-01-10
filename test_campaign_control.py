@@ -88,18 +88,17 @@ class TestCampaignController(unittest.TestCase):
         campaign_map = self.storage.campaign_maps.load_by_order(order)
         self.assertSequenceEqual(campaign_map.months, [campaign_map.date.strftime(DATE_FORMAT)])
 
-    @unittest.skip("тест прогонять на рабочей конфигурации")
+    # @unittest.skip("тест прогонять на рабочей конфигурации")
     def test_initialize(self):
         """Инициализируется кампания"""
-        main = configs.Main(pathlib.Path(r'./configs/conf.ini'))
-        mgen = configs.Mgen(main.game_folder)
-        storage = processing.Storage(main)
-        generator = processing.Generator(CONFIG)
-        campaign = processing.CampaignController(CONFIG, generator)
+        config = configs.Config(pathlib.Path(r'./configs/conf.ini'))
+        storage = processing.Storage(config.main)
+        generator = processing.Generator(config)
+        campaign = processing.CampaignController(config, generator)
         # Act
         campaign.initialize()
         # Assert
-        self.assertEqual(storage.campaign_maps.count(), len(mgen.maps))
+        self.assertEqual(storage.campaign_maps.count(), len(config.mgen.maps))
         campaign_map = storage.campaign_maps.load_by_order(1)
         self.assertSequenceEqual(campaign_map.months, [campaign_map.date.strftime(DATE_FORMAT)])
 
