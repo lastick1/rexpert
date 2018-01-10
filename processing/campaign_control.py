@@ -10,6 +10,7 @@ import processing
 
 from .tvd import Tvd
 from .campaign import CampaignMap, DATE_FORMAT
+from .airfields_control import AirfieldsController
 
 START_DATE = 'start_date'
 END_DATE = 'end_date'
@@ -36,26 +37,12 @@ class CampaignController:
                              for x in config.mgen.maps}
         self.storage = processing.Storage(config.main)
 
-    def load_airfields_from_file(self, tvd_name: str) -> list:
-        with self.mgen.af_csv[tvd_name].open() as stream:
-            return list(
-                (lambda string: processing.ManagedAirfield(
-                    name=string[0],
-                    tvd_name=tvd_name,
-                    x=float(string[1]),
-                    z=float(string[2]),
-                    planes=dict()
-                ))
-                (line.split(sep=';'))
-                for line in stream.readlines()
-            )
-
     def initialize_map(self, tvd_name: str):
         """Инициализировать карту кампании"""
         start = self.mgen.cfg[tvd_name][START_DATE]
         order = list(self.mgen.maps).index(tvd_name) + 1
         campaign_map = CampaignMap(order=order, date=start, mission_date=start, tvd_name=tvd_name, months=list())
-        airfields = self.load_airfields_from_file(campaign_map.tvd_name)
+        airfields = AirfieldsController.initialize_managed_airfields(self.mgen.airfields_data[campaign_map.tvd_name])
         tvd_builder = self.tvd_builders[campaign_map.tvd_name]
         tvd = tvd_builder.get_tvd(campaign_map.date.strftime(DATE_FORMAT))
         supply = self.vendor.get_month_supply(campaign_map.current_month, campaign_map)

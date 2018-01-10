@@ -130,6 +130,10 @@ class Airfields(CollectionWrapper):
         return list(self._convert_from_document(document)
                     for document in self.collection.find(_filter_by_tvd(tvd_name=tvd_name)))
 
+    def load_by_name(self, tvd_name: str, airfield_name: str) -> ManagedAirfield:
+        """Загрузить аэродром указанного ТВД по его имени"""
+        return self._convert_from_document(self.collection.find_one({TVD_NAME: tvd_name, 'name': airfield_name}))
+
 
 class Storage:
     """Класс работы с БД"""

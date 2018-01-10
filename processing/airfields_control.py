@@ -18,36 +18,22 @@ class AirfieldsController:
         self.mgen = mgen
         self.storage = Storage(main)
 
-    def initialize_airfields(self, tvd):
-        """Инициализировать аэродромы из файла"""
-        with self.mgen.af_csv[tvd.name].open() as stream:
-            airfields = list(
-                (lambda string: ManagedAirfield(
-                    name=string[0],
-                    tvd_name=tvd.name,
-                    x=float(string[1]),
-                    z=float(string[2]),
-                    planes=dict()
-                ))
-                (line.split(sep=';'))
-                for line in stream.readlines()
-            )
-        for airfield in airfields:
-            for aircraft_name in self.planes.cfg['uncommon']:
-                aircraft = self.planes.cfg['uncommon'][aircraft_name]
-                self._add_aircraft(airfield, tvd.get_country(airfield), aircraft_name, aircraft['_default_number'])
-            self.storage.airfields.update_airfield(airfield)
+    @staticmethod
+    def initialize_managed_airfields(airfields_data: list) -> list:
+        """Инициализировать список управляемых аэродромов из данных конфигурации"""
+        return list(
+            ManagedAirfield(
+                name=data['name'],
+                tvd_name=data['tvd_name'],
+                x=data['x'],
+                z=data['z'],
+                planes=dict())
+            for data in airfields_data)
 
     def get_airfield_in_radius(self, tvd_name: str, x: float, z: float, radius: int) -> ManagedAirfield:
         """Получить аэродром по его координатам с заданным отклонением"""
         for airfield in self.storage.airfields.load_by_tvd(tvd_name=tvd_name):
             if airfield.distance_to(x=x, z=z) < radius:
-                return airfield
-
-    def get_airfield_by_name(self, tvd_name: str, name: str) -> ManagedAirfield:
-        """Получить аэродром по его координатам с заданным отклонением"""
-        for airfield in self.storage.airfields.load_by_tvd(tvd_name=tvd_name):
-            if airfield.name == name:
                 return airfield
 
     def spawn(self, tvd, aircraft_name: str, xpos: float, zpos: float):
@@ -79,7 +65,7 @@ class AirfieldsController:
 
     def add_aircraft(self, tvd, airfield_name: str, aircraft_name: str, aircraft_count: int):
         """Добавить самолёт на аэродром"""
-        airfield = self.get_airfield_by_name(tvd.name, airfield_name)
+        airfield = self.storage.airfields.load_by_name(tvd.name, airfield_name)
         airfield_country = tvd.get_country(airfield)
         self._add_aircraft(airfield, airfield_country, aircraft_name, aircraft_count)
         self.storage.airfields.update_airfield(airfield)

@@ -24,6 +24,8 @@ class TestAirfieldsSelector(unittest.TestCase):
         """Настройка базы перед тестом"""
         self.storage = processing.Storage(MAIN)
         self.controller = processing.AirfieldsController(main=MAIN, mgen=MGEN, config=PLANES)
+        self.storage.airfields.update_airfields(
+            self.controller.initialize_managed_airfields(MGEN.airfields_data[MOSCOW]))
 
     def tearDown(self):
         self.storage.drop_database()
@@ -32,7 +34,6 @@ class TestAirfieldsSelector(unittest.TestCase):
         """Выбираются тыловые аэродромы для красных"""
         tvd_builder = processing.TvdBuilder(MOSCOW, MGEN, MAIN, mocks.ParamsMock(), PLANES)
         tvd = tvd_builder.get_tvd('11.11.1941')
-        self.controller.initialize_airfields(tvd)
         selector = processing.AirfieldsSelector(MAIN)
         north = MGEN.cfg[MOSCOW]['right_top']['x']
         east = MGEN.cfg[MOSCOW]['right_top']['z']
@@ -57,7 +58,6 @@ class TestAirfieldsSelector(unittest.TestCase):
         """Выбираются тыловые аэродромы для синих"""
         tvd_builder = processing.TvdBuilder(MOSCOW, MGEN, MAIN, mocks.ParamsMock(), PLANES)
         tvd = tvd_builder.get_tvd('11.11.1941')
-        self.controller.initialize_airfields(tvd)
         selector = processing.AirfieldsSelector(MAIN)
         north = MGEN.cfg[MOSCOW]['right_top']['x']
         east = MGEN.cfg[MOSCOW]['right_top']['z']
@@ -82,7 +82,6 @@ class TestAirfieldsSelector(unittest.TestCase):
         """Выбираются фронтовые аэродромы для красных"""
         tvd_builder = processing.TvdBuilder(MOSCOW, MGEN, MAIN, mocks.ParamsMock(), PLANES)
         tvd = tvd_builder.get_tvd('11.11.1941')
-        self.controller.initialize_airfields(tvd)
         selector = processing.AirfieldsSelector(MAIN)
         north = MGEN.cfg[MOSCOW]['right_top']['x']
         east = MGEN.cfg[MOSCOW]['right_top']['z']
@@ -105,7 +104,6 @@ class TestAirfieldsSelector(unittest.TestCase):
         """Выбираются фронтовые аэродромы для синих"""
         tvd_builder = processing.TvdBuilder(MOSCOW, MGEN, MAIN, mocks.ParamsMock(), PLANES)
         tvd = tvd_builder.get_tvd('11.11.1941')
-        self.controller.initialize_airfields(tvd)
         selector = processing.AirfieldsSelector(MAIN)
         north = MGEN.cfg[MOSCOW]['right_top']['x']
         east = MGEN.cfg[MOSCOW]['right_top']['z']

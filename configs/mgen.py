@@ -28,8 +28,26 @@ class Mgen:
         self.xgml = {x: self.data_folder.joinpath(src[x]['graph_file']) for x in self.maps}
         self.icons_group_files = {x: self.tvd_folders[x].joinpath(src[x]['icons_group_file']).absolute()
                                   for x in self.maps}
-        self.af_csv = {x: pathlib.Path(pathlib.Path('.\\data\\').joinpath(src[x]['airfields_csv'])).absolute()
-                       for x in self.maps}
+        self._af_csv = {x: pathlib.Path(pathlib.Path('.\\data\\').joinpath(src[x]['airfields_csv'])).absolute()
+                        for x in self.maps}
+        self._airfields_data = dict()
+
+    @property
+    def airfields_data(self) -> dict:
+        """Аэродромы из файлов"""
+        if not self._airfields_data:
+            for tvd_name in self.maps:
+                self._airfields_data[tvd_name] = list()
+                with self._af_csv[tvd_name].open() as stream:
+                    for line in stream.readlines():
+                        string = line.split(sep=';')
+                        self._airfields_data[tvd_name].append({
+                            'name': string[0],
+                            'x': float(string[1]),
+                            'z': float(string[2]),
+                            'tvd_name': tvd_name
+                        })
+        return self._airfields_data
 
 
 class GeneratorParamsConfig:
