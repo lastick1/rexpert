@@ -103,13 +103,18 @@ class AircraftVendor:
         """Собрать самолёты с тыловых аэродромов для перемещения на фронтовые"""
         transfer = dict()
         for managed_airfield in rear_airfields:
-            planes_before = managed_airfield.planes_count
-            while 1 - managed_airfield.planes_count / planes_before < self.gameplay.transfer_percent:
+            collected = 0
+            while collected < self.gameplay.transfer_amount:
                 key = random.choice(managed_airfield.remain_planes)
 
                 if key not in transfer:
                     transfer[key] = 0
-                transfer[key] += collect_aircraft(managed_airfield, key, self.squadron_sizes_keys[key])
+                aircrafts = collect_aircraft(managed_airfield, key, self.squadron_sizes_keys[key])
+                if managed_airfield.planes_count < self.gameplay.airfield_min_planes:
+                    managed_airfield.planes[key] += aircrafts
+                else:
+                    transfer[key] += aircrafts
+                    collected += aircrafts
         return transfer
 
     def transfer_to_front(self, front_airfields: list, rear_airfields: list):
@@ -134,7 +139,7 @@ class AircraftVendor:
 
     def initial_front_supply(self, campaign_map: CampaignMap, airfields: dict):
         """Выполнить начальную поставку на фронтовой аэродром"""
-        initial_supply = self.gameplay.cfg['initial_front_supply'][campaign_map.tvd_name]
+        initial_supply = self.gameplay.front_init_planes[campaign_map.tvd_name]
         for country in airfields:
             for managed_airfield in airfields[country]:
                 for aircraft_name in initial_supply:

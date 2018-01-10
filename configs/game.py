@@ -17,3 +17,5 @@ class Gameplay:
         self.front_min_supply = src['front_min_supply']
         self.front_max_planes = src['front_max_planes']
         self.front_start_planes = src['front_start_planes']
+        self.front_init_planes = {tvd_name: src['initial_front_supply'][tvd_name] for tvd_name in src['maps']}
+        self.initial_priority = {tvd_name: src['initial_priority_supply'][tvd_name] for tvd_name in src['maps']}
