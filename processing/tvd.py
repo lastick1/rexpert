@@ -106,47 +106,37 @@ class Tvd:
 class TvdBuilder:
     """Класс подготовки папки ТВД, в которой лежат ресурсы для генерации миссии"""
 
-    def __init__(
-            self,
-            name,
-            mgen: configs.Mgen,
-            main: configs.Main,
-            params: configs.GeneratorParamsConfig,
-            planes: configs.Planes
-    ):
+    def __init__(self, name: str, config: configs.Config):
         self.name = name
-        self.main = main
-        self.mgen = mgen
-        self.params = params
-        self.planes = planes
-        self.sides = mgen.cfg['sides']
-        self.af_groups_folders = mgen.af_groups_folders[name]
-        self.ldf_file = mgen.ldf_files[name]
-        self.ldf_template = mgen.ldf_templates[name]
-        self.tvd_folder = mgen.cfg[name]['tvd_folder']
+        self.config = config
+        self.sides = config.mgen.cfg['sides']
+        self.af_groups_folders = config.mgen.af_groups_folders[name]
+        self.ldf_file = config.mgen.ldf_files[name]
+        self.ldf_template = config.mgen.ldf_templates[name]
+        self.tvd_folder = config.mgen.cfg[name]['tvd_folder']
 
         offset = 10000
-        north = self.mgen.cfg[name]['right_top']['x'] + offset
-        east = self.mgen.cfg[name]['right_top']['z'] + offset
+        north = config.mgen.cfg[name]['right_top']['x'] + offset
+        east = config.mgen.cfg[name]['right_top']['z'] + offset
         south = 0 - offset
         west = 0 - offset
         self.boundary_builder = processing.BoundaryBuilder(north=north, east=east, south=south, west=west)
-        self.airfields_builder = processing.AirfieldsBuilder(self.af_groups_folders, mgen.subtitle_groups_folder,
-                                                             planes)
-        self.airfields_selector = processing.AirfieldsSelector(main=main)
+        self.airfields_builder = processing.AirfieldsBuilder(self.af_groups_folders, config.mgen.subtitle_groups_folder,
+                                                             config.planes)
+        self.airfields_selector = processing.AirfieldsSelector(main=config.main)
 
-        self.id = mgen.cfg[name]['tvd']
-        folder = main.game_folder.joinpath(Path(mgen.cfg[name]['tvd_folder']))
-        self.default_params_file = folder.joinpath(mgen.cfg[name]['default_params_dest'])
-        self.default_params_template_file = mgen.data_folder.joinpath(
-            mgen.cfg[name]['default_params_source'])
-        self.icons_group_file = folder.joinpath(mgen.cfg[name]['icons_group_file'])
-        self.right_top = mgen.cfg[name]['right_top']
-        xgml = processing.Xgml(name, mgen)
+        self.id = config.mgen.cfg[name]['tvd']
+        folder = config.main.game_folder.joinpath(Path(config.mgen.cfg[name]['tvd_folder']))
+        self.default_params_file = folder.joinpath(config.mgen.cfg[name]['default_params_dest'])
+        self.default_params_template_file = config.mgen.data_folder.joinpath(
+            config.mgen.cfg[name]['default_params_source'])
+        self.icons_group_file = folder.joinpath(config.mgen.cfg[name]['icons_group_file'])
+        self.right_top = config.mgen.cfg[name]['right_top']
+        xgml = processing.Xgml(name, config.mgen)
         xgml.parse()
-        self.grid = processing.Grid(name, xgml.nodes, xgml.edges, mgen)
+        self.grid = processing.Grid(name, xgml.nodes, xgml.edges, config.mgen)
         # данные по сезонам из daytime.csv
-        with mgen.daytime_files[name].open() as stream:
+        with config.mgen.daytime_files[name].open() as stream:
             self.seasons_data = tuple(
                 (lambda z: {
                     'start': z[0],
@@ -169,8 +159,8 @@ class TvdBuilder:
             self.name,
             self.tvd_folder,
             date,
-            self.mgen.cfg[self.name]['right_top'],
-            self.mgen.icons_group_files[self.name]
+            self.config.mgen.cfg[self.name]['right_top'],
+            self.config.mgen.icons_group_files[self.name]
         )
         tvd.border = self.grid.border
         nodes = self.grid.nodes_list
@@ -188,7 +178,7 @@ class TvdBuilder:
             Boundary(tvd.confrontation_east[0].x, tvd.confrontation_east[0].z, tvd.confrontation_east))
         west_influences.append(
             Boundary(tvd.confrontation_west[0].x, tvd.confrontation_west[0].z, tvd.confrontation_west))
-        if self.main.special_influences:
+        if self.config.main.special_influences:
             areas = {
                 101: east_influences,
                 201: west_influences
@@ -224,7 +214,7 @@ class TvdBuilder:
             )
         self.update_airfields(tvd)
         self.update_ldb(tvd)
-        self.randomize_defaultparams(tvd.date, self.params.cfg[self.name])
+        self.randomize_defaultparams(tvd.date, self.config.params.cfg[self.name])
 
     @staticmethod
     def update_icons(tvd: Tvd):
