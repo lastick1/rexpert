@@ -106,37 +106,36 @@ class Tvd:
 
 class TvdBuilder:
     """Класс подготовки папки ТВД, в которой лежат ресурсы для генерации миссии"""
-
     def __init__(self, name: str, config: configs.Config):
+        folder = config.main.game_folder.joinpath(Path(config.mgen.cfg[name]['tvd_folder']))
         self.name = name
         self.config = config
         self.sides = config.mgen.cfg['sides']
+        self.right_top = config.mgen.cfg[name]['right_top']
+        self.tvd_folder = config.mgen.cfg[name]['tvd_folder']
         self.af_groups_folders = config.mgen.af_groups_folders[name]
         self.ldf_file = config.mgen.ldf_files[name]
         self.ldf_template = config.mgen.ldf_templates[name]
-        self.tvd_folder = config.mgen.cfg[name]['tvd_folder']
-
+        self.icons_group_file = folder.joinpath(config.mgen.cfg[name]['icons_group_file'])
+        self.default_params_file = folder.joinpath(config.mgen.cfg[name]['default_params_dest'])
+        self.default_params_template_file = config.mgen.data_folder.joinpath(
+            config.mgen.cfg[name]['default_params_source'])
+        self.grid_control = GridController(config)
+        self.airfields_builder = processing.AirfieldsBuilder(self.af_groups_folders, config.mgen.subtitle_groups_folder,
+                                                             config.planes)
+        self.airfields_selector = processing.AirfieldsSelector(main=config.main)
         offset = 10000
         north = config.mgen.cfg[name]['right_top']['x'] + offset
         east = config.mgen.cfg[name]['right_top']['z'] + offset
         south = 0 - offset
         west = 0 - offset
         self.boundary_builder = processing.BoundaryBuilder(north=north, east=east, south=south, west=west)
-        self.airfields_builder = processing.AirfieldsBuilder(self.af_groups_folders, config.mgen.subtitle_groups_folder,
-                                                             config.planes)
-        self.airfields_selector = processing.AirfieldsSelector(main=config.main)
 
-        self.id = config.mgen.cfg[name]['tvd']
-        folder = config.main.game_folder.joinpath(Path(config.mgen.cfg[name]['tvd_folder']))
-        self.default_params_file = folder.joinpath(config.mgen.cfg[name]['default_params_dest'])
-        self.default_params_template_file = config.mgen.data_folder.joinpath(
-            config.mgen.cfg[name]['default_params_source'])
-        self.icons_group_file = folder.joinpath(config.mgen.cfg[name]['icons_group_file'])
-        self.right_top = config.mgen.cfg[name]['right_top']
-        self.grid_control = GridController(config)
-        # данные по сезонам из daytime.csv
-        with config.mgen.daytime_files[name].open() as stream:
-            self.seasons_data = tuple(
+    @property
+    def seasons_data(self) -> tuple:
+        """данные по сезонам из daytime.csv"""
+        with self.config.mgen.daytime_files[self.name].open() as stream:
+            return tuple(
                 (lambda z: {
                     'start': z[0],
                     'end': z[1],
