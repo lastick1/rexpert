@@ -150,9 +150,6 @@ class TvdBuilder:
                 for x in stream.readlines()
             )
 
-    def capture(self, x, z, coal_id):
-        self.grid.capture(x, z, coal_id)
-
     def get_tvd(self, date):
         """Построить объект настроек ТВД"""
         tvd = Tvd(
@@ -252,14 +249,14 @@ class TvdBuilder:
         def find_plane_in_config(config: dict, key_name: str, number: int) -> processing.Plane:
             """Найти соответствующий самолёт в конфиге для генерации аэродрома"""
             for name in config['uncommon']:
-                if self.planes.name_to_key(name) == key_name:
+                if self.config.planes.name_to_key(name) == key_name:
                     return processing.Plane(number, config['common'], config['uncommon'][name])
             raise NameError('Plane {} not found in config'.format(key_name))
 
         planes = list()
         for key in airfield.planes:
-            planes.append(find_plane_in_config(self.planes.cfg, key, airfield.planes[key]))
-        return processing.Airfield(airfield.name, country, self.main.airfield_radius, planes)
+            planes.append(find_plane_in_config(self.config.planes.cfg, key, airfield.planes[key]))
+        return processing.Airfield(airfield.name, country, self.config.main.airfield_radius, planes)
 
     def date_day_duration(self, date):
         """Рассвет и закат для указанной даты"""
