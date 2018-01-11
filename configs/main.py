@@ -9,13 +9,13 @@ class Main:  # pylint: disable=R0903,R0902,C0301
         src = configparser.ConfigParser()
         src.read(str(path.absolute()))
         self.game_folder = Path(src['PROGRAM']['game_folder']).absolute()
-        self.dogfight_folder = self.game_folder.joinpath(r'.\data\Multiplayer\Dogfight').absolute()
+        self.dogfight_folder = self.game_folder.joinpath('./data/Multiplayer/Dogfight').absolute()
         self.mission_gen_folder = Path(src['MISSIONGEN']['mission_gen_folder']).absolute()
         self.stats_folder = Path(src['PROGRAM']['stats_folder'])
-        self.stats_static = Path(self.stats_folder.joinpath(r'.\static')).absolute()
+        self.stats_static = Path(self.stats_folder.joinpath('./static')).absolute()
         self.maps_archive_folder = Path(src['PROGRAM']['maps_archive_folder'])
-        self.graph_folder = Path('.\\configs\\').absolute()
-        self.cache_folder = Path('.\\cache\\').absolute()
+        self.graph_folder = Path('./configs/').absolute()
+        self.current_grid_folder = Path(Path('./current/').absolute())
         self.resaver_folder = Path(src['MISSIONGEN']['resaver_folder'])
         self.generate_missions = True if "true" in src['MISSIONGEN']['generate_missions'].lower() else False
         self.special_influences = True if "true" in src['MISSIONGEN']['special_influences'].lower() else False

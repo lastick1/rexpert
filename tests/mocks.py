@@ -15,6 +15,7 @@ class MainMock(configs.Main):
     """Заглушка конфига"""
     def __init__(self, path: pathlib.Path):
         super().__init__(path=path)
+        self.current_grid_folder = pathlib.Path('./tmp/current/')
 
 
 class MgenMock(configs.Mgen):
@@ -23,12 +24,12 @@ class MgenMock(configs.Mgen):
     def __init__(self, game_folder: pathlib.Path):
         super().__init__(game_folder)
         self.xgml = {
-            'stalingrad': pathlib.Path(r'./testdata/stalingrad.xgml'),
-            'moscow': pathlib.Path(r'./testdata/moscow.xgml'),
-            'kuban': pathlib.Path(r'./testdata/kuban.xgml'),
-            'test': pathlib.Path(r'./testdata/test_w4f.xgml')
+            'stalingrad': pathlib.Path('./testdata/stalingrad.xgml').absolute(),
+            'moscow': pathlib.Path('./testdata/moscow.xgml').absolute(),
+            'kuban': pathlib.Path('./testdata/kuban.xgml').absolute(),
+            'test': pathlib.Path('./testdata/test_w4f.xgml').absolute()
         }
-        folders = {'red': pathlib.Path(r'./tmp/red/'), 'blue': pathlib.Path(r'./tmp/blue/')}
+        folders = {'red': pathlib.Path('./tmp/red/'), 'blue': pathlib.Path('./tmp/blue/')}
         self.af_groups_folders = {
             'moscow': folders,
             'stalingrad': folders
