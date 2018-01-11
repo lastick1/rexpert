@@ -24,9 +24,8 @@ class TestAirfieldsController(unittest.TestCase):
     def setUp(self):
         """Настройка базы перед тестом"""
         self.storage = Storage(CONFIG.main)
-        self.controller = AirfieldsController(main=CONFIG.main, mgen=CONFIG.mgen, config=CONFIG.planes)
         self.storage.airfields.update_airfields(
-            self.controller.initialize_managed_airfields(CONFIG.mgen.airfields_data[TEST_TVD_NAME]))
+            AirfieldsController.initialize_managed_airfields(CONFIG.mgen.airfields_data[TEST_TVD_NAME]))
 
     def tearDown(self):
         """Удаление базы после теста"""
@@ -34,16 +33,18 @@ class TestAirfieldsController(unittest.TestCase):
 
     def test_get_airfield_in_radius(self):
         """Определяется аэродром в радиусе от координат"""
+        controller = AirfieldsController(main=CONFIG.main, mgen=CONFIG.mgen, config=CONFIG.planes)
         tvd = mocks.TvdMock(TEST_TVD_NAME)
         tvd.country = 101
         # Act
-        result = self.controller.get_airfield_in_radius(
+        result = controller.get_airfield_in_radius(
             tvd_name=TEST_TVD_NAME, x=TEST_AIRFIELD_X, z=TEST_AIRFIELD_Z, radius=1000)
         # Assert
         self.assertEqual(result.name, 'Verbovka')
 
     def test_spawn_planes(self):
         """Уменьшается количество самолётов на аэродроме при появлении на нём"""
+        controller = AirfieldsController(main=CONFIG.main, mgen=CONFIG.mgen, config=CONFIG.planes)
         tvd = mocks.TvdMock(TEST_TVD_NAME)
         tvd.country = 101
         aircraft_name = 'Pe-2 ser.35'
@@ -53,7 +54,7 @@ class TestAirfieldsController(unittest.TestCase):
         self.storage.airfields.update_airfield(managed_airfield)
         expected = self.storage.airfields.load_by_id(managed_airfield.id).planes[aircraft_key] - 1
         # Act
-        self.controller.spawn(tvd, aircraft_name, TEST_AIRFIELD_X, TEST_AIRFIELD_Z)
+        controller.spawn(tvd, aircraft_name, TEST_AIRFIELD_X, TEST_AIRFIELD_Z)
         # Assert
         managed_airfield = self.storage.airfields.load_by_name(TEST_TVD_NAME, TEST_AIRFIELD_NAME)
         self.assertEqual(managed_airfield.planes[aircraft_key], expected)
@@ -62,6 +63,7 @@ class TestAirfieldsController(unittest.TestCase):
 
     def test_return_planes(self):
         """Восполняется количество самолётов на аэродроме при возврате на него (деспаун)"""
+        controller = AirfieldsController(main=CONFIG.main, mgen=CONFIG.mgen, config=CONFIG.planes)
         tvd = mocks.TvdMock(TEST_TVD_NAME)
         tvd.country = 101
         bot_name = 'BotPilot_Pe2'
@@ -76,23 +78,25 @@ class TestAirfieldsController(unittest.TestCase):
         bot = BotPilot(
             2, OBJECTS[bot_name], aircraft, 101, 1, bot_name, pos={'x': managed_airfield.x, 'z': managed_airfield.z})
         # Act
-        self.controller.finish(tvd, bot)
+        controller.finish(tvd, bot)
         # Assert
         managed_airfield = self.storage.airfields.load_by_name(TEST_TVD_NAME, TEST_AIRFIELD_NAME)
         self.assertEqual(managed_airfield.planes[aircraft_key], expected)
 
     def test_get_country(self):
         """Определяется страна аэродрома по узлу графа"""
+        controller = AirfieldsController(main=CONFIG.main, mgen=CONFIG.mgen, config=CONFIG.planes)
         builder = TvdBuilder(TEST_TVD_NAME, CONFIG)
-        verbovka = self.controller.get_airfield_in_radius(
+        verbovka = controller.get_airfield_in_radius(
             tvd_name=TEST_TVD_NAME, x=TEST_AIRFIELD_X, z=TEST_AIRFIELD_Z, radius=10)
         # Act
-        result = self.controller.get_country(verbovka, builder.get_tvd(TEST_TVD_DATE))
+        result = controller.get_country(verbovka, builder.get_tvd(TEST_TVD_DATE))
         # Assert
         self.assertEqual(201, result)
 
     def test_add_aircraft(self):
         """Добавляется самолёт на аэродром"""
+        controller = AirfieldsController(main=CONFIG.main, mgen=CONFIG.mgen, config=CONFIG.planes)
         builder = TvdBuilder(TEST_TVD_NAME, CONFIG)
         tvd = builder.get_tvd(TEST_TVD_DATE)
         aircraft_name = 'bf 109 f-4'
@@ -102,19 +106,20 @@ class TestAirfieldsController(unittest.TestCase):
         self.storage.airfields.update_airfield(managed_airfield)
         expected = managed_airfield.planes[aircraft_key] + 5
         # Act
-        self.controller.add_aircraft(tvd, TEST_AIRFIELD_NAME, aircraft_name, 5)
+        controller.add_aircraft(tvd, TEST_AIRFIELD_NAME, aircraft_name, 5)
         # Assert
         managed_airfield = self.storage.airfields.load_by_name(TEST_TVD_NAME, TEST_AIRFIELD_NAME)
         self.assertEqual(expected, managed_airfield.planes[aircraft_key])
 
     def test_add_aircraft_wrong(self):
         """НЕ добавляется самолёт на аэродром другой страны"""
+        controller = AirfieldsController(main=CONFIG.main, mgen=CONFIG.mgen, config=CONFIG.planes)
         builder = TvdBuilder(TEST_TVD_NAME, CONFIG)
         tvd = builder.get_tvd(TEST_TVD_DATE)
         aircraft_name = 'lagg-3 ser.29'
         aircraft_key = CONFIG.planes.name_to_key(aircraft_name)
         # Act
-        self.controller.add_aircraft(tvd, TEST_AIRFIELD_NAME, aircraft_name, 5)
+        controller.add_aircraft(tvd, TEST_AIRFIELD_NAME, aircraft_name, 5)
         # Assert
         managed_airfield = self.storage.airfields.load_by_name(TEST_TVD_NAME, TEST_AIRFIELD_NAME)
         self.assertNotIn(aircraft_key, managed_airfield.planes)
