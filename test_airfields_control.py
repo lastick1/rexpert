@@ -19,6 +19,11 @@ TEST_AIRFIELD_Z = 184308
 OBJECTS = configs.Objects()
 
 
+def _get_xgml_file_mock(tvd_name: str) -> str:
+    """Подделка метода получения файла графа"""
+    return str(CONFIG.mgen.xgml[tvd_name])
+
+
 class TestAirfieldsController(unittest.TestCase):
     """Тестовый класс контроллера"""
     def setUp(self):
@@ -87,6 +92,7 @@ class TestAirfieldsController(unittest.TestCase):
         """Определяется страна аэродрома по узлу графа"""
         controller = AirfieldsController(main=CONFIG.main, mgen=CONFIG.mgen, config=CONFIG.planes)
         builder = TvdBuilder(TEST_TVD_NAME, CONFIG)
+        builder.grid_control.get_file = _get_xgml_file_mock
         verbovka = controller.get_airfield_in_radius(
             tvd_name=TEST_TVD_NAME, x=TEST_AIRFIELD_X, z=TEST_AIRFIELD_Z, radius=10)
         # Act
@@ -98,6 +104,7 @@ class TestAirfieldsController(unittest.TestCase):
         """Добавляется самолёт на аэродром"""
         controller = AirfieldsController(main=CONFIG.main, mgen=CONFIG.mgen, config=CONFIG.planes)
         builder = TvdBuilder(TEST_TVD_NAME, CONFIG)
+        builder.grid_control.get_file = _get_xgml_file_mock
         tvd = builder.get_tvd(TEST_TVD_DATE)
         aircraft_name = 'bf 109 f-4'
         aircraft_key = CONFIG.planes.name_to_key(aircraft_name)
@@ -115,6 +122,7 @@ class TestAirfieldsController(unittest.TestCase):
         """НЕ добавляется самолёт на аэродром другой страны"""
         controller = AirfieldsController(main=CONFIG.main, mgen=CONFIG.mgen, config=CONFIG.planes)
         builder = TvdBuilder(TEST_TVD_NAME, CONFIG)
+        builder.grid_control.get_file = _get_xgml_file_mock
         tvd = builder.get_tvd(TEST_TVD_DATE)
         aircraft_name = 'lagg-3 ser.29'
         aircraft_key = CONFIG.planes.name_to_key(aircraft_name)
