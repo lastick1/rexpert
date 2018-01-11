@@ -33,8 +33,7 @@ class CampaignController:
         self.mgen = config.mgen
         self.vendor = processing.AircraftVendor(config.planes, config.gameplay)
         self.generator = generator
-        self.tvd_builders = {x: processing.TvdBuilder(x, config.mgen, config.main, config.generator, config.planes)
-                             for x in config.mgen.maps}
+        self.tvd_builders = {x: processing.TvdBuilder(x, config) for x in config.mgen.maps}
         self.storage = processing.Storage(config.main)
 
     def initialize_map(self, tvd_name: str):

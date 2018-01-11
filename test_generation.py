@@ -10,10 +10,7 @@ import processing
 from tests import mocks, utils
 
 
-MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
-MGEN = mocks.MgenMock(MAIN.game_folder)
-PARAMS = mocks.ParamsMock()
-PLANES = mocks.PlanesMock()
+CONFIG = mocks.ConfigMock(pathlib.Path(r'./testdata/conf.ini'))
 MOSCOW_FIELDS = pathlib.Path(r'./data/moscow_fields.csv')
 
 MOSCOW = 'moscow'
@@ -40,9 +37,9 @@ class TestGrid(unittest.TestCase):
     def test_border_test(self):
         """Упорядочиваются вершины линии фронта в тестовом графе"""
         # Arrange
-        xgml = processing.Xgml(TEST, MGEN)
-        xgml.parse()
-        grid = processing.Grid(TEST, xgml.nodes, xgml.edges, MGEN)
+        xgml = processing.Xgml(TEST, CONFIG.mgen)
+        xgml.parse(str(CONFIG.mgen.xgml[TEST]))
+        grid = processing.Grid(TEST, xgml.nodes, xgml.edges, CONFIG.mgen)
         # Act
         frontline = grid.border_nodes
         border = grid.border
@@ -54,9 +51,9 @@ class TestGrid(unittest.TestCase):
     def test_border_stalin(self):
         """Упорядочиваются вершины линии фронта в сталинградском графе"""
         # Arrange
-        xgml = processing.Xgml(STALIN, MGEN)
-        xgml.parse()
-        grid = processing.Grid(STALIN, xgml.nodes, xgml.edges, MGEN)
+        xgml = processing.Xgml(STALIN, CONFIG.mgen)
+        xgml.parse(str(CONFIG.mgen.xgml[STALIN]))
+        grid = processing.Grid(STALIN, xgml.nodes, xgml.edges, CONFIG.mgen)
         expected = (
             209, 94, 93, 96, 101, 100, 99, 137, 139, 138, 157,
             186, 163, 164, 165, 184, 183, 182, 194, 193, 177
@@ -69,9 +66,9 @@ class TestGrid(unittest.TestCase):
 
     def test_grid_capturing_test(self):
         """Выполняется захват в тестовом графе"""
-        xgml = processing.Xgml(TEST, MGEN)
-        xgml.parse()
-        grid = processing.Grid(TEST, xgml.nodes, xgml.edges, MGEN)
+        xgml = processing.Xgml(TEST, CONFIG.mgen)
+        xgml.parse(str(CONFIG.mgen.xgml[TEST]))
+        grid = processing.Grid(TEST, xgml.nodes, xgml.edges, CONFIG.mgen)
         path = pathlib.Path(r'./tmp/{}_{}.xgml'.format(TEST, 0))
         xgml.save_file(str(path), grid.nodes, grid.edges)
         # Act
@@ -89,9 +86,9 @@ class TestGrid(unittest.TestCase):
 
     def test_get_neighbors_of(self):
         """Находятся все соседи узлов из списка"""
-        xgml = processing.Xgml(TEST, MGEN)
-        xgml.parse()
-        grid = processing.Grid(TEST, xgml.nodes, xgml.edges, MGEN)
+        xgml = processing.Xgml(TEST, CONFIG.mgen)
+        xgml.parse(str(CONFIG.mgen.xgml[TEST]))
+        grid = processing.Grid(TEST, xgml.nodes, xgml.edges, CONFIG.mgen)
         expected = utils.get_nodes_keys([
             grid.node(18), grid.node(19), grid.node(1), grid.node(0), grid.node(21), grid.node(5),
             grid.node(24), grid.node(7), grid.node(6), grid.node(39), grid.node(8), grid.node(29),
@@ -105,9 +102,9 @@ class TestGrid(unittest.TestCase):
 
     def _test_grid_capturing_moscow(self):
         """Выполняется захват в графе Москвы"""
-        xgml = processing.Xgml(MOSCOW, MGEN)
-        xgml.parse()
-        grid = processing.Grid(MOSCOW, xgml.nodes, xgml.edges, MGEN)
+        xgml = processing.Xgml(MOSCOW, CONFIG.mgen)
+        xgml.parse(str(CONFIG.mgen.xgml[MOSCOW]))
+        grid = processing.Grid(MOSCOW, xgml.nodes, xgml.edges, CONFIG.mgen)
         path = pathlib.Path(r'./tmp/{}_{}.xgml'.format(MOSCOW, 0))
         xgml.save_file(str(path), grid.nodes, grid.edges)
         # Act
@@ -115,9 +112,9 @@ class TestGrid(unittest.TestCase):
 
     def _test_grid_capturing_stalingrad(self):
         """Выполняется захват в графе Сталинграда"""
-        xgml = processing.Xgml(STALIN, MGEN)
-        xgml.parse()
-        grid = processing.Grid(STALIN, xgml.nodes, xgml.edges, MGEN)
+        xgml = processing.Xgml(STALIN, CONFIG.mgen)
+        xgml.parse(str(CONFIG.mgen.xgml[STALIN]))
+        grid = processing.Grid(STALIN, xgml.nodes, xgml.edges, CONFIG.mgen)
         path = pathlib.Path(r'./tmp/{}_{}.xgml'.format(STALIN, 0))
         xgml.save_file(str(path), grid.nodes, grid.edges)
         # Act
@@ -129,7 +126,7 @@ class TestNode(unittest.TestCase):
 
     def test_node_triangles(self):
         """Определяются смежные треугольники для вершины"""
-        grid = mocks.get_test_grid(MGEN)
+        grid = mocks.get_test_grid(CONFIG.mgen)
         expected = utils.get_polygons_keys([
             (grid.node(30), grid.node(6), grid.node(31)),
             (grid.node(30), grid.node(31), grid.node(44)),
@@ -144,7 +141,7 @@ class TestNode(unittest.TestCase):
 
     def test_neighbors_sorted(self):
         """Сортируются соседи по часовой стрелке"""
-        grid = mocks.get_test_grid(MGEN)
+        grid = mocks.get_test_grid(CONFIG.mgen)
         expected = utils.get_nodes_keys([
             grid.node(5), grid.node(16), grid.node(29), grid.node(42),
             grid.node(26), grid.node(13), grid.node(27)
@@ -171,19 +168,19 @@ class TestTvdBuilder(unittest.TestCase):
 
     def test_influences_moscow(self):
         """Генерируются зоны влияния филдов Москвы"""
-        xgml = processing.Xgml(MOSCOW, MGEN)
-        xgml.parse()
-        MGEN.icons_group_files[MOSCOW] = pathlib.Path('./tmp/FL_icon_moscow.Group').absolute()
-        builder = processing.TvdBuilder(MOSCOW, MGEN, MAIN, PARAMS, PLANES)
+        xgml = processing.Xgml(MOSCOW, CONFIG.mgen)
+        xgml.parse(str(CONFIG.mgen.xgml[MOSCOW]))
+        CONFIG.mgen.icons_group_files[MOSCOW] = pathlib.Path('./tmp/FL_icon_moscow.Group').absolute()
+        builder = processing.TvdBuilder(MOSCOW, CONFIG)
         builder.update_icons(builder.get_tvd(TVD_DATE))
         self.assertEqual(True, True)
 
     def test_influences_stalin(self):
         """Генерируются зоны влияния филдов Сталинграда"""
-        xgml = processing.Xgml(STALIN, MGEN)
-        xgml.parse()
-        MGEN.icons_group_files[STALIN] = pathlib.Path('./tmp/FL_icon_stalin.Group').absolute()
-        builder = processing.TvdBuilder(STALIN, MGEN, MAIN, PARAMS, PLANES)
+        xgml = processing.Xgml(STALIN, CONFIG.mgen)
+        xgml.parse(str(CONFIG.mgen.xgml[STALIN]))
+        CONFIG.mgen.icons_group_files[STALIN] = pathlib.Path('./tmp/FL_icon_stalin.Group').absolute()
+        builder = processing.TvdBuilder(STALIN, CONFIG)
 
         def call_update():
             """Обновить иконки"""
@@ -196,8 +193,8 @@ class TestTvdBuilder(unittest.TestCase):
 
     def test_airfields(self):
         """Генерируются координатные группы аэродромов"""
-        airfields = processing.AirfieldsController.initialize_managed_airfields(MGEN.airfields_data[MOSCOW])
-        builder = processing.TvdBuilder(MOSCOW, MGEN, MAIN, PARAMS, PLANES)
+        airfields = processing.AirfieldsController.initialize_managed_airfields(CONFIG.mgen.airfields_data[MOSCOW])
+        builder = processing.TvdBuilder(MOSCOW, CONFIG)
         tvd = processing.Tvd(MOSCOW, 'test', TVD_DATE, {'x': 281600, 'z': 281600}, pathlib.Path(r'./tmp/'))
         tvd.red_front_airfields = list(x for x in airfields if x.name in ('kholm', 'kalinin', 'alferevo'))
         tvd.blue_front_airfields = list(x for x in airfields if x.name in ('losinki', 'lotoshino', 'migalovo'))
@@ -218,8 +215,8 @@ class TestTvdBuilder(unittest.TestCase):
         pathlib.Path('./tmp/data/scg/1/').mkdir(parents=True)
         pathlib.Path('./tmp/data/scg/2/').mkdir(parents=True)
         shutil.copy('./data/scg/2/moscow-base_v2.ldf', './tmp/data/scg/2/')
-        airfields = processing.AirfieldsController.initialize_managed_airfields(MGEN.airfields_data[MOSCOW])
-        builder = processing.TvdBuilder(MOSCOW, MGEN, MAIN, PARAMS, PLANES)
+        airfields = processing.AirfieldsController.initialize_managed_airfields(CONFIG.mgen.airfields_data[MOSCOW])
+        builder = processing.TvdBuilder(MOSCOW, CONFIG)
 
         def call_update():
             """Обновить папку"""

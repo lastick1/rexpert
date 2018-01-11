@@ -5,9 +5,7 @@ import pathlib
 import processing
 from tests import mocks
 
-MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
-MGEN = mocks.MgenMock(MAIN.game_folder)
-PLANES = mocks.PlanesMock()
+CONFIG = mocks.ConfigMock(pathlib.Path(r'./testdata/conf.ini'))
 MOSCOW = 'moscow'
 TEST_FIELDS = pathlib.Path(r'./data/moscow_fields.csv')
 TEST_TVD_NAME = MOSCOW
@@ -22,24 +20,24 @@ class TestAirfieldsSelector(unittest.TestCase):
     """Тестовый класс"""
     def setUp(self):
         """Настройка базы перед тестом"""
-        self.storage = processing.Storage(MAIN)
-        self.controller = processing.AirfieldsController(main=MAIN, mgen=MGEN, config=PLANES)
+        self.storage = processing.Storage(CONFIG.main)
+        self.controller = processing.AirfieldsController(main=CONFIG.main, mgen=CONFIG.mgen, config=CONFIG.planes)
         self.storage.airfields.update_airfields(
-            self.controller.initialize_managed_airfields(MGEN.airfields_data[MOSCOW]))
+            self.controller.initialize_managed_airfields(CONFIG.mgen.airfields_data[MOSCOW]))
 
     def tearDown(self):
         self.storage.drop_database()
 
     def test_select_rear_east(self):
         """Выбираются тыловые аэродромы для красных"""
-        tvd_builder = processing.TvdBuilder(MOSCOW, MGEN, MAIN, mocks.ParamsMock(), PLANES)
+        tvd_builder = processing.TvdBuilder(MOSCOW, CONFIG)
         tvd = tvd_builder.get_tvd('11.11.1941')
-        selector = processing.AirfieldsSelector(MAIN)
-        north = MGEN.cfg[MOSCOW]['right_top']['x']
-        east = MGEN.cfg[MOSCOW]['right_top']['z']
-        xgml = processing.Xgml(MOSCOW, MGEN)
+        selector = processing.AirfieldsSelector(CONFIG.main)
+        north = CONFIG.mgen.cfg[MOSCOW]['right_top']['x']
+        east = CONFIG.mgen.cfg[MOSCOW]['right_top']['z']
+        xgml = processing.Xgml(MOSCOW, CONFIG.mgen)
         xgml.parse()
-        grid = processing.Grid(MOSCOW, xgml.nodes, xgml.edges, MGEN)
+        grid = processing.Grid(MOSCOW, xgml.nodes, xgml.edges, CONFIG.mgen)
         boundary_builder = processing.BoundaryBuilder(north=north, east=east, south=0, west=0)
         exclude = boundary_builder.confrontation_east(grid=grid)
         include = boundary_builder.influence_east(border=grid.border)
@@ -56,14 +54,14 @@ class TestAirfieldsSelector(unittest.TestCase):
 
     def test_select_rear_west(self):
         """Выбираются тыловые аэродромы для синих"""
-        tvd_builder = processing.TvdBuilder(MOSCOW, MGEN, MAIN, mocks.ParamsMock(), PLANES)
+        tvd_builder = processing.TvdBuilder(MOSCOW, CONFIG)
         tvd = tvd_builder.get_tvd('11.11.1941')
-        selector = processing.AirfieldsSelector(MAIN)
-        north = MGEN.cfg[MOSCOW]['right_top']['x']
-        east = MGEN.cfg[MOSCOW]['right_top']['z']
-        xgml = processing.Xgml(MOSCOW, MGEN)
+        selector = processing.AirfieldsSelector(CONFIG.main)
+        north = CONFIG.mgen.cfg[MOSCOW]['right_top']['x']
+        east = CONFIG.mgen.cfg[MOSCOW]['right_top']['z']
+        xgml = processing.Xgml(MOSCOW, CONFIG.mgen)
         xgml.parse()
-        grid = processing.Grid(MOSCOW, xgml.nodes, xgml.edges, MGEN)
+        grid = processing.Grid(MOSCOW, xgml.nodes, xgml.edges, CONFIG.mgen)
         boundary_builder = processing.BoundaryBuilder(north=north, east=east, south=0, west=0)
         exclude = boundary_builder.confrontation_west(grid=grid)
         include = boundary_builder.influence_west(border=grid.border)
@@ -80,14 +78,14 @@ class TestAirfieldsSelector(unittest.TestCase):
 
     def test_select_front_east(self):
         """Выбираются фронтовые аэродромы для красных"""
-        tvd_builder = processing.TvdBuilder(MOSCOW, MGEN, MAIN, mocks.ParamsMock(), PLANES)
+        tvd_builder = processing.TvdBuilder(MOSCOW, CONFIG)
         tvd = tvd_builder.get_tvd('11.11.1941')
-        selector = processing.AirfieldsSelector(MAIN)
-        north = MGEN.cfg[MOSCOW]['right_top']['x']
-        east = MGEN.cfg[MOSCOW]['right_top']['z']
-        xgml = processing.Xgml(MOSCOW, MGEN)
+        selector = processing.AirfieldsSelector(CONFIG.main)
+        north = CONFIG.mgen.cfg[MOSCOW]['right_top']['x']
+        east = CONFIG.mgen.cfg[MOSCOW]['right_top']['z']
+        xgml = processing.Xgml(MOSCOW, CONFIG.mgen)
         xgml.parse()
-        grid = processing.Grid(MOSCOW, xgml.nodes, xgml.edges, MGEN)
+        grid = processing.Grid(MOSCOW, xgml.nodes, xgml.edges, CONFIG.mgen)
         boundary_builder = processing.BoundaryBuilder(north=north, east=east, south=0, west=0)
         include = boundary_builder.confrontation_east(grid=grid)
         airfield1, airfield2 = (x for x in self.storage.airfields.load_by_tvd(MOSCOW) if x.name in ('kholm', 'kalinin'))
@@ -102,14 +100,14 @@ class TestAirfieldsSelector(unittest.TestCase):
 
     def test_select_front_west(self):
         """Выбираются фронтовые аэродромы для синих"""
-        tvd_builder = processing.TvdBuilder(MOSCOW, MGEN, MAIN, mocks.ParamsMock(), PLANES)
+        tvd_builder = processing.TvdBuilder(MOSCOW, CONFIG)
         tvd = tvd_builder.get_tvd('11.11.1941')
-        selector = processing.AirfieldsSelector(MAIN)
-        north = MGEN.cfg[MOSCOW]['right_top']['x']
-        east = MGEN.cfg[MOSCOW]['right_top']['z']
-        xgml = processing.Xgml(MOSCOW, MGEN)
+        selector = processing.AirfieldsSelector(CONFIG.main)
+        north = CONFIG.mgen.cfg[MOSCOW]['right_top']['x']
+        east = CONFIG.mgen.cfg[MOSCOW]['right_top']['z']
+        xgml = processing.Xgml(MOSCOW, CONFIG.mgen)
         xgml.parse()
-        grid = processing.Grid(MOSCOW, xgml.nodes, xgml.edges, MGEN)
+        grid = processing.Grid(MOSCOW, xgml.nodes, xgml.edges, CONFIG.mgen)
         boundary_builder = processing.BoundaryBuilder(north=north, east=east, south=0, west=0)
         include = boundary_builder.confrontation_west(grid=grid)
         airfield1, airfield2 = (x for x in self.storage.airfields.load_by_tvd(MOSCOW) if

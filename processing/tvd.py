@@ -10,6 +10,7 @@ import processing
 
 from .airfield import ManagedAirfield
 from .mcu import Airfield
+from .grid_control import GridController
 
 DATE_FORMAT = '%d.%m.%Y'
 
@@ -132,9 +133,7 @@ class TvdBuilder:
             config.mgen.cfg[name]['default_params_source'])
         self.icons_group_file = folder.joinpath(config.mgen.cfg[name]['icons_group_file'])
         self.right_top = config.mgen.cfg[name]['right_top']
-        xgml = processing.Xgml(name, config.mgen)
-        xgml.parse()
-        self.grid = processing.Grid(name, xgml.nodes, xgml.edges, config.mgen)
+        self.grid_control = GridController(config)
         # данные по сезонам из daytime.csv
         with config.mgen.daytime_files[name].open() as stream:
             self.seasons_data = tuple(
@@ -159,12 +158,13 @@ class TvdBuilder:
             self.config.mgen.cfg[self.name]['right_top'],
             self.config.mgen.icons_group_files[self.name]
         )
-        tvd.border = self.grid.border
-        nodes = self.grid.nodes_list
+        grid = self.grid_control.get_grid(self.name)
+        tvd.border = grid.border
+        nodes = grid.nodes_list
         influence_east = self.boundary_builder.influence_east(tvd.border)
         influence_west = self.boundary_builder.influence_west(tvd.border)
-        tvd.confrontation_east = self.boundary_builder.confrontation_east(self.grid)
-        tvd.confrontation_west = self.boundary_builder.confrontation_west(self.grid)
+        tvd.confrontation_east = self.boundary_builder.confrontation_east(grid)
+        tvd.confrontation_west = self.boundary_builder.confrontation_west(grid)
         east_boundary = Boundary(influence_east[0].x, influence_east[0].z, influence_east)
         west_boundary = Boundary(influence_west[0].x, influence_west[0].z, influence_west)
         east_influences = list(Boundary(node.x, node.z, node.neighbors_sorted) for node in nodes if node.country == 101)
@@ -211,7 +211,7 @@ class TvdBuilder:
             )
         self.update_airfields(tvd)
         self.update_ldb(tvd)
-        self.randomize_defaultparams(tvd.date, self.config.params.cfg[self.name])
+        self.randomize_defaultparams(tvd.date, self.config.generator.cfg[self.name])
 
     @staticmethod
     def update_icons(tvd: Tvd):

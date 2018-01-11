@@ -6,10 +6,9 @@ from processing import AirfieldsController, TvdBuilder, Storage
 from processing.objects import BotPilot, Aircraft
 from tests import mocks
 
-MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
-MGEN = mocks.MgenMock(MAIN.game_folder)
-PLANES = mocks.PlanesMock()
-PARAMS = mocks.ParamsMock()
+
+CONFIG = mocks.ConfigMock(pathlib.Path(r'./testdata/conf.ini'))
+
 TEST = 'test'
 TEST_TVD_NAME = 'stalingrad'
 TEST_TVD_DATE = '10.11.1941'
@@ -24,10 +23,10 @@ class TestAirfieldsController(unittest.TestCase):
     """Тестовый класс контроллера"""
     def setUp(self):
         """Настройка базы перед тестом"""
-        self.storage = Storage(MAIN)
-        self.controller = AirfieldsController(main=MAIN, mgen=MGEN, config=PLANES)
+        self.storage = Storage(CONFIG.main)
+        self.controller = AirfieldsController(main=CONFIG.main, mgen=CONFIG.mgen, config=CONFIG.planes)
         self.storage.airfields.update_airfields(
-            self.controller.initialize_managed_airfields(MGEN.airfields_data[TEST_TVD_NAME]))
+            self.controller.initialize_managed_airfields(CONFIG.mgen.airfields_data[TEST_TVD_NAME]))
 
     def tearDown(self):
         """Удаление базы после теста"""
@@ -48,7 +47,7 @@ class TestAirfieldsController(unittest.TestCase):
         tvd = mocks.TvdMock(TEST_TVD_NAME)
         tvd.country = 101
         aircraft_name = 'Pe-2 ser.35'
-        aircraft_key = PLANES.name_to_key(aircraft_name)
+        aircraft_key = CONFIG.planes.name_to_key(aircraft_name)
         managed_airfield = self.storage.airfields.load_by_name(TEST_TVD_NAME, TEST_AIRFIELD_NAME)
         managed_airfield.planes[aircraft_key] = 10
         self.storage.airfields.update_airfield(managed_airfield)
@@ -67,7 +66,7 @@ class TestAirfieldsController(unittest.TestCase):
         tvd.country = 101
         bot_name = 'BotPilot_Pe2'
         aircraft_name = 'Pe-2 ser.35'
-        aircraft_key = PLANES.name_to_key(aircraft_name)
+        aircraft_key = CONFIG.planes.name_to_key(aircraft_name)
         managed_airfield = self.storage.airfields.load_by_name(TEST_TVD_NAME, TEST_AIRFIELD_NAME)
         managed_airfield.planes[aircraft_key] = 10
         expected = managed_airfield.planes[aircraft_key] + 1
@@ -84,7 +83,7 @@ class TestAirfieldsController(unittest.TestCase):
 
     def test_get_country(self):
         """Определяется страна аэродрома по узлу графа"""
-        builder = TvdBuilder(TEST_TVD_NAME, MGEN, MAIN, PARAMS, PLANES)
+        builder = TvdBuilder(TEST_TVD_NAME, CONFIG)
         verbovka = self.controller.get_airfield_in_radius(
             tvd_name=TEST_TVD_NAME, x=TEST_AIRFIELD_X, z=TEST_AIRFIELD_Z, radius=10)
         # Act
@@ -94,10 +93,10 @@ class TestAirfieldsController(unittest.TestCase):
 
     def test_add_aircraft(self):
         """Добавляется самолёт на аэродром"""
-        builder = TvdBuilder(TEST_TVD_NAME, MGEN, MAIN, PARAMS, PLANES)
+        builder = TvdBuilder(TEST_TVD_NAME, CONFIG)
         tvd = builder.get_tvd(TEST_TVD_DATE)
         aircraft_name = 'bf 109 f-4'
-        aircraft_key = PLANES.name_to_key(aircraft_name)
+        aircraft_key = CONFIG.planes.name_to_key(aircraft_name)
         managed_airfield = self.storage.airfields.load_by_name(TEST_TVD_NAME, TEST_AIRFIELD_NAME)
         managed_airfield.planes[aircraft_key] = 10
         self.storage.airfields.update_airfield(managed_airfield)
@@ -110,10 +109,10 @@ class TestAirfieldsController(unittest.TestCase):
 
     def test_add_aircraft_wrong(self):
         """НЕ добавляется самолёт на аэродром другой страны"""
-        builder = TvdBuilder(TEST_TVD_NAME, MGEN, MAIN, PARAMS, PLANES)
+        builder = TvdBuilder(TEST_TVD_NAME, CONFIG)
         tvd = builder.get_tvd(TEST_TVD_DATE)
         aircraft_name = 'lagg-3 ser.29'
-        aircraft_key = PLANES.name_to_key(aircraft_name)
+        aircraft_key = CONFIG.planes.name_to_key(aircraft_name)
         # Act
         self.controller.add_aircraft(tvd, TEST_AIRFIELD_NAME, aircraft_name, 5)
         # Assert
