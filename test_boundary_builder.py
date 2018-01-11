@@ -127,7 +127,7 @@ class TestBoundaryBuilder(unittest.TestCase):
     def test_confrontation_area_stalingrad_east(self):
         """Создаётся многоугольник восточной прифронтовой полосы"""
         xgml = processing.Xgml(STALIN, MGEN)
-        xgml.parse()
+        xgml.parse(str(MGEN.xgml[STALIN]))
         expected_keys = (
             192, 57, 196, 197, 185, 188, 187, 48, 110, 25, 102, 19, 95, 3, 191, 209, 94, 93, 96,
             101, 100, 99, 137, 139, 138, 157, 186, 163, 164, 165, 184, 183, 182, 194, 193, 177

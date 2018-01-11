@@ -178,6 +178,7 @@ class EventsController:
         bot.update_pos(pos)
 
         self.players_controller.spawn(bot, account_id, name)
+        # TODO оптимизировать, т.к. создание объекта ТВД ресурсоёмкая задача
         self.airfields_controller.spawn(self.campaign_controller.current_tvd, aircraft_name, pos['x'], pos['z'])
         self.update_tik(tik)
 

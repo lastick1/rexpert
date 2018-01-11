@@ -25,6 +25,12 @@ TEST_TVD_DATE = '01.01.1941'
 TEST_FIELDS = pathlib.Path(r'./data/moscow_fields.csv')
 
 
+def _get_xgml_file_mock(tvd_name: str) -> str:
+    """Подделка метода получения файла графа"""
+    return str(CONFIG.mgen.xgml[tvd_name])
+
+
+
 def _load_all_campaign_maps():
     """Фальшивый метод загрузки карт кампании"""
     return [processing.CampaignMap(1, TEST_TVD_DATE, TEST_TVD_DATE, TEST_TVD_NAME, list())]
@@ -51,6 +57,8 @@ class TestIntegration(unittest.TestCase):
         """Завершается корректно миссия с AType:7 в логе"""
         controller = processing.EventsController(
             OBJECTS, self.players, self.grounds, self.campaign, self.airfields, CONFIG.main)
+        for tvd_name in CONFIG.mgen.maps:
+            controller.campaign_controller.tvd_builders[tvd_name].grid_control.get_file = _get_xgml_file_mock
         # Act
         for line in pathlib.Path(TEST_LOG1).read_text().split('\n'):
             controller.process_line(line)
@@ -61,6 +69,8 @@ class TestIntegration(unittest.TestCase):
         """Генерируется следующая миссия с AType:0 в логе"""
         controller = processing.EventsController(
             OBJECTS, self.players, self.grounds, self.campaign, self.airfields, CONFIG.main)
+        for tvd_name in CONFIG.mgen.maps:
+            controller.campaign_controller.tvd_builders[tvd_name].grid_control.get_file = _get_xgml_file_mock
         # Act
         for line in pathlib.Path(TEST_LOG1).read_text().split('\n'):
             controller.process_line(line)
@@ -72,6 +82,8 @@ class TestIntegration(unittest.TestCase):
         """Учитываются наземные цели"""
         controller = processing.EventsController(
             OBJECTS, self.players, self.grounds, self.campaign, self.airfields, CONFIG.main)
+        for tvd_name in CONFIG.mgen.maps:
+            controller.campaign_controller.tvd_builders[tvd_name].grid_control.get_file = _get_xgml_file_mock
         # Act
         for line in pathlib.Path(TEST_LOG2).read_text().split('\n'):
             controller.process_line(line)

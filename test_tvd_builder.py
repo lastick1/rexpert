@@ -16,6 +16,11 @@ TEST = 'test'
 TVD_DATE = '10.11.1942'
 
 
+def _get_xgml_file_mock(tvd_name: str) -> str:
+    """Подделка метода получения файла графа"""
+    return str(CONFIG.mgen.xgml[tvd_name])
+
+
 class TestTvdBuilder(unittest.TestCase):
     """Тесты сборки ТВД"""
     def setUp(self):
@@ -32,19 +37,24 @@ class TestTvdBuilder(unittest.TestCase):
 
     def test_influences_moscow(self):
         """Генерируются зоны влияния филдов Москвы"""
-        xgml = processing.Xgml(MOSCOW, CONFIG.mgen)
-        xgml.parse(str(CONFIG.mgen.xgml[MOSCOW]))
         CONFIG.mgen.icons_group_files[MOSCOW] = pathlib.Path('./tmp/FL_icon_moscow.Group').absolute()
         builder = processing.TvdBuilder(MOSCOW, CONFIG)
-        builder.update_icons(builder.get_tvd(TVD_DATE))
-        self.assertEqual(True, True)
+        builder.grid_control.get_file = _get_xgml_file_mock
+
+        def call_update():
+            """Обновить иконки"""
+            builder.update_icons(builder.get_tvd(TVD_DATE))
+
+        try:
+            call_update()
+        except Exception as exception:  # pylint: disable=W0703
+            self.fail(exception)
 
     def test_influences_stalin(self):
         """Генерируются зоны влияния филдов Сталинграда"""
-        xgml = processing.Xgml(STALIN, CONFIG.mgen)
-        xgml.parse(str(CONFIG.mgen.xgml[STALIN]))
         CONFIG.mgen.icons_group_files[STALIN] = pathlib.Path('./tmp/FL_icon_stalin.Group').absolute()
         builder = processing.TvdBuilder(STALIN, CONFIG)
+        builder.grid_control.get_file = _get_xgml_file_mock
 
         def call_update():
             """Обновить иконки"""
@@ -81,6 +91,7 @@ class TestTvdBuilder(unittest.TestCase):
         shutil.copy('./data/scg/2/moscow-base_v2.ldf', './tmp/data/scg/2/')
         airfields = processing.AirfieldsController.initialize_managed_airfields(CONFIG.mgen.airfields_data[MOSCOW])
         builder = processing.TvdBuilder(MOSCOW, CONFIG)
+        builder.grid_control.get_file = _get_xgml_file_mock
 
         def call_update():
             """Обновить папку"""
