@@ -6,7 +6,7 @@ class GridIO(metaclass=abc.ABCMeta):
     """Абстрактный класс чтения-записи графа"""
 
     @abc.abstractmethod
-    def parse(self) -> None:
+    def parse(self, file: str) -> None:
         """Считать файл с графом"""
 
     @abc.abstractmethod

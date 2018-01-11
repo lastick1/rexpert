@@ -39,9 +39,6 @@ class Grid:
         edges = self.edges
         return tuple(((x[0].x, x[0].z), (x[1].x, x[1].z)) for x in edges)
 
-    def save_file(self, path: pathlib.Path):
-        """Записать граф в XGML файл"""
-
     @property
     def neutrals(self) -> list:
         """Узлы, где страна ==0"""

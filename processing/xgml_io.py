@@ -54,7 +54,6 @@ class Xgml(GridIO):  # pylint: disable=R0902
     """Класс ввода-вывода графа в xgml формате"""
     def __init__(self, name: str, config: configs.Mgen):
         self._nodes, self._edges, self.name = None, None, name
-        self.file = str(config.xgml[name])
         self.graph_zoom_x = config.cfg[name]['graph_zoom_point']['y']
         self.graph_zoom_z = config.cfg[name]['graph_zoom_point']['x']
         self.x_coefficient_serialization = self.graph_zoom_x / config.cfg[name]['right_top']['x']
@@ -62,8 +61,8 @@ class Xgml(GridIO):  # pylint: disable=R0902
         self.x_coefficient_deserialization = config.cfg[name]['right_top']['x'] / self.graph_zoom_x
         self.z_coefficient_deserialization = config.cfg[name]['right_top']['z'] / self.graph_zoom_z
 
-    def parse(self) -> None:
-        tree = Et.parse(source=self.file)
+    def parse(self, file: str) -> None:
+        tree = Et.parse(source=file)
         root = tree.getroot()
         graph = root.find('section')
 
