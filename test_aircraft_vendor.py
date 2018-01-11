@@ -80,8 +80,8 @@ class TestAircraftVendor(unittest.TestCase):
                 processing.ManagedAirfield('test_blue_af20', TEST_TVD_NAME, 123, 321, dict())
             ]
         }
-        priority = ['test_blue_af1', 'test_blue_af2', 'test_blue_af3', 'test_red_af1', 'test_red_af2', 'test_red_af3']
-        GAMEPLAY.initial_priority[TEST_TVD_NAME] = priority
+        GAMEPLAY.initial_priority[TEST_TVD_NAME] = list(x.name for x in (
+            test_red_af1, test_red_af2, test_red_af3, test_blue_af1, test_blue_af2, test_blue_af3))
         # Act
         vendor.deliver_month_supply(campaign_map, airfields, supply)
         # Assert

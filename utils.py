@@ -7,8 +7,9 @@ import os
 def cmp_to_key(mycmp):
     """Convert a cmp= function into a key= function"""
 
-    class K:
-        def __init__(self, obj, *args):
+    class Convert:  # pylint: disable=R0903
+        """Конвертер функции сравнения в функцию ключа"""
+        def __init__(self, obj, *args):  # pylint: disable=W0613
             self.obj = obj
 
         def __lt__(self, other):
@@ -29,7 +30,7 @@ def cmp_to_key(mycmp):
         def __ne__(self, other):
             return mycmp(self.obj, other.obj) != 0
 
-    return K
+    return Convert
 
 
 def compile_log(folder: str, report: str, dest: str):

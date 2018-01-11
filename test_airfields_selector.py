@@ -112,7 +112,8 @@ class TestAirfieldsSelector(unittest.TestCase):
         grid = processing.Grid(MOSCOW, xgml.nodes, xgml.edges, MGEN)
         boundary_builder = processing.BoundaryBuilder(north=north, east=east, south=0, west=0)
         include = boundary_builder.confrontation_west(grid=grid)
-        airfield1, airfield2 = (x for x in self.storage.airfields.load_by_tvd(MOSCOW) if x.name in ('lotoshino', 'migalovo'))
+        airfield1, airfield2 = (x for x in self.storage.airfields.load_by_tvd(MOSCOW) if
+                                x.name in ('lotoshino', 'migalovo'))
         self.controller.add_aircraft(tvd, airfield1.name, TEST_AIRCRAFT_NAME2, 10)
         self.controller.add_aircraft(tvd, airfield2.name, TEST_AIRCRAFT_NAME2, -10)
         # Act

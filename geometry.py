@@ -70,13 +70,13 @@ class Segment:  # pylint: disable=R0902
         """Угол между (0.0, 1.0) вектором и параллельной отрезку прямой, проходящей через (0.0, 0.0)"""
         return math.acos(self._cos_a) * 180 / math.pi
 
-    def parallel_segments(self, distance):
+    def parallel_segments(self, gap):
         """
-        :param distance:
+        :param gap: расстояние между отрезками
         :return: Два параллельных отрезка такой же длины на заданной дистанции от текущего отрезка
         :rtype: (Segment, Segment)
         """
-        n_vector = self._nx * distance, self._ny * distance
+        n_vector = self._nx * gap, self._ny * gap
         seg1 = Segment(self._x1 + n_vector[0], self._y1 + n_vector[1],
                        self._x2 + n_vector[0], self._y2 + n_vector[1])
         seg2 = Segment(self._x1 - n_vector[0], self._y1 - n_vector[1],
@@ -136,6 +136,7 @@ def distance(point1: dict, point2: dict) -> float:
 def sort_points_clockwise(points, middle_point) -> list:
     """Сортировка точек по часовой стрелке вокруг центра"""
     def comparator(lhs, rhs):
+        """Сравнить углы"""
         lhs_angle = math.atan2(lhs.z - average_z, lhs.x - average_x)
         rhs_angle = math.atan2(rhs.z - average_z, rhs.x - average_x)
         if lhs_angle < rhs_angle:
@@ -151,6 +152,7 @@ def sort_points_clockwise(points, middle_point) -> list:
 
 def jarvis_march(array: list) -> list:
     """Находит минимальную выпуклую оболочку в массиве точек"""
+    # pylint: disable=C0103
     # https://habrahabr.ru/post/144921/
     n = len(array)
     p = list(range(n))
