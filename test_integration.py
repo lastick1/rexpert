@@ -25,6 +25,11 @@ TEST_TVD_DATE = '01.01.1941'
 TEST_FIELDS = pathlib.Path(r'./data/moscow_fields.csv')
 
 
+def _load_all_campaign_maps():
+    """Фальшивый метод загрузки карт кампании"""
+    return [processing.CampaignMap(1, TEST_TVD_DATE, TEST_TVD_DATE, TEST_TVD_NAME, list())]
+
+
 class TestIntegration(unittest.TestCase):
     """Интеграционные тесты"""
     def setUp(self):
@@ -36,11 +41,7 @@ class TestIntegration(unittest.TestCase):
         self.campaign = processing.CampaignController(CONFIG, self.generator)
         self.airfields = mocks.AirfieldsControllerMock(CONFIG.main)
         self.storage = processing.Storage(CONFIG.main)
-        self.campaign.storage.campaign_maps.load_all = self._load_all_campaign_maps
-
-    def _load_all_campaign_maps(self):
-        """Фальшивый метод загрузки карт кампании"""
-        return [processing.CampaignMap(1, TEST_TVD_DATE, TEST_TVD_DATE, TEST_TVD_NAME, list())]
+        self.campaign.storage.campaign_maps.load_all = _load_all_campaign_maps
 
     def tearDown(self):
         """Удаление базы после теста"""
@@ -77,8 +78,15 @@ class TestIntegration(unittest.TestCase):
         # Assert
         self.assertGreater(len(controller.ground_controller.units), 0)
 
-    # TODO Отправляется предупреждение о запрете взлёта
-    # TODO Отправляется команда кика при запрещённом взлёте
+    @unittest.skip("not implemented")
+    def test_msg_restricted_takeoff(self):
+        """Отправляется предупреждение о запрете взлёта"""
+        self.fail('not implemented')
+
+    @unittest.skip("not implemented")
+    def test_kick_restricted_takeoff(self):
+        """Отправляется команда кика при запрещённом взлёте"""
+        self.fail('not implemented')
 
 
 if __name__ == '__main__':

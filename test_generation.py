@@ -184,7 +184,15 @@ class TestTvdBuilder(unittest.TestCase):
         xgml.parse()
         MGEN.icons_group_files[STALIN] = pathlib.Path('./tmp/FL_icon_stalin.Group').absolute()
         builder = processing.TvdBuilder(STALIN, MGEN, MAIN, PARAMS, PLANES)
-        builder.update_icons(builder.get_tvd(TVD_DATE))
+
+        def call_update():
+            """Обновить иконки"""
+            builder.update_icons(builder.get_tvd(TVD_DATE))
+
+        try:
+            call_update()
+        except Exception as exception:  # pylint: disable=W0703
+            self.fail(exception)
 
     def test_airfields(self):
         """Генерируются координатные группы аэродромов"""
@@ -195,7 +203,15 @@ class TestTvdBuilder(unittest.TestCase):
         tvd.blue_front_airfields = list(x for x in airfields if x.name in ('losinki', 'lotoshino', 'migalovo'))
         tvd.red_rear_airfield = list(x for x in airfields if x.name == 'ruza')[0]
         tvd.blue_rear_airfield = list(x for x in airfields if x.name == 'karpovo')[0]
-        builder.update_airfields(tvd)
+
+        def call_update():
+            """Обновить аэродромы"""
+            builder.update_airfields(tvd)
+
+        try:
+            call_update()
+        except Exception as exception:  # pylint: disable=W0703
+            self.fail(exception)
 
     def test_update(self):
         """Генерируется папка ТВД"""
@@ -204,7 +220,15 @@ class TestTvdBuilder(unittest.TestCase):
         shutil.copy('./data/scg/2/moscow-base_v2.ldf', './tmp/data/scg/2/')
         airfields = processing.AirfieldsController.initialize_managed_airfields(MGEN.airfields_data[MOSCOW])
         builder = processing.TvdBuilder(MOSCOW, MGEN, MAIN, PARAMS, PLANES)
-        builder.update(builder.get_tvd(TVD_DATE), airfields)
+
+        def call_update():
+            """Обновить папку"""
+            builder.update(builder.get_tvd(TVD_DATE), airfields)
+
+        try:
+            call_update()
+        except Exception as exception:  # pylint: disable=W0703
+            self.fail(exception)
 
 
 if __name__ == '__main__':

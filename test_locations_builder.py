@@ -10,6 +10,7 @@ class TestLocation(unittest.TestCase):
     def test_location_type(self):
         """Выбрасывается исключение на создание локации недопустимого типа"""
         def init_location():
+            """Инициализировать локацию"""
             processing.Location('wrong_type', 0, 0, 0, 0, 10, 10)
         self.assertRaises(Exception, init_location)
 
@@ -22,6 +23,7 @@ class TestLocationBuilder(unittest.TestCase):
         builder = processing.LocationsBuilder()
 
         def add_location():
+            """Добавить локацию"""
             builder.add('wrong_type', 0, 0, 0)
 
         self.assertRaises(Exception, add_location)
@@ -32,7 +34,7 @@ class TestLocationBuilder(unittest.TestCase):
         try:
             for name in processing.LOCATION_TYPES:
                 builder.add(name, 0, 0, 0)
-        except Exception as exception:
+        except Exception as exception:  # pylint: disable=W0703
             self.fail(exception)
         count = 0
         for name in builder.locations:
