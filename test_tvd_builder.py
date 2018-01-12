@@ -1,3 +1,4 @@
+"""Тестирование обновления папки ТВД"""
 import unittest
 import pathlib
 import shutil
@@ -5,8 +6,8 @@ import shutil
 import processing
 from tests import mocks, utils
 
-CONFIG = mocks.ConfigMock(pathlib.Path(r'./testdata/conf.ini'))
-MOSCOW_FIELDS = pathlib.Path(r'./data/moscow_fields.csv')
+CONFIG = mocks.ConfigMock(pathlib.Path('./testdata/conf.ini'))
+MOSCOW_FIELDS = pathlib.Path('./data/moscow_fields.csv')
 
 MOSCOW = 'moscow'
 STALIN = 'stalingrad'
