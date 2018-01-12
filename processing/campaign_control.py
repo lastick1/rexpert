@@ -26,13 +26,13 @@ class Mission:
 
 class CampaignController:
     """Контролеер кампании"""
-    def __init__(self, config: configs.Config, generator: processing.Generator):
+    def __init__(self, config: configs.Config):
         self._dogfight = config.main.dogfight_folder
         self.missions = list()
         self.main = config.main
         self.mgen = config.mgen
         self.vendor = processing.AircraftVendor(config.planes, config.gameplay)
-        self.generator = generator
+        self.generator = processing.Generator(config)
         self.tvd_builders = {x: processing.TvdBuilder(x, config) for x in config.mgen.maps}
         self.storage = processing.Storage(config.main)
 

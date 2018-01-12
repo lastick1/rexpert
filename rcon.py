@@ -16,6 +16,9 @@ class DServerRcon:
         self.authed = False
         self.response_list = []
 
+    def __del__(self):
+        self.socket.close()
+
     def __rcon_send_raw_command(self, command: str = 'mystatus'):
         """Отправка команды на сервер 'as is', может вызывать ошибки"""
         if not self.connected:

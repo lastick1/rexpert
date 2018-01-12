@@ -44,7 +44,8 @@ class TestCampaignController(unittest.TestCase):
     def test_next_mission_bin_name(self):
         """Отличается имя следующей миссии от имени текущей"""
         generator = mocks.GeneratorMock(CONFIG)
-        campaign = processing.CampaignController(CONFIG, generator)
+        campaign = processing.CampaignController(CONFIG)
+        campaign.generator = generator
         date = datetime.datetime.strptime('01.10.1941', DATE_FORMAT)
         file_path = r'Multiplayer/Dogfight\result2.msnbin'
         # Act
@@ -54,8 +55,8 @@ class TestCampaignController(unittest.TestCase):
 
     def test_reset(self):
         """Сбрасывается состояние кампании"""
-        generator = mocks.GeneratorMock(CONFIG)
-        campaign = processing.CampaignController(CONFIG, generator)
+        campaign = processing.CampaignController(CONFIG)
+        campaign.generator = mocks.GeneratorMock(CONFIG)
         for tvd_name in CONFIG.mgen.maps:
             campaign.tvd_builders[tvd_name].grid_control.get_file = self._get_xgml_file_mock
             campaign.initialize_map(tvd_name)
@@ -74,7 +75,8 @@ class TestCampaignController(unittest.TestCase):
         shutil.copy('./data/scg/1/stalin-base.ldf', './tmp/data/scg/1/')
         shutil.copy('./data/scg/2/moscow-base_v2.ldf', './tmp/data/scg/2/')
         generator = mocks.GeneratorMock(CONFIG)
-        campaign = processing.CampaignController(CONFIG, generator)
+        campaign = processing.CampaignController(CONFIG)
+        campaign.generator = generator
         campaign.tvd_builders[MOSCOW].grid_control.get_file = self._get_xgml_file_mock
         campaign.tvd_builders[STALIN].grid_control.get_file = self._get_xgml_file_mock
         campaign.initialize()
@@ -88,9 +90,9 @@ class TestCampaignController(unittest.TestCase):
 
     def test_initialize_map(self):
         """Инициализируется карта кампании"""
-        generator = mocks.GeneratorMock(CONFIG)
         order = 1
-        campaign = processing.CampaignController(CONFIG, generator)
+        campaign = processing.CampaignController(CONFIG)
+        campaign.generator = mocks.GeneratorMock(CONFIG)
         campaign.tvd_builders[TEST_TVD_NAME].grid_control.get_file = self._get_xgml_file_mock
         # Act
         campaign.initialize_map(TEST_TVD_NAME)
@@ -103,8 +105,8 @@ class TestCampaignController(unittest.TestCase):
         """Инициализируется кампания"""
         config = configs.Config(pathlib.Path(r'./configs/conf.ini'))
         storage = processing.Storage(config.main)
-        generator = processing.Generator(config)
-        campaign = processing.CampaignController(config, generator)
+        campaign = processing.CampaignController(config)
+        campaign.generator = processing.Generator(config)
         # Act
         campaign.initialize()
         # Assert

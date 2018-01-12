@@ -8,37 +8,28 @@ from .players_control import PlayersController
 from .ground_control import GroundController
 from .campaign_control import CampaignController
 from .airfields_control import AirfieldsController
+import rcon
 from .objects import Aircraft, BotPilot, Airfield, Ground, Object, GROUND_CLASSES
 
 
 class EventsController:
     """Контроллер обработки событий из логов"""
-    def __init__(
-            self,
-            objects: dict,
-            players_controller: PlayersController,
-            ground_controller: GroundController,
-            campaign_controller: CampaignController,
-            airfields_controller: AirfieldsController,
-            config: configs.Config
-    ):
+    def __init__(self, objects: dict, config: configs.Config):
         """
         :param objects: Справочник объектов в логах
-        :param players_controller: Контроллер игроков
-        :param ground_controller: Контроллер наземки
-        :param campaign_controller: Контроллер кампании и миссий
         """
         self.objects = objects
+        self.config = config
         self.objects_id_ref = dict()
         self.tik_last = 0
-        self.players_controller = players_controller
-        self.ground_controller = ground_controller
-        self.campaign_controller = campaign_controller
-        self.airfields_controller = airfields_controller
+        self.players_controller = PlayersController(
+            config.main, rcon.DServerRcon(config.main.rcon_ip, config.main.rcon_port))
+        self.ground_controller = GroundController(None)
+        self.campaign_controller = CampaignController(config)
+        self.airfields_controller = AirfieldsController(config)
         self.is_correctly_completed = False
         self.countries = dict()
         self.airfields = dict()
-        self.config = config
 
         # порядок важен т.к. позиция в tuple соответствует ID события
         self.events_handlers = (

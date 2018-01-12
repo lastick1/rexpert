@@ -30,7 +30,6 @@ def _get_xgml_file_mock(tvd_name: str) -> str:
     return str(CONFIG.mgen.xgml[tvd_name])
 
 
-
 def _load_all_campaign_maps():
     """Фальшивый метод загрузки карт кампании"""
     return [processing.CampaignMap(1, TEST_TVD_DATE, TEST_TVD_DATE, TEST_TVD_NAME, list())]
@@ -40,14 +39,13 @@ class TestIntegration(unittest.TestCase):
     """Интеграционные тесты"""
     def setUp(self):
         """Настройка базы перед тестом"""
-        console = mocks.ConsoleMock()
-        self.grounds = processing.GroundController(OBJECTS)
         self.generator = mocks.GeneratorMock(CONFIG)
-        self.players = processing.PlayersController(CONFIG.main, console)
-        self.campaign = processing.CampaignController(CONFIG, self.generator)
+        self.players = processing.PlayersController(CONFIG.main, mocks.ConsoleMock())
+        self.campaign = processing.CampaignController(CONFIG)
+        self.campaign.generator = self.generator
+        self.campaign.storage.campaign_maps.load_all = _load_all_campaign_maps
         self.airfields = mocks.AirfieldsControllerMock(CONFIG)
         self.storage = processing.Storage(CONFIG.main)
-        self.campaign.storage.campaign_maps.load_all = _load_all_campaign_maps
 
     def tearDown(self):
         """Удаление базы после теста"""
@@ -55,8 +53,10 @@ class TestIntegration(unittest.TestCase):
 
     def test_processing_with_atype_7(self):
         """Завершается корректно миссия с AType:7 в логе"""
-        controller = processing.EventsController(
-            OBJECTS, self.players, self.grounds, self.campaign, self.airfields, CONFIG)
+        controller = processing.EventsController(OBJECTS, CONFIG)
+        controller.players_controller = self.players
+        controller.airfields_controller = self.airfields
+        controller.campaign_controller = self.campaign
         for tvd_name in CONFIG.mgen.maps:
             controller.campaign_controller.tvd_builders[tvd_name].grid_control.get_file = _get_xgml_file_mock
         # Act
@@ -67,8 +67,10 @@ class TestIntegration(unittest.TestCase):
 
     def test_generate_next_with_atype_0(self):
         """Генерируется следующая миссия с AType:0 в логе"""
-        controller = processing.EventsController(
-            OBJECTS, self.players, self.grounds, self.campaign, self.airfields, CONFIG)
+        controller = processing.EventsController(OBJECTS, CONFIG)
+        controller.players_controller = self.players
+        controller.airfields_controller = self.airfields
+        controller.campaign_controller = self.campaign
         for tvd_name in CONFIG.mgen.maps:
             controller.campaign_controller.tvd_builders[tvd_name].grid_control.get_file = _get_xgml_file_mock
         # Act
@@ -80,8 +82,10 @@ class TestIntegration(unittest.TestCase):
 
     def test_bombing(self):
         """Учитываются наземные цели"""
-        controller = processing.EventsController(
-            OBJECTS, self.players, self.grounds, self.campaign, self.airfields, CONFIG)
+        controller = processing.EventsController(OBJECTS, CONFIG)
+        controller.players_controller = self.players
+        controller.airfields_controller = self.airfields
+        controller.campaign_controller = self.campaign
         for tvd_name in CONFIG.mgen.maps:
             controller.campaign_controller.tvd_builders[tvd_name].grid_control.get_file = _get_xgml_file_mock
         # Act
