@@ -10,7 +10,6 @@
   "transfer_amount": 30,
   "front_min_supply": 20,
   "front_max_planes": 150,
-  "front_start_planes": 100,
   "rear_max_power": 100,
   "initial_front_supply":{
     "moscow": {

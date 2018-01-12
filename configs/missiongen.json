@@ -1,11 +1,6 @@
 {
-  "result1": ".\\data\\Multiplayer\\Dogfight\\result1_src.Mission",
-  "result2": ".\\data\\Multiplayer\\Dogfight\\result2_src.Mission",
-  "default_tvd": 2,
-  "default_map": "moscow",
   "maps": ["moscow", "stalingrad"],
   "sides": ["red", "blue"],
-  "scenario_min_distance": 50000,
   "objectives": {
     "0": "primary",
     "1": "airfield",
@@ -24,8 +19,7 @@
     "14": "capture",
     "15": "pause"
   },
-  "moscow":
-  {
+  "moscow": {
     "tvd": 2,
     "right_top": {"x": 281600.0, "z": 281600.0},
     "tvd_folder": ".\\data\\scg\\2\\",
@@ -46,8 +40,7 @@
     "start_date": "01.09.1941",
     "end_date": "31.01.1942"
   },
-  "stalingrad":
-  {
+  "stalingrad": {
     "tvd": 1,
     "right_top": {"x": 230400.0, "z": 358400.0},
     "tvd_folder": ".\\data\\scg\\1\\",
@@ -68,8 +61,7 @@
     "start_date": "01.07.1942",
     "end_date": "28.02.1943"
   },
-  "kuban":
-  {
+  "kuban": {
     "right_top": {"x": 0, "z": 0},
     "tvd_folder": ".\\data\\scg\\4\\",
     "mt_file": "",
