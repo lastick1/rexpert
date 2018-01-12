@@ -4,8 +4,10 @@
     "moscow": ".\\configs\\supply_moscow.csv",
     "stalingrad": ".\\configs\\supply_stalin.csv"
   },
-  "transfer_amount": 30,
+  "mission_time": "02:30:00",
+  "airfield_radius": 2000,
   "airfield_min_planes": 20,
+  "transfer_amount": 30,
   "front_min_supply": 20,
   "front_max_planes": 150,
   "front_start_planes": 100,

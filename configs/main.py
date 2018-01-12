@@ -34,13 +34,6 @@ class Main:  # pylint: disable=R0903,R0902,C0301
         self.arch_directory = Path(src['DSERVER']['arch_directory'])
         self.chat_directory = Path(src['DSERVER']['chat_directory'])
         self.msrc_directory = Path(src['NEW_STATS']['msrc_directory'])
-        self.mission_time = {
-            'h': int(src['GAMEPLAY']['mission_time'].split(sep=':')[0]),
-            'm': int(src['GAMEPLAY']['mission_time'].split(sep=':')[1]),
-            's': int(src['GAMEPLAY']['mission_time'].split(sep=':')[2])
-        }
-        self.capture_pts = int(src['GAMEPLAY']['capture_pts'])
-        self.airfield_radius = float(src['GAMEPLAY']['airfield_radius'])
         self.connection_string = 'dbname={} host={} port={} user={} password={}'.format(
             src['STATS']['database'],
             src['STATS']['host'],
