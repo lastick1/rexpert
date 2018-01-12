@@ -1,5 +1,4 @@
 """Работа с графом"""
-import pathlib
 import configs
 import geometry
 from .node import Node
@@ -11,7 +10,6 @@ class Grid:
         self.nodes = nodes  # узлы сетки
         self.edges_ids = edges  # рёбра графа в виде пар (ключ_вершины, ключ_вершины)
         self.tvd = config.cfg[name]['tvd']
-        self.scenario_min_distance = config.cfg['scenario_min_distance']
 
     @property
     def nodes_list(self) -> list:

@@ -20,7 +20,7 @@ class EventsController:
             ground_controller: GroundController,
             campaign_controller: CampaignController,
             airfields_controller: AirfieldsController,
-            config: configs.Main
+            config: configs.Config
     ):
         """
         :param objects: Справочник объектов в логах
@@ -134,7 +134,7 @@ class EventsController:
     def event_landing(self, tik: int, aircraft_id: int, pos: dict) -> None:
         """AType 6 handler"""
         aircraft = self._get_aircraft(aircraft_id)
-        aircraft.land(pos, list(self.airfields.values()), self.config.airfield_radius)
+        aircraft.land(pos, list(self.airfields.values()), self.config.gameplay.airfield_radius)
         self.update_tik(tik)
 
     def event_mission_end(self, tik: int) -> None:

@@ -157,7 +157,7 @@ class TestAircraftVendor(unittest.TestCase):
         # Assert
         for country in airfields:
             for managed_airfield in airfields[country]:
-                self.assertEqual(managed_airfield.planes_count, GAMEPLAY.front_start_planes)
+                self.assertEqual(managed_airfield.planes_count, 100)
 
 
 if __name__ == '__main__':

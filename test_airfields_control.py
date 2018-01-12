@@ -38,7 +38,7 @@ class TestAirfieldsController(unittest.TestCase):
 
     def test_get_airfield_in_radius(self):
         """Определяется аэродром в радиусе от координат"""
-        controller = AirfieldsController(main=CONFIG.main, mgen=CONFIG.mgen, config=CONFIG.planes)
+        controller = AirfieldsController(CONFIG)
         tvd = mocks.TvdMock(TEST_TVD_NAME)
         tvd.country = 101
         # Act
@@ -49,7 +49,7 @@ class TestAirfieldsController(unittest.TestCase):
 
     def test_spawn_planes(self):
         """Уменьшается количество самолётов на аэродроме при появлении на нём"""
-        controller = AirfieldsController(main=CONFIG.main, mgen=CONFIG.mgen, config=CONFIG.planes)
+        controller = AirfieldsController(CONFIG)
         tvd = mocks.TvdMock(TEST_TVD_NAME)
         tvd.country = 101
         aircraft_name = 'Pe-2 ser.35'
@@ -68,7 +68,7 @@ class TestAirfieldsController(unittest.TestCase):
 
     def test_return_planes(self):
         """Восполняется количество самолётов на аэродроме при возврате на него (деспаун)"""
-        controller = AirfieldsController(main=CONFIG.main, mgen=CONFIG.mgen, config=CONFIG.planes)
+        controller = AirfieldsController(CONFIG)
         tvd = mocks.TvdMock(TEST_TVD_NAME)
         tvd.country = 101
         bot_name = 'BotPilot_Pe2'
@@ -90,7 +90,7 @@ class TestAirfieldsController(unittest.TestCase):
 
     def test_get_country(self):
         """Определяется страна аэродрома по узлу графа"""
-        controller = AirfieldsController(main=CONFIG.main, mgen=CONFIG.mgen, config=CONFIG.planes)
+        controller = AirfieldsController(CONFIG)
         builder = TvdBuilder(TEST_TVD_NAME, CONFIG)
         builder.grid_control.get_file = _get_xgml_file_mock
         verbovka = controller.get_airfield_in_radius(
@@ -102,7 +102,7 @@ class TestAirfieldsController(unittest.TestCase):
 
     def test_add_aircraft(self):
         """Добавляется самолёт на аэродром"""
-        controller = AirfieldsController(main=CONFIG.main, mgen=CONFIG.mgen, config=CONFIG.planes)
+        controller = AirfieldsController(CONFIG)
         builder = TvdBuilder(TEST_TVD_NAME, CONFIG)
         builder.grid_control.get_file = _get_xgml_file_mock
         tvd = builder.get_tvd(TEST_TVD_DATE)
@@ -120,7 +120,7 @@ class TestAirfieldsController(unittest.TestCase):
 
     def test_add_aircraft_wrong(self):
         """НЕ добавляется самолёт на аэродром другой страны"""
-        controller = AirfieldsController(main=CONFIG.main, mgen=CONFIG.mgen, config=CONFIG.planes)
+        controller = AirfieldsController(CONFIG)
         builder = TvdBuilder(TEST_TVD_NAME, CONFIG)
         builder.grid_control.get_file = _get_xgml_file_mock
         tvd = builder.get_tvd(TEST_TVD_DATE)

@@ -9,14 +9,10 @@ class AirfieldsController:
     """Контроллер аэродромов"""
     def __init__(
             self,
-            main: configs.Main,
-            mgen: configs.Mgen,
-            config: configs.Planes
+            config: configs.Config
     ):
-        self.planes = config
-        self.main = main
-        self.mgen = mgen
-        self.storage = Storage(main)
+        self.config = config
+        self.storage = Storage(config.main)
 
     @staticmethod
     def initialize_managed_airfields(airfields_data: list) -> list:
@@ -38,14 +34,14 @@ class AirfieldsController:
 
     def spawn(self, tvd, aircraft_name: str, xpos: float, zpos: float):
         """Обработать появление самолёта на аэродроме"""
-        managed_airfield = self.get_airfield_in_radius(tvd.name, xpos, zpos, self.main.airfield_radius)
+        managed_airfield = self.get_airfield_in_radius(tvd.name, xpos, zpos, self.config.gameplay.airfield_radius)
         self.add_aircraft(tvd, managed_airfield.name, aircraft_name, -1)
 
     def finish(self, tvd, bot: BotPilot):
         """Обработать деспаун самолёта на аэродроме"""
         xpos = bot.aircraft.pos['x']
         zpos = bot.aircraft.pos['z']
-        managed_airfield = self.get_airfield_in_radius(tvd.name, xpos, zpos, self.main.airfield_radius)
+        managed_airfield = self.get_airfield_in_radius(tvd.name, xpos, zpos, self.config.gameplay.airfield_radius)
         if managed_airfield:
             self.add_aircraft(tvd, managed_airfield.name, bot.aircraft.log_name, 1)
 
@@ -56,8 +52,8 @@ class AirfieldsController:
 
     def _add_aircraft(self, airfield, airfield_country, aircraft_name: str, aircraft_count: int):
         """Добавить самолёт на аэродром без сохранения в БД"""
-        aircraft_key = self.planes.name_to_key(aircraft_name)
-        aircraft_country = self.planes.cfg['uncommon'][aircraft_name.lower()]['country']
+        aircraft_key = self.config.planes.name_to_key(aircraft_name)
+        aircraft_country = self.config.planes.cfg['uncommon'][aircraft_name.lower()]['country']
         if aircraft_country == airfield_country:
             if aircraft_key not in airfield.planes:
                 airfield.planes[aircraft_key] = 0

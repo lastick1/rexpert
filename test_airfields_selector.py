@@ -26,7 +26,7 @@ class TestAirfieldsSelector(unittest.TestCase):
     def setUp(self):
         """Настройка базы перед тестом"""
         self.storage = processing.Storage(CONFIG.main)
-        self.controller = processing.AirfieldsController(main=CONFIG.main, mgen=CONFIG.mgen, config=CONFIG.planes)
+        self.controller = processing.AirfieldsController(CONFIG)
         self.storage.airfields.update_airfields(
             self.controller.initialize_managed_airfields(CONFIG.mgen.airfields_data[MOSCOW]))
 

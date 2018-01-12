@@ -255,7 +255,7 @@ class TvdBuilder:
         planes = list()
         for key in airfield.planes:
             planes.append(find_plane_in_config(self.config.planes.cfg, key, airfield.planes[key]))
-        return processing.Airfield(airfield.name, country, self.config.main.airfield_radius, planes)
+        return processing.Airfield(airfield.name, country, self.config.gameplay.airfield_radius, planes)
 
     def date_day_duration(self, date):
         """Рассвет и закат для указанной даты"""

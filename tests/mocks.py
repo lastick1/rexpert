@@ -178,8 +178,8 @@ def get_test_grid(mgen: MgenMock) -> processing.Grid:
 
 class AirfieldsControllerMock(processing.AirfieldsController):
     # noinspection PyTypeChecker
-    def __init__(self, main: configs.Main):
-        super().__init__(main, None, None)
+    def __init__(self, config: configs.Config):
+        super().__init__(config)
 
     def spawn(self, tvd, aircraft_name: str, xpos: float, zpos: float):
         pass
