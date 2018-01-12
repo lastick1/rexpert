@@ -19,7 +19,7 @@ from .airfields_selector import AirfieldsSelector
 from .groups import FrontLineGroup, Group
 from .tvd import *
 from .locations_builder import LocationsBuilder
-from .campaign import CampaignMap
+from .campaign_map import CampaignMap
 from .campaign_control import CampaignController, Mission
 from .reader import LogsReader
 from .grid_control import GridController

@@ -2,7 +2,7 @@
 import random
 
 import configs
-from .campaign import CampaignMap
+from .campaign_map import CampaignMap
 
 
 class MonthSupply:

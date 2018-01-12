@@ -9,7 +9,7 @@ import configs
 import processing
 
 from .tvd import Tvd
-from .campaign import CampaignMap, DATE_FORMAT
+from .campaign_map import CampaignMap, DATE_FORMAT
 from .airfields_control import AirfieldsController
 
 START_DATE = 'start_date'

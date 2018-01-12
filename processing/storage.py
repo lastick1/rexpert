@@ -4,7 +4,7 @@ import pymongo
 import configs
 from .airfield import ManagedAirfield, NAME, PLANES, POS
 from .player import Player
-from .campaign import CampaignMap, ORDER, DATE, MISSION_DATE, MONTHS
+from .campaign_map import CampaignMap, ORDER, DATE, MISSION_DATE, MONTHS, MISSION
 
 ID = '_id'
 TVD_NAME = 'tvd_name'
@@ -45,7 +45,8 @@ class CampaignMaps(CollectionWrapper):
             date=document[DATE],
             mission_date=document[MISSION_DATE],
             tvd_name=document[TVD_NAME],
-            months=document[MONTHS]
+            months=document[MONTHS],
+            mission=document[MISSION]
         )
 
     def update(self, campaign_map: CampaignMap):
