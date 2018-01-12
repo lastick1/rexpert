@@ -25,6 +25,11 @@ class GridController:
         dest_file = str(tvd_dir.joinpath('{}_0.xgml'.format(tvd_name)))
         shutil.copy(xgml_file, dest_file)
 
+    def reset(self, tvd_name: str):
+        """Сбросить граф указанного ТВД в кампании"""
+        for file in pathlib.Path(self.xgml_folders[tvd_name]).glob('*.xgml'):
+            file.unlink()
+
     def get_file(self, tvd_name: str) -> str:
         """Получить последний файл графа для ТВД кампании"""
         files = pathlib.Path(self.xgml_folders[tvd_name]).glob('*.xgml')

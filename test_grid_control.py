@@ -29,6 +29,16 @@ class TestGridControl(unittest.TestCase):
         # Assert
         self.assertTrue(pathlib.Path('./tmp/current/{}/{}_0.xgml'.format(TEST_TVD_NAME, TEST_TVD_NAME)).exists())
 
+    def test_reset(self):
+        """Выполняется сброс графа кампании"""
+        controller = processing.GridController(TEST_CONFIG)
+        controller.initialize(TEST_TVD_NAME)
+        # Act
+        controller.reset(TEST_TVD_NAME)
+        # Assert
+        xgml_files = list(pathlib.Path('./tmp/current/{}/'.format(TEST_TVD_NAME)).glob('*.xgml'))
+        self.assertEqual(len(xgml_files), 0)
+
     def test_capture(self):
         """Выполняется сохранение обновлённой версии графа после захвата"""
         pos = {'x': 144485, 'z': 136915}
