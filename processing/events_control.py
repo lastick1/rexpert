@@ -137,6 +137,8 @@ class EventsController:
     def event_mission_result(self, tik: int, object_id: int, coal_id: int, task_type_id: int,
                              success: int, icon_type_id: int, pos: dict) -> None:
         """AType 8 handler"""
+        # TODO поймать mission objective с завершением миссии
+        # TODO подвести итог миссии
         self.update_tik(tik)
 
     def event_airfield(self, tik: int, airfield_id: int, country_id: int, coal_id: int,

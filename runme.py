@@ -2,6 +2,7 @@
 import datetime
 import pathlib
 
+import utils
 import configs
 import processing
 
@@ -35,11 +36,11 @@ def run():
 
 print(datetime.datetime.now().strftime("[%H:%M:%S] Program Start."))
 # import helpers
-# helpers.compile_log('./tmp', 'missionReport*.txt', './tmp/compiled')
+# utils.compile_log('./tmp', 'missionReport*.txt', './tmp/compiled')
 
 # reset()
 # export('moscow')
 # export('stalingrad')
 # generate('result1')
-run()
+# run()
 print(datetime.datetime.now().strftime("[%H:%M:%S] Program Finish."))
