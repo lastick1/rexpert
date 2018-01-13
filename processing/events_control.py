@@ -14,7 +14,7 @@ from .objects import Aircraft, BotPilot, Airfield, Ground, Object, GROUND_CLASSE
 
 class EventsController:
     """Контроллер обработки событий из логов"""
-    def __init__(self, objects: dict, config: configs.Config):
+    def __init__(self, objects: configs.Objects, config: configs.Config):
         """
         :param objects: Справочник объектов в логах
         """
@@ -24,7 +24,7 @@ class EventsController:
         self.tik_last = 0
         self.players_controller = PlayersController(
             config.main, rcon.DServerRcon(config.main.rcon_ip, config.main.rcon_port))
-        self.ground_controller = GroundController(None)
+        self.ground_controller = GroundController(objects)
         self.campaign_controller = CampaignController(config)
         self.airfields_controller = AirfieldsController(config)
         self.is_correctly_completed = False
