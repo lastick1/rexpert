@@ -29,8 +29,7 @@ def generate(name: str):
 
 def run():
     """Запуск"""
-    objects = configs.Objects()
-    events_controller = processing.EventsController(objects=objects, config=CONFIG)
+    events_controller = processing.EventsController(objects=configs.Objects(), config=CONFIG)
     processing.LogsReader(CONFIG.main, events_controller)
 
 
