@@ -4,7 +4,7 @@ import pathlib
 from .main import Main
 from .mgen import Mgen, GeneratorParamsConfig
 from .planes import Planes
-from .game import Gameplay
+from .gameplay import Gameplay
 from .stat import Stats
 
 

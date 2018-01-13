@@ -5,6 +5,7 @@
     "stalingrad": ".\\configs\\supply_stalin.csv"
   },
   "mission_time": "02:30:00",
+  "division_repair": 15,
   "airfield_radius": 2000,
   "airfield_min_planes": 20,
   "transfer_amount": 30,

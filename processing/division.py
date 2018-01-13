@@ -22,7 +22,7 @@ INF_NAMES = tuple(x for x in DIVISIONS if 'I' in x)
 
 class Division:
     """Войсковая дивизия"""
-    def __init__(self, tvd_name: str, name: str, units: int):
+    def __init__(self, tvd_name: str, name: str, units: float):
         self.units = units
         self.name = name
         self.tvd_name = tvd_name

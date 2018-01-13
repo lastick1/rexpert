@@ -19,3 +19,4 @@ class Gameplay:
         self.front_max_planes = src['front_max_planes']
         self.front_init_planes = {tvd_name: src['initial_front_supply'][tvd_name] for tvd_name in src['maps']}
         self.initial_priority = {tvd_name: src['initial_priority_supply'][tvd_name] for tvd_name in src['maps']}
+        self.division_repair = 1 + src['division_repair'] / 100
