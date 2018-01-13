@@ -24,3 +24,4 @@ from .campaign_control import CampaignController, Mission
 from .reader import LogsReader
 from .grid_control import GridController
 from .source_parser import SourceParser
+from .division_control import DivisionsController

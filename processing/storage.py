@@ -5,6 +5,7 @@ import configs
 from .airfield import ManagedAirfield, NAME, PLANES, POS
 from .player import Player
 from .campaign_map import CampaignMap, ORDER, DATE, MISSION_DATE, MONTHS, MISSION
+from .division import Division, UNITS
 
 ID = '_id'
 TVD_NAME = 'tvd_name'
@@ -71,6 +72,31 @@ class CampaignMaps(CollectionWrapper):
     def load_by_tvd_name(self, tvd_name: str) -> CampaignMap:
         """Загрузить карту кампании по имени её ТВД (карты)"""
         return self._convert_from_document(self.collection.find_one({TVD_NAME: tvd_name}))
+
+
+class Divisions(CollectionWrapper):
+    """Работа с документами дивизий в БД"""
+    @staticmethod
+    def _make_filter(tvd_name: str, division_name: str) -> dict:
+        """Построить фильтр для поиска документа дивизии в БД"""
+        return {TVD_NAME: tvd_name, NAME: division_name}
+
+    @staticmethod
+    def _convert_from_document(document) -> Division:
+        """Конвертировать документ из БД в объект класса дивизии"""
+        return Division(
+            tvd_name=document[TVD_NAME],
+            name=document[NAME],
+            units=document[UNITS]
+        )
+
+    def update(self, division: Division):
+        """Обновить/создать документ в БД"""
+        self.update_one(self._make_filter(division.tvd_name, division.name), _update_request_body(division.to_dict()))
+
+    def load_by_name(self, tvd_name: str, division_name: str) -> Division:
+        """Загрузить данные дивизии по её имени"""
+        return self._convert_from_document(self.collection.find_one(self._make_filter(tvd_name, division_name)))
 
 
 class Players(CollectionWrapper):
@@ -147,6 +173,7 @@ class Storage:
         self.airfields = Airfields(self._database['Airfields'])
         self.players = Players(self._database['Players'])
         self.campaign_maps = CampaignMaps(self._database['CampaignMaps'])
+        self.divisions = Divisions(self._database['Divisions'])
 
     def drop_database(self):
         """Удалить базу данных (использовать только в тестах)"""
