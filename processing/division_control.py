@@ -31,10 +31,15 @@ class DivisionsController:
             division.units = 0
         self.storage.divisions.update(division)
 
-    def repair_division(self, tvd_name: str,  division_name: str):
+    def repair_rate(self, penalties: int):
+        """Получить множитель восстановления с учётом уничтоженных складов"""
+        result = 1 + (self.config.gameplay.division_repair - penalties * 5) / 100
+        return result if result > 1 else 1
+
+    def repair_division(self, tvd_name: str,  division_name: str, penalties: int):
         """Восполнить дивизию"""
         division = self.storage.divisions.load_by_name(tvd_name, division_name)
-        division.units *= self.config.gameplay.division_repair
+        division.units *= self.repair_rate(penalties)
         if division.units > DIVISIONS[division_name]:
             division.units = DIVISIONS[division_name]
         self.storage.divisions.update(division)

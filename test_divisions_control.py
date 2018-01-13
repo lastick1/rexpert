@@ -41,24 +41,35 @@ class TestDivisionsControl(unittest.TestCase):
         # Assert
         self.assertEqual(controller.storage.divisions.load_by_name(TEST_TVD_NAME, TEST_DIVISION_NAME1).units, expected)
 
-    def test_repair_division(self):
-        """Восполняются дивизии"""
+    def test_repair_rate(self):
+        """Рассчитывается коэффициент восполнения дивизий"""
+        controller = processing.DivisionsController(CONFIG)
+        # Act
+        r0 = controller.repair_rate(0)
+        r1 = controller.repair_rate(1)
+        r2 = controller.repair_rate(2)
+        r3 = controller.repair_rate(3)
+        # Assert
+        self.assertSequenceEqual((r0, r1, r2, r3), (1.15, 1.1, 1.05, 1.0))
 
+    def test_repair_division(self):
+        """Восполняются дивизии при целых складах"""
+        destroyed_warehouses = 0
         controller = processing.DivisionsController(CONFIG)
         controller.initialize_divisions(TEST_TVD_NAME)
         controller.damage_division(TEST_TVD_NAME, TEST_UNIT_NAME1)
         controller.damage_division(TEST_TVD_NAME, TEST_UNIT_NAME1)
         controller.damage_division(TEST_TVD_NAME, TEST_UNIT_NAME2)
         current = controller.storage.divisions.load_by_name(TEST_TVD_NAME, TEST_DIVISION_NAME1).units
-        expected1 = current * CONFIG.gameplay.division_repair
+        expected1 = current * controller.repair_rate(destroyed_warehouses)
         expected2 = processing.DIVISIONS[TEST_DIVISION_NAME2]
         # Act
-        controller.repair_division(TEST_TVD_NAME, TEST_DIVISION_NAME1)
-        controller.repair_division(TEST_TVD_NAME, TEST_DIVISION_NAME2)
+        controller.repair_division(TEST_TVD_NAME, TEST_DIVISION_NAME1, destroyed_warehouses)
+        controller.repair_division(TEST_TVD_NAME, TEST_DIVISION_NAME2, destroyed_warehouses)
         # Assert
         self.assertEqual(controller.storage.divisions.load_by_name(TEST_TVD_NAME, TEST_DIVISION_NAME1).units, expected1)
         self.assertEqual(controller.storage.divisions.load_by_name(TEST_TVD_NAME, TEST_DIVISION_NAME2).units, expected2)
-        
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
