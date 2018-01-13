@@ -46,6 +46,15 @@ class TestSourceParser(unittest.TestCase):
         # Assert
         self.assertSequenceEqual(result.objectives, expected)
 
+    def test_parse_airfields(self):
+        """Определяются аэродромы из исходника миссии"""
+        parser = processing.SourceParser(CONFIG)
+        expected = [{'country': 101, 'name': 'Airfield', 'pos': {'x': 150.0, 'z': 150.0}}]
+        # Act
+        result = parser.parse(TEST_TVD_NAME, pathlib.Path('./testdata/mission_source/{}.Mission'.format(TEST_TVD_NAME)))
+        # Assert
+        self.assertSequenceEqual(result.airfields, expected)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

@@ -48,7 +48,9 @@ AIRFIELD_DATA_RE = re.compile(
     '\n\s*[/\na-zA-Z0-9"=\.\s;\{\}\\\\-]*'
     '\n\s*XPos = (?P<XPos>-?\d+\.\d+);'
     '\n\s*YPos = -?\d+\.\d+;'
-    '\n\s*ZPos = (?P<ZPos>-?\d+\.\d+);')
+    '\n\s*ZPos = (?P<ZPos>-?\d+\.\d+);'
+    '\n\s*[/\na-zA-Z0-9"=\.\s;\{\}\\\\-]*'
+    '\n\s*Country = (?P<country>\d+);')
 
 GUIMAP_RE = re.compile(
     'GuiMap = "(?P<guimap>[a-zA-Z\-0-9]*)";'

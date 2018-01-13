@@ -10,3 +10,4 @@ class SourceMission:
         self.date = datetime.datetime.strptime(date, DATE_FORMAT)
         self.server_inputs = list()
         self.objectives = list()
+        self.airfields = list()

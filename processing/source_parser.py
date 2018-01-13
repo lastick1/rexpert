@@ -4,7 +4,7 @@ import datetime
 
 import configs
 from .source_mission import SourceMission
-from .source_re import GUIMAP_RE, MISSION_DATE_RE, SERVER_INPUT_RE, MISSION_OBJECTIVE_RE
+from .source_re import GUIMAP_RE, MISSION_DATE_RE, SERVER_INPUT_RE, MISSION_OBJECTIVE_RE, AIRFIELD_RE, AIRFIELD_DATA_RE
 
 SRC_DATE_FORMAT = '%d.%m.%Y'
 DATE_FORMAT = '%d.%m.%Y'
@@ -31,7 +31,21 @@ def _find_mission_objectives(mission: SourceMission, text: str):
                 'pos': {'x': float(match[0]), 'z': float(match[1])},
                 'coalition': int(match[3]),
                 'success': int(match[4])
-            })
+            }
+        )
+
+
+def _find_airfields(mission: SourceMission, text: str):
+    """Найти аэродромы в исходнике миссии"""
+    for match in AIRFIELD_RE.findall(text):
+        data = AIRFIELD_DATA_RE.match(match).groupdict()
+        mission.airfields.append(
+            {
+                'name': data['name'],
+                'pos': {'x': float(data['XPos']), 'z': float(data['ZPos'])},
+                'country': int(data['country'])
+            }
+        )
 
 
 class SourceParser:
@@ -58,4 +72,5 @@ class SourceParser:
         result = SourceMission(name=name, date=_find_date(text), guimap=self._find_guimap(text))
         _find_server_inputs(result, text)
         _find_mission_objectives(result, text)
+        _find_airfields(result, text)
         return result
