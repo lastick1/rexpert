@@ -41,4 +41,22 @@ Options
     201 : 2;
   }
 }
+
+MCU_TR_ServerInput
+{
+  Index = 2;
+  Name = "test_input";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 50.000;
+  YPos = 0.054;
+  ZPos = 50.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+}
+
+
 # end of file

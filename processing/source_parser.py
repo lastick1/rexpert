@@ -4,7 +4,7 @@ import datetime
 
 import configs
 from .source_mission import SourceMission
-from .source_re import GUIMAP_RE, MISSION_DATE_RE
+from .source_re import GUIMAP_RE, MISSION_DATE_RE, SERVER_INPUT_RE
 
 SRC_DATE_FORMAT = '%d.%m.%Y'
 DATE_FORMAT = '%d.%m.%Y'
@@ -14,6 +14,12 @@ def _find_date(text: str) -> str:
     """Найти значение даты миссии в исходнике"""
     for match in MISSION_DATE_RE.findall(text):
         return datetime.datetime.strptime(match, SRC_DATE_FORMAT).strftime(DATE_FORMAT)
+
+
+def _find_server_inputs(mission: SourceMission, text: str):
+    """Найти MCU сервер инпутов в миссии"""
+    for match in SERVER_INPUT_RE.findall(text):
+        mission.server_inputs.append({'name': match[0], 'pos': {'x': float(match[1]), 'z': float(match[2])}})
 
 
 class SourceParser:
@@ -38,4 +44,5 @@ class SourceParser:
         """Считать миссию из исходника"""
         text = path.read_text()
         result = SourceMission(name=name, date=_find_date(text), guimap=self._find_guimap(text))
+        _find_server_inputs(result, text)
         return result

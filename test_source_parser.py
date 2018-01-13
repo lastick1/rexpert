@@ -28,6 +28,15 @@ class TestSourceParser(unittest.TestCase):
         # Assert
         self.assertEqual(result.date.strftime(DATE_FORMAT), '01.06.1943')
 
+    def test_parse_server_input(self):
+        """Определяются MCU ServerInput из исходника миссии"""
+        parser = processing.SourceParser(CONFIG)
+        expected = [{'name': 'test_input', 'pos': {'x': 50, 'z': 50}}]
+        # Act
+        result = parser.parse(TEST_TVD_NAME, pathlib.Path('./testdata/mission_source/{}.Mission'.format(TEST_TVD_NAME)))
+        # Assert
+        self.assertSequenceEqual(result.server_inputs, expected)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
