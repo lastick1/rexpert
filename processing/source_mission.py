@@ -9,3 +9,4 @@ class SourceMission:
         self.guimap = guimap
         self.date = datetime.datetime.strptime(date, DATE_FORMAT)
         self.server_inputs = list()
+        self.objectives = list()

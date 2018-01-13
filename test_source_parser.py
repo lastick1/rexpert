@@ -37,6 +37,15 @@ class TestSourceParser(unittest.TestCase):
         # Assert
         self.assertSequenceEqual(result.server_inputs, expected)
 
+    def test_parse_mission_objective(self):
+        """Определяются MCU MissionObjective из исходника миссии"""
+        parser = processing.SourceParser(CONFIG)
+        expected = [{'coalition': 2, 'obj_type': 15, 'pos': {'x': 100.0, 'z': 100.0}, 'success': 1}]
+        # Act
+        result = parser.parse(TEST_TVD_NAME, pathlib.Path('./testdata/mission_source/{}.Mission'.format(TEST_TVD_NAME)))
+        # Assert
+        self.assertSequenceEqual(result.objectives, expected)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
