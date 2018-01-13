@@ -1,0 +1,44 @@
+# Mission File Version = 1.0;
+
+Options
+{
+  LCName = 0;
+  LCDesc = 1;
+  LCAuthor = 2;
+  PlayerConfig = "";
+  Time = 12:30:0;
+  Date = 1.6.1943;
+  HMap = "graphics\LANDSCAPE_Kuban_s\height.hini";
+  Textures = "graphics\LANDSCAPE_Kuban_s\textures.tini";
+  Forests = "graphics\LANDSCAPE_Kuban_s\trees\woods.wds";
+  Layers = "";
+  GuiMap = "kuban-summer";
+  SeasonPrefix = "su";
+  MissionType = 0;
+  AqmId = 0;
+  CloudLevel = 500;
+  CloudHeight = 200;
+  PrecLevel = 0;
+  PrecType = 0;
+  CloudConfig = "summer\00_clear_00\sky.ini";
+  SeaState = 0;
+  Turbulence = 0;
+  TempPressLevel = 0;
+  Temperature = 25;
+  Pressure = 760;
+  WindLayers
+  {
+    0 :     0 :     0;
+    500 :     0 :     0;
+    1000 :     0 :     0;
+    2000 :     0 :     0;
+    5000 :     0 :     0;
+  }
+  Countries
+  {
+    0 : 0;
+    101 : 1;
+    201 : 2;
+  }
+}
+# end of file

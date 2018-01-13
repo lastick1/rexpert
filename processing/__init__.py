@@ -23,3 +23,4 @@ from .campaign_map import CampaignMap
 from .campaign_control import CampaignController, Mission
 from .reader import LogsReader
 from .grid_control import GridController
+from .source_parser import SourceParser
