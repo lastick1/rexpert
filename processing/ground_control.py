@@ -26,6 +26,6 @@ class GroundController:
             key = str(pos)
             ground = self.grounds[key]
             target.killed = True
-            if not target is ground:
+            if target is not ground:
                 raise NameError('Wrong ground object reference')
         # Для целей другого типа ничего не делаем
