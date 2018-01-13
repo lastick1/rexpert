@@ -11,3 +11,4 @@ class SourceMission:
         self.server_inputs = list()
         self.objectives = list()
         self.airfields = list()
+        self.division_units = list()

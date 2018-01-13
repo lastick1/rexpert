@@ -16,7 +16,9 @@ SERVER_INPUT_RE = re.compile(
     '\n\s*YOri = .*;'
     '\n\s*ZOri = .*;'
     '\n\s*Enabled = .*;'
-    '\n\s*\}')
+    '\n\s*\}'
+)
+
 MISSION_OBJECTIVE_RE = re.compile(
     '\n\s*MCU_TR_MissionObjective'
     '\n\s*\{'
@@ -36,10 +38,12 @@ MISSION_OBJECTIVE_RE = re.compile(
     '\n\s*Coalition = (?P<Coalition>\d+);'
     '\n\s*Success = (?P<Success>0|1);'
     '\n\s*IconType = .+;'
-    '\n\s*\}')
+    '\n\s*\}'
+)
 
 AIRFIELD_RE = re.compile(
-    'Airfield\n\s*[/\na-zA-Z0-9"=\.\s;\{\}\\\\-]*\n')
+    'Airfield\n\s*[/\na-zA-Z0-9"=\.\s;\{\}\\\\-]*\n'
+)
 
 AIRFIELD_DATA_RE = re.compile(
     '[/\na-zA-Z0-9"=\.\s;\{\}\\\\-]*'
@@ -50,7 +54,8 @@ AIRFIELD_DATA_RE = re.compile(
     '\n\s*YPos = -?\d+\.\d+;'
     '\n\s*ZPos = (?P<ZPos>-?\d+\.\d+);'
     '\n\s*[/\na-zA-Z0-9"=\.\s;\{\}\\\\-]*'
-    '\n\s*Country = (?P<country>\d+);')
+    '\n\s*Country = (?P<country>\d+);'
+)
 
 GUIMAP_RE = re.compile(
     'GuiMap = "(?P<guimap>[a-zA-Z\-0-9]*)";'
@@ -58,6 +63,25 @@ GUIMAP_RE = re.compile(
 
 MISSION_DATE_RE = re.compile(
     'Date = (?P<date>[a-zA-Z\-0-9\.]*);'
+)
+
+TRIGGER_TIMER_RE = re.compile(
+    '\n\s*MCU_Timer'
+    '\n\s*\{'
+    '\n\s*Index = \d+;'
+    '\n\s*Name = "(?P<name>.+\.|.*)";'
+    '\n\s*Desc = .*'
+    '\n\s*Targets = .*'
+    '\n\s*Objects = .*'
+    '\n\s*XPos = (?P<XPos>-?\d+\.\d+);'
+    '\n\s*YPos = -?\d+\.\d+;'
+    '\n\s*ZPos = (?P<ZPos>-?\d+\.\d+);'
+    '\n\s*XOri = .*;'
+    '\n\s*YOri = .*;'
+    '\n\s*ZOri = .*;'
+    '\n\s*Time = .*;'
+    '\n\s*Random = .*;'
+    '\n\s*\}'
 )
 
 r"""

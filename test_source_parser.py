@@ -49,11 +49,20 @@ class TestSourceParser(unittest.TestCase):
     def test_parse_airfields(self):
         """Определяются аэродромы из исходника миссии"""
         parser = processing.SourceParser(CONFIG)
-        expected = [{'country': 101, 'name': 'Airfield', 'pos': {'x': 150.0, 'z': 150.0}}]
+        expected = [{'country': 101, 'name': 'kubinka', 'pos': {'x': 150.0, 'z': 150.0}}]
         # Act
         result = parser.parse(TEST_TVD_NAME, pathlib.Path('./testdata/mission_source/{}.Mission'.format(TEST_TVD_NAME)))
         # Assert
         self.assertSequenceEqual(result.airfields, expected)
+
+    def test_parse_division_units(self):
+        """Определяются юниты дивизий из исходника миссии"""
+        parser = processing.SourceParser(CONFIG)
+        expected = [{'name': 'REXPERT_BTD1_7', 'pos': {'x': 200.0, 'z': 200.0}}]
+        # Act
+        result = parser.parse(TEST_TVD_NAME, pathlib.Path('./testdata/mission_source/{}.Mission'.format(TEST_TVD_NAME)))
+        # Assert
+        self.assertSequenceEqual(result.division_units, expected)
 
 
 if __name__ == '__main__':

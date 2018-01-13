@@ -4,7 +4,8 @@ import datetime
 
 import configs
 from .source_mission import SourceMission
-from .source_re import GUIMAP_RE, MISSION_DATE_RE, SERVER_INPUT_RE, MISSION_OBJECTIVE_RE, AIRFIELD_RE, AIRFIELD_DATA_RE
+from .source_re import GUIMAP_RE, MISSION_DATE_RE, SERVER_INPUT_RE, MISSION_OBJECTIVE_RE
+from .source_re import AIRFIELD_RE, AIRFIELD_DATA_RE, TRIGGER_TIMER_RE
 
 SRC_DATE_FORMAT = '%d.%m.%Y'
 DATE_FORMAT = '%d.%m.%Y'
@@ -48,6 +49,12 @@ def _find_airfields(mission: SourceMission, text: str):
         )
 
 
+def _find_division_units(mission: SourceMission, text: str):
+    """Найти все юниты дивизий в исходнике миссий по триггерам (таймерам-меткам)"""
+    for match in TRIGGER_TIMER_RE.findall(text):
+        mission.division_units.append({'name': match[0], 'pos': {'x': float(match[1]), 'z': float(match[2])}})
+
+
 class SourceParser:
     """Извлекает данные из исходников миссий"""
     def __init__(self, config: configs.Config):
@@ -73,4 +80,5 @@ class SourceParser:
         _find_server_inputs(result, text)
         _find_mission_objectives(result, text)
         _find_airfields(result, text)
+        _find_division_units(result, text)
         return result
