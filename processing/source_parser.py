@@ -52,7 +52,9 @@ def _find_airfields(mission: SourceMission, text: str):
 def _find_division_units(mission: SourceMission, text: str):
     """Найти все юниты дивизий в исходнике миссий по триггерам (таймерам-меткам)"""
     for match in TRIGGER_TIMER_RE.findall(text):
-        mission.division_units.append({'name': match[0], 'pos': {'x': float(match[1]), 'z': float(match[2])}})
+        timer = {'name': match[0], 'pos': {'x': float(match[1]), 'z': float(match[2])}}
+        if 'REXPERT' in timer['name']:
+            mission.division_units.append(timer)
 
 
 class SourceParser:
