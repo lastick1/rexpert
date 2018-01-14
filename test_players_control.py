@@ -3,15 +3,16 @@ import unittest
 import datetime
 import pathlib
 
+import configs
+import log_objects
+
 from processing import PlayersController, Player, Storage
 from processing.player import ID, NICKNAME, KNOWN_NICKNAMES, ONLINE, BAN_DATE, UNLOCKS
 from processing.player import PLANES
-from processing.objects import Aircraft, BotPilot, Ground, Airfield
-import configs
 from tests import mocks
-from tests import ConsoleMock
 
-MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
+CONFIG = mocks.ConfigMock(pathlib.Path(r'./testdata/conf.ini'))
+MAIN = CONFIG.main
 TEST_NICKNAME = '_test_nickname'
 TEST_ACCOUNT_ID = '_test_id1'
 TEST_PROFILE_ID = '_test_profile_id1'
@@ -24,7 +25,7 @@ class TestPlayersController(unittest.TestCase):
     """Тесты событий с обработкой данных игроков"""
     def setUp(self):
 
-        self.console_mock = ConsoleMock()
+        self.console_mock = mocks.ConsoleMock()
         self.storage = Storage(MAIN)
         self.controller = PlayersController(MAIN, self.console_mock)
 
@@ -58,8 +59,8 @@ class TestPlayersController(unittest.TestCase):
         """Обновляется ник игрока на спауне"""
         # Arrange
         self._create(FILTER, TEST_PLAYER)
-        aircraft = Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
-        bot = BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
+        aircraft = log_objects.Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
+        bot = log_objects.BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
         # Act
         self.controller.spawn(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
         # Assert
@@ -70,8 +71,8 @@ class TestPlayersController(unittest.TestCase):
         """Отправляется приветственное сообщение игроку на спауне"""
         # Arrange
         self._create(FILTER, TEST_PLAYER)
-        aircraft = Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
-        bot = BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
+        aircraft = log_objects.Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
+        bot = log_objects.BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
         # Act
         self.controller.spawn(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
         # Assert
@@ -83,8 +84,8 @@ class TestPlayersController(unittest.TestCase):
         """Не добавляетcя лишний известный ник при неоднократном спауне"""
         # Arrange
         self._create(FILTER, TEST_PLAYER)
-        aircraft = Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
-        bot = BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
+        aircraft = log_objects.Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
+        bot = log_objects.BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
         # Act
         self.controller.spawn(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
         self.controller.spawn(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
@@ -96,8 +97,8 @@ class TestPlayersController(unittest.TestCase):
         """Пополняются известные ники при спауне с новым ником"""
         # Arrange
         self._create(FILTER, TEST_PLAYER)
-        aircraft = Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
-        bot = BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
+        aircraft = log_objects.Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
+        bot = log_objects.BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
         # Act
         self.controller.spawn(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
         self.controller.spawn(bot, TEST_ACCOUNT_ID, 'new_nickname')
@@ -121,9 +122,9 @@ class TestPlayersController(unittest.TestCase):
         self._create(FILTER, TEST_PLAYER)
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
         damage = 80.0
-        aircraft = Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
-        bot = BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
-        target = Ground(3, OBJECTS['static_il2'], 101, 1, 'Test target', pos)
+        aircraft = log_objects.Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
+        bot = log_objects.BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
+        target = log_objects.Ground(3, OBJECTS['static_il2'], 101, 1, 'Test target', pos)
         expect = TEST_PLAYER[UNLOCKS] + 1
         # Act
         self.controller.spawn(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
@@ -138,9 +139,9 @@ class TestPlayersController(unittest.TestCase):
         # Arrange
         self._create(FILTER, TEST_PLAYER)
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
-        aircraft = Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
-        bot = BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
-        target = Ground(3, OBJECTS['static_il2'], 101, 1, 'Test target', pos)
+        aircraft = log_objects.Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
+        bot = log_objects.BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
+        target = log_objects.Ground(3, OBJECTS['static_il2'], 101, 1, 'Test target', pos)
         expect = TEST_PLAYER[UNLOCKS] + 1
         # Act
         self.controller.spawn(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
@@ -155,9 +156,9 @@ class TestPlayersController(unittest.TestCase):
         # Arrange
         self._create(FILTER, TEST_PLAYER)
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
-        aircraft = Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
-        bot = BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
-        target = Ground(3, OBJECTS['static_il2'], 101, 1, 'Test target', pos)
+        aircraft = log_objects.Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
+        bot = log_objects.BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
+        target = log_objects.Ground(3, OBJECTS['static_il2'], 101, 1, 'Test target', pos)
         expect = TEST_PLAYER[UNLOCKS]
         # Act
         self.controller.spawn(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
@@ -173,9 +174,9 @@ class TestPlayersController(unittest.TestCase):
         # Arrange
         self._create(FILTER, TEST_PLAYER)
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
-        aircraft = Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
-        bot = BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
-        target = Ground(3, OBJECTS['static_il2'], 201, 2, 'Test target', pos)
+        aircraft = log_objects.Aircraft(1, OBJECTS['I-16 type 24'], 201, 2, 'Test I-16')
+        bot = log_objects.BotPilot(2, OBJECTS['BotPilot'], aircraft, 201, 2, 'Test pilot')
+        target = log_objects.Ground(3, OBJECTS['static_il2'], 201, 2, 'Test target', pos)
         expect = TEST_PLAYER[UNLOCKS]
         # Act
         self.controller.spawn(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
@@ -192,9 +193,9 @@ class TestPlayersController(unittest.TestCase):
         # Arrange
         self._create(FILTER, TEST_PLAYER)
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
-        aircraft = Aircraft(1, OBJECTS['Il-2 mod.1941'], 101, 1, 'Test Il-2')
-        bot = BotPilot(2, OBJECTS['BotPilot'], aircraft, 101, 1, 'Test pilot')
-        damager = Ground(3, OBJECTS['MG 34 AA'], 201, 2, 'Test damager', pos)
+        aircraft = log_objects.Aircraft(1, OBJECTS['Il-2 mod.1941'], 101, 1, 'Test Il-2')
+        bot = log_objects.BotPilot(2, OBJECTS['BotPilot'], aircraft, 101, 1, 'Test pilot')
+        damager = log_objects.Ground(3, OBJECTS['MG 34 AA'], 201, 2, 'Test damager', pos)
         expect = TEST_PLAYER[PLANES][aircraft.type] - 1
         # Act
         self.controller.spawn(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
@@ -211,16 +212,16 @@ class TestPlayersController(unittest.TestCase):
         # Arrange
         self._create(FILTER, TEST_PLAYER)
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
-        aircraft = Aircraft(1, OBJECTS['Il-2 mod.1941'], 101, 1, 'Test Il-2')
-        bot = BotPilot(2, OBJECTS['BotPilot'], aircraft, 101, 1, 'Test pilot')
-        damager = Ground(3, OBJECTS['MG 34 AA'], 201, 2, 'Test damager', pos)
-        airfields = [Airfield(4, 101, 1, pos)]
+        aircraft = log_objects.Aircraft(1, OBJECTS['Il-2 mod.1941'], 101, 1, 'Test Il-2')
+        bot = log_objects.BotPilot(2, OBJECTS['BotPilot'], aircraft, 101, 1, 'Test pilot')
+        damager = log_objects.Ground(3, OBJECTS['MG 34 AA'], 201, 2, 'Test damager', pos)
+        airfields = [log_objects.Airfield(4, 101, 1, pos)]
         expect = TEST_PLAYER[PLANES][aircraft.type]
         # Act
         self.controller.spawn(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
         aircraft.takeoff(pos)
         aircraft.receive_damage(damager, 10, pos)
-        aircraft.land(pos, airfields, MAIN.airfield_radius)
+        aircraft.land(pos, airfields, CONFIG.gameplay.airfield_radius)
         self.controller.finish(bot)
         # Assert
         document = self.storage.players.collection.find_one(FILTER)
@@ -231,18 +232,18 @@ class TestPlayersController(unittest.TestCase):
         """Списывается повреждённый противником самолёт при диско на земле вне аэродрома"""
         # Arrange
         self._create(FILTER, TEST_PLAYER)
-        pos_aircraft = {'x': 100.0, 'y': 100.0, 'z': 200.0 + MAIN.airfield_radius}
+        pos_aircraft = {'x': 100.0, 'y': 100.0, 'z': 200.0 + CONFIG.gameplay.airfield_radius}
         pos_airfield = {'x': 100.0, 'y': 100.0, 'z': 100.0}
-        aircraft = Aircraft(1, OBJECTS['Il-2 mod.1941'], 101, 1, 'Test Il-2')
-        bot = BotPilot(2, OBJECTS['BotPilot'], aircraft, 101, 1, 'Test pilot')
-        damager = Ground(3, OBJECTS['MG 34 AA'], 201, 2, 'Test damager', pos_aircraft)
-        airfields = [Airfield(4, 101, 1, pos_aircraft)]
+        aircraft = log_objects.Aircraft(1, OBJECTS['Il-2 mod.1941'], 101, 1, 'Test Il-2')
+        bot = log_objects.BotPilot(2, OBJECTS['BotPilot'], aircraft, 101, 1, 'Test pilot')
+        damager = log_objects.Ground(3, OBJECTS['MG 34 AA'], 201, 2, 'Test damager', pos_aircraft)
+        airfields = [log_objects.Airfield(4, 101, 1, pos_aircraft)]
         expect = TEST_PLAYER[PLANES][aircraft.type] - 1
         # Act
         self.controller.spawn(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
         aircraft.takeoff(pos_airfield)
         aircraft.receive_damage(damager, 10, pos_aircraft)
-        aircraft.land(pos_airfield, airfields, MAIN.airfield_radius)
+        aircraft.land(pos_airfield, airfields, CONFIG.gameplay.airfield_radius)
         self.controller.finish(bot)
         # Assert
         document = self.storage.players.collection.find_one(FILTER)

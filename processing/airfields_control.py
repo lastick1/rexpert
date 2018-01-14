@@ -1,6 +1,6 @@
 """Контроль состояния аэродромов (доступные самолёты, повреждения)"""
 import configs
-from processing.objects import BotPilot
+import log_objects
 from .airfield import ManagedAirfield
 from .storage import Storage
 
@@ -37,7 +37,7 @@ class AirfieldsController:
         managed_airfield = self.get_airfield_in_radius(tvd.name, xpos, zpos, self.config.gameplay.airfield_radius)
         self.add_aircraft(tvd, managed_airfield.name, aircraft_name, -1)
 
-    def finish(self, tvd, bot: BotPilot):
+    def finish(self, tvd, bot: log_objects.BotPilot):
         """Обработать деспаун самолёта на аэродроме"""
         xpos = bot.aircraft.pos['x']
         zpos = bot.aircraft.pos['z']

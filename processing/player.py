@@ -1,5 +1,5 @@
 """Модель данных игрока"""
-from .objects import BotPilot
+from log_objects import BotPilot
 
 ID = '_id'
 NICKNAME = 'nickname'

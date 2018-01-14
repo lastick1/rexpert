@@ -1,7 +1,6 @@
 """ Обработка событий """
 from .storage import Storage
 from .gen import Generator
-from .events_control import EventsController
 from .players_control import PlayersController, Player
 from .ground_control import GroundController
 from .aircraft_vendor import AircraftVendor
@@ -21,7 +20,6 @@ from .tvd import *
 from .locations_builder import LocationsBuilder
 from .campaign_map import CampaignMap
 from .campaign_control import CampaignController, Mission
-from .reader import LogsReader
 from .grid_control import GridController
 from .source_parser import SourceParser
 from .division_control import DivisionsController, DIVISIONS

@@ -1,9 +1,10 @@
 """Тестирование управления аэродромами"""
 import unittest
 import pathlib
+
 import configs
+import log_objects
 from processing import AirfieldsController, TvdBuilder, Storage
-from processing.objects import BotPilot, Aircraft
 from tests import mocks
 
 
@@ -78,9 +79,9 @@ class TestAirfieldsController(unittest.TestCase):
         managed_airfield.planes[aircraft_key] = 10
         expected = managed_airfield.planes[aircraft_key] + 1
         self.storage.airfields.update_airfield(managed_airfield)
-        aircraft = Aircraft(
+        aircraft = log_objects.Aircraft(
             1, OBJECTS[aircraft_name], 101, 1, aircraft_name, pos={'x': managed_airfield.x, 'z': managed_airfield.z})
-        bot = BotPilot(
+        bot = log_objects.BotPilot(
             2, OBJECTS[bot_name], aircraft, 101, 1, bot_name, pos={'x': managed_airfield.x, 'z': managed_airfield.z})
         # Act
         controller.finish(tvd, bot)

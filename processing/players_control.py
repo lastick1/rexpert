@@ -1,10 +1,12 @@
 """ Обработка игроков """
 import datetime
 import configs
+import rcon
+
+import log_objects
+
 from processing.player import Player
 from .storage import Storage
-import rcon
-from .objects import BotPilot
 
 
 def _update_request_body(document: dict) -> dict:
@@ -14,17 +16,13 @@ def _update_request_body(document: dict) -> dict:
 
 class PlayersController:
     """Контроллер обработки событий, связанных с игроками"""
-    def __init__(
-            self,
-            main: configs.Main,
-            commands: rcon.DServerRcon
-    ):
+    def __init__(self, main: configs.Main, commands: rcon.DServerRcon):
         self.main = main
         self.player_by_bot_id = dict()
         self._commands = commands
         self.storage = Storage(main)
 
-    def spawn(self, bot: BotPilot, account_id: str, name: str) -> None:
+    def spawn(self, bot: log_objects.BotPilot, account_id: str, name: str) -> None:
         """Обработка появления игрока"""
         player = self.storage.players.find(account_id)
         player.nickname = name
@@ -37,7 +35,7 @@ class PlayersController:
         self.storage.players.update(player)
         self.player_by_bot_id[bot.obj_id] = player
 
-    def finish(self, bot: BotPilot):
+    def finish(self, bot: log_objects.BotPilot):
         """Обработать конец вылета (деинициализация бота)"""
         player = None
         changed = False
@@ -61,7 +59,7 @@ class PlayersController:
         if player and changed:
             self.storage.players.update(player)
 
-    def _get_player(self, bot: BotPilot) -> Player:
+    def _get_player(self, bot: log_objects.BotPilot) -> Player:
         """Получить игрока по его боту - пилоту в самолёте"""
         return self.player_by_bot_id[bot.obj_id]
 

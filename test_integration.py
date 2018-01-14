@@ -3,6 +3,7 @@ import unittest
 import pathlib
 
 import configs
+import core
 import processing
 
 from tests import mocks
@@ -53,7 +54,7 @@ class TestIntegration(unittest.TestCase):
 
     def test_processing_with_atype_7(self):
         """Завершается корректно миссия с AType:7 в логе"""
-        controller = processing.EventsController(OBJECTS, CONFIG)
+        controller = core.EventsController(OBJECTS, CONFIG)
         controller.players_controller = self.players
         controller.airfields_controller = self.airfields
         controller.campaign_controller = self.campaign
@@ -67,7 +68,7 @@ class TestIntegration(unittest.TestCase):
 
     def test_generate_next_with_atype_0(self):
         """Генерируется следующая миссия с AType:0 в логе"""
-        controller = processing.EventsController(OBJECTS, CONFIG)
+        controller = core.EventsController(OBJECTS, CONFIG)
         controller.players_controller = self.players
         controller.airfields_controller = self.airfields
         controller.campaign_controller = self.campaign
@@ -82,7 +83,7 @@ class TestIntegration(unittest.TestCase):
 
     def test_bombing(self):
         """Учитываются наземные цели"""
-        controller = processing.EventsController(OBJECTS, CONFIG)
+        controller = core.EventsController(OBJECTS, CONFIG)
         controller.players_controller = self.players
         controller.airfields_controller = self.airfields
         controller.campaign_controller = self.campaign

@@ -2,14 +2,12 @@
 # pylint: disable=W0613
 import logging
 import datetime
-import processing.parse_mission_log_line
 import configs
-from .players_control import PlayersController
-from .ground_control import GroundController
-from .campaign_control import CampaignController
-from .airfields_control import AirfieldsController
+import processing
 import rcon
-from .objects import Aircraft, BotPilot, Airfield, Ground, Object, GROUND_CLASSES
+
+from log_objects import Aircraft, BotPilot, Airfield, Ground, Object, GROUND_CLASSES
+from .parse_mission_log_line import parse, UnexpectedATypeWarning
 
 
 class EventsController:
@@ -22,11 +20,11 @@ class EventsController:
         self.config = config
         self.objects_id_ref = dict()
         self.tik_last = 0
-        self.players_controller = PlayersController(
+        self.players_controller = processing.PlayersController(
             config.main, rcon.DServerRcon(config.main.rcon_ip, config.main.rcon_port))
-        self.ground_controller = GroundController(objects)
-        self.campaign_controller = CampaignController(config)
-        self.airfields_controller = AirfieldsController(config)
+        self.ground_controller = processing.GroundController(objects)
+        self.campaign_controller = processing.CampaignController(config)
+        self.airfields_controller = processing.AirfieldsController(config)
         self.is_correctly_completed = False
         self.countries = dict()
         self.airfields = dict()
@@ -53,7 +51,7 @@ class EventsController:
             return
 
         try:
-            atype = processing.parse_mission_log_line.parse(line)
+            atype = parse(line)
             atype_id = atype.pop('atype_id')
             if atype_id is 0:
                 self.countries = atype['countries']
@@ -61,7 +59,7 @@ class EventsController:
                 atype['coal_id'] = self.countries[atype['country_id']]
             self.events_handlers[atype_id](**atype)
 
-        except processing.parse_mission_log_line.UnexpectedATypeWarning:
+        except UnexpectedATypeWarning:
             logging.warning('unexpected atype: [%s]', line)
 
     def update_tik(self, tik: int) -> None:
