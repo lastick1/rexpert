@@ -1,0 +1,17 @@
+#1CGS Location Database file
+
+Navigation
+{
+  Name = "Navigation";
+  Desc = "";
+  XPos = 16651.954;
+  YPos = 110.186;
+  ZPos = 26038.644;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  PlaneWaypoint = 1;
+  FrontLine = 1;
+}
+
+#end of file

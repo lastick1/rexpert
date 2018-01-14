@@ -1,0 +1,107 @@
+MCU_TR_Subtitle
+{
+  Index = 2;
+  Name = "Translator Subtitle";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -5003.166;
+  YPos = 100.825;
+  ZPos = -5014.912;
+  XOri = 0.00;
+  YOri = 89.87;
+  ZOri = 0.00;
+  Enabled = 1;
+  SubtitleInfo
+  {
+    Duration = 10;
+    FontSize = 30;
+    HAlign = 1;
+    VAlign = 0;
+    RColor = 191;
+    GColor = 0;
+    BColor = 0;
+    LCText = 3;
+  }
+  
+  Coalitions = [0, 1, 2];
+}
+
+MCU_TR_Subtitle
+{
+  Index = 3;
+  Name = "Translator Subtitle";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -5001.811;
+  YPos = 100.825;
+  ZPos = -5014.907;
+  XOri = 0.00;
+  YOri = 269.14;
+  ZOri = 0.00;
+  Enabled = 1;
+  SubtitleInfo
+  {
+    Duration = 10;
+    FontSize = 30;
+    HAlign = 1;
+    VAlign = 0;
+    RColor = 191;
+    GColor = 0;
+    BColor = 0;
+    LCText = 4;
+  }
+  
+  Coalitions = [0, 1, 2];
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 32;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -5002.437;
+  YPos = 17.795;
+  ZPos = -5013.401;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+
+MCU_H_Input
+{
+  Index = 33;
+  Name = "FIELD_ON";
+  Desc = "";
+  Targets = [3];
+  Objects = [];
+  XPos = -5001.810;
+  YPos = 17.795;
+  ZPos = -5012.040;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Input
+{
+  Index = 34;
+  Name = "FIELD_OFF";
+  Desc = "";
+  Targets = [2];
+  Objects = [];
+  XPos = -5003.170;
+  YPos = 17.795;
+  ZPos = -5012.040;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+

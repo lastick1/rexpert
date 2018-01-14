@@ -1,11 +1,6 @@
 {
-  "result1": ".\\data\\Multiplayer\\Dogfight\\result1_src.Mission",
-  "result2": ".\\data\\Multiplayer\\Dogfight\\result2_src.Mission",
-  "default_tvd": 2,
-  "default_map": "moscow",
   "maps": ["moscow", "stalingrad"],
   "sides": ["red", "blue"],
-  "scenario_min_distance": 50000,
   "objectives": {
     "0": "primary",
     "1": "airfield",
@@ -24,12 +19,11 @@
     "14": "capture",
     "15": "pause"
   },
-  "moscow":
-  {
+  "moscow": {
     "tvd": 2,
     "right_top": {"x": 281600.0, "z": 281600.0},
     "tvd_folder": ".\\data\\scg\\2\\",
-    "mt_file": "templates\\212\\m2_150min_notroops.mt",
+    "mt_file": "templates\\212\\divisions.mt",
     "graph_file": "moscow.xgml",
     "graph_zoom_point": {"x": 3073.0, "y": 3073.0},
     "ldf_file": "moscow_lf.ldf",
@@ -39,30 +33,18 @@
     "default_params_dest": "defaultparams.dat",
     "daytime_csv": "daytime_moscow.csv",
     "airfields_csv": "moscow_fields.csv",
-    "stages": [
-      { "id": 1, "start": "01.09.1941", "end": "01.10.1941", "red": "rus_period_1.Group", "blue": "ger_period_1.Group" },
-      { "id": 2, "start": "01.10.1941", "end": "01.11.1941", "red": "rus_period_2.Group", "blue": "ger_period_2.Group" },
-      { "id": 3, "start": "01.11.1941", "end": "01.12.1941", "red": "rus_period_3.Group", "blue": "ger_period_3.Group" },
-      { "id": 4, "start": "01.12.1941", "end": "01.01.1942", "red": "rus_period_4.Group", "blue": "ger_period_4.Group" }
-    ],
-    "default_templates": {
-      "red": "default_red_af.Group",
-      "blue": "default_blue_af.Group"
-    },
     "af_groups_folders":{
       "red": ".\\blocks_quickmission\\airfields_red",
       "blue": ".\\blocks_quickmission\\airfields_blue"
     },
-    "rear_airfields":[ {"x": 65000.0, "z": 41000.0}, {"x": 142000.0, "z": 239000.0} ],
-    "division_margin": 4000,
-    "division_depth": 7000
+    "start_date": "01.09.1941",
+    "end_date": "31.01.1942"
   },
-  "stalingrad":
-  {
+  "stalingrad": {
     "tvd": 1,
     "right_top": {"x": 230400.0, "z": 358400.0},
     "tvd_folder": ".\\data\\scg\\1\\",
-    "mt_file": "templates\\212\\s2_150min_notroops.mt",
+    "mt_file": "templates\\212\\s2_150min.mt",
     "graph_file": "stalingrad.xgml",
     "graph_zoom_point": {"x": 4096.5, "y": 2637.5},
     "ldf_file": "stalingrad_lf.ldf",
@@ -72,26 +54,14 @@
     "default_params_dest": "defaultparams.dat",
     "daytime_csv": "daytime.csv",
     "airfields_csv": "stalin_fields.csv",
-    "stages": [
-      { "id": 5, "start": "01.07.1942", "end": "01.08.1942", "red": "rus_period_5.Group", "blue": "ger_period_5.Group" },
-      { "id": 6, "start": "01.08.1942", "end": "01.09.1942", "red": "rus_period_6.Group", "blue": "ger_period_6.Group" },
-      { "id": 7, "start": "01.09.1942", "end": "01.10.1942", "red": "rus_period_7.Group", "blue": "ger_period_7.Group" },
-      { "id": 8, "start": "01.10.1942", "end": "01.12.1942", "red": "rus_period_8.Group", "blue": "ger_period_8.Group" }
-    ],
-    "default_templates": {
-      "red": "default_red_af.Group",
-      "blue": "default_blue_af.Group"
-    },
     "af_groups_folders": {
       "red": ".\\blocks_quickmission\\airfields_red",
       "blue": ".\\blocks_quickmission\\airfields_blue"
     },
-    "rear_airfields":[ {"x": 79000.0, "z": 12000.0}, {"x": 121000.0, "z": 347000.0} ],
-    "division_margin": 4000,
-    "division_depth": 7000
+    "start_date": "01.07.1942",
+    "end_date": "28.02.1943"
   },
-  "kuban":
-  {
+  "kuban": {
     "right_top": {"x": 0, "z": 0},
     "tvd_folder": ".\\data\\scg\\4\\",
     "mt_file": "",
@@ -105,16 +75,28 @@
     "airfields_csv": "",
     "dated_templates": [
     ],
-    "default_templates": {
-      "red": "",
-      "blue": ""
-    },
     "af_groups_folders": {
       "red": ".\\blocks_quickmission\\airfields_red",
       "blue": ".\\blocks_quickmission\\airfields_blue"
-    },
-    "rear_airfields":[ {"x": 0.0, "z": 0.0}, {"x": 0.0, "z": 0.0} ],
-    "division_margin": 4000,
-    "division_depth": 7000
+    }
+  },
+  "test": {
+    "tvd": 1,
+    "right_top": {"x": 230400.0, "z": 358400.0},
+    "tvd_folder": ".\\data\\scg\\1\\",
+    "mt_file": "templates\\212\\s2_150min.mt",
+    "graph_file": "test_w4f.xgml",
+    "graph_zoom_point": {"x": 4096.5, "y": 2637.5},
+    "ldf_file": "stalingrad_lf.ldf",
+    "ldf_base_file": "stalin-base.ldf",
+    "icons_group_file": "blocks_quickmission\\icons\\FL_icon.Group",
+    "default_params_source": "defaultparams_template.dat",
+    "default_params_dest": "defaultparams.dat",
+    "daytime_csv": "daytime.csv",
+    "airfields_csv": "stalin_fields.csv",
+    "af_groups_folders": {
+      "red": ".\\blocks_quickmission\\airfields_red",
+      "blue": ".\\blocks_quickmission\\airfields_blue"
+    }
   }
 }

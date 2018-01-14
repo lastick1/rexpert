@@ -1,0 +1,236 @@
+# Mission File Version = 1.0;
+
+Options
+{
+  LCName = 0;
+  LCDesc = 1;
+  LCAuthor = 2;
+  PlayerConfig = "";
+  MultiplayerPlaneConfig = "LuaScripts\WorldObjects\Planes\bf109e7.txt";
+  MultiplayerPlaneConfig = "LuaScripts\WorldObjects\Planes\il2m42.txt";
+  Time = 12:30:0;
+  Date = 1.6.1943;
+  HMap = "graphics\LANDSCAPE_Kuban_s\height.hini";
+  Textures = "graphics\LANDSCAPE_Kuban_s\textures.tini";
+  Forests = "graphics\LANDSCAPE_Kuban_s\trees\woods.wds";
+  Layers = "";
+  GuiMap = "kuban-summer";
+  SeasonPrefix = "su";
+  MissionType = 0;
+  AqmId = 0;
+  CloudLevel = 500;
+  CloudHeight = 200;
+  PrecLevel = 0;
+  PrecType = 0;
+  CloudConfig = "summer\00_clear_00\sky.ini";
+  SeaState = 0;
+  Turbulence = 0;
+  TempPressLevel = 0;
+  Temperature = 25;
+  Pressure = 760;
+  WindLayers
+  {
+    0 :     0 :     0;
+    500 :     0 :     0;
+    1000 :     0 :     0;
+    2000 :     0 :     0;
+    5000 :     0 :     0;
+  }
+  Countries
+  {
+    0 : 0;
+    101 : 1;
+    201 : 2;
+  }
+}
+
+MCU_TR_ServerInput
+{
+  Index = 2;
+  Name = "test_input";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 50.000;
+  YPos = 0.054;
+  ZPos = 50.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+}
+
+
+
+MCU_TR_MissionObjective
+{
+  Index = 3;
+  Targets = [];
+  Objects = [];
+  XPos = 100.000;
+  YPos = 0.054;
+  ZPos = 100.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  LCName = 3;
+  LCDesc = 4;
+  TaskType = 15;
+  Coalition = 2;
+  Success = 1;
+  IconType = 0;
+}
+
+
+
+Airfield
+{
+  Name = "kubinka";
+  Index = 4;
+  LinkTrId = 5;
+  XPos = 150.000;
+  YPos = 0.054;
+  ZPos = 150.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fakefield.mgm";
+  Script = "LuaScripts\WorldObjects\Airfields\fakefield.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  Callsign = 0;
+  Callnum = 0;
+  Planes
+  {
+    Plane
+    {
+      SetIndex = 0;
+      Number = 10;
+      AILevel = 2;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 1;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\planes\il2m42\il2m42.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\il2m42.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "";
+      AvSkins = "";
+      AvPayloads = "";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 0;
+      Number = 10;
+      AILevel = 2;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 1;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\planes\bf109e7\bf109e7.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\bf109e7.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "";
+      AvSkins = "";
+      AvPayloads = "";
+      Callsign = 0;
+      Callnum = 0;
+    }
+  }
+  ReturnPlanes = 0;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 1000;
+}
+
+
+
+MCU_TR_Entity
+{
+  Index = 5;
+  Name = "Airfield entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 150.000;
+  YPos = 0.254;
+  ZPos = 150.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 4;
+}
+
+
+
+MCU_Timer
+{
+  Index = 7;
+  Name = "REXPERT_BTD1_7";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 200.000;
+  YPos = 0.054;
+  ZPos = 200.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 0;
+  Random = 100;
+}
+
+
+
+MCU_Timer
+{
+  Index = 8;
+  Name = "Trigger Timer";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 250.000;
+  YPos = 0.054;
+  ZPos = 250.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 0;
+  Random = 100;
+}
+
+
+# end of file

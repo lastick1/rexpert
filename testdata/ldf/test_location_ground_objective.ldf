@@ -1,0 +1,29 @@
+#1CGS Location Database file
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 18102.383;
+  YPos = 84.215;
+  ZPos = 26026.248;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 1;
+  Armoured = 1;
+  Tank = 1;
+  AAAPosition = 1;
+  Artillery = 1;
+  Building = 1;
+  Ship = 1;
+  Train = 1;
+  RailwayStation = 1;
+  SupplyDump = 1;
+  Factory = 1;
+  Airfield = 1;
+  Port = 1;
+  ReconArea = 1;
+}
+
+#end of file

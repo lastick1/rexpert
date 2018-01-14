@@ -1,0 +1,11 @@
+{
+    "python.pythonPath": "${workspaceRoot}/.venv/scripts/python.exe",
+    "python.venvPath": "${workspaceRoot}/.venv",
+    "python.unitTest.unittestArgs": [
+    ],
+    "python.unitTest.unittestEnabled": false,
+    "python.unitTest.nosetestsEnabled": true,
+    "python.linting.pylintArgs": [
+        "--rcfile=.rcfile"
+    ]
+}

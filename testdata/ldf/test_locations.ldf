@@ -1,0 +1,152 @@
+#1CGS Location Database file
+
+AirObjective
+{
+  Name = "AirObjective";
+  Desc = "";
+  XPos = 22689.207;
+  YPos = 121.404;
+  ZPos = 25951.867;
+  OY = 0.000;
+  Length = 1000;
+  Width = 1000;
+  ReconFlight = 1;
+  BomberFlight = 1;
+  FighterPatrolFlight = 1;
+  Dogfight = 1;
+  DuelOpponent = 1;
+  Balloon = 1;
+}
+
+Airfield
+{
+  Name = "Airfield";
+  Desc = "";
+  XPos = 21077.620;
+  YPos = 114.382;
+  ZPos = 26001.454;
+  OY = 0.000;
+  Length = 10;
+  Width = 10;
+  GrassField = 1;
+  WaterField = 1;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 19565.208;
+  YPos = 92.229;
+  ZPos = 25964.264;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Dogfight = 1;
+  Transport = 1;
+  Train = 1;
+  Tank = 1;
+  Artillery = 1;
+  AAAPosition = 1;
+  Ship = 1;
+  Balloon = 1;
+  Windsock = 1;
+  CityFire = 1;
+  Spotter = 1;
+  Bridge = 1;
+  AtArtPosition = 1;
+  FiringPoint = 1;
+  Siren = 1;
+  Parking = 1;
+  NDB = 1;
+  AirfieldDecoration = 1;
+  StaticAirplane = 1;
+  StaticVechicle = 1;
+  Searchlight = 1;
+  LandingLight = 1;
+  LandingSign = 1;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 18102.383;
+  YPos = 84.215;
+  ZPos = 26026.248;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 1;
+  Armoured = 1;
+  Tank = 1;
+  AAAPosition = 1;
+  Artillery = 1;
+  Building = 1;
+  Ship = 1;
+  Train = 1;
+  RailwayStation = 1;
+  SupplyDump = 1;
+  Factory = 1;
+  Airfield = 1;
+  Port = 1;
+  ReconArea = 1;
+}
+
+Navigation
+{
+  Name = "Navigation";
+  Desc = "";
+  XPos = 16651.954;
+  YPos = 110.186;
+  ZPos = 26038.644;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  PlaneWaypoint = 1;
+  FrontLine = 1;
+}
+
+ReferenceLocation
+{
+  Name = "ReferenceLocation";
+  Desc = "";
+  XPos = 15310.148;
+  YPos = 102.111;
+  ZPos = 26007.664;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  HWArtillery = 1;
+  ATArtillery = 1;
+  RL_FiringPoint = 1;
+  RL_FrontLine = 1;
+}
+
+Substrate
+{
+  Name = "Substrate";
+  Desc = "";
+  XPos = 13562.196;
+  YPos = 108.828;
+  ZPos = 26069.648;
+  OY = 0.000;
+  Length = 400;
+  Width = 400;
+  TextureIndex = 0;
+  FilterTrees = 1;
+}
+
+TerrainLeveler
+{
+  Name = "TerrainLeveler";
+  Desc = "";
+  XPos = 11972.730;
+  YPos = 107.190;
+  ZPos = 25988.995;
+  OY = 0.000;
+  Length = 400;
+  Width = 400;
+}
+
+#end of file
