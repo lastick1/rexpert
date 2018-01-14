@@ -33,8 +33,6 @@ class Object:
     def kill(self, pos: dict) -> None:
         """Убить объект"""
         self.update_pos(pos)
-        if self.killed:
-            raise NameError('двойное уничтожение одного объекта')
         self.killed = True
 
 

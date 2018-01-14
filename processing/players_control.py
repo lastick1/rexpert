@@ -51,11 +51,6 @@ class PlayersController:
             player = self._get_player(bot)
             player.unlocks += 1
 
-        if bot.aircraft.damaged_by_enemy and not bot.aircraft.is_safe:
-            changed = True
-            player = self._get_player(bot)
-            player.planes[bot.aircraft.type] -= 1
-
         if player and changed:
             self.storage.players.update(player)
 

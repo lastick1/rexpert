@@ -24,7 +24,7 @@ class ObjectsController:
             self._objects[atype.object_id] = log_objects.BotPilot(
                 atype.object_id, obj, self._objects[atype.parent_id], atype.country_id, atype.coal_id, atype.name)
             self._bots.add(self._objects[atype.object_id])
-        if obj.playable and 'aircraft' in obj.cls:
+        if obj.playable and 'aircraft' in obj.cls and 'pilot' not in obj.cls:
             self._objects[atype.object_id] = log_objects.Aircraft(
                 atype.object_id, obj, atype.country_id, atype.coal_id, atype.name)
             self._aircrafts.add(self._objects[atype.object_id])
@@ -44,6 +44,11 @@ class ObjectsController:
         """Получить объект"""
         if object_id in self._objects:
             return self._objects[object_id]
+
+    def get_ground(self, ground_id) -> log_objects.Ground:
+        """Получить наземный объект"""
+        if ground_id in self._objects:
+            return self._objects[ground_id]
 
     def get_bot(self, bot_id) -> log_objects.BotPilot:
         """Получить бота"""
@@ -88,7 +93,7 @@ class ObjectsController:
     def land(self, atype: atypes.Atype6):
         """Посадить самолёт"""
         aircraft = self.get_aircraft(atype.aircraft_id)
-        aircraft.land(atype.pos, list(self.airfields.values()), self.config.gameplay.airfield_radius)
+        aircraft.land(atype.pos, list(self._airfields), self.config.gameplay.airfield_radius)
 
     def end_mission(self):
         """Завершить миссию"""

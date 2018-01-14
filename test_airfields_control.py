@@ -67,7 +67,7 @@ class TestAirfieldsController(unittest.TestCase):
             shells=1, bombs=0, rockets=0, form='', payload_id=1
         )
         # Act
-        controller.spawn(tvd, atype)
+        controller.spawn_aircraft(tvd, atype)
         # Assert
         managed_airfield = self.storage.airfields.load_by_name(TEST_TVD_NAME, TEST_AIRFIELD_NAME)
         self.assertEqual(managed_airfield.planes[aircraft_key], expected)

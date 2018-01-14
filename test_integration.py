@@ -60,6 +60,7 @@ class TestIntegration(unittest.TestCase):
         controller.campaign_controller = self.campaign
         for tvd_name in CONFIG.mgen.maps:
             controller.campaign_controller.tvd_builders[tvd_name].grid_control.get_file = _get_xgml_file_mock
+            controller.campaign_controller.initialize_map(tvd_name)
         # Act
         for line in pathlib.Path(TEST_LOG1).read_text().split('\n'):
             controller.process_line(line)
@@ -74,6 +75,7 @@ class TestIntegration(unittest.TestCase):
         controller.campaign_controller = self.campaign
         for tvd_name in CONFIG.mgen.maps:
             controller.campaign_controller.tvd_builders[tvd_name].grid_control.get_file = _get_xgml_file_mock
+            controller.campaign_controller.initialize_map(tvd_name)
         # Act
         for line in pathlib.Path(TEST_LOG1).read_text().split('\n'):
             controller.process_line(line)
@@ -89,11 +91,12 @@ class TestIntegration(unittest.TestCase):
         controller.campaign_controller = self.campaign
         for tvd_name in CONFIG.mgen.maps:
             controller.campaign_controller.tvd_builders[tvd_name].grid_control.get_file = _get_xgml_file_mock
+            self.campaign.initialize_map(tvd_name)
         # Act
         for line in pathlib.Path(TEST_LOG2).read_text().split('\n'):
             controller.process_line(line)
         # Assert
-        self.assertGreater(len(controller.ground_controller.units), 0)
+        self.assertGreater(len(controller.ground_controller.ground_kills), 1)
 
     @unittest.skip("not implemented")
     def test_msg_restricted_takeoff(self):

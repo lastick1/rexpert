@@ -95,6 +95,9 @@ class EventsController:
         """AType 3 handler"""
         atype = atypes.Atype3(tik, attacker_id, target_id, pos)
         self.objects_controller.kill(atype)
+        ground = self.objects_controller.get_ground(atype.target_id)
+        if type(ground) is log_objects.Ground:
+            self.ground_controller.kill(ground, atype)
         self.update_tik(atype.tik)
         # в логах так бывает что кто-то умер, а кто не известно :)
 
@@ -152,7 +155,7 @@ class EventsController:
         self.objects_controller.spawn(atype)
         self.players_controller.spawn(self.objects_controller.get_bot(atype.bot_id), atype.account_id, atype.name)
         # TODO оптимизировать, т.к. создание объекта ТВД ресурсоёмкая задача
-        self.airfields_controller.spawn(self.campaign_controller.current_tvd, atype)
+        self.airfields_controller.spawn_aircraft(self.campaign_controller.current_tvd, atype)
         self.update_tik(atype.tik)
 
     def event_group(self, tik: int, group_id: int, members_id: int, leader_id: int) -> None:
@@ -186,10 +189,10 @@ class EventsController:
     def event_bot_deinitialization(self, tik: int, bot_id: int, pos: dict) -> None:
         """AType 16 handler"""
         atype = atypes.Atype16(tik, bot_id, pos)
-        self.objects_controller.deinitialize(atype)
         bot = self.objects_controller.get_bot(atype.bot_id)
         self.players_controller.finish(bot)
         self.airfields_controller.finish(self.campaign_controller.current_tvd, bot)
+        self.objects_controller.deinitialize(atype)
         self.update_tik(atype.tik)
 
     def event_pos_changed(self, tik: int, object_id: int, pos: dict) -> None:

@@ -8,10 +8,7 @@ from .storage import Storage
 
 class AirfieldsController:
     """Контроллер аэродромов"""
-    def __init__(
-            self,
-            config: configs.Config
-    ):
+    def __init__(self, config: configs.Config):
         self.config = config
         self.storage = Storage(config.main)
 
@@ -33,10 +30,10 @@ class AirfieldsController:
             if airfield.distance_to(x=x, z=z) < radius:
                 return airfield
 
-    def spawn(self, tvd, atype: atypes.Atype10):
+    def spawn_aircraft(self, tvd, atype: atypes.Atype10):
         """Обработать появление самолёта на аэродроме"""
-        xpos, zpos = atype.pos['x'], atype.pos['z']
-        managed_airfield = self.get_airfield_in_radius(tvd.name, xpos, zpos, self.config.gameplay.airfield_radius)
+        managed_airfield = self.get_airfield_in_radius(
+            tvd.name, atype.pos['x'], atype.pos['z'], self.config.gameplay.airfield_radius)
         self.add_aircraft(tvd, managed_airfield.name, atype.aircraft_name, -1)
 
     def finish(self, tvd, bot: log_objects.BotPilot):
