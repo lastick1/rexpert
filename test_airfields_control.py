@@ -140,11 +140,6 @@ class TestAirfieldsController(unittest.TestCase):
         managed_airfield = self.storage.airfields.load_by_name(TEST_TVD_NAME, TEST_AIRFIELD_NAME)
         self.assertNotIn(aircraft_key, managed_airfield.planes)
 
-    @unittest.skip("реализовать")
-    def test_return_disco_aircraft(self):
-        """Возвращаются на аэродром при диско неповреждённые самолёты"""
-        self.fail()
-
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
