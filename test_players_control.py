@@ -187,67 +187,15 @@ class TestPlayersController(unittest.TestCase):
         document = self.storage.players.collection.find_one(FILTER)
         self.assertEqual(expect, document[UNLOCKS])
 
-    # TODO Проверить актуальность
-    def _test_withdraw_plane_for_disco(self):
-        """Списывается повреждённый противником самолёт при диско в воздухе"""
-        # Arrange
-        self._create(FILTER, TEST_PLAYER)
-        pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
-        aircraft = log_objects.Aircraft(1, OBJECTS['Il-2 mod.1941'], 101, 1, 'Test Il-2')
-        bot = log_objects.BotPilot(2, OBJECTS['BotPilot'], aircraft, 101, 1, 'Test pilot')
-        damager = log_objects.Ground(3, OBJECTS['MG 34 AA'], 201, 2, 'Test damager', pos)
-        expect = TEST_PLAYER[PLANES][aircraft.type] - 1
-        # Act
-        self.controller.spawn(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
-        aircraft.takeoff(pos)
-        aircraft.receive_damage(damager, 10, pos)
-        self.controller.finish(bot)
-        # Assert
-        document = self.storage.players.collection.find_one(FILTER)
-        self.assertEqual(expect, document[PLANES][aircraft.type])
+    @unittest.skip("not implemented")
+    def test_msg_restricted_takeoff(self):
+        """Отправляется предупреждение о запрете взлёта"""
+        self.fail('not implemented')
 
-    # TODO Проверить актуальность
-    def _test_stay_plane_for_disco_on_af(self):
-        """НЕ списывается повреждённый противником самолёт при диско на аэродроме"""
-        # Arrange
-        self._create(FILTER, TEST_PLAYER)
-        pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
-        aircraft = log_objects.Aircraft(1, OBJECTS['Il-2 mod.1941'], 101, 1, 'Test Il-2')
-        bot = log_objects.BotPilot(2, OBJECTS['BotPilot'], aircraft, 101, 1, 'Test pilot')
-        damager = log_objects.Ground(3, OBJECTS['MG 34 AA'], 201, 2, 'Test damager', pos)
-        airfields = [log_objects.Airfield(4, 101, 1, pos)]
-        expect = TEST_PLAYER[PLANES][aircraft.type]
-        # Act
-        self.controller.spawn(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
-        aircraft.takeoff(pos)
-        aircraft.receive_damage(damager, 10, pos)
-        aircraft.land(pos, airfields, CONFIG.gameplay.airfield_radius)
-        self.controller.finish(bot)
-        # Assert
-        document = self.storage.players.collection.find_one(FILTER)
-        self.assertEqual(expect, document[PLANES][aircraft.type])
-
-    # TODO Проверить актуальность
-    def _test_stay_plane_for_disco_ditch(self):
-        """Списывается повреждённый противником самолёт при диско на земле вне аэродрома"""
-        # Arrange
-        self._create(FILTER, TEST_PLAYER)
-        pos_aircraft = {'x': 100.0, 'y': 100.0, 'z': 200.0 + CONFIG.gameplay.airfield_radius}
-        pos_airfield = {'x': 100.0, 'y': 100.0, 'z': 100.0}
-        aircraft = log_objects.Aircraft(1, OBJECTS['Il-2 mod.1941'], 101, 1, 'Test Il-2')
-        bot = log_objects.BotPilot(2, OBJECTS['BotPilot'], aircraft, 101, 1, 'Test pilot')
-        damager = log_objects.Ground(3, OBJECTS['MG 34 AA'], 201, 2, 'Test damager', pos_aircraft)
-        airfields = [log_objects.Airfield(4, 101, 1, pos_aircraft)]
-        expect = TEST_PLAYER[PLANES][aircraft.type] - 1
-        # Act
-        self.controller.spawn(bot, TEST_ACCOUNT_ID, TEST_NICKNAME)
-        aircraft.takeoff(pos_airfield)
-        aircraft.receive_damage(damager, 10, pos_aircraft)
-        aircraft.land(pos_airfield, airfields, CONFIG.gameplay.airfield_radius)
-        self.controller.finish(bot)
-        # Assert
-        document = self.storage.players.collection.find_one(FILTER)
-        self.assertEqual(expect, document[PLANES][aircraft.type])
+    @unittest.skip("not implemented")
+    def test_kick_restricted_takeoff(self):
+        """Отправляется команда кика при запрещённом взлёте"""
+        self.fail('not implemented')
 
     # TODO test_reset_players
 

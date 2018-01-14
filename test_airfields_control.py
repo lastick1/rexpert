@@ -140,6 +140,16 @@ class TestAirfieldsController(unittest.TestCase):
         managed_airfield = self.storage.airfields.load_by_name(TEST_TVD_NAME, TEST_AIRFIELD_NAME)
         self.assertNotIn(aircraft_key, managed_airfield.planes)
 
+    @unittest.skip('not implemented')
+    def test_stay_plane_for_disco_on_af(self):
+        """НЕ списывается повреждённый противником самолёт при диско на аэродроме"""
+        self.fail('not implemented')
+
+    @unittest.skip('not implemented')
+    def test_stay_plane_for_disco_ditch(self):
+        """Списывается повреждённый противником самолёт при диско на земле вне аэродрома"""
+        self.fail('not implemented')
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

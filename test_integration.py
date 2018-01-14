@@ -98,16 +98,6 @@ class TestIntegration(unittest.TestCase):
         # Assert
         self.assertGreater(len(controller.ground_controller.ground_kills), 1)
 
-    @unittest.skip("not implemented")
-    def test_msg_restricted_takeoff(self):
-        """Отправляется предупреждение о запрете взлёта"""
-        self.fail('not implemented')
-
-    @unittest.skip("not implemented")
-    def test_kick_restricted_takeoff(self):
-        """Отправляется команда кика при запрещённом взлёте"""
-        self.fail('not implemented')
-
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
