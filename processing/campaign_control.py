@@ -6,6 +6,7 @@ import datetime
 import pytz
 
 import configs
+import atypes
 import processing
 
 from .tvd import Tvd
@@ -92,24 +93,18 @@ class CampaignController:
         tvd_builder = self.tvd_builders[campaign_map.tvd_name]
         return tvd_builder.get_tvd(campaign_map.date.strftime(DATE_FORMAT))
 
-    def start_mission(self, date: datetime,
-                      file_path: str,
-                      game_type_id: int,
-                      countries: dict,
-                      settings: tuple,
-                      mods: bool,
-                      preset_id: int):
+    def start_mission(self, atype: atypes.Atype0):
         """AType:0"""
-        name = file_path.replace(r'Multiplayer/Dogfight', '').replace('\\', '')
+        name = atype.file_path.replace(r'Multiplayer/Dogfight', '').replace('\\', '')
         name = name.replace(r'.msnbin', '')
         source = Path(self._dogfight.joinpath(name + '_src.Mission')).absolute()
         additional = {
-            'date': date,
-            'game_type_id': game_type_id,
-            'countries': countries,
-            'settings': settings,
-            'mods': mods,
-            'preset_id': preset_id
+            'date': atype.date,
+            'game_type_id': atype.game_type_id,
+            'countries': atype.countries,
+            'settings': atype.settings,
+            'mods': atype.mods,
+            'preset_id': atype.preset_id
         }
         self.missions.append(Mission(name, source, additional))
         next_name = 'result1' if name == 'result2' else 'result2'
