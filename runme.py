@@ -13,7 +13,7 @@ CONFIG = configs.Config(pathlib.Path(r'./configs/conf.ini'))
 
 def compile_log():
     """Собрать лог в один файл"""
-    utils.compile_log('./tmp', 'missionReport*.txt', './tmp/compiled')
+    utils.compile_log('./tmp', 'missionReport*.txt', './tmp/compiled.txt')
 
 
 def reset():
