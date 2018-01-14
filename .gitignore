@@ -11,3 +11,7 @@ mission_report/__pycache__/
 /configs/conf.ini
 sandbox.py
 .vs/
+/.venv/
+/.vscode/
+/tiles/
+/resources/backgrounds/
