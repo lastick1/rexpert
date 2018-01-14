@@ -3,6 +3,8 @@ import unittest
 import datetime
 import pathlib
 import shutil
+
+import atypes
 import configs
 import processing
 
@@ -46,10 +48,18 @@ class TestCampaignController(unittest.TestCase):
         generator = mocks.GeneratorMock(CONFIG)
         campaign = processing.CampaignController(CONFIG)
         campaign.generator = generator
-        date = datetime.datetime.strptime('01.10.1941', DATE_FORMAT)
-        file_path = r'Multiplayer/Dogfight\result2.msnbin'
+        atype = atypes.Atype0(
+            tik=0,
+            date=datetime.datetime.strptime('01.10.1941', DATE_FORMAT),
+            file_path=r'Multiplayer/Dogfight\result2.msnbin',
+            game_type_id=2,
+            countries=dict(),
+            settings=(0, 0),
+            mods=False,
+            preset_id=0
+        )
         # Act
-        campaign.start_mission(date, file_path, 2, dict(), (0, 0), False, 0)
+        campaign.start_mission(atype)
         # Assert
         self.assertEqual(generator.generations[0][0], 'result1')
 

@@ -5,47 +5,53 @@ import geometry
 
 class Object:
     """Базовый объект"""
-    def __init__(self, obj_id: int, obj: configs.Object, country_id: int, coal_id: int, name: str):
-        self.cls_base = None
+
+    def __init__(self, obj_id: int, country_id: int, coal_id: int, name: str, pos: dict = None):
         self.deinitialized = False
         self.obj_id = obj_id
         self.country_id = country_id
         self.coal_id = coal_id
         self.name = name
+        self.damage = 0.0
+        self.pos = pos
+        self.killed = False
 
-    def deinitialize(self):
+    def deinitialize(self, pos: dict):
         """Пометить объект как удалённый из игрового мира"""
         self.deinitialized = True
-
-
-class Ground(Object):
-    """Наземный объект"""
-    def __init__(self,
-                 obj_id: int, obj: configs.Object, country_id: int,
-                 coal_id: int, name: str, pos: dict = None):
-        super().__init__(obj_id, obj, country_id, coal_id, name)
-        self.cls_base = 'ground'
-        self.killed = False
-        self.pos = pos
 
     def update_pos(self, pos: dict) -> None:
         """Обновить позицию"""
         if geometry.is_pos_correct(pos):
             self.pos = pos
 
-    def add_kill(self, pos: dict) -> None:
-        """Добавить килл"""
-        pass
+    def damage(self, damage: float, pos: dict) -> None:
+        """Повредить объект"""
+        self.damage += damage
+        self.update_pos(pos)
 
-    def add_damage(self, pos: dict) -> None:
-        """Добавить нанесённый урон"""
-        pass
+    def kill(self, pos: dict) -> None:
+        """Убить объект"""
+        self.update_pos(pos)
+        if self.killed:
+            raise NameError('двойное уничтожение одного объекта')
+        self.killed = True
+
+
+class Ground(Object):
+    """Наземный объект"""
+
+    def __init__(self, obj_id: int, obj: configs.Object, country_id: int, coal_id: int, name: str, pos: dict = None):
+        super().__init__(obj_id, country_id, coal_id, name)
+        self.obj = obj
+        self.pos = pos
 
 
 class Airfield(Object):
     """Аэродром"""
+
     def __init__(self, airfield_id: int, country_id: int, coal_id: int, pos: dict):
-        super().__init__(airfield_id, None, country_id, coal_id, 'airfield')
+        super().__init__(airfield_id, country_id, coal_id, 'airfield')
         self.pos = pos
 
     def is_in_range(self, radius: float, pos: dict) -> bool:
@@ -60,11 +66,6 @@ class Airfield(Object):
         self.country_id = country_id
         self.coal_id = coal_id
 
-    def update_pos(self, pos: dict) -> None:
-        """Обновить позицию"""
-        if geometry.is_pos_correct(pos):
-            self.pos = pos
-
 
 def _to_airfield(obj) -> Airfield:
     return obj
@@ -72,10 +73,10 @@ def _to_airfield(obj) -> Airfield:
 
 class Aircraft(Object):
     """Самолёт"""
-    def __init__(self,
-                 obj_id: int, obj: configs.Object, country_id: int,
-                 coal_id: int, name: str, pos: dict = None):
-        super().__init__(obj_id, obj, country_id, coal_id, name)
+
+    def __init__(self, obj_id: int, obj: configs.Object, country_id: int, coal_id: int, name: str, pos: dict = None):
+        super().__init__(obj_id, country_id, coal_id, name)
+        self.obj = obj
         self.cls_base, self.type = obj.cls.split('_')
         if self.type == 'medium':
             self.type = 'heavy'
@@ -89,6 +90,7 @@ class Aircraft(Object):
         self.landed = True
         self.damaged_by_enemy = False
         self.is_safe = True
+        self.ejected = False
 
     def add_kill(self, target: Object) -> None:
         """Добавить убитый объект"""
@@ -99,7 +101,7 @@ class Aircraft(Object):
 
     def add_damage(self, target: Object, damage: float) -> None:
         """Добавить нанесённый урон"""
-        if hasattr(target, 'pos'):
+        if target.pos:
             key = str(target.pos)
             if target.coal_id == self.coal_id:
                 if key not in self.friendly_fire_damages:
@@ -111,17 +113,6 @@ class Aircraft(Object):
                 self.damageboard[key] += damage
         else:
             NameError('Damage nowhere {} {}'.format(target.pos, damage))
-
-    def receive_damage(self, attacker: Object, damage: float, pos: dict) -> None:
-        """Учесть полученный урон"""
-        if attacker.coal_id != self.coal_id and damage > 0:
-            self.damaged_by_enemy = True
-        self.update_pos(pos)
-
-    def update_pos(self, pos: dict) -> None:
-        """Обновить позицию"""
-        if geometry.is_pos_correct(pos):
-            self.pos = pos
 
     def takeoff(self, pos: dict) -> None:
         """Взлёт"""
@@ -141,21 +132,19 @@ class Aircraft(Object):
 
 class BotPilot(Object):
     """Пилот"""
+
     def __init__(self, obj_id: int, obj: configs.Object, parent: Aircraft, country_id: int,
                  coal_id: int, name: str, pos: dict = None):
-        super().__init__(obj_id, obj, country_id, coal_id, name)
+        super().__init__(obj_id, country_id, coal_id, name)
+        self.obj = obj
         self.aircraft = parent
         self.pos = pos
+        self.ejected = False
 
-    def deinitialize(self) -> None:
+    def deinitialize(self, pos: dict) -> None:
         """Пометить объект как удалённый из игрового мира"""
-        self.aircraft.deinitialize()
-        super().deinitialize()
-
-    def update_pos(self, pos: dict) -> None:
-        """Обновить позицию"""
-        if geometry.is_pos_correct(pos):
-            self.pos = pos
+        self.aircraft.deinitialize(pos)
+        super().deinitialize(pos)
 
 
 ALL_CLASSES = {

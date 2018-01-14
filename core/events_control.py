@@ -6,9 +6,15 @@ import configs
 import processing
 import rcon
 import atypes
+import log_objects
 
-from log_objects import Aircraft, BotPilot, Airfield, Ground, Object, GROUND_CLASSES
 from .parse_mission_log_line import parse, UnexpectedATypeWarning
+from .objects_control import ObjectsController
+
+
+def _to_ground(obj) -> log_objects.Ground:
+    """Привести к классу наземного объекта"""
+    return obj
 
 
 class EventsController:
@@ -19,16 +25,15 @@ class EventsController:
         """
         self.objects = objects
         self.config = config
-        self.objects_id_ref = dict()
         self.tik_last = 0
+        self.objects_controller = ObjectsController(config)
         self.players_controller = processing.PlayersController(
             config.main, rcon.DServerRcon(config.main.rcon_ip, config.main.rcon_port))
-        self.ground_controller = processing.GroundController(objects)
+        self.ground_controller = processing.GroundController()
         self.campaign_controller = processing.CampaignController(config)
         self.airfields_controller = processing.AirfieldsController(config)
         self.is_correctly_completed = False
         self.countries = dict()
-        self.airfields = dict()
 
         # порядок важен т.к. позиция в tuple соответствует ID события
         self.events_handlers = (
@@ -82,32 +87,14 @@ class EventsController:
     def event_damage(self, tik: int, damage: float, attacker_id: int, target_id: int, pos: dict) -> None:
         """AType 2 handler"""
         atype = atypes.Atype2(tik, damage, attacker_id, target_id, pos)
-        target = self.objects_id_ref[atype.target_id]
-        target.update_pos(atype.pos)
-        attacker = None
-        if atype.attacker_id:
-            attacker = self.objects_id_ref[atype.attacker_id]
-            attacker.update_pos(atype.pos)
-            attacker.add_damage(target, atype.damage)
-
-        self.ground_controller.damage(attacker, atype.damage, target, atype.pos)
-
-        self.update_tik(tik)
+        self.objects_controller.damage(atype)
+        self.update_tik(atype.tik)
         # дамага может не быть из-за бага логов
 
     def event_kill(self, tik: int, attacker_id: int, target_id: int, pos: dict) -> None:
         """AType 3 handler"""
         atype = atypes.Atype3(tik, attacker_id, target_id, pos)
-        target = self.objects_id_ref[atype.target_id]
-        target.update_pos(atype.pos)
-        attacker = None
-        if atype.attacker_id:
-            attacker = self.objects_id_ref[atype.attacker_id]
-            attacker.update_pos(atype.pos)
-            attacker.add_kill(target)
-
-        self.ground_controller.kill(attacker, target, atype.pos)
-
+        self.objects_controller.kill(atype)
         self.update_tik(atype.tik)
         # в логах так бывает что кто-то умер, а кто не известно :)
 
@@ -121,21 +108,22 @@ class EventsController:
     def event_takeoff(self, tik: int, aircraft_id: int, pos: dict) -> None:
         """AType 5 handler"""
         atype = atypes.Atype5(tik, aircraft_id, pos)
-        aircraft = self._get_aircraft(atype.aircraft_id)
-        aircraft.takeoff(atype.pos)
+        self.objects_controller.takeoff(atype)
+
         self.update_tik(atype.tik)
 
     def event_landing(self, tik: int, aircraft_id: int, pos: dict) -> None:
         """AType 6 handler"""
         atype = atypes.Atype6(tik, aircraft_id, pos)
-        aircraft = self._get_aircraft(atype.aircraft_id)
-        aircraft.land(atype.pos, list(self.airfields.values()), self.config.gameplay.airfield_radius)
+        self.objects_controller.land(atype)
+
         self.update_tik(atype.tik)
 
     def event_mission_end(self, tik: int) -> None:
         """AType 7 handler"""
         atype = atypes.Atype7(tik)
         self.update_tik(atype.tik)
+        self.objects_controller.end_mission()
         self.campaign_controller.end_mission()
         self.is_correctly_completed = True
 
@@ -143,28 +131,14 @@ class EventsController:
                              success: int, icon_type_id: int, pos: dict) -> None:
         """AType 8 handler"""
         atype = atypes.Atype8(tik, object_id, coal_id, task_type_id, success, icon_type_id, pos)
-        # TODO поймать mission objective с завершением миссии
-        # TODO подвести итог миссии
         self.update_tik(atype.tik)
 
     def event_airfield(self, tik: int, airfield_id: int, country_id: int, coal_id: int,
                        aircraft_id_list: list, pos: dict) -> None:
         """AType 9 handler"""
         atype = atypes.Atype9(tik, airfield_id, country_id, coal_id, aircraft_id_list, pos)
+        self.objects_controller.airfield(atype)
         self.update_tik(atype.tik)
-        if atype.airfield_id in self.airfields.keys():
-            self.airfields[atype.airfield_id].update(atype.country_id, atype.coal_id)
-        else:
-            airfield = Airfield(atype.airfield_id, atype.country_id, atype.coal_id, atype.pos)
-            self.airfields[atype.airfield_id] = airfield
-
-    def _get_aircraft(self, aircraft_id) -> Aircraft:
-        """Получить самолёт"""
-        return self.objects_id_ref[aircraft_id]
-
-    def _get_bot(self, bot_id) -> BotPilot:
-        """Получить бота"""
-        return self.objects_id_ref[bot_id]
 
     def event_player(self, tik: int, aircraft_id: int, bot_id: int, account_id: str,
                      profile_id: str, name: str, pos: dict, aircraft_name: str, country_id: int,
@@ -175,15 +149,10 @@ class EventsController:
         atype = atypes.Atype10(tik, aircraft_id, bot_id, account_id, profile_id, name, pos, aircraft_name, country_id,
                                coal_id, airfield_id, airstart, parent_id, payload_id, fuel, skin, weapon_mods_id,
                                cartridges, shells, bombs, rockets, form)
-        aircraft = self._get_aircraft(atype.aircraft_id)
-        aircraft.update_pos(atype.pos)
-        bot = self._get_bot(atype.bot_id)
-        bot.update_pos(atype.pos)
-
-        self.players_controller.spawn(bot, atype.account_id, atype.name)
+        self.objects_controller.spawn(atype)
+        self.players_controller.spawn(self.objects_controller.get_bot(atype.bot_id), atype.account_id, atype.name)
         # TODO оптимизировать, т.к. создание объекта ТВД ресурсоёмкая задача
-        self.airfields_controller.spawn(
-            self.campaign_controller.current_tvd, atype.aircraft_name, atype.pos['x'], atype.pos['z'])
+        self.airfields_controller.spawn(self.campaign_controller.current_tvd, atype)
         self.update_tik(atype.tik)
 
     def event_group(self, tik: int, group_id: int, members_id: int, leader_id: int) -> None:
@@ -195,12 +164,7 @@ class EventsController:
                           coal_id: int, name: str, parent_id: int) -> None:
         """AType 12 handler"""
         atype = atypes.Atype12(tik, object_id, object_name, country_id, coal_id, name, parent_id)
-        game_object = self.create_object(atype.object_id, self.objects[atype.object_name],
-                                         atype.parent_id, atype.country_id, atype.coal_id, atype.name)
-        self.objects_id_ref[atype.object_id] = game_object
-        if game_object.cls_base == 'ground':
-            self.ground_controller.ground_object(
-                atype.tik, game_object, atype.object_name, atype.country_id, atype.coal_id, atype.name, atype.parent_id)
+        self.objects_controller.create_object(atype, self.objects[atype.object_name])
         self.update_tik(atype.tik)
 
     def event_influence_area(self, tik: int, area_id: int, country_id: int, coal_id: int,
@@ -222,8 +186,8 @@ class EventsController:
     def event_bot_deinitialization(self, tik: int, bot_id: int, pos: dict) -> None:
         """AType 16 handler"""
         atype = atypes.Atype16(tik, bot_id, pos)
-        bot = self.objects_id_ref[atype.bot_id]
-        bot.update_pos(atype.pos)
+        self.objects_controller.deinitialize(atype)
+        bot = self.objects_controller.get_bot(atype.bot_id)
         self.players_controller.finish(bot)
         self.airfields_controller.finish(self.campaign_controller.current_tvd, bot)
         self.update_tik(atype.tik)
@@ -231,16 +195,20 @@ class EventsController:
     def event_pos_changed(self, tik: int, object_id: int, pos: dict) -> None:
         """AType 17 handler"""
         atype = atypes.Atype17(tik, object_id, pos)
+        self.objects_controller.change_pos(atype)
         self.update_tik(atype.tik)
 
     def event_bot_eject_leave(self, tik: int, bot_id: int, parent_id: int, pos: dict) -> None:
         """AType 18 handler"""
         atype = atypes.Atype18(tik, bot_id, parent_id, pos)
+        self.objects_controller.eject_leave(atype)
         self.update_tik(atype.tik)
 
     def event_round_end(self, tik: int) -> None:
         """AType 19 handler"""
+        # TODO подвести итог миссии
         atype = atypes.Atype19(tik)
+        self.campaign_controller.end_round()
         self.update_tik(atype.tik)
 
     def event_player_connected(self, tik: int, account_id: str, profile_id: str) -> None:
@@ -255,16 +223,4 @@ class EventsController:
         self.update_tik(atype.tik)
         self.players_controller.disconnect(atype.account_id)
 
-    def create_object(self, obj_id: int, obj: configs.Object, parent_id: int, country_id: int,
-                      coal_id: int, name: str) -> Object:
-        """Создать объект соответствующего типа"""
-        if 'BotPilot' in obj.log_name and 'aircraft' in obj.cls:
-            return BotPilot(obj_id, obj, self.objects_id_ref[parent_id], country_id, coal_id, name)
-        if obj.playable and 'aircraft' in obj.cls:
-            return Aircraft(obj_id, obj, country_id, coal_id, name)
-        if 'airfield' in obj.cls:
-            return Airfield(obj_id, country_id, coal_id, None)
-        _cls = obj.cls
-        if obj.cls in GROUND_CLASSES:
-            return Ground(obj_id, obj, country_id, coal_id, name)
-        return Object(obj_id, obj, country_id, coal_id, name)
+

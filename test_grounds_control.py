@@ -1,6 +1,7 @@
 """Тестирование обработки наземки"""
 import unittest
 
+import atypes
 import configs
 import log_objects
 import processing
@@ -11,25 +12,28 @@ OBJECTS = configs.Objects()
 class TestGroundControl(unittest.TestCase):
     """Тесты контроллера наземки"""
     def setUp(self):
-        self.controller = processing.GroundController(OBJECTS)
+        self.controller = processing.GroundController()
 
-    def test_count_only_grounds(self):
-        """Учитываются только наземные цели"""
-        # Arrange
-        pos_attacker = {'x': 100.0, 'y': 100.0, 'z': 100.0}
-        pos_aircraft = {'x': 200.0, 'y': 100.0, 'z': 100.0}
+    def test_kill(self):
+        """Учитываются уничтоженные наземные цели"""
         pos_target = {'x': 300.0, 'y': 100.0, 'z': 100.0}
-        attacker = log_objects.Aircraft(1, OBJECTS['Bf 109 E-7'], 201, 2, 'Test attacker', pos_attacker)
-        aircraft = log_objects.Aircraft(2, OBJECTS['I-16 type 24'], 101, 1, 'Test aircraft', pos_aircraft)
         target = log_objects.Ground(3, OBJECTS['static_il2'], 101, 1, 'Test ground target', pos_target)
         # Act
-        self.controller.damage(attacker, 10.0, target, pos_target)
-        self.controller.kill(attacker, target, pos_target)
-        # noinspection PyTypeChecker
-        self.controller.damage(attacker, 12.0, aircraft, pos_aircraft)
+        self.controller.kill(target, atype=atypes.Atype3(123, -1, 3, pos_target))
         # Assert
-        self.assertIn(target, self.controller.grounds.values())
-        self.assertNotIn(aircraft, self.controller.grounds.values())
+        self.assertTrue(target.killed)
+
+    def test_kill_aircraft(self):
+        """Учитываются только уничтоженные наземные цели"""
+        pos_aircraft = {'x': 200.0, 'y': 100.0, 'z': 100.0}
+        aircraft = log_objects.Aircraft(2, OBJECTS['I-16 type 24'], 101, 1, 'Test aircraft', pos_aircraft)
+
+        def test_func():
+            # Act
+            # noinspection PyTypeChecker
+            self.controller.kill(aircraft, atype=atypes.Atype3(123, -1, 3, pos_aircraft))
+        # Assert
+        self.assertRaises(TypeError, test_func)
 
 
 if __name__ == '__main__':

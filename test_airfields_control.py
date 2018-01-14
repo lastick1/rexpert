@@ -2,6 +2,7 @@
 import unittest
 import pathlib
 
+import atypes
 import configs
 import log_objects
 from processing import AirfieldsController, TvdBuilder, Storage
@@ -59,8 +60,14 @@ class TestAirfieldsController(unittest.TestCase):
         managed_airfield.planes[aircraft_key] = 10
         self.storage.airfields.update_airfield(managed_airfield)
         expected = self.storage.airfields.load_by_id(managed_airfield.id).planes[aircraft_key] - 1
+        atype = atypes.Atype10(
+            tik=150, aircraft_id=2, bot_id=3, account_id='123', profile_id='123', name='nickname',
+            pos={'x': TEST_AIRFIELD_X, 'z': TEST_AIRFIELD_Z}, aircraft_name=aircraft_name, country_id=101, coal_id=1,
+            airfield_id=4, airstart=False, parent_id=5, fuel=1, skin='', weapon_mods_id=[1], cartridges=1,
+            shells=1, bombs=0, rockets=0, form='', payload_id=1
+        )
         # Act
-        controller.spawn(tvd, aircraft_name, TEST_AIRFIELD_X, TEST_AIRFIELD_Z)
+        controller.spawn(tvd, atype)
         # Assert
         managed_airfield = self.storage.airfields.load_by_name(TEST_TVD_NAME, TEST_AIRFIELD_NAME)
         self.assertEqual(managed_airfield.planes[aircraft_key], expected)

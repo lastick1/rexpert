@@ -1,4 +1,5 @@
 """Контроль состояния аэродромов (доступные самолёты, повреждения)"""
+import atypes
 import configs
 import log_objects
 from .airfield import ManagedAirfield
@@ -32,10 +33,11 @@ class AirfieldsController:
             if airfield.distance_to(x=x, z=z) < radius:
                 return airfield
 
-    def spawn(self, tvd, aircraft_name: str, xpos: float, zpos: float):
+    def spawn(self, tvd, atype: atypes.Atype10):
         """Обработать появление самолёта на аэродроме"""
+        xpos, zpos = atype.pos['x'], atype.pos['z']
         managed_airfield = self.get_airfield_in_radius(tvd.name, xpos, zpos, self.config.gameplay.airfield_radius)
-        self.add_aircraft(tvd, managed_airfield.name, aircraft_name, -1)
+        self.add_aircraft(tvd, managed_airfield.name, atype.aircraft_name, -1)
 
     def finish(self, tvd, bot: log_objects.BotPilot):
         """Обработать деспаун самолёта на аэродроме"""
