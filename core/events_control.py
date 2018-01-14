@@ -12,11 +12,6 @@ from .parse_mission_log_line import parse, UnexpectedATypeWarning
 from .objects_control import ObjectsController
 
 
-def _to_ground(obj) -> log_objects.Ground:
-    """Привести к классу наземного объекта"""
-    return obj
-
-
 class EventsController:
     """Контроллер обработки событий из логов"""
     def __init__(self, objects: configs.Objects, config: configs.Config):

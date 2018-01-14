@@ -34,7 +34,7 @@ class DServerRcon:
         # отправка пакета
         try:
             self.socket.send(packet)
-        except: #pylint: disable=W0702
+        except:  # pylint: disable=W0702
             self.connected = False
             raise
 
@@ -78,14 +78,14 @@ class DServerRcon:
 
         resp = self.__rcon_send_raw_command("auth {0} {1}".format(user, password))
 
-        if len(resp):  #pylint: disable=C1801
+        if len(resp):  # pylint: disable=C1801
             if resp[-1] == "1":
                 self.authed = True
                 return True
             else:
                 # self.AUTHED = False
                 return False
-        elif isinstance(resp, bytes) and len(resp) == 0:  #pylint: disable=C1801
+        elif isinstance(resp, bytes) and len(resp) == 0:  # pylint: disable=C1801
             self.authed = True
             return True
         else:

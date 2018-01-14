@@ -1,4 +1,5 @@
 """Контроль ТВД"""
+# TODO проверить актуальность модуля
 
 DEFAULT_VALUE = 100
 DIVISIONS_COUNT = 4
@@ -23,6 +24,7 @@ class Division:
         else:
             self.value -= amount
 
+
 class Supply(Division):
     """Объект снабжения"""
     def __init__(self, value: int, coal_id: int, name: str, divisions: list):
@@ -45,6 +47,7 @@ class Supply(Division):
     def resupply(self):
         """Восполнить ресурсы"""
         self.value = self._default
+
 
 class DivisionsManager:
     """Управление дивизиями"""
@@ -106,10 +109,10 @@ class DivisionsManager:
     def end_mission(self):
         """Обсчитать завершение миссиии"""
         print('X')
-        for name in  sorted(self.divisions_damage):
+        for name in sorted(self.divisions_damage):
             print('{}: -{}'.format(name, self.divisions_damage[name]))
             self.divisions[name].damage(self.divisions_damage[name])
-        for name in  sorted(self.supply_damage):
+        for name in sorted(self.supply_damage):
             print('{}: -{}'.format(name, self.supply_damage[name]))
             self.supply[name].damage(self.supply_damage[name])
         for name in self.supply:
@@ -122,6 +125,7 @@ class DivisionsManager:
                 print('{} Division destroyed!'.format(division))
                 division.value = self.value
         print()
+
 
 manager = DivisionsManager(100, 40, 1.6)
 
