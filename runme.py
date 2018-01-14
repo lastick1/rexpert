@@ -4,10 +4,16 @@ import pathlib
 
 import utils
 import configs
+import core
 import processing
 
 
 CONFIG = configs.Config(pathlib.Path(r'./configs/conf.ini'))
+
+
+def compile_log():
+    """Собрать лог в один файл"""
+    utils.compile_log('./tmp', 'missionReport*.txt', './tmp/compiled')
 
 
 def reset():
@@ -30,14 +36,13 @@ def generate(name: str):
 
 def run():
     """Запуск"""
-    events_controller = processing.EventsController(objects=configs.Objects(), config=CONFIG)
-    processing.LogsReader(CONFIG.main, events_controller)
+    events_controller = core.EventsController(objects=configs.Objects(), config=CONFIG)
+    core.LogsReader(CONFIG.main, events_controller)
 
 
 print(datetime.datetime.now().strftime("[%H:%M:%S] Program Start."))
-# import helpers
-# utils.compile_log('./tmp', 'missionReport*.txt', './tmp/compiled')
 
+# compile_log()
 # reset()
 # export('moscow')
 # export('stalingrad')
