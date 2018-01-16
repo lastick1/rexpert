@@ -4,7 +4,6 @@ import pathlib
 import datetime
 import pytz
 
-import configs
 import atypes
 import processing
 

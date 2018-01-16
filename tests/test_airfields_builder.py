@@ -2,9 +2,9 @@
 import unittest
 import pathlib
 import processing
-from tests.mocks import PlanesMock
+import tests
 
-PLANES = PlanesMock()
+PLANES = tests.mocks.PlanesMock()
 COMMON = 'common'
 UNCOMMON = 'uncommon'
 TEST_PLANE_1 = 'lagg-3 ser.29'

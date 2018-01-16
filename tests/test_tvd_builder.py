@@ -4,9 +4,9 @@ import pathlib
 import shutil
 
 import processing
-from tests import mocks, utils
+import tests
 
-IOC = mocks.DependencyContainerMock(pathlib.Path('./testdata/conf.ini'))
+IOC = tests.mocks.DependencyContainerMock(pathlib.Path('./testdata/conf.ini'))
 MOSCOW_FIELDS = pathlib.Path('./data/moscow_fields.csv')
 
 MOSCOW = 'moscow'
@@ -36,7 +36,7 @@ class TestTvdBuilder(unittest.TestCase):
 
     def tearDown(self):
         """Очистка директории после теста"""
-        utils.clean_directory(str(self.directory))
+        tests.utils.clean_directory(str(self.directory))
 
     def test_influences_moscow(self):
         """Генерируются зоны влияния филдов Москвы"""

@@ -25,25 +25,25 @@ class TestDivisionsControl(unittest.TestCase):
 
     def test_initialize_divisions(self):
         """Инициализируются дивизии кампании"""
-        controller = processing.DivisionsController(IOC.config)
+        controller = processing.DivisionsController(IOC)
         # Act
         controller.initialize_divisions(TEST_TVD_NAME)
         # Assert
-        self.assertEqual(controller.storage.divisions.collection.count(), 8)
+        self.assertEqual(IOC.storage.divisions.collection.count(), 8)
 
     def test_damage_division(self):
         """Наносится урон дивизии"""
-        controller = processing.DivisionsController(IOC.config)
+        controller = processing.DivisionsController(IOC)
         controller.initialize_divisions(TEST_TVD_NAME)
-        expected = controller.storage.divisions.load_by_name(TEST_TVD_NAME, TEST_DIVISION_NAME1).units - 1
+        expected = IOC.storage.divisions.load_by_name(TEST_TVD_NAME, TEST_DIVISION_NAME1).units - 1
         # Act
         controller.damage_division(TEST_TVD_NAME, TEST_UNIT_NAME1)
         # Assert
-        self.assertEqual(controller.storage.divisions.load_by_name(TEST_TVD_NAME, TEST_DIVISION_NAME1).units, expected)
+        self.assertEqual(IOC.storage.divisions.load_by_name(TEST_TVD_NAME, TEST_DIVISION_NAME1).units, expected)
 
     def test_repair_rate(self):
         """Рассчитывается коэффициент восполнения дивизий"""
-        controller = processing.DivisionsController(IOC.config)
+        controller = processing.DivisionsController(IOC)
         # Act
         r0 = controller.repair_rate(0)
         r1 = controller.repair_rate(1)
@@ -55,20 +55,20 @@ class TestDivisionsControl(unittest.TestCase):
     def test_repair_division(self):
         """Восполняются дивизии при целых складах"""
         destroyed_warehouses = 0
-        controller = processing.DivisionsController(IOC.config)
+        controller = processing.DivisionsController(IOC)
         controller.initialize_divisions(TEST_TVD_NAME)
         controller.damage_division(TEST_TVD_NAME, TEST_UNIT_NAME1)
         controller.damage_division(TEST_TVD_NAME, TEST_UNIT_NAME1)
         controller.damage_division(TEST_TVD_NAME, TEST_UNIT_NAME2)
-        current = controller.storage.divisions.load_by_name(TEST_TVD_NAME, TEST_DIVISION_NAME1).units
+        current = IOC.storage.divisions.load_by_name(TEST_TVD_NAME, TEST_DIVISION_NAME1).units
         expected1 = current * controller.repair_rate(destroyed_warehouses)
         expected2 = processing.DIVISIONS[TEST_DIVISION_NAME2]
         # Act
         controller.repair_division(TEST_TVD_NAME, TEST_DIVISION_NAME1, destroyed_warehouses)
         controller.repair_division(TEST_TVD_NAME, TEST_DIVISION_NAME2, destroyed_warehouses)
         # Assert
-        self.assertEqual(controller.storage.divisions.load_by_name(TEST_TVD_NAME, TEST_DIVISION_NAME1).units, expected1)
-        self.assertEqual(controller.storage.divisions.load_by_name(TEST_TVD_NAME, TEST_DIVISION_NAME2).units, expected2)
+        self.assertEqual(IOC.storage.divisions.load_by_name(TEST_TVD_NAME, TEST_DIVISION_NAME1).units, expected1)
+        self.assertEqual(IOC.storage.divisions.load_by_name(TEST_TVD_NAME, TEST_DIVISION_NAME2).units, expected2)
 
 
 if __name__ == '__main__':

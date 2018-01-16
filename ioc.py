@@ -6,7 +6,8 @@ import processing
 import rcon
 
 
-class DependencyContainer:
+class DependencyContainer:  # pylint: disable=R0902
+    """Тривиальная реализация, но вроде работает"""
     def __init__(self):
         self._config = None
         self._objects = None

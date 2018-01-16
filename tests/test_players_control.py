@@ -7,7 +7,7 @@ import configs
 import log_objects
 import tests
 
-from processing import PlayersController, Player, Storage
+import processing
 from processing.player import ID, NICKNAME, KNOWN_NICKNAMES, ONLINE, BAN_DATE, UNLOCKS
 
 IOC = tests.mocks.DependencyContainerMock(pathlib.Path('./testdata/conf.ini'))
@@ -15,7 +15,7 @@ MAIN = IOC.config.main
 TEST_NICKNAME = '_test_nickname'
 TEST_ACCOUNT_ID = '_test_id1'
 TEST_PROFILE_ID = '_test_profile_id1'
-TEST_PLAYER = Player.initialize(TEST_ACCOUNT_ID)
+TEST_PLAYER = processing.Player.initialize(TEST_ACCOUNT_ID)
 FILTER = {ID: TEST_ACCOUNT_ID}
 OBJECTS = configs.Objects()
 
@@ -28,7 +28,7 @@ class TestPlayersController(unittest.TestCase):
     """Тесты событий с обработкой данных игроков"""
     def setUp(self):
 
-        self.controller = PlayersController(IOC)
+        self.controller = processing.PlayersController(IOC)
 
     def tearDown(self):
         IOC.storage.drop_database()
