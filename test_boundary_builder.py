@@ -6,6 +6,7 @@ import processing
 
 from tests import mocks, utils
 
+TEMP_DIRECTORY = pathlib.Path(r'./tmp/').absolute()
 MAIN = mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))
 MGEN = mocks.MgenMock(MAIN.game_folder)
 
@@ -14,8 +15,16 @@ STALIN = 'stalingrad'
 
 class TestBoundaryBuilder(unittest.TestCase):
     """Тестовый класс"""
+
     def setUp(self):
+        """Настройка перед тестами"""
         self.north, self.east, self.south, self.west = 10, 10, 0, 0
+        if not TEMP_DIRECTORY.exists():
+            TEMP_DIRECTORY.mkdir(parents=True)
+
+    def tearDown(self):
+        """Очистка временной папки после теста"""
+        utils.clean_directory(str(TEMP_DIRECTORY))
 
     def test_build_east(self):
         """Создаётся корректный многоугольник восточной InfluenceArea"""
