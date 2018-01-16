@@ -1,8 +1,7 @@
 """Контроль миссий и хода кампании"""
 import json
-from pathlib import Path
+import pathlib
 import datetime
-
 import pytz
 
 import configs
@@ -19,7 +18,7 @@ END_DATE = 'end_date'
 
 class Mission:
     """Миссия"""
-    def __init__(self, name: str, source: Path, additional: dict):
+    def __init__(self, name: str, source: pathlib.Path, additional: dict):
         self.name = name
         self.source = source
         self.additional = additional
@@ -97,7 +96,7 @@ class CampaignController:
         """Обработать начало миссии"""
         name = atype.file_path.replace('Multiplayer/Dogfight', '').replace('\\', '')
         name = name.replace('.msnbin', '')
-        source = Path(self._dogfight.joinpath(name + '_src.Mission')).absolute()
+        source = pathlib.Path(self._dogfight.joinpath(name + '_src.Mission')).absolute()
         additional = {
             'date': atype.date,
             'game_type_id': atype.game_type_id,
