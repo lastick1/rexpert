@@ -2,7 +2,7 @@ python -m venv .venv
 pause
 
 cd .venv/Scripts
-activate.bat
+call activate.bat
 
 cd ../..
 
