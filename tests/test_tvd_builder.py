@@ -6,7 +6,7 @@ import shutil
 import processing
 from tests import mocks, utils
 
-CONFIG = mocks.ConfigMock(pathlib.Path('./testdata/conf.ini'))
+IOC = mocks.DependencyContainerMock(pathlib.Path('./testdata/conf.ini'))
 MOSCOW_FIELDS = pathlib.Path('./data/moscow_fields.csv')
 
 MOSCOW = 'moscow'
@@ -19,7 +19,7 @@ TVD_DATE = '10.11.1942'
 
 def _get_xgml_file_mock(tvd_name: str) -> str:
     """Подделка метода получения файла графа"""
-    return str(CONFIG.mgen.xgml[tvd_name])
+    return str(IOC.config.mgen.xgml[tvd_name])
 
 
 class TestTvdBuilder(unittest.TestCase):
@@ -29,8 +29,10 @@ class TestTvdBuilder(unittest.TestCase):
         self.directory = pathlib.Path(r'./tmp/').absolute()
         if not self.directory.exists():
             self.directory.mkdir(parents=True)
-        pathlib.Path('./tmp/red/').mkdir(parents=True)
-        pathlib.Path('./tmp/blue/').mkdir(parents=True)
+        pathlib.Path('./tmp/data/scg/1/blocks_quickmission/airfields_red').mkdir(parents=True)
+        pathlib.Path('./tmp/data/scg/1/blocks_quickmission/airfields_blue').mkdir(parents=True)
+        pathlib.Path('./tmp/data/scg/2/blocks_quickmission/airfields_red').mkdir(parents=True)
+        pathlib.Path('./tmp/data/scg/2/blocks_quickmission/airfields_blue').mkdir(parents=True)
 
     def tearDown(self):
         """Очистка директории после теста"""
@@ -38,9 +40,9 @@ class TestTvdBuilder(unittest.TestCase):
 
     def test_influences_moscow(self):
         """Генерируются зоны влияния филдов Москвы"""
-        CONFIG.mgen.icons_group_files[MOSCOW] = pathlib.Path('./tmp/FL_icon_moscow.Group').absolute()
-        builder = processing.TvdBuilder(MOSCOW, CONFIG)
-        builder.grid_control.get_file = _get_xgml_file_mock
+        IOC.config.mgen.icons_group_files[MOSCOW] = pathlib.Path('./tmp/FL_icon_moscow.Group').absolute()
+        IOC.grid_controller.get_file = _get_xgml_file_mock
+        builder = processing.TvdBuilder(MOSCOW, IOC)
 
         def call_update():
             """Обновить иконки"""
@@ -53,9 +55,9 @@ class TestTvdBuilder(unittest.TestCase):
 
     def test_influences_stalin(self):
         """Генерируются зоны влияния филдов Сталинграда"""
-        CONFIG.mgen.icons_group_files[STALIN] = pathlib.Path('./tmp/FL_icon_stalin.Group').absolute()
-        builder = processing.TvdBuilder(STALIN, CONFIG)
-        builder.grid_control.get_file = _get_xgml_file_mock
+        IOC.config.mgen.icons_group_files[STALIN] = pathlib.Path('./tmp/FL_icon_stalin.Group').absolute()
+        IOC.grid_controller.get_file = _get_xgml_file_mock
+        builder = processing.TvdBuilder(STALIN, IOC)
 
         def call_update():
             """Обновить иконки"""
@@ -68,8 +70,8 @@ class TestTvdBuilder(unittest.TestCase):
 
     def test_airfields(self):
         """Генерируются координатные группы аэродромов"""
-        airfields = processing.AirfieldsController.initialize_managed_airfields(CONFIG.mgen.airfields_data[MOSCOW])
-        builder = processing.TvdBuilder(MOSCOW, CONFIG)
+        airfields = processing.AirfieldsController.initialize_managed_airfields(IOC.config.mgen.airfields_data[MOSCOW])
+        builder = processing.TvdBuilder(MOSCOW, IOC)
         tvd = processing.Tvd(MOSCOW, 'test', TVD_DATE, {'x': 281600, 'z': 281600}, pathlib.Path(r'./tmp/'))
         tvd.red_front_airfields = list(x for x in airfields if x.name in ('kholm', 'kalinin', 'alferevo'))
         tvd.blue_front_airfields = list(x for x in airfields if x.name in ('losinki', 'lotoshino', 'migalovo'))
@@ -87,12 +89,10 @@ class TestTvdBuilder(unittest.TestCase):
 
     def test_update(self):
         """Генерируется папка ТВД"""
-        pathlib.Path('./tmp/data/scg/1/').mkdir(parents=True)
-        pathlib.Path('./tmp/data/scg/2/').mkdir(parents=True)
         shutil.copy('./data/scg/2/moscow-base_v2.ldf', './tmp/data/scg/2/')
-        airfields = processing.AirfieldsController.initialize_managed_airfields(CONFIG.mgen.airfields_data[MOSCOW])
-        builder = processing.TvdBuilder(MOSCOW, CONFIG)
-        builder.grid_control.get_file = _get_xgml_file_mock
+        airfields = processing.AirfieldsController.initialize_managed_airfields(IOC.config.mgen.airfields_data[MOSCOW])
+        IOC.grid_controller.get_file = _get_xgml_file_mock
+        builder = processing.TvdBuilder(MOSCOW, IOC)
 
         def call_update():
             """Обновить папку"""

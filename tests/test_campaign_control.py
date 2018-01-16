@@ -7,13 +7,15 @@ import shutil
 import atypes
 import configs
 import processing
-
-from tests import mocks, utils
+import ioc
+import tests
 
 DATE_FORMAT = '%d.%m.%Y'
 
-TEMP_DIRECTORY = pathlib.Path(r'./tmp/').absolute()
-CONFIG = mocks.ConfigMock(pathlib.Path(r'./testdata/conf.ini'))
+TEMP_DIRECTORY = pathlib.Path('./tmp/').absolute()
+IOC = tests.mocks.DependencyContainerMock(pathlib.Path('./testdata/conf.ini'))
+IOC.config.main = tests.mocks.MainMock(pathlib.Path('./testdata/conf.ini'))
+IOC.config.mgen = tests.mocks.MgenMock(IOC.config.main.game_folder)
 PLANES = configs.Planes()
 GAMEPLAY = configs.Gameplay()
 
@@ -31,22 +33,25 @@ class TestCampaignController(unittest.TestCase):
         self.get_xgml_file_calls = 0
         if not TEMP_DIRECTORY.exists():
             TEMP_DIRECTORY.mkdir(parents=True)
-        self.storage = processing.Storage(CONFIG.main)
+        pathlib.Path('./tmp/data/scg/1/blocks_quickmission/airfields_red').mkdir(parents=True)
+        pathlib.Path('./tmp/data/scg/1/blocks_quickmission/airfields_blue').mkdir(parents=True)
+        pathlib.Path('./tmp/data/scg/2/blocks_quickmission/airfields_red').mkdir(parents=True)
+        pathlib.Path('./tmp/data/scg/2/blocks_quickmission/airfields_blue').mkdir(parents=True)
 
     def tearDown(self):
         """Удаление базы и очистка временной папки после теста"""
-        self.storage.drop_database()
-        utils.clean_directory(str(TEMP_DIRECTORY))
+        IOC.storage.drop_database()
+        tests.utils.clean_directory(str(TEMP_DIRECTORY))
 
     def _get_xgml_file_mock(self, tvd_name: str) -> str:
         """Подделка метода получения файла графа"""
         self.get_xgml_file_calls = 0
-        return str(CONFIG.mgen.xgml[tvd_name])
+        return str(IOC.config.mgen.xgml[tvd_name])
 
     def test_next_mission_bin_name(self):
         """Отличается имя следующей миссии от имени текущей"""
-        generator = mocks.GeneratorMock(CONFIG)
-        campaign = processing.CampaignController(CONFIG)
+        generator = tests.mocks.GeneratorMock(IOC.config)
+        campaign = processing.CampaignController(IOC)
         campaign.generator = generator
         atype = atypes.Atype0(
             tik=0,
@@ -61,20 +66,19 @@ class TestCampaignController(unittest.TestCase):
         # Act
         campaign.start_mission(atype)
         # Assert
-        self.assertEqual(generator.generations[0][0], 'result1')
+        self.assertEqual(IOC.generator_mock.generations[0][0], 'result1')
 
     def test_reset(self):
         """Сбрасывается состояние кампании"""
-        campaign = processing.CampaignController(CONFIG)
-        campaign.generator = mocks.GeneratorMock(CONFIG)
-        for tvd_name in CONFIG.mgen.maps:
-            campaign.tvd_builders[tvd_name].grid_control.get_file = self._get_xgml_file_mock
+        campaign = processing.CampaignController(IOC)
+        for tvd_name in IOC.config.mgen.maps:
+            IOC.grid_controller.get_file = self._get_xgml_file_mock
             campaign.initialize_map(tvd_name)
         # Act
         campaign.reset()
         # Assert
-        self.assertEqual(self.storage.campaign_maps.count(), 0)
-        self.assertEqual(self.storage.airfields.collection.count(), 0)
+        self.assertEqual(IOC.storage.campaign_maps.count(), 0)
+        self.assertEqual(IOC.storage.airfields.collection.count(), 0)
 
     def test_generate(self):
         """Генерируется указанная миссия"""
@@ -84,43 +88,40 @@ class TestCampaignController(unittest.TestCase):
         pathlib.Path('./tmp/data/scg/2/blocks_quickmission/icons').mkdir(parents=True)
         shutil.copy('./data/scg/1/stalin-base.ldf', './tmp/data/scg/1/')
         shutil.copy('./data/scg/2/moscow-base_v2.ldf', './tmp/data/scg/2/')
-        generator = mocks.GeneratorMock(CONFIG)
-        campaign = processing.CampaignController(CONFIG)
-        campaign.generator = generator
-        campaign.tvd_builders[MOSCOW].grid_control.get_file = self._get_xgml_file_mock
-        campaign.tvd_builders[STALIN].grid_control.get_file = self._get_xgml_file_mock
+        campaign = processing.CampaignController(IOC)
+        IOC.grid_controller.get_file = self._get_xgml_file_mock
         campaign.initialize()
-        campaign_map = self.storage.campaign_maps.load_by_tvd_name(MOSCOW)
-        campaign_map.set_date(CONFIG.mgen.cfg[MOSCOW]['end_date'])
-        self.storage.campaign_maps.update(campaign_map)
+        campaign_map = IOC.storage.campaign_maps.load_by_tvd_name(MOSCOW)
+        campaign_map.set_date(IOC.config.mgen.cfg[MOSCOW]['end_date'])
+        IOC.storage.campaign_maps.update(campaign_map)
         # Act
         campaign.generate('result2')
         # Assert
-        self.assertIn(('result2', STALIN), generator.generations)
+        self.assertIn(('result2', STALIN), IOC.generator_mock.generations)
 
     def test_initialize_map(self):
         """Инициализируется карта кампании"""
         order = 1
-        campaign = processing.CampaignController(CONFIG)
-        campaign.generator = mocks.GeneratorMock(CONFIG)
-        campaign.tvd_builders[TEST_TVD_NAME].grid_control.get_file = self._get_xgml_file_mock
+        campaign = processing.CampaignController(IOC)
+        campaign.generator = tests.mocks.GeneratorMock(IOC.config)
+        IOC.grid_controller.get_file = self._get_xgml_file_mock
         # Act
         campaign.initialize_map(TEST_TVD_NAME)
         # Assert
-        campaign_map = self.storage.campaign_maps.load_by_order(order)
+        campaign_map = IOC.storage.campaign_maps.load_by_order(order)
         self.assertSequenceEqual(campaign_map.months, [campaign_map.date.strftime(DATE_FORMAT)])
 
     @unittest.skip("тест прогонять на рабочей конфигурации")
-    def _test_initialize(self):
+    def test_initialize(self):
         """Инициализируется кампания"""
-        config = configs.Config(pathlib.Path(r'./configs/conf.ini'))
-        storage = processing.Storage(config.main)
-        campaign = processing.CampaignController(config)
-        campaign.generator = processing.Generator(config)
+        _ioc = ioc.DependencyContainer()
+        storage = processing.Storage(_ioc.config.main)
+        campaign = processing.CampaignController(_ioc)
+        campaign.generator = processing.Generator(_ioc.config)
         # Act
         campaign.initialize()
         # Assert
-        self.assertEqual(storage.campaign_maps.count(), len(config.mgen.maps))
+        self.assertEqual(storage.campaign_maps.count(), len(_ioc.config.mgen.maps))
         campaign_map = storage.campaign_maps.load_by_order(1)
         self.assertSequenceEqual(campaign_map.months, [campaign_map.date.strftime(DATE_FORMAT)])
 

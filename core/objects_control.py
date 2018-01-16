@@ -11,12 +11,12 @@ def _to_aircraft(obj) -> log_objects.Aircraft:
 class ObjectsController:
     """Класс, обрабатывающий события с объектами из логов сервера"""
 
-    def __init__(self, config: configs.Config):
+    def __init__(self, _ioc):
         self._objects = dict()
         self._bots = set()
         self._airfields = set()
         self._aircrafts = set()
-        self.config = config
+        self._ioc = _ioc
 
     def create_object(self, atype: atypes.Atype12, obj: configs.Object) -> log_objects.Object:
         """Создать объект соответствующего типа"""
@@ -93,7 +93,7 @@ class ObjectsController:
     def land(self, atype: atypes.Atype6):
         """Посадить самолёт"""
         aircraft = self.get_aircraft(atype.aircraft_id)
-        aircraft.land(atype.pos, list(self._airfields), self.config.gameplay.airfield_radius)
+        aircraft.land(atype.pos, list(self._airfields), self._ioc.config.gameplay.airfield_radius)
 
     def end_mission(self):
         """Завершить миссию"""

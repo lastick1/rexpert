@@ -6,8 +6,9 @@ import geometry
 
 class GroundController:
     """Контроллер обработки событий с наземными целями"""
-    def __init__(self):
+    def __init__(self, ioc):
         self.ground_kills = list()
+        self.ioc = ioc
 
     def kill(self, target: log_objects.Ground, atype: atypes.Atype3) -> None:
         """Обработать уничтожение наземного объекта"""

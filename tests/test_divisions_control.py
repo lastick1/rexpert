@@ -5,7 +5,7 @@ import pathlib
 import processing
 import tests
 
-CONFIG = tests.mocks.ConfigMock(pathlib.Path('./testdata/conf.ini'))
+IOC = tests.mocks.DependencyContainerMock(pathlib.Path('./testdata/conf.ini'))
 TEST_TVD_NAME = 'moscow'
 TEST_UNIT_NAME1 = 'REXPERT_BTD1_7'
 TEST_UNIT_NAME2 = 'test_BTD2_2'
@@ -17,7 +17,7 @@ class TestDivisionsControl(unittest.TestCase):
     """Тестовый класс"""
     def setUp(self):
         """Настройка перед тестами"""
-        self.storage = processing.Storage(CONFIG.main)
+        self.storage = processing.Storage(IOC.config.main)
 
     def tearDown(self):
         """Очистка после тестов"""
@@ -25,7 +25,7 @@ class TestDivisionsControl(unittest.TestCase):
 
     def test_initialize_divisions(self):
         """Инициализируются дивизии кампании"""
-        controller = processing.DivisionsController(CONFIG)
+        controller = processing.DivisionsController(IOC.config)
         # Act
         controller.initialize_divisions(TEST_TVD_NAME)
         # Assert
@@ -33,7 +33,7 @@ class TestDivisionsControl(unittest.TestCase):
 
     def test_damage_division(self):
         """Наносится урон дивизии"""
-        controller = processing.DivisionsController(CONFIG)
+        controller = processing.DivisionsController(IOC.config)
         controller.initialize_divisions(TEST_TVD_NAME)
         expected = controller.storage.divisions.load_by_name(TEST_TVD_NAME, TEST_DIVISION_NAME1).units - 1
         # Act
@@ -43,7 +43,7 @@ class TestDivisionsControl(unittest.TestCase):
 
     def test_repair_rate(self):
         """Рассчитывается коэффициент восполнения дивизий"""
-        controller = processing.DivisionsController(CONFIG)
+        controller = processing.DivisionsController(IOC.config)
         # Act
         r0 = controller.repair_rate(0)
         r1 = controller.repair_rate(1)
@@ -55,7 +55,7 @@ class TestDivisionsControl(unittest.TestCase):
     def test_repair_division(self):
         """Восполняются дивизии при целых складах"""
         destroyed_warehouses = 0
-        controller = processing.DivisionsController(CONFIG)
+        controller = processing.DivisionsController(IOC.config)
         controller.initialize_divisions(TEST_TVD_NAME)
         controller.damage_division(TEST_TVD_NAME, TEST_UNIT_NAME1)
         controller.damage_division(TEST_TVD_NAME, TEST_UNIT_NAME1)

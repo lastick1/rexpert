@@ -4,7 +4,9 @@ import pathlib
 import processing
 import tests
 
-TEST_CONFIG = tests.mocks.ConfigMock(pathlib.Path('./testdata/conf.ini'))
+IOC = tests.mocks.DependencyContainerMock(pathlib.Path('./testdata/conf.ini'))
+IOC.config.main = tests.mocks.MainMock(pathlib.Path('./testdata/conf.ini'))
+IOC.config.mgen = tests.mocks.MgenMock(IOC.config.main.game_folder)
 TEST_TVD_NAME = 'moscow'
 
 
@@ -23,7 +25,7 @@ class TestGridControl(unittest.TestCase):
 
     def test_initialize(self):
         """Выполняется инициализация графа кампании"""
-        controller = processing.GridController(TEST_CONFIG)
+        controller = processing.GridController(IOC.config)
         # Act
         controller.initialize(TEST_TVD_NAME)
         # Assert
@@ -31,7 +33,7 @@ class TestGridControl(unittest.TestCase):
 
     def test_reset(self):
         """Выполняется сброс графа кампании"""
-        controller = processing.GridController(TEST_CONFIG)
+        controller = processing.GridController(IOC.config)
         controller.initialize(TEST_TVD_NAME)
         # Act
         controller.reset(TEST_TVD_NAME)
@@ -42,7 +44,7 @@ class TestGridControl(unittest.TestCase):
     def test_capture(self):
         """Выполняется сохранение обновлённой версии графа после захвата"""
         pos = {'x': 144485, 'z': 136915}
-        controller = processing.GridController(TEST_CONFIG)
+        controller = processing.GridController(IOC.config)
         controller.initialize(TEST_TVD_NAME)
         # Act
         controller.capture(TEST_TVD_NAME, pos, 101)

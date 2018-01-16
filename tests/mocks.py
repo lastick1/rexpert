@@ -5,6 +5,7 @@ import pathlib
 import rcon
 import configs
 import processing
+import ioc
 
 COLOR_WHITE = '#FFFFFF'
 COLOR_RED = '#FF0000'
@@ -42,18 +43,6 @@ class PlanesMock(configs.Planes):
         super().__init__(path='.\\testdata\\planes.json')
 
 
-class ParamsMock(configs.GeneratorParamsConfig):
-    def __init__(self):
-        super().__init__()
-
-
-class ConfigMock(configs.Config):
-    def __init__(self, conf_ini: pathlib.Path):
-        super().__init__(conf_ini)
-        self.main = MainMock(conf_ini)
-        self.mgen = MgenMock(self.main.game_folder)
-
-
 class TvdMock(processing.Tvd):
     def __init__(self, name: str):
         super().__init__(name, '', '10.11.1941', {'x': 281600, 'z': 281600}, pathlib.Path())
@@ -81,7 +70,7 @@ class ConsoleMock(rcon.DServerRcon):
 class GeneratorMock(processing.Generator):
     """Заглушка генератора миссий"""
 
-    def __init__(self, config: ConfigMock):
+    def __init__(self, config: configs.Config):
         super().__init__(config)
         self.generations = []
 
@@ -186,3 +175,13 @@ class AirfieldsControllerMock(processing.AirfieldsController):
 
     def finish(self, tvd, bot):
         pass
+
+
+class DependencyContainerMock(ioc.DependencyContainer):
+    def __init__(self, path: pathlib.Path):
+        super().__init__()
+        self._config = configs.Config(path)
+        self._generator = GeneratorMock(self._config)
+        self.generator_mock = self._generator
+        self._rcon = ConsoleMock()
+        self.console_mock = self._rcon

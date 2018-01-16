@@ -6,10 +6,12 @@ import atypes
 import configs
 import log_objects
 from processing import AirfieldsController, TvdBuilder, Storage
-from tests import mocks
+import tests
 
 
-CONFIG = mocks.ConfigMock(pathlib.Path(r'./testdata/conf.ini'))
+IOC = tests.mocks.DependencyContainerMock(pathlib.Path('./testdata/conf.ini'))
+IOC.config.main = tests.mocks.MainMock(pathlib.Path('./testdata/conf.ini'))
+IOC.config.mgen = tests.mocks.MgenMock(IOC.config.main.game_folder)
 
 TEST = 'test'
 TEST_TVD_NAME = 'stalingrad'
@@ -23,16 +25,16 @@ OBJECTS = configs.Objects()
 
 def _get_xgml_file_mock(tvd_name: str) -> str:
     """Подделка метода получения файла графа"""
-    return str(CONFIG.mgen.xgml[tvd_name])
+    return str(IOC.config.mgen.xgml[tvd_name])
 
 
 class TestAirfieldsController(unittest.TestCase):
     """Тестовый класс контроллера"""
     def setUp(self):
         """Настройка базы перед тестом"""
-        self.storage = Storage(CONFIG.main)
+        self.storage = Storage(IOC.config.main)
         self.storage.airfields.update_airfields(
-            AirfieldsController.initialize_managed_airfields(CONFIG.mgen.airfields_data[TEST_TVD_NAME]))
+            AirfieldsController.initialize_managed_airfields(IOC.config.mgen.airfields_data[TEST_TVD_NAME]))
 
     def tearDown(self):
         """Удаление базы после теста"""
@@ -40,8 +42,8 @@ class TestAirfieldsController(unittest.TestCase):
 
     def test_get_airfield_in_radius(self):
         """Определяется аэродром в радиусе от координат"""
-        controller = AirfieldsController(CONFIG)
-        tvd = mocks.TvdMock(TEST_TVD_NAME)
+        controller = AirfieldsController(IOC)
+        tvd = tests.mocks.TvdMock(TEST_TVD_NAME)
         tvd.country = 101
         # Act
         result = controller.get_airfield_in_radius(
@@ -51,11 +53,11 @@ class TestAirfieldsController(unittest.TestCase):
 
     def test_spawn_planes(self):
         """Уменьшается количество самолётов на аэродроме при появлении на нём"""
-        controller = AirfieldsController(CONFIG)
-        tvd = mocks.TvdMock(TEST_TVD_NAME)
+        controller = AirfieldsController(IOC)
+        tvd = tests.mocks.TvdMock(TEST_TVD_NAME)
         tvd.country = 101
         aircraft_name = 'Pe-2 ser.35'
-        aircraft_key = CONFIG.planes.name_to_key(aircraft_name)
+        aircraft_key = IOC.config.planes.name_to_key(aircraft_name)
         managed_airfield = self.storage.airfields.load_by_name(TEST_TVD_NAME, TEST_AIRFIELD_NAME)
         managed_airfield.planes[aircraft_key] = 10
         self.storage.airfields.update_airfield(managed_airfield)
@@ -76,12 +78,12 @@ class TestAirfieldsController(unittest.TestCase):
 
     def test_return_planes(self):
         """Восполняется количество самолётов на аэродроме при возврате на него (деспаун)"""
-        controller = AirfieldsController(CONFIG)
-        tvd = mocks.TvdMock(TEST_TVD_NAME)
+        controller = AirfieldsController(IOC)
+        tvd = tests.mocks.TvdMock(TEST_TVD_NAME)
         tvd.country = 101
         bot_name = 'BotPilot_Pe2'
         aircraft_name = 'Pe-2 ser.35'
-        aircraft_key = CONFIG.planes.name_to_key(aircraft_name)
+        aircraft_key = IOC.config.planes.name_to_key(aircraft_name)
         managed_airfield = self.storage.airfields.load_by_name(TEST_TVD_NAME, TEST_AIRFIELD_NAME)
         managed_airfield.planes[aircraft_key] = 10
         expected = managed_airfield.planes[aircraft_key] + 1
@@ -98,9 +100,9 @@ class TestAirfieldsController(unittest.TestCase):
 
     def test_get_country(self):
         """Определяется страна аэродрома по узлу графа"""
-        controller = AirfieldsController(CONFIG)
-        builder = TvdBuilder(TEST_TVD_NAME, CONFIG)
-        builder.grid_control.get_file = _get_xgml_file_mock
+        controller = AirfieldsController(IOC)
+        builder = TvdBuilder(TEST_TVD_NAME, IOC)
+        IOC.grid_controller.get_file = _get_xgml_file_mock
         verbovka = controller.get_airfield_in_radius(
             tvd_name=TEST_TVD_NAME, x=TEST_AIRFIELD_X, z=TEST_AIRFIELD_Z, radius=10)
         # Act
@@ -110,12 +112,12 @@ class TestAirfieldsController(unittest.TestCase):
 
     def test_add_aircraft(self):
         """Добавляется самолёт на аэродром"""
-        controller = AirfieldsController(CONFIG)
-        builder = TvdBuilder(TEST_TVD_NAME, CONFIG)
-        builder.grid_control.get_file = _get_xgml_file_mock
+        controller = AirfieldsController(IOC)
+        builder = TvdBuilder(TEST_TVD_NAME, IOC)
+        IOC.grid_controller.get_file = _get_xgml_file_mock
         tvd = builder.get_tvd(TEST_TVD_DATE)
         aircraft_name = 'bf 109 f-4'
-        aircraft_key = CONFIG.planes.name_to_key(aircraft_name)
+        aircraft_key = IOC.config.planes.name_to_key(aircraft_name)
         managed_airfield = self.storage.airfields.load_by_name(TEST_TVD_NAME, TEST_AIRFIELD_NAME)
         managed_airfield.planes[aircraft_key] = 10
         self.storage.airfields.update_airfield(managed_airfield)
@@ -128,12 +130,12 @@ class TestAirfieldsController(unittest.TestCase):
 
     def test_add_aircraft_wrong(self):
         """НЕ добавляется самолёт на аэродром другой страны"""
-        controller = AirfieldsController(CONFIG)
-        builder = TvdBuilder(TEST_TVD_NAME, CONFIG)
-        builder.grid_control.get_file = _get_xgml_file_mock
+        controller = AirfieldsController(IOC)
+        builder = TvdBuilder(TEST_TVD_NAME, IOC)
+        IOC.grid_controller.get_file = _get_xgml_file_mock
         tvd = builder.get_tvd(TEST_TVD_DATE)
         aircraft_name = 'lagg-3 ser.29'
-        aircraft_key = CONFIG.planes.name_to_key(aircraft_name)
+        aircraft_key = IOC.config.planes.name_to_key(aircraft_name)
         # Act
         controller.add_aircraft(tvd, TEST_AIRFIELD_NAME, aircraft_name, 5)
         # Assert
