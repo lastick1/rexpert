@@ -86,6 +86,7 @@ class CampaignController:
     @property
     def current_tvd(self) -> Tvd:
         """Текущий ТВД"""
+        # TODO? кэшировать значение и обновлять при start_mission
         campaign_map = self.campaign_map
         tvd_builder = self.tvd_builders[campaign_map.tvd_name]
         return tvd_builder.get_tvd(campaign_map.date.strftime(DATE_FORMAT))
@@ -106,6 +107,7 @@ class CampaignController:
         self.missions.append(Mission(name, source, additional))
         next_name = 'result1' if name == 'result2' else 'result2'
         self._ioc.generator.make_mission(next_name, 'moscow')
+        # TODO спарсить исходники стартовавшей миссии
         # TODO удалить предыдущую миссию
 
     def end_mission(self, atype: atypes.Atype7):
