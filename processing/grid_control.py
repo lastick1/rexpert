@@ -14,13 +14,13 @@ from .grid import Grid
 class GridController:
     """Класс, выполняющий управление графами в кампании"""
     def __init__(self, config: configs.Config):
-        self.config = config
-        self.xgml_folders = {tvd_name: pathlib.Path(self.config.main.current_grid_folder.joinpath(tvd_name))
+        self._config = config
+        self.xgml_folders = {tvd_name: pathlib.Path(self._config.main.current_grid_folder.joinpath(tvd_name))
                              for tvd_name in config.mgen.maps}
 
     def initialize(self, tvd_name: str):
         """Инициализировать граф указанного ТВД в кампании"""
-        xgml_file = str(self.config.mgen.xgml[tvd_name])
+        xgml_file = str(self._config.mgen.xgml[tvd_name])
         tvd_dir = self.xgml_folders[tvd_name]
         if not tvd_dir.exists():
             tvd_dir.mkdir(parents=True)
@@ -39,9 +39,9 @@ class GridController:
 
     def get_grid(self, tvd_name: str) -> Grid:
         """Получить граф указанного ТВД кампании"""
-        xgml = Xgml(tvd_name, self.config.mgen)
+        xgml = Xgml(tvd_name, self._config.mgen)
         xgml.parse(self.get_file(tvd_name))
-        return Grid(tvd_name, xgml.nodes, xgml.edges, self.config.mgen)
+        return Grid(tvd_name, xgml.nodes, xgml.edges, self._config.mgen)
 
     def capture(self, tvd_name: str, pos: dict, country: int):
         """Выполнить захват узла в указанной позиции"""
@@ -50,5 +50,5 @@ class GridController:
         grid.capture(pos['x'], pos['z'], country)
         index = len(list(tvd_dir.glob('*.xgml')))
         file = str(tvd_dir.joinpath('{}_{}.xgml'.format(tvd_name, index)))
-        xgml = Xgml(tvd_name, self.config.mgen)
+        xgml = Xgml(tvd_name, self._config.mgen)
         xgml.save_file(file, grid.nodes, grid.edges)
