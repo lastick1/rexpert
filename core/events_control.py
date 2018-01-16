@@ -12,14 +12,14 @@ from .parse_mission_log_line import parse, UnexpectedATypeWarning
 from .objects_control import ObjectsController
 
 
-class EventsController:
+class EventsController:  # pylint: disable=R0902,R0904,R0913
     """Контроллер обработки событий из логов"""
     def __init__(self, objects: configs.Objects, config: configs.Config):
         """
         :param objects: Справочник объектов в логах
         """
-        self.objects = objects
-        self.config = config
+        self._objects = objects
+        self._config = config
         self.tik_last = 0
         self.objects_controller = ObjectsController(config)
         self.players_controller = processing.PlayersController(
@@ -63,27 +63,27 @@ class EventsController:
         except UnexpectedATypeWarning:
             logging.warning('unexpected atype: [%s]', line)
 
-    def update_tik(self, tik: int) -> None:
+    def _update_tik(self, tik: int) -> None:
         """Обновить тик"""
         self.tik_last = tik
 
     def event_mission_start(self, tik: int, date: datetime.datetime, file_path: str,
                             game_type_id, countries: dict, settings, mods, preset_id) -> None:
         """AType 0 handler"""
-        self.update_tik(tik)
+        self._update_tik(tik)
         atype = atypes.Atype0(tik, date, file_path, game_type_id, countries, settings, mods, preset_id)
         self.campaign_controller.start_mission(atype)
 
     def event_hit(self, tik: int, ammo: str, attacker_id: int, target_id: int) -> None:
         """AType 1 handler"""
         atype = atypes.Atype1(tik, ammo, attacker_id, target_id)
-        self.update_tik(atype.tik)
+        self._update_tik(atype.tik)
 
     def event_damage(self, tik: int, damage: float, attacker_id: int, target_id: int, pos: dict) -> None:
         """AType 2 handler"""
         atype = atypes.Atype2(tik, damage, attacker_id, target_id, pos)
         self.objects_controller.damage(atype)
-        self.update_tik(atype.tik)
+        self._update_tik(atype.tik)
         # дамага может не быть из-за бага логов
 
     def event_kill(self, tik: int, attacker_id: int, target_id: int, pos: dict) -> None:
@@ -91,16 +91,16 @@ class EventsController:
         atype = atypes.Atype3(tik, attacker_id, target_id, pos)
         self.objects_controller.kill(atype)
         ground = self.objects_controller.get_ground(atype.target_id)
-        if type(ground) is log_objects.Ground:
+        if isinstance(ground, log_objects.Ground):
             self.ground_controller.kill(ground, atype)
-        self.update_tik(atype.tik)
+        self._update_tik(atype.tik)
         # в логах так бывает что кто-то умер, а кто не известно :)
 
     def event_sortie_end(self, tik: int, aircraft_id: int, bot_id: int, cartridges: int,
                          shells: int, bombs: int, rockets: int, pos: dict) -> None:
         """AType 4 handler"""
         atype = atypes.Atype4(tik, aircraft_id, bot_id, cartridges, shells, bombs, rockets, pos)
-        self.update_tik(atype.tik)
+        self._update_tik(atype.tik)
         # бывают события дубли - проверяем
 
     def event_takeoff(self, tik: int, aircraft_id: int, pos: dict) -> None:
@@ -108,36 +108,37 @@ class EventsController:
         atype = atypes.Atype5(tik, aircraft_id, pos)
         self.objects_controller.takeoff(atype)
 
-        self.update_tik(atype.tik)
+        self._update_tik(atype.tik)
 
     def event_landing(self, tik: int, aircraft_id: int, pos: dict) -> None:
         """AType 6 handler"""
         atype = atypes.Atype6(tik, aircraft_id, pos)
         self.objects_controller.land(atype)
 
-        self.update_tik(atype.tik)
+        self._update_tik(atype.tik)
 
     def event_mission_end(self, tik: int) -> None:
         """AType 7 handler"""
         atype = atypes.Atype7(tik)
-        self.update_tik(atype.tik)
+        self._update_tik(atype.tik)
         self.objects_controller.end_mission()
-        self.campaign_controller.end_mission()
+        self.campaign_controller.end_mission(atype)
         self.is_correctly_completed = True
 
     def event_mission_result(self, tik: int, object_id: int, coal_id: int, task_type_id: int,
                              success: int, icon_type_id: int, pos: dict) -> None:
         """AType 8 handler"""
         atype = atypes.Atype8(tik, object_id, coal_id, task_type_id, success, icon_type_id, pos)
-        self.update_tik(atype.tik)
+        self._update_tik(atype.tik)
 
     def event_airfield(self, tik: int, airfield_id: int, country_id: int, coal_id: int,
                        aircraft_id_list: list, pos: dict) -> None:
         """AType 9 handler"""
         atype = atypes.Atype9(tik, airfield_id, country_id, coal_id, aircraft_id_list, pos)
         self.objects_controller.airfield(atype)
-        self.update_tik(atype.tik)
+        self._update_tik(atype.tik)
 
+    # pylint: disable=R0914
     def event_player(self, tik: int, aircraft_id: int, bot_id: int, account_id: str,
                      profile_id: str, name: str, pos: dict, aircraft_name: str, country_id: int,
                      coal_id: int, airfield_id: int, airstart: bool, parent_id: int,
@@ -151,35 +152,35 @@ class EventsController:
         self.players_controller.spawn(self.objects_controller.get_bot(atype.bot_id), atype.account_id, atype.name)
         # TODO оптимизировать, т.к. создание объекта ТВД ресурсоёмкая задача
         self.airfields_controller.spawn_aircraft(self.campaign_controller.current_tvd, atype)
-        self.update_tik(atype.tik)
+        self._update_tik(atype.tik)
 
     def event_group(self, tik: int, group_id: int, members_id: int, leader_id: int) -> None:
         """AType 11 handler"""
         atype = atypes.Atype11(tik, group_id, members_id, leader_id)
-        self.update_tik(atype.tik)
+        self._update_tik(atype.tik)
 
     def event_game_object(self, tik: int, object_id: int, object_name: str, country_id: int,
                           coal_id: int, name: str, parent_id: int) -> None:
         """AType 12 handler"""
         atype = atypes.Atype12(tik, object_id, object_name, country_id, coal_id, name, parent_id)
-        self.objects_controller.create_object(atype, self.objects[atype.object_name])
-        self.update_tik(atype.tik)
+        self.objects_controller.create_object(atype, self._objects[atype.object_name])
+        self._update_tik(atype.tik)
 
     def event_influence_area(self, tik: int, area_id: int, country_id: int, coal_id: int,
                              enabled: bool, in_air: bool) -> None:
         """AType 13 handler"""
         atype = atypes.Atype13(tik, area_id, country_id, coal_id, enabled, in_air)
-        self.update_tik(atype.tik)
+        self._update_tik(atype.tik)
 
     def event_influence_area_boundary(self, tik: int, area_id: int, boundary) -> None:
         """AType 14 handler"""
         atype = atypes.Atype14(tik, area_id, boundary)
-        self.update_tik(atype.tik)
+        self._update_tik(atype.tik)
 
     def event_log_version(self, tik: int, version) -> None:
         """AType 15 handler"""
         atype = atypes.Atype15(tik, version)
-        self.update_tik(atype.tik)
+        self._update_tik(atype.tik)
 
     def event_bot_deinitialization(self, tik: int, bot_id: int, pos: dict) -> None:
         """AType 16 handler"""
@@ -188,37 +189,34 @@ class EventsController:
         self.players_controller.finish(bot)
         self.airfields_controller.finish(self.campaign_controller.current_tvd, bot)
         self.objects_controller.deinitialize(atype)
-        self.update_tik(atype.tik)
+        self._update_tik(atype.tik)
 
     def event_pos_changed(self, tik: int, object_id: int, pos: dict) -> None:
         """AType 17 handler"""
         atype = atypes.Atype17(tik, object_id, pos)
         self.objects_controller.change_pos(atype)
-        self.update_tik(atype.tik)
+        self._update_tik(atype.tik)
 
     def event_bot_eject_leave(self, tik: int, bot_id: int, parent_id: int, pos: dict) -> None:
         """AType 18 handler"""
         atype = atypes.Atype18(tik, bot_id, parent_id, pos)
         self.objects_controller.eject_leave(atype)
-        self.update_tik(atype.tik)
+        self._update_tik(atype.tik)
 
     def event_round_end(self, tik: int) -> None:
         """AType 19 handler"""
-        # TODO подвести итог миссии
         atype = atypes.Atype19(tik)
-        self.campaign_controller.end_round()
-        self.update_tik(atype.tik)
+        self.campaign_controller.end_round(atype)
+        self._update_tik(atype.tik)
 
     def event_player_connected(self, tik: int, account_id: str, profile_id: str) -> None:
         """AType 20 handler"""
         atype = atypes.Atype20(tik, account_id, profile_id)
-        self.update_tik(atype.tik)
+        self._update_tik(atype.tik)
         self.players_controller.connect(atype.account_id)
 
     def event_player_disconnected(self, tik: int, account_id: str, profile_id: str) -> None:
         """AType 21 handler"""
         atype = atypes.Atype21(tik, account_id, profile_id)
-        self.update_tik(atype.tik)
+        self._update_tik(atype.tik)
         self.players_controller.disconnect(atype.account_id)
-
-

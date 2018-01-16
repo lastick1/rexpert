@@ -94,9 +94,9 @@ class CampaignController:
         return tvd_builder.get_tvd(campaign_map.date.strftime(DATE_FORMAT))
 
     def start_mission(self, atype: atypes.Atype0):
-        """AType:0"""
-        name = atype.file_path.replace(r'Multiplayer/Dogfight', '').replace('\\', '')
-        name = name.replace(r'.msnbin', '')
+        """Обработать начало миссии"""
+        name = atype.file_path.replace('Multiplayer/Dogfight', '').replace('\\', '')
+        name = name.replace('.msnbin', '')
         source = Path(self._dogfight.joinpath(name + '_src.Mission')).absolute()
         additional = {
             'date': atype.date,
@@ -110,9 +110,13 @@ class CampaignController:
         next_name = 'result1' if name == 'result2' else 'result2'
         self.generator.make_mission(next_name, 'moscow')
 
-    def end_mission(self):
-        """AType:7"""
+    def end_mission(self, atype: atypes.Atype7):
+        """Обработать завершение миссии"""
         pass
+
+    def end_round(self, atype: atypes.Atype19):
+        """Обработать завершение раунда (4-минутный отсчёт до конца миссии)"""
+        # TODO подвести итог миссии
 
     def save_mission_info(self, m, m_tvd_name):
         """ Сохранение информации о миссии в JSON для сайта (UTC время конца, самолёты, дата миссии) """
