@@ -109,14 +109,17 @@ class CampaignController:
         self.missions.append(Mission(name, source, additional))
         next_name = 'result1' if name == 'result2' else 'result2'
         self.generator.make_mission(next_name, 'moscow')
+        # TODO удалить предыдущую миссию
 
     def end_mission(self, atype: atypes.Atype7):
         """Обработать завершение миссии"""
-        pass
+        # TODO "приземлить" всех
 
     def end_round(self, atype: atypes.Atype19):
         """Обработать завершение раунда (4-минутный отсчёт до конца миссии)"""
         # TODO подвести итог миссии
+        # TODO отправить инпут завершения миссии (победа/ничья)
+        # TODO сгенерировать следующую миссию
 
     def save_mission_info(self, m, m_tvd_name):
         """ Сохранение информации о миссии в JSON для сайта (UTC время конца, самолёты, дата миссии) """
