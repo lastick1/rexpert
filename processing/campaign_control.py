@@ -29,17 +29,16 @@ class CampaignController:
         self._ioc = ioc
         self._dogfight = ioc.config.main.dogfight_folder
         self.missions = list()
-        self.main = ioc.config.main
-        self.mgen = ioc.config.mgen
         self.vendor = processing.AircraftVendor(ioc.config.planes, ioc.config.gameplay)
         self.tvd_builders = {x: processing.TvdBuilder(x, ioc) for x in ioc.config.mgen.maps}
 
     def initialize_map(self, tvd_name: str):
         """Инициализировать карту кампании"""
-        start = self.mgen.cfg[tvd_name][START_DATE]
-        order = list(self.mgen.maps).index(tvd_name) + 1
+        start = self._ioc.config.mgen.cfg[tvd_name][START_DATE]
+        order = list(self._ioc.config.mgen.maps).index(tvd_name) + 1
         campaign_map = CampaignMap(order=order, date=start, mission_date=start, tvd_name=tvd_name, months=list())
-        airfields = AirfieldsController.initialize_managed_airfields(self.mgen.airfields_data[campaign_map.tvd_name])
+        airfields = AirfieldsController.initialize_managed_airfields(
+            self._ioc.config.mgen.airfields_data[campaign_map.tvd_name])
         tvd_builder = self.tvd_builders[campaign_map.tvd_name]
         tvd = tvd_builder.get_tvd(campaign_map.date.strftime(DATE_FORMAT))
         supply = self.vendor.get_month_supply(campaign_map.current_month, campaign_map)
@@ -68,7 +67,7 @@ class CampaignController:
 
     def initialize(self):
         """Инициализировать кампанию в БД"""
-        for tvd_name in self.mgen.maps:
+        for tvd_name in self._ioc.config.mgen.maps:
             self.initialize_map(tvd_name)
 
         campaign_map = self._ioc.storage.campaign_maps.load_by_order(1)
@@ -79,7 +78,7 @@ class CampaignController:
         """Текущая карта кампании"""
         maps = self._ioc.storage.campaign_maps.load_all()
         for campaign in maps:
-            if not campaign.is_ended(self.mgen.cfg[campaign.tvd_name][END_DATE]):
+            if not campaign.is_ended(self._ioc.config.mgen.cfg[campaign.tvd_name][END_DATE]):
                 return campaign
         raise NameError('Campaign finished')
 
@@ -128,9 +127,9 @@ class CampaignController:
         ))
         period_id = self.tvds[m_tvd_name].current_date_stage_id
         m_length = datetime.timedelta(
-            hours=self.main.mission_time['h'],
-            minutes=self.main.mission_time['m'],
-            seconds=self.main.mission_time['s']
+            hours=self._ioc.config.main.mission_time['h'],
+            minutes=self._ioc.config.main.mission_time['m'],
+            seconds=self._ioc.config.main.mission_time['s']
         )
         m_start = datetime.datetime.strptime(
             m.name, 'missionReport(%Y-%m-%d_%H-%M-%S)').replace(tzinfo=datetime.timezone.utc)

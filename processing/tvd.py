@@ -123,10 +123,6 @@ class TvdBuilder:
         self.boundary_builder = processing.BoundaryBuilder(north=north, east=east, south=south, west=west)
 
     @property
-    def sides(self) -> list:
-        return self._ioc.config.mgen.cfg['sides']
-
-    @property
     def seasons_data(self) -> tuple:
         """данные по сезонам из daytime.csv"""
         with self._ioc.config.mgen.daytime_files[self.name].open() as stream:
