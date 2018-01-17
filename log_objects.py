@@ -12,12 +12,13 @@ class Object:
         self.country_id = country_id
         self.coal_id = coal_id
         self.name = name
-        self.damage = 0.0
+        self.taken_damage = 0.0
         self.pos = pos
         self.killed = False
 
     def deinitialize(self, pos: dict):
         """Пометить объект как удалённый из игрового мира"""
+        self.update_pos(pos)
         self.deinitialized = True
 
     def update_pos(self, pos: dict) -> None:
@@ -27,7 +28,7 @@ class Object:
 
     def damage(self, damage: float, pos: dict) -> None:
         """Повредить объект"""
-        self.damage += damage
+        self.taken_damage += damage
         self.update_pos(pos)
 
     def kill(self, pos: dict) -> None:
