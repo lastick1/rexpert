@@ -22,7 +22,7 @@ OBJECTS = configs.Objects()
 
 TEST_TVD_NAME = 'moscow'
 TEST_TVD_DATE = '01.01.1941'
-TEST_FIELDS = pathlib.Path(r'./data/moscow_fields.csv')
+TEST_FIELDS = pathlib.Path('./data/moscow_fields.csv')
 
 
 def _get_xgml_file_mock(tvd_name: str) -> str:
@@ -56,19 +56,6 @@ class TestIntegration(unittest.TestCase):
             controller.process_line(line)
         # Assert
         self.assertEqual(True, controller.is_correctly_completed)
-
-    def test_generate_next_with_atype_0(self):
-        """Генерируется следующая миссия с AType:0 в логе"""
-        controller = core.EventsController(IOC)
-        for tvd_name in IOC.config.mgen.maps:
-            IOC.grid_controller.get_file = _get_xgml_file_mock
-            IOC.campaign_controller.initialize_map(tvd_name)
-        # Act
-        for line in pathlib.Path(TEST_LOG1).read_text().split('\n'):
-            controller.process_line(line)
-
-        # Assert
-        self.assertEqual(len(IOC.generator_mock.generations), 1)
 
     def test_bombing(self):
         """Учитываются наземные цели"""

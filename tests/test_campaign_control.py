@@ -31,12 +31,17 @@ class TestCampaignController(unittest.TestCase):
     def setUp(self):
         """Настройка перед тестом"""
         self.get_xgml_file_calls = 0
+        IOC.generator_mock.generations.clear()
         if not TEMP_DIRECTORY.exists():
             TEMP_DIRECTORY.mkdir(parents=True)
         pathlib.Path('./tmp/data/scg/1/blocks_quickmission/airfields_red').mkdir(parents=True)
         pathlib.Path('./tmp/data/scg/1/blocks_quickmission/airfields_blue').mkdir(parents=True)
         pathlib.Path('./tmp/data/scg/2/blocks_quickmission/airfields_red').mkdir(parents=True)
         pathlib.Path('./tmp/data/scg/2/blocks_quickmission/airfields_blue').mkdir(parents=True)
+        pathlib.Path('./tmp/data/scg/1/blocks_quickmission/icons').mkdir(parents=True)
+        pathlib.Path('./tmp/data/scg/2/blocks_quickmission/icons').mkdir(parents=True)
+        pathlib.Path('./tmp/red/').mkdir(parents=True)
+        pathlib.Path('./tmp/blue/').mkdir(parents=True)
 
     def tearDown(self):
         """Удаление базы и очистка временной папки после теста"""
@@ -66,7 +71,7 @@ class TestCampaignController(unittest.TestCase):
         # Act
         campaign.start_mission(atype)
         # Assert
-        self.assertEqual(IOC.generator_mock.generations[0][0], 'result1')
+        self.assertEqual(campaign.next_name, 'result1')
 
     def test_reset(self):
         """Сбрасывается состояние кампании"""
@@ -82,10 +87,6 @@ class TestCampaignController(unittest.TestCase):
 
     def test_generate(self):
         """Генерируется указанная миссия"""
-        pathlib.Path('./tmp/red/').mkdir(parents=True)
-        pathlib.Path('./tmp/blue/').mkdir(parents=True)
-        pathlib.Path('./tmp/data/scg/1/blocks_quickmission/icons').mkdir(parents=True)
-        pathlib.Path('./tmp/data/scg/2/blocks_quickmission/icons').mkdir(parents=True)
         shutil.copy('./data/scg/1/stalin-base.ldf', './tmp/data/scg/1/')
         shutil.copy('./data/scg/2/moscow-base_v2.ldf', './tmp/data/scg/2/')
         campaign = processing.CampaignController(IOC)
@@ -98,6 +99,29 @@ class TestCampaignController(unittest.TestCase):
         campaign.generate('result2')
         # Assert
         self.assertIn(('result2', STALIN), IOC.generator_mock.generations)
+
+    def test_generate_next_with_atype_19(self):
+        """Генерируется следующая миссия с AType:19 в логе"""
+        campaign = processing.CampaignController(IOC)
+        IOC.grid_controller.get_file = self._get_xgml_file_mock
+        campaign.initialize_map(MOSCOW)
+        atype0 = atypes.Atype0(
+            tik=0,
+            date=datetime.datetime.strptime('01.10.1941', DATE_FORMAT),
+            file_path=r'Multiplayer/Dogfight\result1.msnbin',
+            game_type_id=2,
+            countries=dict(),
+            settings=(0, 0),
+            mods=False,
+            preset_id=0
+        )
+
+        # Act
+        campaign.start_mission(atype0)
+        campaign.end_round(atypes.Atype19(1312))
+
+        # Assert
+        self.assertIn(('result2', MOSCOW), IOC.generator_mock.generations)
 
     def test_initialize_map(self):
         """Инициализируется карта кампании"""
