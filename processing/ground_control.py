@@ -10,6 +10,10 @@ class GroundController:
         self.ground_kills = list()
         self._ioc = ioc
 
+    def start_mission(self):
+        """Обработать начало миссии"""
+        self.ground_kills.clear()
+
     def kill(self, target: log_objects.Ground, atype: atypes.Atype3) -> None:
         """Обработать уничтожение наземного объекта"""
         if isinstance(target, log_objects.Ground):

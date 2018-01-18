@@ -58,6 +58,7 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         """AType 0 handler"""
         self._update_tik(tik)
         atype = atypes.Atype0(tik, date, file_path, game_type_id, countries, settings, mods, preset_id)
+        self._ioc.objects_controller.start_mission()
         self._ioc.campaign_controller.start_mission(atype)
 
     def event_hit(self, tik: int, ammo: str, attacker_id: int, target_id: int) -> None:
@@ -93,7 +94,6 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         """AType 5 handler"""
         atype = atypes.Atype5(tik, aircraft_id, pos)
         self._ioc.objects_controller.takeoff(atype)
-
         self._update_tik(atype.tik)
 
     def event_landing(self, tik: int, aircraft_id: int, pos: dict) -> None:
@@ -107,9 +107,8 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         """AType 7 handler"""
         atype = atypes.Atype7(tik)
         self._update_tik(atype.tik)
-        self._ioc.objects_controller.end_mission()
         self._ioc.campaign_controller.end_mission(atype)
-        self.is_correctly_completed = True
+        self._ioc.objects_controller.end_mission()
 
     def event_mission_result(self, tik: int, object_id: int, coal_id: int, task_type_id: int,
                              success: int, icon_type_id: int, pos: dict) -> None:

@@ -65,6 +65,9 @@ class ObjectsController:
         if airfield_id in self._objects:
             return self._objects[airfield_id]
 
+    def start_mission(self):
+        """Обработать начало миссии"""
+
     def damage(self, atype: atypes.Atype2):
         """Обработать событие урона"""
         target = self._objects[atype.target_id]
@@ -72,7 +75,7 @@ class ObjectsController:
         if atype.attacker_id:
             attacker = self.get_object(atype.attacker_id)
             attacker.update_pos(atype.pos)
-            if type(attacker) is log_objects.Aircraft:
+            if isinstance(attacker, log_objects.Aircraft):
                 _to_aircraft(attacker).add_damage(target, atype.damage)
 
     def kill(self, atype: atypes.Atype3):
@@ -82,7 +85,7 @@ class ObjectsController:
         if atype.attacker_id:
             attacker = self.get_object(atype.attacker_id)
             attacker.update_pos(atype.pos)
-            if type(attacker) is log_objects.Aircraft:
+            if isinstance(attacker, log_objects.Aircraft):
                 _to_aircraft(attacker).add_kill(target)
 
     def takeoff(self, atype: atypes.Atype5):
@@ -101,6 +104,9 @@ class ObjectsController:
             aircraft.landed = True
             aircraft.is_safe = True
         self._objects.clear()
+        self._bots.clear()
+        self._airfields.clear()
+        self._aircrafts.clear()
 
     def airfield(self, atype: atypes.Atype9):
         """Создать/обновленить аэродром"""
