@@ -21,6 +21,7 @@ class Mission:
         self.name = name
         self.source = source
         self.additional = additional
+        self.is_correctly_completed = False
 
 
 class CampaignController:
@@ -114,6 +115,7 @@ class CampaignController:
 
     def end_mission(self, atype: atypes.Atype7):
         """Обработать завершение миссии"""
+        self.missions[-1].is_correctly_completed = True
         # TODO "приземлить" всех
         # TODO подвести итог ТВД, если он изменился
         # TODO подвести итог кампании, если она закончилась

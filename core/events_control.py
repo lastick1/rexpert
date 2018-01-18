@@ -13,7 +13,6 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
     def __init__(self, _ioc):
         self._ioc = _ioc
         self.tik_last = 0
-        self.is_correctly_completed = False
         self.countries = dict()
 
         # порядок важен т.к. позиция в tuple соответствует ID события

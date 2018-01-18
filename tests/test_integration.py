@@ -55,7 +55,7 @@ class TestIntegration(unittest.TestCase):
         for line in pathlib.Path(TEST_LOG1).read_text().split('\n'):
             controller.process_line(line)
         # Assert
-        self.assertEqual(True, controller.is_correctly_completed)
+        self.assertEqual(True, IOC.campaign_controller.missions[-1].is_correctly_completed)
 
     def test_bombing(self):
         """Учитываются наземные цели"""
