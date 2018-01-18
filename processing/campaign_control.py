@@ -22,6 +22,7 @@ class Mission:
         self.source = source
         self.additional = additional
         self.is_correctly_completed = False
+        self.tik_last = 0
 
 
 class CampaignController:
@@ -32,6 +33,12 @@ class CampaignController:
         self.missions = list()
         self.vendor = processing.AircraftVendor(ioc.config.planes, ioc.config.gameplay)
         self.tvd_builders = {x: processing.TvdBuilder(x, ioc) for x in ioc.config.mgen.maps}
+
+    def _update_tik(self, tik: int) -> None:
+        """Обновить тик"""
+        if self.missions[-1].tik_last > tik:
+            raise NameError('некорректный порядок лога')
+        self.missions[-1].tik_last = tik
 
     def initialize_map(self, tvd_name: str):
         """Инициализировать карту кампании"""
@@ -110,11 +117,13 @@ class CampaignController:
             'preset_id': atype.preset_id
         }
         self.missions.append(Mission(name, source, additional))
+        self._update_tik(atype.tik)
         # TODO спарсить исходники стартовавшей миссии
         # TODO удалить предыдущую миссию
 
     def end_mission(self, atype: atypes.Atype7):
         """Обработать завершение миссии"""
+        self._update_tik(atype.tik)
         self.missions[-1].is_correctly_completed = True
         # TODO "приземлить" всех
         # TODO подвести итог ТВД, если он изменился
@@ -122,6 +131,7 @@ class CampaignController:
 
     def end_round(self, atype: atypes.Atype19):
         """Обработать завершение раунда (4-минутный отсчёт до конца миссии)"""
+        self._update_tik(atype.tik)
         # TODO подвести итог миссии
         # TODO отправить инпут завершения миссии (победа/ничья)
         # TODO определить имя ТВД для следующей миссии
