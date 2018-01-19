@@ -26,6 +26,12 @@ TEST_TVD_DATE = '01.09.1941'
 TEST_TVD_NAME = MOSCOW
 
 
+def _parse_mock(name: str) -> processing.SourceMission:
+    """Фальшивый метод парсинга исходников"""
+    return processing.SourceMission(
+        name=name, file=pathlib.Path(), date=TEST_TVD_DATE, guimap=TEST_TVD_NAME, kind='test_kind')
+
+
 class TestCampaignController(unittest.TestCase):
     """Тесты бизнес-логики хода кампании"""
     def setUp(self):
@@ -55,9 +61,11 @@ class TestCampaignController(unittest.TestCase):
 
     def test_next_mission_bin_name(self):
         """Отличается имя следующей миссии от имени текущей"""
-        generator = tests.mocks.GeneratorMock(IOC.config)
         campaign = processing.CampaignController(IOC)
-        campaign.generator = generator
+        IOC.source_parser.parse_in_dogfight = _parse_mock
+        for tvd_name in IOC.config.mgen.maps:
+            IOC.grid_controller.get_file = self._get_xgml_file_mock
+            campaign.initialize_map(tvd_name)
         atype = atypes.Atype0(
             tik=0,
             date=datetime.datetime.strptime('01.10.1941', DATE_FORMAT),
@@ -104,6 +112,7 @@ class TestCampaignController(unittest.TestCase):
         """Генерируется следующая миссия с AType:19 в логе"""
         campaign = processing.CampaignController(IOC)
         IOC.grid_controller.get_file = self._get_xgml_file_mock
+        IOC.source_parser.parse_in_dogfight = _parse_mock
         campaign.initialize_map(MOSCOW)
         atype0 = atypes.Atype0(
             tik=0,

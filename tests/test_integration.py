@@ -35,6 +35,12 @@ def _load_all_campaign_maps():
     return [processing.CampaignMap(1, TEST_TVD_DATE, TEST_TVD_DATE, TEST_TVD_NAME, list())]
 
 
+def _parse_mock(name: str) -> processing.SourceMission:
+    """Фальшивый метод парсинга исходников"""
+    return processing.SourceMission(
+        name=name, file=pathlib.Path(), date=TEST_TVD_DATE, guimap=TEST_TVD_NAME, kind='test_kind')
+
+
 class TestIntegration(unittest.TestCase):
     """Интеграционные тесты"""
     def setUp(self):
@@ -55,10 +61,11 @@ class TestIntegration(unittest.TestCase):
         for line in pathlib.Path(TEST_LOG1).read_text().split('\n'):
             controller.process_line(line)
         # Assert
-        self.assertEqual(True, IOC.campaign_controller.missions[-1].is_correctly_completed)
+        self.assertEqual(True, IOC.campaign_controller.mission.is_correctly_completed)
 
     def test_bombing(self):
         """Учитываются наземные цели"""
+        IOC.source_parser.parse_in_dogfight = _parse_mock
         controller = core.EventsController(IOC)
         for tvd_name in IOC.config.mgen.maps:
             IOC.grid_controller.get_file = _get_xgml_file_mock

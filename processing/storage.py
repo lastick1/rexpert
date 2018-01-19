@@ -4,7 +4,7 @@ import pymongo
 import configs
 from .airfield import ManagedAirfield, NAME, PLANES, POS
 from .player import Player
-from .campaign_map import CampaignMap, ORDER, DATE, MISSION_DATE, MONTHS, MISSION
+from .campaign_map import CampaignMap, CampaignMission, ORDER, DATE, MISSION_DATE, MONTHS, MISSION, DATE_FORMAT
 from .division import Division, UNITS
 
 ID = '_id'
@@ -47,13 +47,14 @@ class CampaignMaps(CollectionWrapper):
             mission_date=document[MISSION_DATE],
             tvd_name=document[TVD_NAME],
             months=document[MONTHS],
-            mission=document[MISSION]
+            mission=CampaignMissions.convert_from_document(document[MISSION])
         )
 
     def update(self, campaign_map: CampaignMap):
         """Обновить/создать документ в БД"""
+        _b = _update_request_body(campaign_map.to_dict())
         self.collection.update_one(
-            {TVD_NAME: campaign_map.tvd_name}, _update_request_body(campaign_map.to_dict()), upsert=True)
+            {TVD_NAME: campaign_map.tvd_name}, _b, upsert=True)
 
     def count(self) -> int:
         """Посчитать количество карт в кампании"""
@@ -74,8 +75,43 @@ class CampaignMaps(CollectionWrapper):
         return self._convert_from_document(self.collection.find_one({TVD_NAME: tvd_name}))
 
 
+class CampaignMissions(CollectionWrapper):
+    """Работа с документами миссий в БД"""
+
+    @staticmethod
+    def convert_from_document(document) -> CampaignMission:
+        if document:
+            return CampaignMission(
+                kind=document['kind'],
+                file=document['file'],
+                date=document['date'],
+                guimap=document['guimap'],
+                additional=document['additional'],
+                server_inputs=document['server_inputs'],
+                objectives=document['objectives'],
+                airfields=document['airfields'],
+                division_units=document['division_units']
+            )
+
+    def update(self, mission: CampaignMission):
+        """Обновить/создать документ в БД"""
+        self.update_one({'date': mission.date.strftime(DATE_FORMAT)}, _update_request_body(mission.to_dict()))
+
+    def load_by_date(self, date: str) -> CampaignMission:
+        """Загрузить миссию по её игровой дате"""
+        return self.convert_from_document(self.collection.find_one({'date': date}))
+
+    def load_all_by_guimap(self, tvd_name) -> list:
+        """Загрузить все миссии указанного ТВД"""
+        result = list()
+        for each in self.collection.find({'guimap': tvd_name}):
+            result.append(self.convert_from_document(each))
+        return result
+
+
 class Divisions(CollectionWrapper):
     """Работа с документами дивизий в БД"""
+
     @staticmethod
     def _make_filter(tvd_name: str, division_name: str) -> dict:
         """Построить фильтр для поиска документа дивизии в БД"""
@@ -173,6 +209,7 @@ class Storage:
         self.airfields = Airfields(self._database['Airfields'])
         self.players = Players(self._database['Players'])
         self.campaign_maps = CampaignMaps(self._database['CampaignMaps'])
+        self.campaign_missions = CampaignMissions(self._database['CampaignMissions'])
         self.divisions = Divisions(self._database['Divisions'])
 
     def drop_database(self):

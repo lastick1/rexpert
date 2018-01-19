@@ -39,7 +39,7 @@ class CampaignMap:
             DATE: self.date.strftime(DATE_FORMAT),
             MISSION_DATE: self.mission_date.strftime(DATE_FORMAT),
             MONTHS: self.months,
-            MISSION: self.mission
+            MISSION: self.mission.to_dict() if self.mission else None
         }
 
     @property
