@@ -194,7 +194,10 @@ class TestPlayersController(unittest.TestCase):
         """Отправляется команда кика при запрещённом взлёте"""
         self.fail('not implemented')
 
-    # TODO test_reset_players
+    @unittest.skip("not implemented")
+    def test_reset(self):
+        """Сбрасывается состояние игроков в кампании"""
+        self.fail()
 
 
 if __name__ == '__main__':
