@@ -20,8 +20,8 @@ class Player:
         self._nickname = data[NICKNAME]
         self.ban_expire_date = data[BAN_DATE]
         self.previous_nicknames = data[KNOWN_NICKNAMES]
-        self.unlocks = data[UNLOCKS]
-        self.online = data[ONLINE]
+        self.unlocks: int = data[UNLOCKS]
+        self.online: bool = data[ONLINE]
 
     def to_dict(self) -> dict:
         """Сериализация в словарь для MongoDB"""

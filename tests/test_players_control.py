@@ -5,7 +5,6 @@ import pathlib
 
 import atypes
 import configs
-import log_objects
 import tests
 
 import processing
@@ -41,7 +40,9 @@ def _atype_12_stub(object_id: int, object_name: str, country: int, name: str, pa
 class TestPlayersController(unittest.TestCase):
     """Тесты событий с обработкой данных игроков"""
     def setUp(self):
+        TEST_PLAYER[UNLOCKS] = 1
         IOC.console_mock.received_private_messages.clear()
+        IOC.console_mock.kicks.clear()
 
     def tearDown(self):
         IOC.storage.drop_database()
@@ -79,6 +80,7 @@ class TestPlayersController(unittest.TestCase):
         IOC.objects_controller.create_object(atype12_bot, OBJECTS[bot_name])
         IOC.objects_controller.spawn(atype10)
         # Act
+        controller.start_mission()
         controller.spawn(atype10)
         # Assert
         player = IOC.storage.players.collection.find_one(FILTER)
@@ -97,6 +99,7 @@ class TestPlayersController(unittest.TestCase):
         IOC.objects_controller.create_object(atype12_bot, OBJECTS[bot_name])
         IOC.objects_controller.spawn(atype10)
         # Act
+        controller.start_mission()
         controller.spawn(atype10)
         # Assert
         self.assertIn(
@@ -116,6 +119,7 @@ class TestPlayersController(unittest.TestCase):
         IOC.objects_controller.create_object(atype12_bot, OBJECTS[bot_name])
         IOC.objects_controller.spawn(atype10)
         # Act
+        controller.start_mission()
         controller.spawn(atype10)
         controller.spawn(atype10)
         # Assert
@@ -135,6 +139,7 @@ class TestPlayersController(unittest.TestCase):
         IOC.objects_controller.create_object(atype12_bot, OBJECTS[bot_name])
         IOC.objects_controller.spawn(atype10)
         # Act
+        controller.start_mission()
         controller.spawn(atype10)
         atype10.name = 'new_nickname'
         controller.spawn(atype10)
@@ -171,6 +176,7 @@ class TestPlayersController(unittest.TestCase):
         damage = 80.0
         expect = TEST_PLAYER[UNLOCKS] + 1
         # Act
+        controller.start_mission()
         controller.spawn(atype10)
         IOC.objects_controller.damage(atypes.Atype2(8999, damage, aircraft.obj_id, target.obj_id, pos))
         controller.finish(atypes.Atype16(9222, bot.obj_id, pos))
@@ -196,6 +202,7 @@ class TestPlayersController(unittest.TestCase):
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
         expect = TEST_PLAYER[UNLOCKS] + 1
         # Act
+        controller.start_mission()
         controller.spawn(atype10)
         IOC.objects_controller.kill(atypes.Atype3(7888, aircraft.obj_id, target.obj_id, pos))
         controller.finish(atypes.Atype16(9222, bot.obj_id, pos))
@@ -221,6 +228,7 @@ class TestPlayersController(unittest.TestCase):
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
         expect = TEST_PLAYER[UNLOCKS]
         # Act
+        controller.start_mission()
         controller.spawn(atype10)
         IOC.objects_controller.takeoff(atypes.Atype5(3333, aircraft.obj_id, pos))
         IOC.objects_controller.kill(atypes.Atype3(7888, aircraft.obj_id, target.obj_id, pos))
@@ -247,6 +255,7 @@ class TestPlayersController(unittest.TestCase):
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
         expect = TEST_PLAYER[UNLOCKS]
         # Act
+        controller.start_mission()
         controller.spawn(atype10)
         IOC.objects_controller.kill(atypes.Atype3(7888, aircraft.obj_id, target.obj_id, pos))
         controller.finish(atypes.Atype16(9222, bot.obj_id, pos))
@@ -257,12 +266,49 @@ class TestPlayersController(unittest.TestCase):
 
     def test_msg_restricted_takeoff(self):
         """Отправляется предупреждение о запрете взлёта"""
-        self.assertGreater(len(IOC.console_mock.received_private_messages), 0)
+        TEST_PLAYER[UNLOCKS] = 0
+        _create(FILTER, TEST_PLAYER)
+        controller = processing.PlayersController(IOC)
+        aircraft_name = 'I-16 type 24'
+        bot_name = 'BotPilot'
+        pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
+        atype12_aircraft = _atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
+        atype12_bot = _atype_12_stub(2, bot_name, 201, 'test_bot', 1)
+        atype10 = _atype_10_stub(1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
+        aircraft = IOC.objects_controller.create_object(atype12_aircraft, OBJECTS[aircraft_name])
+        IOC.objects_controller.create_object(atype12_bot, OBJECTS[bot_name])
+        atype5 = atypes.Atype5(2132, aircraft.obj_id, pos)
+        # Act
+        controller.start_mission()
+        IOC.objects_controller.spawn(atype10)
+        controller.spawn(atype10)
+        IOC.objects_controller.takeoff(atype5)
+        controller.takeoff(atype5)
+        # Assert
+        self.assertGreater(len(IOC.console_mock.received_private_messages), 1)  # приветствие + предупреждение
 
-    @unittest.skip("not implemented")
     def test_kick_restricted_takeoff(self):
         """Отправляется команда кика при запрещённом взлёте"""
-        self.fail('not implemented')
+        TEST_PLAYER[UNLOCKS] = 0
+        _create(FILTER, TEST_PLAYER)
+        controller = processing.PlayersController(IOC)
+        aircraft_name = 'I-16 type 24'
+        bot_name = 'BotPilot'
+        pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
+        atype12_aircraft = _atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
+        atype12_bot = _atype_12_stub(2, bot_name, 201, 'test_bot', 1)
+        atype10 = _atype_10_stub(1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
+        aircraft = IOC.objects_controller.create_object(atype12_aircraft, OBJECTS[aircraft_name])
+        IOC.objects_controller.create_object(atype12_bot, OBJECTS[bot_name])
+        atype5 = atypes.Atype5(2132, aircraft.obj_id, pos)
+        # Act
+        controller.start_mission()
+        IOC.objects_controller.spawn(atype10)
+        controller.spawn(atype10)
+        IOC.objects_controller.takeoff(atype5)
+        controller.takeoff(atype5)
+        # Assert
+        self.assertGreater(len(IOC.console_mock.kicks), 0)  # приветствие + предупреждение
 
     @unittest.skip("not implemented")
     def test_reset(self):

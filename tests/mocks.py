@@ -59,12 +59,16 @@ class ConsoleMock(rcon.DServerRcon):
         super().__init__('127.0.0.1', '8991')
         self.received_private_messages = []
         self.banned = []
+        self.kicks = []
 
     def private_message(self, account_id: str, message: str):
         self.received_private_messages.append((account_id, message))
 
     def banuser(self, name):
         self.banned.append(name)
+
+    def kick(self, name):
+        self.kicks.append(name)
 
 
 class GeneratorMock(processing.Generator):

@@ -52,6 +52,7 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         """AType 0 handler"""
         atype = atypes.Atype0(tik, date, file_path, game_type_id, countries, settings, mods, preset_id)
         self._ioc.objects_controller.start_mission()
+        self._ioc.players_controller.start_mission()
         self._ioc.campaign_controller.start_mission(atype)
 
     def event_hit(self, tik: int, ammo: str, attacker_id: int, target_id: int) -> None:
@@ -92,6 +93,7 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
     def event_mission_end(self, tik: int) -> None:
         """AType 7 handler"""
         atype = atypes.Atype7(tik)
+        self._ioc.players_controller.end_mission()
         self._ioc.campaign_controller.end_mission(atype)
         self._ioc.objects_controller.end_mission()
 
@@ -147,7 +149,7 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         """AType 16 handler"""
         atype = atypes.Atype16(tik, bot_id, pos)
         bot = self._ioc.objects_controller.get_bot(atype.bot_id)
-        self._ioc.players_controller.finish(bot)
+        self._ioc.players_controller.finish(atype)
         # TODO оптимизировать, т.к. расчёт текущего ТВД - ресурсоёмкий процесс
         self._ioc.airfields_controller.finish(self._ioc.campaign_controller.current_tvd, bot)
         self._ioc.objects_controller.deinitialize(atype)

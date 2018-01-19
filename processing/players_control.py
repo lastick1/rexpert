@@ -16,20 +16,52 @@ class PlayersController:
     """Контроллер обработки событий, связанных с игроками"""
     def __init__(self, ioc):
         self._ioc = ioc
-        self.player_by_bot_id = dict()
+        self.player_by_bot_id: dict = None
+        self.bot_id_by_aircraft_id: dict = None
+        self.unlocks_taken: dict = None  # текущее количество анлоков игроков, взятое на вылет
 
-    def spawn(self, atype: atypes.Atype10) -> None:
-        """Обработка появления игрока"""
-        player = self._ioc.storage.players.find(atype.account_id)
-        player.nickname = atype.name
+    def _get_player(self, bot: log_objects.BotPilot) -> Player:
+        """Получить игрока по его боту - пилоту в самолёте"""
+        return self.player_by_bot_id[bot.obj_id]
+
+    def start_mission(self):
+        """Обработать начало миссии"""
+        self.player_by_bot_id = dict()
+        self.bot_id_by_aircraft_id = dict()
+        self.unlocks_taken = dict()
+
+    def takeoff(self, atype: atypes.Atype5):
+        """Обработка взлёта"""
+        player = self._get_player(self._ioc.objects_controller.get_bot(self.bot_id_by_aircraft_id[atype.aircraft_id]))
         if not self._ioc.config.main.offline_mode:
             if not self._ioc.rcon.connected:
                 self._ioc.rcon.connect()
                 self._ioc.rcon.auth(self._ioc.config.main.rcon_login, self._ioc.config.main.rcon_password)
-            self._ioc.rcon.private_message(atype.account_id, 'Hello {}!'.format(atype.name))
+            if self.unlocks_taken[player.account_id] > player.unlocks:
+                self._ioc.rcon.kick(player.account_id)
+
+    def end_mission(self):
+        """Обработать конец миссии"""
+
+    def spawn(self, atype: atypes.Atype10) -> None:
+        """Обработка появления игрока"""
+
+        player = self._ioc.storage.players.find(atype.account_id)
+        player.nickname = atype.name
+        self.player_by_bot_id[atype.bot_id] = player
+        self.unlocks_taken[player.account_id] = len(atype.weapon_mods_id) - 1
+        self.bot_id_by_aircraft_id[atype.aircraft_id] = atype.bot_id
+
+        if not self._ioc.config.main.offline_mode:
+            if not self._ioc.rcon.connected:
+                self._ioc.rcon.connect()
+                self._ioc.rcon.auth(self._ioc.config.main.rcon_login, self._ioc.config.main.rcon_password)
+            self._ioc.rcon.private_message(atype.account_id, f'Hello {atype.name}!')
+            if self.unlocks_taken[player.account_id] > player.unlocks:
+                self._ioc.rcon.private_message(
+                    player.account_id, f'{player.nickname} TAKEOFF is FORBIDDEN FOR YOU on this aircraft')
 
         self._ioc.storage.players.update(player)
-        self.player_by_bot_id[atype.bot_id] = player
 
     def finish(self, atype: atypes.Atype16):
         """Обработать конец вылета (деинициализация бота)"""
@@ -50,10 +82,6 @@ class PlayersController:
 
         if player and changed:
             self._ioc.storage.players.update(player)
-
-    def _get_player(self, bot: log_objects.BotPilot) -> Player:
-        """Получить игрока по его боту - пилоту в самолёте"""
-        return self.player_by_bot_id[bot.obj_id]
 
     def connect(self, account_id: str) -> None:
         """AType 20"""
