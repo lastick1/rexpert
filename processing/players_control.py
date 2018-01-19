@@ -1,5 +1,6 @@
 """ Обработка игроков """
 import datetime
+import atypes
 
 import log_objects
 
@@ -17,21 +18,22 @@ class PlayersController:
         self._ioc = ioc
         self.player_by_bot_id = dict()
 
-    def spawn(self, bot: log_objects.BotPilot, account_id: str, name: str) -> None:
+    def spawn(self, atype: atypes.Atype10) -> None:
         """Обработка появления игрока"""
-        player = self._ioc.storage.players.find(account_id)
-        player.nickname = name
+        player = self._ioc.storage.players.find(atype.account_id)
+        player.nickname = atype.name
         if not self._ioc.config.main.offline_mode:
             if not self._ioc.rcon.connected:
                 self._ioc.rcon.connect()
                 self._ioc.rcon.auth(self._ioc.config.main.rcon_login, self._ioc.config.main.rcon_password)
-            self._ioc.rcon.private_message(account_id, 'Hello {}!'.format(name))
+            self._ioc.rcon.private_message(atype.account_id, 'Hello {}!'.format(atype.name))
 
         self._ioc.storage.players.update(player)
-        self.player_by_bot_id[bot.obj_id] = player
+        self.player_by_bot_id[atype.bot_id] = player
 
-    def finish(self, bot: log_objects.BotPilot):
+    def finish(self, atype: atypes.Atype16):
         """Обработать конец вылета (деинициализация бота)"""
+        bot = self._ioc.objects_controller.get_bot(atype.bot_id)
         player = None
         changed = False
 

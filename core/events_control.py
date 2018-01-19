@@ -117,8 +117,7 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
                                coal_id, airfield_id, airstart, parent_id, payload_id, fuel, skin, weapon_mods_id,
                                cartridges, shells, bombs, rockets, form)
         self._ioc.objects_controller.spawn(atype)
-        self._ioc.players_controller.spawn(self._ioc.objects_controller.get_bot(atype.bot_id), atype.account_id, atype.name)
-        # TODO оптимизировать, т.к. создание объекта ТВД ресурсоёмкая задача
+        self._ioc.players_controller.spawn(atype)
         self._ioc.airfields_controller.spawn_aircraft(self._ioc.campaign_controller.current_tvd, atype)
 
     def event_group(self, tik: int, group_id: int, members_id: int, leader_id: int) -> None:
