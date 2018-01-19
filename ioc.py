@@ -9,18 +9,19 @@ import rcon
 class DependencyContainer:  # pylint: disable=R0902
     """Тривиальная реализация, но вроде работает"""
     def __init__(self):
-        self._config = None
-        self._objects = None
-        self._objects_controller = None
-        self._events_controller = None
-        self._players_controller = None
-        self._ground_controller = None
-        self._campaign_controller = None
-        self._airfields_controller = None
-        self._grid_controller = None
-        self._rcon = None
-        self._generator = None
-        self._storage = None
+        self._config: configs.Config = None
+        self._objects: configs.Objects = None
+        self._objects_controller: core.ObjectsController = None
+        self._events_controller: core.EventsController = None
+        self._players_controller: processing.PlayersController = None
+        self._ground_controller: processing.GroundController = None
+        self._campaign_controller: processing.CampaignController = None
+        self._airfields_controller: processing.AirfieldsController = None
+        self._grid_controller: processing.GridController = None
+        self._source_parser: processing.SourceParser = None
+        self._rcon: rcon.DServerRcon = None
+        self._generator: processing.Generator = None
+        self._storage: processing.Storage = None
 
     @property
     def config(self) -> configs.Config:
@@ -51,7 +52,7 @@ class DependencyContainer:  # pylint: disable=R0902
         return self.events_controller
 
     @property
-    def players_controller(self):
+    def players_controller(self) -> processing.PlayersController:
         """Контроллер игроков"""
         if not self._players_controller:
             self._players_controller = processing.PlayersController(self)
@@ -86,18 +87,18 @@ class DependencyContainer:  # pylint: disable=R0902
         return self._grid_controller
 
     @property
-    def rcon(self):
+    def source_parser(self) -> processing.SourceParser:
+        """Парсер исходников миссий"""
+        if not self._source_parser:
+            self._source_parser = processing.SourceParser(self.config)
+        return self._source_parser
+
+    @property
+    def rcon(self) -> rcon.DServerRcon:
         """Консоль сервера"""
         if not self._rcon:
             self._rcon = rcon.DServerRcon(self.config.main.rcon_ip, self.config.main.rcon_port)
         return self._rcon
-
-    @property
-    def storage(self) -> processing.Storage:
-        """Объект для работы с БД"""
-        if not self._storage:
-            self._storage = processing.Storage(self.config.main)
-        return self._storage
 
     @property
     def generator(self) -> processing.Generator:
@@ -105,3 +106,10 @@ class DependencyContainer:  # pylint: disable=R0902
         if not self._generator:
             self._generator = processing.Generator(self.config)
         return self._generator
+
+    @property
+    def storage(self) -> processing.Storage:
+        """Объект для работы с БД"""
+        if not self._storage:
+            self._storage = processing.Storage(self.config.main)
+        return self._storage

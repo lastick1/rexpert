@@ -64,6 +64,10 @@ class TestSourceParser(unittest.TestCase):
         # Assert
         self.assertSequenceEqual(result.division_units, expected)
 
+    def test_parse_mission_kind(self):
+        """Определяется вид миссии - противостояние или захват"""
+        self.fail('not implemented')
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

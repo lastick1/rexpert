@@ -9,20 +9,10 @@ import processing
 
 from .tvd import Tvd
 from .campaign_map import CampaignMap, DATE_FORMAT
-from .airfields_control import AirfieldsController
+from .campaign_mission import CampaignMission
 
 START_DATE = 'start_date'
 END_DATE = 'end_date'
-
-
-class Mission:
-    """Миссия"""
-    def __init__(self, name: str, source: pathlib.Path, additional: dict):
-        self.name = name
-        self.source = source
-        self.additional = additional
-        self.is_correctly_completed = False
-        self.tik_last = 0
 
 
 class CampaignController:
@@ -30,9 +20,10 @@ class CampaignController:
     def __init__(self, ioc):
         self._ioc = ioc
         self._dogfight = ioc.config.main.dogfight_folder
-        self.missions = list()
+        self.missions: list = []
         self.vendor = processing.AircraftVendor(ioc.config.planes, ioc.config.gameplay)
         self.tvd_builders = {x: processing.TvdBuilder(x, ioc) for x in ioc.config.mgen.maps}
+        self._campaign_map: CampaignMap = None
 
     def _update_tik(self, tik: int) -> None:
         """Обновить тик"""
@@ -45,7 +36,7 @@ class CampaignController:
         start = self._ioc.config.mgen.cfg[tvd_name][START_DATE]
         order = list(self._ioc.config.mgen.maps).index(tvd_name) + 1
         campaign_map = CampaignMap(order=order, date=start, mission_date=start, tvd_name=tvd_name, months=list())
-        airfields = AirfieldsController.initialize_managed_airfields(
+        airfields = processing.AirfieldsController.initialize_managed_airfields(
             self._ioc.config.mgen.airfields_data[campaign_map.tvd_name])
         tvd_builder = self.tvd_builders[campaign_map.tvd_name]
         tvd = tvd_builder.get_tvd(campaign_map.date.strftime(DATE_FORMAT))
@@ -105,21 +96,29 @@ class CampaignController:
 
     def start_mission(self, atype: atypes.Atype0):
         """Обработать начало миссии"""
-        name = atype.file_path.replace('Multiplayer/Dogfight', '').replace('\\', '')
-        name = name.replace('.msnbin', '')
-        source = pathlib.Path(self._dogfight.joinpath(name + '_src.Mission')).absolute()
-        additional = {
-            'date': atype.date,
-            'game_type_id': atype.game_type_id,
-            'countries': atype.countries,
-            'settings': atype.settings,
-            'mods': atype.mods,
-            'preset_id': atype.preset_id
-        }
-        self.missions.append(Mission(name, source, additional))
+        source_mission = self._ioc.source_parser.parse_in_dogfight(
+            atype.file_path.replace('Multiplayer/Dogfight', '').replace('\\', '').replace('.msnbin', ''))
+        self.missions.append(CampaignMission(
+            kind=source_mission.kind,
+            file=source_mission.name,
+            date=source_mission.date.strftime(DATE_FORMAT),
+            guimap=source_mission.guimap,
+            additional={
+                'date': atype.date,
+                'game_type_id': atype.game_type_id,
+                'countries': atype.countries,
+                'settings': atype.settings,
+                'mods': atype.mods,
+                'preset_id': atype.preset_id
+            },
+            server_inputs=source_mission.server_inputs,
+            objectives=source_mission.objectives,
+            airfields=source_mission.airfields,
+            division_units=source_mission.division_units
+        ))
         self._update_tik(atype.tik)
-        # TODO спарсить исходники стартовавшей миссии
-        # TODO удалить предыдущую миссию
+        # TODO сохранить миссию в базу (в документ CampaignMap и в коллекцию CampaignMissions)
+        # TODO удалить файлы предыдущей миссии
 
     def end_mission(self, atype: atypes.Atype7):
         """Обработать завершение миссии"""
