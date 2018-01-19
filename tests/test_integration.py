@@ -37,8 +37,7 @@ def _load_all_campaign_maps():
 
 def _parse_mock(name: str) -> processing.SourceMission:
     """Фальшивый метод парсинга исходников"""
-    return processing.SourceMission(
-        name=name, file=pathlib.Path(), date=TEST_TVD_DATE, guimap=TEST_TVD_NAME, kind='test_kind')
+    return processing.SourceMission(name=name, file=pathlib.Path(), date=TEST_TVD_DATE, guimap=TEST_TVD_NAME)
 
 
 class TestIntegration(unittest.TestCase):

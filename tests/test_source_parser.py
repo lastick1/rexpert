@@ -66,7 +66,11 @@ class TestSourceParser(unittest.TestCase):
 
     def test_parse_mission_kind(self):
         """Определяется вид миссии - противостояние или захват"""
-        self.fail('not implemented')
+        parser = processing.SourceParser(IOC.config)
+        # Act
+        result = parser.parse(TEST_TVD_NAME, pathlib.Path('./testdata/mission_source/{}.Mission'.format(TEST_TVD_NAME)))
+        # Assert
+        self.assertSequenceEqual(result.kind, 'assault')
 
 
 if __name__ == '__main__':

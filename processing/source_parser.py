@@ -35,10 +35,6 @@ def _find_mission_objectives(mission: SourceMission, text: str):
             }
         )
 
-def _find_kind(text: str) -> str:
-    """Найти тип миссии в исходнике"""
-    return 'regular'
-
 
 def _find_airfields(mission: SourceMission, text: str):
     """Найти аэродромы в исходнике миссии"""
@@ -53,11 +49,17 @@ def _find_airfields(mission: SourceMission, text: str):
         )
 
 
-def _find_division_units(mission: SourceMission, text: str):
+def _find_division_units_and_kind(mission: SourceMission, text: str):
     """Найти все юниты дивизий в исходнике миссий по триггерам (таймерам-меткам)"""
     for match in TRIGGER_TIMER_RE.findall(text):
         timer = {'name': match[0], 'pos': {'x': float(match[1]), 'z': float(match[2])}}
         if 'REXPERT' in timer['name']:
+            if 'REGULAR' in timer['name']:
+                mission.kind = 'regular'
+                continue
+            if 'ASSAULT' in timer['name']:
+                mission.kind = 'assault'
+                continue
             mission.division_units.append(timer)
 
 
@@ -86,11 +88,10 @@ class SourceParser:
             name=name,
             file=path,
             date=_find_date(text),
-            guimap=self._find_guimap(text),
-            kind=_find_kind(text)
+            guimap=self._find_guimap(text)
         )
         _find_server_inputs(result, text)
         _find_mission_objectives(result, text)
         _find_airfields(result, text)
-        _find_division_units(result, text)
+        _find_division_units_and_kind(result, text)
         return result

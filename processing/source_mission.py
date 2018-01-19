@@ -6,7 +6,7 @@ DATE_FORMAT = '%d.%m.%Y'
 
 class SourceMission:
     """Класс данных исходников миссий"""
-    def __init__(self, name: str, file: pathlib.Path, date: str, guimap: str, kind: str):
+    def __init__(self, name: str, file: pathlib.Path, date: str, guimap: str):
         self.name = name
         self.file = file
         self.date = datetime.datetime.strptime(date, DATE_FORMAT)
@@ -15,4 +15,4 @@ class SourceMission:
         self.objectives = list()
         self.airfields = list()
         self.division_units = list()
-        self.kind = kind  # тип миссии - обычная или захват
+        self.kind: str = None  # тип миссии - обычная или захват

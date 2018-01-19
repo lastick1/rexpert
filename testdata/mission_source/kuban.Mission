@@ -233,4 +233,42 @@ MCU_Timer
 }
 
 
+
+MCU_Timer
+{
+  Index = 9;
+  Name = "REXPERT_REGULAR";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 300.000;
+  YPos = 0.054;
+  ZPos = 300.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 0;
+  Random = 100;
+}
+
+
+
+MCU_Timer
+{
+  Index = 10;
+  Name = "REXPERT_ASSAULT";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 350.000;
+  YPos = 0.054;
+  ZPos = 350.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 0;
+  Random = 100;
+}
+
+
 # end of file
