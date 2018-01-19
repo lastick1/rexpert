@@ -143,20 +143,6 @@ class TestCampaignController(unittest.TestCase):
         campaign_map = IOC.storage.campaign_maps.load_by_order(order)
         self.assertSequenceEqual(campaign_map.months, [campaign_map.date.strftime(DATE_FORMAT)])
 
-    @unittest.skip("тест прогонять на рабочей конфигурации")
-    def test_initialize(self):
-        """Инициализируется кампания"""
-        _ioc = ioc.DependencyContainer()
-        storage = processing.Storage(_ioc.config.main)
-        campaign = processing.CampaignController(_ioc)
-        campaign.generator = processing.Generator(_ioc.config)
-        # Act
-        campaign.initialize()
-        # Assert
-        self.assertEqual(storage.campaign_maps.count(), len(_ioc.config.mgen.maps))
-        campaign_map = storage.campaign_maps.load_by_order(1)
-        self.assertSequenceEqual(campaign_map.months, [campaign_map.date.strftime(DATE_FORMAT)])
-
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

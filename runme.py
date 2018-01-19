@@ -6,6 +6,7 @@ import utils
 import configs
 import core
 import processing
+import ioc
 
 
 CONFIG = configs.Config(pathlib.Path(r'./configs/conf.ini'))
@@ -18,32 +19,33 @@ def compile_log():
 
 def reset():
     """Сбросить состояние кампании"""
-    controller = processing.CampaignController(CONFIG)
+    controller = processing.CampaignController(ioc.DependencyContainer())
     controller.reset()
 
 
 def initialize_campaign():
     """Инициализация кампании"""
-    controller = processing.CampaignController(CONFIG)
+    controller = processing.CampaignController(ioc.DependencyContainer())
     controller.initialize()
 
 
 def generate(name: str):
     """Сгенерировать миссию"""
-    controller = processing.CampaignController(CONFIG)
+    controller = processing.CampaignController(ioc.DependencyContainer())
     controller.generate(name)
 
 
 def run():
     """Запуск"""
-    events_controller = core.EventsController(objects=configs.Objects(), config=CONFIG)
-    core.LogsReader(CONFIG.main, events_controller)
+    container = ioc.DependencyContainer()
+    core.LogsReader(CONFIG.main, container.events_controller)
 
 
 print(datetime.datetime.now().strftime("[%H:%M:%S] Program Start."))
 
 # compile_log()
 # reset()
+initialize_campaign()
 # export('moscow')
 # export('stalingrad')
 # generate('result1')

@@ -33,6 +33,7 @@ class CampaignController:
 
     def initialize_map(self, tvd_name: str):
         """Инициализировать карту кампании"""
+        self._ioc.grid_controller.initialize(tvd_name)
         start = self._ioc.config.mgen.cfg[tvd_name][START_DATE]
         order = list(self._ioc.config.mgen.maps).index(tvd_name) + 1
         campaign_map = CampaignMap(order=order, date=start, mission_date=start, tvd_name=tvd_name, months=list())
