@@ -63,12 +63,10 @@ class TestGroundControl(unittest.TestCase):
         aircraft = IOC.objects_controller.create_object(
             tests.mocks.atype_12_stub(2, aircraft_name, 101, 'Test aircraft', -1))
         pos_aircraft = {'x': 200.0, 'y': 100.0, 'z': 100.0}
-
-        def test_func():
-            # Act
-            controller.kill(atypes.Atype3(123, -1, aircraft.obj_id, pos_aircraft))
+        # Act
+        controller.kill(atypes.Atype3(123, -1, aircraft.obj_id, pos_aircraft))
         # Assert
-        self.assertRaises(TypeError, test_func)
+        self.assertSequenceEqual([], controller.ground_kills)
 
     def test_ground_target_kill(self):
         """Обрабатывается уничтожение наземной цели"""
