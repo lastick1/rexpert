@@ -47,9 +47,9 @@ class DependencyContainer:  # pylint: disable=R0902
     @property
     def events_controller(self) -> core.EventsController:
         """Контроллер событий"""
-        if not self.events_controller:
+        if not self._events_controller:
             self._events_controller = core.EventsController(self)
-        return self.events_controller
+        return self._events_controller
 
     @property
     def players_controller(self) -> processing.PlayersController:

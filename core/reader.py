@@ -6,10 +6,7 @@ import threading
 import time
 
 import os
-
-import configs
-
-from .events_control import EventsController
+import ioc
 
 
 mn = re.compile('^mission.eport\(\d\d\d\d-\d\d-\d\d_\d\d-\d\d-\d\d\)')
@@ -20,16 +17,12 @@ class LogsReader:
     Singleton """
     instance = None
 
-    def __init__(self, main: configs.Main, controller: EventsController, cycle=30):
+    def __init__(self, _ioc: ioc.DependencyContainer, cycle=30):
         if not LogsReader.instance:
-            LogsReader.instance = LogsReader.__AtypesReader(
-                main,
-                controller,
-                cycle=cycle
-            )
+            LogsReader.instance = LogsReader.__AtypesReader(_ioc, cycle)
         else:
-            LogsReader.instance.processor = controller
-            LogsReader.instance.main = main
+            LogsReader.instance.processor = _ioc.events_controller
+            LogsReader.instance.main = _ioc.config.main
             LogsReader.instance.cycle = cycle
 
     def stop(self):
@@ -41,16 +34,15 @@ class LogsReader:
         self.instance.start()
 
     class __AtypesReader(threading.Thread):
-        def __init__(self, main: configs.Main, controller: EventsController, cycle=30):
+        def __init__(self, _ioc: ioc.DependencyContainer, cycle: int):
             threading.Thread.__init__(self)
+            self._ioc = _ioc
             self.is_stopped = False
             self.cycle = cycle
-            self.main = main
-            self.controller = controller
-            self.start()
 
         def __str__(self):
-            return repr(self) + " Working on: " + self.main.logs_directory.name + "\tarchive: " + self.main.arch_directory.name
+            return repr(self) + " Working on: " + self._ioc.config.main.logs_directory.name\
+                   + "\tarchive: " + self._ioc.config.main.arch_directory.name
 
         def run(self):
             self.do_work_until_stop()
@@ -64,13 +56,13 @@ class LogsReader:
                     log_files = self.get_mission_log_files(name)
                     log = self.read_mission_log(log_files)
                     for line in log:
-                        self.controller.process_line(line)
+                        self._ioc.events_controller.process_line(line)
                 time.sleep(self.cycle)
             print('LogsReader stopped')
 
         def read_mission_names(self):
             files = set()
-            for file in self.main.logs_directory.glob("mission?eport*.txt"):
+            for file in self._ioc.config.main.logs_directory.glob("mission?eport*.txt"):
                 files.add(mn.findall(file.name).pop())
             return files
 
@@ -84,9 +76,9 @@ class LogsReader:
                 path = pathlib.Path(file)
                 with path.open() as stream:
                     log += stream.readlines()
-                path.rename(self.main.arch_directory.joinpath(path.name))
+                path.rename(self._ioc.config.main.arch_directory.joinpath(path.name))
             return log
 
         def get_mission_log_files(self, name):
             """Отсортированный по дате создания список имён файлов лога миссии"""
-            return sorted(list(str(x) for x in self.main.logs_directory.glob(name + "*.txt")), key=os.path.getmtime)
+            return sorted(list(str(x) for x in self._ioc.config.main.logs_directory.glob(name + "*.txt")), key=os.path.getmtime)

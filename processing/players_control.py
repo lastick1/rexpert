@@ -49,17 +49,18 @@ class PlayersController:
         player = self._ioc.storage.players.find(atype.account_id)
         player.nickname = atype.name
         self.player_by_bot_id[atype.bot_id] = player
-        self.unlocks_taken[player.account_id] = len(atype.weapon_mods_id) - 1
+        self.unlocks_taken[player.account_id] = len(atype.weapon_mods_id)
         self.bot_id_by_aircraft_id[atype.aircraft_id] = atype.bot_id
 
         if not self._ioc.config.main.offline_mode:
             if not self._ioc.rcon.connected:
                 self._ioc.rcon.connect()
                 self._ioc.rcon.auth(self._ioc.config.main.rcon_login, self._ioc.config.main.rcon_password)
-            self._ioc.rcon.private_message(atype.account_id, f'Hello {atype.name}!')
             if self.unlocks_taken[player.account_id] > player.unlocks:
-                self._ioc.rcon.private_message(
-                    player.account_id, f'{player.nickname} TAKEOFF is FORBIDDEN FOR YOU on this aircraft')
+                message = f'{player.nickname} TAKEOFF is FORBIDDEN FOR YOU on this aircraft {player.unlocks}'
+            else:
+                message = f'{player.nickname} takeoff granted! {player.unlocks}'
+            self._ioc.rcon.private_message(player.account_id, message)
 
         self._ioc.storage.players.update(player)
 
@@ -91,9 +92,14 @@ class PlayersController:
             self._ioc.storage.players.update(player)
 
         player = self._ioc.storage.players.find(account_id)
-
-        if player.ban_expire_date and player.ban_expire_date > datetime.datetime.now():
-            self._ioc.rcon.banuser(player.account_id)
+        if not self._ioc.config.main.offline_mode:
+            if not self._ioc.rcon.connected:
+                self._ioc.rcon.connect()
+                self._ioc.rcon.auth(self._ioc.config.main.rcon_login, self._ioc.config.main.rcon_password)
+            if player.ban_expire_date and player.ban_expire_date > datetime.datetime.now():
+                self._ioc.rcon.banuser(player.account_id)
+            else:
+                self._ioc.rcon.private_message(player.account_id, f'Hello {player.nickname}!')
 
     def disconnect(self, account_id: str) -> None:
         """AType 21"""

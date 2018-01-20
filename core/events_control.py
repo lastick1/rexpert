@@ -171,8 +171,9 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
 
     def event_player_connected(self, tik: int, account_id: str, profile_id: str) -> None:
         """AType 20 handler"""
-        atype = atypes.Atype20(tik, account_id, profile_id)
-        self._ioc.players_controller.connect(atype.account_id)
+        if tik:
+            atype = atypes.Atype20(tik, account_id, profile_id)
+            self._ioc.players_controller.connect(atype.account_id)
 
     def event_player_disconnected(self, tik: int, account_id: str, profile_id: str) -> None:
         """AType 21 handler"""

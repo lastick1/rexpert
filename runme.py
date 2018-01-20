@@ -37,17 +37,15 @@ def generate(name: str):
 
 def run():
     """Запуск"""
-    container = ioc.DependencyContainer()
-    core.LogsReader(CONFIG.main, container.events_controller)
+    core.LogsReader(ioc.DependencyContainer()).start()
 
 
 print(datetime.datetime.now().strftime("[%H:%M:%S] Program Start."))
 
 # compile_log()
 # reset()
-initialize_campaign()
+# initialize_campaign()
 # export('moscow')
 # export('stalingrad')
 # generate('result1')
-# run()
-print(datetime.datetime.now().strftime("[%H:%M:%S] Program Finish."))
+run()
