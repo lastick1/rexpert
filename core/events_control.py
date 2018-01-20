@@ -3,7 +3,6 @@
 import logging
 import datetime
 import atypes
-import log_objects
 
 from .parse_mission_log_line import parse, UnexpectedATypeWarning
 

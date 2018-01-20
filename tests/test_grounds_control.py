@@ -3,11 +3,15 @@ import unittest
 import pathlib
 
 import atypes
-import log_objects
+import geometry
 import processing
 import tests
 
 IOC = tests.mocks.DependencyContainerMock(pathlib.Path('./testdata/conf.ini'))
+
+TEST_TARGET_SERVER_INPUT = 'test_target'
+TEST_TARGET_HP = 3
+TEST_TARGET_POS = {'x': 555, 'z': 555}
 
 
 class TestGroundControl(unittest.TestCase):
@@ -21,12 +25,20 @@ class TestGroundControl(unittest.TestCase):
     def test_kill(self):
         """Учитываются уничтоженные наземные цели"""
         controller = processing.GroundController(IOC)
+        target_name = 'static_il2'
+        aircraft_name = 'I-16 type 24'
         pos_target = {'x': 300.0, 'y': 100.0, 'z': 100.0}
-        target = log_objects.Ground(3, IOC.objects['static_il2'], 101, 1, 'Test ground target', pos_target)
+        attacker = IOC.objects_controller.create_object(
+            tests.mocks.atype_12_stub(2, aircraft_name, 201, 'Test attacker', -1)
+        )
+        target = IOC.objects_controller.create_object(
+            tests.mocks.atype_12_stub(3, target_name, 101, 'Test ground target', -1))
         # Act
+        IOC.objects_controller.kill(atypes.Atype3(4444, attacker.obj_id, target.obj_id, pos_target))
         controller.kill(atypes.Atype3(123, -1, 3, pos_target))
         # Assert
         self.assertTrue(target.killed)
+        self.assertSequenceEqual([geometry.Point(x=pos_target['x'], z=pos_target['z'])], controller.ground_kills)
 
     def test_kill_aircraft(self):
         """Учитываются только уничтоженные наземные цели"""
@@ -38,13 +50,25 @@ class TestGroundControl(unittest.TestCase):
 
         def test_func():
             # Act
-            controller.kill(atypes.Atype3(123, -1, 3, pos_aircraft))
+            controller.kill(atypes.Atype3(123, -1, aircraft.obj_id, pos_aircraft))
         # Assert
         self.assertRaises(TypeError, test_func)
 
     def test_ground_target_kill(self):
         """Обрабатывается уничтожение наземной цели"""
-        self.fail('not implemented')
+        controller = processing.GroundController(IOC)
+        target_name = 'static_il2'
+        aircraft_name = 'I-16 type 24'
+        pos_target = {'x': 300.0, 'y': 100.0, 'z': 100.0}
+        attacker = IOC.objects_controller.create_object(
+            tests.mocks.atype_12_stub(2, aircraft_name, 201, 'Test attacker', -1))
+        target = IOC.objects_controller.create_object(
+            tests.mocks.atype_12_stub(3, target_name, 101, 'Test ground target', -1))
+        # Act
+        IOC.objects_controller.kill(atypes.Atype3(4444, attacker.obj_id, target.obj_id, pos_target))
+        controller.kill(atypes.Atype3(123, -1, 3, pos_target))
+        # Assert
+        self.assertSequenceEqual([TEST_TARGET_SERVER_INPUT], IOC.console_mock.received_server_inputs)
 
 
 if __name__ == '__main__':
