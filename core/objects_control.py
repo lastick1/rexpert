@@ -18,7 +18,8 @@ class ObjectsController:
         self._aircrafts = set()
         self._ioc = _ioc
 
-    def create_object(self, atype: atypes.Atype12, obj: configs.Object) -> log_objects.Object:
+    def create_object(self, atype: atypes.Atype12) -> log_objects.Object:
+        obj = self._ioc.objects[atype.object_name]
         """Создать объект соответствующего типа"""
         if 'BotPilot' in obj.log_name and 'aircraft' in obj.cls:
             self._objects[atype.object_id] = log_objects.BotPilot(

@@ -2,6 +2,7 @@
 # pylint: disable=all
 import pathlib
 
+import atypes
 import rcon
 import configs
 import processing
@@ -189,3 +190,8 @@ class DependencyContainerMock(ioc.DependencyContainer):
         self.generator_mock = self._generator
         self._rcon = ConsoleMock()
         self.console_mock = self._rcon
+
+
+def atype_12_stub(object_id: int, object_name: str, country: int, name: str, parent_id: int) -> atypes.Atype12:
+    """Заглушка события инициализации объекта"""
+    return atypes.Atype12(120, object_id, object_name, country, int(country/100), name, parent_id)

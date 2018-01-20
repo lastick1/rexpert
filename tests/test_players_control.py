@@ -32,11 +32,6 @@ def _atype_10_stub(aircraft_id: int, bot_id: int, pos: dict, aircraft_name: str,
         int(country/100), 1234, False, parent_id, 0, 1, '', [1, 5], 200, 100, 4, 8, '')
 
 
-def _atype_12_stub(object_id: int, object_name: str, country: int, name: str, parent_id: int) -> atypes.Atype12:
-    """Заглушка события инициализации объекта"""
-    return atypes.Atype12(120, object_id, object_name, country, int(country/100), name, parent_id)
-
-
 class TestPlayersController(unittest.TestCase):
     """Тесты событий с обработкой данных игроков"""
     def setUp(self):
@@ -75,11 +70,11 @@ class TestPlayersController(unittest.TestCase):
         controller = processing.PlayersController(IOC)
         aircraft_name = 'I-16 type 24'
         bot_name = 'BotPilot'
-        atype12_aircraft = _atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
-        atype12_bot = _atype_12_stub(2, bot_name, 201, 'test_bot', 1)
+        atype12_aircraft = tests.mocks.atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
+        atype12_bot = tests.mocks.atype_12_stub(2, bot_name, 201, 'test_bot', 1)
         atype10 = _atype_10_stub(1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
-        IOC.objects_controller.create_object(atype12_aircraft, OBJECTS[aircraft_name])
-        IOC.objects_controller.create_object(atype12_bot, OBJECTS[bot_name])
+        IOC.objects_controller.create_object(atype12_aircraft)
+        IOC.objects_controller.create_object(atype12_bot)
         IOC.objects_controller.spawn(atype10)
         # Act
         controller.start_mission()
@@ -95,11 +90,11 @@ class TestPlayersController(unittest.TestCase):
         controller = processing.PlayersController(IOC)
         aircraft_name = 'I-16 type 24'
         bot_name = 'BotPilot'
-        atype12_aircraft = _atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
-        atype12_bot = _atype_12_stub(2, bot_name, 201, 'test_bot', 1)
+        atype12_aircraft = tests.mocks.atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
+        atype12_bot = tests.mocks.atype_12_stub(2, bot_name, 201, 'test_bot', 1)
         atype10 = _atype_10_stub(1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
-        IOC.objects_controller.create_object(atype12_aircraft, OBJECTS[aircraft_name])
-        IOC.objects_controller.create_object(atype12_bot, OBJECTS[bot_name])
+        IOC.objects_controller.create_object(atype12_aircraft)
+        IOC.objects_controller.create_object(atype12_bot)
         IOC.objects_controller.spawn(atype10)
         # Act
         controller.start_mission()
@@ -115,11 +110,11 @@ class TestPlayersController(unittest.TestCase):
         controller = processing.PlayersController(IOC)
         aircraft_name = 'I-16 type 24'
         bot_name = 'BotPilot'
-        atype12_aircraft = _atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
-        atype12_bot = _atype_12_stub(2, bot_name, 201, 'test_bot', 1)
+        atype12_aircraft = tests.mocks.atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
+        atype12_bot = tests.mocks.atype_12_stub(2, bot_name, 201, 'test_bot', 1)
         atype10 = _atype_10_stub(1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
-        IOC.objects_controller.create_object(atype12_aircraft, OBJECTS[aircraft_name])
-        IOC.objects_controller.create_object(atype12_bot, OBJECTS[bot_name])
+        IOC.objects_controller.create_object(atype12_aircraft)
+        IOC.objects_controller.create_object(atype12_bot)
         IOC.objects_controller.spawn(atype10)
         # Act
         controller.start_mission()
@@ -135,11 +130,11 @@ class TestPlayersController(unittest.TestCase):
         controller = processing.PlayersController(IOC)
         aircraft_name = 'I-16 type 24'
         bot_name = 'BotPilot'
-        atype12_aircraft = _atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
-        atype12_bot = _atype_12_stub(2, bot_name, 201, 'test_bot', 1)
+        atype12_aircraft = tests.mocks.atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
+        atype12_bot = tests.mocks.atype_12_stub(2, bot_name, 201, 'test_bot', 1)
         atype10 = _atype_10_stub(1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
-        IOC.objects_controller.create_object(atype12_aircraft, OBJECTS[aircraft_name])
-        IOC.objects_controller.create_object(atype12_bot, OBJECTS[bot_name])
+        IOC.objects_controller.create_object(atype12_aircraft)
+        IOC.objects_controller.create_object(atype12_bot)
         IOC.objects_controller.spawn(atype10)
         # Act
         controller.start_mission()
@@ -167,13 +162,13 @@ class TestPlayersController(unittest.TestCase):
         aircraft_name = 'I-16 type 24'
         bot_name = 'BotPilot'
         target_name = 'static_il2'
-        atype12_aircraft = _atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
-        atype12_bot = _atype_12_stub(2, bot_name, 201, 'test_bot', 1)
-        atype12_static = _atype_12_stub(3, target_name, 101, 'test_target', -1)
+        atype12_aircraft = tests.mocks.atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
+        atype12_bot = tests.mocks.atype_12_stub(2, bot_name, 201, 'test_bot', 1)
+        atype12_static = tests.mocks.atype_12_stub(3, target_name, 101, 'test_target', -1)
         atype10 = _atype_10_stub(1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
-        aircraft = IOC.objects_controller.create_object(atype12_aircraft, OBJECTS[aircraft_name])
-        bot = IOC.objects_controller.create_object(atype12_bot, OBJECTS[bot_name])
-        target = IOC.objects_controller.create_object(atype12_static, OBJECTS[target_name])
+        aircraft = IOC.objects_controller.create_object(atype12_aircraft)
+        bot = IOC.objects_controller.create_object(atype12_bot)
+        target = IOC.objects_controller.create_object(atype12_static)
         IOC.objects_controller.spawn(atype10)
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
         damage = 80.0
@@ -194,13 +189,13 @@ class TestPlayersController(unittest.TestCase):
         aircraft_name = 'I-16 type 24'
         bot_name = 'BotPilot'
         target_name = 'static_il2'
-        atype12_aircraft = _atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
-        atype12_bot = _atype_12_stub(2, bot_name, 201, 'test_bot', 1)
-        atype12_static = _atype_12_stub(3, target_name, 101, 'test_target', -1)
+        atype12_aircraft = tests.mocks.atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
+        atype12_bot = tests.mocks.atype_12_stub(2, bot_name, 201, 'test_bot', 1)
+        atype12_static = tests.mocks.atype_12_stub(3, target_name, 101, 'test_target', -1)
         atype10 = _atype_10_stub(1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
-        aircraft = IOC.objects_controller.create_object(atype12_aircraft, OBJECTS[aircraft_name])
-        bot = IOC.objects_controller.create_object(atype12_bot, OBJECTS[bot_name])
-        target = IOC.objects_controller.create_object(atype12_static, OBJECTS[target_name])
+        aircraft = IOC.objects_controller.create_object(atype12_aircraft)
+        bot = IOC.objects_controller.create_object(atype12_bot)
+        target = IOC.objects_controller.create_object(atype12_static)
         IOC.objects_controller.spawn(atype10)
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
         expect = TEST_PLAYER[constants.Player.UNLOCKS] + 1
@@ -220,13 +215,13 @@ class TestPlayersController(unittest.TestCase):
         aircraft_name = 'I-16 type 24'
         bot_name = 'BotPilot'
         target_name = 'static_il2'
-        atype12_aircraft = _atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
-        atype12_bot = _atype_12_stub(2, bot_name, 201, 'test_bot', 1)
-        atype12_static = _atype_12_stub(3, target_name, 101, 'test_target', -1)
+        atype12_aircraft = tests.mocks.atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
+        atype12_bot = tests.mocks.atype_12_stub(2, bot_name, 201, 'test_bot', 1)
+        atype12_static = tests.mocks.atype_12_stub(3, target_name, 101, 'test_target', -1)
         atype10 = _atype_10_stub(1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
-        aircraft = IOC.objects_controller.create_object(atype12_aircraft, OBJECTS[aircraft_name])
-        bot = IOC.objects_controller.create_object(atype12_bot, OBJECTS[bot_name])
-        target = IOC.objects_controller.create_object(atype12_static, OBJECTS[target_name])
+        aircraft = IOC.objects_controller.create_object(atype12_aircraft)
+        bot = IOC.objects_controller.create_object(atype12_bot)
+        target = IOC.objects_controller.create_object(atype12_static)
         IOC.objects_controller.spawn(atype10)
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
         expect = TEST_PLAYER[constants.Player.UNLOCKS]
@@ -247,13 +242,13 @@ class TestPlayersController(unittest.TestCase):
         aircraft_name = 'I-16 type 24'
         bot_name = 'BotPilot'
         target_name = 'static_il2'
-        atype12_aircraft = _atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
-        atype12_bot = _atype_12_stub(2, bot_name, 201, 'test_bot', 1)
-        atype12_static = _atype_12_stub(3, target_name, 201, 'test_target', -1)
+        atype12_aircraft = tests.mocks.atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
+        atype12_bot = tests.mocks.atype_12_stub(2, bot_name, 201, 'test_bot', 1)
+        atype12_static = tests.mocks.atype_12_stub(3, target_name, 201, 'test_target', -1)
         atype10 = _atype_10_stub(1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
-        aircraft = IOC.objects_controller.create_object(atype12_aircraft, OBJECTS[aircraft_name])
-        bot = IOC.objects_controller.create_object(atype12_bot, OBJECTS[bot_name])
-        target = IOC.objects_controller.create_object(atype12_static, OBJECTS[target_name])
+        aircraft = IOC.objects_controller.create_object(atype12_aircraft)
+        bot = IOC.objects_controller.create_object(atype12_bot)
+        target = IOC.objects_controller.create_object(atype12_static)
         IOC.objects_controller.spawn(atype10)
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
         expect = TEST_PLAYER[constants.Player.UNLOCKS]
@@ -275,11 +270,11 @@ class TestPlayersController(unittest.TestCase):
         aircraft_name = 'I-16 type 24'
         bot_name = 'BotPilot'
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
-        atype12_aircraft = _atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
-        atype12_bot = _atype_12_stub(2, bot_name, 201, 'test_bot', 1)
+        atype12_aircraft = tests.mocks.atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
+        atype12_bot = tests.mocks.atype_12_stub(2, bot_name, 201, 'test_bot', 1)
         atype10 = _atype_10_stub(1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
-        aircraft = IOC.objects_controller.create_object(atype12_aircraft, OBJECTS[aircraft_name])
-        IOC.objects_controller.create_object(atype12_bot, OBJECTS[bot_name])
+        aircraft = IOC.objects_controller.create_object(atype12_aircraft)
+        IOC.objects_controller.create_object(atype12_bot)
         atype5 = atypes.Atype5(2132, aircraft.obj_id, pos)
         # Act
         controller.start_mission()
@@ -298,11 +293,11 @@ class TestPlayersController(unittest.TestCase):
         aircraft_name = 'I-16 type 24'
         bot_name = 'BotPilot'
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
-        atype12_aircraft = _atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
-        atype12_bot = _atype_12_stub(2, bot_name, 201, 'test_bot', 1)
+        atype12_aircraft = tests.mocks.atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
+        atype12_bot = tests.mocks.atype_12_stub(2, bot_name, 201, 'test_bot', 1)
         atype10 = _atype_10_stub(1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
-        aircraft = IOC.objects_controller.create_object(atype12_aircraft, OBJECTS[aircraft_name])
-        IOC.objects_controller.create_object(atype12_bot, OBJECTS[bot_name])
+        aircraft = IOC.objects_controller.create_object(atype12_aircraft)
+        IOC.objects_controller.create_object(atype12_bot)
         atype5 = atypes.Atype5(2132, aircraft.obj_id, pos)
         # Act
         controller.start_mission()

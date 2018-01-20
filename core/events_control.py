@@ -69,9 +69,7 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         """AType 3 handler"""
         atype = atypes.Atype3(tik, attacker_id, target_id, pos)
         self._ioc.objects_controller.kill(atype)
-        ground = self._ioc.objects_controller.get_ground(atype.target_id)
-        if isinstance(ground, log_objects.Ground):
-            self._ioc.ground_controller.kill(ground, atype)
+        self._ioc.ground_controller.kill(atype)
         # в логах так бывает что кто-то умер, а кто не известно :)
 
     def event_sortie_end(self, tik: int, aircraft_id: int, bot_id: int, cartridges: int,
@@ -130,7 +128,7 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
                           coal_id: int, name: str, parent_id: int) -> None:
         """AType 12 handler"""
         atype = atypes.Atype12(tik, object_id, object_name, country_id, coal_id, name, parent_id)
-        self._ioc.objects_controller.create_object(atype, self._ioc.objects[atype.object_name])
+        self._ioc.objects_controller.create_object(atype)
 
     def event_influence_area(self, tik: int, area_id: int, country_id: int, coal_id: int,
                              enabled: bool, in_air: bool) -> None:

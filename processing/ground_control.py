@@ -14,7 +14,7 @@ class GroundController:
         """Обработать начало миссии"""
         self.ground_kills.clear()
 
-    def kill(self, target: log_objects.Ground, atype: atypes.Atype3) -> None:
+    def kill(self, atype: atypes.Atype3) -> None:
         """Обработать уничтожение наземного объекта"""
         if isinstance(target, log_objects.Ground):
             self.ground_kills.append(geometry.Point(x=atype.pos['x'], z=atype.pos['z']))
