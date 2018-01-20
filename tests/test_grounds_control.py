@@ -9,9 +9,25 @@ import tests
 
 IOC = tests.mocks.DependencyContainerMock(pathlib.Path('./testdata/conf.ini'))
 
-TEST_TARGET_SERVER_INPUT = 'test_target'
+TEST_TARGET_SERVER_INPUT = 'BTD1'
 TEST_TARGET_HP = 3
 TEST_TARGET_POS = {'x': 555, 'z': 555}
+
+TEST_MISSION = processing.CampaignMission(
+    kind='regular',
+    file='result1',
+    date='01.09.1941',
+    guimap='moscow-winter',
+    additional=dict(),
+    server_inputs=[
+        {'name': TEST_TARGET_SERVER_INPUT, 'pos': TEST_TARGET_POS}
+    ],
+    objectives=[],
+    airfields=[],
+    division_units=[
+        {'name': 'REXPERT_BTD1_3', 'pos': TEST_TARGET_POS}
+    ]
+)
 
 
 class TestGroundControl(unittest.TestCase):
@@ -57,16 +73,21 @@ class TestGroundControl(unittest.TestCase):
     def test_ground_target_kill(self):
         """Обрабатывается уничтожение наземной цели"""
         controller = processing.GroundController(IOC)
+        IOC.campaign_controller._mission = TEST_MISSION
         target_name = 'static_il2'
         aircraft_name = 'I-16 type 24'
-        pos_target = {'x': 300.0, 'y': 100.0, 'z': 100.0}
         attacker = IOC.objects_controller.create_object(
             tests.mocks.atype_12_stub(2, aircraft_name, 201, 'Test attacker', -1))
         target = IOC.objects_controller.create_object(
             tests.mocks.atype_12_stub(3, target_name, 101, 'Test ground target', -1))
+        controller.start_mission()
         # Act
-        IOC.objects_controller.kill(atypes.Atype3(4444, attacker.obj_id, target.obj_id, pos_target))
-        controller.kill(atypes.Atype3(123, -1, 3, pos_target))
+        IOC.objects_controller.kill(atypes.Atype3(4444, attacker.obj_id, target.obj_id, TEST_TARGET_POS))
+        controller.kill(atypes.Atype3(123, -1, target.obj_id, TEST_TARGET_POS))
+        IOC.objects_controller.kill(atypes.Atype3(4444, attacker.obj_id, target.obj_id, TEST_TARGET_POS))
+        controller.kill(atypes.Atype3(123, -1, target.obj_id, TEST_TARGET_POS))
+        IOC.objects_controller.kill(atypes.Atype3(4444, attacker.obj_id, target.obj_id, TEST_TARGET_POS))
+        controller.kill(atypes.Atype3(123, -1, target.obj_id, TEST_TARGET_POS))
         # Assert
         self.assertSequenceEqual([TEST_TARGET_SERVER_INPUT], IOC.console_mock.received_server_inputs)
 

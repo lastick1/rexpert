@@ -37,6 +37,7 @@
       "red": ".\\blocks_quickmission\\airfields_red",
       "blue": ".\\blocks_quickmission\\airfields_blue"
     },
+    "division_unit_radius": 300,
     "start_date": "01.09.1941",
     "end_date": "31.01.1942"
   },
@@ -58,6 +59,7 @@
       "red": ".\\blocks_quickmission\\airfields_red",
       "blue": ".\\blocks_quickmission\\airfields_blue"
     },
+    "division_unit_radius": 300,
     "start_date": "01.07.1942",
     "end_date": "28.02.1943"
   },
