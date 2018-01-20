@@ -17,7 +17,7 @@ class Player:
     def __init__(self, account_id: str, data: dict, bot: BotPilot = None):
         self.account_id = account_id
         self.current_bot = bot
-        self._nickname = data[NICKNAME]
+        self._nickname = data[NICKNAME] if NICKNAME in data else ''
         self.ban_expire_date = data[BAN_DATE]
         self.previous_nicknames = data[KNOWN_NICKNAMES]
         self.unlocks: int = data[UNLOCKS]

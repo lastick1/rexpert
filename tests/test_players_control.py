@@ -41,6 +41,8 @@ class TestPlayersController(unittest.TestCase):
     """Тесты событий с обработкой данных игроков"""
     def setUp(self):
         TEST_PLAYER[UNLOCKS] = 1
+        if NICKNAME in TEST_PLAYER:
+            del TEST_PLAYER[NICKNAME]
         IOC.console_mock.received_private_messages.clear()
         IOC.console_mock.kicks.clear()
 
@@ -86,8 +88,9 @@ class TestPlayersController(unittest.TestCase):
         player = IOC.storage.players.collection.find_one(FILTER)
         self.assertEqual(TEST_NICKNAME, player[NICKNAME])
 
-    def test_spawn_player(self):
-        """Отправляется приветственное сообщение игроку на спауне"""
+    def test_connect_player(self):
+        """Отправляется приветственное сообщение игроку на подключении"""
+        TEST_PLAYER[NICKNAME] = TEST_NICKNAME
         _create(FILTER, TEST_PLAYER)
         controller = processing.PlayersController(IOC)
         aircraft_name = 'I-16 type 24'
@@ -100,7 +103,7 @@ class TestPlayersController(unittest.TestCase):
         IOC.objects_controller.spawn(atype10)
         # Act
         controller.start_mission()
-        controller.spawn(atype10)
+        controller.connect(TEST_ACCOUNT_ID)
         # Assert
         self.assertIn(
             (TEST_ACCOUNT_ID, 'Hello {}!'.format(TEST_NICKNAME)),
@@ -285,7 +288,7 @@ class TestPlayersController(unittest.TestCase):
         IOC.objects_controller.takeoff(atype5)
         controller.takeoff(atype5)
         # Assert
-        self.assertGreater(len(IOC.console_mock.received_private_messages), 1)  # приветствие + предупреждение
+        self.assertGreater(len(IOC.console_mock.received_private_messages), 0)
 
     def test_kick_restricted_takeoff(self):
         """Отправляется команда кика при запрещённом взлёте"""
