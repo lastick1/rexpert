@@ -72,6 +72,7 @@ class CampaignController:
 
         campaign_map = self._ioc.storage.campaign_maps.load_by_order(1)
         self._generate('result1', campaign_map)
+        self._ioc.players_controller.reset()
 
     @property
     def campaign_map(self) -> CampaignMap:

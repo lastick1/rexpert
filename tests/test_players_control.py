@@ -315,9 +315,13 @@ class TestPlayersController(unittest.TestCase):
 
     def test_reset(self):
         """Сбрасывается состояние игроков в кампании"""
+        TEST_PLAYER[constants.Player.UNLOCKS] = 4
+        _create(FILTER, TEST_PLAYER)
         controller = processing.PlayersController(IOC)
+        # Act
         controller.reset()
-        IOC.storage.players.reset_mods_for_all(1)
+        # Assert
+        self.assertEqual(IOC.storage.players.find(TEST_ACCOUNT_ID).unlocks, IOC.config.gameplay.unlocks_start)
 
 
 if __name__ == '__main__':
