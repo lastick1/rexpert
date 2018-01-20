@@ -20,3 +20,6 @@ class Gameplay:
         self.front_init_planes = {tvd_name: src['initial_front_supply'][tvd_name] for tvd_name in src['maps']}
         self.initial_priority = {tvd_name: src['initial_priority_supply'][tvd_name] for tvd_name in src['maps']}
         self.division_repair = src['division_repair']
+        self.unlocks_start = src['unlocks_start']
+        self.unlocks_min = src['unlocks_min']
+        self.unlocks_max = src['unlocks_max']

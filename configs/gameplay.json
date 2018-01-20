@@ -5,6 +5,9 @@
     "stalingrad": ".\\configs\\supply_stalin.csv"
   },
   "mission_time": "02:30:00",
+  "unlocks_start": 1,
+  "unlocks_min": 1,
+  "unlocks_max": 5,
   "division_repair": 15,
   "airfield_radius": 2000,
   "airfield_min_planes": 20,

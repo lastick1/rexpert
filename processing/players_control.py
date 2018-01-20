@@ -24,6 +24,10 @@ class PlayersController:
         """Получить игрока по его боту - пилоту в самолёте"""
         return self.player_by_bot_id[bot.obj_id]
 
+    def reset(self):
+        """Сбросить состояние модификаций игроков и онлайн в кампании"""
+        self._ioc.storage.players.reset_mods_for_all(self._ioc.config.gameplay.unlocks_start)
+
     def start_mission(self):
         """Обработать начало миссии"""
         self.player_by_bot_id = dict()

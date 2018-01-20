@@ -315,7 +315,9 @@ class TestPlayersController(unittest.TestCase):
 
     def test_reset(self):
         """Сбрасывается состояние игроков в кампании"""
-        IOC.storage.players.reset_mods_for_all()
+        controller = processing.PlayersController(IOC)
+        controller.reset()
+        IOC.storage.players.reset_mods_for_all(1)
 
 
 if __name__ == '__main__':
