@@ -319,6 +319,11 @@ class LocationsBuilder:
                         location.country = country
                         break
                 continue
+            if {TANK}.intersection(location.types):
+                for country in confrontations:
+                    if location.is_in_area(confrontations[country]):
+                        location.country = country
+                        break
         red_rear_af = Location(
             name=AIRFIELD, x=tvd.red_rear_airfield.x, z=tvd.red_rear_airfield.z, y=0, oy=0, length=10, width=10)
         red_rear_af.country = 101
