@@ -1,7 +1,9 @@
+"""Управление папкой ТВД"""
 import datetime
 import pathlib
 from random import randint
 
+import constants
 import geometry
 import processing
 
@@ -9,14 +11,12 @@ import processing
 from .airfield import ManagedAirfield
 from .mcu import Airfield
 
-DATE_FORMAT = '%d.%m.%Y'
-
 
 class Stage:
     def __init__(self, raw, sides, af_templates_folder):
         """Класс этапа кампании, для которого создаются группы аэродромов с заданными самолётами"""
-        self.start = datetime.datetime.strptime(raw['start'], DATE_FORMAT)
-        self.end = datetime.datetime.strptime(raw['end'], DATE_FORMAT)
+        self.start = datetime.datetime.strptime(raw['start'], constants.DATE_FORMAT)
+        self.end = datetime.datetime.strptime(raw['end'], constants.DATE_FORMAT)
         self.id = int(raw['id'])
         self.af_templates = dict()
         for side in sides:
@@ -46,7 +46,7 @@ class Tvd:
     ):
         self.name = name  # имя твд
         self.folder = folder  # папка твд
-        self.date = datetime.datetime.strptime(date, DATE_FORMAT)  # дата миссии
+        self.date = datetime.datetime.strptime(date, constants.DATE_FORMAT)  # дата миссии
         self.right_top = right_top  # правый верхний угол карты
         self.icons_group_file = icons_group_file  # файл группы иконок
         self.border = list()  # упорядоченный список узлов линии фронта
@@ -317,7 +317,7 @@ class TvdBuilder:
         # задаём параметры defaultparams в соответствии с конфигом
         for y in range(len(dfpr_lines)):
             if dfpr_lines[y].startswith('$date ='):
-                dfpr_lines[y] = '$date = {}\n'.format(date.strftime(DATE_FORMAT))
+                dfpr_lines[y] = '$date = {}\n'.format(date.strftime(constants.DATE_FORMAT))
             elif dfpr_lines[y].startswith('$time ='):
                 dfpr_lines[y] = '$time = {}\n'.format(date.strftime('%H:%M:%S'))
             elif dfpr_lines[y].startswith('$seasonprefix ='):

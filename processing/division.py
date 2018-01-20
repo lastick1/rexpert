@@ -1,8 +1,6 @@
 """Модель данных дивизии"""
+import constants
 
-ID = '_id'
-UNITS = 'units'
-TVD_NAME = 'tvd_name'
 DIVISIONS = {
     'BTD1': 10,
     'BTD2': 10,
@@ -55,7 +53,7 @@ class Division:
     def to_dict(self) -> dict:
         """Сериализация в словарь для MongoDB"""
         return {
-            ID: '{}_{}'.format(self.tvd_name, self.name),
-            UNITS: self.units,
-            TVD_NAME: self.tvd_name
+            constants.ID: '{}_{}'.format(self.tvd_name, self.name),
+            constants.Division.UNITS: self.units,
+            constants.TVD_NAME: self.tvd_name
         }

@@ -1,9 +1,7 @@
 """Контроль состояния аэродромов (доступные самолёты, повреждения)"""
 import atypes
-import configs
 import log_objects
 from .airfield import ManagedAirfield
-from .storage import Storage
 
 
 class AirfieldsController:

@@ -1,20 +1,6 @@
 """Модель данных миссии кампании"""
 import datetime
-
-DATE_FORMAT = '%d.%m.%Y'
-ID = '_id'
-KIND = 'kind'
-FILE = 'file'
-DATE = 'date'
-GUIMAP = 'guimap'
-ADDITIONAL = 'additional'
-COMPLETED = 'completed'
-ROUND_ENDED = 'round_ended'
-TIK_LAST = 'tik_last'
-SERVER_INPUTS = 'server_inputs'
-OBJECTIVES = 'objectives'
-AIRFIELDS = 'airfields'
-DIVISION_UNITS = 'division_units'
+import constants
 
 
 class CampaignMission:
@@ -33,7 +19,7 @@ class CampaignMission:
     ):
         self.kind = kind  # тип миссии - противостояние или захват
         self.file = file  # имя файла миссии - result1 или result2
-        self.date = datetime.datetime.strptime(date, DATE_FORMAT)  # игровая дата в миссии
+        self.date = datetime.datetime.strptime(date, constants.DATE_FORMAT)  # игровая дата в миссии
         self.guimap = guimap  # имя карты из логов
         self.additional = additional  # дополнительная информация о миссии из логов
         self.is_correctly_completed = False  # признак корректного завершения миссии (есть atype7)
@@ -47,17 +33,16 @@ class CampaignMission:
     def to_dict(self) -> dict:
         """Сериализация в словарь для MongoDB"""
         return {
-            # ID: self.date.strftime(DATE_FORMAT),
-            DATE: self.date.strftime(DATE_FORMAT),
-            FILE: self.file,
-            KIND: self.kind,
-            GUIMAP: self.guimap,
-            ADDITIONAL: self.additional,
-            COMPLETED: self.is_correctly_completed,
-            ROUND_ENDED: self.is_round_ended,
-            TIK_LAST: self.tik_last,
-            SERVER_INPUTS: self.server_inputs,
-            OBJECTIVES: self.objectives,
-            AIRFIELDS: self.airfields,
-            DIVISION_UNITS: self.division_units
+            constants.CampaignMission.DATE: self.date.strftime(constants.DATE_FORMAT),
+            constants.CampaignMission.FILE: self.file,
+            constants.CampaignMission.KIND: self.kind,
+            constants.CampaignMission.GUIMAP: self.guimap,
+            constants.CampaignMission.ADDITIONAL: self.additional,
+            constants.CampaignMission.COMPLETED: self.is_correctly_completed,
+            constants.CampaignMission.ROUND_ENDED: self.is_round_ended,
+            constants.CampaignMission.TIK_LAST: self.tik_last,
+            constants.CampaignMission.SERVER_INPUTS: self.server_inputs,
+            constants.CampaignMission.OBJECTIVES: self.objectives,
+            constants.CampaignMission.AIRFIELDS: self.airfields,
+            constants.CampaignMission.DIVISION_UNITS: self.division_units
         }

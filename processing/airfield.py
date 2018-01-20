@@ -1,13 +1,6 @@
 """Модель данных управляемого аэродрома"""
 import geometry
-
-
-ID = '_id'
-TVD_NAME = 'tvd_name'
-NAME = 'name'
-POS = 'pos'
-PLANES = 'planes'
-SUPPLIES = 'supplies'
+import constants
 
 
 class ManagedAirfield(geometry.Point):
@@ -23,12 +16,12 @@ class ManagedAirfield(geometry.Point):
     def to_dict(self) -> dict:
         """Сериализация в словарь для MongoDB"""
         return {
-            ID: self.id,
-            NAME: self.name,
-            TVD_NAME: self.tvd_name,
-            POS: super().to_dict(),
-            PLANES: self.planes,
-            SUPPLIES: self.supplies
+            constants.ID: self.id,
+            constants.Airfield.NAME: self.name,
+            constants.TVD_NAME: self.tvd_name,
+            constants.POS: super().to_dict(),
+            constants.Airfield.PLANES: self.planes,
+            constants.Airfield.SUPPLIES: self.supplies
         }
 
     @property

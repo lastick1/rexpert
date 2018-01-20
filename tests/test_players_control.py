@@ -7,8 +7,8 @@ import atypes
 import configs
 import tests
 
+import constants
 import processing
-from processing.player import ID, NICKNAME, KNOWN_NICKNAMES, ONLINE, BAN_DATE, UNLOCKS
 
 IOC = tests.mocks.DependencyContainerMock(pathlib.Path('./testdata/conf.ini'))
 MAIN = IOC.config.main
@@ -16,7 +16,7 @@ TEST_NICKNAME = '_test_nickname'
 TEST_ACCOUNT_ID = '_test_id1'
 TEST_PROFILE_ID = '_test_profile_id1'
 TEST_PLAYER = processing.Player.initialize(TEST_ACCOUNT_ID)
-FILTER = {ID: TEST_ACCOUNT_ID}
+FILTER = {constants.ID: TEST_ACCOUNT_ID}
 OBJECTS = configs.Objects()
 
 
@@ -40,9 +40,9 @@ def _atype_12_stub(object_id: int, object_name: str, country: int, name: str, pa
 class TestPlayersController(unittest.TestCase):
     """Тесты событий с обработкой данных игроков"""
     def setUp(self):
-        TEST_PLAYER[UNLOCKS] = 1
-        if NICKNAME in TEST_PLAYER:
-            del TEST_PLAYER[NICKNAME]
+        TEST_PLAYER[constants.Player.UNLOCKS] = 1
+        if constants.Player.NICKNAME in TEST_PLAYER:
+            del TEST_PLAYER[constants.Player.NICKNAME]
         IOC.console_mock.received_private_messages.clear()
         IOC.console_mock.kicks.clear()
 
@@ -63,7 +63,7 @@ class TestPlayersController(unittest.TestCase):
         _create(FILTER, TEST_PLAYER)
         controller = processing.PlayersController(IOC)
         date = datetime.datetime.now() + datetime.timedelta(days=1)
-        IOC.storage.players.collection.update_one(FILTER, update={'$set': {BAN_DATE: date}})
+        IOC.storage.players.collection.update_one(FILTER, update={'$set': {constants.Player.BAN_DATE: date}})
         # Act
         controller.connect(TEST_ACCOUNT_ID)
         # Assert
@@ -86,11 +86,11 @@ class TestPlayersController(unittest.TestCase):
         controller.spawn(atype10)
         # Assert
         player = IOC.storage.players.collection.find_one(FILTER)
-        self.assertEqual(TEST_NICKNAME, player[NICKNAME])
+        self.assertEqual(TEST_NICKNAME, player[constants.Player.NICKNAME])
 
     def test_connect_player(self):
         """Отправляется приветственное сообщение игроку на подключении"""
-        TEST_PLAYER[NICKNAME] = TEST_NICKNAME
+        TEST_PLAYER[constants.Player.NICKNAME] = TEST_NICKNAME
         _create(FILTER, TEST_PLAYER)
         controller = processing.PlayersController(IOC)
         aircraft_name = 'I-16 type 24'
@@ -127,7 +127,7 @@ class TestPlayersController(unittest.TestCase):
         controller.spawn(atype10)
         # Assert
         document = IOC.storage.players.collection.find_one(FILTER)
-        self.assertEqual([], document[KNOWN_NICKNAMES])
+        self.assertEqual([], document[constants.Player.KNOWN_NICKNAMES])
 
     def test_multiple_spawn_new_nick(self):
         """Пополняются известные ники при спауне с новым ником"""
@@ -148,7 +148,7 @@ class TestPlayersController(unittest.TestCase):
         controller.spawn(atype10)
         # Assert
         document = IOC.storage.players.collection.find_one(FILTER)
-        self.assertEqual([TEST_NICKNAME], document[KNOWN_NICKNAMES])
+        self.assertEqual([TEST_NICKNAME], document[constants.Player.KNOWN_NICKNAMES])
 
     def test_disconnect_player(self):
         """Ставится статус offline при дисконнекте игрока"""
@@ -158,7 +158,7 @@ class TestPlayersController(unittest.TestCase):
         controller.disconnect(TEST_ACCOUNT_ID)
         # Assert
         document = IOC.storage.players.collection.find_one(FILTER)
-        self.assertEqual(False, document[ONLINE])
+        self.assertEqual(False, document[constants.Player.ONLINE])
 
     def test_give_unlock_for_damage(self):
         """Даётся модификация за вылет с уроном"""
@@ -177,7 +177,7 @@ class TestPlayersController(unittest.TestCase):
         IOC.objects_controller.spawn(atype10)
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
         damage = 80.0
-        expect = TEST_PLAYER[UNLOCKS] + 1
+        expect = TEST_PLAYER[constants.Player.UNLOCKS] + 1
         # Act
         controller.start_mission()
         controller.spawn(atype10)
@@ -185,7 +185,7 @@ class TestPlayersController(unittest.TestCase):
         controller.finish(atypes.Atype16(9222, bot.obj_id, pos))
         # Assert
         document = IOC.storage.players.collection.find_one(FILTER)
-        self.assertEqual(expect, document[UNLOCKS])
+        self.assertEqual(expect, document[constants.Player.UNLOCKS])
 
     def test_give_unlock_for_kill(self):
         """Даётся модификация за вылет с килом"""
@@ -203,7 +203,7 @@ class TestPlayersController(unittest.TestCase):
         target = IOC.objects_controller.create_object(atype12_static, OBJECTS[target_name])
         IOC.objects_controller.spawn(atype10)
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
-        expect = TEST_PLAYER[UNLOCKS] + 1
+        expect = TEST_PLAYER[constants.Player.UNLOCKS] + 1
         # Act
         controller.start_mission()
         controller.spawn(atype10)
@@ -211,7 +211,7 @@ class TestPlayersController(unittest.TestCase):
         controller.finish(atypes.Atype16(9222, bot.obj_id, pos))
         # Assert
         document = IOC.storage.players.collection.find_one(FILTER)
-        self.assertEqual(expect, document[UNLOCKS])
+        self.assertEqual(expect, document[constants.Player.UNLOCKS])
 
     def test_do_not_give_for_disco(self):
         """Не даётся модификация за вылет с килом и диско"""
@@ -229,7 +229,7 @@ class TestPlayersController(unittest.TestCase):
         target = IOC.objects_controller.create_object(atype12_static, OBJECTS[target_name])
         IOC.objects_controller.spawn(atype10)
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
-        expect = TEST_PLAYER[UNLOCKS]
+        expect = TEST_PLAYER[constants.Player.UNLOCKS]
         # Act
         controller.start_mission()
         controller.spawn(atype10)
@@ -238,7 +238,7 @@ class TestPlayersController(unittest.TestCase):
         controller.finish(atypes.Atype16(9222, bot.obj_id, pos))
         # Assert
         document = IOC.storage.players.collection.find_one(FILTER)
-        self.assertEqual(expect, document[UNLOCKS])
+        self.assertEqual(expect, document[constants.Player.UNLOCKS])
 
     def test_do_not_give_for_friendly(self):
         """Не даётся модификация за вылет со стрельбой по своим"""
@@ -256,7 +256,7 @@ class TestPlayersController(unittest.TestCase):
         target = IOC.objects_controller.create_object(atype12_static, OBJECTS[target_name])
         IOC.objects_controller.spawn(atype10)
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
-        expect = TEST_PLAYER[UNLOCKS]
+        expect = TEST_PLAYER[constants.Player.UNLOCKS]
         # Act
         controller.start_mission()
         controller.spawn(atype10)
@@ -265,11 +265,11 @@ class TestPlayersController(unittest.TestCase):
         controller.disconnect(TEST_ACCOUNT_ID)
         # Assert
         document = IOC.storage.players.collection.find_one(FILTER)
-        self.assertEqual(expect, document[UNLOCKS])
+        self.assertEqual(expect, document[constants.Player.UNLOCKS])
 
     def test_msg_restricted_takeoff(self):
         """Отправляется предупреждение о запрете взлёта"""
-        TEST_PLAYER[UNLOCKS] = 0
+        TEST_PLAYER[constants.Player.UNLOCKS] = 0
         _create(FILTER, TEST_PLAYER)
         controller = processing.PlayersController(IOC)
         aircraft_name = 'I-16 type 24'
@@ -292,7 +292,7 @@ class TestPlayersController(unittest.TestCase):
 
     def test_kick_restricted_takeoff(self):
         """Отправляется команда кика при запрещённом взлёте"""
-        TEST_PLAYER[UNLOCKS] = 0
+        TEST_PLAYER[constants.Player.UNLOCKS] = 0
         _create(FILTER, TEST_PLAYER)
         controller = processing.PlayersController(IOC)
         aircraft_name = 'I-16 type 24'
@@ -313,10 +313,9 @@ class TestPlayersController(unittest.TestCase):
         # Assert
         self.assertGreater(len(IOC.console_mock.kicks), 0)  # приветствие + предупреждение
 
-    @unittest.skip("not implemented")
     def test_reset(self):
         """Сбрасывается состояние игроков в кампании"""
-        self.fail()
+        IOC.storage.players.reset_mods_for_all()
 
 
 if __name__ == '__main__':

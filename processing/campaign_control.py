@@ -5,9 +5,10 @@ import pytz
 
 import atypes
 import processing
+import constants
 
 from .tvd import Tvd
-from .campaign_map import CampaignMap, DATE_FORMAT
+from .campaign_map import CampaignMap
 from .campaign_mission import CampaignMission
 
 START_DATE = 'start_date'
@@ -39,7 +40,7 @@ class CampaignController:
         campaign_map = CampaignMap(order=order, date=start, mission_date=start, tvd_name=tvd_name, months=list())
         airfields = processing.AirfieldsController.initialize_managed_airfields(
             self._ioc.config.mgen.airfields_data[campaign_map.tvd_name])
-        tvd = self.tvd_builders[campaign_map.tvd_name].get_tvd(campaign_map.date.strftime(DATE_FORMAT))
+        tvd = self.tvd_builders[campaign_map.tvd_name].get_tvd(campaign_map.date.strftime(constants.DATE_FORMAT))
         supply = self.vendor.get_month_supply(campaign_map.current_month, campaign_map)
         self.vendor.deliver_month_supply(campaign_map, tvd.to_country_dict_rear(airfields), supply)
         self.vendor.initial_front_supply(campaign_map, tvd.to_country_dict_front(airfields))
@@ -54,7 +55,7 @@ class CampaignController:
     def _generate(self, mission_name: str, campaign_map: CampaignMap):
         """Сгенерировать миссию для указанной карты кампании"""
         tvd_builder = self.tvd_builders[campaign_map.tvd_name]
-        tvd = tvd_builder.get_tvd(campaign_map.date.strftime(DATE_FORMAT))
+        tvd = tvd_builder.get_tvd(campaign_map.date.strftime(constants.DATE_FORMAT))
         # Генерация первой миссии
         tvd_builder.update(tvd, self._ioc.storage.airfields.load_by_tvd(campaign_map.tvd_name))
         self._ioc.generator.make_ldb(campaign_map.tvd_name)
@@ -103,7 +104,7 @@ class CampaignController:
         self._update_tik(atype.tik)
         campaign_map = self.campaign_map
         campaign_map.mission = self._mission
-        self._current_tvd = self.tvd_builders[campaign_map.tvd_name].get_tvd(campaign_map.date.strftime(DATE_FORMAT))
+        self._current_tvd = self.tvd_builders[campaign_map.tvd_name].get_tvd(campaign_map.date.strftime(constants.DATE_FORMAT))
         self._ioc.storage.campaign_maps.update(campaign_map)
         # TODO сохранить миссию в базу (в документ CampaignMap и в коллекцию CampaignMissions)
         # TODO удалить файлы предыдущей миссии
@@ -132,7 +133,7 @@ class CampaignController:
         return CampaignMission(
             kind=source_mission.kind,
             file=source_mission.name,
-            date=source_mission.date.strftime(DATE_FORMAT),
+            date=source_mission.date.strftime(constants.DATE_FORMAT),
             guimap=source_mission.guimap,
             additional={
                 'date': atype.date,

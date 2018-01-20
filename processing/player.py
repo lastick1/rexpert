@@ -1,49 +1,40 @@
 """Модель данных игрока"""
-from log_objects import BotPilot
-
-ID = '_id'
-NICKNAME = 'nickname'
-BAN_DATE = 'ban_expire_date'
-KNOWN_NICKNAMES = 'known_nicknames'
-UNLOCKS = 'unlocks'
-ONLINE = 'online'
-PLANES = 'planes'
-HEAVY = 'heavy'
-LIGHT = 'light'
+import constants
+import log_objects
 
 
 class Player:
     """Класс игрока"""
-    def __init__(self, account_id: str, data: dict, bot: BotPilot = None):
+    def __init__(self, account_id: str, data: dict, bot: log_objects.BotPilot = None):
         self.account_id = account_id
         self.current_bot = bot
-        self._nickname = data[NICKNAME] if NICKNAME in data else ''
-        self.ban_expire_date = data[BAN_DATE]
-        self.previous_nicknames = data[KNOWN_NICKNAMES]
-        self.unlocks: int = data[UNLOCKS]
-        self.online: bool = data[ONLINE]
+        self._nickname = data[constants.Player.NICKNAME] if constants.Player.NICKNAME in data else ''
+        self.ban_expire_date = data[constants.Player.BAN_DATE]
+        self.previous_nicknames = data[constants.Player.KNOWN_NICKNAMES]
+        self.unlocks: int = data[constants.Player.UNLOCKS]
+        self.online: bool = data[constants.Player.ONLINE]
 
     def to_dict(self) -> dict:
         """Сериализация в словарь для MongoDB"""
         return {
-            ID: self.account_id,
-            NICKNAME: self._nickname,
-            BAN_DATE: self.ban_expire_date,
-            KNOWN_NICKNAMES: self.previous_nicknames,
-            UNLOCKS: self.unlocks,
-            ONLINE: self.online
+            constants.ID: self.account_id,
+            constants.Player.NICKNAME: self._nickname,
+            constants.Player.BAN_DATE: self.ban_expire_date,
+            constants.Player.KNOWN_NICKNAMES: self.previous_nicknames,
+            constants.Player.UNLOCKS: self.unlocks,
+            constants.Player.ONLINE: self.online
         }
 
     @staticmethod
     def initialize(account_id: str, online: bool = True) -> dict:
         """Инициализировать объект-документ для MongoDB"""
         return {
-            ID: account_id,
-            NICKNAME: None,
-            BAN_DATE: None,
-            KNOWN_NICKNAMES: [],
-            UNLOCKS: 1,
-            ONLINE: online
+            constants.ID: account_id,
+            constants.Player.NICKNAME: None,
+            constants.Player.BAN_DATE: None,
+            constants.Player.KNOWN_NICKNAMES: [],
+            constants.Player.UNLOCKS: 1,
+            constants.Player.ONLINE: online
         }
 
     def get_nickname(self) -> str:

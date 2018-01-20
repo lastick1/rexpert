@@ -2,23 +2,21 @@
 import pymongo
 
 import configs
-from .airfield import ManagedAirfield, NAME, PLANES, POS
+import constants
+from .airfield import ManagedAirfield
 from .player import Player
-from .campaign_map import CampaignMap, CampaignMission, ORDER, DATE, MISSION_DATE, MONTHS, MISSION, DATE_FORMAT
-from .division import Division, UNITS
-
-ID = '_id'
-TVD_NAME = 'tvd_name'
+from .campaign_map import CampaignMap, CampaignMission
+from .division import Division
 
 
 def _filter_by_id(_id: str) -> dict:
     """Получить фильтр документов по идентификатору"""
-    return {ID: _id}
+    return {constants.ID: _id}
 
 
 def _filter_by_tvd(tvd_name: str) -> dict:
     """Получить фильтр документов по театру военных действий (ТВД)"""
-    return {TVD_NAME: tvd_name}
+    return {constants.TVD_NAME: tvd_name}
 
 
 def _update_request_body(document: dict) -> dict:
@@ -42,19 +40,19 @@ class CampaignMaps(CollectionWrapper):
     def _convert_from_document(document) -> CampaignMap:
         """Конвертировать документ из БД в объект класса карты кампании"""
         return CampaignMap(
-            order=document[ORDER],
-            date=document[DATE],
-            mission_date=document[MISSION_DATE],
-            tvd_name=document[TVD_NAME],
-            months=document[MONTHS],
-            mission=CampaignMissions.convert_from_document(document[MISSION])
+            order=document[constants.CampaignMap.ORDER],
+            date=document[constants.CampaignMap.DATE],
+            mission_date=document[constants.CampaignMap.MISSION_DATE],
+            tvd_name=document[constants.TVD_NAME],
+            months=document[constants.CampaignMap.MONTHS],
+            mission=CampaignMissions.convert_from_document(document[constants.CampaignMap.MISSION])
         )
 
     def update(self, campaign_map: CampaignMap):
         """Обновить/создать документ в БД"""
         _b = _update_request_body(campaign_map.to_dict())
         self.collection.update_one(
-            {TVD_NAME: campaign_map.tvd_name}, _b, upsert=True)
+            {constants.TVD_NAME: campaign_map.tvd_name}, _b, upsert=True)
 
     def count(self) -> int:
         """Посчитать количество карт в кампании"""
@@ -64,15 +62,15 @@ class CampaignMaps(CollectionWrapper):
         """Загрузить все данные по картам кампаний"""
         return list(self._convert_from_document(document)
                     for document in self.collection.find()
-                    .sort(ORDER, pymongo.ASCENDING))
+                    .sort(constants.CampaignMap.ORDER, pymongo.ASCENDING))
 
     def load_by_order(self, order: int) -> CampaignMap:
         """Загрузить карту кампании по её порядковому номеру"""
-        return self._convert_from_document(self.collection.find_one({ORDER: order}))
+        return self._convert_from_document(self.collection.find_one({constants.CampaignMap.ORDER: order}))
 
     def load_by_tvd_name(self, tvd_name: str) -> CampaignMap:
         """Загрузить карту кампании по имени её ТВД (карты)"""
-        return self._convert_from_document(self.collection.find_one({TVD_NAME: tvd_name}))
+        return self._convert_from_document(self.collection.find_one({constants.TVD_NAME: tvd_name}))
 
 
 class CampaignMissions(CollectionWrapper):
@@ -95,7 +93,7 @@ class CampaignMissions(CollectionWrapper):
 
     def update(self, mission: CampaignMission):
         """Обновить/создать документ в БД"""
-        self.update_one({'date': mission.date.strftime(DATE_FORMAT)}, _update_request_body(mission.to_dict()))
+        self.update_one({'date': mission.date.strftime(constants.DATE_FORMAT)}, _update_request_body(mission.to_dict()))
 
     def load_by_date(self, date: str) -> CampaignMission:
         """Загрузить миссию по её игровой дате"""
@@ -115,15 +113,15 @@ class Divisions(CollectionWrapper):
     @staticmethod
     def _make_filter(tvd_name: str, division_name: str) -> dict:
         """Построить фильтр для поиска документа дивизии в БД"""
-        return {TVD_NAME: tvd_name, NAME: division_name}
+        return {constants.TVD_NAME: tvd_name, constants.Division.NAME: division_name}
 
     @staticmethod
     def _convert_from_document(document) -> Division:
         """Конвертировать документ из БД в объект класса дивизии"""
         return Division(
-            tvd_name=document[TVD_NAME],
-            name=document[NAME],
-            units=document[UNITS]
+            tvd_name=document[constants.TVD_NAME],
+            name=document[constants.Division.NAME],
+            units=document[constants.Division.UNITS]
         )
 
     def update(self, division: Division):
@@ -154,13 +152,17 @@ class Players(CollectionWrapper):
         document = _update_request_body(player.to_dict())
         self.collection.update_one(_filter, document, upsert=True)
 
+    def reset_mods_for_all(self, value: int):
+        """Сбросить количество модификаций всем игрокам"""
+        self.collection.update_many({}, {'$set': {constants.Player.UNLOCKS: value}})
+
 
 class Airfields(CollectionWrapper):
     """Работа с документами аэродромов в БД"""
     @staticmethod
     def _filter_by_tvd(tvd_name: str) -> dict:
         """Получить фильтр по театру военных действий"""
-        return {TVD_NAME: tvd_name}
+        return {constants.TVD_NAME: tvd_name}
 
     def update_airfield(self, managed_airfield: ManagedAirfield):
         """Обновить аэродром"""
@@ -177,11 +179,11 @@ class Airfields(CollectionWrapper):
     def _convert_from_document(document) -> ManagedAirfield:
         """Конвертировать документ из БД в объект класса управляемого аэродрома"""
         return ManagedAirfield(
-            name=document[NAME],
-            tvd_name=document[TVD_NAME],
-            x=float(document[POS]['x']),
-            z=float(document[POS]['z']),
-            planes=document[PLANES]
+            name=document[constants.Airfield.NAME],
+            tvd_name=document[constants.TVD_NAME],
+            x=float(document[constants.POS]['x']),
+            z=float(document[constants.POS]['z']),
+            planes=document[constants.Airfield.PLANES]
         )
 
     def load_by_id(self, airfield_id) -> ManagedAirfield:
@@ -195,7 +197,7 @@ class Airfields(CollectionWrapper):
 
     def load_by_name(self, tvd_name: str, airfield_name: str) -> ManagedAirfield:
         """Загрузить аэродром указанного ТВД по его имени"""
-        return self._convert_from_document(self.collection.find_one({TVD_NAME: tvd_name, 'name': airfield_name}))
+        return self._convert_from_document(self.collection.find_one({constants.TVD_NAME: tvd_name, 'name': airfield_name}))
 
 
 class Storage:
