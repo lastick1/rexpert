@@ -1,4 +1,7 @@
 """Рисование карт миссий и иконок целей на них"""
+import datetime
+import shutil
+
 from PIL import Image, ImageDraw, ImageFont
 from .map_splines import draw_spline
 import json
@@ -14,6 +17,11 @@ class MapPainter:
         tvd = self._ioc.campaign_controller.current_tvd
         mission = self._ioc.campaign_controller.mission
         self.draw_map(tvd.border, list(), tvd.name, list(), list(), mission.map_icons)
+        fs = self._ioc.config.stat.map_full_size
+        tn = self._ioc.config.stat.map_main_page
+        now = str(datetime.datetime.now()).replace(':', '-')
+        shutil.copy(fs, f'./current/full_size_maps/{now}.png')
+        shutil.copy(tn, f'./current/map_thumbnails/{now}.png')
 
     def draw_map(
             self,
@@ -95,14 +103,14 @@ class MapPainter:
                     if not point:
                         print()
                     coordinates = (
-                            int(point['x'] * x_coefficient - image.size[0] / 2),
-                            base.size[1] - int(point['z'] * z_coefficient) - int(image.size[1])
-                        )
+                        int(point['z'] * z_coefficient) - int(image.size[1]),
+                        base.size[1] - int(point['x'] * x_coefficient - image.size[0] / 2)
+                    )
                     base.paste(image, coordinates, image)
                     if cls == 'flames':
                         coordinates = (
-                            int(point['x'] * x_coefficient - flame.size[0] / 2),
-                            base.size[1] - int(point['z'] * z_coefficient) - int(flame.size[1])
+                            int(point['z'] * z_coefficient) - int(flame.size[1]),
+                            base.size[1] - int(point['x'] * x_coefficient - flame.size[0] / 2)
                         )
                         base.paste(flame, coordinates, flame)
         base.save(self._ioc.config.stat.map_full_size)
