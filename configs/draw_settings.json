@@ -1,11 +1,11 @@
 {
   "icon_size": [100, 100],
   "backgrounds": {
-    "moscow": "4.png",
-    "stalingrad": "stalingrad_background.png"
+    "moscow": "resources/backgrounds/moscow.png",
+    "stalingrad": "resources/backgrounds/stalingrad.png"
   },
-  "flames": "fire.png",
-  "airfields": "af.png",
+  "flames": "resources/img/fire_81x126.png",
+  "airfields": "resources/img/neutral_airfield_150x150.png",
   "coals": ["axis", "allies"],
   "coal_mapping": {
     "1": "allies",
@@ -14,24 +14,24 @@
   "countries": {"101": "allies", "201": "axis"},
   "coal_icons": ["flames", "trucks", "tanks", "arts", "warehouses", "hqs", "airfields", "forts"],
   "axis": {
-    "flames": "red_point.png",
-    "trucks": "car_blue.png",
-    "tanks": "tank_blue.png",
-    "arts": "art_blue.png",
-    "warehouses": "sklad_blue.png",
-    "hqs": "schtab3_blue.png",
-    "airfields": "blue_field.png",
-    "forts": "fort_blue.png"
+    "flames": "resources/img/axis_70x70.png",
+    "trucks": "resources/img/axis_truck_35x35.png",
+    "tanks": "resources/img/axis_tank_35x35.png",
+    "arts": "resources/img/axis_artillery_35x35.png",
+    "warehouses": "resources/img/axis_warehouse_35x35.png",
+    "hqs": "resources/img/axis_hq_35x35.png",
+    "airfields": "resources/img/axis_airfield_35x35.png",
+    "forts": "resources/img/axis_fort_35x35.png"
   },
   "allies": {
-    "flames": "blue_point.png",
-    "trucks": "car_red.png",
-    "tanks": "tank_red.png",
-    "arts": "art_red.png",
-    "warehouses": "sklad_red.png",
-    "hqs": "schtab2_red.png",
-    "airfields": "red_field.png",
-    "forts": "fort_red.png"
+    "flames": "resources/img/allies_70x70.png",
+    "trucks": "resources/img/allies_truck_35x35.png",
+    "tanks": "resources/img/allies_tank_35x35.png",
+    "arts": "resources/img/allies_artillery_35x35.png",
+    "warehouses": "resources/img/allies_warehouse_35x35.png",
+    "hqs": "resources/img/allies_hq_35x35.png",
+    "airfields": "resources/img/allies_airfield_35x35.png",
+    "forts": "resources/img/allies_fort_35x35.png"
   },
   "show_options": {
     "targets_on_map": true,

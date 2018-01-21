@@ -46,3 +46,48 @@ class CampaignMission:
             constants.CampaignMission.AIRFIELDS: self.airfields,
             constants.CampaignMission.DIVISION_UNITS: self.division_units
         }
+
+    @property
+    def map_icons(self) -> dict:
+        """Иконки целей для изображения карты и планнера"""
+        icons = {
+            '1': {
+                'flames': [],
+                'trucks': [],
+                'tanks': [],
+                'arts': [],
+                'warehouses': [],
+                'hqs': [],
+                'airfields': [],
+                'forts': []
+            },
+            '2': {
+                'flames': [],
+                'trucks': [],
+                'tanks': [],
+                'arts': [],
+                'warehouses': [],
+                'hqs': [],
+                'airfields': [],
+                'forts': []
+            }
+        }
+        for server_input in self.server_inputs:
+            if 'R' in server_input['name']:
+                coal = '1'
+            elif 'B' in server_input['name']:
+                coal = '2'
+            else:
+                continue
+            if 'TD' in server_input['name']:
+                icons[coal]['tanks'].append(server_input['pos'])
+            elif 'AD' in server_input['name']:
+                icons[coal]['arts'].append(server_input['pos'])
+            elif 'ID' in server_input['name']:
+                icons[coal]['forts'].append(server_input['pos'])
+        for airfield in self.airfields:
+            coal = str(int(airfield['country']/100))
+            result = airfield['pos'].copy()
+            result.update({'name': airfield['name']})
+            icons[coal]['airfields'].append(result)
+        return icons

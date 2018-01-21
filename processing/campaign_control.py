@@ -106,7 +106,8 @@ class CampaignController:
         self._update_tik(atype.tik)
         campaign_map = self.campaign_map
         campaign_map.mission = self._mission
-        self._current_tvd = self.tvd_builders[campaign_map.tvd_name].get_tvd(campaign_map.date.strftime(constants.DATE_FORMAT))
+        self._current_tvd = self.tvd_builders[campaign_map.tvd_name].get_tvd(
+            campaign_map.date.strftime(constants.DATE_FORMAT))
         self._ioc.storage.campaign_maps.update(campaign_map)
         # TODO сохранить миссию в базу (в документ CampaignMap и в коллекцию CampaignMissions)
         # TODO удалить файлы предыдущей миссии

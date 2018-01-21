@@ -55,6 +55,7 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         self._ioc.campaign_controller.start_mission(atype)
         self._ioc.divisions_controller.start_mission()
         self._ioc.ground_controller.start_mission()
+        self._ioc.map_painter.update_map()
 
     def event_hit(self, tik: int, ammo: str, attacker_id: int, target_id: int) -> None:
         """AType 1 handler"""

@@ -6,6 +6,7 @@ from .mgen import Mgen, GeneratorParamsConfig
 from .planes import Planes
 from .gameplay import Gameplay
 from .stat import Stats
+from .draw import Draw
 
 
 class Config:
@@ -17,3 +18,4 @@ class Config:
         self.gameplay = Gameplay()  # настройки игрового процесса
         self.stat = Stats(self.main.stats_static)  # конфиг интеграции со статистикой
         self.generator = GeneratorParamsConfig()  # конфигурация создания defaultparams
+        self.draw = Draw(self.mgen)

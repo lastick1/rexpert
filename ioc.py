@@ -20,6 +20,7 @@ class DependencyContainer:  # pylint: disable=R0902
         self._divisions_controller: processing.DivisionsController = None
         self._grid_controller: processing.GridController = None
         self._source_parser: processing.SourceParser = None
+        self._map_painter: processing.MapPainter = None
         self._rcon: rcon.DServerRcon = None
         self._generator: processing.Generator = None
         self._storage: processing.Storage = None
@@ -100,6 +101,13 @@ class DependencyContainer:  # pylint: disable=R0902
         if not self._source_parser:
             self._source_parser = processing.SourceParser(self.config)
         return self._source_parser
+
+    @property
+    def map_painter(self) -> processing.MapPainter:
+        """Рисовальщик изображений карты с иконками целей"""
+        if not self._map_painter:
+            self._map_painter = processing.MapPainter(self)
+        return self._map_painter
 
     @property
     def rcon(self) -> rcon.DServerRcon:

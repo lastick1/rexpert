@@ -23,3 +23,4 @@ from .source_parser import SourceParser, SourceMission
 from .campaign_control import CampaignController
 from .grid_control import GridController
 from .division_control import DivisionsController, DIVISIONS
+from .map_painter import MapPainter
