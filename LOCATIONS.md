@@ -2,7 +2,7 @@
 
 ## AirObjective
 
-- ReconFlight
+- ReconFlight - декор филдов
 - BomberFlight
 - FighterPatrolFlight
 - Dogfight
