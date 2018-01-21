@@ -2,6 +2,7 @@
 
 import pathlib
 import os
+import imageio
 
 
 def cmp_to_key(mycmp):
@@ -45,3 +46,13 @@ def compile_log(folder: str, report: str, dest: str):
         for file in sorted(files, key=os.path.getmtime):
             with pathlib.Path(file).open() as stream:
                 destination.writelines(stream.readlines())
+
+
+def compile_gif(folder: str):
+    """Собрать картинки в gif-анимацию в заданной папке"""
+    folder = pathlib.Path(folder)
+    files = list(str(x) for x in folder.glob('*.png'))
+    with imageio.get_writer('./movie.gif', mode='I', duration=1) as writer:
+        for filename in files:
+            image = imageio.imread(filename)
+            writer.append_data(image)

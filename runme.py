@@ -17,6 +17,11 @@ def compile_log():
     utils.compile_log('./tmp', 'missionReport*.txt', './tmp/compiled.txt')
 
 
+def compile_gif():
+    """Сделать кино"""
+    utils.compile_gif('./current/map_thumbnails/')
+
+
 def reset():
     """Сбросить состояние кампании"""
     controller = processing.CampaignController(ioc.DependencyContainer())
@@ -43,7 +48,8 @@ def run():
 print(datetime.datetime.now().strftime("[%H:%M:%S] Program Start."))
 
 # compile_log()
+# compile_gif()
 # reset()
 # initialize_campaign()
 # generate('result1')
-run()
+# run()

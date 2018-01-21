@@ -16,4 +16,6 @@ python -m pip install -U pytz
 python -m pip install -U rope
 
 python -m pip install -U pillow
+
+python -m pip install -U imageio
 pause
