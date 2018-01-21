@@ -61,3 +61,7 @@ class AirfieldsController:
         airfield_country = tvd.get_country(airfield)
         self._add_aircraft(airfield, airfield_country, aircraft_name, aircraft_count)
         self._ioc.storage.airfields.update_airfield(airfield)
+
+    def end_round(self):
+        """Обработать завершение раунда - перераспределить самолёты с тылового на фронтовые аэродромы"""
+        raise NotImplemented

@@ -150,7 +150,6 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         atype = atypes.Atype16(tik, bot_id, pos)
         bot = self._ioc.objects_controller.get_bot(atype.bot_id)
         self._ioc.players_controller.finish(atype)
-        # TODO оптимизировать, т.к. расчёт текущего ТВД - ресурсоёмкий процесс
         self._ioc.airfields_controller.finish(self._ioc.campaign_controller.current_tvd, bot)
         self._ioc.objects_controller.deinitialize(atype)
 
@@ -168,6 +167,7 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         """AType 19 handler"""
         atype = atypes.Atype19(tik)
         self._ioc.campaign_controller.end_round(atype)
+        self._ioc.airfields_controller.end_round()
 
     def event_player_connected(self, tik: int, account_id: str, profile_id: str) -> None:
         """AType 20 handler"""
