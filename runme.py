@@ -43,9 +43,7 @@ def run():
 print(datetime.datetime.now().strftime("[%H:%M:%S] Program Start."))
 
 # compile_log()
-reset()
-initialize_campaign()
-# export('moscow')
-# export('stalingrad')
+# reset()
+# initialize_campaign()
 # generate('result1')
-# run()
+run()

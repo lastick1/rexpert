@@ -46,6 +46,7 @@ class CampaignController:
         self.vendor.initial_front_supply(campaign_map, tvd.to_country_dict_front(airfields))
         self._ioc.storage.campaign_maps.update(campaign_map)
         self._ioc.storage.airfields.update_airfields(airfields)
+        self._ioc.divisions_controller.initialize_divisions(tvd_name)
 
     def reset(self):
         """Сбросить состояние кампании"""

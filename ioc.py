@@ -17,6 +17,7 @@ class DependencyContainer:  # pylint: disable=R0902
         self._ground_controller: processing.GroundController = None
         self._campaign_controller: processing.CampaignController = None
         self._airfields_controller: processing.AirfieldsController = None
+        self._divisions_controller: processing.DivisionsController = None
         self._grid_controller: processing.GridController = None
         self._source_parser: processing.SourceParser = None
         self._rcon: rcon.DServerRcon = None
@@ -78,6 +79,13 @@ class DependencyContainer:  # pylint: disable=R0902
         if not self._airfields_controller:
             self._airfields_controller = processing.AirfieldsController(self)
         return self._airfields_controller
+
+    @property
+    def divisions_controller(self) -> processing.DivisionsController:
+        """Контроллер дивизий"""
+        if not self._divisions_controller:
+            self._divisions_controller = processing.DivisionsController(self)
+        return self._divisions_controller
 
     @property
     def grid_controller(self) -> processing.GridController:

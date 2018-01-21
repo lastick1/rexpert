@@ -1,6 +1,17 @@
 """Управление дивизиями"""
+import re
 
 from .division import Division, DIVISIONS
+from .campaign_mission import CampaignMission
+
+
+DIVISION_INPUT_RE = re.compile(
+    '^(?P<side>[BR])(?P<type>[TAI])D(?P<number>\d)$'
+)
+
+
+def _to_campaign_mission(mission) -> CampaignMission:
+    return mission
 
 
 class DivisionsController:
@@ -15,9 +26,19 @@ class DivisionsController:
                 Division(
                     tvd_name=tvd_name,
                     name=name,
-                    units=DIVISIONS[name]
+                    units=DIVISIONS[name],
+                    pos={'x': 0.0, 'z': 0.0}
                 )
             )
+
+    def start_mission(self):
+        """Обработать начало миссии - обновить положение дивизий из исходников"""
+        campaign_mission = _to_campaign_mission(self._ioc.campaign_controller.mission)
+        for server_input in campaign_mission.server_inputs:
+            if DIVISION_INPUT_RE.match(server_input['name']):
+                division = self._ioc.storage.divisions.load_by_name(campaign_mission.guimap, server_input['name'])
+                division.pos = server_input['pos']
+                self._ioc.storage.divisions.update(division)
 
     def damage_division(self, tvd_name: str, unit_name: str):
         """Зачесть уничтожение подразделения дивизии"""

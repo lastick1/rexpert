@@ -20,10 +20,11 @@ INF_NAMES = tuple(x for x in DIVISIONS if 'I' in x)
 
 class Division:
     """Войсковая дивизия"""
-    def __init__(self, tvd_name: str, name: str, units: float):
+    def __init__(self, tvd_name: str, name: str, units: float, pos: dict):
         self.units = units
         self.name = name
         self.tvd_name = tvd_name
+        self.pos = pos
 
     @property
     def country(self) -> int:
@@ -55,5 +56,6 @@ class Division:
         return {
             constants.ID: '{}_{}'.format(self.tvd_name, self.name),
             constants.Division.UNITS: self.units,
-            constants.TVD_NAME: self.tvd_name
+            constants.TVD_NAME: self.tvd_name,
+            constants.POS: self.pos
         }
