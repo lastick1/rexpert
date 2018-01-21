@@ -63,11 +63,27 @@ class AirfieldsSelector:
                 result = list()
                 front.sort(key=utils.cmp_to_key(self._front_airfields_comparator))
                 result.append(front.pop())
+                front = self._remove_too_close(front, result)
                 front.reverse()
                 result.append(front.pop())
+                front = self._remove_too_close(front, result)
                 result.append(random.choice(front))
                 return result
             else:
                 raise NameError('Невозможно выбрать фронтовые аэродромы')
         else:
             raise ValueError
+
+    @staticmethod
+    def _remove_too_close(front: list, selected_airfields: list) -> list:
+        result = list()
+        for airfield in front:
+            close = False
+            for selected in selected_airfields:
+                if airfield.distance_to(selected.x, selected.z) < 15000:
+                    close = True
+                    break
+            if not close:
+                result.append(airfield)
+        return result
+
