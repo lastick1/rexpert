@@ -1,7 +1,7 @@
 {
   "image_files": {
-    "map_main_page": ".\\img\\t.jpg",
-    "map_full_size": ".\\img\\g.jpg"
+    "map_main_page": ".\\img\\t.png",
+    "map_full_size": ".\\img\\g.png"
   },
   "json_files": {
     "online_players": "players.json",
