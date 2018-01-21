@@ -27,7 +27,7 @@ class DivisionsController:
                     tvd_name=tvd_name,
                     name=name,
                     units=DIVISIONS[name],
-                    pos={'x': 0.0, 'z': 0.0}
+                    pos=self._ioc.config.mgen.cfg[tvd_name]['division_start_locations'][name]  # {'x': 0.0, 'z': 0.0}
                 )
             )
 

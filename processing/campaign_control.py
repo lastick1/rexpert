@@ -128,7 +128,7 @@ class CampaignController:
         # TODO отправить инпут завершения миссии (победа/ничья)
         # TODO определить имя ТВД для следующей миссии
         # TODO обновить папку ТВД
-        self._ioc.generator.make_mission(self.next_name, 'moscow')
+        self.generate(self.next_name)
 
     @staticmethod
     def _make_campaign_mission(atype: atypes.Atype0, source_mission: processing.SourceMission) -> CampaignMission:

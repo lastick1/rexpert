@@ -250,17 +250,18 @@ class Location(geometry.Point):
                  oy: float,
                  length: float,
                  width: float,
-                 desc=''):
+                 desc='',
+                 country=0):
         super().__init__(x=x, z=z)
         if name not in LOCATION_TYPES:
-            raise NameError('Incorrect location name')
+            raise NameError(f'Incorrect location name:{name}')
         self.name = name
         self.y = y
         self.oy = oy
         self.length = length
         self.width = width
         self.desc = desc
-        self.country = 0
+        self.country = country
         self.types = set()
 
     def __str__(self):

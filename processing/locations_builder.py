@@ -326,17 +326,11 @@ class LocationsBuilder:
                     if location.is_in_area(confrontations[country]):
                         close = False
                         for airfield in all_airfields:
-                            if location.distance_to(airfield.x, airfield.z) < 30000:
+                            if location.distance_to(airfield.x, airfield.z) < 20000:
                                 close = True
                                 break
 
-                        far = True
-                        for airfield in tvd.red_front_airfields + tvd.blue_front_airfields:
-                            if location.distance_to(airfield.x, airfield.z) < 60000:
-                                far = False
-                                break
-
-                        if not close and not far:
+                        if not close:
                             location.country = country
                             break
 
@@ -349,6 +343,19 @@ class LocationsBuilder:
             name=AIRFIELD, x=tvd.blue_rear_airfield.x, z=tvd.blue_rear_airfield.z, y=0, oy=0, length=10, width=10)
         blue_rear_af.country = 201
         blue_rear_af.types.add(GRASS_FIELD)
+
+        for division in tvd.divisions:
+            location = Location(name=GROUND_OBJECTIVE, x=division.pos['x'], z=division.pos['z'],
+                                y=0, oy=0, length=10, width=10, country=division.country)
+            if division.type_of_army == 'tank' and '1' in division.name:
+                location.types = {TRANSPORT}
+            if division.type_of_army == 'tank' and '2' in division.name:
+                location.types = {ARMOURED}
+            if division.type_of_army == 'artillery':
+                location.types = {ARTILLERY}
+            if division.type_of_army == 'infantry':
+                location.types = {AAA_POSITION}
+            self.locations[GROUND_OBJECTIVE].append(location)
 
         self.locations[AIRFIELD].append(red_rear_af)
         self.locations[AIRFIELD].append(blue_rear_af)

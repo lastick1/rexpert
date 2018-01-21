@@ -14,4 +14,6 @@ python -m pip install -U pymongo
 python -m pip install -U pytz
 
 python -m pip install -U rope
+
+python -m pip install -U pillow
 pause

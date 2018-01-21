@@ -42,12 +42,14 @@ class Tvd:
             folder: str,
             date: str,
             right_top: dict,
+            divisions: list(),
             icons_group_file: pathlib.Path
     ):
         self.name = name  # имя твд
         self.folder = folder  # папка твд
         self.date = datetime.datetime.strptime(date, constants.DATE_FORMAT)  # дата миссии
         self.right_top = right_top  # правый верхний угол карты
+        self.divisions = divisions  # дивизии с их местоположением
         self.icons_group_file = icons_group_file  # файл группы иконок
         self.border = list()  # упорядоченный список узлов линии фронта
         self.confrontation_east = list()  # восточная прифронтовая зона
@@ -146,6 +148,7 @@ class TvdBuilder:
             self._ioc.config.mgen.cfg[self.name]['tvd_folder'],
             date,
             self._ioc.config.mgen.cfg[self.name]['right_top'],
+            self._ioc.storage.divisions.load_by_tvd(self.name),
             self._ioc.config.mgen.icons_group_files[self.name]
         )
         grid = self._ioc.grid_controller.get_grid(self.name)
