@@ -7,7 +7,6 @@ import shutil
 import atypes
 import configs
 import processing
-import ioc
 import tests
 
 DATE_FORMAT = '%d.%m.%Y'

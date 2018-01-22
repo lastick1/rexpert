@@ -26,7 +26,7 @@ class TestTvdBuilder(unittest.TestCase):
     """Тесты сборки ТВД"""
     def setUp(self):
         """Настройка перед тестами"""
-        self.directory = pathlib.Path(r'./tmp/').absolute()
+        self.directory = pathlib.Path('./tmp/').absolute()
         if not self.directory.exists():
             self.directory.mkdir(parents=True)
         pathlib.Path('./tmp/data/scg/1/blocks_quickmission/airfields_red').mkdir(parents=True)
@@ -72,7 +72,7 @@ class TestTvdBuilder(unittest.TestCase):
         """Генерируются координатные группы аэродромов"""
         airfields = processing.AirfieldsController.initialize_managed_airfields(IOC.config.mgen.airfields_data[MOSCOW])
         builder = processing.TvdBuilder(MOSCOW, IOC)
-        tvd = processing.Tvd(MOSCOW, 'test', TVD_DATE, {'x': 281600, 'z': 281600}, pathlib.Path(r'./tmp/'))
+        tvd = processing.Tvd(MOSCOW, 'test', TVD_DATE, {'x': 281600, 'z': 281600}, dict(), pathlib.Path('./tmp/'))
         tvd.red_front_airfields = list(x for x in airfields if x.name in ('kholm', 'kalinin', 'alferevo'))
         tvd.blue_front_airfields = list(x for x in airfields if x.name in ('losinki', 'lotoshino', 'migalovo'))
         tvd.red_rear_airfield = list(x for x in airfields if x.name == 'ruza')[0]

@@ -6,7 +6,7 @@ import threading
 import time
 
 import os
-import ioc
+import dependency_container
 
 
 mn = re.compile('^mission.eport\(\d\d\d\d-\d\d-\d\d_\d\d-\d\d-\d\d\)')
@@ -17,7 +17,7 @@ class LogsReader:
     Singleton """
     instance = None
 
-    def __init__(self, _ioc, cycle=30):
+    def __init__(self, _ioc: dependency_container.DependencyContainer, cycle=30):
         if not LogsReader.instance:
             LogsReader.instance = LogsReader.__AtypesReader(_ioc, cycle)
         else:
@@ -34,7 +34,7 @@ class LogsReader:
         self.instance.start()
 
     class __AtypesReader(threading.Thread):
-        def __init__(self, _ioc: ioc, cycle: int):
+        def __init__(self, _ioc: dependency_container.DependencyContainer, cycle: int):
             threading.Thread.__init__(self)
             self._ioc = _ioc
             self.is_stopped = False
@@ -81,4 +81,5 @@ class LogsReader:
 
         def get_mission_log_files(self, name):
             """Отсортированный по дате создания список имён файлов лога миссии"""
-            return sorted(list(str(x) for x in self._ioc.config.main.logs_directory.glob(name + "*.txt")), key=os.path.getmtime)
+            return sorted(list(str(x) for x in self._ioc.config.main.logs_directory
+                               .glob(name + "*.txt")), key=os.path.getmtime)

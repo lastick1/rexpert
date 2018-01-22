@@ -12,20 +12,6 @@ from .airfield import ManagedAirfield
 from .mcu import Airfield
 
 
-class Stage:
-    def __init__(self, raw, sides, af_templates_folder):
-        """Класс этапа кампании, для которого создаются группы аэродромов с заданными самолётами"""
-        self.start = datetime.datetime.strptime(raw['start'], constants.DATE_FORMAT)
-        self.end = datetime.datetime.strptime(raw['end'], constants.DATE_FORMAT)
-        self.id = int(raw['id'])
-        self.af_templates = dict()
-        for side in sides:
-            self.af_templates[side] = af_templates_folder.joinpath(raw[side])
-
-    def __contains__(self, item):
-        return self.start <= item < self.end
-
-
 class Boundary(geometry.Point):
     """Класс зоны влияния"""
 
@@ -193,15 +179,15 @@ class TvdBuilder:
         tvd.red_front_airfields.extend(self.airfields_selector.select_front(tvd.confrontation_east, airfields))
         tvd.blue_front_airfields.extend(self.airfields_selector.select_front(tvd.confrontation_west, airfields))
         tvd.red_rear_airfield = self.airfields_selector.select_rear(
-                influence=tvd.influences[101][0].polygon,
-                front_area=tvd.confrontation_east,
-                airfields=airfields
-            )
+            influence=tvd.influences[101][0].polygon,
+            front_area=tvd.confrontation_east,
+            airfields=airfields
+        )
         tvd.blue_rear_airfield = self.airfields_selector.select_rear(
-                influence=tvd.influences[201][0].polygon,
-                front_area=tvd.confrontation_west,
-                airfields=airfields
-            )
+            influence=tvd.influences[201][0].polygon,
+            front_area=tvd.confrontation_west,
+            airfields=airfields
+        )
         self.update_airfields(tvd)
         self.update_ldb(tvd)
         self.randomize_defaultparams(tvd.date, self._ioc.config.generator.cfg[self.name])

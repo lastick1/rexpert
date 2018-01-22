@@ -6,7 +6,7 @@ import utils
 import configs
 import core
 import processing
-import ioc
+import dependency_container
 
 
 CONFIG = configs.Config(pathlib.Path(r'./configs/conf.ini'))

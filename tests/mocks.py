@@ -6,7 +6,7 @@ import atypes
 import rcon
 import configs
 import processing
-import ioc
+import dependency_container
 
 COLOR_WHITE = '#FFFFFF'
 COLOR_RED = '#FF0000'
@@ -46,7 +46,7 @@ class PlanesMock(configs.Planes):
 
 class TvdMock(processing.Tvd):
     def __init__(self, name: str):
-        super().__init__(name, '', '10.11.1941', {'x': 281600, 'z': 281600}, pathlib.Path())
+        super().__init__(name, '', '10.11.1941', {'x': 281600, 'z': 281600}, dict(), pathlib.Path())
         self.country = 201
 
     def get_country(self, point):
@@ -186,7 +186,7 @@ class AirfieldsControllerMock(processing.AirfieldsController):
         pass
 
 
-class DependencyContainerMock(ioc.DependencyContainer):
+class DependencyContainerMock(dependency_container.DependencyContainer):
     def __init__(self, path: pathlib.Path):
         super().__init__()
         self._config = configs.Config(path)
@@ -194,8 +194,17 @@ class DependencyContainerMock(ioc.DependencyContainer):
         self.generator_mock = self._generator
         self._rcon = ConsoleMock()
         self.console_mock = self._rcon
+        self._map_painter = PainterMock()
 
 
 def atype_12_stub(object_id: int, object_name: str, country: int, name: str, parent_id: int) -> atypes.Atype12:
     """Заглушка события инициализации объекта"""
     return atypes.Atype12(120, object_id, object_name, country, int(country/100), name, parent_id)
+
+
+class PainterMock(processing.MapPainter):
+    def __init__(self):
+        super().__init__(None)
+
+    def update_map(self):
+        pass
