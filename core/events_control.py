@@ -3,6 +3,9 @@
 import logging
 import datetime
 import atypes
+import processing
+from .objects_control import ObjectsController
+
 
 from .parse_mission_log_line import parse, UnexpectedATypeWarning
 
@@ -46,16 +49,51 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         except UnexpectedATypeWarning:
             logging.warning('unexpected atype: [%s]', line)
 
+    @property
+    def objects_controller(self) -> ObjectsController:
+        """Контроллер объектов из логов"""
+        return self._ioc.objects_controller
+
+    @property
+    def players_controller(self) -> processing.PlayersController:
+        """Контроллер игроков"""
+        return self._ioc.players_controller
+
+    @property
+    def campaign_controller(self) -> processing.CampaignController:
+        """Контроллер кампании"""
+        return self._ioc.campaign_controller
+
+    @property
+    def divisions_controller(self) -> processing.DivisionsController:
+        """Контроллер дивизий"""
+        return self._ioc.divisions_controller
+
+    @property
+    def ground_controller(self) -> processing.GroundController:
+        """Контроллер наземки"""
+        return self._ioc.ground_controller
+
+    @property
+    def map_painter(self) -> processing.MapPainter:
+        """Отрисовщик карт миссий"""
+        return self._ioc.map_painter
+
+    @property
+    def airfields_controller(self) -> processing.AirfieldsController:
+        """Контроллер аэродромов"""
+        return self._ioc.airfields_controller
+
     def event_mission_start(self, tik: int, date: datetime.datetime, file_path: str,
                             game_type_id, countries: dict, settings, mods, preset_id) -> None:
         """AType 0 handler"""
         atype = atypes.Atype0(tik, date, file_path, game_type_id, countries, settings, mods, preset_id)
-        self._ioc.objects_controller.start_mission()
-        self._ioc.players_controller.start_mission()
-        self._ioc.campaign_controller.start_mission(atype)
-        self._ioc.divisions_controller.start_mission()
-        self._ioc.ground_controller.start_mission()
-        self._ioc.map_painter.update_map()
+        self.objects_controller.start_mission()
+        self.players_controller.start_mission()
+        self.campaign_controller.start_mission(atype)
+        self.divisions_controller.start_mission()
+        self.ground_controller.start_mission()
+        self.map_painter.update_map()
 
     def event_hit(self, tik: int, ammo: str, attacker_id: int, target_id: int) -> None:
         """AType 1 handler"""
@@ -64,14 +102,14 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
     def event_damage(self, tik: int, damage: float, attacker_id: int, target_id: int, pos: dict) -> None:
         """AType 2 handler"""
         atype = atypes.Atype2(tik, damage, attacker_id, target_id, pos)
-        self._ioc.objects_controller.damage(atype)
+        self.objects_controller.damage(atype)
         # дамага может не быть из-за бага логов
 
     def event_kill(self, tik: int, attacker_id: int, target_id: int, pos: dict) -> None:
         """AType 3 handler"""
         atype = atypes.Atype3(tik, attacker_id, target_id, pos)
-        self._ioc.objects_controller.kill(atype)
-        self._ioc.ground_controller.kill(atype)
+        self.objects_controller.kill(atype)
+        self.ground_controller.kill(atype)
         # в логах так бывает что кто-то умер, а кто не известно :)
 
     def event_sortie_end(self, tik: int, aircraft_id: int, bot_id: int, cartridges: int,
@@ -83,19 +121,19 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
     def event_takeoff(self, tik: int, aircraft_id: int, pos: dict) -> None:
         """AType 5 handler"""
         atype = atypes.Atype5(tik, aircraft_id, pos)
-        self._ioc.objects_controller.takeoff(atype)
+        self.objects_controller.takeoff(atype)
 
     def event_landing(self, tik: int, aircraft_id: int, pos: dict) -> None:
         """AType 6 handler"""
         atype = atypes.Atype6(tik, aircraft_id, pos)
-        self._ioc.objects_controller.land(atype)
+        self.objects_controller.land(atype)
 
     def event_mission_end(self, tik: int) -> None:
         """AType 7 handler"""
         atype = atypes.Atype7(tik)
-        self._ioc.players_controller.end_mission()
-        self._ioc.campaign_controller.end_mission(atype)
-        self._ioc.objects_controller.end_mission()
+        self.players_controller.end_mission()
+        self.campaign_controller.end_mission(atype)
+        self.objects_controller.end_mission()
 
     def event_mission_result(self, tik: int, object_id: int, coal_id: int, task_type_id: int,
                              success: int, icon_type_id: int, pos: dict) -> None:
@@ -106,9 +144,9 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
                        aircraft_id_list: list, pos: dict) -> None:
         """AType 9 handler"""
         atype = atypes.Atype9(tik, airfield_id, country_id, coal_id, aircraft_id_list, pos)
-        self._ioc.objects_controller.airfield(atype)
+        self.objects_controller.airfield(atype)
 
-    # pylint: disable=R0914
+    # pylint: disa_ocble=R0914
     def event_player(self, tik: int, aircraft_id: int, bot_id: int, account_id: str,
                      profile_id: str, name: str, pos: dict, aircraft_name: str, country_id: int,
                      coal_id: int, airfield_id: int, airstart: bool, parent_id: int,
@@ -118,9 +156,9 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         atype = atypes.Atype10(tik, aircraft_id, bot_id, account_id, profile_id, name, pos, aircraft_name, country_id,
                                coal_id, airfield_id, airstart, parent_id, payload_id, fuel, skin, weapon_mods_id,
                                cartridges, shells, bombs, rockets, form)
-        self._ioc.objects_controller.spawn(atype)
-        self._ioc.players_controller.spawn(atype)
-        self._ioc.airfields_controller.spawn_aircraft(self._ioc.campaign_controller.current_tvd, atype)
+        self.objects_controller.spawn(atype)
+        self.players_controller.spawn(atype)
+        self.airfields_controller.spawn_aircraft(self.campaign_controller.current_tvd, atype)
 
     def event_group(self, tik: int, group_id: int, members_id: int, leader_id: int) -> None:
         """AType 11 handler"""
@@ -130,7 +168,7 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
                           coal_id: int, name: str, parent_id: int) -> None:
         """AType 12 handler"""
         atype = atypes.Atype12(tik, object_id, object_name, country_id, coal_id, name, parent_id)
-        self._ioc.objects_controller.create_object(atype)
+        self.objects_controller.create_object(atype)
 
     def event_influence_area(self, tik: int, area_id: int, country_id: int, coal_id: int,
                              enabled: bool, in_air: bool) -> None:
@@ -149,33 +187,33 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         """AType 16 handler"""
         atype = atypes.Atype16(tik, bot_id, pos)
         bot = self._ioc.objects_controller.get_bot(atype.bot_id)
-        self._ioc.players_controller.finish(atype)
-        self._ioc.airfields_controller.finish(self._ioc.campaign_controller.current_tvd, bot)
-        self._ioc.objects_controller.deinitialize(atype)
+        self.players_controller.finish(atype)
+        self.airfields_controller.finish(self._ioc.campaign_controller.current_tvd, bot)
+        self.objects_controller.deinitialize(atype)
 
     def event_pos_changed(self, tik: int, object_id: int, pos: dict) -> None:
         """AType 17 handler"""
         atype = atypes.Atype17(tik, object_id, pos)
-        self._ioc.objects_controller.change_pos(atype)
+        self.objects_controller.change_pos(atype)
 
     def event_bot_eject_leave(self, tik: int, bot_id: int, parent_id: int, pos: dict) -> None:
         """AType 18 handler"""
         atype = atypes.Atype18(tik, bot_id, parent_id, pos)
-        self._ioc.objects_controller.eject_leave(atype)
+        self.objects_controller.eject_leave(atype)
 
     def event_round_end(self, tik: int) -> None:
         """AType 19 handler"""
         atype = atypes.Atype19(tik)
-        self._ioc.campaign_controller.end_round(atype)
-        self._ioc.airfields_controller.end_round()
+        self.campaign_controller.end_round(atype)
+        self.airfields_controller.end_round()
 
     def event_player_connected(self, tik: int, account_id: str, profile_id: str) -> None:
         """AType 20 handler"""
         if tik:
             atype = atypes.Atype20(tik, account_id, profile_id)
-            self._ioc.players_controller.connect(atype.account_id)
+            self.players_controller.connect(atype.account_id)
 
     def event_player_disconnected(self, tik: int, account_id: str, profile_id: str) -> None:
         """AType 21 handler"""
         atype = atypes.Atype21(tik, account_id, profile_id)
-        self._ioc.players_controller.disconnect(atype.account_id)
+        self.players_controller.disconnect(atype.account_id)

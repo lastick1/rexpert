@@ -17,7 +17,7 @@ class LogsReader:
     Singleton """
     instance = None
 
-    def __init__(self, _ioc: dependency_container.DependencyContainer, cycle=30):
+    def __init__(self, _ioc, cycle=30):
         if not LogsReader.instance:
             LogsReader.instance = LogsReader.__AtypesReader(_ioc, cycle)
         else:
@@ -34,7 +34,7 @@ class LogsReader:
         self.instance.start()
 
     class __AtypesReader(threading.Thread):
-        def __init__(self, _ioc: dependency_container.DependencyContainer, cycle: int):
+        def __init__(self, _ioc, cycle: int):
             threading.Thread.__init__(self)
             self._ioc = _ioc
             self.is_stopped = False

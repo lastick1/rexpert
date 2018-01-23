@@ -109,6 +109,7 @@ class TestCampaignController(unittest.TestCase):
     def test_generate_next_with_atype_19(self):
         """Генерируется следующая миссия с AType:19 в логе"""
         campaign = processing.CampaignController(IOC)
+        shutil.copy('./data/scg/2/moscow-base_v2.ldf', './tmp/data/scg/2/moscow-base_v2.ldf')
         IOC.grid_controller.get_file = self._get_xgml_file_mock
         IOC.source_parser.parse_in_dogfight = _parse_mock
         campaign.initialize_map(MOSCOW)
