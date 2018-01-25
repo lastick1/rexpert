@@ -16,7 +16,8 @@ from .plane import Plane
 from .airfields_builder import AirfieldsBuilder
 from .airfields_selector import AirfieldsSelector
 from .groups import FrontLineGroup, Group
-from .tvd import *
+from .tvd import Tvd, Boundary
+from .tvd_builder import TvdBuilder
 from .locations_builder import LocationsBuilder
 from .campaign_map import CampaignMap, CampaignMission
 from .source_parser import SourceParser, SourceMission
