@@ -64,4 +64,4 @@ class AirfieldsController:
 
     def end_round(self):
         """Обработать завершение раунда - перераспределить самолёты с тылового на фронтовые аэродромы"""
-        raise NotImplemented
+        # raise NotImplemented

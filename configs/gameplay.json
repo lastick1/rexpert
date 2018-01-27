@@ -9,6 +9,7 @@
   "unlocks_min": 1,
   "unlocks_max": 5,
   "division_repair": 15,
+  "division_margin": 20000,
   "airfield_radius": 2000,
   "airfield_min_planes": 20,
   "transfer_amount": 30,

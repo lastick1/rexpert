@@ -24,25 +24,25 @@ def compile_gif():
 
 def reset():
     """Сбросить состояние кампании"""
-    controller = processing.CampaignController(ioc.DependencyContainer())
+    controller = processing.CampaignController(dependency_container.DependencyContainer())
     controller.reset()
 
 
 def initialize_campaign():
     """Инициализация кампании"""
-    controller = processing.CampaignController(ioc.DependencyContainer())
+    controller = processing.CampaignController(dependency_container.DependencyContainer())
     controller.initialize()
 
 
 def generate(name: str):
     """Сгенерировать миссию"""
-    controller = processing.CampaignController(ioc.DependencyContainer())
+    controller = processing.CampaignController(dependency_container.DependencyContainer())
     controller.generate(name)
 
 
 def run():
     """Запуск"""
-    core.LogsReader(ioc.DependencyContainer()).start()
+    core.LogsReader(dependency_container.DependencyContainer()).start()
 
 
 print(datetime.datetime.now().strftime("[%H:%M:%S] Program Start."))

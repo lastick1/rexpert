@@ -1,4 +1,5 @@
 """Сборка базы локаций"""
+import random
 import re
 import processing
 from .locations import Location, AIR_OBJECTIVE, AIRFIELD, DECORATION, GROUND_OBJECTIVE, REFERENCE_LOCATION, NAVIGATION
@@ -324,15 +325,8 @@ class LocationsBuilder:
             if {TANK}.intersection(location.types):
                 for country in confrontations:
                     if location.is_in_area(confrontations[country]):
-                        close = False
-                        for airfield in all_airfields:
-                            if location.distance_to(airfield.x, airfield.z) < 20000:
-                                close = True
-                                break
-
-                        if not close:
-                            location.country = country
-                            break
+                        location.country = country
+                        break
 
         red_rear_af = Location(
             name=AIRFIELD, x=tvd.red_rear_airfield.x, z=tvd.red_rear_airfield.z, y=0, oy=0, length=10, width=10)
@@ -355,6 +349,9 @@ class LocationsBuilder:
                 location.types = {ARTILLERY}
             if division.type_of_army == 'infantry':
                 location.types = {AAA_POSITION}
+            distance = 7000
+            location.x += random.random() * distance - random.random() * distance
+            location.z += random.random() * distance - random.random() * distance
             self.locations[GROUND_OBJECTIVE].append(location)
 
         self.locations[AIRFIELD].append(red_rear_af)

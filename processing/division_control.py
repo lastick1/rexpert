@@ -2,7 +2,6 @@
 import re
 
 import configs
-import processing
 import storage
 
 from .division import Division, DIVISIONS
@@ -32,6 +31,20 @@ class DivisionsController:
     def storage(self) -> storage.Storage:
         """Объект для работы с БД"""
         return self._ioc.storage
+
+    def filter_airfields(self, tvd_name: str, airfields: list) -> list:
+        """Отбросить аэродромы, расположенные близко к дивизиям"""
+        result = list()
+        divisions = self.storage.divisions.load_by_tvd(tvd_name)
+        for airfield in airfields:
+            close = False
+            for division in divisions:
+                if division.point.distance_to(airfield.x, airfield.z) < self.config.gameplay.division_margin:
+                    close = True
+                    break
+            if not close:
+                result.append(airfield)
+        return result
 
     def initialize_divisions(self, tvd_name: str):
         """Инициализировать дивизии в кампании для указанного ТВД"""

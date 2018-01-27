@@ -1,5 +1,6 @@
 """Модель данных дивизии"""
 import constants
+import geometry
 
 DIVISIONS = {
     'BTD1': 10,
@@ -25,6 +26,11 @@ class Division:
         self.name = name
         self.tvd_name = tvd_name
         self.pos = pos
+
+    @property
+    def point(self) -> geometry.Point:
+        """Точка аэродрома"""
+        return geometry.Point(x=self.pos['x'], z=self.pos['z'])
 
     @property
     def country(self) -> int:
