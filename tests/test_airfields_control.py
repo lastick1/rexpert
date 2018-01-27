@@ -127,7 +127,7 @@ class TestAirfieldsController(unittest.TestCase):
         aircraft_name = 'lagg-3 ser.29'
         aircraft_key = IOC.config.planes.name_to_key(aircraft_name)
         # Act
-        controller.add_aircraft(TEST_TVD_DATE, 201, TEST_AIRFIELD_NAME, aircraft_name, 5)
+        controller.add_aircraft(TEST_TVD_NAME, 201, TEST_AIRFIELD_NAME, aircraft_name, 5)
         # Assert
         managed_airfield = IOC.storage.airfields.load_by_name(TEST_TVD_NAME, TEST_AIRFIELD_NAME)
         self.assertNotIn(aircraft_key, managed_airfield.planes)

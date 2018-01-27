@@ -196,7 +196,10 @@ class Airfields(CollectionWrapper):
 
     def load_by_id(self, airfield_id) -> ManagedAirfield:
         """Загрузить аэродром по его идентификатору из базы данных"""
-        return self._convert_from_document(self.collection.find_one(_filter_by_id(_id=airfield_id)))
+        document = self.collection.find_one(_filter_by_id(_id=airfield_id))
+        if document:
+            return self._convert_from_document(document)
+        raise NameError(f'аэродром с airfield_id:{airfield_id} не найден')
 
     def load_by_tvd(self, tvd_name: str) -> list:
         """Загрузить аэродромы для ТВД из базы данных"""
