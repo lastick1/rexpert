@@ -56,10 +56,16 @@ class TvdBuilder:
             self._ioc.grid_controller.get_grid(self.name),
             self._ioc.config.mgen.icons_group_files[self.name]
         )
-        influence_east = self.boundary_builder.influence_east(tvd.border)
-        influence_west = self.boundary_builder.influence_west(tvd.border)
+        self._make_influences(tvd)
+        return tvd
+
+    def _make_influences(self, tvd):
+        """Построить зоны влияния в соответствии с графом"""
         tvd.confrontation_east = self.boundary_builder.confrontation_east(tvd.grid)
         tvd.confrontation_west = self.boundary_builder.confrontation_west(tvd.grid)
+
+        influence_east = self.boundary_builder.influence_east(tvd.border)
+        influence_west = self.boundary_builder.influence_west(tvd.border)
         east_boundary = processing.Boundary(influence_east[0].x, influence_east[0].z, influence_east)
         west_boundary = processing.Boundary(influence_west[0].x, influence_west[0].z, influence_west)
         east_influences = list(processing.Boundary(node.x, node.z, node.neighbors_sorted)
@@ -83,10 +89,6 @@ class TvdBuilder:
                 201: [west_boundary]
             }
         tvd.influences = areas
-        return tvd
-
-    def make_influences(self, tvd):
-        """Построить зоны влияния в соответствии с графом"""
 
     def update(self, tvd, airfields: list):
         """Обновление групп, баз локаций и файла параметров генерации в папке ТВД (data/scg/x)"""
