@@ -2,7 +2,7 @@ import random
 import pathlib
 import datetime
 
-
+import configs
 import constants
 import processing
 
@@ -11,27 +11,72 @@ class TvdBuilder:
     """Класс подготовки папки ТВД, в которой лежат ресурсы для генерации миссии"""
 
     def __init__(self, name: str, ioc):
-        tvd_folder = ioc.config.main.game_folder.joinpath(pathlib.Path(ioc.config.mgen.cfg[name]['tvd_folder']))
         self.name = name
         self._ioc = ioc
-        self.default_params_file = tvd_folder.joinpath(self._ioc.config.mgen.cfg[name]['default_params_dest'])
-        self.default_params_template_file = self._ioc.config.mgen.data_folder.joinpath(
-            self._ioc.config.mgen.cfg[name]['default_params_source'])
-        self.airfields_builder = processing.AirfieldsBuilder(self._ioc.config.mgen.af_groups_folders[name],
-                                                             self._ioc.config.mgen.subtitle_groups_folder,
-                                                             self._ioc.config.planes)
-        self.airfields_selector = processing.AirfieldsSelector(main=self._ioc.config.main)
-        offset = 10000
-        north = self._ioc.config.mgen.cfg[name]['right_top']['x'] + offset
-        east = self._ioc.config.mgen.cfg[name]['right_top']['z'] + offset
-        south = 0 - offset
-        west = 0 - offset
-        self.boundary_builder = processing.BoundaryBuilder(north=north, east=east, south=south, west=west)
+        self._airfields_builder: processing.AirfieldsBuilder = None
+        self._airfields_selector: processing.AirfieldsSelector = None
+        self._boundary_builder: processing.BoundaryBuilder = None
+
+    @property
+    def config(self) -> configs.Config:
+        """Конфиг приложения"""
+        return self._ioc.config
+
+    @property
+    def airfields_builder(self) -> processing.AirfieldsBuilder:
+        """Сборщик групп аэродромов"""
+        if not self._airfields_builder:
+            self._airfields_builder = processing.AirfieldsBuilder(
+                self.config.mgen.af_groups_folders[self.name],
+                self.config.mgen.subtitle_groups_folder,
+                self.config.planes
+            )
+        return self._airfields_builder
+
+    @property
+    def airfields_selector(self) -> processing.AirfieldsSelector:
+        """Выборщик аэродромов"""
+        if not self._airfields_selector:
+            self._airfields_selector = processing.AirfieldsSelector(main=self.config.main)
+        return self._airfields_selector
+
+    @property
+    def boundary_builder(self) -> processing.BoundaryBuilder:
+        """Сборщик многоугольников для Influence Area"""
+        if not self._boundary_builder:
+            offset = 10000
+            north = self.config.mgen.cfg[self.name]['right_top']['x'] + offset
+            east = self.config.mgen.cfg[self.name]['right_top']['z'] + offset
+            south = 0 - offset
+            west = 0 - offset
+            self._boundary_builder = processing.BoundaryBuilder(north=north, east=east, south=south, west=west)
+        return self._boundary_builder
+
+    @property
+    def grid_controller(self) -> processing.GridController:
+        """Контроллер графа"""
+        return self._ioc.grid_controller
+
+    @property
+    def storage(self) -> processing.Storage:
+        """Работа с БД"""
+        return self._ioc.storage
+
+    @property
+    def default_params_file(self) -> pathlib.Path:
+        """Файл параметров для missiongen.exe"""
+        tvd_folder = self.config.main.game_folder.joinpath(self.config.mgen.cfg[self.name]['tvd_folder'])
+        return tvd_folder.joinpath(self.config.mgen.cfg[self.name]['default_params_dest'])
+
+    @property
+    def default_params_template_file(self):
+        """Шаблонный файл параметров для missiongen.exe"""
+        return self.config.mgen.data_folder.joinpath(self.config.mgen.cfg[self.name]['default_params_source'])
 
     @property
     def seasons_data(self) -> tuple:
         """данные по сезонам из daytime.csv"""
-        with self._ioc.config.mgen.daytime_files[self.name].open() as stream:
+        with self.config.mgen.daytime_files[self.name].open() as stream:
             return tuple(
                 (lambda z: {
                     'start': z[0],
@@ -49,12 +94,12 @@ class TvdBuilder:
         """Построить объект настроек ТВД"""
         tvd = processing.Tvd(
             self.name,
-            self._ioc.config.mgen.cfg[self.name]['tvd_folder'],
+            self.config.mgen.cfg[self.name]['tvd_folder'],
             date,
-            self._ioc.config.mgen.cfg[self.name]['right_top'],
-            self._ioc.storage.divisions.load_by_tvd(self.name),
-            self._ioc.grid_controller.get_grid(self.name),
-            self._ioc.config.mgen.icons_group_files[self.name]
+            self.config.mgen.cfg[self.name]['right_top'],
+            self.storage.divisions.load_by_tvd(self.name),
+            self.grid_controller.get_grid(self.name),
+            self.config.mgen.icons_group_files[self.name]
         )
         self._make_influences(tvd)
         return tvd
@@ -78,7 +123,7 @@ class TvdBuilder:
             processing.Boundary(tvd.confrontation_east[0].x, tvd.confrontation_east[0].z, tvd.confrontation_east))
         west_influences.append(
             processing.Boundary(tvd.confrontation_west[0].x, tvd.confrontation_west[0].z, tvd.confrontation_west))
-        if self._ioc.config.main.special_influences:
+        if self.config.main.special_influences:
             areas = {
                 101: east_influences,
                 201: west_influences
@@ -113,7 +158,7 @@ class TvdBuilder:
         )
         self.update_airfields(tvd)
         self.update_ldb(tvd)
-        self.randomize_defaultparams(tvd.date, self._ioc.config.generator.cfg[self.name])
+        self.randomize_defaultparams(tvd.date, self.config.generator.cfg[self.name])
 
     @staticmethod
     def update_icons(tvd: processing.Tvd):
@@ -126,12 +171,12 @@ class TvdBuilder:
     def update_ldb(self, tvd: processing.Tvd):
         """Обновление базы локаций до актуального состояния"""
         print('[{}] generating Locations Data Base (LDB)...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
-        with self._ioc.config.mgen.ldf_templates[self.name].open() as stream:
+        with self.config.mgen.ldf_templates[self.name].open() as stream:
             ldf = stream.read()
         builder = processing.LocationsBuilder(ldf_base=ldf)
         builder.apply_tvd_setup(tvd)
         ldf_text = builder.make_text()
-        with pathlib.Path(self._ioc.config.mgen.ldf_files[self.name]).open(mode='w') as stream:
+        with pathlib.Path(self.config.mgen.ldf_files[self.name]).open(mode='w') as stream:
             stream.write(ldf_text)
         print('... LDB done')
 
@@ -151,14 +196,14 @@ class TvdBuilder:
         def find_plane_in_config(config: dict, key_name: str, number: int) -> processing.Plane:
             """Найти соответствующий самолёт в конфиге для генерации аэродрома"""
             for name in config['uncommon']:
-                if self._ioc.config.planes.name_to_key(name) == key_name:
+                if self.config.planes.name_to_key(name) == key_name:
                     return processing.Plane(number, config['common'], config['uncommon'][name])
             raise NameError('Plane {} not found in config'.format(key_name))
 
         planes = list()
         for key in airfield.planes:
-            planes.append(find_plane_in_config(self._ioc.config.planes.cfg, key, airfield.planes[key]))
-        return processing.Airfield(airfield.name, country, self._ioc.config.gameplay.airfield_radius, planes)
+            planes.append(find_plane_in_config(self.config.planes.cfg, key, airfield.planes[key]))
+        return processing.Airfield(airfield.name, country, self.config.gameplay.airfield_radius, planes)
 
     def date_day_duration(self, date):
         """Рассвет и закат для указанной даты"""
@@ -271,7 +316,7 @@ class TvdBuilder:
                 dfpr_lines[y] = '$ztargetposition = {}\n'.format(params_config['ztargetposition'])
             elif dfpr_lines[y].startswith('$loc_filename ='):
                 dfpr_lines[y] = '$loc_filename = {}\n'.format(pathlib.Path(
-                    self._ioc.config.mgen.ldf_files[self.name]).name)
+                    self.config.mgen.ldf_files[self.name]).name)
             elif dfpr_lines[y].startswith('$period ='):
                 dfpr_lines[y] = '$period = {}\n'.format(1)
         with self.default_params_file.open(mode='w', encoding='utf-8-sig') as stream:
