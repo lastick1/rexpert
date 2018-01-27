@@ -4,6 +4,7 @@ import datetime
 import pytz
 
 import atypes
+import configs
 import processing
 import constants
 
@@ -19,67 +20,59 @@ class CampaignController:
     """Контролеер кампании"""
     def __init__(self, ioc):
         self._ioc = ioc
-        self._dogfight = ioc.config.main.dogfight_folder
         self._mission: CampaignMission = None
         self._campaign_map: CampaignMap = None
         self._current_tvd: Tvd = None
-        self.vendor = processing.AircraftVendor(ioc.config.planes, ioc.config.gameplay)
+        self._vendor: processing.AircraftVendor = None
         self.tvd_builders = {x: processing.TvdBuilder(x, ioc) for x in ioc.config.mgen.maps}
 
-    def _update_tik(self, tik: int) -> None:
-        """Обновить тик"""
-        if self._mission.tik_last > tik:
-            raise NameError('некорректный порядок лога')
-        self._mission.tik_last = tik
+    @property
+    def vendor(self) -> processing.AircraftVendor:
+        """Поставщик самолётов"""
+        if not self._vendor:
+            self._vendor = processing.AircraftVendor(self.config.planes, self.config.gameplay)
+        return self._vendor
 
-    def initialize_map(self, tvd_name: str):
-        """Инициализировать карту кампании"""
-        self._ioc.grid_controller.initialize(tvd_name)
-        start = self._ioc.config.mgen.cfg[tvd_name][START_DATE]
-        order = list(self._ioc.config.mgen.maps).index(tvd_name) + 1
-        campaign_map = CampaignMap(order=order, date=start, mission_date=start, tvd_name=tvd_name, months=list())
-        airfields = processing.AirfieldsController.initialize_managed_airfields(
-            self._ioc.config.mgen.airfields_data[campaign_map.tvd_name])
-        tvd = self.tvd_builders[campaign_map.tvd_name].get_tvd(campaign_map.date.strftime(constants.DATE_FORMAT))
-        supply = self.vendor.get_month_supply(campaign_map.current_month, campaign_map)
-        self.vendor.deliver_month_supply(campaign_map, tvd.to_country_dict_rear(airfields), supply)
-        self.vendor.initial_front_supply(campaign_map, tvd.to_country_dict_front(airfields))
-        self._ioc.storage.campaign_maps.update(campaign_map)
-        self._ioc.storage.airfields.update_airfields(airfields)
-        self._ioc.divisions_controller.initialize_divisions(tvd_name)
+    @property
+    def config(self) -> configs.Config:
+        """Конфигурация приложения"""
+        return self._ioc.config
+    
+    @property
+    def divisions_controller(self) -> processing.DivisionsController:
+        """Контроллер дивизий"""
+        return self._ioc.divisions_controller
+    
+    @property
+    def players_controller(self) -> processing.PlayersController:
+        """Контроллер игроков"""
+        return self._ioc.players_controller
 
-    def reset(self):
-        """Сбросить состояние кампании"""
-        self._ioc.storage.airfields.collection.drop()
-        self._ioc.storage.campaign_maps.collection.drop()
+    @property
+    def grid_controller(self) -> processing.GridController:
+        """Контроллер графа"""
+        return self._ioc.grid_controller
 
-    def _generate(self, mission_name: str, campaign_map: CampaignMap):
-        """Сгенерировать миссию для указанной карты кампании"""
-        tvd_builder = self.tvd_builders[campaign_map.tvd_name]
-        tvd = tvd_builder.get_tvd(campaign_map.date.strftime(constants.DATE_FORMAT))
-        # Генерация первой миссии
-        tvd_builder.update(tvd, self._ioc.storage.airfields.load_by_tvd(campaign_map.tvd_name))
-        self._ioc.generator.make_ldb(campaign_map.tvd_name)
-        self._ioc.generator.make_mission(mission_name, campaign_map.tvd_name)
+    @property
+    def source_parser(self) -> processing.SourceParser:
+        """Парсер исходников миссий"""
+        return self._ioc.source_parser
 
-    def generate(self, mission_name):
-        """Сгенерировать текущую миссию кампании с указанным именем"""
-        self._generate(mission_name, self.campaign_map)
-
-    def initialize(self):
-        """Инициализировать кампанию в БД"""
-        for tvd_name in self._ioc.config.mgen.maps:
-            self.initialize_map(tvd_name)
-
-        campaign_map = self._ioc.storage.campaign_maps.load_by_order(1)
-        self._generate('result1', campaign_map)
-        self._ioc.players_controller.reset()
+    @property
+    def storage(self) -> processing.Storage:
+        """Объект для работы с БД"""
+        return self._ioc.storage
+    
+    @property
+    def generator(self) -> processing.Generator:
+        """Генератор миссий (управляет missiongen.exe)"""
+        return self._ioc.generator
 
     @property
     def campaign_map(self) -> CampaignMap:
         """Текущая карта кампании"""
-        for campaign_maps in self._ioc.storage.campaign_maps.load_all():
-            if not campaign_maps.is_ended(self._ioc.config.mgen.cfg[campaign_maps.tvd_name][END_DATE]):
+        for campaign_maps in self.storage.campaign_maps.load_all():
+            if not campaign_maps.is_ended(self.config.mgen.cfg[campaign_maps.tvd_name][END_DATE]):
                 return campaign_maps
         raise NameError('Campaign finished')
 
@@ -98,9 +91,58 @@ class CampaignController:
         """Текущая миссия кампании"""
         return self._mission
 
+    def _update_tik(self, tik: int) -> None:
+        """Обновить тик"""
+        if self._mission.tik_last > tik:
+            raise NameError('некорректный порядок лога')
+        self._mission.tik_last = tik
+
+    def initialize_map(self, tvd_name: str):
+        """Инициализировать карту кампании"""
+        self.grid_controller.initialize(tvd_name)
+        start = self.config.mgen.cfg[tvd_name][START_DATE]
+        order = list(self.config.mgen.maps).index(tvd_name) + 1
+        campaign_map = CampaignMap(order=order, date=start, mission_date=start, tvd_name=tvd_name, months=list())
+        airfields = processing.AirfieldsController.initialize_managed_airfields(
+            self.config.mgen.airfields_data[campaign_map.tvd_name])
+        tvd = self.tvd_builders[campaign_map.tvd_name].get_tvd(campaign_map.date.strftime(constants.DATE_FORMAT))
+        supply = self.vendor.get_month_supply(campaign_map.current_month, campaign_map)
+        self.vendor.deliver_month_supply(campaign_map, tvd.to_country_dict_rear(airfields), supply)
+        self.vendor.initial_front_supply(campaign_map, tvd.to_country_dict_front(airfields))
+        self.storage.campaign_maps.update(campaign_map)
+        self.storage.airfields.update_airfields(airfields)
+        self.divisions_controller.initialize_divisions(tvd_name)
+
+    def reset(self):
+        """Сбросить состояние кампании"""
+        self.storage.airfields.collection.drop()
+        self.storage.campaign_maps.collection.drop()
+
+    def _generate(self, mission_name: str, campaign_map: CampaignMap):
+        """Сгенерировать миссию для указанной карты кампании"""
+        tvd_builder = self.tvd_builders[campaign_map.tvd_name]
+        tvd = tvd_builder.get_tvd(campaign_map.date.strftime(constants.DATE_FORMAT))
+        # Генерация первой миссии
+        tvd_builder.update(tvd, self.storage.airfields.load_by_tvd(campaign_map.tvd_name))
+        self.generator.make_ldb(campaign_map.tvd_name)
+        self.generator.make_mission(mission_name, campaign_map.tvd_name)
+
+    def generate(self, mission_name):
+        """Сгенерировать текущую миссию кампании с указанным именем"""
+        self._generate(mission_name, self.campaign_map)
+
+    def initialize(self):
+        """Инициализировать кампанию в БД"""
+        for tvd_name in self.config.mgen.maps:
+            self.initialize_map(tvd_name)
+
+        campaign_map = self.storage.campaign_maps.load_by_order(1)
+        self._generate('result1', campaign_map)
+        self.players_controller.reset()
+
     def start_mission(self, atype: atypes.Atype0):
         """Обработать начало миссии"""
-        source_mission = self._ioc.source_parser.parse_in_dogfight(
+        source_mission = self.source_parser.parse_in_dogfight(
             atype.file_path.replace('Multiplayer/Dogfight', '').replace('\\', '').replace('.msnbin', ''))
         self._mission = self._make_campaign_mission(atype, source_mission)
         self._update_tik(atype.tik)
@@ -108,7 +150,7 @@ class CampaignController:
         campaign_map.mission = self._mission
         self._current_tvd = self.tvd_builders[campaign_map.tvd_name].get_tvd(
             campaign_map.date.strftime(constants.DATE_FORMAT))
-        self._ioc.storage.campaign_maps.update(campaign_map)
+        self.storage.campaign_maps.update(campaign_map)
         # TODO сохранить миссию в базу (в документ CampaignMap и в коллекцию CampaignMissions)
         # TODO удалить файлы предыдущей миссии
 
@@ -117,7 +159,7 @@ class CampaignController:
         self._current_tvd = None
         self._update_tik(atype.tik)
         self._mission.is_correctly_completed = True
-        self._ioc.storage.campaign_missions.update(self._mission)
+        self.storage.campaign_missions.update(self._mission)
         # TODO "приземлить" всех
         # TODO подвести итог ТВД, если он изменился
         # TODO подвести итог кампании, если она закончилась
@@ -159,9 +201,9 @@ class CampaignController:
         ))
         period_id = self.tvds[m_tvd_name].current_date_stage_id
         m_length = datetime.timedelta(
-            hours=self._ioc.config.main.mission_time['h'],
-            minutes=self._ioc.config.main.mission_time['m'],
-            seconds=self._ioc.config.main.mission_time['s']
+            hours=self.config.main.mission_time['h'],
+            minutes=self.config.main.mission_time['m'],
+            seconds=self.config.main.mission_time['s']
         )
         m_start = datetime.datetime.strptime(
             m.name, 'missionReport(%Y-%m-%d_%H-%M-%S)').replace(tzinfo=datetime.timezone.utc)

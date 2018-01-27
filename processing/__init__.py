@@ -22,6 +22,6 @@ from .tvd_builder import TvdBuilder
 from .locations_builder import LocationsBuilder
 from .campaign_map import CampaignMap, CampaignMission
 from .source_parser import SourceParser, SourceMission
-from .campaign_control import CampaignController
 from .division_control import DivisionsController, DIVISIONS
+from .campaign_control import CampaignController
 from .map_painter import MapPainter

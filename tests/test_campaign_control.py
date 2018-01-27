@@ -135,7 +135,6 @@ class TestCampaignController(unittest.TestCase):
         """Инициализируется карта кампании"""
         order = 1
         campaign = processing.CampaignController(IOC)
-        campaign.generator = tests.mocks.GeneratorMock(IOC.config)
         IOC.grid_controller.get_file = self._get_xgml_file_mock
         # Act
         campaign.initialize_map(TEST_TVD_NAME)
