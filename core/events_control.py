@@ -3,6 +3,7 @@
 import logging
 import datetime
 import atypes
+import geometry
 import processing
 from .objects_control import ObjectsController
 
@@ -158,7 +159,8 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
                                cartridges, shells, bombs, rockets, form)
         self.objects_controller.spawn(atype)
         self.players_controller.spawn(atype)
-        self.airfields_controller.spawn_aircraft(self.campaign_controller.current_tvd, atype)
+        tvd = self.campaign_controller.current_tvd
+        self.airfields_controller.spawn_aircraft(tvd.name, tvd.get_country(atype.point), atype)
 
     def event_group(self, tik: int, group_id: int, members_id: int, leader_id: int) -> None:
         """AType 11 handler"""
@@ -188,7 +190,8 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         atype = atypes.Atype16(tik, bot_id, pos)
         bot = self._ioc.objects_controller.get_bot(atype.bot_id)
         self.players_controller.finish(atype)
-        self.airfields_controller.finish(self._ioc.campaign_controller.current_tvd, bot)
+        tvd = self.campaign_controller.current_tvd
+        self.airfields_controller.finish(tvd.name, tvd.get_country(atype.point), bot)
         self.objects_controller.deinitialize(atype)
 
     def event_pos_changed(self, tik: int, object_id: int, pos: dict) -> None:

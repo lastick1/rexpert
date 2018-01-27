@@ -1,6 +1,8 @@
 """Классы атайпов логов"""
 import datetime
 
+import geometry
+
 
 class Atype:
     """Базовый класс всех атайпов"""
@@ -153,6 +155,10 @@ class Atype10(Atype):
         self.rockets = rockets
         self.form = form
 
+    @property
+    def point(self) -> geometry.Point:
+        return geometry.Point(x=self.pos['x'], z=self.pos['z'])
+
 
 class Atype11(Atype):
     """Группа"""
@@ -215,6 +221,10 @@ class Atype16(Atype):
         super().__init__(tik)
         self.bot_id = bot_id
         self.pos = pos
+
+    @property
+    def point(self) -> geometry.Point:
+        return geometry.Point(x=self.pos['x'], z=self.pos['z'])
 
 
 class Atype17(Atype):

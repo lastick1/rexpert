@@ -43,8 +43,6 @@ class TestAirfieldsController(unittest.TestCase):
     def test_get_airfield_in_radius(self):
         """Определяется аэродром в радиусе от координат"""
         controller = processing.AirfieldsController(IOC)
-        tvd = tests.mocks.TvdMock(TEST_TVD_NAME)
-        tvd.country = 101
         # Act
         result = controller.get_airfield_in_radius(
             tvd_name=TEST_TVD_NAME, x=TEST_AIRFIELD_X, z=TEST_AIRFIELD_Z, radius=1000)
@@ -54,8 +52,6 @@ class TestAirfieldsController(unittest.TestCase):
     def test_spawn_planes(self):
         """Уменьшается количество самолётов на аэродроме при появлении на нём"""
         controller = processing.AirfieldsController(IOC)
-        tvd = tests.mocks.TvdMock(TEST_TVD_NAME)
-        tvd.country = 101
         aircraft_name = 'Pe-2 ser.35'
         aircraft_key = IOC.config.planes.name_to_key(aircraft_name)
         managed_airfield = IOC.storage.airfields.load_by_name(TEST_TVD_NAME, TEST_AIRFIELD_NAME)
@@ -69,7 +65,7 @@ class TestAirfieldsController(unittest.TestCase):
             shells=1, bombs=0, rockets=0, form='', payload_id=1
         )
         # Act
-        controller.spawn_aircraft(tvd, atype)
+        controller.spawn_aircraft(TEST_TVD_NAME, 101, atype)
         # Assert
         managed_airfield = IOC.storage.airfields.load_by_name(TEST_TVD_NAME, TEST_AIRFIELD_NAME)
         self.assertEqual(managed_airfield.planes[aircraft_key], expected)
@@ -79,8 +75,6 @@ class TestAirfieldsController(unittest.TestCase):
     def test_return_planes(self):
         """Восполняется количество самолётов на аэродроме при возврате на него (деспаун)"""
         controller = processing.AirfieldsController(IOC)
-        tvd = tests.mocks.TvdMock(TEST_TVD_NAME)
-        tvd.country = 101
         bot_name = 'BotPilot_Pe2'
         aircraft_name = 'Pe-2 ser.35'
         aircraft_key = IOC.config.planes.name_to_key(aircraft_name)
@@ -93,7 +87,7 @@ class TestAirfieldsController(unittest.TestCase):
         bot = log_objects.BotPilot(
             2, OBJECTS[bot_name], aircraft, 101, 1, bot_name, pos={'x': managed_airfield.x, 'z': managed_airfield.z})
         # Act
-        controller.finish(tvd, bot)
+        controller.finish(TEST_TVD_NAME, 101, bot)
         # Assert
         managed_airfield = IOC.storage.airfields.load_by_name(TEST_TVD_NAME, TEST_AIRFIELD_NAME)
         self.assertEqual(managed_airfield.planes[aircraft_key], expected)
@@ -113,9 +107,7 @@ class TestAirfieldsController(unittest.TestCase):
     def test_add_aircraft(self):
         """Добавляется самолёт на аэродром"""
         controller = processing.AirfieldsController(IOC)
-        builder = processing.TvdBuilder(TEST_TVD_NAME, IOC)
         IOC.grid_controller.get_file = _get_xgml_file_mock
-        tvd = builder.get_tvd(TEST_TVD_DATE)
         aircraft_name = 'bf 109 f-4'
         aircraft_key = IOC.config.planes.name_to_key(aircraft_name)
         managed_airfield = IOC.storage.airfields.load_by_name(TEST_TVD_NAME, TEST_AIRFIELD_NAME)
@@ -123,7 +115,7 @@ class TestAirfieldsController(unittest.TestCase):
         IOC.storage.airfields.update_airfield(managed_airfield)
         expected = managed_airfield.planes[aircraft_key] + 5
         # Act
-        controller.add_aircraft(tvd, TEST_AIRFIELD_NAME, aircraft_name, 5)
+        controller.add_aircraft(TEST_TVD_NAME, 201, TEST_AIRFIELD_NAME, aircraft_name, 5)
         # Assert
         managed_airfield = IOC.storage.airfields.load_by_name(TEST_TVD_NAME, TEST_AIRFIELD_NAME)
         self.assertEqual(expected, managed_airfield.planes[aircraft_key])
@@ -131,13 +123,11 @@ class TestAirfieldsController(unittest.TestCase):
     def test_add_aircraft_wrong(self):
         """НЕ добавляется самолёт на аэродром другой страны"""
         controller = processing.AirfieldsController(IOC)
-        builder = processing.TvdBuilder(TEST_TVD_NAME, IOC)
         IOC.grid_controller.get_file = _get_xgml_file_mock
-        tvd = builder.get_tvd(TEST_TVD_DATE)
         aircraft_name = 'lagg-3 ser.29'
         aircraft_key = IOC.config.planes.name_to_key(aircraft_name)
         # Act
-        controller.add_aircraft(tvd, TEST_AIRFIELD_NAME, aircraft_name, 5)
+        controller.add_aircraft(TEST_TVD_DATE, 201, TEST_AIRFIELD_NAME, aircraft_name, 5)
         # Assert
         managed_airfield = IOC.storage.airfields.load_by_name(TEST_TVD_NAME, TEST_AIRFIELD_NAME)
         self.assertNotIn(aircraft_key, managed_airfield.planes)

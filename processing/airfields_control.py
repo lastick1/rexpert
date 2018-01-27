@@ -27,26 +27,26 @@ class AirfieldsController:
             if airfield.distance_to(x=x, z=z) < radius:
                 return airfield
 
-    def spawn_aircraft(self, tvd, atype: atypes.Atype10):
+    def spawn_aircraft(self, tvd_name: str, airfield_country: int, atype: atypes.Atype10):
         """Обработать появление самолёта на аэродроме"""
         managed_airfield = self.get_airfield_in_radius(
-            tvd.name, atype.pos['x'], atype.pos['z'], self._ioc.config.gameplay.airfield_radius)
-        self.add_aircraft(tvd, managed_airfield.name, atype.aircraft_name, -1)
+            tvd_name, atype.pos['x'], atype.pos['z'], self._ioc.config.gameplay.airfield_radius)
+        self.add_aircraft(tvd_name, airfield_country, managed_airfield.name, atype.aircraft_name, -1)
 
-    def finish(self, tvd, bot: log_objects.BotPilot):
+    def finish(self, tvd_name: str, airfield_country: int, bot: log_objects.BotPilot):
         """Обработать деспаун самолёта на аэродроме"""
         xpos = bot.aircraft.pos['x']
         zpos = bot.aircraft.pos['z']
-        managed_airfield = self.get_airfield_in_radius(tvd.name, xpos, zpos, self._ioc.config.gameplay.airfield_radius)
+        managed_airfield = self.get_airfield_in_radius(tvd_name, xpos, zpos, self._ioc.config.gameplay.airfield_radius)
         if managed_airfield:
-            self.add_aircraft(tvd, managed_airfield.name, bot.aircraft.log_name, 1)
+            self.add_aircraft(tvd_name, airfield_country, managed_airfield.name, bot.aircraft.log_name, 1)
 
     @staticmethod
     def get_country(airfield, tvd) -> int:
         """Получить страну аэродрома в соответствии с графом"""
         return tvd.get_country(airfield)
 
-    def _add_aircraft(self, airfield, airfield_country, aircraft_name: str, aircraft_count: int):
+    def _add_aircraft(self, airfield, airfield_country: int, aircraft_name: str, aircraft_count: int):
         """Добавить самолёт на аэродром без сохранения в БД"""
         aircraft_key = self._ioc.config.planes.name_to_key(aircraft_name)
         aircraft_country = self._ioc.config.planes.cfg['uncommon'][aircraft_name.lower()]['country']
@@ -55,10 +55,10 @@ class AirfieldsController:
                 airfield.planes[aircraft_key] = 0
             airfield.planes[aircraft_key] += aircraft_count
 
-    def add_aircraft(self, tvd, airfield_name: str, aircraft_name: str, aircraft_count: int):
+    def add_aircraft(
+            self, tvd_name: str, airfield_country: int, airfield_name: str, aircraft_name: str, aircraft_count: int):
         """Добавить самолёт на аэродром"""
-        airfield = self._ioc.storage.airfields.load_by_name(tvd.name, airfield_name)
-        airfield_country = tvd.get_country(airfield)
+        airfield = self._ioc.storage.airfields.load_by_name(tvd_name, airfield_name)
         self._add_aircraft(airfield, airfield_country, aircraft_name, aircraft_count)
         self._ioc.storage.airfields.update_airfield(airfield)
 

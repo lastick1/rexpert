@@ -5,6 +5,8 @@ import pathlib
 import constants
 import geometry
 
+from .grid import Grid
+
 
 class Boundary(geometry.Point):
     """Класс зоны влияния"""
@@ -23,6 +25,7 @@ class Tvd:
             date: str,
             right_top: dict,
             divisions: list(),
+            grid: Grid,
             icons_group_file: pathlib.Path
     ):
         self.name = name  # имя твд
@@ -31,7 +34,6 @@ class Tvd:
         self.right_top = right_top  # правый верхний угол карты
         self.divisions = divisions  # дивизии с их местоположением
         self.icons_group_file = icons_group_file  # файл группы иконок
-        self.border = list()  # упорядоченный список узлов линии фронта
         self.confrontation_east = list()  # восточная прифронтовая зона
         self.confrontation_west = list()  # западная прифронтовая зона
         self.influences = dict()  # инфлюенсы СССР и Германии
@@ -39,6 +41,23 @@ class Tvd:
         self.red_rear_airfield = None  # советский тыловой аэродром в миссии
         self.blue_front_airfields = list()  # немецкие аэродромы в миссии
         self.blue_rear_airfield = None  # немецкий тыловой аэродром в миссии
+        self._border: list = None
+        self._nodes_list: list = None
+        self.grid = grid  # граф этого ТВД
+
+    @property
+    def border(self) -> list:
+        """упорядоченный список узлов линии фронта"""
+        if not self._border:
+            self._border = self.grid.border
+        return self._border
+
+    @property
+    def nodes_list(self):
+        """Список всех вершин графа"""
+        if not self._nodes_list:
+            self._nodes_list = self.grid.nodes_list
+        return self._nodes_list
 
     def get_country(self, point: geometry.Point) -> int:
         """Определить страну, на территории которой находится точка"""

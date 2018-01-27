@@ -49,9 +49,9 @@ class TestAirfieldsSelector(unittest.TestCase):
         include = boundary_builder.influence_east(border=grid.border)
         airfield1, airfield2, airfield3 = (x for x in self.storage.airfields.load_by_tvd(MOSCOW)
                                            if x.name in ('klin', 'kubinka', 'ruza'))
-        self.controller.add_aircraft(tvd, airfield1.name, TEST_AIRCRAFT_NAME1, 10)
-        self.controller.add_aircraft(tvd, airfield2.name, TEST_AIRCRAFT_NAME1, 15)
-        self.controller.add_aircraft(tvd, airfield3.name, TEST_AIRCRAFT_NAME1, 20)
+        self.controller.add_aircraft(tvd.name, 101, airfield1.name, TEST_AIRCRAFT_NAME1, 10)
+        self.controller.add_aircraft(tvd.name, 101, airfield2.name, TEST_AIRCRAFT_NAME1, 15)
+        self.controller.add_aircraft(tvd.name, 101, airfield3.name, TEST_AIRCRAFT_NAME1, 20)
         selector = processing.AirfieldsSelector(IOC.config.main)
         # Act
         result = selector.select_rear(
@@ -72,9 +72,9 @@ class TestAirfieldsSelector(unittest.TestCase):
         include = boundary_builder.influence_west(border=grid.border)
         airfield1, airfield2, airfield3 = (x for x in self.storage.airfields.load_by_tvd(MOSCOW)
                                            if x.name in ('rjev', 'sychevka', 'karpovo'))
-        self.controller.add_aircraft(tvd, airfield1.name, TEST_AIRCRAFT_NAME2, 10)
-        self.controller.add_aircraft(tvd, airfield2.name, TEST_AIRCRAFT_NAME2, 15)
-        self.controller.add_aircraft(tvd, airfield3.name, TEST_AIRCRAFT_NAME2, 20)
+        self.controller.add_aircraft(tvd.name, 201, airfield1.name, TEST_AIRCRAFT_NAME2, 10)
+        self.controller.add_aircraft(tvd.name, 201, airfield2.name, TEST_AIRCRAFT_NAME2, 15)
+        self.controller.add_aircraft(tvd.name, 201, airfield3.name, TEST_AIRCRAFT_NAME2, 20)
         selector = processing.AirfieldsSelector(IOC.config.main)
         # Act
         result = selector.select_rear(
@@ -92,8 +92,8 @@ class TestAirfieldsSelector(unittest.TestCase):
         boundary_builder = processing.BoundaryBuilder(north=north, east=east, south=0, west=0)
         include = boundary_builder.confrontation_east(grid=IOC.grid_controller.get_grid(MOSCOW))
         airfield1, airfield2 = (x for x in self.storage.airfields.load_by_tvd(MOSCOW) if x.name in ('kholm', 'kalinin'))
-        self.controller.add_aircraft(tvd, airfield1.name, TEST_AIRCRAFT_NAME1, 10)
-        self.controller.add_aircraft(tvd, airfield2.name, TEST_AIRCRAFT_NAME1, -10)
+        self.controller.add_aircraft(tvd.name, 101, airfield1.name, TEST_AIRCRAFT_NAME1, 10)
+        self.controller.add_aircraft(tvd.name, 101, airfield2.name, TEST_AIRCRAFT_NAME1, -10)
         selector = processing.AirfieldsSelector(IOC.config.main)
         # Act
         result = selector.select_front(front_area=include, airfields=self.storage.airfields.load_by_tvd(MOSCOW))
@@ -113,8 +113,8 @@ class TestAirfieldsSelector(unittest.TestCase):
         include = boundary_builder.confrontation_west(grid=IOC.grid_controller.get_grid(MOSCOW))
         airfield1, airfield2 = (x for x in self.storage.airfields.load_by_tvd(MOSCOW) if
                                 x.name in ('lotoshino', 'migalovo'))
-        self.controller.add_aircraft(tvd, airfield1.name, TEST_AIRCRAFT_NAME2, 10)
-        self.controller.add_aircraft(tvd, airfield2.name, TEST_AIRCRAFT_NAME2, -10)
+        self.controller.add_aircraft(tvd.name, 201, airfield1.name, TEST_AIRCRAFT_NAME2, 10)
+        self.controller.add_aircraft(tvd.name, 201, airfield2.name, TEST_AIRCRAFT_NAME2, -10)
         selector = processing.AirfieldsSelector(IOC.config.main)
         # Act
         result = selector.select_front(front_area=include, airfields=self.storage.airfields.load_by_tvd(MOSCOW))

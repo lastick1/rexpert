@@ -53,19 +53,19 @@ class TvdBuilder:
             date,
             self._ioc.config.mgen.cfg[self.name]['right_top'],
             self._ioc.storage.divisions.load_by_tvd(self.name),
+            self._ioc.grid_controller.get_grid(self.name),
             self._ioc.config.mgen.icons_group_files[self.name]
         )
-        grid = self._ioc.grid_controller.get_grid(self.name)
-        tvd.border = grid.border
-        nodes = grid.nodes_list
         influence_east = self.boundary_builder.influence_east(tvd.border)
         influence_west = self.boundary_builder.influence_west(tvd.border)
-        tvd.confrontation_east = self.boundary_builder.confrontation_east(grid)
-        tvd.confrontation_west = self.boundary_builder.confrontation_west(grid)
+        tvd.confrontation_east = self.boundary_builder.confrontation_east(tvd.grid)
+        tvd.confrontation_west = self.boundary_builder.confrontation_west(tvd.grid)
         east_boundary = processing.Boundary(influence_east[0].x, influence_east[0].z, influence_east)
         west_boundary = processing.Boundary(influence_west[0].x, influence_west[0].z, influence_west)
-        east_influences = list(processing.Boundary(node.x, node.z, node.neighbors_sorted) for node in nodes if node.country == 101)
-        west_influences = list(processing.Boundary(node.x, node.z, node.neighbors_sorted) for node in nodes if node.country == 201)
+        east_influences = list(processing.Boundary(node.x, node.z, node.neighbors_sorted)
+                               for node in tvd.nodes_list if node.country == 101)
+        west_influences = list(processing.Boundary(node.x, node.z, node.neighbors_sorted)
+                               for node in tvd.nodes_list if node.country == 201)
         east_influences.append(east_boundary)
         west_influences.append(west_boundary)
         east_influences.append(
@@ -84,6 +84,9 @@ class TvdBuilder:
             }
         tvd.influences = areas
         return tvd
+
+    def make_influences(self, tvd):
+        """Построить зоны влияния в соответствии с графом"""
 
     def update(self, tvd, airfields: list):
         """Обновление групп, баз локаций и файла параметров генерации в папке ТВД (data/scg/x)"""
