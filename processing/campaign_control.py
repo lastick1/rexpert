@@ -7,6 +7,7 @@ import atypes
 import configs
 import processing
 import constants
+import storage
 
 from .tvd import Tvd
 from .campaign_map import CampaignMap
@@ -59,7 +60,7 @@ class CampaignController:
         return self._ioc.source_parser
 
     @property
-    def storage(self) -> processing.Storage:
+    def storage(self) -> storage.Storage:
         """Объект для работы с БД"""
         return self._ioc.storage
     

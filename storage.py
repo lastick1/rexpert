@@ -3,10 +3,10 @@ import pymongo
 
 import configs
 import constants
-from .airfield import ManagedAirfield
-from .player import Player
-from .campaign_map import CampaignMap, CampaignMission
-from .division import Division
+from processing.airfield import ManagedAirfield
+from processing.player import Player
+from processing.campaign_map import CampaignMap, CampaignMission
+from processing.division import Division
 
 
 def _filter_by_id(_id: str) -> dict:

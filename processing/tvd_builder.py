@@ -5,6 +5,7 @@ import datetime
 import configs
 import constants
 import processing
+import storage
 
 
 class TvdBuilder:
@@ -58,7 +59,7 @@ class TvdBuilder:
         return self._ioc.grid_controller
 
     @property
-    def storage(self) -> processing.Storage:
+    def storage(self) -> storage.Storage:
         """Работа с БД"""
         return self._ioc.storage
 

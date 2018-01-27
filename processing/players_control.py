@@ -4,9 +4,9 @@ import datetime
 import atypes
 import configs
 import log_objects
-import processing
 import rcon
 import core
+import storage
 
 from processing.player import Player
 
@@ -35,7 +35,7 @@ class PlayersController:
         return self._ioc.objects_controller
     
     @property
-    def storage(self) -> processing.Storage:
+    def storage(self) -> storage.Storage:
         """Объект для работы с БД"""
         return self._ioc.storage
     

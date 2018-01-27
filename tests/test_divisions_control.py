@@ -3,6 +3,7 @@ import unittest
 import pathlib
 
 import processing
+import storage
 import tests
 
 IOC = tests.mocks.DependencyContainerMock(pathlib.Path('./testdata/conf.ini'))
@@ -17,7 +18,7 @@ class TestDivisionsControl(unittest.TestCase):
     """Тестовый класс"""
     def setUp(self):
         """Настройка перед тестами"""
-        self.storage = processing.Storage(IOC.config.main)
+        self.storage = storage.Storage(IOC.config.main)
 
     def tearDown(self):
         """Очистка после тестов"""

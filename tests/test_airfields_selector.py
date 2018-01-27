@@ -3,6 +3,7 @@ import unittest
 import pathlib
 
 import processing
+import storage
 import tests
 
 IOC = tests.mocks.DependencyContainerMock(pathlib.Path('./testdata/conf.ini'))
@@ -28,7 +29,7 @@ class TestAirfieldsSelector(unittest.TestCase):
     """Тестовый класс"""
     def setUp(self):
         """Настройка базы перед тестом"""
-        self.storage = processing.Storage(IOC.config.main)
+        self.storage = storage.Storage(IOC.config.main)
         self.controller = processing.AirfieldsController(IOC)
         self.storage.airfields.update_airfields(
             self.controller.initialize_managed_airfields(IOC.config.mgen.airfields_data[MOSCOW]))

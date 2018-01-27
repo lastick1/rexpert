@@ -3,6 +3,7 @@ import pathlib
 import configs
 import core
 import processing
+import storage
 import rcon
 
 
@@ -23,7 +24,7 @@ class DependencyContainer:  # pylint: disable=R0902
         self._map_painter: processing.MapPainter = None
         self._rcon: rcon.DServerRcon = None
         self._generator: processing.Generator = None
-        self._storage: processing.Storage = None
+        self._storage: storage.Storage = None
 
     @property
     def config(self) -> configs.Config:
@@ -124,8 +125,8 @@ class DependencyContainer:  # pylint: disable=R0902
         return self._generator
 
     @property
-    def storage(self) -> processing.Storage:
+    def storage(self) -> storage.Storage:
         """Объект для работы с БД"""
         if not self._storage:
-            self._storage = processing.Storage(self.config.main)
+            self._storage = storage.Storage(self.config.main)
         return self._storage

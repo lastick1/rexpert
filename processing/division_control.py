@@ -3,6 +3,7 @@ import re
 
 import configs
 import processing
+import storage
 
 from .division import Division, DIVISIONS
 from .campaign_mission import CampaignMission
@@ -28,7 +29,7 @@ class DivisionsController:
         return self._ioc.config
 
     @property
-    def storage(self) -> processing.Storage:
+    def storage(self) -> storage.Storage:
         """Объект для работы с БД"""
         return self._ioc.storage
 
