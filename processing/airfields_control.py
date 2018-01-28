@@ -1,6 +1,8 @@
 """Контроль состояния аэродромов (доступные самолёты, повреждения)"""
 import atypes
+import configs
 import log_objects
+import storage
 from .airfield import ManagedAirfield
 
 
@@ -8,6 +10,16 @@ class AirfieldsController:
     """Контроллер аэродромов"""
     def __init__(self, ioc):
         self._ioc = ioc
+        
+    @property
+    def config(self) -> configs.Config:
+        """Конфигурация приложения"""
+        return self._ioc.config
+        
+    @property
+    def storage(self) -> storage.Storage:
+        """Объект для работы с БД"""
+        return self._ioc.storage
 
     @staticmethod
     def initialize_managed_airfields(airfields_data: list) -> list:
@@ -23,21 +35,21 @@ class AirfieldsController:
 
     def get_airfield_in_radius(self, tvd_name: str, x: float, z: float, radius: int) -> ManagedAirfield:
         """Получить аэродром по его координатам с заданным отклонением"""
-        for airfield in self._ioc.storage.airfields.load_by_tvd(tvd_name=tvd_name):
+        for airfield in self.storage.airfields.load_by_tvd(tvd_name=tvd_name):
             if airfield.distance_to(x=x, z=z) < radius:
                 return airfield
 
     def spawn_aircraft(self, tvd_name: str, airfield_country: int, atype: atypes.Atype10):
         """Обработать появление самолёта на аэродроме"""
         managed_airfield = self.get_airfield_in_radius(
-            tvd_name, atype.pos['x'], atype.pos['z'], self._ioc.config.gameplay.airfield_radius)
+            tvd_name, atype.pos['x'], atype.pos['z'], self.config.gameplay.airfield_radius)
         self.add_aircraft(tvd_name, airfield_country, managed_airfield.name, atype.aircraft_name, -1)
 
     def finish(self, tvd_name: str, airfield_country: int, bot: log_objects.BotPilot):
         """Обработать деспаун самолёта на аэродроме"""
         xpos = bot.aircraft.pos['x']
         zpos = bot.aircraft.pos['z']
-        managed_airfield = self.get_airfield_in_radius(tvd_name, xpos, zpos, self._ioc.config.gameplay.airfield_radius)
+        managed_airfield = self.get_airfield_in_radius(tvd_name, xpos, zpos, self.config.gameplay.airfield_radius)
         if managed_airfield:
             self.add_aircraft(tvd_name, airfield_country, managed_airfield.name, bot.aircraft.log_name, 1)
 
@@ -48,8 +60,8 @@ class AirfieldsController:
 
     def _add_aircraft(self, airfield, airfield_country: int, aircraft_name: str, aircraft_count: int):
         """Добавить самолёт на аэродром без сохранения в БД"""
-        aircraft_key = self._ioc.config.planes.name_to_key(aircraft_name)
-        aircraft_country = self._ioc.config.planes.cfg['uncommon'][aircraft_name.lower()]['country']
+        aircraft_key = self.config.planes.name_to_key(aircraft_name)
+        aircraft_country = self.config.planes.cfg['uncommon'][aircraft_name.lower()]['country']
         if aircraft_country == airfield_country:
             if aircraft_key not in airfield.planes:
                 airfield.planes[aircraft_key] = 0
@@ -58,9 +70,9 @@ class AirfieldsController:
     def add_aircraft(
             self, tvd_name: str, airfield_country: int, airfield_name: str, aircraft_name: str, aircraft_count: int):
         """Добавить самолёт на аэродром"""
-        airfield = self._ioc.storage.airfields.load_by_name(tvd_name, airfield_name)
+        airfield = self.storage.airfields.load_by_name(tvd_name, airfield_name)
         self._add_aircraft(airfield, airfield_country, aircraft_name, aircraft_count)
-        self._ioc.storage.airfields.update_airfield(airfield)
+        self.storage.airfields.update_airfield(airfield)
 
     def end_round(self):
         """Обработать завершение раунда - перераспределить самолёты с тылового на фронтовые аэродромы"""
