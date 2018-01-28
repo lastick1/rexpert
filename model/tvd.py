@@ -4,8 +4,7 @@ import pathlib
 
 import constants
 import geometry
-
-from .grid import Grid
+import model
 
 
 class Boundary(geometry.Point):
@@ -25,7 +24,7 @@ class Tvd:
             date: str,
             right_top: dict,
             divisions: list(),
-            grid: Grid,
+            grid: model.Grid,
             icons_group_file: pathlib.Path
     ):
         self.name = name  # имя твд

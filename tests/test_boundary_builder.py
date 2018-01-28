@@ -2,6 +2,7 @@
 import unittest
 import pathlib
 import geometry
+import model
 import processing
 
 from tests import mocks, utils
@@ -142,7 +143,7 @@ class TestBoundaryBuilder(unittest.TestCase):
             101, 100, 99, 137, 139, 138, 157, 186, 163, 164, 165, 184, 183, 182, 194, 193, 177
         )
         builder = processing.BoundaryBuilder(self.north, self.east, self.south, self.west)
-        grid = processing.Grid(STALIN, xgml.nodes, xgml.edges, MGEN)
+        grid = model.Grid(STALIN, xgml.nodes, xgml.edges, MGEN)
         path = pathlib.Path(r'./tmp/{}_{}.xgml'.format(STALIN, 0))
         xgml.save_file(str(path), grid.nodes, grid.edges)
         # Act

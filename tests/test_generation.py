@@ -4,6 +4,7 @@ import unittest
 import pathlib
 import random
 
+import model
 import processing
 import tests
 
@@ -39,7 +40,7 @@ class TestGrid(unittest.TestCase):
         # Arrange
         xgml = processing.Xgml(TEST, IOC.config.mgen)
         xgml.parse(str(IOC.config.mgen.xgml[TEST]))
-        grid = processing.Grid(TEST, xgml.nodes, xgml.edges, IOC.config.mgen)
+        grid = model.Grid(TEST, xgml.nodes, xgml.edges, IOC.config.mgen)
         # Act
         frontline = grid.border_nodes
         border = grid.border
@@ -53,7 +54,7 @@ class TestGrid(unittest.TestCase):
         # Arrange
         xgml = processing.Xgml(STALIN, IOC.config.mgen)
         xgml.parse(str(IOC.config.mgen.xgml[STALIN]))
-        grid = processing.Grid(STALIN, xgml.nodes, xgml.edges, IOC.config.mgen)
+        grid = model.Grid(STALIN, xgml.nodes, xgml.edges, IOC.config.mgen)
         expected = (
             209, 94, 93, 96, 101, 100, 99, 137, 139, 138, 157,
             186, 163, 164, 165, 184, 183, 182, 194, 193, 177
@@ -68,7 +69,7 @@ class TestGrid(unittest.TestCase):
         """Выполняется захват в тестовом графе"""
         xgml = processing.Xgml(TEST, IOC.config.mgen)
         xgml.parse(str(IOC.config.mgen.xgml[TEST]))
-        grid = processing.Grid(TEST, xgml.nodes, xgml.edges, IOC.config.mgen)
+        grid = model.Grid(TEST, xgml.nodes, xgml.edges, IOC.config.mgen)
         path = pathlib.Path(r'./tmp/{}_{}.xgml'.format(TEST, 0))
         xgml.save_file(str(path), grid.nodes, grid.edges)
         # Act
@@ -88,7 +89,7 @@ class TestGrid(unittest.TestCase):
         """Находятся все соседи узлов из списка"""
         xgml = processing.Xgml(TEST, IOC.config.mgen)
         xgml.parse(str(IOC.config.mgen.xgml[TEST]))
-        grid = processing.Grid(TEST, xgml.nodes, xgml.edges, IOC.config.mgen)
+        grid = model.Grid(TEST, xgml.nodes, xgml.edges, IOC.config.mgen)
         expected = tests.utils.get_nodes_keys([
             grid.node(18), grid.node(19), grid.node(1), grid.node(0), grid.node(21), grid.node(5),
             grid.node(24), grid.node(7), grid.node(6), grid.node(39), grid.node(8), grid.node(29),
@@ -104,7 +105,7 @@ class TestGrid(unittest.TestCase):
         """Выполняется захват в графе Москвы"""
         xgml = processing.Xgml(MOSCOW, IOC.config.mgen)
         xgml.parse(str(IOC.config.mgen.xgml[MOSCOW]))
-        grid = processing.Grid(MOSCOW, xgml.nodes, xgml.edges, IOC.config.mgen)
+        grid = model.Grid(MOSCOW, xgml.nodes, xgml.edges, IOC.config.mgen)
         path = pathlib.Path(r'./tmp/{}_{}.xgml'.format(MOSCOW, 0))
         xgml.save_file(str(path), grid.nodes, grid.edges)
         # Act
@@ -114,7 +115,7 @@ class TestGrid(unittest.TestCase):
         """Выполняется захват в графе Сталинграда"""
         xgml = processing.Xgml(STALIN, IOC.config.mgen)
         xgml.parse(str(IOC.config.mgen.xgml[STALIN]))
-        grid = processing.Grid(STALIN, xgml.nodes, xgml.edges, IOC.config.mgen)
+        grid = model.Grid(STALIN, xgml.nodes, xgml.edges, IOC.config.mgen)
         path = pathlib.Path(r'./tmp/{}_{}.xgml'.format(STALIN, 0))
         xgml.save_file(str(path), grid.nodes, grid.edges)
         # Act

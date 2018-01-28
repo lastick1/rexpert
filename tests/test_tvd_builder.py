@@ -3,6 +3,7 @@ import unittest
 import pathlib
 import shutil
 
+import model
 import processing
 import tests
 
@@ -73,7 +74,7 @@ class TestTvdBuilder(unittest.TestCase):
         airfields = processing.AirfieldsController.initialize_managed_airfields(IOC.config.mgen.airfields_data[MOSCOW])
         builder = processing.TvdBuilder(MOSCOW, IOC)
         grid = IOC.grid_controller.get_grid(MOSCOW)
-        tvd = processing.Tvd(MOSCOW, 'test', TVD_DATE, {'x': 281600, 'z': 281600}, dict(), grid, pathlib.Path('./tmp/'))
+        tvd = model.Tvd(MOSCOW, 'test', TVD_DATE, {'x': 281600, 'z': 281600}, dict(), grid, pathlib.Path('./tmp/'))
         tvd.red_front_airfields = list(x for x in airfields if x.name in ('kholm', 'kalinin', 'alferevo'))
         tvd.blue_front_airfields = list(x for x in airfields if x.name in ('losinki', 'lotoshino', 'migalovo'))
         tvd.red_rear_airfield = list(x for x in airfields if x.name == 'ruza')[0]

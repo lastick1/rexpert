@@ -45,7 +45,7 @@ class PlanesMock(configs.Planes):
         super().__init__(path='.\\testdata\\planes.json')
 
 
-class TvdMock(processing.Tvd):
+class TvdMock(model.Tvd):
     def __init__(self, name: str):
         super().__init__(name, '', '10.11.1941', {'x': 281600, 'z': 281600}, dict(), pathlib.Path())
         self.country = 201
@@ -164,7 +164,7 @@ TEST_EDGES_LIST = [
 ]
 
 
-def get_test_grid(mgen: MgenMock) -> processing.Grid:
+def get_test_grid(mgen: MgenMock) -> model.Grid:
     """Тестовый граф"""
     nodes = {x.key: x for x in TEST_NODES_LIST}
     for edge in TEST_EDGES_LIST:
@@ -172,7 +172,7 @@ def get_test_grid(mgen: MgenMock) -> processing.Grid:
         target_id = edge[1]
         nodes[source_id].neighbors.add(nodes[target_id])
         nodes[target_id].neighbors.add(nodes[source_id])
-    return processing.Grid(name=TEST, nodes=nodes, edges=TEST_EDGES_LIST, config=mgen)
+    return model.Grid(name=TEST, nodes=nodes, edges=TEST_EDGES_LIST, config=mgen)
 
 
 class AirfieldsControllerMock(processing.AirfieldsController):

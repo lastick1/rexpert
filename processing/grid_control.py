@@ -8,7 +8,7 @@ import shutil
 import configs
 
 from .xgml_io import Xgml
-from .grid import Grid
+from model.grid import Grid
 
 
 class GridController:

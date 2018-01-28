@@ -1,7 +1,7 @@
 """Формирование списков вершин для InfluenceArea"""
 import geometry
 import model
-from .grid import Grid
+from model.grid import Grid
 
 
 def _to_node(obj) -> model.Node:

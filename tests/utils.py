@@ -26,7 +26,7 @@ def get_nodes(points: list) -> list:
     return nodes
 
 
-def get_nodes_by_keys(keys: list, grid: processing.Grid) -> list:
+def get_nodes_by_keys(keys: list, grid: model.Grid) -> list:
     """Получить ключи узлов из списка узлов"""
     return list(grid.node(key) for key in keys)
 

@@ -94,7 +94,7 @@ class TvdBuilder:
 
     def get_tvd(self, date):
         """Построить объект настроек ТВД"""
-        tvd = processing.Tvd(
+        tvd = model.Tvd(
             self.name,
             self.config.mgen.cfg[self.name]['tvd_folder'],
             date,
@@ -113,18 +113,18 @@ class TvdBuilder:
 
         influence_east = self.boundary_builder.influence_east(tvd.border)
         influence_west = self.boundary_builder.influence_west(tvd.border)
-        east_boundary = processing.Boundary(influence_east[0].x, influence_east[0].z, influence_east)
-        west_boundary = processing.Boundary(influence_west[0].x, influence_west[0].z, influence_west)
-        east_influences = list(processing.Boundary(node.x, node.z, node.neighbors_sorted)
+        east_boundary = model.Boundary(influence_east[0].x, influence_east[0].z, influence_east)
+        west_boundary = model.Boundary(influence_west[0].x, influence_west[0].z, influence_west)
+        east_influences = list(model.Boundary(node.x, node.z, node.neighbors_sorted)
                                for node in tvd.nodes_list if node.country == 101)
-        west_influences = list(processing.Boundary(node.x, node.z, node.neighbors_sorted)
+        west_influences = list(model.Boundary(node.x, node.z, node.neighbors_sorted)
                                for node in tvd.nodes_list if node.country == 201)
         east_influences.append(east_boundary)
         west_influences.append(west_boundary)
         east_influences.append(
-            processing.Boundary(tvd.confrontation_east[0].x, tvd.confrontation_east[0].z, tvd.confrontation_east))
+            model.Boundary(tvd.confrontation_east[0].x, tvd.confrontation_east[0].z, tvd.confrontation_east))
         west_influences.append(
-            processing.Boundary(tvd.confrontation_west[0].x, tvd.confrontation_west[0].z, tvd.confrontation_west))
+            model.Boundary(tvd.confrontation_west[0].x, tvd.confrontation_west[0].z, tvd.confrontation_west))
         if self.config.main.special_influences:
             areas = {
                 101: east_influences,
@@ -163,14 +163,14 @@ class TvdBuilder:
         self.randomize_defaultparams(tvd.date, self.config.generator.cfg[self.name])
 
     @staticmethod
-    def update_icons(tvd: processing.Tvd):
+    def update_icons(tvd: model.Tvd):
         """Обновление группы иконок в соответствии с положением ЛФ"""
         print('[{}] generating icons group...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
         flg = processing.FrontLineGroup(tvd.border, tvd.influences, tvd.icons_group_file, tvd.right_top)
         flg.make()
         print('... icons done')
 
-    def update_ldb(self, tvd: processing.Tvd):
+    def update_ldb(self, tvd: model.Tvd):
         """Обновление базы локаций до актуального состояния"""
         print('[{}] generating Locations Data Base (LDB)...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
         with self.config.mgen.ldf_templates[self.name].open() as stream:
@@ -182,7 +182,7 @@ class TvdBuilder:
             stream.write(ldf_text)
         print('... LDB done')
 
-    def update_airfields(self, tvd: processing.Tvd):
+    def update_airfields(self, tvd: model.Tvd):
         """Генерация групп аэродромов для ТВД"""
         print('[{}] generating airfields groups...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
         for airfield in tvd.red_front_airfields + [tvd.red_rear_airfield]:

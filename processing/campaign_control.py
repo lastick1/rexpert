@@ -10,7 +10,7 @@ import constants
 import storage
 import model
 
-from .tvd import Tvd
+from model.tvd import Tvd
 
 START_DATE = 'start_date'
 END_DATE = 'end_date'

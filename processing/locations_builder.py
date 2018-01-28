@@ -1,6 +1,8 @@
 """Сборка базы локаций"""
 import random
 import re
+
+import model
 import processing
 from .locations import Location, AIR_OBJECTIVE, AIRFIELD, DECORATION, GROUND_OBJECTIVE, REFERENCE_LOCATION, NAVIGATION
 from .locations import LOCATION_TYPES, PLANE_WAYPOINT, FRONT_LINE
@@ -285,7 +287,7 @@ class LocationsBuilder:
         """Расположена ли точка вне фронтовой зоны но на территории инфлюенса"""
         return self._is_in_influences(point, influences) and not point.is_in_area(confrontation_area)
 
-    def apply_tvd_setup(self, tvd: processing.Tvd):
+    def apply_tvd_setup(self, tvd: model.Tvd):
         """Покраска локаций в соответствии с их расположением в зоне влияния"""
         front_airfields = {101: tvd.red_front_airfields, 201: tvd.blue_front_airfields}
         confrontations = {101: tvd.confrontation_east, 201: tvd.confrontation_west}
