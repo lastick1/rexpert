@@ -1,6 +1,8 @@
 """Полезные функции для тестирования"""
 import shutil
 import pathlib
+
+import model
 import processing
 
 
@@ -19,7 +21,7 @@ def get_nodes(points: list) -> list:
     nodes = []
     key = 0
     for point in points:
-        nodes.append(processing.Node(key=key, text=key, pos=point.to_dict(), color='#FFFFFF'))
+        nodes.append(model.Node(key=key, text=key, pos=point.to_dict(), color='#FFFFFF'))
         key += 1
     return nodes
 

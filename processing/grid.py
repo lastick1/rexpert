@@ -1,7 +1,7 @@
 """Работа с графом"""
 import configs
 import geometry
-from .node import Node
+import model
 
 
 class Grid:
@@ -50,7 +50,7 @@ class Grid:
     @property
     def border(self) -> list:
         """Линия фронта (упорядоченные с юга на север)"""
-        def _is_reversed(a: Node, b: Node) -> bool:
+        def _is_reversed(a: model.Node, b: model.Node) -> bool:
             """Прямой или обратный порядок построения ЛФ"""
             # pylint: disable=C0103
             # 1. получаем цветные вершины треугольников со стороной - отрезком лф
@@ -82,11 +82,11 @@ class Grid:
             result.reverse()
         return result
 
-    def node(self, key) -> Node:
+    def node(self, key) -> model.Node:
         """Получить узел"""
         return self.nodes[str(key)]
 
-    def find(self, x, z, side: float = 10) -> Node:  # pylint: disable=C0103
+    def find(self, x, z, side: float = 10) -> model.Node:  # pylint: disable=C0103
         """Найти узел по координатам (в квадрате стороной 2*r)"""
         for node in self.nodes_list:
             if abs(x - node.x) < side and abs(z - node.z) < side:
@@ -101,7 +101,7 @@ class Grid:
                 country, x, z))
         node.capture(country)
 
-    def capture_node(self, node: Node, country: int) -> None:
+    def capture_node(self, node: model.Node, country: int) -> None:
         """Захват узла"""
         self.capture(node.x, node.z, country)
 

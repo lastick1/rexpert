@@ -5,7 +5,7 @@ from .ground_control import GroundController
 from .aircraft_vendor import AircraftVendor
 from .airfields_control import AirfieldsController
 from .airfield import ManagedAirfield
-from .grid import Node, Grid
+from .grid import Grid
 from .weather import *
 from .xgml_io import Xgml
 from .influences import BoundaryBuilder

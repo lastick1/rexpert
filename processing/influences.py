@@ -1,10 +1,10 @@
 """Формирование списков вершин для InfluenceArea"""
 import geometry
+import model
+from .grid import Grid
 
-from .grid import Grid, Node
 
-
-def _to_node(obj) -> Node:
+def _to_node(obj) -> model.Node:
     """Приведение типа к узлу"""
     return obj
 
@@ -47,7 +47,7 @@ class BoundaryBuilder:
         )
 
     @staticmethod
-    def _make_chain(start: Node, end: Node, confrontation_nodes: set) -> list:
+    def _make_chain(start: model.Node, end: model.Node, confrontation_nodes: set) -> list:
         """Построить цепочку, ограничивающую прифронтовую зону"""
         result = []
         while start not in end.neighbors:

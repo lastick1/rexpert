@@ -2,7 +2,7 @@
 import codecs
 import xml.etree.ElementTree as Et
 import configs
-from .grid import Node
+import model
 from .grid_io import GridIO
 
 FILE_FORMAT = """<?xml version="1.0" encoding="Cp1251"?>
@@ -94,7 +94,7 @@ class Xgml(GridIO):  # pylint: disable=R0902
                     graphics = section.findall("*[@name='graphics']")[0]
                     coordinates = self._get_coordinates(graphics)
                     color = graphics.findall("*[@key='fill']")[0].text.upper()
-                    nodes[node_id] = Node(node_id, text, coordinates, color)
+                    nodes[node_id] = model.Node(node_id, text, coordinates, color)
         return nodes
 
     def _get_coordinates(self, section) -> dict:
@@ -120,7 +120,7 @@ class Xgml(GridIO):  # pylint: disable=R0902
         return nodes, edges
 
     @staticmethod
-    def serialize_node_xgml(c_x, c_z, offset, node: Node) -> str:
+    def serialize_node_xgml(c_x, c_z, offset, node: model.Node) -> str:
         """Сериализовать в формат XGML"""
         return NODE_FORMAT.format(node.key, node.text + ' ' + node.key, c_z * node.z, offset - c_x * node.x, node.color)
     # TODO не забыть убрать запись ключа в текст узла тут ^
