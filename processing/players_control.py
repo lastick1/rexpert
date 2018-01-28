@@ -7,8 +7,7 @@ import log_objects
 import rcon
 import core
 import storage
-
-from processing.player import Player
+import model
 
 
 def _update_request_body(document: dict) -> dict:
@@ -44,7 +43,7 @@ class PlayersController:
         """Консоль для отправки команд в DServer.exe"""
         return self._ioc.rcon
 
-    def _get_player(self, bot: log_objects.BotPilot) -> Player:
+    def _get_player(self, bot: log_objects.BotPilot) -> model.Player:
         """Получить игрока по его боту - пилоту в самолёте"""
         return self.player_by_bot_id[bot.obj_id]
 
@@ -116,7 +115,7 @@ class PlayersController:
         """AType 20"""
 
         if self.storage.players.count(account_id) == 0:
-            player = Player(account_id, Player.initialize(account_id, online=True))
+            player = model.Player(account_id, model.Player.initialize(account_id, online=True))
             self.storage.players.update(player)
 
         player = self.storage.players.find(account_id)

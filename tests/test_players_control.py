@@ -5,6 +5,7 @@ import pathlib
 
 import atypes
 import configs
+import model
 import tests
 
 import constants
@@ -15,7 +16,7 @@ MAIN = IOC.config.main
 TEST_NICKNAME = '_test_nickname'
 TEST_ACCOUNT_ID = '_test_id1'
 TEST_PROFILE_ID = '_test_profile_id1'
-TEST_PLAYER = processing.Player.initialize(TEST_ACCOUNT_ID)
+TEST_PLAYER = model.Player.initialize(TEST_ACCOUNT_ID)
 FILTER = {constants.ID: TEST_ACCOUNT_ID}
 OBJECTS = configs.Objects()
 

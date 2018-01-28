@@ -175,7 +175,7 @@ class CampaignController:
         self.generate(self.next_name)
 
     @staticmethod
-    def _make_campaign_mission(atype: atypes.Atype0, source_mission: processing.SourceMission) -> model.CampaignMission:
+    def _make_campaign_mission(atype: atypes.Atype0, source_mission: model.SourceMission) -> model.CampaignMission:
         return model.CampaignMission(
             kind=source_mission.kind,
             file=source_mission.name,

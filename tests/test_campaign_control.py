@@ -6,6 +6,7 @@ import shutil
 
 import atypes
 import configs
+import model
 import processing
 import tests
 
@@ -25,9 +26,9 @@ TEST_TVD_DATE = '01.09.1941'
 TEST_TVD_NAME = MOSCOW
 
 
-def _parse_mock(name: str) -> processing.SourceMission:
+def _parse_mock(name: str) -> model.SourceMission:
     """Фальшивый метод парсинга исходников"""
-    return processing.SourceMission(name=name, file=pathlib.Path(), date=TEST_TVD_DATE, guimap=TEST_TVD_NAME)
+    return model.SourceMission(name=name, file=pathlib.Path(), date=TEST_TVD_DATE, guimap=TEST_TVD_NAME)
 
 
 class TestCampaignController(unittest.TestCase):
