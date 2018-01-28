@@ -90,6 +90,7 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         atype = atypes.Atype0(tik, date, file_path, game_type_id, countries, settings, mods, preset_id)
         self.objects_controller.start_mission()
         self.players_controller.start_mission()
+        self.airfields_controller.start_mission()
         self.campaign_controller.start_mission(atype)
         self.divisions_controller.start_mission()
         self.ground_controller.start_mission()
@@ -145,8 +146,9 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         """AType 9 handler"""
         atype = atypes.Atype9(tik, airfield_id, country_id, coal_id, aircraft_id_list, pos)
         self.objects_controller.airfield(atype)
+        self.airfields_controller.spawn_airfield(atype)
 
-    # pylint: disa_ocble=R0914
+    # pylint: disable=R0914
     def event_player(self, tik: int, aircraft_id: int, bot_id: int, account_id: str,
                      profile_id: str, name: str, pos: dict, aircraft_name: str, country_id: int,
                      coal_id: int, airfield_id: int, airstart: bool, parent_id: int,
@@ -206,8 +208,8 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
     def event_round_end(self, tik: int) -> None:
         """AType 19 handler"""
         atype = atypes.Atype19(tik)
-        self.campaign_controller.end_round(atype)
         self.airfields_controller.end_round()
+        self.campaign_controller.end_round(atype)
 
     def event_player_connected(self, tik: int, account_id: str, profile_id: str) -> None:
         """AType 20 handler"""

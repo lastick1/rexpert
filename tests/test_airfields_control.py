@@ -14,6 +14,7 @@ IOC.config.mgen = tests.mocks.MgenMock(IOC.config.main.game_folder)
 
 TEST = 'test'
 TEST_TVD_NAME = 'stalingrad'
+MOSCOW = 'moscow'
 TEST_TVD_DATE = '10.11.1941'
 TEST_FIELDS = pathlib.Path(r'./testdata/test_fields.csv')
 TEST_AIRFIELD_NAME = 'Verbovka'
@@ -34,6 +35,9 @@ class TestAirfieldsController(unittest.TestCase):
         IOC.storage.airfields.update_airfields(
             processing.AirfieldsController.initialize_managed_airfields(
                 IOC.config.mgen.airfields_data[TEST_TVD_NAME]))
+        IOC.storage.airfields.update_airfields(
+            processing.AirfieldsController.initialize_managed_airfields(
+                IOC.config.mgen.airfields_data[MOSCOW]))
 
     def tearDown(self):
         """Удаление базы после теста"""
@@ -130,6 +134,16 @@ class TestAirfieldsController(unittest.TestCase):
         # Assert
         managed_airfield = IOC.storage.airfields.load_by_name(TEST_TVD_NAME, TEST_AIRFIELD_NAME)
         self.assertNotIn(aircraft_key, managed_airfield.planes)
+
+    def test_airfield_atype(self):
+        """Обрабатывается появление аэродрома в логе"""
+        controller = processing.AirfieldsController(IOC)
+        IOC.campaign_controller._current_tvd = tests.mocks.TvdMock(MOSCOW)
+        IOC.grid_controller.get_file = _get_xgml_file_mock
+        # Act
+        controller.spawn_airfield(atypes.Atype9(10, 1, 201, 2, list(), {'x': 154415, 'z': 104560}))
+        # Assert
+        self.assertGreater(len(controller.current_airfields), 0)
 
 
 if __name__ == '__main__':

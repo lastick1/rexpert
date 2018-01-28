@@ -19,6 +19,7 @@ TEST_TVD_NAME = 'moscow'
 
 class TestAircraftVendor(unittest.TestCase):
     """Тестовый класс"""
+
     def test_get_month_supply(self):
         """Формируется месячная поставка самолётов"""
         campaign_map = model.CampaignMap(1, CAMPAIGN_DATE, CAMPAIGN_DATE, TEST_TVD_NAME, list())
@@ -101,16 +102,13 @@ class TestAircraftVendor(unittest.TestCase):
     def test_transfer_to_front(self):
         """Переводятся самолёты с тылового на фронтовой"""
         front_airfields = [
-            model.ManagedAirfield('test_blue_af1', TEST_TVD_NAME, 123, 321,
-                                       {'i-16type24': 20}, supplies=10),
-            model.ManagedAirfield('test_blue_af1', TEST_TVD_NAME, 123, 321,
-                                       {'pe-2ser35': 20, 'p-40e-1': 10}),
-            model.ManagedAirfield('test_blue_af1', TEST_TVD_NAME, 123, 321,
-                                       {'pe-2ser35': 10, 'il-2mod1941': 20})
+            model.ManagedAirfield('test_blue_af1', TEST_TVD_NAME, 123, 321, {'i-16type24': 20}, supplies=10),
+            model.ManagedAirfield('test_blue_af1', TEST_TVD_NAME, 123, 321, {'pe-2ser35': 20, 'p-40e-1': 10}),
+            model.ManagedAirfield('test_blue_af1', TEST_TVD_NAME, 123, 321, {'pe-2ser35': 10, 'il-2mod1941': 20})
         ]
         rear_airfields = [
             model.ManagedAirfield('test_blue_af1', TEST_TVD_NAME, 123, 321,
-                                       {'il-2mod1941': 29, 'i-16type24': 41, 'pe-2ser35': 11, 'p-40e-1': 19})
+                                  {'il-2mod1941': 29, 'i-16type24': 41, 'pe-2ser35': 11, 'p-40e-1': 19})
         ]
         front_planes_count_before = sum(x.planes_count for x in front_airfields)
         rear_planes_count_before = sum(x.planes_count for x in rear_airfields)

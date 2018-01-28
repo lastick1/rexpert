@@ -20,6 +20,7 @@ class DependencyContainer:  # pylint: disable=R0902
         self._airfields_controller: processing.AirfieldsController = None
         self._divisions_controller: processing.DivisionsController = None
         self._grid_controller: processing.GridController = None
+        self._aircraft_vendor: processing.AircraftVendor = None
         self._source_parser: processing.SourceParser = None
         self._map_painter: processing.MapPainter = None
         self._rcon: rcon.DServerRcon = None
@@ -95,6 +96,12 @@ class DependencyContainer:  # pylint: disable=R0902
         if not self._grid_controller:
             self._grid_controller = processing.GridController(self.config)
         return self._grid_controller
+
+    @property
+    def aircraft_vendor(self):
+        if not self._aircraft_vendor:
+            self._aircraft_vendor = processing.AircraftVendor(self.config.planes, self.config.gameplay)
+        return self._aircraft_vendor
 
     @property
     def source_parser(self) -> processing.SourceParser:

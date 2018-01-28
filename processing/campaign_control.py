@@ -1,16 +1,20 @@
 """Контроль миссий и хода кампании"""
-import json
 import datetime
+import json
+
 import pytz
 
 import atypes
 import configs
-import processing
 import constants
-import storage
 import model
+import processing
+import storage
 
-from model.tvd import Tvd
+from .division_control import DivisionsController
+from .grid_control import GridController
+from .source_parser import SourceParser
+from .airfields_control import AirfieldsController
 
 START_DATE = 'start_date'
 END_DATE = 'end_date'
@@ -22,24 +26,16 @@ class CampaignController:
         self._ioc = ioc
         self._mission: model.CampaignMission = None
         self._campaign_map: model.CampaignMap = None
-        self._current_tvd: Tvd = None
-        self._vendor: processing.AircraftVendor = None
+        self._current_tvd: model.Tvd = None
         self.tvd_builders = {x: processing.TvdBuilder(x, ioc) for x in ioc.config.mgen.maps}
-
-    @property
-    def vendor(self) -> processing.AircraftVendor:
-        """Поставщик самолётов"""
-        if not self._vendor:
-            self._vendor = processing.AircraftVendor(self.config.planes, self.config.gameplay)
-        return self._vendor
 
     @property
     def config(self) -> configs.Config:
         """Конфигурация приложения"""
         return self._ioc.config
-    
+
     @property
-    def divisions_controller(self) -> processing.DivisionsController:
+    def divisions_controller(self) -> DivisionsController:
         """Контроллер дивизий"""
         return self._ioc.divisions_controller
     
@@ -49,12 +45,17 @@ class CampaignController:
         return self._ioc.players_controller
 
     @property
-    def grid_controller(self) -> processing.GridController:
+    def grid_controller(self) -> GridController:
         """Контроллер графа"""
         return self._ioc.grid_controller
 
     @property
-    def source_parser(self) -> processing.SourceParser:
+    def airfields_controller(self) -> AirfieldsController:
+        """Поставщик самолётов"""
+        return self._ioc.airfields_controller
+
+    @property
+    def source_parser(self) -> SourceParser:
         """Парсер исходников миссий"""
         return self._ioc.source_parser
 
@@ -82,7 +83,7 @@ class CampaignController:
         return 'result1' if self._mission.file == 'result2' else 'result2'
 
     @property
-    def current_tvd(self) -> Tvd:
+    def current_tvd(self) -> model.Tvd:
         """Текущий ТВД"""
         return self._current_tvd
 
@@ -103,14 +104,9 @@ class CampaignController:
         start = self.config.mgen.cfg[tvd_name][START_DATE]
         order = list(self.config.mgen.maps).index(tvd_name) + 1
         campaign_map = model.CampaignMap(order=order, date=start, mission_date=start, tvd_name=tvd_name, months=list())
-        airfields = processing.AirfieldsController.initialize_managed_airfields(
-            self.config.mgen.airfields_data[campaign_map.tvd_name])
         tvd = self.tvd_builders[campaign_map.tvd_name].get_tvd(campaign_map.date.strftime(constants.DATE_FORMAT))
-        supply = self.vendor.get_month_supply(campaign_map.current_month, campaign_map)
-        self.vendor.deliver_month_supply(campaign_map, tvd.to_country_dict_rear(airfields), supply)
-        self.vendor.initial_front_supply(campaign_map, tvd.to_country_dict_front(airfields))
+        self.airfields_controller.initialize_tvd(tvd, campaign_map)
         self.storage.campaign_maps.update(campaign_map)
-        self.storage.airfields.update_airfields(airfields)
         self.divisions_controller.initialize_divisions(tvd_name)
 
     def reset(self):

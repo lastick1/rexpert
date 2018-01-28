@@ -123,6 +123,10 @@ class Atype9(Atype):
         self.aircraft_id_list = aircraft_id_list
         self.pos = pos
 
+    @property
+    def point(self) -> geometry.Point:
+        return geometry.Point(x=self.pos['x'], z=self.pos['z'])
+
 
 class Atype10(Atype):
     """Спаун игрока"""
