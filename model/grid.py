@@ -1,15 +1,15 @@
 """Работа с графом"""
-import configs
 import geometry
 import model
 
 
 class Grid:
     """Граф (сетка)"""
-    def __init__(self, name: str, nodes: dict, edges: list, config: configs.Mgen):
+    def __init__(self, name: str, nodes: dict, edges: list, tvd: int):
+        self.name = name  # имя твд
         self.nodes = nodes  # узлы сетки
         self.edges_ids = edges  # рёбра графа в виде пар (ключ_вершины, ключ_вершины)
-        self.tvd = config.cfg[name]['tvd']
+        self.tvd = tvd  # номер твд
 
     @property
     def nodes_list(self) -> list:

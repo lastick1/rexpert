@@ -47,7 +47,9 @@ class PlanesMock(configs.Planes):
 
 class TvdMock(model.Tvd):
     def __init__(self, name: str):
-        super().__init__(name, '', '10.11.1941', {'x': 281600, 'z': 281600}, dict(), pathlib.Path())
+        super().__init__(
+            name, '', '10.11.1941', {'x': 281600, 'z': 281600}, dict(), model.Grid(name, dict(), list(), 0),
+            pathlib.Path())
         self.country = 201
 
     def get_country(self, point):
@@ -172,7 +174,7 @@ def get_test_grid(mgen: MgenMock) -> model.Grid:
         target_id = edge[1]
         nodes[source_id].neighbors.add(nodes[target_id])
         nodes[target_id].neighbors.add(nodes[source_id])
-    return model.Grid(name=TEST, nodes=nodes, edges=TEST_EDGES_LIST, config=mgen)
+    return model.Grid(name=TEST, nodes=nodes, edges=TEST_EDGES_LIST, tvd=mgen.cfg[TEST]['tvd'])
 
 
 class AirfieldsControllerMock(processing.AirfieldsController):
@@ -183,7 +185,7 @@ class AirfieldsControllerMock(processing.AirfieldsController):
     def spawn(self, tvd, aircraft_name: str, xpos: float, zpos: float):
         pass
 
-    def finish(self, tvd, bot):
+    def finish(self, tvd_name: str, airfield_country: int, bot):
         pass
 
 
