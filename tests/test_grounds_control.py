@@ -4,6 +4,7 @@ import pathlib
 
 import atypes
 import geometry
+import model
 import processing
 import tests
 
@@ -13,7 +14,7 @@ TEST_TARGET_SERVER_INPUT = 'BTD1'
 TEST_TARGET_HP = 3
 TEST_TARGET_POS = {'x': 555, 'z': 555}
 
-TEST_MISSION = processing.CampaignMission(
+TEST_MISSION = model.CampaignMission(
     kind='regular',
     file='result1',
     date='01.09.1941',

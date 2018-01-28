@@ -5,7 +5,7 @@ import configs
 import storage
 import model
 
-from .campaign_mission import CampaignMission
+from model.campaign_mission import CampaignMission
 
 
 DIVISION_INPUT_RE = re.compile(

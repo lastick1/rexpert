@@ -21,7 +21,7 @@ class TestAircraftVendor(unittest.TestCase):
     """Тестовый класс"""
     def test_get_month_supply(self):
         """Формируется месячная поставка самолётов"""
-        campaign_map = processing.CampaignMap(1, CAMPAIGN_DATE, CAMPAIGN_DATE, TEST_TVD_NAME, list())
+        campaign_map = model.CampaignMap(1, CAMPAIGN_DATE, CAMPAIGN_DATE, TEST_TVD_NAME, list())
         vendor = processing.AircraftVendor(PLANES, GAMEPLAY)
         # Act
         supply = vendor.get_month_supply(TEST_MONTH, campaign_map)
@@ -30,7 +30,7 @@ class TestAircraftVendor(unittest.TestCase):
 
     def test_deliver_month_supply(self):
         """Начисляются самолёты ежемесячной поставки"""
-        campaign_map = processing.CampaignMap(1, CAMPAIGN_DATE, CAMPAIGN_DATE, TEST_TVD_NAME, list())
+        campaign_map = model.CampaignMap(1, CAMPAIGN_DATE, CAMPAIGN_DATE, TEST_TVD_NAME, list())
         vendor = processing.AircraftVendor(PLANES, GAMEPLAY)
         supply = vendor.get_month_supply(CAMPAIGN_DATE, campaign_map)
         test_red_af1 = model.ManagedAirfield('test_red_af1', TEST_TVD_NAME, 123, 321, dict())
@@ -151,7 +151,7 @@ class TestAircraftVendor(unittest.TestCase):
                 model.ManagedAirfield('test_blue_af10', TEST_TVD_NAME, 123, 321, dict())
             ]
         }
-        campaign_map = processing.CampaignMap(1, CAMPAIGN_DATE, CAMPAIGN_DATE, TEST_TVD_NAME, list())
+        campaign_map = model.CampaignMap(1, CAMPAIGN_DATE, CAMPAIGN_DATE, TEST_TVD_NAME, list())
         vendor = processing.AircraftVendor(PLANES, GAMEPLAY)
         # Act
         vendor.initial_front_supply(campaign_map, airfields)

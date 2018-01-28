@@ -18,7 +18,6 @@ from .tvd import Tvd, Boundary
 from .grid_control import GridController
 from .tvd_builder import TvdBuilder
 from .locations_builder import LocationsBuilder
-from .campaign_map import CampaignMap, CampaignMission
 from .source_parser import SourceParser, SourceMission
 from .division_control import DivisionsController
 from .campaign_control import CampaignController

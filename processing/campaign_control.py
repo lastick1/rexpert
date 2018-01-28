@@ -8,10 +8,9 @@ import configs
 import processing
 import constants
 import storage
+import model
 
 from .tvd import Tvd
-from .campaign_map import CampaignMap
-from .campaign_mission import CampaignMission
 
 START_DATE = 'start_date'
 END_DATE = 'end_date'
@@ -21,8 +20,8 @@ class CampaignController:
     """Контролеер кампании"""
     def __init__(self, ioc):
         self._ioc = ioc
-        self._mission: CampaignMission = None
-        self._campaign_map: CampaignMap = None
+        self._mission: model.CampaignMission = None
+        self._campaign_map: model.CampaignMap = None
         self._current_tvd: Tvd = None
         self._vendor: processing.AircraftVendor = None
         self.tvd_builders = {x: processing.TvdBuilder(x, ioc) for x in ioc.config.mgen.maps}
@@ -70,7 +69,7 @@ class CampaignController:
         return self._ioc.generator
 
     @property
-    def campaign_map(self) -> CampaignMap:
+    def campaign_map(self) -> model.CampaignMap:
         """Текущая карта кампании"""
         for campaign_maps in self.storage.campaign_maps.load_all():
             if not campaign_maps.is_ended(self.config.mgen.cfg[campaign_maps.tvd_name][END_DATE]):
@@ -88,7 +87,7 @@ class CampaignController:
         return self._current_tvd
 
     @property
-    def mission(self) -> CampaignMission:
+    def mission(self) -> model.CampaignMission:
         """Текущая миссия кампании"""
         return self._mission
 
@@ -103,7 +102,7 @@ class CampaignController:
         self.grid_controller.initialize(tvd_name)
         start = self.config.mgen.cfg[tvd_name][START_DATE]
         order = list(self.config.mgen.maps).index(tvd_name) + 1
-        campaign_map = CampaignMap(order=order, date=start, mission_date=start, tvd_name=tvd_name, months=list())
+        campaign_map = model.CampaignMap(order=order, date=start, mission_date=start, tvd_name=tvd_name, months=list())
         airfields = processing.AirfieldsController.initialize_managed_airfields(
             self.config.mgen.airfields_data[campaign_map.tvd_name])
         tvd = self.tvd_builders[campaign_map.tvd_name].get_tvd(campaign_map.date.strftime(constants.DATE_FORMAT))
@@ -119,7 +118,7 @@ class CampaignController:
         self.storage.airfields.collection.drop()
         self.storage.campaign_maps.collection.drop()
 
-    def _generate(self, mission_name: str, campaign_map: CampaignMap):
+    def _generate(self, mission_name: str, campaign_map: model.CampaignMap):
         """Сгенерировать миссию для указанной карты кампании"""
         tvd_builder = self.tvd_builders[campaign_map.tvd_name]
         tvd = tvd_builder.get_tvd(campaign_map.date.strftime(constants.DATE_FORMAT))
@@ -153,7 +152,7 @@ class CampaignController:
         self._current_tvd = self.tvd_builders[campaign_map.tvd_name].get_tvd(
             campaign_map.date.strftime(constants.DATE_FORMAT))
         self.storage.campaign_maps.update(campaign_map)
-        # TODO сохранить миссию в базу (в документ CampaignMap и в коллекцию CampaignMissions)
+        # TODO сохранить миссию в базу (в документ model.CampaignMap и в коллекцию model.CampaignMissions)
         # TODO удалить файлы предыдущей миссии
 
     def end_mission(self, atype: atypes.Atype7):
@@ -176,8 +175,8 @@ class CampaignController:
         self.generate(self.next_name)
 
     @staticmethod
-    def _make_campaign_mission(atype: atypes.Atype0, source_mission: processing.SourceMission) -> CampaignMission:
-        return CampaignMission(
+    def _make_campaign_mission(atype: atypes.Atype0, source_mission: processing.SourceMission) -> model.CampaignMission:
+        return model.CampaignMission(
             kind=source_mission.kind,
             file=source_mission.name,
             date=source_mission.date.strftime(constants.DATE_FORMAT),

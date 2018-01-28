@@ -5,7 +5,7 @@ import log_objects
 import atypes
 import geometry
 
-from .campaign_mission import CampaignMission
+from model.campaign_mission import CampaignMission
 
 
 DIVISION_RE = re.compile(

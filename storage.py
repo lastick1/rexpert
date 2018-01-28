@@ -5,7 +5,7 @@ import configs
 import constants
 from model.airfield import ManagedAirfield
 from processing.player import Player
-from processing.campaign_map import CampaignMap, CampaignMission
+from model.campaign_map import CampaignMap, CampaignMission
 from model.division import Division
 
 
