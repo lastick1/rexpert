@@ -1,3 +1,4 @@
+"""Работа с файлами миссий"""
 import subprocess
 import time
 import os

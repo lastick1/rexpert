@@ -18,8 +18,18 @@ class ObjectsController:
         self._aircrafts = set()
         self._ioc = _ioc
 
+    @property
+    def config(self) -> configs.Config:
+        """Конфигурация приложения"""
+        return self._ioc.config
+
+    @property
+    def objects(self) -> configs.Objects:
+        """Словарь объёктов логах"""
+        return self._ioc.objects
+
     def create_object(self, atype: atypes.Atype12) -> log_objects.Object:
-        obj = self._ioc.objects[atype.object_name]
+        obj = self.objects[atype.object_name]
         """Создать объект соответствующего типа"""
         if 'BotPilot' in obj.log_name and 'aircraft' in obj.cls:
             self._objects[atype.object_id] = log_objects.BotPilot(
@@ -97,7 +107,7 @@ class ObjectsController:
     def land(self, atype: atypes.Atype6):
         """Посадить самолёт"""
         aircraft = self.get_aircraft(atype.aircraft_id)
-        aircraft.land(atype.pos, list(self._airfields), self._ioc.config.gameplay.airfield_radius)
+        aircraft.land(atype.pos, list(self._airfields), self.config.gameplay.airfield_radius)
 
     def end_mission(self):
         """Завершить миссию"""

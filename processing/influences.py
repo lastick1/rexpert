@@ -1,7 +1,6 @@
 """Формирование списков вершин для InfluenceArea"""
 import geometry
 import model
-from model.grid import Grid
 
 
 def _to_node(obj) -> model.Node:
@@ -39,7 +38,7 @@ class BoundaryBuilder:
         return result
 
     @staticmethod
-    def get_confrontation_nodes(grid: Grid, country: int) -> set:
+    def get_confrontation_nodes(grid: model.Grid, country: int) -> set:
         """Получить все узлы, входящие в прифронтовую полосу, кроме узлов линии фронта"""
         border_nodes = grid.border_nodes
         return set(
@@ -63,7 +62,7 @@ class BoundaryBuilder:
                 break
         return result
 
-    def confrontation_west(self, grid: Grid) -> list:
+    def confrontation_west(self, grid: model.Grid) -> list:
         """Построить вершины для западной прифронтовой зоны"""
         border = grid.border
         result = self._make_chain(
@@ -74,7 +73,7 @@ class BoundaryBuilder:
         result.reverse()
         return result
 
-    def confrontation_east(self, grid: Grid) -> list:
+    def confrontation_east(self, grid: model.Grid) -> list:
         """Построить вершины для восточной прифронтовой зоны"""
         border = grid.border
         result = self._make_chain(

@@ -3,7 +3,6 @@ import random
 import re
 
 import model
-import processing
 from .locations import Location, AIR_OBJECTIVE, AIRFIELD, DECORATION, GROUND_OBJECTIVE, REFERENCE_LOCATION, NAVIGATION
 from .locations import LOCATION_TYPES, PLANE_WAYPOINT, FRONT_LINE
 from .locations import SUBSTRATE, TERRAIN_LEVELER, GRASS_FIELD, WATER_FIELD, LANDING_SIGN, FILTER_TREES, TEXTURE_INDEX

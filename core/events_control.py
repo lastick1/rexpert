@@ -3,7 +3,6 @@
 import logging
 import datetime
 import atypes
-import geometry
 import processing
 from .objects_control import ObjectsController
 

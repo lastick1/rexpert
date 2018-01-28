@@ -1,10 +1,10 @@
 """Рисование карт миссий и иконок целей на них"""
 import datetime
 import shutil
+import json
 
 from PIL import Image, ImageDraw, ImageFont
 from .map_splines import draw_spline
-import json
 
 
 class MapPainter:
