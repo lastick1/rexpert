@@ -3,7 +3,7 @@ import atypes
 import configs
 import log_objects
 import storage
-from .airfield import ManagedAirfield
+from model.airfield import ManagedAirfield
 
 
 class AirfieldsController:

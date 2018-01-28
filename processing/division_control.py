@@ -3,8 +3,8 @@ import re
 
 import configs
 import storage
+import model
 
-from .division import Division, DIVISIONS
 from .campaign_mission import CampaignMission
 
 
@@ -48,12 +48,12 @@ class DivisionsController:
 
     def initialize_divisions(self, tvd_name: str):
         """Инициализировать дивизии в кампании для указанного ТВД"""
-        for name in DIVISIONS:
+        for name in model.DIVISIONS:
             self.storage.divisions.update(
-                Division(
+                model.Division(
                     tvd_name=tvd_name,
                     name=name,
-                    units=DIVISIONS[name],
+                    units=model.DIVISIONS[name],
                     pos=self.config.mgen.cfg[tvd_name]['division_start_locations'][name]  # {'x': 0.0, 'z': 0.0}
                 )
             )
@@ -85,6 +85,6 @@ class DivisionsController:
         """Восполнить дивизию"""
         division = self.storage.divisions.load_by_name(tvd_name, division_name)
         division.units *= self.repair_rate(penalties)
-        if division.units > DIVISIONS[division_name]:
-            division.units = DIVISIONS[division_name]
+        if division.units > model.DIVISIONS[division_name]:
+            division.units = model.DIVISIONS[division_name]
         self.storage.divisions.update(division)

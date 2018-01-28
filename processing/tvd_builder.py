@@ -4,6 +4,7 @@ import datetime
 
 import configs
 import constants
+import model
 import processing
 import storage
 
@@ -191,7 +192,7 @@ class TvdBuilder:
             data = self._convert_airfield(airfield, 201)
             self.airfields_builder.make_airfield_group(data, airfield.x, airfield.z)
 
-    def _convert_airfield(self, airfield: processing.ManagedAirfield, country: int) -> processing.Airfield:
+    def _convert_airfield(self, airfield: model.ManagedAirfield, country: int) -> processing.Airfield:
         """Конвертировать тип управляемого аэродрома в тип генерируемого аэродрома"""
 
         def find_plane_in_config(config: dict, key_name: str, number: int) -> processing.Plane:

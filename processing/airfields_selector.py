@@ -8,8 +8,7 @@
 import random
 import configs
 import utils
-
-from processing import ManagedAirfield
+import model
 
 
 def _compare(left: float, right: float) -> int:
@@ -27,16 +26,16 @@ class AirfieldsSelector:
         self._main = main
 
     @staticmethod
-    def _rear_airfields_comparator(airfield1: ManagedAirfield, airfield2: ManagedAirfield):
+    def _rear_airfields_comparator(airfield1: model.ManagedAirfield, airfield2: model.ManagedAirfield):
         """Сравнение тыловых аэродромов при выборе"""
         return _compare(airfield1.planes_count, airfield2.planes_count)
 
     @staticmethod
-    def _front_airfields_comparator(airfield1: ManagedAirfield, airfield2: ManagedAirfield):
+    def _front_airfields_comparator(airfield1: model.ManagedAirfield, airfield2: model.ManagedAirfield):
         """Сравнение фронтовых аэродромов при выборе"""
         return _compare(airfield1.power, airfield2.power)
 
-    def select_rear(self, influence: list, front_area: list, airfields: list) -> ManagedAirfield:
+    def select_rear(self, influence: list, front_area: list, airfields: list) -> model.ManagedAirfield:
         """Выбрать тыловой аэродром"""
         result = list()
         added = False

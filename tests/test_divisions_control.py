@@ -2,6 +2,7 @@
 import unittest
 import pathlib
 
+import model
 import processing
 import storage
 import tests
@@ -63,7 +64,7 @@ class TestDivisionsControl(unittest.TestCase):
         controller.damage_division(TEST_TVD_NAME, TEST_UNIT_NAME2)
         current = IOC.storage.divisions.load_by_name(TEST_TVD_NAME, TEST_DIVISION_NAME1).units
         expected1 = current * controller.repair_rate(destroyed_warehouses)
-        expected2 = processing.DIVISIONS[TEST_DIVISION_NAME2]
+        expected2 = model.DIVISIONS[TEST_DIVISION_NAME2]
         # Act
         controller.repair_division(TEST_TVD_NAME, TEST_DIVISION_NAME1, destroyed_warehouses)
         controller.repair_division(TEST_TVD_NAME, TEST_DIVISION_NAME2, destroyed_warehouses)

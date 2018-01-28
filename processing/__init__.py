@@ -4,7 +4,6 @@ from .players_control import PlayersController, Player
 from .ground_control import GroundController
 from .aircraft_vendor import AircraftVendor
 from .airfields_control import AirfieldsController
-from .airfield import ManagedAirfield
 from .grid import Grid
 from .weather import *
 from .xgml_io import Xgml
@@ -21,6 +20,6 @@ from .tvd_builder import TvdBuilder
 from .locations_builder import LocationsBuilder
 from .campaign_map import CampaignMap, CampaignMission
 from .source_parser import SourceParser, SourceMission
-from .division_control import DivisionsController, DIVISIONS
+from .division_control import DivisionsController
 from .campaign_control import CampaignController
 from .map_painter import MapPainter
