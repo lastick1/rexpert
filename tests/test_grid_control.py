@@ -1,6 +1,7 @@
 """Тестирование управления графом"""
-import unittest
 import pathlib
+import unittest
+
 import processing
 import tests
 

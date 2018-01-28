@@ -1,8 +1,8 @@
 """Тестирование управления кампанией"""
-import unittest
 import datetime
 import pathlib
 import shutil
+import unittest
 
 import atypes
 import configs

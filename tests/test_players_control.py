@@ -1,15 +1,14 @@
 """Тестирование событий, связанных с игроками"""
-import unittest
 import datetime
 import pathlib
+import unittest
 
 import atypes
 import configs
-import model
-import tests
-
 import constants
+import model
 import processing
+import tests
 
 IOC = tests.mocks.DependencyContainerMock(pathlib.Path('./testdata/conf.ini'))
 MAIN = IOC.config.main

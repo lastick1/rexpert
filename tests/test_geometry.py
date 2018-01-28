@@ -1,5 +1,7 @@
+"""Тестирование геометрических формул и расчётов"""
 # pylint: disable=missing-docstring,invalid-name
 import unittest
+
 import geometry
 
 TEST_LOG1 = './testdata/spawn_takeoff_landing_despawn_missionReport(2017-09-17_09-05-09)[0].txt'

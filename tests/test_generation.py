@@ -1,13 +1,12 @@
 """Тестирование генерации миссий и работы графа"""
 # pylint: disable=C1801
-import unittest
 import pathlib
 import random
+import unittest
 
 import model
 import processing
 import tests
-
 
 IOC = tests.mocks.DependencyContainerMock(pathlib.Path('./testdata/conf.ini'))
 IOC.config.main = tests.mocks.MainMock(pathlib.Path('./testdata/conf.ini'))

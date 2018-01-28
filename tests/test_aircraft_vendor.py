@@ -2,9 +2,9 @@
 import pathlib
 import unittest
 
+import configs
 import model
 import processing
-import configs
 import tests
 
 MAIN = tests.mocks.MainMock(pathlib.Path(r'./testdata/conf.ini'))

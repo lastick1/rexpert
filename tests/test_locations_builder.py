@@ -1,6 +1,7 @@
 """Тестирование сборки базы локаций"""
-import unittest
 import pathlib
+import unittest
+
 import processing
 
 

@@ -1,6 +1,6 @@
 """Тестирование управления дивизиями"""
-import unittest
 import pathlib
+import unittest
 
 import model
 import processing

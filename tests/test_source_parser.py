@@ -1,6 +1,6 @@
 """Тестирование парсинга исходников миссий"""
-import unittest
 import pathlib
+import unittest
 
 import processing
 import tests

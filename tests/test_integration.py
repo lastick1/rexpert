@@ -1,11 +1,10 @@
 """Тестирование обработки событий"""
-import unittest
 import pathlib
+import unittest
 
 import configs
 import core
 import model
-import processing
 import tests
 
 TEST_LOG1 = './testdata/spawn_takeoff_landing_despawn_missionReport(2017-09-17_09-05-09)[0].txt'

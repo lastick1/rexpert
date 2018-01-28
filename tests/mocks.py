@@ -3,11 +3,11 @@
 import pathlib
 
 import atypes
-import model
-import rcon
 import configs
-import processing
 import dependency_container
+import model
+import processing
+import rcon
 
 COLOR_WHITE = '#FFFFFF'
 COLOR_RED = '#FF0000'

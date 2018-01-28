@@ -1,6 +1,6 @@
 """Тестирование выбора аэродромов на миссию"""
-import unittest
 import pathlib
+import unittest
 
 import processing
 import storage

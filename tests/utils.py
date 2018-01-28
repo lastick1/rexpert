@@ -1,9 +1,8 @@
 """Полезные функции для тестирования"""
-import shutil
 import pathlib
+import shutil
 
 import model
-import processing
 
 
 def get_nodes_keys(nodes: list) -> set:

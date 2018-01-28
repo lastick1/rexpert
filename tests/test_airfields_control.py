@@ -1,13 +1,12 @@
 """Тестирование управления аэродромами"""
-import unittest
 import pathlib
+import unittest
 
 import atypes
 import configs
 import log_objects
 import processing
 import tests
-
 
 IOC = tests.mocks.DependencyContainerMock(pathlib.Path('./testdata/conf.ini'))
 IOC.config.main = tests.mocks.MainMock(pathlib.Path('./testdata/conf.ini'))

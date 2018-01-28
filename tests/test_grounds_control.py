@@ -1,6 +1,6 @@
 """Тестирование обработки наземки"""
-import unittest
 import pathlib
+import unittest
 
 import atypes
 import geometry

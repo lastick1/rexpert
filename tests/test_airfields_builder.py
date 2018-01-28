@@ -1,6 +1,7 @@
 """Тесты сборки аэродромов"""
-import unittest
 import pathlib
+import unittest
+
 import processing
 import tests
 
