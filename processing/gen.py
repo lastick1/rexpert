@@ -34,16 +34,19 @@ class Generator:
         generator.wait()
         time.sleep(3)
 
-    def make_mission(self, file_name: str, tvd_name: str):
+    def make_mission(self, file_name: str, tvd_name: str, assault_mission=False):
         """
         Метод генерирует и перемещает миссию в папку Multiplayer/Dogfight
         :param file_name: имя файла миссии
         :param tvd_name: имя карты
+        :param assault_mission: тип миссии (обычная или наступление)
         :return:
         """
         tvd_folder = self.tvd_folders[tvd_name]
         default_params = tvd_folder.joinpath(self.cfg[tvd_name]['default_params_dest']).absolute()
-        mission_template = tvd_folder.joinpath(self.cfg[tvd_name]['mt_file']).absolute()
+        mission_template = tvd_folder.joinpath(self.cfg[tvd_name]['regular_mt_file']).absolute()
+        if assault_mission:
+            mission_template = tvd_folder.joinpath(self.cfg[tvd_name]['assault_mt_file']).absolute()
         print("[{}] Generating new mission: [{}]...".format(
             datetime.now().strftime("%H:%M:%S"),
             file_name
