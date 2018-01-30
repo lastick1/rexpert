@@ -75,6 +75,7 @@ class CampaignMissions(CollectionWrapper):
 
     @staticmethod
     def convert_from_document(document) -> model.CampaignMission:
+        """Конвертировать документ из БД в объект класса миссии"""
         if document:
             return model.CampaignMission(
                 kind=document['kind'],
@@ -205,7 +206,8 @@ class Airfields(CollectionWrapper):
 
     def load_by_name(self, tvd_name: str, airfield_name: str) -> model.ManagedAirfield:
         """Загрузить аэродром указанного ТВД по его имени"""
-        return self._convert_from_document(self.collection.find_one({constants.TVD_NAME: tvd_name, 'name': airfield_name}))
+        return self._convert_from_document(
+            self.collection.find_one({constants.TVD_NAME: tvd_name, 'name': airfield_name}))
 
 
 class Storage:
