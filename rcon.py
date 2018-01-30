@@ -3,7 +3,7 @@ from socket import socket, AF_INET, SOCK_STREAM
 
 
 class DServerRcon:
-    """Взаимеодействие с сервером Ил-2 Штурмовик: Битва за Сталинград
+    """Взаимодействие с сервером Ил-2 Штурмовик: Битва за Сталинград
     через Server Remote Console - 'RCon'"""
 
     def __init__(self, tcp_ip: str, tcp_port: str, buffer_size: int = 1024):
