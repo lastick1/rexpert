@@ -265,7 +265,32 @@ class TestPlayersController(unittest.TestCase):
 
     def test_do_not_give_for_dead_end(self):
         """Не даётся модификация за вылет с киллом и смертью"""
-        self.fail('not implemented')
+        _create(FILTER, TEST_PLAYER)
+        controller = processing.PlayersController(IOC)
+        aircraft_name = 'I-16 type 24'
+        bot_name = 'BotPilot'
+        target_name = 'static_il2'
+        atype12_aircraft = tests.mocks.atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
+        atype12_bot = tests.mocks.atype_12_stub(2, bot_name, 201, 'test_bot', 1)
+        atype12_static = tests.mocks.atype_12_stub(3, target_name, 101, 'test_target', -1)
+        atype10 = _atype_10_stub(1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
+        aircraft = IOC.objects_controller.create_object(atype12_aircraft)
+        bot = IOC.objects_controller.create_object(atype12_bot)
+        target = IOC.objects_controller.create_object(atype12_static)
+        IOC.objects_controller.spawn(atype10)
+        pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
+        expect = TEST_PLAYER[constants.Player.UNLOCKS]
+        # Act
+        controller.start_mission()
+        controller.spawn(atype10)
+        IOC.objects_controller.takeoff(atypes.Atype5(3333, aircraft.obj_id, pos))
+        IOC.objects_controller.kill(atypes.Atype3(7888, aircraft.obj_id, target.obj_id, pos))
+        IOC.objects_controller.kill(atypes.Atype3(8777, aircraft.obj_id, bot.obj_id, pos))
+        IOC.objects_controller.land(atypes.Atype6(9911, aircraft.obj_id, pos))
+        controller.finish(atypes.Atype16(9222, bot.obj_id, pos))
+        # Assert
+        document = IOC.storage.players.collection.find_one(FILTER)
+        self.assertEqual(expect, document[constants.Player.UNLOCKS])
 
     def test_do_not_give_for_bailout(self):
         """Не даётся модификация за вылет с киллом и прыжком"""
