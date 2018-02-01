@@ -1,4 +1,5 @@
 """Тестирование событий, связанных с игроками"""
+# pylint:disable=R0914,R0913
 import datetime
 import pathlib
 import unittest
@@ -261,6 +262,14 @@ class TestPlayersController(unittest.TestCase):
         # Assert
         document = IOC.storage.players.collection.find_one(FILTER)
         self.assertEqual(expect, document[constants.Player.UNLOCKS])
+
+    def test_do_not_give_for_dead_end(self):
+        """Не даётся модификация за вылет с киллом и смертью"""
+        self.fail('not implemented')
+
+    def test_do_not_give_for_bailout(self):
+        """Не даётся модификация за вылет с киллом и прыжком"""
+        self.fail('not implemented')
 
     def test_msg_restricted_takeoff(self):
         """Отправляется предупреждение о запрете взлёта"""
