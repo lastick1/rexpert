@@ -6,34 +6,35 @@ import threading
 import time
 
 import os
-import dependency_container
 
 
-mn = re.compile('^mission.eport\(\d\d\d\d-\d\d-\d\d_\d\d-\d\d-\d\d\)')
+MISSION_NAME_RE = re.compile('^mission.eport\(\d\d\d\d-\d\d-\d\d_\d\d-\d\d-\d\d\)')  # pylint:disable=W1401
 
 
 class LogsReader:
-    """ Класс, загружающий данные логов в БД и перемещающий лог файлы в папку для статистики
-    Singleton """
+    """Класс, загружающий данные логов в БД и перемещающий лог файлы в папку для статистики"""
     instance = None
 
     def __init__(self, _ioc, cycle=30):
         if not LogsReader.instance:
-            LogsReader.instance = LogsReader.__AtypesReader(_ioc, cycle)
+            LogsReader.instance = LogsReader._AtypesReader(_ioc, cycle)
         else:
             LogsReader.instance.processor = _ioc.events_controller
             LogsReader.instance.main = _ioc.config.main
             LogsReader.instance.cycle = cycle
 
     def stop(self):
+        """Остановить процесс чтения логов"""
         self.instance.is_stopped = True
         self.instance.join()
 
     def start(self):
+        """Запустить процесс чтения логов"""
         self.instance.is_stopped = False
         self.instance.start()
 
-    class __AtypesReader(threading.Thread):
+    class _AtypesReader(threading.Thread):
+        """Singleton"""
         def __init__(self, _ioc, cycle: int):
             threading.Thread.__init__(self)
             self._ioc = _ioc
@@ -48,6 +49,7 @@ class LogsReader:
             self.do_work_until_stop()
 
         def do_work_until_stop(self):
+            """Запустить бесконечный цикл"""
             print('LogsReader started')
             while not self.is_stopped:
                 names_set = sorted(self.read_mission_names())
@@ -61,9 +63,10 @@ class LogsReader:
             print('LogsReader stopped')
 
         def read_mission_names(self):
+            """Прочитать имена миссий в папке логов"""
             files = set()
             for file in self._ioc.config.main.logs_directory.glob("mission?eport*.txt"):
-                files.add(mn.findall(file.name).pop())
+                files.add(MISSION_NAME_RE.findall(file.name).pop())
             return files
 
         def read_mission_log(self, files):
