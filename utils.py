@@ -56,3 +56,16 @@ def compile_gif(folder: str):
         for filename in files:
             image = imageio.imread(filename)
             writer.append_data(image)
+
+
+def compile_ldf(folder: str, dest: str):
+    """Объединить файлы LDF из папки в указанный файл"""
+    folder = pathlib.Path(folder)
+    files = list(pathlib.Path(x) for x in folder.glob('*.ldf'))
+    text = ''
+    for file in files:
+        with file.open(encoding='utf-8') as stream:
+            read = stream.read()[29:-13]
+            text += read
+    text = '#1CGS Location Database file\n{}\n#end of file'.format(text)
+    pathlib.Path(dest).write_text(text, encoding='utf-8')

@@ -22,6 +22,12 @@ def compile_gif():
     utils.compile_gif('./current/map_thumbnails/')
 
 
+def compile_ldf():
+    """Собрать декомпозировнаные базы локаций в базы локаций для покраски"""
+    for tvd_name in ('moscow', ):
+        utils.compile_ldf(f'./data/ldf/{tvd_name}', f'./data/ldf/{tvd_name}_base.ldf')
+
+
 def reset():
     """Сбросить состояние кампании"""
     controller = processing.CampaignController(dependency_container.DependencyContainer())
@@ -49,6 +55,7 @@ print(datetime.datetime.now().strftime("[%H:%M:%S] Program Start."))
 
 # compile_log()
 # compile_gif()
+# compile_ldf()
 # reset()
 # initialize_campaign()
 # generate('result1')
