@@ -691,3 +691,18 @@ MCU_Timer
   Random = 100;
 }
 
+MCU_H_Input
+{
+  Index = 2744;
+  Name = "OBJECT_AAA";
+  Desc = "";
+  Targets = [];
+  Objects = [760,756,763,737];
+  XPos = -41.296;
+  YPos = 17.795;
+  ZPos = 43343.089;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
