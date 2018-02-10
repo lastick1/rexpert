@@ -302,6 +302,7 @@ MCU_H_Dynamic
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;
+  Property = "AILevel";
 }
 
 MCU_Timer
