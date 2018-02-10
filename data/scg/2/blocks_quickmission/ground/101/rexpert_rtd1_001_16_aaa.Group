@@ -706,3 +706,18 @@ MCU_H_Input
   ZOri = 0.00;
 }
 
+MCU_H_Input
+{
+  Index = 2750;
+  Name = "TARGET_ATTACK_AREA";
+  Desc = "";
+  Targets = [765,758];
+  Objects = [];
+  XPos = -15.668;
+  YPos = 17.795;
+  ZPos = 43361.091;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
