@@ -1,0 +1,277 @@
+MCU_H_ReferencePoint
+{
+  Index = 1474;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -374.991;
+  YPos = 17.795;
+  ZPos = 51749.999;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 75;
+  Backward = 75;
+  Left = 150;
+  Right = 150;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 1484;
+  LinkTrId = 0;
+  XPos = -427.594;
+  YPos = 17.795;
+  ZPos = 51686.949;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_dugouts_1.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_dugouts_1.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 3000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 1492;
+  LinkTrId = 0;
+  XPos = -349.795;
+  YPos = 17.795;
+  ZPos = 51733.918;
+  XOri = 0.00;
+  YOri = 180.26;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_caponiers_6_h_4.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_6_h_4.txt";
+  Country = 0;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1579;
+  LinkTrId = 1580;
+  XPos = -336.762;
+  YPos = 17.795;
+  ZPos = 51633.498;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\bm13.txt";
+  Model = "graphics\vehicles\zis\bm13.mgm";
+  Desc = "";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 1580;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -336.762;
+  YPos = 17.995;
+  ZPos = 51633.498;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 1579;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1581;
+  LinkTrId = 1582;
+  XPos = -335.798;
+  YPos = 17.795;
+  ZPos = 51700.606;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\bm13.txt";
+  Model = "graphics\vehicles\zis\bm13.mgm";
+  Desc = "";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 1582;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -335.798;
+  YPos = 17.995;
+  ZPos = 51700.606;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 1581;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1583;
+  LinkTrId = 1584;
+  XPos = -338.112;
+  YPos = 17.795;
+  ZPos = 51769.065;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\bm13.txt";
+  Model = "graphics\vehicles\zis\bm13.mgm";
+  Desc = "";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 1584;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -338.112;
+  YPos = 17.995;
+  ZPos = 51769.065;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 1583;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1585;
+  LinkTrId = 1586;
+  XPos = -397.894;
+  YPos = 17.795;
+  ZPos = 51828.932;
+  XOri = 0.00;
+  YOri = 89.69;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\_t34-76stz.txt";
+  Model = "graphics\vehicles\_t34-76stz\_t34-76stz.mgm";
+  Desc = "";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 1586;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -397.894;
+  YPos = 17.995;
+  ZPos = 51828.932;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 1585;
+}
+
+MCU_H_Input
+{
+  Index = 2167;
+  Name = "OBJECT_TANKS";
+  Desc = "";
+  Targets = [];
+  Objects = [1580,1582,1584,1586];
+  XPos = -432.451;
+  YPos = 17.774;
+  ZPos = 51690.165;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Timer
+{
+  Index = 2361;
+  Name = "REXPERT_RTD2_8";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -374.000;
+  YPos = 17.795;
+  ZPos = 51750.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 0;
+  Random = 100;
+}
+

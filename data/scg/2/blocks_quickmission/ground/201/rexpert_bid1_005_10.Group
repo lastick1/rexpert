@@ -1,0 +1,288 @@
+Block
+{
+  Name = "Block";
+  Index = 553;
+  LinkTrId = 0;
+  XPos = -62.188;
+  YPos = 17.795;
+  ZPos = 9685.155;
+  XOri = 0.00;
+  YOri = 288.28;
+  ZOri = 0.00;
+  Model = "graphics\blocks\country_m_corner_block1.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\country_m_corner_block1.txt";
+  Country = 0;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 554;
+  LinkTrId = 0;
+  XPos = -84.202;
+  YPos = 17.795;
+  ZPos = 9772.004;
+  XOri = 0.00;
+  YOri = 287.25;
+  ZOri = 0.00;
+  Model = "graphics\blocks\country_m_corner_block3.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\country_m_corner_block3.txt";
+  Country = 0;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 555;
+  LinkTrId = 0;
+  XPos = -118.938;
+  YPos = 17.795;
+  ZPos = 9754.559;
+  XOri = 0.00;
+  YOri = 287.01;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_ford-g917.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_ford-g917.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 1500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 556;
+  LinkTrId = 0;
+  XPos = -90.344;
+  YPos = 17.795;
+  ZPos = 9765.247;
+  XOri = 0.00;
+  YOri = 287.01;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_ford-g917.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_ford-g917.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 1500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 557;
+  LinkTrId = 0;
+  XPos = -44.750;
+  YPos = 17.795;
+  ZPos = 9643.465;
+  XOri = 0.00;
+  YOri = 276.54;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_ford-g917.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_ford-g917.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 1500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 558;
+  LinkTrId = 0;
+  XPos = -114.280;
+  YPos = 17.795;
+  ZPos = 9805.953;
+  XOri = 0.00;
+  YOri = 107.02;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_ford-g917.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_ford-g917.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 1500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 559;
+  LinkTrId = 0;
+  XPos = -98.361;
+  YPos = 17.795;
+  ZPos = 9702.571;
+  XOri = 0.00;
+  YOri = 21.52;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_ford-g917.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_ford-g917.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 1500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 560;
+  LinkTrId = 0;
+  XPos = -143.412;
+  YPos = 17.795;
+  ZPos = 9791.453;
+  XOri = 0.00;
+  YOri = 113.22;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_opel.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_opel.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 1500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 561;
+  LinkTrId = 0;
+  XPos = -61.409;
+  YPos = 17.795;
+  ZPos = 9814.469;
+  XOri = 0.00;
+  YOri = 286.62;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_opel.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_opel.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 1500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 562;
+  LinkTrId = 0;
+  XPos = -57.693;
+  YPos = 17.795;
+  ZPos = 9744.918;
+  XOri = 0.00;
+  YOri = 113.22;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_opel.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_opel.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 1500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 563;
+  LinkTrId = 0;
+  XPos = -84.213;
+  YPos = 17.795;
+  ZPos = 9655.131;
+  XOri = 0.00;
+  YOri = 113.22;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_opel.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_opel.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 1500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 564;
+  LinkTrId = 0;
+  XPos = -22.548;
+  YPos = 17.795;
+  ZPos = 9664.802;
+  XOri = 0.00;
+  YOri = 113.22;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_opel.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_opel.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 1500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 565;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -75.000;
+  YPos = 17.795;
+  ZPos = 9750.000;
+  XOri = 0.00;
+  YOri = 0.29;
+  ZOri = 0.00;
+  Forward = 75;
+  Backward = 75;
+  Left = 150;
+  Right = 150;
+}
+
+MCU_Timer
+{
+  Index = 566;
+  Name = "REXPERT_BID1_10";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -74.000;
+  YPos = 17.795;
+  ZPos = 9750.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 0;
+  Random = 100;
+}
+

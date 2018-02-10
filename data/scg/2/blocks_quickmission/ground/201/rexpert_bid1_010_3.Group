@@ -1,0 +1,204 @@
+MCU_H_ReferencePoint
+{
+  Index = 116;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -375.000;
+  YPos = 17.777;
+  ZPos = 7950.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 75;
+  Backward = 75;
+  Left = 150;
+  Right = 150;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 117;
+  LinkTrId = 0;
+  XPos = -375.176;
+  YPos = 17.795;
+  ZPos = 7958.102;
+  XOri = 0.00;
+  YOri = 180.07;
+  ZOri = 0.00;
+  Model = "graphics\blocks\village_200_block3.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\village_200_block3.txt";
+  Country = 0;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  Damaged
+  {
+    3 = 1;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+    0 = 0;
+  }
+}
+
+Ground
+{
+  Name = "Ground";
+  Index = 118;
+  LinkTrId = 0;
+  XPos = -338.965;
+  YPos = 17.774;
+  ZPos = 8045.241;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Model = "graphics\grounds\crater_16.mgm";
+  Desc = "";
+  DamageReport = 50;
+  DamageThreshold = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 119;
+  LinkTrId = 0;
+  XPos = -365.633;
+  YPos = 17.795;
+  ZPos = 7990.844;
+  XOri = 0.00;
+  YOri = 74.48;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_sdkfz251-1c.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_sdkfz251-1c.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 2000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 120;
+  LinkTrId = 0;
+  XPos = -395.119;
+  YPos = 17.795;
+  ZPos = 7974.413;
+  XOri = 0.00;
+  YOri = 115.01;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_ford-g917.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_ford-g917.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 1500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 121;
+  LinkTrId = 0;
+  XPos = -364.399;
+  YPos = 17.795;
+  ZPos = 7876.120;
+  XOri = 0.00;
+  YOri = 77.38;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_ford-g917.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_ford-g917.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 1500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_Timer
+{
+  Index = 783;
+  Name = "REXPERT_BID1_3";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -372.313;
+  YPos = 17.795;
+  ZPos = 7949.938;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 0;
+  Random = 100;
+}
+

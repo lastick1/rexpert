@@ -1,0 +1,225 @@
+Block
+{
+  Name = "Block";
+  Index = 607;
+  LinkTrId = 0;
+  XPos = -79.747;
+  YPos = 17.795;
+  ZPos = 10945.848;
+  XOri = 0.00;
+  YOri = 182.33;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_dugouts_3.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_dugouts_3.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 608;
+  LinkTrId = 0;
+  XPos = -74.184;
+  YPos = 17.795;
+  ZPos = 10959.119;
+  XOri = 0.00;
+  YOri = 172.39;
+  ZOri = 0.00;
+  Model = "graphics\blocks\art_position_amb1.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\art_position_amb1.txt";
+  Country = 0;
+  Desc = "";
+  Durability = 500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 609;
+  LinkTrId = 0;
+  XPos = -66.133;
+  YPos = 17.795;
+  ZPos = 10946.756;
+  XOri = 0.00;
+  YOri = 133.33;
+  ZOri = 0.00;
+  Model = "graphics\blocks\art_position_amb2.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\art_position_amb2.txt";
+  Country = 0;
+  Desc = "";
+  Durability = 500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 610;
+  LinkTrId = 0;
+  XPos = -59.717;
+  YPos = 17.795;
+  ZPos = 10957.199;
+  XOri = 0.00;
+  YOri = 340.00;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_ford-g917.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_ford-g917.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 1500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 611;
+  LinkTrId = 0;
+  XPos = -77.614;
+  YPos = 17.795;
+  ZPos = 10849.635;
+  XOri = 0.00;
+  YOri = 187.70;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_opel.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_opel.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 1500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 612;
+  LinkTrId = 0;
+  XPos = -70.163;
+  YPos = 17.795;
+  ZPos = 10909.203;
+  XOri = 0.00;
+  YOri = 257.87;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_ford-g917.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_ford-g917.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 1500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 613;
+  LinkTrId = 0;
+  XPos = -59.841;
+  YPos = 17.795;
+  ZPos = 10871.311;
+  XOri = 0.00;
+  YOri = 101.77;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_ford-g917.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_ford-g917.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 1500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 614;
+  LinkTrId = 0;
+  XPos = -70.111;
+  YPos = 17.795;
+  ZPos = 10989.705;
+  XOri = 0.00;
+  YOri = 150.44;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_sdkfz251-1c.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_sdkfz251-1c.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 2000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 615;
+  LinkTrId = 0;
+  XPos = -113.099;
+  YPos = 17.795;
+  ZPos = 10903.362;
+  XOri = 0.00;
+  YOri = 115.61;
+  ZOri = 0.00;
+  Model = "graphics\blocks\art_position_amb1.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\art_position_amb1.txt";
+  Country = 0;
+  Desc = "";
+  Durability = 500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 616;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -75.000;
+  YPos = 17.795;
+  ZPos = 10950.000;
+  XOri = 0.00;
+  YOri = 0.29;
+  ZOri = 0.00;
+  Forward = 75;
+  Backward = 75;
+  Left = 150;
+  Right = 150;
+}
+
+MCU_Timer
+{
+  Index = 617;
+  Name = "REXPERT_BID1_12";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -73.747;
+  YPos = 17.795;
+  ZPos = 10950.034;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 0;
+  Random = 100;
+}
+

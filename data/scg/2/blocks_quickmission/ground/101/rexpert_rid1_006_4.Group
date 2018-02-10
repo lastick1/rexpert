@@ -1,0 +1,256 @@
+MCU_H_ReferencePoint
+{
+  Index = 901;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -74.999;
+  YPos = 17.777;
+  ZPos = 39150.003;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 75;
+  Backward = 75;
+  Left = 150;
+  Right = 150;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 1176;
+  LinkTrId = 0;
+  XPos = -64.096;
+  YPos = 17.795;
+  ZPos = 39145.740;
+  XOri = 0.00;
+  YOri = 180.19;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_caponiers_6_h_4.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_6_h_4.txt";
+  Country = 0;
+  Desc = "";
+  Durability = 2000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1190;
+  LinkTrId = 1191;
+  XPos = -46.267;
+  YPos = 17.795;
+  ZPos = 39179.206;
+  XOri = 0.00;
+  YOri = 359.93;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\zis3gun.txt";
+  Model = "graphics\artillery\zis3gun\zis3gun.mgm";
+  Desc = "";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 1191;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -46.267;
+  YPos = 17.995;
+  ZPos = 39179.206;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 1190;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1192;
+  LinkTrId = 1193;
+  XPos = -44.145;
+  YPos = 17.795;
+  ZPos = 39112.798;
+  XOri = 0.00;
+  YOri = 359.93;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\zis3gun.txt";
+  Model = "graphics\artillery\zis3gun\zis3gun.mgm";
+  Desc = "";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 1193;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -44.145;
+  YPos = 17.995;
+  ZPos = 39112.798;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 1192;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1194;
+  LinkTrId = 1195;
+  XPos = -45.767;
+  YPos = 17.795;
+  ZPos = 39044.974;
+  XOri = 0.00;
+  YOri = 359.93;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\zis3gun.txt";
+  Model = "graphics\artillery\zis3gun\zis3gun.mgm";
+  Desc = "";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 1195;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -45.767;
+  YPos = 17.995;
+  ZPos = 39044.974;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 1194;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1196;
+  LinkTrId = 1197;
+  XPos = -111.911;
+  YPos = 17.795;
+  ZPos = 39246.387;
+  XOri = 0.00;
+  YOri = 91.36;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\zis3gun.txt";
+  Model = "graphics\artillery\zis3gun\zis3gun.mgm";
+  Desc = "";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 1197;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -111.911;
+  YPos = 17.995;
+  ZPos = 39246.387;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 1196;
+}
+
+MCU_H_Input
+{
+  Index = 1396;
+  Name = "OBJECT_ARTY";
+  Desc = "";
+  Targets = [];
+  Objects = [1195,1193,1191,1197];
+  XPos = -80.778;
+  YPos = 17.774;
+  ZPos = 39131.115;
+  XOri = 0.00;
+  YOri = 359.93;
+  ZOri = 0.00;
+}
+
+MCU_Timer
+{
+  Index = 2340;
+  Name = "REXPERT_RID1_4";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -72.257;
+  YPos = 17.795;
+  ZPos = 39150.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 0;
+  Random = 100;
+}
+

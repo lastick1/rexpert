@@ -1,0 +1,287 @@
+MCU_H_ReferencePoint
+{
+  Index = 1475;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -374.991;
+  YPos = 17.795;
+  ZPos = 52349.999;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 75;
+  Backward = 75;
+  Left = 150;
+  Right = 150;
+}
+
+Vehicle
+{
+  Name = "mg";
+  Index = 1587;
+  LinkTrId = 1588;
+  XPos = -332.327;
+  YPos = 17.795;
+  ZPos = 52230.025;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\gaz-aa-m4-aa.txt";
+  Model = "graphics\vehicles\gaz\gaz-aa-m4-aa.mgm";
+  Desc = "";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 1588;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -332.327;
+  YPos = 17.995;
+  ZPos = 52230.025;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 1587;
+}
+
+Vehicle
+{
+  Name = "mg";
+  Index = 1589;
+  LinkTrId = 1590;
+  XPos = -368.033;
+  YPos = 17.795;
+  ZPos = 52291.071;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\gaz-aa-m4-aa.txt";
+  Model = "graphics\vehicles\gaz\gaz-aa-m4-aa.mgm";
+  Desc = "";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 1590;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -368.033;
+  YPos = 17.995;
+  ZPos = 52291.071;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 1589;
+}
+
+Vehicle
+{
+  Name = "mg";
+  Index = 1591;
+  LinkTrId = 1592;
+  XPos = -339.698;
+  YPos = 17.795;
+  ZPos = 52342.212;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\gaz-aa-m4-aa.txt";
+  Model = "graphics\vehicles\gaz\gaz-aa-m4-aa.mgm";
+  Desc = "";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 1592;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -339.698;
+  YPos = 17.995;
+  ZPos = 52342.212;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 1591;
+}
+
+Vehicle
+{
+  Name = "mg";
+  Index = 1593;
+  LinkTrId = 1594;
+  XPos = -324.033;
+  YPos = 17.795;
+  ZPos = 52462.461;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\gaz-aa-m4-aa.txt";
+  Model = "graphics\vehicles\gaz\gaz-aa-m4-aa.mgm";
+  Desc = "";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 1594;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -324.033;
+  YPos = 17.995;
+  ZPos = 52462.461;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 1593;
+}
+
+MCU_H_Input
+{
+  Index = 2246;
+  Name = "OBJECT_AAA";
+  Desc = "";
+  Targets = [];
+  Objects = [1592,1590,1588,1594];
+  XPos = -420.197;
+  YPos = 17.795;
+  ZPos = 52318.564;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Input
+{
+  Index = 2247;
+  Name = "TARGET_ATTACK_AREA";
+  Desc = "";
+  Targets = [2248];
+  Objects = [];
+  XPos = -310.110;
+  YPos = 17.795;
+  ZPos = 52368.864;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_CMD_AttackArea
+{
+  Index = 2248;
+  Name = "AMG_AttackArea";
+  Desc = "";
+  Targets = [];
+  Objects = [1590,1588,1592,1594];
+  XPos = -314.397;
+  YPos = 1517.800;
+  ZPos = 52326.812;
+  XOri = 0.00;
+  YOri = 147.56;
+  ZOri = 0.00;
+  AttackGround = 0;
+  AttackAir = 1;
+  AttackGTargets = 0;
+  AttackArea = 3000;
+  Time = 59940;
+  Priority = 1;
+}
+
+MCU_Timer
+{
+  Index = 2362;
+  Name = "REXPERT_RTD2_4";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -374.000;
+  YPos = 17.795;
+  ZPos = 52350.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 0;
+  Random = 100;
+}
+
+MCU_H_Dynamic
+{
+  Index = 2565;
+  Name = "AAA_mg";
+  Desc = "";
+  Targets = [1588,1590,1592,1594];
+  Objects = [];
+  XPos = -330.480;
+  YPos = 17.770;
+  ZPos = 52277.154;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "AILevel";
+}
+

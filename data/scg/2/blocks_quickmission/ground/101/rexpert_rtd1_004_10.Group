@@ -1,0 +1,277 @@
+Vehicle
+{
+  Name = "";
+  Index = 684;
+  LinkTrId = 685;
+  XPos = -100.672;
+  YPos = 17.795;
+  ZPos = 45283.236;
+  XOri = 0.00;
+  YOri = 327.53;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\t34-76stz.txt";
+  Model = "graphics\vehicles\t34-76stz\t34-76stz.mgm";
+  Desc = "";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 685;
+  Name = "entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -100.672;
+  YPos = 17.995;
+  ZPos = 45283.236;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 684;
+}
+
+Vehicle
+{
+  Name = "";
+  Index = 687;
+  LinkTrId = 688;
+  XPos = -86.522;
+  YPos = 17.795;
+  ZPos = 45218.112;
+  XOri = 0.00;
+  YOri = 352.84;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\t34-76stz.txt";
+  Model = "graphics\vehicles\t34-76stz\t34-76stz.mgm";
+  Desc = "";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 688;
+  Name = "entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -86.522;
+  YPos = 17.995;
+  ZPos = 45218.112;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 687;
+}
+
+Vehicle
+{
+  Name = "";
+  Index = 690;
+  LinkTrId = 691;
+  XPos = -51.596;
+  YPos = 17.795;
+  ZPos = 45014.297;
+  XOri = 0.00;
+  YOri = 153.75;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\t34-76stz.txt";
+  Model = "graphics\vehicles\t34-76stz\t34-76stz.mgm";
+  Desc = "";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 691;
+  Name = "entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -51.596;
+  YPos = 17.995;
+  ZPos = 45014.297;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 690;
+}
+
+Vehicle
+{
+  Name = "";
+  Index = 693;
+  LinkTrId = 694;
+  XPos = -61.210;
+  YPos = 17.795;
+  ZPos = 45080.827;
+  XOri = 0.00;
+  YOri = 179.46;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\t34-76stz.txt";
+  Model = "graphics\vehicles\t34-76stz\t34-76stz.mgm";
+  Desc = "";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 694;
+  Name = "entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -61.210;
+  YPos = 17.995;
+  ZPos = 45080.827;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 693;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 709;
+  LinkTrId = 0;
+  XPos = -109.143;
+  YPos = 17.795;
+  ZPos = 45213.400;
+  XOri = 0.00;
+  YOri = 353.77;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_nets_3_3.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_nets_3_3.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 1500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 710;
+  LinkTrId = 0;
+  XPos = -38.354;
+  YPos = 17.795;
+  ZPos = 45082.284;
+  XOri = 0.00;
+  YOri = 170.46;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_nets_3_3.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_nets_3_3.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 1500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 877;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -75.048;
+  YPos = 17.777;
+  ZPos = 45149.993;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 75;
+  Backward = 75;
+  Left = 150;
+  Right = 150;
+}
+
+MCU_H_Input
+{
+  Index = 2244;
+  Name = "OBJECT_TANKS";
+  Desc = "";
+  Targets = [];
+  Objects = [691,694,688,685];
+  XPos = -106.713;
+  YPos = 17.774;
+  ZPos = 45082.009;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Timer
+{
+  Index = 2346;
+  Name = "REXPERT_RTD1_10";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -74.000;
+  YPos = 17.795;
+  ZPos = 45150.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 0;
+  Random = 100;
+}
+

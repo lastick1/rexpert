@@ -1,0 +1,36 @@
+MCU_H_ReferencePoint
+{
+  Index = 2;
+  Name = "Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -1404.85;
+  YPos = 0;
+  ZPos = 357.129;
+  XOri = 0;
+  YOri = 0;
+  ZOri = 0;
+  Forward = 49.99;
+  Backward = 49.99;
+  Left = 49.99;
+  Right = 49.99;
+}
+
+MCU_Timer
+{
+  Index = 3;
+  Name = "DUDE";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -1401.03;
+  YPos = 0;
+  ZPos = 357.053;
+  XOri = 0;
+  YOri = 0;
+  ZOri = 0;
+  Time = 0;
+  Random = 100;
+}
+

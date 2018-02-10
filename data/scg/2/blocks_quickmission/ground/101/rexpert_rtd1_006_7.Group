@@ -1,0 +1,225 @@
+MCU_H_ReferencePoint
+{
+  Index = 913;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -75.006;
+  YPos = 17.777;
+  ZPos = 46350.001;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 75;
+  Backward = 75;
+  Left = 150;
+  Right = 150;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 2263;
+  LinkTrId = 0;
+  XPos = -114.466;
+  YPos = 17.795;
+  ZPos = 46335.162;
+  XOri = 0.00;
+  YOri = 209.99;
+  ZOri = 0.00;
+  Model = "graphics\blocks\dugout.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\dugout.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 2000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 2264;
+  LinkTrId = 0;
+  XPos = -36.793;
+  YPos = 17.795;
+  ZPos = 46434.915;
+  XOri = 0.00;
+  YOri = 287.06;
+  ZOri = 0.00;
+  Model = "graphics\blocks\dugout.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\dugout.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 2000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 2265;
+  LinkTrId = 0;
+  XPos = -58.099;
+  YPos = 17.795;
+  ZPos = 46390.971;
+  XOri = 0.00;
+  YOri = 1.23;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_bt-7m.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_bt-7m.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 2500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 2266;
+  LinkTrId = 0;
+  XPos = -117.123;
+  YPos = 17.795;
+  ZPos = 46323.544;
+  XOri = 0.00;
+  YOri = 120.21;
+  ZOri = 0.00;
+  Model = "graphics\blocks\dugout.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\dugout.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 2000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 2267;
+  LinkTrId = 0;
+  XPos = -72.326;
+  YPos = 17.795;
+  ZPos = 46315.291;
+  XOri = 0.00;
+  YOri = 345.83;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_bt-7m.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_bt-7m.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 2500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 2268;
+  LinkTrId = 0;
+  XPos = -53.990;
+  YPos = 17.795;
+  ZPos = 46352.484;
+  XOri = 0.00;
+  YOri = 268.32;
+  ZOri = 0.00;
+  Model = "graphics\blocks\village_200_block1.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\village_200_block1.txt";
+  Country = 0;
+  Desc = "";
+  Durability = 3000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 2269;
+  LinkTrId = 0;
+  XPos = -64.430;
+  YPos = 17.795;
+  ZPos = 46440.233;
+  XOri = 0.00;
+  YOri = 33.98;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_bt-7m.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_bt-7m.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 2500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 2270;
+  LinkTrId = 0;
+  XPos = -120.116;
+  YPos = 17.795;
+  ZPos = 46333.078;
+  XOri = 0.00;
+  YOri = 34.04;
+  ZOri = 0.00;
+  Model = "graphics\blocks\art_position_amb1.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\art_position_amb1.txt";
+  Country = 0;
+  Desc = "";
+  Durability = 500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 2271;
+  LinkTrId = 0;
+  XPos = -75.962;
+  YPos = 17.795;
+  ZPos = 46273.468;
+  XOri = 0.00;
+  YOri = 47.75;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_bt-7m.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_bt-7m.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 2500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_Timer
+{
+  Index = 2348;
+  Name = "REXPERT_RTD1_7";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -73.433;
+  YPos = 17.795;
+  ZPos = 46350.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 0;
+  Random = 100;
+}
+

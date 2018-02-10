@@ -1,0 +1,60 @@
+MCU_H_ReferencePoint
+{
+  Index = 2;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -90.416;
+  YPos = 17.795;
+  ZPos = 632.933;
+  XOri = 0.00;
+  YOri = 0.02;
+  ZOri = 0.00;
+  Forward = 4.99;
+  Backward = 4.99;
+  Left = 4.99;
+  Right = 4.99;
+}
+
+Flag
+{
+  Name = "Flag";
+  Index = 3;
+  LinkTrId = 4;
+  XPos = -90.069;
+  YPos = 17.795;
+  ZPos = 632.954;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Model = "graphics\flag\windsock.mgm";
+  Desc = "";
+  Script = "LuaScripts\WorldObjects\Flags\windsock.txt";
+  Country = 0;
+  StartHeight = 0;
+  SpeedFactor = 1;
+  BlockThreshold = 1;
+  Radius = 1;
+  Type = 0;
+  CountPlanes = 0;
+  CountVehicles = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 4;
+  Name = "Flag entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -90.069;
+  YPos = 17.995;
+  ZPos = 632.954;
+  XOri = 0.00;
+  YOri = 119.14;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 3;
+}
+
