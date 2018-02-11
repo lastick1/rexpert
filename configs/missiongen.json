@@ -28,7 +28,7 @@
     "graph_file": "moscow.xgml",
     "graph_zoom_point": {"x": 3073.0, "y": 3073.0},
     "ldf_file": "moscow_lf.ldf",
-    "ldf_base_file": "moscow-base.ldf",
+    "ldf_base_file": "moscow_base.ldf",
     "icons_group_file": "blocks_quickmission\\icons\\FL_icon.Group",
     "default_params_source": "defaultparams_template.dat",
     "default_params_dest": "defaultparams.dat",

@@ -222,6 +222,7 @@ blocks_set; blocks_BTD2_013_7; main(scg\2\blocks_quickmission\ground\201\rexpert
 blocks_set; blocks_BTD2_014_6; main(scg\2\blocks_quickmission\ground\201\rexpert_btd2_014_6.group);
 blocks_set; blocks_BTD2_015_8; main(scg\2\blocks_quickmission\ground\201\rexpert_btd2_015_8.group);
 blocks_set; blocks_BTD2_016_4; main(scg\2\blocks_quickmission\ground\201\rexpert_btd2_016_4.group);
+blocks_set; blocks_BTD1_ORIENTATION; main(scg\2\blocks_quickmission\ref_point.group);
 
 #
 ## geo params
@@ -413,7 +414,7 @@ phase; BAD1_012_8; random(<EMPTY>); blocks_BAD1_012_8; clone_location;;
 phase; BAD1_014_6; random(<EMPTY>); blocks_BAD1_014_6; clone_location;;
 phase; BAD1_015_7_AAA; random(<EMPTY>); blocks_BAD1_015_7_AAA; clone_location;;
 phase; BAD1_016_8; random(<EMPTY>); blocks_BAD1_016_8; clone_location;;
-phase; BTD1_001_14_AAA; random(<EMPTY>); blocks_BTD1_001_14_AAA; clone_location;;
+phase; BTD1_001_14_AAA; line(BTD1,BTD1_ORIENTATION,0,0,0); blocks_BTD1_001_14_AAA; ;;
 phase; BTD1_002_10_AAA; random(<EMPTY>); blocks_BTD1_002_10_AAA; clone_location;;
 phase; BTD1_003_10; random(<EMPTY>); blocks_BTD1_003_10; clone_location;;
 phase; BTD1_004_10; random(<EMPTY>); blocks_BTD1_004_10; clone_location;;
@@ -445,6 +446,7 @@ phase; BTD2_013_7; random(<EMPTY>); blocks_BTD2_013_7; clone_location;;
 phase; BTD2_014_6; random(<EMPTY>); blocks_BTD2_014_6; clone_location;;
 phase; BTD2_015_8; random(<EMPTY>); blocks_BTD2_015_8; clone_location;;
 phase; BTD2_016_4; random(<EMPTY>); blocks_BTD2_016_4; clone_location;;
+phase; BTD1_ORIENTATION; random(BTD1); blocks_BTD1_ORIENTATION; clone_location;;
 
 #
 ## cases & switches
@@ -703,6 +705,8 @@ check; BID1_REF; location_type(GroundObjective,AAAPosition);
 check; BAD1; range(PRIMARY_LINK_PHASE,closest_outof,5000);
 check; BID1; range(PRIMARY_LINK_PHASE,closest_outof,5000);
 check; BTD1; range(PRIMARY_LINK_PHASE,closest_outof,5000);
+check; BTD1_ORIENTATION; coalition(f);
+check; BTD1_ORIENTATION; range(PRIMARY_LINK_PHASE,closest_outof,4000);
 
 #
 ## property actions
@@ -985,6 +989,7 @@ gui_helper; BTD2_013_7; -8598; 3017;
 gui_helper; BTD2_014_6; -8147; 3008;
 gui_helper; BTD2_015_8; -7691; 3004;
 gui_helper; BTD2_016_4; -7226; 3008;
+gui_helper; BTD1_ORIENTATION; -4303; 3656;
 gui_helper; check; -2388; 274;BLUE_FRONT_AF_1(free)
 gui_helper; check; -2387; 239;BLUE_FRONT_AF_1(coalition)
 gui_helper; check; -2389; 312;BLUE_FRONT_AF_1(range)
@@ -1223,6 +1228,8 @@ gui_helper; check; -5992; 5688;BID1_REF(location_type)
 gui_helper; check; -6928; 4278;BAD1(range)
 gui_helper; check; -5790; 6024;BID1(range)
 gui_helper; check; -4776; 3592;BTD1(range)
+gui_helper; check; -4269; 3544;BTD1_ORIENTATION(coalition)
+gui_helper; check; -4268; 3592;BTD1_ORIENTATION(range)
 gui_helper; AILevel; 2757; 4273;RTD1_001_16_AAA; (AAA_2037mm);
 gui_helper; AILevel; 2757; 4313;RTD1_001_16_AAA; (AAA_8885mm);
 gui_helper; AILevel; 3242; 4299;RTD1_002_5_AAA; (AAA_mg);
