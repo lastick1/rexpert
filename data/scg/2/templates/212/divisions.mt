@@ -96,7 +96,6 @@ blocks_set; blocks_BAD1_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BID1_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RTD1_001_16_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rtd1_001_16_aaa.group);
 blocks_set; blocks_RTD1_002_5_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rtd1_002_5_aaa.group);
-blocks_set; blocks_RTD1_003_12_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rtd1_003_12_aaa.group);
 blocks_set; blocks_RTD1_004_10; main(scg\2\blocks_quickmission\ground\101\rexpert_rtd1_004_10.group);
 blocks_set; blocks_RTD1_005_6; main(scg\2\blocks_quickmission\ground\101\rexpert_rtd1_005_6.group);
 blocks_set; blocks_RTD1_006_7; main(scg\2\blocks_quickmission\ground\101\rexpert_rtd1_006_7.group);
@@ -125,21 +124,17 @@ blocks_set; blocks_RTD2_012_4_AAA; main(scg\2\blocks_quickmission\ground\101\rex
 blocks_set; blocks_RTD2_013_10; main(scg\2\blocks_quickmission\ground\101\rexpert_rtd1_013_10.group);
 blocks_set; blocks_RTD2_014_4; main(scg\2\blocks_quickmission\ground\101\rexpert_rtd2_014_4.group);
 blocks_set; blocks_RTD2_015_4; main(scg\2\blocks_quickmission\ground\101\rexpert_rtd2_015_4.group);
-blocks_set; blocks_RTD2_016_4_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rtd2_016_4_aaa.group);
 blocks_set; blocks_RAD1_001_6_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_001_6_aaa.group);
 blocks_set; blocks_RAD1_002_7_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_002_7_aaa.group);
-blocks_set; blocks_RAD1_003_13_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_003_13_aaa.group);
 blocks_set; blocks_RAD1_004_4; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_004_4.group);
 blocks_set; blocks_RAD1_005_8; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_005_8.group);
 blocks_set; blocks_RAD1_006_10; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_006_10.group);
 blocks_set; blocks_RAD1_007_7; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_007_7.group);
-blocks_set; blocks_RAD1_008_4_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_008_4_aaa.group);
 blocks_set; blocks_RAD1_009_9; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_009_9.group);
 blocks_set; blocks_RAD1_010_8_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_010_8_aaa.group);
 blocks_set; blocks_RAD1_011_7; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_011_7.group);
 blocks_set; blocks_RAD1_012_4_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_012_4_aaa.group);
 blocks_set; blocks_RAD1_013_9; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_013_9.group);
-blocks_set; blocks_RAD1_014_4_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_014_4_aaa.group);
 blocks_set; blocks_RAD1_015_4; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_015_4.group);
 blocks_set; blocks_RAD1_016_5; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_016_5.group);
 blocks_set; blocks_RID1_001_7; main(scg\2\blocks_quickmission\ground\101\rexpert_rid1_001_7.group);
@@ -152,12 +147,9 @@ blocks_set; blocks_RID1_007_9; main(scg\2\blocks_quickmission\ground\101\rexpert
 blocks_set; blocks_RID1_008_4; main(scg\2\blocks_quickmission\ground\101\rexpert_rid1_008_4.group);
 blocks_set; blocks_RID1_009_3; main(scg\2\blocks_quickmission\ground\101\rexpert_rid1_009_3.group);
 blocks_set; blocks_RID1_010_6; main(scg\2\blocks_quickmission\ground\101\rexpert_rid1_010_6.group);
-blocks_set; blocks_RID1_011_7_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rid1_011_7_aaa.group);
 blocks_set; blocks_RID1_012_13; main(scg\2\blocks_quickmission\ground\101\rexpert_rid1_012_13.group);
 blocks_set; blocks_RID1_014_10; main(scg\2\blocks_quickmission\ground\101\rexpert_rid1_014_10.group);
 blocks_set; blocks_RID1_013_10_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rid1_013_10_aaa.group);
-blocks_set; blocks_RID1_015_4_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rid1_015_4_aaa.group);
-blocks_set; blocks_RID1_016_9_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rid1_016_9_aaa.group);
 blocks_set; blocks_BID1_001_12_AAA; main(scg\2\blocks_quickmission\ground\201\rexpert_bid1_001_12_aaa.group);
 blocks_set; blocks_BID1_002_10; main(scg\2\blocks_quickmission\ground\201\rexpert_bid1_002_10.group);
 blocks_set; blocks_BID1_003_10; main(scg\2\blocks_quickmission\ground\201\rexpert_bid1_003_10.group);
@@ -290,6 +282,82 @@ blocks_set; blocks_BID1_008_REF; main(scg\2\blocks_quickmission\ref_point.group)
 blocks_set; blocks_BID1_AAA4_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BID1_AAA5_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BID1_ORIENTATION; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD1_AAA1_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD1_AAA2_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD1_AAA3_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD1_AAA4_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD1_AAA5_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD1_004_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD1_003_12_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rtd1_003_12_aaa.group);
+blocks_set; blocks_RTD1_AAA6_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD1_004_REF_806; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD1_005_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD1_008_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD1_009_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD1_010_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD1_011_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD1_013_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD1_014_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD1_015_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD1_ORIENTATION; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD2_AAA2_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD2_AAA3_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD2_009_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD2_010_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD2_011_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD2_013_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD2_014_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD2_015_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD2_001_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD2_002_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD2_003_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD2_004_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD2_005_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD2_006_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD2_008_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD2_AAA1_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RTD2_016_4_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rtd2_016_4_aaa.group);
+blocks_set; blocks_RTD2_ORIENTATION; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RAD1_AAA5_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RAD1_AAA7_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RAD1_009_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RAD1_004_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RAD1_011_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RAD1_013_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RAD1_016_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RAD1_015_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RAD1_AAA1_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RAD1_AAA2_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RAD1_AAA3_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RAD1_AAA6_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RAD1_AAA4_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RAD1_005_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RAD1_006_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RAD1_007_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RAD1_003_13_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_003_13_aaa.group);
+blocks_set; blocks_RAD1_008_4_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_008_4_aaa.group);
+blocks_set; blocks_RAD1_014_4_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_014_4_aaa.group);
+blocks_set; blocks_RAD1_ORIENTATION; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RID1_011_7_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rid1_011_7_aaa.group);
+blocks_set; blocks_RID1_015_4_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rid1_015_4_aaa.group);
+blocks_set; blocks_RID1_016_9_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rid1_016_9_aaa.group);
+blocks_set; blocks_RID1_AAA2_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RID1_AAA4_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RID1_009_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RID1_003_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RID1_014_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RID1_012_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RID1_AAA3_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RID1_AAA1_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RID1_010_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RID1_002_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RID1_001_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RID1_005_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RID1_006_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RID1_007_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RID1_008_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RID1_AAA5_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RID1_ORIENTATION; main(scg\2\blocks_quickmission\ref_point.group);
 
 #
 ## geo params
@@ -385,70 +453,62 @@ phase; BTD1_REF; random(BLUE_DIVISIONS_REF); blocks_BTD1_REF; clone_location;;
 phase; BTD2_REF; random(BLUE_DIVISIONS_REF); blocks_BTD2_REF; clone_location;;
 phase; BAD1_REF; random(BLUE_DIVISIONS_REF); blocks_BAD1_REF; clone_location;;
 phase; BID1_REF; random(BLUE_DIVISIONS_REF); blocks_BID1_REF; clone_location;;
-phase; RTD1_001_16_AAA; random(<EMPTY>); blocks_RTD1_001_16_AAA; clone_location;;
-phase; RTD1_002_5_AAA; random(<EMPTY>); blocks_RTD1_002_5_AAA; clone_location;;
-phase; RTD1_003_12_AAA; random(<EMPTY>); blocks_RTD1_003_12_AAA; clone_location;;
-phase; RTD1_004_10; random(<EMPTY>); blocks_RTD1_004_10; clone_location;;
-phase; RTD1_005_6; random(<EMPTY>); blocks_RTD1_005_6; clone_location;;
-phase; RTD1_006_7; random(<EMPTY>); blocks_RTD1_006_7; clone_location;;
-phase; RTD1_007_8_AAA; random(<EMPTY>); blocks_RTD1_007_8_AAA; clone_location;;
-phase; RTD1_008_3; random(<EMPTY>); blocks_RTD1_008_3; clone_location;;
-phase; RTD1_009_7; random(<EMPTY>); blocks_RTD1_009_7; clone_location;;
-phase; RTD1_010_6; random(<EMPTY>); blocks_RTD1_010_6; clone_location;;
-phase; RTD1_011_16; random(<EMPTY>); blocks_RTD1_011_16; clone_location;;
-phase; RTD1_012_12_AAA; random(<EMPTY>); blocks_RTD1_012_12_AAA; clone_location;;
-phase; RTD1_013_10; random(<EMPTY>); blocks_RTD1_013_10; clone_location;;
-phase; RTD1_014_6; random(<EMPTY>); blocks_RTD1_014_6; clone_location;;
-phase; RTD1_015_4; random(<EMPTY>); blocks_RTD1_015_4; clone_location;;
-phase; RTD1_016_7_AAA; random(<EMPTY>); blocks_RTD1_016_7_AAA; clone_location;;
-phase; RTD2_001_4; random(<EMPTY>); blocks_RTD2_001_4; clone_location;;
-phase; RTD2_002_4; random(<EMPTY>); blocks_RTD2_002_4; clone_location;;
-phase; RTD2_003_4; random(<EMPTY>); blocks_RTD2_003_4; clone_location;;
-phase; RTD2_004_4; random(<EMPTY>); blocks_RTD2_004_4; clone_location;;
-phase; RTD2_005_6; random(<EMPTY>); blocks_RTD2_005_6; clone_location;;
-phase; RTD2_006_10; random(<EMPTY>); blocks_RTD2_006_10; clone_location;;
-phase; RTD2_007_8_AAA; random(<EMPTY>); blocks_RTD2_007_8_AAA; clone_location;;
-phase; RTD2_008_4; random(<EMPTY>); blocks_RTD2_008_4; clone_location;;
-phase; RTD2_009_9; random(<EMPTY>); blocks_RTD2_009_9; clone_location;;
-phase; RTD2_010_8; random(<EMPTY>); blocks_RTD2_010_8; clone_location;;
-phase; RTD2_011_8; random(<EMPTY>); blocks_RTD2_011_8; clone_location;;
-phase; RTD2_012_4_AAA; random(<EMPTY>); blocks_RTD2_012_4_AAA; clone_location;;
-phase; RTD2_013_10; random(<EMPTY>); blocks_RTD2_013_10; clone_location;;
-phase; RTD2_014_4; random(<EMPTY>); blocks_RTD2_014_4; clone_location;;
-phase; RTD2_015_4; random(<EMPTY>); blocks_RTD2_015_4; clone_location;;
-phase; RTD2_016_4_AAA; random(<EMPTY>); blocks_RTD2_016_4_AAA; clone_location;;
-phase; RAD1_001_6_AAA; random(<EMPTY>); blocks_RAD1_001_6_AAA; clone_location;;
-phase; RAD1_002_7_AAA; random(<EMPTY>); blocks_RAD1_002_7_AAA; clone_location;;
-phase; RAD1_003_13_AAA; random(<EMPTY>); blocks_RAD1_003_13_AAA; clone_location;;
-phase; RAD1_004_4; random(<EMPTY>); blocks_RAD1_004_4; clone_location;;
-phase; RAD1_005_8; random(<EMPTY>); blocks_RAD1_005_8; clone_location;;
-phase; RAD1_006_10; random(<EMPTY>); blocks_RAD1_006_10; clone_location;;
-phase; RAD1_007_7; random(<EMPTY>); blocks_RAD1_007_7; clone_location;;
-phase; RAD1_008_4_AAA; random(<EMPTY>); blocks_RAD1_008_4_AAA; clone_location;;
-phase; RAD1_009_9; random(<EMPTY>); blocks_RAD1_009_9; clone_location;;
-phase; RAD1_010_8_AAA; random(<EMPTY>); blocks_RAD1_010_8_AAA; clone_location;;
-phase; RAD1_011_7; random(<EMPTY>); blocks_RAD1_011_7; clone_location;;
-phase; RAD1_012_4_AAA; random(<EMPTY>); blocks_RAD1_012_4_AAA; clone_location;;
-phase; RAD1_013_9; random(<EMPTY>); blocks_RAD1_013_9; clone_location;;
-phase; RAD1_014_4_AAA; random(<EMPTY>); blocks_RAD1_014_4_AAA; clone_location;;
-phase; RAD1_015_4; random(<EMPTY>); blocks_RAD1_015_4; clone_location;;
-phase; RAD1_016_5; random(<EMPTY>); blocks_RAD1_016_5; clone_location;;
-phase; RID1_001_7; random(<EMPTY>); blocks_RID1_001_7; clone_location;;
-phase; RID1_002_7; random(<EMPTY>); blocks_RID1_002_7; clone_location;;
-phase; RID1_003_7; random(<EMPTY>); blocks_RID1_003_7; clone_location;;
-phase; RID1_004_4_AAA; random(<EMPTY>); blocks_RID1_004_4_AAA; clone_location;;
-phase; RID1_005_7; random(<EMPTY>); blocks_RID1_005_7; clone_location;;
-phase; RID1_006_4; random(<EMPTY>); blocks_RID1_006_4; clone_location;;
-phase; RID1_007_9; random(<EMPTY>); blocks_RID1_007_9; clone_location;;
-phase; RID1_008_4; random(<EMPTY>); blocks_RID1_008_4; clone_location;;
-phase; RID1_009_3; random(<EMPTY>); blocks_RID1_009_3; clone_location;;
-phase; RID1_010_6; random(<EMPTY>); blocks_RID1_010_6; clone_location;;
-phase; RID1_011_7_AAA; random(<EMPTY>); blocks_RID1_011_7_AAA; clone_location;;
-phase; RID1_012_13; random(<EMPTY>); blocks_RID1_012_13; clone_location;;
-phase; RID1_014_10; random(<EMPTY>); blocks_RID1_014_10; clone_location;;
-phase; RID1_013_10_AAA; random(<EMPTY>); blocks_RID1_013_10_AAA; clone_location;;
-phase; RID1_015_4_AAA; random(<EMPTY>); blocks_RID1_015_4_AAA; clone_location;;
-phase; RID1_016_9_AAA; random(<EMPTY>); blocks_RID1_016_9_AAA; clone_location;;
+phase; RTD1_001_16_AAA; line(RTD1_AAA1_REF,RTD1_ORIENTATION,0,1,180); blocks_RTD1_001_16_AAA; ;;
+phase; RTD1_002_5_AAA; line(RTD1_AAA2_REF,RTD1_ORIENTATION,0,1,180); blocks_RTD1_002_5_AAA; ;;
+phase; RTD1_004_10; line(RTD1_004_REF,RTD1_ORIENTATION,0,1,180); blocks_RTD1_004_10; ;;
+phase; RTD1_005_6; line(RTD1_004_REF_806,RTD1_ORIENTATION,0,1,180); blocks_RTD1_005_6; ;;
+phase; RTD1_006_7; line(RTD1_005_REF,RTD1_ORIENTATION,0,1,180); blocks_RTD1_006_7; ;;
+phase; RTD1_007_8_AAA; line(RTD1_AAA4_REF,RTD1_ORIENTATION,0,1,180); blocks_RTD1_007_8_AAA; ;;
+phase; RTD1_008_3; line(RTD1_008_REF,RTD1_ORIENTATION,0,1,180); blocks_RTD1_008_3; ;;
+phase; RTD1_009_7; line(RTD1_009_REF,RTD1_ORIENTATION,0,1,180); blocks_RTD1_009_7; ;;
+phase; RTD1_010_6; line(RTD1_010_REF,RTD1_ORIENTATION,0,1,180); blocks_RTD1_010_6; ;;
+phase; RTD1_011_16; line(RTD1_011_REF,RTD1_ORIENTATION,0,1,180); blocks_RTD1_011_16; ;;
+phase; RTD1_012_12_AAA; line(RTD1_AAA5_REF,RTD1_ORIENTATION,0,1,180); blocks_RTD1_012_12_AAA; ;;
+phase; RTD1_013_10; line(RTD1_013_REF,RTD1_ORIENTATION,0,1,180); blocks_RTD1_013_10; ;;
+phase; RTD1_014_6; line(RTD1_014_REF,RTD1_ORIENTATION,0,1,180); blocks_RTD1_014_6; ;;
+phase; RTD1_015_4; line(RTD1_015_REF,RTD1_ORIENTATION,0,1,180); blocks_RTD1_015_4; ;;
+phase; RTD1_016_7_AAA; line(RTD1_AAA6_REF,RTD1_ORIENTATION,0,1,180); blocks_RTD1_016_7_AAA; ;;
+phase; RTD2_001_4; line(RTD2_001_REF,RTD2_ORIENTATION,0,1,180); blocks_RTD2_001_4; ;;
+phase; RTD2_002_4; line(RTD2_002_REF,RTD2_ORIENTATION,0,1,180); blocks_RTD2_002_4; ;;
+phase; RTD2_003_4; line(RTD2_003_REF,RTD2_ORIENTATION,0,1,180); blocks_RTD2_003_4; ;;
+phase; RTD2_004_4; line(RTD2_004_REF,RTD2_ORIENTATION,0,1,180); blocks_RTD2_004_4; ;;
+phase; RTD2_005_6; line(RTD2_005_REF,RTD2_ORIENTATION,0,1,180); blocks_RTD2_005_6; ;;
+phase; RTD2_006_10; line(RTD2_006_REF,RTD2_ORIENTATION,0,1,180); blocks_RTD2_006_10; ;;
+phase; RTD2_007_8_AAA; line(RTD2_AAA1_REF,RTD2_ORIENTATION,0,1,180); blocks_RTD2_007_8_AAA; ;;
+phase; RTD2_008_4; line(RTD2_008_REF,RTD2_ORIENTATION,0,1,180); blocks_RTD2_008_4; ;;
+phase; RTD2_009_9; line(RTD2_009_REF,RTD2_ORIENTATION,0,1,180); blocks_RTD2_009_9; ;;
+phase; RTD2_010_8; line(RTD2_010_REF,RTD2_ORIENTATION,0,1,180); blocks_RTD2_010_8; ;;
+phase; RTD2_011_8; line(RTD2_011_REF,RTD2_ORIENTATION,0,1,180); blocks_RTD2_011_8; ;;
+phase; RTD2_012_4_AAA; line(RTD2_AAA2_REF,RTD2_ORIENTATION,0,1,180); blocks_RTD2_012_4_AAA; ;;
+phase; RTD2_013_10; line(RTD2_013_REF,RTD2_ORIENTATION,0,1,180); blocks_RTD2_013_10; ;;
+phase; RTD2_014_4; line(RTD2_014_REF,RTD2_ORIENTATION,0,1,180); blocks_RTD2_014_4; ;;
+phase; RTD2_015_4; line(RTD2_015_REF,RTD2_ORIENTATION,0,1,180); blocks_RTD2_015_4; ;;
+phase; RAD1_001_6_AAA; line(RAD1_AAA1_REF,RAD1_ORIENTATION,0,1,180); blocks_RAD1_001_6_AAA; ;;
+phase; RAD1_002_7_AAA; line(RAD1_AAA2_REF,RAD1_ORIENTATION,0,1,180); blocks_RAD1_002_7_AAA; ;;
+phase; RAD1_004_4; line(RAD1_004_REF,RAD1_ORIENTATION,0,1,180); blocks_RAD1_004_4; ;;
+phase; RAD1_005_8; line(RAD1_005_REF,RAD1_ORIENTATION,0,1,180); blocks_RAD1_005_8; ;;
+phase; RAD1_006_10; line(RAD1_006_REF,RAD1_ORIENTATION,0,1,180); blocks_RAD1_006_10; ;;
+phase; RAD1_007_7; line(RAD1_007_REF,RAD1_ORIENTATION,0,1,180); blocks_RAD1_007_7; ;;
+phase; RAD1_009_9; line(RAD1_009_REF,RAD1_ORIENTATION,0,1,180); blocks_RAD1_009_9; ;;
+phase; RAD1_010_8_AAA; line(RAD1_AAA5_REF,RAD1_ORIENTATION,0,1,180); blocks_RAD1_010_8_AAA; ;;
+phase; RAD1_011_7; line(RAD1_011_REF,RAD1_ORIENTATION,0,1,180); blocks_RAD1_011_7; ;;
+phase; RAD1_012_4_AAA; line(RAD1_AAA6_REF,RAD1_ORIENTATION,0,1,180); blocks_RAD1_012_4_AAA; ;;
+phase; RAD1_013_9; line(RAD1_013_REF,RAD1_ORIENTATION,0,1,180); blocks_RAD1_013_9; ;;
+phase; RAD1_015_4; line(RAD1_015_REF,RAD1_ORIENTATION,0,1,180); blocks_RAD1_015_4; ;;
+phase; RAD1_016_5; line(RAD1_016_REF,RAD1_ORIENTATION,0,1,180); blocks_RAD1_016_5; ;;
+phase; RID1_001_7; line(RID1_001_REF,RID1_ORIENTATION,0,1,180); blocks_RID1_001_7; ;;
+phase; RID1_002_7; line(RID1_002_REF,RID1_ORIENTATION,0,1,180); blocks_RID1_002_7; ;;
+phase; RID1_003_7; line(RID1_003_REF,RID1_ORIENTATION,0,1,180); blocks_RID1_003_7; ;;
+phase; RID1_004_4_AAA; line(RID1_AAA1_REF,RID1_ORIENTATION,0,1,180); blocks_RID1_004_4_AAA; ;;
+phase; RID1_005_7; line(RID1_005_REF,RID1_ORIENTATION,0,1,180); blocks_RID1_005_7; ;;
+phase; RID1_006_4; line(RID1_006_REF,RID1_ORIENTATION,0,1,180); blocks_RID1_006_4; ;;
+phase; RID1_007_9; line(RID1_007_REF,RID1_ORIENTATION,0,1,180); blocks_RID1_007_9; ;;
+phase; RID1_008_4; line(RID1_008_REF,RID1_ORIENTATION,0,1,180); blocks_RID1_008_4; ;;
+phase; RID1_009_3; line(RID1_009_REF,RID1_ORIENTATION,0,1,180); blocks_RID1_009_3; ;;
+phase; RID1_010_6; line(RID1_010_REF,RID1_ORIENTATION,0,1,180); blocks_RID1_010_6; ;;
+phase; RID1_012_13; line(RID1_012_REF,RID1_ORIENTATION,0,1,180); blocks_RID1_012_13; ;;
+phase; RID1_014_10; line(RID1_014_REF,RID1_ORIENTATION,0,1,180); blocks_RID1_014_10; ;;
+phase; RID1_013_10_AAA; line(RID1_AAA3_REF,RID1_ORIENTATION,0,1,180); blocks_RID1_013_10_AAA; ;;
 phase; BID1_001_12_AAA; line(BID1_AAA1_REF,BID1_ORIENTATION,0,1,180); blocks_BID1_001_12_AAA; ;;
 phase; BID1_002_10; line(BID1_002_REF,BID1_ORIENTATION,0,1,180); blocks_BID1_002_10; ;;
 phase; BID1_003_10; line(BID1_003_REF,BID1_ORIENTATION,0,1,180); blocks_BID1_003_10; ;;
@@ -581,6 +641,82 @@ phase; BID1_008_REF; random(BID1); blocks_BID1_008_REF; clone_location;;
 phase; BID1_AAA4_REF; random(BID1); blocks_BID1_AAA4_REF; clone_location;;
 phase; BID1_AAA5_REF; random(BID1); blocks_BID1_AAA5_REF; clone_location;;
 phase; BID1_ORIENTATION; random(BID1); blocks_BID1_ORIENTATION; clone_location;;
+phase; RTD1_AAA1_REF; random(RTD1); blocks_RTD1_AAA1_REF; clone_location;;
+phase; RTD1_AAA2_REF; random(RTD1); blocks_RTD1_AAA2_REF; clone_location;;
+phase; RTD1_AAA3_REF; random(RTD1); blocks_RTD1_AAA3_REF; clone_location;;
+phase; RTD1_AAA4_REF; random(RTD1); blocks_RTD1_AAA4_REF; clone_location;;
+phase; RTD1_AAA5_REF; random(RTD1); blocks_RTD1_AAA5_REF; clone_location;;
+phase; RTD1_004_REF; random(RTD1); blocks_RTD1_004_REF; clone_location;;
+phase; RTD1_003_12_AAA; line(RTD1_AAA3_REF,RTD1_ORIENTATION,0,1,180); blocks_RTD1_003_12_AAA; ;;
+phase; RTD1_AAA6_REF; random(RTD1); blocks_RTD1_AAA6_REF; clone_location;;
+phase; RTD1_004_REF_806; random(RTD1); blocks_RTD1_004_REF_806; clone_location;;
+phase; RTD1_005_REF; random(RTD1); blocks_RTD1_005_REF; clone_location;;
+phase; RTD1_008_REF; random(RTD1); blocks_RTD1_008_REF; clone_location;;
+phase; RTD1_009_REF; random(RTD1); blocks_RTD1_009_REF; clone_location;;
+phase; RTD1_010_REF; random(RTD1); blocks_RTD1_010_REF; clone_location;;
+phase; RTD1_011_REF; random(RTD1); blocks_RTD1_011_REF; clone_location;;
+phase; RTD1_013_REF; random(RTD1); blocks_RTD1_013_REF; clone_location;;
+phase; RTD1_014_REF; random(RTD1); blocks_RTD1_014_REF; clone_location;;
+phase; RTD1_015_REF; random(RTD1); blocks_RTD1_015_REF; clone_location;;
+phase; RTD1_ORIENTATION; random(RTD1); blocks_RTD1_ORIENTATION; clone_location;;
+phase; RTD2_AAA2_REF; random(RTD2); blocks_RTD2_AAA2_REF; clone_location;;
+phase; RTD2_AAA3_REF; random(RTD2); blocks_RTD2_AAA3_REF; clone_location;;
+phase; RTD2_009_REF; random(RTD2); blocks_RTD2_009_REF; clone_location;;
+phase; RTD2_010_REF; random(RTD2); blocks_RTD2_010_REF; clone_location;;
+phase; RTD2_011_REF; random(RTD2); blocks_RTD2_011_REF; clone_location;;
+phase; RTD2_013_REF; random(RTD2); blocks_RTD2_013_REF; clone_location;;
+phase; RTD2_014_REF; random(RTD2); blocks_RTD2_014_REF; clone_location;;
+phase; RTD2_015_REF; random(RTD2); blocks_RTD2_015_REF; clone_location;;
+phase; RTD2_001_REF; random(RTD2); blocks_RTD2_001_REF; clone_location;;
+phase; RTD2_002_REF; random(RTD2); blocks_RTD2_002_REF; clone_location;;
+phase; RTD2_003_REF; random(RTD2); blocks_RTD2_003_REF; clone_location;;
+phase; RTD2_004_REF; random(RTD2); blocks_RTD2_004_REF; clone_location;;
+phase; RTD2_005_REF; random(RTD2); blocks_RTD2_005_REF; clone_location;;
+phase; RTD2_006_REF; random(RTD2); blocks_RTD2_006_REF; clone_location;;
+phase; RTD2_008_REF; random(RTD2); blocks_RTD2_008_REF; clone_location;;
+phase; RTD2_AAA1_REF; random(RTD2); blocks_RTD2_AAA1_REF; clone_location;;
+phase; RTD2_016_4_AAA; line(RTD2_AAA3_REF,RTD2_ORIENTATION,0,1,180); blocks_RTD2_016_4_AAA; ;;
+phase; RTD2_ORIENTATION; random(RTD2); blocks_RTD2_ORIENTATION; clone_location;;
+phase; RAD1_AAA5_REF; random(RAD1); blocks_RAD1_AAA5_REF; clone_location;;
+phase; RAD1_AAA7_REF; random(RAD1); blocks_RAD1_AAA7_REF; clone_location;;
+phase; RAD1_009_REF; random(RAD1); blocks_RAD1_009_REF; clone_location;;
+phase; RAD1_004_REF; random(RAD1); blocks_RAD1_004_REF; clone_location;;
+phase; RAD1_011_REF; random(RAD1); blocks_RAD1_011_REF; clone_location;;
+phase; RAD1_013_REF; random(RAD1); blocks_RAD1_013_REF; clone_location;;
+phase; RAD1_016_REF; random(RAD1); blocks_RAD1_016_REF; clone_location;;
+phase; RAD1_015_REF; random(RAD1); blocks_RAD1_015_REF; clone_location;;
+phase; RAD1_AAA1_REF; random(RAD1); blocks_RAD1_AAA1_REF; clone_location;;
+phase; RAD1_AAA2_REF; random(RAD1); blocks_RAD1_AAA2_REF; clone_location;;
+phase; RAD1_AAA3_REF; random(RAD1); blocks_RAD1_AAA3_REF; clone_location;;
+phase; RAD1_AAA6_REF; random(RAD1); blocks_RAD1_AAA6_REF; clone_location;;
+phase; RAD1_AAA4_REF; random(RAD1); blocks_RAD1_AAA4_REF; clone_location;;
+phase; RAD1_005_REF; random(RAD1); blocks_RAD1_005_REF; clone_location;;
+phase; RAD1_006_REF; random(RAD1); blocks_RAD1_006_REF; clone_location;;
+phase; RAD1_007_REF; random(RAD1); blocks_RAD1_007_REF; clone_location;;
+phase; RAD1_003_13_AAA; line(RAD1_AAA3_REF,RAD1_ORIENTATION,0,1,180); blocks_RAD1_003_13_AAA; ;;
+phase; RAD1_008_4_AAA; line(RAD1_AAA4_REF,RAD1_ORIENTATION,0,1,180); blocks_RAD1_008_4_AAA; ;;
+phase; RAD1_014_4_AAA; line(RAD1_AAA7_REF,RAD1_ORIENTATION,0,1,180); blocks_RAD1_014_4_AAA; ;;
+phase; RAD1_ORIENTATION; random(RAD1); blocks_RAD1_ORIENTATION; clone_location;;
+phase; RID1_011_7_AAA; line(RID1_AAA2_REF,RID1_ORIENTATION,0,1,180); blocks_RID1_011_7_AAA; ;;
+phase; RID1_015_4_AAA; line(RID1_AAA4_REF,RID1_ORIENTATION,0,1,180); blocks_RID1_015_4_AAA; ;;
+phase; RID1_016_9_AAA; line(RID1_AAA5_REF,RID1_ORIENTATION,0,1,180); blocks_RID1_016_9_AAA; ;;
+phase; RID1_AAA2_REF; random(RID1); blocks_RID1_AAA2_REF; clone_location;;
+phase; RID1_AAA4_REF; random(RID1); blocks_RID1_AAA4_REF; clone_location;;
+phase; RID1_009_REF; random(RID1); blocks_RID1_009_REF; clone_location;;
+phase; RID1_003_REF; random(RID1); blocks_RID1_003_REF; clone_location;;
+phase; RID1_014_REF; random(RID1); blocks_RID1_014_REF; clone_location;;
+phase; RID1_012_REF; random(RID1); blocks_RID1_012_REF; clone_location;;
+phase; RID1_AAA3_REF; random(RID1); blocks_RID1_AAA3_REF; clone_location;;
+phase; RID1_AAA1_REF; random(RID1); blocks_RID1_AAA1_REF; clone_location;;
+phase; RID1_010_REF; random(RID1); blocks_RID1_010_REF; clone_location;;
+phase; RID1_002_REF; random(RID1); blocks_RID1_002_REF; clone_location;;
+phase; RID1_001_REF; random(RID1); blocks_RID1_001_REF; clone_location;;
+phase; RID1_005_REF; random(RID1); blocks_RID1_005_REF; clone_location;;
+phase; RID1_006_REF; random(RID1); blocks_RID1_006_REF; clone_location;;
+phase; RID1_007_REF; random(RID1); blocks_RID1_007_REF; clone_location;;
+phase; RID1_008_REF; random(RID1); blocks_RID1_008_REF; clone_location;;
+phase; RID1_AAA5_REF; random(RID1); blocks_RID1_AAA5_REF; clone_location;;
+phase; RID1_ORIENTATION; random(RID1); blocks_RID1_ORIENTATION; clone_location;;
 
 #
 ## cases & switches
@@ -1039,6 +1175,206 @@ check; BID1_AAA5_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; BID1_AAA5_REF; location_type(Decoration,Dogfight);
 check; BID1_ORIENTATION; coalition(f);
 check; BID1_ORIENTATION; range(PRIMARY_LINK_PHASE,closest_outof,4000);
+check; RTD1_AAA1_REF; free();
+check; RTD1_AAA1_REF; location_type(Decoration,Dogfight);
+check; RTD1_AAA1_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RTD1_AAA2_REF; free();
+check; RTD1_AAA2_REF; location_type(Decoration,Dogfight);
+check; RTD1_AAA2_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RTD1_AAA3_REF; free();
+check; RTD1_AAA3_REF; location_type(Decoration,Dogfight);
+check; RTD1_AAA3_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RTD1_AAA4_REF; free();
+check; RTD1_AAA4_REF; location_type(Decoration,Dogfight);
+check; RTD1_AAA4_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RTD1_AAA5_REF; free();
+check; RTD1_AAA5_REF; location_type(Decoration,Dogfight);
+check; RTD1_AAA5_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RTD1_AAA6_REF; free();
+check; RTD1_AAA6_REF; location_type(Decoration,Dogfight);
+check; RTD1_AAA6_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RTD1_004_REF; free();
+check; RTD1_004_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RTD1_004_REF; location_type(Decoration,Dogfight);
+check; RTD1_004_REF_806; free();
+check; RTD1_004_REF_806; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RTD1_004_REF_806; location_type(Decoration,Dogfight);
+check; RTD1_005_REF; free();
+check; RTD1_005_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RTD1_005_REF; location_type(Decoration,Dogfight);
+check; RTD1_008_REF; free();
+check; RTD1_008_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RTD1_008_REF; location_type(Decoration,Dogfight);
+check; RTD1_009_REF; free();
+check; RTD1_009_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RTD1_009_REF; location_type(Decoration,Dogfight);
+check; RTD1_010_REF; free();
+check; RTD1_010_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RTD1_010_REF; location_type(Decoration,Dogfight);
+check; RTD1_011_REF; free();
+check; RTD1_011_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RTD1_011_REF; location_type(Decoration,Dogfight);
+check; RTD1_013_REF; free();
+check; RTD1_013_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RTD1_013_REF; location_type(Decoration,Dogfight);
+check; RTD1_014_REF; free();
+check; RTD1_014_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RTD1_014_REF; location_type(Decoration,Dogfight);
+check; RTD1_015_REF; free();
+check; RTD1_015_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RTD1_015_REF; location_type(Decoration,Dogfight);
+check; RTD1_ORIENTATION; coalition(e);
+check; RTD1_ORIENTATION; range(PRIMARY_LINK_PHASE,closest_outof,4000);
+check; RTD2_AAA2_REF; free();
+check; RTD2_AAA2_REF; location_type(Decoration,Dogfight);
+check; RTD2_AAA2_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RTD2_AAA3_REF; free();
+check; RTD2_AAA3_REF; location_type(Decoration,Dogfight);
+check; RTD2_AAA3_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RTD2_009_REF; free();
+check; RTD2_009_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RTD2_009_REF; location_type(Decoration,Dogfight);
+check; RTD2_010_REF; free();
+check; RTD2_010_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RTD2_010_REF; location_type(Decoration,Dogfight);
+check; RTD2_011_REF; free();
+check; RTD2_011_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RTD2_011_REF; location_type(Decoration,Dogfight);
+check; RTD2_013_REF; free();
+check; RTD2_013_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RTD2_013_REF; location_type(Decoration,Dogfight);
+check; RTD2_014_REF; free();
+check; RTD2_014_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RTD2_014_REF; location_type(Decoration,Dogfight);
+check; RTD2_015_REF; free();
+check; RTD2_015_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RTD2_015_REF; location_type(Decoration,Dogfight);
+check; RTD2_001_REF; free();
+check; RTD2_001_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RTD2_001_REF; location_type(Decoration,Dogfight);
+check; RTD2_002_REF; free();
+check; RTD2_002_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RTD2_002_REF; location_type(Decoration,Dogfight);
+check; RTD2_003_REF; free();
+check; RTD2_003_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RTD2_003_REF; location_type(Decoration,Dogfight);
+check; RTD2_004_REF; free();
+check; RTD2_004_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RTD2_004_REF; location_type(Decoration,Dogfight);
+check; RTD2_005_REF; free();
+check; RTD2_005_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RTD2_005_REF; location_type(Decoration,Dogfight);
+check; RTD2_006_REF; free();
+check; RTD2_006_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RTD2_006_REF; location_type(Decoration,Dogfight);
+check; RTD2_008_REF; free();
+check; RTD2_008_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RTD2_008_REF; location_type(Decoration,Dogfight);
+check; RTD2_AAA1_REF; free();
+check; RTD2_AAA1_REF; location_type(Decoration,Dogfight);
+check; RTD2_AAA1_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RTD2_ORIENTATION; coalition(e);
+check; RTD2_ORIENTATION; range(PRIMARY_LINK_PHASE,closest_outof,4000);
+check; RAD1_AAA5_REF; free();
+check; RAD1_AAA5_REF; location_type(Decoration,Dogfight);
+check; RAD1_AAA5_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RAD1_AAA7_REF; free();
+check; RAD1_AAA7_REF; location_type(Decoration,Dogfight);
+check; RAD1_AAA7_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RAD1_009_REF; free();
+check; RAD1_009_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RAD1_009_REF; location_type(Decoration,Dogfight);
+check; RAD1_004_REF; free();
+check; RAD1_004_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RAD1_004_REF; location_type(Decoration,Dogfight);
+check; RAD1_011_REF; free();
+check; RAD1_011_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RAD1_011_REF; location_type(Decoration,Dogfight);
+check; RAD1_013_REF; free();
+check; RAD1_013_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RAD1_013_REF; location_type(Decoration,Dogfight);
+check; RAD1_016_REF; free();
+check; RAD1_016_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RAD1_016_REF; location_type(Decoration,Dogfight);
+check; RAD1_015_REF; free();
+check; RAD1_015_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RAD1_015_REF; location_type(Decoration,Dogfight);
+check; RAD1_AAA1_REF; free();
+check; RAD1_AAA1_REF; location_type(Decoration,Dogfight);
+check; RAD1_AAA1_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RAD1_AAA2_REF; free();
+check; RAD1_AAA2_REF; location_type(Decoration,Dogfight);
+check; RAD1_AAA2_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RAD1_AAA3_REF; free();
+check; RAD1_AAA3_REF; location_type(Decoration,Dogfight);
+check; RAD1_AAA3_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RAD1_AAA6_REF; free();
+check; RAD1_AAA6_REF; location_type(Decoration,Dogfight);
+check; RAD1_AAA6_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RAD1_AAA4_REF; free();
+check; RAD1_AAA4_REF; location_type(Decoration,Dogfight);
+check; RAD1_AAA4_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RAD1_005_REF; free();
+check; RAD1_005_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RAD1_005_REF; location_type(Decoration,Dogfight);
+check; RAD1_006_REF; free();
+check; RAD1_006_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RAD1_006_REF; location_type(Decoration,Dogfight);
+check; RAD1_007_REF; free();
+check; RAD1_007_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RAD1_007_REF; location_type(Decoration,Dogfight);
+check; RAD1_ORIENTATION; coalition(e);
+check; RAD1_ORIENTATION; range(PRIMARY_LINK_PHASE,closest_outof,4000);
+check; RID1_AAA2_REF; free();
+check; RID1_AAA2_REF; location_type(Decoration,Dogfight);
+check; RID1_AAA2_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RID1_AAA4_REF; free();
+check; RID1_AAA4_REF; location_type(Decoration,Dogfight);
+check; RID1_AAA4_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RID1_009_REF; free();
+check; RID1_009_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RID1_009_REF; location_type(Decoration,Dogfight);
+check; RID1_003_REF; free();
+check; RID1_003_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RID1_003_REF; location_type(Decoration,Dogfight);
+check; RID1_014_REF; free();
+check; RID1_014_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RID1_014_REF; location_type(Decoration,Dogfight);
+check; RID1_012_REF; free();
+check; RID1_012_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RID1_012_REF; location_type(Decoration,Dogfight);
+check; RID1_AAA3_REF; free();
+check; RID1_AAA3_REF; location_type(Decoration,Dogfight);
+check; RID1_AAA3_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RID1_AAA1_REF; free();
+check; RID1_AAA1_REF; location_type(Decoration,Dogfight);
+check; RID1_AAA1_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RID1_010_REF; free();
+check; RID1_010_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RID1_010_REF; location_type(Decoration,Dogfight);
+check; RID1_002_REF; free();
+check; RID1_002_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RID1_002_REF; location_type(Decoration,Dogfight);
+check; RID1_001_REF; free();
+check; RID1_001_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RID1_001_REF; location_type(Decoration,Dogfight);
+check; RID1_005_REF; free();
+check; RID1_005_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RID1_005_REF; location_type(Decoration,Dogfight);
+check; RID1_006_REF; free();
+check; RID1_006_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RID1_006_REF; location_type(Decoration,Dogfight);
+check; RID1_007_REF; free();
+check; RID1_007_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RID1_007_REF; location_type(Decoration,Dogfight);
+check; RID1_008_REF; free();
+check; RID1_008_REF; in_radius(PRIMARY_LINK_PHASE,3500);
+check; RID1_008_REF; location_type(Decoration,Dogfight);
+check; RID1_AAA5_REF; free();
+check; RID1_AAA5_REF; location_type(Decoration,Dogfight);
+check; RID1_AAA5_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RID1_ORIENTATION; coalition(e);
+check; RID1_ORIENTATION; range(PRIMARY_LINK_PHASE,closest_outof,4000);
 
 #
 ## property actions
@@ -1094,6 +1430,15 @@ action; BTD2_002_14_AAA(AAA_2037mm,AILevel); <empty>();
 action; BTD2_002_14_AAA(AAA_8885mm,AILevel); <empty>();
 action; BTD2_003_6_AAA(AAA_2037mm,AILevel); <empty>();
 action; BTD2_003_6_AAA(AAA_8885mm,AILevel); <empty>();
+action; RTD1_003_12_AAA(AAA_mg,AILevel); <empty>();
+action; RTD2_016_4_AAA(AAA_2037mm,AILevel); <empty>();
+action; RAD1_003_13_AAA(AAA_2037mm,AILevel); <empty>();
+action; RAD1_008_4_AAA(AAA_8885mm,AILevel); <empty>();
+action; RAD1_008_4_AAA(AAA_mg,AILevel); <empty>();
+action; RAD1_014_4_AAA(AAA_2037mm,AILevel); <empty>();
+action; RID1_011_7_AAA(AAA_2037mm,AILevel); <empty>();
+action; RID1_015_4_AAA(AAA_mg,AILevel); <empty>();
+action; RID1_016_9_AAA(AAA_2037mm,AILevel); <empty>();
 
 #
 ## unlinks
@@ -1173,10 +1518,10 @@ gui_helper; BAD1; -7633; 4933;
 gui_helper; BID1; -5788; 7859;
 gui_helper; RTD1; 6171; 3625;
 gui_helper; RTD2; 9112; 1779;
-gui_helper; RAD1; 8755; 4184;
-gui_helper; RID1; 7621; 5739;
-gui_helper; RAD1_ICON; 8753; 4362;
-gui_helper; RID1_ICON; 7618; 5912;
+gui_helper; RAD1; 9176; 4515;
+gui_helper; RID1; 7790; 7486;
+gui_helper; RAD1_ICON; 9174; 4693;
+gui_helper; RID1_ICON; 7787; 7659;
 gui_helper; RTD1_ICON; 6174; 3790;
 gui_helper; RTD2_ICON; 9110; 1992;
 gui_helper; BID1_ICON; -5794; 8051;
@@ -1186,77 +1531,69 @@ gui_helper; BAD1_ICON; -7630; 5130;
 gui_helper; RED_DIVISIONS_REF; 7731; 3329;
 gui_helper; BLUE_DIVISIONS_REF; -6045; 3140;
 gui_helper; RTD1_REF; 6155; 3296;
-gui_helper; RAD1_REF; 8737; 3831;
-gui_helper; RID1_REF; 7608; 5406;
+gui_helper; RAD1_REF; 9158; 4162;
+gui_helper; RID1_REF; 7777; 7153;
 gui_helper; RTD2_REF; 9100; 1398;
 gui_helper; BTD1_REF; -4842; 3168;
 gui_helper; BTD2_REF; -7276; 1173;
 gui_helper; BAD1_REF; -7890; 4596;
 gui_helper; BID1_REF; -6009; 7556;
-gui_helper; RTD1_001_16_AAA; 2698; 4359;
-gui_helper; RTD1_002_5_AAA; 3173; 4353;
-gui_helper; RTD1_003_12_AAA; 3661; 4350;
-gui_helper; RTD1_004_10; 4148; 4359;
-gui_helper; RTD1_005_6; 4673; 4359;
-gui_helper; RTD1_006_7; 5077; 4344;
-gui_helper; RTD1_007_8_AAA; 5627; 4350;
-gui_helper; RTD1_008_3; 6110; 4334;
-gui_helper; RTD1_009_7; 2694; 4693;
-gui_helper; RTD1_010_6; 3170; 4707;
-gui_helper; RTD1_011_16; 3668; 4717;
-gui_helper; RTD1_012_12_AAA; 4159; 4721;
-gui_helper; RTD1_013_10; 4676; 4712;
-gui_helper; RTD1_014_6; 5076; 4706;
-gui_helper; RTD1_015_4; 5605; 4698;
-gui_helper; RTD1_016_7_AAA; 6124; 4702;
-gui_helper; RTD2_001_4; 9105; 2417;
-gui_helper; RTD2_002_4; 9562; 2426;
-gui_helper; RTD2_003_4; 10045; 2422;
-gui_helper; RTD2_004_4; 10556; 2422;
-gui_helper; RTD2_005_6; 11075; 2410;
-gui_helper; RTD2_006_10; 11598; 2413;
-gui_helper; RTD2_007_8_AAA; 12188; 2414;
-gui_helper; RTD2_008_4; 12797; 2416;
-gui_helper; RTD2_009_9; 9115; 2787;
-gui_helper; RTD2_010_8; 9562; 2781;
-gui_helper; RTD2_011_8; 10038; 2775;
-gui_helper; RTD2_012_4_AAA; 10536; 2776;
-gui_helper; RTD2_013_10; 11064; 2768;
-gui_helper; RTD2_014_4; 11595; 2762;
-gui_helper; RTD2_015_4; 12185; 2763;
-gui_helper; RTD2_016_4_AAA; 12796; 2755;
-gui_helper; RAD1_001_6_AAA; 8799; 4816;
-gui_helper; RAD1_002_7_AAA; 9316; 4819;
-gui_helper; RAD1_003_13_AAA; 9908; 4816;
-gui_helper; RAD1_004_4; 10474; 4804;
-gui_helper; RAD1_005_8; 10979; 4808;
-gui_helper; RAD1_006_10; 11463; 4796;
-gui_helper; RAD1_007_7; 11983; 4793;
-gui_helper; RAD1_008_4_AAA; 12528; 4793;
-gui_helper; RAD1_009_9; 8796; 5157;
-gui_helper; RAD1_010_8_AAA; 9307; 5157;
-gui_helper; RAD1_011_7; 9887; 5150;
-gui_helper; RAD1_012_4_AAA; 10458; 5153;
-gui_helper; RAD1_013_9; 10966; 5149;
-gui_helper; RAD1_014_4_AAA; 11454; 5135;
-gui_helper; RAD1_015_4; 11983; 5124;
-gui_helper; RAD1_016_5; 12523; 5130;
-gui_helper; RID1_001_7; 7683; 6374;
-gui_helper; RID1_002_7; 8141; 6374;
-gui_helper; RID1_003_7; 8624; 6380;
-gui_helper; RID1_004_4_AAA; 9078; 6379;
-gui_helper; RID1_005_7; 9517; 6377;
-gui_helper; RID1_006_4; 9975; 6375;
-gui_helper; RID1_007_9; 10416; 6370;
-gui_helper; RID1_008_4; 10864; 6381;
-gui_helper; RID1_009_3; 7681; 6710;
-gui_helper; RID1_010_6; 8148; 6710;
-gui_helper; RID1_011_7_AAA; 8626; 6709;
-gui_helper; RID1_012_13; 9065; 6708;
-gui_helper; RID1_014_10; 9965; 6720;
-gui_helper; RID1_013_10_AAA; 9531; 6719;
-gui_helper; RID1_015_4_AAA; 10423; 6718;
-gui_helper; RID1_016_9_AAA; 10880; 6704;
+gui_helper; RTD1_001_16_AAA; 2830; 4549;
+gui_helper; RTD1_002_5_AAA; 3305; 4549;
+gui_helper; RTD1_004_10; 4280; 4549;
+gui_helper; RTD1_005_6; 4760; 4556;
+gui_helper; RTD1_006_7; 5209; 4556;
+gui_helper; RTD1_007_8_AAA; 5743; 4552;
+gui_helper; RTD1_008_3; 6194; 4549;
+gui_helper; RTD1_009_7; 2823; 5185;
+gui_helper; RTD1_010_6; 3299; 5180;
+gui_helper; RTD1_011_16; 3810; 5181;
+gui_helper; RTD1_012_12_AAA; 4294; 5181;
+gui_helper; RTD1_013_10; 4759; 5191;
+gui_helper; RTD1_014_6; 5211; 5179;
+gui_helper; RTD1_015_4; 5733; 5180;
+gui_helper; RTD1_016_7_AAA; 6201; 5190;
+gui_helper; RTD2_001_4; 9135; 2675;
+gui_helper; RTD2_002_4; 9592; 2684;
+gui_helper; RTD2_003_4; 10075; 2680;
+gui_helper; RTD2_004_4; 10586; 2680;
+gui_helper; RTD2_005_6; 11105; 2668;
+gui_helper; RTD2_006_10; 11536; 2656;
+gui_helper; RTD2_007_8_AAA; 12073; 2638;
+gui_helper; RTD2_008_4; 12538; 2632;
+gui_helper; RTD2_009_9; 9134; 3297;
+gui_helper; RTD2_010_8; 9592; 3302;
+gui_helper; RTD2_011_8; 10071; 3309;
+gui_helper; RTD2_012_4_AAA; 10561; 3305;
+gui_helper; RTD2_013_10; 11044; 3301;
+gui_helper; RTD2_014_4; 11556; 3302;
+gui_helper; RTD2_015_4; 12043; 3296;
+gui_helper; RAD1_001_6_AAA; 9172; 5389;
+gui_helper; RAD1_002_7_AAA; 9689; 5393;
+gui_helper; RAD1_004_4; 10847; 5377;
+gui_helper; RAD1_005_8; 11352; 5381;
+gui_helper; RAD1_006_10; 11836; 5369;
+gui_helper; RAD1_007_7; 12356; 5363;
+gui_helper; RAD1_009_9; 9190; 6077;
+gui_helper; RAD1_010_8_AAA; 9694; 6083;
+gui_helper; RAD1_011_7; 10271; 6079;
+gui_helper; RAD1_012_4_AAA; 10854; 6084;
+gui_helper; RAD1_013_9; 11365; 6090;
+gui_helper; RAD1_015_4; 12357; 6086;
+gui_helper; RAD1_016_5; 12899; 6093;
+gui_helper; RID1_001_7; 7804; 8331;
+gui_helper; RID1_002_7; 8262; 8331;
+gui_helper; RID1_003_7; 8745; 8337;
+gui_helper; RID1_004_4_AAA; 9199; 8336;
+gui_helper; RID1_005_7; 9638; 8334;
+gui_helper; RID1_006_4; 10096; 8332;
+gui_helper; RID1_007_9; 10537; 8327;
+gui_helper; RID1_008_4; 10985; 8338;
+gui_helper; RID1_009_3; 7816; 8977;
+gui_helper; RID1_010_6; 8283; 8977;
+gui_helper; RID1_012_13; 9200; 8975;
+gui_helper; RID1_014_10; 10100; 8987;
+gui_helper; RID1_013_10_AAA; 9666; 8986;
 gui_helper; BID1_001_12_AAA; -9046; 8754;
 gui_helper; BID1_002_10; -8581; 8756;
 gui_helper; BID1_003_10; -8117; 8756;
@@ -1389,6 +1726,82 @@ gui_helper; BID1_008_REF; -5801; 8440;
 gui_helper; BID1_AAA4_REF; -8114; 9125;
 gui_helper; BID1_AAA5_REF; -7657; 9132;
 gui_helper; BID1_ORIENTATION; -7612; 7859;
+gui_helper; RTD1_AAA1_REF; 2827; 4201;
+gui_helper; RTD1_AAA2_REF; 3300; 4199;
+gui_helper; RTD1_AAA3_REF; 3801; 4203;
+gui_helper; RTD1_AAA4_REF; 5734; 4199;
+gui_helper; RTD1_AAA5_REF; 4287; 4865;
+gui_helper; RTD1_004_REF; 4269; 4207;
+gui_helper; RTD1_003_12_AAA; 3810; 4556;
+gui_helper; RTD1_AAA6_REF; 6196; 4876;
+gui_helper; RTD1_004_REF_806; 4751; 4210;
+gui_helper; RTD1_005_REF; 5218; 4207;
+gui_helper; RTD1_008_REF; 6184; 4202;
+gui_helper; RTD1_009_REF; 2840; 4863;
+gui_helper; RTD1_010_REF; 3308; 4868;
+gui_helper; RTD1_011_REF; 3798; 4871;
+gui_helper; RTD1_013_REF; 4750; 4879;
+gui_helper; RTD1_014_REF; 5207; 4874;
+gui_helper; RTD1_015_REF; 5733; 4872;
+gui_helper; RTD1_ORIENTATION; 4373; 3632;
+gui_helper; RTD2_AAA2_REF; 10585; 2984;
+gui_helper; RTD2_AAA3_REF; 12531; 2998;
+gui_helper; RTD2_009_REF; 9138; 2983;
+gui_helper; RTD2_010_REF; 9606; 2987;
+gui_helper; RTD2_011_REF; 10096; 2990;
+gui_helper; RTD2_013_REF; 11075; 2990;
+gui_helper; RTD2_014_REF; 11531; 2985;
+gui_helper; RTD2_015_REF; 12057; 2983;
+gui_helper; RTD2_001_REF; 9135; 2370;
+gui_helper; RTD2_002_REF; 9603; 2374;
+gui_helper; RTD2_003_REF; 10078; 2371;
+gui_helper; RTD2_004_REF; 10584; 2374;
+gui_helper; RTD2_005_REF; 11097; 2370;
+gui_helper; RTD2_006_REF; 11522; 2378;
+gui_helper; RTD2_008_REF; 12537; 2358;
+gui_helper; RTD2_AAA1_REF; 12064; 2355;
+gui_helper; RTD2_016_4_AAA; 12524; 3289;
+gui_helper; RTD2_ORIENTATION; 10923; 1836;
+gui_helper; RAD1_AAA5_REF; 9697; 5784;
+gui_helper; RAD1_AAA7_REF; 11868; 5785;
+gui_helper; RAD1_009_REF; 9182; 5778;
+gui_helper; RAD1_004_REF; 10852; 5076;
+gui_helper; RAD1_011_REF; 10276; 5768;
+gui_helper; RAD1_013_REF; 11381; 5786;
+gui_helper; RAD1_016_REF; 12888; 5781;
+gui_helper; RAD1_015_REF; 12363; 5779;
+gui_helper; RAD1_AAA1_REF; 9167; 5081;
+gui_helper; RAD1_AAA2_REF; 9688; 5073;
+gui_helper; RAD1_AAA3_REF; 10273; 5077;
+gui_helper; RAD1_AAA6_REF; 10854; 5769;
+gui_helper; RAD1_AAA4_REF; 12887; 5080;
+gui_helper; RAD1_005_REF; 11350; 5076;
+gui_helper; RAD1_006_REF; 11842; 5074;
+gui_helper; RAD1_007_REF; 12340; 5074;
+gui_helper; RAD1_003_13_AAA; 10294; 5395;
+gui_helper; RAD1_008_4_AAA; 12890; 5366;
+gui_helper; RAD1_014_4_AAA; 11871; 6092;
+gui_helper; RAD1_ORIENTATION; 11048; 4613;
+gui_helper; RID1_011_7_AAA; 8762; 8972;
+gui_helper; RID1_015_4_AAA; 10563; 8991;
+gui_helper; RID1_016_9_AAA; 10999; 8993;
+gui_helper; RID1_AAA2_REF; 8748; 8664;
+gui_helper; RID1_AAA4_REF; 10548; 8668;
+gui_helper; RID1_009_REF; 7791; 8661;
+gui_helper; RID1_003_REF; 8756; 8050;
+gui_helper; RID1_014_REF; 10098; 8678;
+gui_helper; RID1_012_REF; 9206; 8656;
+gui_helper; RID1_AAA3_REF; 9662; 8668;
+gui_helper; RID1_AAA1_REF; 9188; 8032;
+gui_helper; RID1_010_REF; 8271; 8653;
+gui_helper; RID1_002_REF; 8265; 8052;
+gui_helper; RID1_001_REF; 7771; 8055;
+gui_helper; RID1_005_REF; 9614; 8047;
+gui_helper; RID1_006_REF; 10080; 8053;
+gui_helper; RID1_007_REF; 10525; 8041;
+gui_helper; RID1_008_REF; 10975; 8050;
+gui_helper; RID1_AAA5_REF; 10997; 8659;
+gui_helper; RID1_ORIENTATION; 9450; 7511;
 gui_helper; check; -2388; 274;BLUE_FRONT_AF_1(free)
 gui_helper; check; -2387; 239;BLUE_FRONT_AF_1(coalition)
 gui_helper; check; -2389; 312;BLUE_FRONT_AF_1(range)
@@ -1592,30 +2005,30 @@ gui_helper; check; -7205; 1492;BTD2(free)
 gui_helper; check; -5753; 7690;BID1(location_type)
 gui_helper; check; -5750; 7731;BID1(free)
 gui_helper; check; -5750; 7772;BID1(coalition)
-gui_helper; check; 7638; 5623;RID1(free)
+gui_helper; check; 7807; 7370;RID1(free)
 gui_helper; check; 6194; 3520;RTD1(free)
-gui_helper; check; 8790; 4081;RAD1(free)
+gui_helper; check; 9211; 4412;RAD1(free)
 gui_helper; check; 9187; 1654;RTD2(free)
-gui_helper; check; 7643; 5665;RID1(coalition)
+gui_helper; check; 7812; 7412;RID1(coalition)
 gui_helper; check; 6191; 3555;RTD1(coalition)
-gui_helper; check; 8786; 4119;RAD1(coalition)
+gui_helper; check; 9207; 4450;RAD1(coalition)
 gui_helper; check; 9187; 1696;RTD2(coalition)
-gui_helper; check; 7635; 5584;RID1(location_type)
+gui_helper; check; 7804; 7331;RID1(location_type)
 gui_helper; check; 6195; 3486;RTD1(location_type)
-gui_helper; check; 8789; 4044;RAD1(location_type)
+gui_helper; check; 9210; 4375;RAD1(location_type)
 gui_helper; check; 9188; 1614;RTD2(location_type)
 gui_helper; check; 9189; 1742;RTD2(range)
 gui_helper; check; 6255; 3221;RTD1_REF(location_type)
 gui_helper; check; 6262; 3264;RTD1_REF(coalition)
 gui_helper; check; 9200; 1323;RTD2_REF(location_type)
 gui_helper; check; 9202; 1362;RTD2_REF(coalition)
-gui_helper; check; 7674; 5376;RID1_REF(coalition)
-gui_helper; check; 8809; 3783;RAD1_REF(coalition)
-gui_helper; check; 7668; 5329;RID1_REF(location_type)
-gui_helper; check; 8807; 3739;RAD1_REF(location_type)
+gui_helper; check; 7843; 7123;RID1_REF(coalition)
+gui_helper; check; 9230; 4114;RAD1_REF(coalition)
+gui_helper; check; 7837; 7076;RID1_REF(location_type)
+gui_helper; check; 9228; 4070;RAD1_REF(location_type)
 gui_helper; check; 6195; 3596;RTD1(range)
-gui_helper; check; 7644; 5707;RID1(range)
-gui_helper; check; 8789; 4149;RAD1(range)
+gui_helper; check; 7813; 7454;RID1(range)
+gui_helper; check; 9210; 4480;RAD1(range)
 gui_helper; check; -4742; 3093;BTD1_REF(location_type)
 gui_helper; check; -4735; 3136;BTD1_REF(coalition)
 gui_helper; check; -7176; 1098;BTD2_REF(location_type)
@@ -1827,22 +2240,222 @@ gui_helper; check; -7636; 9017;BID1_AAA5_REF(range)
 gui_helper; check; -7635; 9064;BID1_AAA5_REF(location_type)
 gui_helper; check; -7579; 7739;BID1_ORIENTATION(coalition)
 gui_helper; check; -7578; 7795;BID1_ORIENTATION(range)
-gui_helper; AILevel; 2757; 4273;RTD1_001_16_AAA; (AAA_2037mm);
-gui_helper; AILevel; 2757; 4313;RTD1_001_16_AAA; (AAA_8885mm);
-gui_helper; AILevel; 3242; 4299;RTD1_002_5_AAA; (AAA_mg);
-gui_helper; AILevel; 5700; 4294;RTD1_007_8_AAA; (AAA_2037mm);
-gui_helper; AILevel; 4220; 4663;RTD1_012_12_AAA; (AAA_2037mm);
-gui_helper; AILevel; 6197; 4624;RTD1_016_7_AAA; (AAA_2037mm);
-gui_helper; AILevel; 12255; 2349;RTD2_007_8_AAA; (AAA_2037mm);
-gui_helper; AILevel; 10619; 2724;RTD2_012_4_AAA; (AAA_mg);
-gui_helper; AILevel; 8863; 4747;RAD1_001_6_AAA; (AAA_2037mm);
-gui_helper; AILevel; 9378; 4755;RAD1_002_7_AAA; (AAA_2037mm);
-gui_helper; AILevel; 9394; 5059;RAD1_010_8_AAA; (AAA_8885mm);
-gui_helper; AILevel; 9394; 5099;RAD1_010_8_AAA; (AAA_mg);
-gui_helper; AILevel; 10549; 5069;RAD1_012_4_AAA; (AAA_mg);
-gui_helper; AILevel; 9148; 6313;RID1_004_4_AAA; (AAA_mg);
-gui_helper; AILevel; 9610; 6614;RID1_013_10_AAA; (AAA_2037mm);
-gui_helper; AILevel; 9610; 6654;RID1_013_10_AAA; (AAA_8885mm);
+gui_helper; check; 2862; 4168;RTD1_AAA1_REF(free)
+gui_helper; check; 2858; 4123;RTD1_AAA1_REF(location_type)
+gui_helper; check; 2854; 4078;RTD1_AAA1_REF(range)
+gui_helper; check; 3335; 4166;RTD1_AAA2_REF(free)
+gui_helper; check; 3331; 4121;RTD1_AAA2_REF(location_type)
+gui_helper; check; 3327; 4076;RTD1_AAA2_REF(range)
+gui_helper; check; 3836; 4170;RTD1_AAA3_REF(free)
+gui_helper; check; 3832; 4125;RTD1_AAA3_REF(location_type)
+gui_helper; check; 3828; 4080;RTD1_AAA3_REF(range)
+gui_helper; check; 5769; 4166;RTD1_AAA4_REF(free)
+gui_helper; check; 5765; 4121;RTD1_AAA4_REF(location_type)
+gui_helper; check; 5761; 4076;RTD1_AAA4_REF(range)
+gui_helper; check; 4322; 4832;RTD1_AAA5_REF(free)
+gui_helper; check; 4318; 4787;RTD1_AAA5_REF(location_type)
+gui_helper; check; 4314; 4742;RTD1_AAA5_REF(range)
+gui_helper; check; 6231; 4843;RTD1_AAA6_REF(free)
+gui_helper; check; 6227; 4798;RTD1_AAA6_REF(location_type)
+gui_helper; check; 6223; 4753;RTD1_AAA6_REF(range)
+gui_helper; check; 4288; 4134;RTD1_004_REF(free)
+gui_helper; check; 4290; 4172;RTD1_004_REF(in_radius)
+gui_helper; check; 4371; 4127;RTD1_004_REF(location_type)
+gui_helper; check; 4770; 4137;RTD1_004_REF_806(free)
+gui_helper; check; 4772; 4175;RTD1_004_REF_806(in_radius)
+gui_helper; check; 4853; 4130;RTD1_004_REF_806(location_type)
+gui_helper; check; 5237; 4134;RTD1_005_REF(free)
+gui_helper; check; 5239; 4172;RTD1_005_REF(in_radius)
+gui_helper; check; 5320; 4127;RTD1_005_REF(location_type)
+gui_helper; check; 6203; 4129;RTD1_008_REF(free)
+gui_helper; check; 6205; 4167;RTD1_008_REF(in_radius)
+gui_helper; check; 6286; 4122;RTD1_008_REF(location_type)
+gui_helper; check; 2859; 4790;RTD1_009_REF(free)
+gui_helper; check; 2861; 4828;RTD1_009_REF(in_radius)
+gui_helper; check; 2942; 4783;RTD1_009_REF(location_type)
+gui_helper; check; 3324; 4795;RTD1_010_REF(free)
+gui_helper; check; 3326; 4833;RTD1_010_REF(in_radius)
+gui_helper; check; 3407; 4788;RTD1_010_REF(location_type)
+gui_helper; check; 3817; 4798;RTD1_011_REF(free)
+gui_helper; check; 3819; 4836;RTD1_011_REF(in_radius)
+gui_helper; check; 3900; 4791;RTD1_011_REF(location_type)
+gui_helper; check; 4769; 4806;RTD1_013_REF(free)
+gui_helper; check; 4771; 4844;RTD1_013_REF(in_radius)
+gui_helper; check; 4852; 4799;RTD1_013_REF(location_type)
+gui_helper; check; 5226; 4801;RTD1_014_REF(free)
+gui_helper; check; 5228; 4839;RTD1_014_REF(in_radius)
+gui_helper; check; 5309; 4794;RTD1_014_REF(location_type)
+gui_helper; check; 5752; 4799;RTD1_015_REF(free)
+gui_helper; check; 5754; 4837;RTD1_015_REF(in_radius)
+gui_helper; check; 5835; 4792;RTD1_015_REF(location_type)
+gui_helper; check; 4404; 3590;RTD1_ORIENTATION(coalition)
+gui_helper; check; 4408; 3549;RTD1_ORIENTATION(range)
+gui_helper; check; 10620; 2951;RTD2_AAA2_REF(free)
+gui_helper; check; 10616; 2906;RTD2_AAA2_REF(location_type)
+gui_helper; check; 10612; 2861;RTD2_AAA2_REF(range)
+gui_helper; check; 12555; 2954;RTD2_AAA3_REF(free)
+gui_helper; check; 12551; 2909;RTD2_AAA3_REF(location_type)
+gui_helper; check; 12547; 2864;RTD2_AAA3_REF(range)
+gui_helper; check; 9157; 2909;RTD2_009_REF(free)
+gui_helper; check; 9159; 2947;RTD2_009_REF(in_radius)
+gui_helper; check; 9240; 2902;RTD2_009_REF(location_type)
+gui_helper; check; 9622; 2914;RTD2_010_REF(free)
+gui_helper; check; 9624; 2952;RTD2_010_REF(in_radius)
+gui_helper; check; 9705; 2907;RTD2_010_REF(location_type)
+gui_helper; check; 10115; 2917;RTD2_011_REF(free)
+gui_helper; check; 10117; 2955;RTD2_011_REF(in_radius)
+gui_helper; check; 10198; 2910;RTD2_011_REF(location_type)
+gui_helper; check; 11093; 2917;RTD2_013_REF(free)
+gui_helper; check; 11095; 2955;RTD2_013_REF(in_radius)
+gui_helper; check; 11176; 2910;RTD2_013_REF(location_type)
+gui_helper; check; 11550; 2912;RTD2_014_REF(free)
+gui_helper; check; 11552; 2950;RTD2_014_REF(in_radius)
+gui_helper; check; 11633; 2905;RTD2_014_REF(location_type)
+gui_helper; check; 12076; 2910;RTD2_015_REF(free)
+gui_helper; check; 12078; 2948;RTD2_015_REF(in_radius)
+gui_helper; check; 12159; 2903;RTD2_015_REF(location_type)
+gui_helper; check; 9154; 2296;RTD2_001_REF(free)
+gui_helper; check; 9156; 2334;RTD2_001_REF(in_radius)
+gui_helper; check; 9237; 2289;RTD2_001_REF(location_type)
+gui_helper; check; 9619; 2301;RTD2_002_REF(free)
+gui_helper; check; 9621; 2339;RTD2_002_REF(in_radius)
+gui_helper; check; 9702; 2294;RTD2_002_REF(location_type)
+gui_helper; check; 10097; 2297;RTD2_003_REF(free)
+gui_helper; check; 10099; 2335;RTD2_003_REF(in_radius)
+gui_helper; check; 10180; 2290;RTD2_003_REF(location_type)
+gui_helper; check; 10603; 2300;RTD2_004_REF(free)
+gui_helper; check; 10605; 2338;RTD2_004_REF(in_radius)
+gui_helper; check; 10686; 2293;RTD2_004_REF(location_type)
+gui_helper; check; 11116; 2296;RTD2_005_REF(free)
+gui_helper; check; 11118; 2334;RTD2_005_REF(in_radius)
+gui_helper; check; 11199; 2289;RTD2_005_REF(location_type)
+gui_helper; check; 11541; 2304;RTD2_006_REF(free)
+gui_helper; check; 11543; 2342;RTD2_006_REF(in_radius)
+gui_helper; check; 11624; 2297;RTD2_006_REF(location_type)
+gui_helper; check; 12556; 2284;RTD2_008_REF(free)
+gui_helper; check; 12558; 2322;RTD2_008_REF(in_radius)
+gui_helper; check; 12639; 2277;RTD2_008_REF(location_type)
+gui_helper; check; 12088; 2311;RTD2_AAA1_REF(free)
+gui_helper; check; 12084; 2266;RTD2_AAA1_REF(location_type)
+gui_helper; check; 12080; 2221;RTD2_AAA1_REF(range)
+gui_helper; check; 10951; 1801;RTD2_ORIENTATION(coalition)
+gui_helper; check; 10955; 1760;RTD2_ORIENTATION(range)
+gui_helper; check; 9732; 5751;RAD1_AAA5_REF(free)
+gui_helper; check; 9728; 5706;RAD1_AAA5_REF(location_type)
+gui_helper; check; 9722; 5657;RAD1_AAA5_REF(range)
+gui_helper; check; 11892; 5741;RAD1_AAA7_REF(free)
+gui_helper; check; 11888; 5696;RAD1_AAA7_REF(location_type)
+gui_helper; check; 11884; 5651;RAD1_AAA7_REF(range)
+gui_helper; check; 9201; 5704;RAD1_009_REF(free)
+gui_helper; check; 9203; 5742;RAD1_009_REF(in_radius)
+gui_helper; check; 9284; 5697;RAD1_009_REF(location_type)
+gui_helper; check; 10868; 5003;RAD1_004_REF(free)
+gui_helper; check; 10870; 5041;RAD1_004_REF(in_radius)
+gui_helper; check; 10951; 4996;RAD1_004_REF(location_type)
+gui_helper; check; 10295; 5695;RAD1_011_REF(free)
+gui_helper; check; 10297; 5733;RAD1_011_REF(in_radius)
+gui_helper; check; 10378; 5688;RAD1_011_REF(location_type)
+gui_helper; check; 11399; 5713;RAD1_013_REF(free)
+gui_helper; check; 11401; 5751;RAD1_013_REF(in_radius)
+gui_helper; check; 11482; 5706;RAD1_013_REF(location_type)
+gui_helper; check; 12907; 5708;RAD1_016_REF(free)
+gui_helper; check; 12909; 5746;RAD1_016_REF(in_radius)
+gui_helper; check; 12990; 5701;RAD1_016_REF(location_type)
+gui_helper; check; 12382; 5706;RAD1_015_REF(free)
+gui_helper; check; 12384; 5744;RAD1_015_REF(in_radius)
+gui_helper; check; 12465; 5699;RAD1_015_REF(location_type)
+gui_helper; check; 9202; 5048;RAD1_AAA1_REF(free)
+gui_helper; check; 9198; 5003;RAD1_AAA1_REF(location_type)
+gui_helper; check; 9192; 4954;RAD1_AAA1_REF(range)
+gui_helper; check; 9723; 5040;RAD1_AAA2_REF(free)
+gui_helper; check; 9719; 4995;RAD1_AAA2_REF(location_type)
+gui_helper; check; 9713; 4946;RAD1_AAA2_REF(range)
+gui_helper; check; 10308; 5044;RAD1_AAA3_REF(free)
+gui_helper; check; 10304; 4999;RAD1_AAA3_REF(location_type)
+gui_helper; check; 10298; 4950;RAD1_AAA3_REF(range)
+gui_helper; check; 10889; 5736;RAD1_AAA6_REF(free)
+gui_helper; check; 10885; 5691;RAD1_AAA6_REF(location_type)
+gui_helper; check; 10879; 5642;RAD1_AAA6_REF(range)
+gui_helper; check; 12922; 5047;RAD1_AAA4_REF(free)
+gui_helper; check; 12918; 5002;RAD1_AAA4_REF(location_type)
+gui_helper; check; 12912; 4953;RAD1_AAA4_REF(range)
+gui_helper; check; 11368; 5003;RAD1_005_REF(free)
+gui_helper; check; 11370; 5041;RAD1_005_REF(in_radius)
+gui_helper; check; 11451; 4996;RAD1_005_REF(location_type)
+gui_helper; check; 11858; 5001;RAD1_006_REF(free)
+gui_helper; check; 11860; 5039;RAD1_006_REF(in_radius)
+gui_helper; check; 11941; 4994;RAD1_006_REF(location_type)
+gui_helper; check; 12358; 5001;RAD1_007_REF(free)
+gui_helper; check; 12360; 5039;RAD1_007_REF(in_radius)
+gui_helper; check; 12441; 4994;RAD1_007_REF(location_type)
+gui_helper; check; 11076; 4578;RAD1_ORIENTATION(coalition)
+gui_helper; check; 11080; 4537;RAD1_ORIENTATION(range)
+gui_helper; check; 8783; 8631;RID1_AAA2_REF(free)
+gui_helper; check; 8779; 8586;RID1_AAA2_REF(location_type)
+gui_helper; check; 8773; 8537;RID1_AAA2_REF(range)
+gui_helper; check; 10572; 8624;RID1_AAA4_REF(free)
+gui_helper; check; 10568; 8579;RID1_AAA4_REF(location_type)
+gui_helper; check; 10564; 8534;RID1_AAA4_REF(range)
+gui_helper; check; 7810; 8587;RID1_009_REF(free)
+gui_helper; check; 7812; 8625;RID1_009_REF(in_radius)
+gui_helper; check; 7893; 8580;RID1_009_REF(location_type)
+gui_helper; check; 8775; 7977;RID1_003_REF(free)
+gui_helper; check; 8777; 8015;RID1_003_REF(in_radius)
+gui_helper; check; 8858; 7970;RID1_003_REF(location_type)
+gui_helper; check; 10116; 8605;RID1_014_REF(free)
+gui_helper; check; 10118; 8643;RID1_014_REF(in_radius)
+gui_helper; check; 10199; 8598;RID1_014_REF(location_type)
+gui_helper; check; 9225; 8583;RID1_012_REF(free)
+gui_helper; check; 9227; 8621;RID1_012_REF(in_radius)
+gui_helper; check; 9308; 8576;RID1_012_REF(location_type)
+gui_helper; check; 9697; 8635;RID1_AAA3_REF(free)
+gui_helper; check; 9693; 8590;RID1_AAA3_REF(location_type)
+gui_helper; check; 9687; 8541;RID1_AAA3_REF(range)
+gui_helper; check; 9223; 7999;RID1_AAA1_REF(free)
+gui_helper; check; 9219; 7954;RID1_AAA1_REF(location_type)
+gui_helper; check; 9213; 7905;RID1_AAA1_REF(range)
+gui_helper; check; 8290; 8580;RID1_010_REF(free)
+gui_helper; check; 8292; 8618;RID1_010_REF(in_radius)
+gui_helper; check; 8373; 8573;RID1_010_REF(location_type)
+gui_helper; check; 8284; 7979;RID1_002_REF(free)
+gui_helper; check; 8286; 8017;RID1_002_REF(in_radius)
+gui_helper; check; 8367; 7972;RID1_002_REF(location_type)
+gui_helper; check; 7790; 7982;RID1_001_REF(free)
+gui_helper; check; 7792; 8020;RID1_001_REF(in_radius)
+gui_helper; check; 7873; 7975;RID1_001_REF(location_type)
+gui_helper; check; 9633; 7974;RID1_005_REF(free)
+gui_helper; check; 9635; 8012;RID1_005_REF(in_radius)
+gui_helper; check; 9716; 7967;RID1_005_REF(location_type)
+gui_helper; check; 10099; 7980;RID1_006_REF(free)
+gui_helper; check; 10101; 8018;RID1_006_REF(in_radius)
+gui_helper; check; 10182; 7973;RID1_006_REF(location_type)
+gui_helper; check; 10544; 7968;RID1_007_REF(free)
+gui_helper; check; 10546; 8006;RID1_007_REF(in_radius)
+gui_helper; check; 10627; 7961;RID1_007_REF(location_type)
+gui_helper; check; 10994; 7977;RID1_008_REF(free)
+gui_helper; check; 10996; 8015;RID1_008_REF(in_radius)
+gui_helper; check; 11077; 7970;RID1_008_REF(location_type)
+gui_helper; check; 11021; 8615;RID1_AAA5_REF(free)
+gui_helper; check; 11017; 8570;RID1_AAA5_REF(location_type)
+gui_helper; check; 11013; 8525;RID1_AAA5_REF(range)
+gui_helper; check; 9478; 7480;RID1_ORIENTATION(coalition)
+gui_helper; check; 9482; 7439;RID1_ORIENTATION(range)
+gui_helper; AILevel; 2889; 4463;RTD1_001_16_AAA; (AAA_2037mm);
+gui_helper; AILevel; 2889; 4503;RTD1_001_16_AAA; (AAA_8885mm);
+gui_helper; AILevel; 3374; 4489;RTD1_002_5_AAA; (AAA_mg);
+gui_helper; AILevel; 5816; 4496;RTD1_007_8_AAA; (AAA_2037mm);
+gui_helper; AILevel; 4355; 5123;RTD1_012_12_AAA; (AAA_2037mm);
+gui_helper; AILevel; 6274; 5134;RTD1_016_7_AAA; (AAA_2037mm);
+gui_helper; AILevel; 12140; 2573;RTD2_007_8_AAA; (AAA_2037mm);
+gui_helper; AILevel; 10644; 3253;RTD2_012_4_AAA; (AAA_mg);
+gui_helper; AILevel; 9236; 5320;RAD1_001_6_AAA; (AAA_2037mm);
+gui_helper; AILevel; 9751; 5328;RAD1_002_7_AAA; (AAA_2037mm);
+gui_helper; AILevel; 9767; 5993;RAD1_010_8_AAA; (AAA_8885mm);
+gui_helper; AILevel; 9767; 6033;RAD1_010_8_AAA; (AAA_mg);
+gui_helper; AILevel; 10917; 6038;RAD1_012_4_AAA; (AAA_mg);
+gui_helper; AILevel; 9269; 8270;RID1_004_4_AAA; (AAA_mg);
+gui_helper; AILevel; 9745; 8881;RID1_013_10_AAA; (AAA_2037mm);
+gui_helper; AILevel; 9745; 8921;RID1_013_10_AAA; (AAA_8885mm);
 gui_helper; AILevel; -8981; 8645;BID1_001_12_AAA; (AAA_2037mm);
 gui_helper; AILevel; -8981; 8685;BID1_001_12_AAA; (AAA_mg);
 gui_helper; AILevel; -6666; 8647;BID1_006_14_AAA; (AAA_2037mm);
@@ -1878,3 +2491,12 @@ gui_helper; AILevel; -9962; 2563;BTD2_002_14_AAA; (AAA_2037mm);
 gui_helper; AILevel; -9962; 2603;BTD2_002_14_AAA; (AAA_8885mm);
 gui_helper; AILevel; -9494; 2555;BTD2_003_6_AAA; (AAA_2037mm);
 gui_helper; AILevel; -9494; 2595;BTD2_003_6_AAA; (AAA_8885mm);
+gui_helper; AILevel; 3870; 4498;RTD1_003_12_AAA; (AAA_mg);
+gui_helper; AILevel; 12573; 3242;RTD2_016_4_AAA; (AAA_2037mm);
+gui_helper; AILevel; 10358; 5325;RAD1_003_13_AAA; (AAA_2037mm);
+gui_helper; AILevel; 12954; 5284;RAD1_008_4_AAA; (AAA_8885mm);
+gui_helper; AILevel; 12954; 5324;RAD1_008_4_AAA; (AAA_mg);
+gui_helper; AILevel; 11936; 6022;RAD1_014_4_AAA; (AAA_2037mm);
+gui_helper; AILevel; 8822; 8917;RID1_011_7_AAA; (AAA_2037mm);
+gui_helper; AILevel; 10625; 8928;RID1_015_4_AAA; (AAA_mg);
+gui_helper; AILevel; 11064; 8930;RID1_016_9_AAA; (AAA_2037mm);
