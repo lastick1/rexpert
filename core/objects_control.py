@@ -134,7 +134,10 @@ class ObjectsController:
         aircraft = self.get_aircraft(atype.aircraft_id)
         aircraft.update_pos(atype.pos)
         bot = self.get_bot(atype.bot_id)
-        bot.update_pos(atype.pos)
+        if bot:
+            bot.update_pos(atype.pos)
+        else:
+            print('Warning! not found bot')
 
     def deinitialize(self, atype: atypes.Atype16):
         """Деинициализировать бота"""
@@ -149,5 +152,10 @@ class ObjectsController:
         """Обработать прыжок с парашютом"""
         aircraft = self.get_aircraft(atype.parent_id)
         bot = self.get_bot(atype.bot_id)
-        aircraft.ejected = True
-        bot.ejected = True
+        if aircraft:
+            aircraft.ejected = True
+        else:
+            print('Warning! not found aircraft')
+        if bot:
+            bot.ejected = True
+            print('Warning! not found bot')
