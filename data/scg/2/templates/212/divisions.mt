@@ -414,7 +414,7 @@ phase; BAD1_012_8; random(<EMPTY>); blocks_BAD1_012_8; clone_location;;
 phase; BAD1_014_6; random(<EMPTY>); blocks_BAD1_014_6; clone_location;;
 phase; BAD1_015_7_AAA; random(<EMPTY>); blocks_BAD1_015_7_AAA; clone_location;;
 phase; BAD1_016_8; random(<EMPTY>); blocks_BAD1_016_8; clone_location;;
-phase; BTD1_001_14_AAA; line(BTD1,BTD1_ORIENTATION,0,0,0); blocks_BTD1_001_14_AAA; ;;
+phase; BTD1_001_14_AAA; line(BTD1,BTD1_ORIENTATION,0,0,180); blocks_BTD1_001_14_AAA; ;;
 phase; BTD1_002_10_AAA; random(<EMPTY>); blocks_BTD1_002_10_AAA; clone_location;;
 phase; BTD1_003_10; random(<EMPTY>); blocks_BTD1_003_10; clone_location;;
 phase; BTD1_004_10; random(<EMPTY>); blocks_BTD1_004_10; clone_location;;
