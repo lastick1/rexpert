@@ -1,0 +1,211 @@
+MCU_H_ReferencePoint
+{
+  Index = 3014;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -10000.000;
+  YPos = 17.795;
+  ZPos = 0.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+
+MCU_H_Output
+{
+  Index = 3016;
+  Name = "OBJECT_AAA";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -10000.000;
+  YPos = 17.795;
+  ZPos = 30.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 3296;
+  Name = "OBJECT_TANKS";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -9990.000;
+  YPos = 17.795;
+  ZPos = 20.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 3297;
+  Name = "OBJECT_ARTY";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -9980.000;
+  YPos = 17.795;
+  ZPos = 20.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 3298;
+  Name = "TARGET_ATTACK_AREA";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -10010.000;
+  YPos = 17.795;
+  ZPos = 20.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_CheckZone
+{
+  Index = 3299;
+  Name = "Allies";
+  Desc = "";
+  Targets = [3304,3300];
+  Objects = [];
+  XPos = -9989.996;
+  YPos = 17.795;
+  ZPos = 0.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Zone = 15000;
+  Cylinder = 1;
+  Closer = 1;
+  PlaneCoalitions = [1];
+}
+
+MCU_Timer
+{
+  Index = 3300;
+  Name = "t30s";
+  Desc = "";
+  Targets = [3306,3309];
+  Objects = [];
+  XPos = -10000.000;
+  YPos = 17.795;
+  ZPos = 10.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 30;
+  Random = 100;
+}
+
+MCU_TR_MissionBegin
+{
+  Index = 3301;
+  Name = "Translator Mission Begin";
+  Desc = "";
+  Targets = [3302];
+  Objects = [];
+  XPos = -9980.000;
+  YPos = 17.795;
+  ZPos = -10.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+}
+
+MCU_Timer
+{
+  Index = 3302;
+  Name = "t1m";
+  Desc = "";
+  Targets = [3299];
+  Objects = [];
+  XPos = -9990.000;
+  YPos = 17.795;
+  ZPos = -10.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 60;
+  Random = 100;
+}
+
+MCU_Activate
+{
+  Index = 3304;
+  Name = "Activate";
+  Desc = "";
+  Targets = [];
+  Objects = [3296,3297];
+  XPos = -9990.000;
+  YPos = 17.795;
+  ZPos = 10.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Dynamic
+{
+  Index = 3305;
+  Name = "CheckZone";
+  Desc = "";
+  Targets = [3299];
+  Objects = [];
+  XPos = -9980.000;
+  YPos = 17.795;
+  ZPos = 0.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "Zone";
+}
+
+MCU_Activate
+{
+  Index = 3306;
+  Name = "Activate";
+  Desc = "";
+  Targets = [];
+  Objects = [3016];
+  XPos = -10000.000;
+  YPos = 17.795;
+  ZPos = 20.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Timer
+{
+  Index = 3309;
+  Name = "t15s";
+  Desc = "";
+  Targets = [3298];
+  Objects = [];
+  XPos = -10010.000;
+  YPos = 17.795;
+  ZPos = 10.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 15;
+  Random = 100;
+}
+

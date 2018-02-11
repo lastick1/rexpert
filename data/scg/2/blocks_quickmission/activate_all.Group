@@ -1,0 +1,127 @@
+MCU_H_Output
+{
+  Index = 3329;
+  Name = "OBJECT_AAA";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -10108.061;
+  YPos = 17.795;
+  ZPos = 18.153;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 3330;
+  Name = "OBJECT_TANKS";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -10106.281;
+  YPos = 17.795;
+  ZPos = 18.179;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 3331;
+  Name = "OBJECT_ARTY";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -10104.313;
+  YPos = 17.795;
+  ZPos = 18.107;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 3332;
+  Name = "TARGET_ATTACK_AREA";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -10109.660;
+  YPos = 17.795;
+  ZPos = 18.207;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Activate
+{
+  Index = 3333;
+  Name = "Activate";
+  Desc = "";
+  Targets = [];
+  Objects = [3331,3329,3330,3332];
+  XPos = -10106.958;
+  YPos = 17.795;
+  ZPos = 16.387;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_TR_MissionBegin
+{
+  Index = 3336;
+  Name = "Translator Mission Begin";
+  Desc = "";
+  Targets = [3337];
+  Objects = [];
+  XPos = -10106.937;
+  YPos = 17.795;
+  ZPos = 14.146;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+}
+
+MCU_Timer
+{
+  Index = 3337;
+  Name = "t1m";
+  Desc = "";
+  Targets = [3333];
+  Objects = [];
+  XPos = -10106.951;
+  YPos = 17.795;
+  ZPos = 15.284;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 60;
+  Random = 100;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 3338;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -10107.459;
+  YPos = 17.795;
+  ZPos = 15.686;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+
