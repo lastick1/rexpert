@@ -1,6 +1,6 @@
 MCU_H_ReferencePoint
 {
-  Index = 895;
+  Index = 872;
   Name = "Helper Reference Point";
   Desc = "";
   Targets = [];
@@ -20,7 +20,7 @@ MCU_H_ReferencePoint
 Block
 {
   Name = "Block";
-  Index = 1690;
+  Index = 1487;
   LinkTrId = 0;
   XPos = -400.535;
   YPos = 17.795;
@@ -41,7 +41,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1691;
+  Index = 1488;
   LinkTrId = 0;
   XPos = -374.326;
   YPos = 17.795;
@@ -62,7 +62,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1692;
+  Index = 1489;
   LinkTrId = 0;
   XPos = -406.639;
   YPos = 17.795;
@@ -83,7 +83,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1693;
+  Index = 1490;
   LinkTrId = 0;
   XPos = -386.369;
   YPos = 17.795;
@@ -103,10 +103,10 @@ Block
 
 MCU_H_Input
 {
-  Index = 2488;
+  Index = 2196;
   Name = "TARGET_ATTACK_AREA";
   Desc = "";
-  Targets = [2489];
+  Targets = [2197];
   Objects = [];
   XPos = -331.309;
   YPos = 17.795;
@@ -118,11 +118,11 @@ MCU_H_Input
 
 MCU_CMD_AttackArea
 {
-  Index = 2489;
+  Index = 2197;
   Name = "AMG_AttackArea";
   Desc = "";
   Targets = [];
-  Objects = [2491,2492,2493,2494];
+  Objects = [2199,2200,2201,2202];
   XPos = -333.203;
   YPos = 1517.800;
   ZPos = 39746.864;
@@ -139,11 +139,11 @@ MCU_CMD_AttackArea
 
 MCU_H_Input
 {
-  Index = 2495;
+  Index = 2203;
   Name = "OBJECT_AAA";
   Desc = "";
   Targets = [];
-  Objects = [2491,2492,2493,2494];
+  Objects = [2199,2200,2201,2202];
   XPos = -434.787;
   YPos = 17.795;
   ZPos = 39743.293;
@@ -155,8 +155,8 @@ MCU_H_Input
 Vehicle
 {
   Name = "mg";
-  Index = 2496;
-  LinkTrId = 2491;
+  Index = 2204;
+  LinkTrId = 2199;
   XPos = -400.489;
   YPos = 17.795;
   ZPos = 39633.196;
@@ -183,7 +183,7 @@ Vehicle
 
 MCU_TR_Entity
 {
-  Index = 2491;
+  Index = 2199;
   Name = "Vehicle entity";
   Desc = "";
   Targets = [];
@@ -195,14 +195,14 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 2496;
+  MisObjID = 2204;
 }
 
 Vehicle
 {
   Name = "mg";
-  Index = 2497;
-  LinkTrId = 2492;
+  Index = 2205;
+  LinkTrId = 2200;
   XPos = -374.057;
   YPos = 17.795;
   ZPos = 39700.135;
@@ -229,7 +229,7 @@ Vehicle
 
 MCU_TR_Entity
 {
-  Index = 2492;
+  Index = 2200;
   Name = "Vehicle entity";
   Desc = "";
   Targets = [];
@@ -241,14 +241,14 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 2497;
+  MisObjID = 2205;
 }
 
 Vehicle
 {
   Name = "mg";
-  Index = 2498;
-  LinkTrId = 2493;
+  Index = 2206;
+  LinkTrId = 2201;
   XPos = -406.617;
   YPos = 17.795;
   ZPos = 39794.129;
@@ -275,7 +275,7 @@ Vehicle
 
 MCU_TR_Entity
 {
-  Index = 2493;
+  Index = 2201;
   Name = "Vehicle entity";
   Desc = "";
   Targets = [];
@@ -287,14 +287,14 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 2498;
+  MisObjID = 2206;
 }
 
 Vehicle
 {
   Name = "mg";
-  Index = 2499;
-  LinkTrId = 2494;
+  Index = 2207;
+  LinkTrId = 2202;
   XPos = -386.405;
   YPos = 17.795;
   ZPos = 39877.031;
@@ -321,7 +321,7 @@ Vehicle
 
 MCU_TR_Entity
 {
-  Index = 2494;
+  Index = 2202;
   Name = "Vehicle entity";
   Desc = "";
   Targets = [];
@@ -333,12 +333,12 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 2499;
+  MisObjID = 2207;
 }
 
 MCU_Timer
 {
-  Index = 2527;
+  Index = 2235;
   Name = "REXPERT_RID1_4";
   Desc = "";
   Targets = [];
@@ -355,10 +355,10 @@ MCU_Timer
 
 MCU_H_Dynamic
 {
-  Index = 2561;
+  Index = 2266;
   Name = "AAA_mg";
   Desc = "";
-  Targets = [2492,2491,2493,2494];
+  Targets = [2200,2199,2201,2202];
   Objects = [];
   XPos = -411.293;
   YPos = 17.770;
@@ -366,5 +366,6 @@ MCU_H_Dynamic
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;
+  Property = "AILevel";
 }
 
