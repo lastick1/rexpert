@@ -1,0 +1,189 @@
+MCU_H_ReferencePoint
+{
+  Index = 849;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -75.000;
+  YPos = 17.777;
+  ZPos = 18150.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 75;
+  Backward = 75;
+  Left = 150;
+  Right = 150;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1084;
+  LinkTrId = 1085;
+  XPos = -70.403;
+  YPos = 17.795;
+  ZPos = 18052.828;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\pziv-f1.txt";
+  Model = "graphics\vehicles\pziv-f1\pziv-f1.mgm";
+  Desc = "";
+  Country = 201;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 1085;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -70.403;
+  YPos = 17.995;
+  ZPos = 18052.828;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 1084;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1087;
+  LinkTrId = 1088;
+  XPos = -28.419;
+  YPos = 17.795;
+  ZPos = 18141.345;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\pziv-f1.txt";
+  Model = "graphics\vehicles\pziv-f1\pziv-f1.mgm";
+  Desc = "";
+  Country = 201;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 1088;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -28.419;
+  YPos = 17.995;
+  ZPos = 18141.345;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 1087;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1090;
+  LinkTrId = 1091;
+  XPos = -73.640;
+  YPos = 17.795;
+  ZPos = 18216.482;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\pziv-f1.txt";
+  Model = "graphics\vehicles\pziv-f1\pziv-f1.mgm";
+  Desc = "";
+  Country = 201;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 1091;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -73.640;
+  YPos = 17.995;
+  ZPos = 18216.482;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 1090;
+}
+
+MCU_Timer
+{
+  Index = 1093;
+  Name = "REXPERT_BTD1_3";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -74.444;
+  YPos = 17.795;
+  ZPos = 18149.939;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 0;
+  Random = 100;
+}
+
+MCU_H_Input
+{
+  Index = 1094;
+  Name = "OBJECT_TANKS";
+  Desc = "";
+  Targets = [];
+  Objects = [1088,1085,1091];
+  XPos = -53.952;
+  YPos = 17.774;
+  ZPos = 18131.200;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+

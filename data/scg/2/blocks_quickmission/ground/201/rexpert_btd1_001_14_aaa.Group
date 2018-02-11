@@ -1,0 +1,561 @@
+Block
+{
+  Name = "Block";
+  Index = 636;
+  LinkTrId = 0;
+  XPos = -43.635;
+  YPos = 17.795;
+  ZPos = 14484.142;
+  XOri = 0.00;
+  YOri = 3.46;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_pz_iiih.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_pz_iiih.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 3000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 637;
+  LinkTrId = 0;
+  XPos = -50.542;
+  YPos = 17.795;
+  ZPos = 14582.784;
+  XOri = 0.00;
+  YOri = 3.46;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_pz_iiih.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_pz_iiih.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 3000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 638;
+  LinkTrId = 0;
+  XPos = -79.360;
+  YPos = 17.795;
+  ZPos = 14679.804;
+  XOri = 0.00;
+  YOri = 3.44;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_pz_iiih.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_pz_iiih.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 3000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 639;
+  LinkTrId = 0;
+  XPos = -134.982;
+  YPos = 17.795;
+  ZPos = 14691.738;
+  XOri = 0.00;
+  YOri = 3.44;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_sdkfz251-1c.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_sdkfz251-1c.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 2000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 640;
+  LinkTrId = 0;
+  XPos = -118.753;
+  YPos = 17.795;
+  ZPos = 14504.516;
+  XOri = 0.00;
+  YOri = 3.46;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_sdkfz251-1c.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_sdkfz251-1c.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 2000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "20mm";
+  Index = 641;
+  LinkTrId = 642;
+  XPos = -128.172;
+  YPos = 17.795;
+  ZPos = 14515.528;
+  XOri = 0.00;
+  YOri = 3.46;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\flak38.txt";
+  Model = "graphics\artillery\flak38\flak38.mgm";
+  Desc = "";
+  Country = 201;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 642;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -128.172;
+  YPos = 17.995;
+  ZPos = 14515.528;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 641;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 644;
+  LinkTrId = 0;
+  XPos = -11.475;
+  YPos = 17.795;
+  ZPos = 14430.868;
+  XOri = 0.00;
+  YOri = 341.77;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_pz_iiih.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_pz_iiih.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 3000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 645;
+  LinkTrId = 0;
+  XPos = -9.053;
+  YPos = 17.795;
+  ZPos = 14530.718;
+  XOri = 0.00;
+  YOri = 17.67;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_pz_iiih.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_pz_iiih.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 3000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 646;
+  LinkTrId = 0;
+  XPos = -31.370;
+  YPos = 17.795;
+  ZPos = 14646.898;
+  XOri = 0.00;
+  YOri = 349.07;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_pz_iiih.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_pz_iiih.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 3000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 647;
+  LinkTrId = 0;
+  XPos = -32.497;
+  YPos = 17.795;
+  ZPos = 14690.982;
+  XOri = 0.00;
+  YOri = 36.43;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_pz_iiih.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_pz_iiih.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 3000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 648;
+  LinkTrId = 0;
+  XPos = -86.150;
+  YPos = 17.795;
+  ZPos = 14446.229;
+  XOri = 0.00;
+  YOri = 351.56;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_pz_iiih.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_pz_iiih.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 3000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Ground
+{
+  Name = "Ground";
+  Index = 649;
+  LinkTrId = 0;
+  XPos = -96.355;
+  YPos = 17.795;
+  ZPos = 14650.311;
+  XOri = 0.00;
+  YOri = 3.46;
+  ZOri = 0.00;
+  Model = "graphics\grounds\crater_plane.mgm";
+  Desc = "";
+  DamageReport = 50;
+  DamageThreshold = 1;
+}
+
+Ground
+{
+  Name = "Ground";
+  Index = 650;
+  LinkTrId = 0;
+  XPos = -125.507;
+  YPos = 17.795;
+  ZPos = 14421.381;
+  XOri = 0.00;
+  YOri = 3.46;
+  ZOri = 0.00;
+  Model = "graphics\grounds\crater_50.mgm";
+  Desc = "";
+  DamageReport = 50;
+  DamageThreshold = 1;
+}
+
+Ground
+{
+  Name = "Ground";
+  Index = 651;
+  LinkTrId = 0;
+  XPos = -130.149;
+  YPos = 17.795;
+  ZPos = 14579.900;
+  XOri = 0.00;
+  YOri = 3.46;
+  ZOri = 0.00;
+  Model = "graphics\grounds\crater_16.mgm";
+  Desc = "";
+  DamageReport = 50;
+  DamageThreshold = 1;
+}
+
+Ground
+{
+  Name = "Ground";
+  Index = 652;
+  LinkTrId = 0;
+  XPos = -36.671;
+  YPos = 17.795;
+  ZPos = 14548.085;
+  XOri = 0.00;
+  YOri = 3.46;
+  ZOri = 0.00;
+  Model = "graphics\grounds\crater_16.mgm";
+  Desc = "";
+  DamageReport = 50;
+  DamageThreshold = 1;
+}
+
+Vehicle
+{
+  Name = "20mm";
+  Index = 653;
+  LinkTrId = 654;
+  XPos = -136.239;
+  YPos = 17.795;
+  ZPos = 14680.559;
+  XOri = 0.00;
+  YOri = 112.34;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\flak38.txt";
+  Model = "graphics\artillery\flak38\flak38.mgm";
+  Desc = "";
+  Country = 201;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 654;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -136.239;
+  YPos = 17.995;
+  ZPos = 14680.559;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 653;
+}
+
+Vehicle
+{
+  Name = "20mm";
+  Index = 656;
+  LinkTrId = 657;
+  XPos = -107.804;
+  YPos = 17.795;
+  ZPos = 14562.850;
+  XOri = 0.00;
+  YOri = 143.68;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\sdkfz10-flak38.txt";
+  Model = "graphics\vehicles\sdkfz10-flak38\sdkfz10-flak38.mgm";
+  Desc = "";
+  Country = 201;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 2;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 657;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -107.804;
+  YPos = 17.995;
+  ZPos = 14562.850;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 656;
+}
+
+MCU_CMD_AttackArea
+{
+  Index = 659;
+  Name = "2037mm_AttackArea";
+  Desc = "";
+  Targets = [];
+  Objects = [642];
+  XPos = -11.928;
+  YPos = 2517.770;
+  ZPos = 14511.428;
+  XOri = 0.00;
+  YOri = 136.01;
+  ZOri = 0.00;
+  AttackGround = 0;
+  AttackAir = 1;
+  AttackGTargets = 0;
+  AttackArea = 5000;
+  Time = 59940;
+  Priority = 1;
+}
+
+MCU_CMD_AttackArea
+{
+  Index = 660;
+  Name = "2037mm_AttackArea";
+  Desc = "";
+  Targets = [];
+  Objects = [657];
+  XPos = -27.876;
+  YPos = 2517.770;
+  ZPos = 14567.917;
+  XOri = 0.00;
+  YOri = 173.03;
+  ZOri = 0.00;
+  AttackGround = 0;
+  AttackAir = 1;
+  AttackGTargets = 0;
+  AttackArea = 5000;
+  Time = 59940;
+  Priority = 1;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 814;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -75.000;
+  YPos = 17.795;
+  ZPos = 14550.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 75;
+  Backward = 75;
+  Left = 150;
+  Right = 150;
+}
+
+MCU_CMD_AttackArea
+{
+  Index = 815;
+  Name = "2037mm_AttackArea";
+  Desc = "";
+  Targets = [];
+  Objects = [654];
+  XPos = -21.596;
+  YPos = 2517.770;
+  ZPos = 14675.625;
+  XOri = 0.00;
+  YOri = 136.01;
+  ZOri = 0.00;
+  AttackGround = 0;
+  AttackAir = 1;
+  AttackGTargets = 0;
+  AttackArea = 5000;
+  Time = 59940;
+  Priority = 1;
+}
+
+MCU_Timer
+{
+  Index = 816;
+  Name = "REXPERT_BTD1_13";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -74.000;
+  YPos = 17.795;
+  ZPos = 14550.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 0;
+  Random = 100;
+}
+
+MCU_H_Input
+{
+  Index = 817;
+  Name = "OBJECT_AAA";
+  Desc = "";
+  Targets = [];
+  Objects = [654,657,642];
+  XPos = -77.695;
+  YPos = 17.795;
+  ZPos = 14572.569;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Input
+{
+  Index = 818;
+  Name = "TARGET_ATTACK_AREA";
+  Desc = "";
+  Targets = [659,660,815];
+  Objects = [];
+  XPos = -8.786;
+  YPos = 17.795;
+  ZPos = 14555.352;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Dynamic
+{
+  Index = 2546;
+  Name = "AAA_2037mm";
+  Desc = "";
+  Targets = [657,642,654];
+  Objects = [];
+  XPos = -130.437;
+  YPos = 17.795;
+  ZPos = 14590.778;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "AILevel";
+}
+

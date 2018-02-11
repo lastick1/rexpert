@@ -1,0 +1,340 @@
+MCU_H_ReferencePoint
+{
+  Index = 2752;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -374.991;
+  YPos = 17.774;
+  ZPos = 22949.998;
+  XOri = 0.00;
+  YOri = 359.96;
+  ZOri = 0.00;
+  Forward = 75;
+  Backward = 75;
+  Left = 150;
+  Right = 150;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 2811;
+  LinkTrId = 0;
+  XPos = -373.652;
+  YPos = 17.795;
+  ZPos = 22931.669;
+  XOri = 0.00;
+  YOri = 115.96;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_ju88.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_ju88.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 1500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 2812;
+  LinkTrId = 0;
+  XPos = -362.026;
+  YPos = 17.795;
+  ZPos = 22902.459;
+  XOri = 0.00;
+  YOri = 256.09;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_opel.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_opel.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 1500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 2813;
+  LinkTrId = 0;
+  XPos = -369.133;
+  YPos = 17.795;
+  ZPos = 22904.480;
+  XOri = 0.00;
+  YOri = 256.09;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_opel.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_opel.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 1500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 2814;
+  LinkTrId = 0;
+  XPos = -361.810;
+  YPos = 17.795;
+  ZPos = 22927.216;
+  XOri = 0.00;
+  YOri = 359.96;
+  ZOri = 0.00;
+  Model = "graphics\blocks\art_position_amb2.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\art_position_amb2.txt";
+  Country = 0;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 2815;
+  LinkTrId = 0;
+  XPos = -368.699;
+  YPos = 17.795;
+  ZPos = 22917.950;
+  XOri = 0.00;
+  YOri = 73.01;
+  ZOri = 0.00;
+  Model = "graphics\blocks\art_position_amb2.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\art_position_amb2.txt";
+  Country = 0;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 2816;
+  LinkTrId = 3049;
+  XPos = -393.534;
+  YPos = 17.795;
+  ZPos = 22840.838;
+  XOri = 0.00;
+  YOri = 312.67;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\stug40l43.txt";
+  Model = "graphics\vehicles\stug40l43\stug40l43.mgm";
+  Desc = "";
+  Country = 201;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 3049;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -393.534;
+  YPos = 17.995;
+  ZPos = 22840.838;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 2816;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 2817;
+  LinkTrId = 3050;
+  XPos = -330.097;
+  YPos = 17.795;
+  ZPos = 22856.349;
+  XOri = 0.00;
+  YOri = 325.39;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\pziii-l.txt";
+  Model = "graphics\vehicles\pziii-l\pziii-l.mgm";
+  Desc = "";
+  Country = 201;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 3050;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -330.097;
+  YPos = 17.995;
+  ZPos = 22856.349;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 2817;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 2818;
+  LinkTrId = 3051;
+  XPos = -333.198;
+  YPos = 17.795;
+  ZPos = 22993.092;
+  XOri = 0.00;
+  YOri = 31.76;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\pziii-h.txt";
+  Model = "graphics\vehicles\pziii-h\pziii-h.mgm";
+  Desc = "";
+  Country = 201;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 3051;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -333.198;
+  YPos = 17.995;
+  ZPos = 22993.092;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 2818;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 2819;
+  LinkTrId = 3052;
+  XPos = -411.603;
+  YPos = 17.795;
+  ZPos = 22992.736;
+  XOri = 0.00;
+  YOri = 77.74;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\pz38t.txt";
+  Model = "graphics\vehicles\pz38t\pz38t.mgm";
+  Desc = "";
+  Country = 201;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 3052;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -411.603;
+  YPos = 17.995;
+  ZPos = 22992.736;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 2819;
+}
+
+MCU_H_Input
+{
+  Index = 3255;
+  Name = "OBJECT_TANKS";
+  Desc = "";
+  Targets = [];
+  Objects = [3051,3052,3049,3050];
+  XPos = -412.354;
+  YPos = 17.774;
+  ZPos = 22931.736;
+  XOri = 0.00;
+  YOri = 359.96;
+  ZOri = 0.00;
+}
+
+MCU_Timer
+{
+  Index = 3289;
+  Name = "REXPERT_BTD2_7";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -374.000;
+  YPos = 17.795;
+  ZPos = 22950.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 0;
+  Random = 100;
+}
+
