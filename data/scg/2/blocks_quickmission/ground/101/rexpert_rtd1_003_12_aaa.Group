@@ -469,7 +469,7 @@ Block
 
 MCU_H_ReferencePoint
 {
-  Index = 876;
+  Index = 853;
   Name = "Helper Reference Point";
   Desc = "";
   Targets = [];
@@ -488,7 +488,7 @@ MCU_H_ReferencePoint
 
 MCU_H_Input
 {
-  Index = 2241;
+  Index = 1949;
   Name = "OBJECT_AAA";
   Desc = "";
   Targets = [];
@@ -503,7 +503,7 @@ MCU_H_Input
 
 MCU_H_Input
 {
-  Index = 2242;
+  Index = 1950;
   Name = "OBJECT_TANKS";
   Desc = "";
   Targets = [];
@@ -518,7 +518,7 @@ MCU_H_Input
 
 MCU_H_Input
 {
-  Index = 2243;
+  Index = 1951;
   Name = "TARGET_ATTACK_AREA";
   Desc = "";
   Targets = [732];
@@ -533,7 +533,7 @@ MCU_H_Input
 
 MCU_Timer
 {
-  Index = 2345;
+  Index = 2053;
   Name = "REXPERT_RTD1_12";
   Desc = "";
   Targets = [];
@@ -550,7 +550,7 @@ MCU_Timer
 
 MCU_H_Dynamic
 {
-  Index = 2563;
+  Index = 2268;
   Name = "AAA_mg";
   Desc = "";
   Targets = [730];
@@ -561,5 +561,6 @@ MCU_H_Dynamic
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;
+  Property = "AILevel";
 }
 
