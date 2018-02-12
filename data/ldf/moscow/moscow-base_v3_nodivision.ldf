@@ -1544,41 +1544,6 @@ Decoration
 {
   Name = "Decoration";
   Desc = "";
-  XPos = 142087.686;
-  YPos = 75.266;
-  ZPos = 235258.230;
-  OY = 207.529;
-  Length = 10;
-  Width = 10;
-  Dogfight = 0;
-  Transport = 0;
-  Train = 0;
-  Tank = 0;
-  Artillery = 0;
-  AAAPosition = 0;
-  Ship = 0;
-  Balloon = 0;
-  Windsock = 1;
-  CityFire = 0;
-  Spotter = 0;
-  Bridge = 0;
-  AtArtPosition = 0;
-  FiringPoint = 0;
-  Siren = 0;
-  Parking = 0;
-  NDB = 0;
-  AirfieldDecoration = 0;
-  StaticAirplane = 0;
-  StaticVechicle = 0;
-  Searchlight = 0;
-  LandingLight = 0;
-  LandingSign = 0;
-}
-
-Decoration
-{
-  Name = "Decoration";
-  Desc = "";
   XPos = 115902.197;
   YPos = 148.550;
   ZPos = 139008.138;
@@ -3259,10 +3224,10 @@ Decoration
 {
   Name = "Decoration";
   Desc = "";
-  XPos = 183997.000;
-  YPos = 167.341;
-  ZPos = 163162.000;
-  OY = 154.308;
+  XPos = 183741.000;
+  YPos = 167.346;
+  ZPos = 163892.000;
+  OY = 237.716;
   Length = 10;
   Width = 10;
   Dogfight = 0;
@@ -192176,6 +192141,1127 @@ Decoration
   Tank = 0;
   Artillery = 0;
   AAAPosition = 0;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 141116.485;
+  YPos = 75.215;
+  ZPos = 239303.678;
+  OY = 315.530;
+  Length = 10;
+  Width = 10;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 0;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 1;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 141014.000;
+  YPos = 75.206;
+  ZPos = 238962.000;
+  OY = 353.000;
+  Length = 10;
+  Width = 10;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 0;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 1;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 141141.503;
+  YPos = 75.266;
+  ZPos = 239333.703;
+  OY = 27.005;
+  Length = 10;
+  Width = 6;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 0;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 1;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 142334.316;
+  YPos = 75.206;
+  ZPos = 238934.915;
+  OY = 205.899;
+  Length = 50;
+  Width = 50;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 1;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 142397.099;
+  YPos = 75.206;
+  ZPos = 238894.761;
+  OY = 241.459;
+  Length = 50;
+  Width = 50;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 1;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 142379.050;
+  YPos = 75.206;
+  ZPos = 239013.020;
+  OY = 101.604;
+  Length = 50;
+  Width = 50;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 1;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 142468.645;
+  YPos = 75.453;
+  ZPos = 237917.263;
+  OY = 289.108;
+  Length = 50;
+  Width = 50;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 1;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 142515.942;
+  YPos = 75.452;
+  ZPos = 237974.857;
+  OY = 324.668;
+  Length = 50;
+  Width = 50;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 1;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 142412.595;
+  YPos = 75.327;
+  ZPos = 238005.153;
+  OY = 184.813;
+  Length = 50;
+  Width = 50;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 1;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 140949.992;
+  YPos = 75.206;
+  ZPos = 239531.380;
+  OY = 258.559;
+  Length = 50;
+  Width = 50;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 1;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 141048.225;
+  YPos = 75.206;
+  ZPos = 239541.640;
+  OY = 294.119;
+  Length = 50;
+  Width = 50;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 1;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 141092.047;
+  YPos = 75.356;
+  ZPos = 239652.345;
+  OY = 312.162;
+  Length = 50;
+  Width = 50;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 1;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+AirObjective
+{
+  Name = "AirObjective";
+  Desc = "";
+  XPos = 141500.000;
+  YPos = 75.206;
+  ZPos = 239000.000;
+  OY = 0.000;
+  Length = 1000;
+  Width = 1000;
+  ReconFlight = 1;
+  BomberFlight = 0;
+  FighterPatrolFlight = 0;
+  Dogfight = 0;
+  DuelOpponent = 0;
+  Balloon = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 141472.375;
+  YPos = 76.220;
+  ZPos = 237574.654;
+  OY = 281.573;
+  Length = 50;
+  Width = 50;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 1;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 141526.814;
+  YPos = 75.348;
+  ZPos = 237625.547;
+  OY = 317.133;
+  Length = 50;
+  Width = 50;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 1;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 141407.767;
+  YPos = 75.477;
+  ZPos = 237637.322;
+  OY = 177.278;
+  Length = 50;
+  Width = 50;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 1;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 64849.883;
+  YPos = 172.018;
+  ZPos = 41735.392;
+  OY = 306.956;
+  Length = 10;
+  Width = 10;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 0;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 1;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 64503.000;
+  YPos = 172.018;
+  ZPos = 41487.000;
+  OY = 319.000;
+  Length = 10;
+  Width = 10;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 0;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 1;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 64849.883;
+  YPos = 75.266;
+  ZPos = 41735.392;
+  OY = 306.956;
+  Length = 10;
+  Width = 10;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 0;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 1;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 64828.956;
+  YPos = 172.018;
+  ZPos = 41710.991;
+  OY = 266.004;
+  Length = 10;
+  Width = 6;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 0;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 1;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 65821.004;
+  YPos = 172.018;
+  ZPos = 40593.309;
+  OY = 164.135;
+  Length = 50;
+  Width = 50;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 1;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 65841.088;
+  YPos = 172.018;
+  ZPos = 40521.541;
+  OY = 199.695;
+  Length = 50;
+  Width = 50;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 1;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 65906.394;
+  YPos = 172.018;
+  ZPos = 40621.771;
+  OY = 59.840;
+  Length = 50;
+  Width = 50;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 1;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 65801.251;
+  YPos = 172.018;
+  ZPos = 41504.445;
+  OY = 213.453;
+  Length = 50;
+  Width = 50;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 1;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 65868.767;
+  YPos = 172.018;
+  ZPos = 41472.893;
+  OY = 249.013;
+  Length = 50;
+  Width = 50;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 1;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 65835.329;
+  YPos = 172.018;
+  ZPos = 41587.753;
+  OY = 109.158;
+  Length = 50;
+  Width = 50;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 1;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 63759.557;
+  YPos = 172.448;
+  ZPos = 40851.636;
+  OY = 100.654;
+  Length = 50;
+  Width = 50;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 1;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 63672.397;
+  YPos = 173.414;
+  ZPos = 40805.181;
+  OY = 136.214;
+  Length = 50;
+  Width = 50;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 1;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 63697.569;
+  YPos = 174.270;
+  ZPos = 40711.798;
+  OY = 356.359;
+  Length = 50;
+  Width = 50;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 1;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+AirObjective
+{
+  Name = "AirObjective";
+  Desc = "";
+  XPos = 65000.000;
+  YPos = 172.018;
+  ZPos = 41000.000;
+  OY = 0.000;
+  Length = 1000;
+  Width = 1000;
+  ReconFlight = 1;
+  BomberFlight = 0;
+  FighterPatrolFlight = 0;
+  Dogfight = 0;
+  DuelOpponent = 0;
+  Balloon = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 64167.424;
+  YPos = 177.375;
+  ZPos = 41874.687;
+  OY = 148.385;
+  Length = 50;
+  Width = 50;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 1;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 64167.273;
+  YPos = 175.074;
+  ZPos = 41800.163;
+  OY = 183.945;
+  Length = 50;
+  Width = 50;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 1;
+  Ship = 0;
+  Balloon = 0;
+  Windsock = 0;
+  CityFire = 0;
+  Spotter = 0;
+  Bridge = 0;
+  AtArtPosition = 0;
+  FiringPoint = 0;
+  Siren = 0;
+  Parking = 0;
+  NDB = 0;
+  AirfieldDecoration = 0;
+  StaticAirplane = 0;
+  StaticVechicle = 0;
+  Searchlight = 0;
+  LandingLight = 0;
+  LandingSign = 0;
+}
+
+Decoration
+{
+  Name = "Decoration";
+  Desc = "";
+  XPos = 64257.333;
+  YPos = 175.870;
+  ZPos = 41878.903;
+  OY = 44.090;
+  Length = 50;
+  Width = 50;
+  Dogfight = 0;
+  Transport = 0;
+  Train = 0;
+  Tank = 0;
+  Artillery = 0;
+  AAAPosition = 1;
   Ship = 0;
   Balloon = 0;
   Windsock = 0;
