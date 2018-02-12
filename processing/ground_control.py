@@ -76,8 +76,8 @@ class GroundController:
                 if not self._ioc.rcon.connected:
                     self._ioc.rcon.connect()
                     self._ioc.rcon.auth(self._ioc.config.main.rcon_login, self._ioc.config.main.rcon_password)
-            self._server_inputs.add(server_input)
-            self._ioc.rcon.server_input(server_input)
+                self._server_inputs.add(server_input)
+                self._ioc.rcon.server_input(server_input)
 
     def _get_tvd_name(self, mission) -> str:
         """Получить имя ТВД из данных о миссии"""
