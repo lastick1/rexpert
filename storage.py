@@ -139,6 +139,35 @@ class Divisions(CollectionWrapper):
         return result
 
 
+class Warehouses(CollectionWrapper):
+    """Работа с документами складов в БД"""
+
+    @staticmethod
+    def _make_filter(tvd_name: str, name: str) -> dict:
+        """Построить фильтр для поиска документа склада в БД"""
+        return {constants.TVD_NAME: tvd_name, constants.Warehouse.NAME: name}
+
+    @staticmethod
+    def _convert_from_document(document) -> model.Warehouse:
+        """Конвертировать документ из БД в объект класса склада"""
+        return model.Warehouse(
+            name=document[constants.Warehouse.NAME],
+            tvd_name=document[constants.TVD_NAME],
+            health=document[constants.Warehouse.HEALTH]
+        )
+
+    def load_by_name(self, tvd_name: str, name: str) -> model.Warehouse:
+        """Загрузить данные склада по его имени"""
+        return self._convert_from_document(self.collection.find_one(self._make_filter(tvd_name, name)))
+
+    def load_by_tvd(self, tvd_name: str) -> list:
+        """Загрузить склады указанного ТВД"""
+        result = list()
+        for document in self.collection.find({constants.TVD_NAME: tvd_name}):
+            result.append(self._convert_from_document(document))
+        return result
+
+
 class Players(CollectionWrapper):
     """Работа с документами игроков в БД"""
     def count(self, account_id) -> int:

@@ -60,3 +60,9 @@ class Division:
     """Константы модели данных дивизии"""
     UNITS = 'units'
     NAME = 'name'
+
+
+class Warehouse:
+    """Константы модели данных склада"""
+    HEALTH = 'health'
+    NAME = 'name'
