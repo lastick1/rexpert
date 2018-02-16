@@ -6,16 +6,6 @@ import constants
 import model
 
 
-def _filter_by_id(_id: str) -> dict:
-    """Получить фильтр документов по идентификатору"""
-    return {constants.ID: _id}
-
-
-def _filter_by_tvd(tvd_name: str) -> dict:
-    """Получить фильтр документов по театру военных действий (ТВД)"""
-    return {constants.TVD_NAME: tvd_name}
-
-
 def _update_request_body(document: dict) -> dict:
     """Построить запрос обновления документа"""
     return {'$set': document}
@@ -33,6 +23,7 @@ class CollectionWrapper:
 
 class CampaignMaps(CollectionWrapper):
     """Работа с документами карт кампании в БД"""
+
     @staticmethod
     def _convert_from_document(document) -> model.CampaignMap:
         """Конвертировать документ из БД в объект класса карты кампании"""
@@ -172,20 +163,17 @@ class Players(CollectionWrapper):
     """Работа с документами игроков в БД"""
     def count(self, account_id) -> int:
         """Посчитать документы игрока в БД"""
-        _filter = _filter_by_id(account_id)
-        return self.collection.count(_filter)
+        return self.collection.count({constants.ID: account_id})
 
     def find(self, account_id) -> model.Player:
         """Найти документ игрока в БД"""
-        _filter = _filter_by_id(account_id)
-        document = self.collection.find_one(_filter)
+        document = self.collection.find_one({constants.ID: account_id})
         return model.Player(account_id, document)
 
     def update(self, player: model.Player):
         """Обновить/создать игрока в БД"""
-        _filter = _filter_by_id(player.account_id)
         document = _update_request_body(player.to_dict())
-        self.collection.update_one(_filter, document, upsert=True)
+        self.collection.update_one({constants.ID: player.account_id}, document, upsert=True)
 
     def reset_mods_for_all(self, value: int):
         """Сбросить количество модификаций всем игрокам"""
@@ -194,16 +182,11 @@ class Players(CollectionWrapper):
 
 class Airfields(CollectionWrapper):
     """Работа с документами аэродромов в БД"""
-    @staticmethod
-    def _filter_by_tvd(tvd_name: str) -> dict:
-        """Получить фильтр по театру военных действий"""
-        return {constants.TVD_NAME: tvd_name}
 
     def update_airfield(self, managed_airfield: model.ManagedAirfield):
         """Обновить аэродром"""
-        _filter = _filter_by_id(managed_airfield.id)
         update = _update_request_body(managed_airfield.to_dict())
-        self.update_one(_filter, update)
+        self.update_one({constants.ID: managed_airfield.id}, update)
 
     def update_airfields(self, managed_airfields: list):
         """Обновить аэродромы"""
@@ -223,7 +206,7 @@ class Airfields(CollectionWrapper):
 
     def load_by_id(self, airfield_id) -> model.ManagedAirfield:
         """Загрузить аэродром по его идентификатору из базы данных"""
-        document = self.collection.find_one(_filter_by_id(_id=airfield_id))
+        document = self.collection.find_one({constants.ID: airfield_id})
         if document:
             return self._convert_from_document(document)
         raise NameError(f'аэродром с airfield_id:{airfield_id} не найден')
@@ -231,7 +214,7 @@ class Airfields(CollectionWrapper):
     def load_by_tvd(self, tvd_name: str) -> list:
         """Загрузить аэродромы для ТВД из базы данных"""
         return list(self._convert_from_document(document)
-                    for document in self.collection.find(_filter_by_tvd(tvd_name=tvd_name)))
+                    for document in self.collection.find({constants.TVD_NAME: tvd_name}))
 
     def load_by_name(self, tvd_name: str, airfield_name: str) -> model.ManagedAirfield:
         """Загрузить аэродром указанного ТВД по его имени"""
