@@ -1,4 +1,5 @@
 """Константы"""
+# pylint: disable=R0903
 
 
 ID = '_id'
