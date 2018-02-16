@@ -252,6 +252,7 @@ class Storage:
         self.campaign_maps = CampaignMaps(self._database['CampaignMaps'])
         self.campaign_missions = CampaignMissions(self._database['CampaignMissions'])
         self.divisions = Divisions(self._database['Divisions'])
+        self.warehouses = Warehouses(self._database['Warehouses'])
 
     def drop_database(self):
         """Удалить базу данных (использовать только в тестах)"""
