@@ -1,6 +1,7 @@
 """Основной файл для запуска"""
 import datetime
 import pathlib
+import logging
 
 import utils
 import configs
@@ -52,6 +53,8 @@ def run():
 
 
 print(datetime.datetime.now().strftime("[%H:%M:%S] Program Start."))
+logging.basicConfig(
+    format=u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s] %(message)s', level=logging.DEBUG)
 
 # compile_log()
 # compile_gif()
