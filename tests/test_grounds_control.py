@@ -99,7 +99,7 @@ class TestGroundControl(unittest.TestCase):
         controller = processing.GroundController(IOC)
         # Act
         # Assert
-        self.fail()
+        self.fail('not implemented')
 
 
 if __name__ == '__main__':
