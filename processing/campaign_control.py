@@ -219,3 +219,7 @@ class CampaignController:
         }
         with self.mission_info_file.open(mode='w') as stream:
             json.dump(data, stream)
+
+    def mission_result(self, atype: atypes.Atype8) -> None:
+        """Обработать mission objective из логов"""
+        pass

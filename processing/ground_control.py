@@ -110,3 +110,7 @@ class GroundController:
             self.ground_kills.append(kill)
             target.kill(atype.pos)
             self._check_targets(kill)
+
+    def mission_result(self, atype: atypes.Atype8) -> None:
+        """Обработать mission objective в логах"""
+        pass

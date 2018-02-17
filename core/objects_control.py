@@ -163,3 +163,15 @@ class ObjectsController:
     def end_sortie(self, atype: atypes.Atype4) -> None:
         """Обработать завершение вылета"""
         pass
+
+    def hit(self, atype: atypes.Atype1) -> None:
+        """Обработать попадание"""
+        pass
+
+    def group(self, atype: atypes.Atype11) -> None:
+        """Обработать появление группы в логах"""
+        pass
+
+    def version(self, atype: atypes.Atype15):
+        """Обработать версию в логах"""
+        pass

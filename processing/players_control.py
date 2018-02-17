@@ -137,3 +137,11 @@ class PlayersController:
     def end_sortie(self, atype: atypes.Atype4) -> None:
         """Обработать завершение вылета"""
         pass
+
+    def influence_area(self, atype: atypes.Atype13):
+        """Обработать объявление зоны влияния в логах"""
+        pass
+
+    def influence_area_boundary(self, atype: atypes.Atype14):
+        """Обновить многоугольник зоны влияния"""
+        pass

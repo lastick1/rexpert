@@ -102,6 +102,7 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
     def event_hit(self, tik: int, ammo: str, attacker_id: int, target_id: int) -> None:
         """AType 1 handler"""
         atype = atypes.Atype1(tik, ammo, attacker_id, target_id)
+        self.objects_controller.hit(atype)
 
     def event_damage(self, tik: int, damage: float, attacker_id: int, target_id: int, pos: dict) -> None:
         """AType 2 handler"""
@@ -145,6 +146,8 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
                              success: int, icon_type_id: int, pos: dict) -> None:
         """AType 8 handler"""
         atype = atypes.Atype8(tik, object_id, coal_id, task_type_id, success, icon_type_id, pos)
+        self.ground_controller.mission_result(atype)
+        self.campaign_controller.mission_result(atype)
 
     def event_airfield(self, tik: int, airfield_id: int, country_id: int, coal_id: int,
                        aircraft_id_list: list, pos: dict) -> None:
@@ -171,6 +174,7 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
     def event_group(self, tik: int, group_id: int, members_id: int, leader_id: int) -> None:
         """AType 11 handler"""
         atype = atypes.Atype11(tik, group_id, members_id, leader_id)
+        self.objects_controller.group(atype)
 
     def event_game_object(self, tik: int, object_id: int, object_name: str, country_id: int,
                           coal_id: int, name: str, parent_id: int) -> None:
@@ -182,14 +186,17 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
                              enabled: bool, in_air: bool) -> None:
         """AType 13 handler"""
         atype = atypes.Atype13(tik, area_id, country_id, coal_id, enabled, in_air)
+        self.players_controller.influence_area(atype)
 
     def event_influence_area_boundary(self, tik: int, area_id: int, boundary) -> None:
         """AType 14 handler"""
         atype = atypes.Atype14(tik, area_id, boundary)
+        self.players_controller.influence_area_boundary(atype)
 
     def event_log_version(self, tik: int, version) -> None:
         """AType 15 handler"""
         atype = atypes.Atype15(tik, version)
+        self.objects_controller.version(atype)
 
     def event_bot_deinitialization(self, tik: int, bot_id: int, pos: dict) -> None:
         """AType 16 handler"""
