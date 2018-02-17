@@ -235,12 +235,12 @@ class Storage:
         self._main = main
         self._mongo = pymongo.MongoClient(self._main.mongo_host, self._main.mongo_port)
         self._database = self._mongo[main.mongo_database]
-        self.airfields = Airfields(self._database['Airfields'])
-        self.players = Players(self._database['Players'])
-        self.campaign_maps = CampaignMaps(self._database['CampaignMaps'])
-        self.campaign_missions = CampaignMissions(self._database['CampaignMissions'])
-        self.divisions = Divisions(self._database['Divisions'])
-        self.warehouses = Warehouses(self._database['Warehouses'])
+        self.airfields = Airfields(self._database[Airfields.__name__])
+        self.players = Players(self._database[Players.__name__])
+        self.campaign_maps = CampaignMaps(self._database[CampaignMaps.__name__])
+        self.campaign_missions = CampaignMissions(self._database[CampaignMissions.__name__])
+        self.divisions = Divisions(self._database[Divisions.__name__])
+        self.warehouses = Warehouses(self._database[Warehouses.__name__])
 
     def drop_database(self):
         """Удалить базу данных (использовать только в тестах)"""
