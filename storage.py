@@ -69,15 +69,15 @@ class CampaignMissions(CollectionWrapper):
         """Конвертировать документ из БД в объект класса миссии"""
         if document:
             return model.CampaignMission(
-                kind=document['kind'],
-                file=document['file'],
+                kind=document[constants.CampaignMission.KIND],
+                file=document[constants.CampaignMission.FILE],
                 date=document['date'],
-                guimap=document['guimap'],
-                additional=document['additional'],
-                server_inputs=document['server_inputs'],
-                objectives=document['objectives'],
-                airfields=document['airfields'],
-                division_units=document['division_units']
+                tvd_name=document[constants.TVD_NAME],
+                additional=document[constants.CampaignMission.ADDITIONAL],
+                server_inputs=document[constants.CampaignMission.SERVER_INPUTS],
+                objectives=document[constants.CampaignMission.OBJECTIVES],
+                airfields=document[constants.CampaignMission.AIRFIELDS],
+                units=document[constants.CampaignMission.DIVISION_UNITS]
             )
 
     def update(self, mission: model.CampaignMission):

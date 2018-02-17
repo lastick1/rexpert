@@ -14,7 +14,8 @@ logging.basicConfig(
 
 IOC = tests.mocks.DependencyContainerMock(pathlib.Path('./testdata/conf.ini'))
 
-TEST_TARGET_SERVER_INPUT = 'BTD1'
+TEST_TARGET_AIRFIELD_SERVER_INPUT = 'Verbovka'
+TEST_TARGET_BTD1_SERVER_INPUT = 'BTD1'
 TEST_TARGET_HP = 3
 TEST_TARGET_POS_BTD1 = {'x': 156060.64, 'z': 132392.5}
 TEST_TARGET_POS_BTD1_UNITS = [
@@ -34,10 +35,10 @@ TEST_MISSION = model.CampaignMission(
     kind='regular',
     file='result1',
     date='01.09.1941',
-    guimap='moscow-winter',
+    tvd_name='moscow-winter',
     additional=dict(),
     server_inputs=[
-        {'name': TEST_TARGET_SERVER_INPUT, 'pos': TEST_TARGET_POS_BTD1}
+        {'name': TEST_TARGET_BTD1_SERVER_INPUT, 'pos': TEST_TARGET_POS_BTD1}
     ],
     objectives=[],
     airfields=[],
@@ -107,14 +108,15 @@ class TestGroundControl(unittest.TestCase):
             tests.mocks.atype_12_stub(3, target_name, 101, 'Test ground target', -1))
         controller.start_mission()
         # Act
-        IOC.objects_controller.kill(atypes.Atype3(4444, attacker.obj_id, target.obj_id, TEST_TARGET_POS_BTD1))
-        controller.kill(atypes.Atype3(123, -1, target.obj_id, TEST_TARGET_POS_BTD1))
-        IOC.objects_controller.kill(atypes.Atype3(4444, attacker.obj_id, target.obj_id, TEST_TARGET_POS_BTD1))
-        controller.kill(atypes.Atype3(123, -1, target.obj_id, TEST_TARGET_POS_BTD1))
-        IOC.objects_controller.kill(atypes.Atype3(4444, attacker.obj_id, target.obj_id, TEST_TARGET_POS_BTD1))
-        controller.kill(atypes.Atype3(123, -1, target.obj_id, TEST_TARGET_POS_BTD1))
+        IOC.objects_controller.kill(atypes.Atype3(4444, attacker.obj_id, target.obj_id, TEST_TARGET_POS_BTD1_UNITS[0]))
+        controller.kill(atypes.Atype3(123, -1, target.obj_id, TEST_TARGET_POS_BTD1_UNITS[0]))
+        IOC.objects_controller.kill(atypes.Atype3(4444, attacker.obj_id, target.obj_id, TEST_TARGET_POS_BTD1_UNITS[0]))
+        controller.kill(atypes.Atype3(123, -1, target.obj_id, TEST_TARGET_POS_BTD1_UNITS[0]))
+        IOC.objects_controller.kill(atypes.Atype3(4444, attacker.obj_id, target.obj_id, TEST_TARGET_POS_BTD1_UNITS[0]))
+        controller.kill(atypes.Atype3(123, -1, target.obj_id, TEST_TARGET_POS_BTD1_UNITS[0]))
         # Assert
-        self.assertSequenceEqual([TEST_TARGET_SERVER_INPUT], IOC.console_mock.received_server_inputs)
+        self.assertSequenceEqual([], IOC.console_mock.received_server_inputs)
+        IOC.divisions_controller.get_division(TEST_TARGET_BTD1_SERVER_INPUT)
 
     def test_division_unit_kill(self):
         """Обрабатывается уничтожение подразделения дивизии"""

@@ -176,7 +176,7 @@ class CampaignController:
             kind=source_mission.kind,
             file=source_mission.name,
             date=source_mission.date.strftime(constants.DATE_FORMAT),
-            guimap=source_mission.guimap,
+            tvd_name=source_mission.guimap,
             additional={
                 'date': atype.date,
                 'game_type_id': atype.game_type_id,
@@ -187,7 +187,7 @@ class CampaignController:
             server_inputs=source_mission.server_inputs,
             objectives=source_mission.objectives,
             airfields=source_mission.airfields,
-            division_units=source_mission.division_units
+            units=source_mission.division_units
         )
 
     def save_mission_info(self, m, m_tvd_name):

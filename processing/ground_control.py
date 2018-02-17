@@ -1,9 +1,11 @@
 """Обработка событий с наземкой (дамаг, киллы), расчёт уничтожения целей (артпозиций, складов и т.п.)"""
 import re
 
+import configs
 import log_objects
 import atypes
 import geometry
+import rcon
 
 from model.campaign_mission import CampaignMission
 
@@ -61,6 +63,16 @@ class GroundController:
         self._server_inputs = set()
         self._ioc = ioc
 
+    @property
+    def config(self) -> configs.Config:
+        """Конфигурация приложения"""
+        return self._ioc.config
+
+    @property
+    def rcon(self) -> rcon.DServerRcon:
+        """Консоль сервера"""
+        return self._ioc.rcon
+
     # TODO подумать над тем, чтобы дёргать этот обработчик на атайп15, а не на каждый кил
     def _check_targets(self, kill: geometry.Point):
         """Проверить состояние целей и отправить инпуты в консоль при необходимости"""
@@ -72,23 +84,23 @@ class GroundController:
     def _send_input(self, server_input: str):
         """Отправить инпут на сервер, если он не был отправлен"""
         if server_input not in self._server_inputs:
-            if not self._ioc.config.main.offline_mode:
-                if not self._ioc.rcon.connected:
-                    self._ioc.rcon.connect()
-                    self._ioc.rcon.auth(self._ioc.config.main.rcon_login, self._ioc.config.main.rcon_password)
+            if not self.config.main.offline_mode:
+                if not self.rcon.connected:
+                    self.rcon.connect()
+                    self.rcon.auth(self.config.main.rcon_login, self.config.main.rcon_password)
                 self._server_inputs.add(server_input)
-                self._ioc.rcon.server_input(server_input)
+                self.rcon.server_input(server_input)
 
     def _get_tvd_name(self, mission) -> str:
         """Получить имя ТВД из данных о миссии"""
-        for tvd_name in self._ioc.config.mgen.maps:
-            if tvd_name in mission.guimap:
+        for tvd_name in self.config.mgen.maps:
+            if tvd_name in mission.tvd_name:
                 return tvd_name
-        raise NameError(f'невозможно определить имя ТВД из guimap {mission.guimap}')
+        raise NameError(f'невозможно определить имя ТВД из guimap {mission.tvd_name}')
 
     def _get_unit_radius(self, tvd_name: str) -> int:
         """Получить радиус юнита дивизии из конфига"""
-        return self._ioc.config.mgen.cfg[tvd_name]['division_unit_radius']
+        return self.config.mgen.cfg[tvd_name]['division_unit_radius']
 
     def start_mission(self):
         """Обработать начало миссии"""

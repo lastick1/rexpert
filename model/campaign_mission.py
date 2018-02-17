@@ -10,7 +10,7 @@ class CampaignMission:
             kind: str,
             file: str,
             date: str,
-            guimap: str,
+            tvd_name: str,
             additional: dict,
             server_inputs: list,
             objectives: list,
@@ -20,7 +20,7 @@ class CampaignMission:
         self.kind = kind  # тип миссии - противостояние или захват
         self.file = file  # имя файла миссии - result1 или result2
         self.date = datetime.datetime.strptime(date, constants.DATE_FORMAT)  # игровая дата в миссии
-        self.guimap = guimap  # имя карты из логов
+        self.tvd_name = tvd_name  # имя карты из логов
         self.additional = additional  # дополнительная информация о миссии из логов
         self.is_correctly_completed = False  # признак корректного завершения миссии (есть atype7)
         self.is_round_ended = False  # признак завершённости раунда (есть atype19)
@@ -36,7 +36,7 @@ class CampaignMission:
             constants.CampaignMission.DATE: self.date.strftime(constants.DATE_FORMAT),
             constants.CampaignMission.FILE: self.file,
             constants.CampaignMission.KIND: self.kind,
-            constants.CampaignMission.GUIMAP: self.guimap,
+            constants.TVD_NAME: self.tvd_name,
             constants.CampaignMission.ADDITIONAL: self.additional,
             constants.CampaignMission.COMPLETED: self.is_correctly_completed,
             constants.CampaignMission.ROUND_ENDED: self.is_round_ended,
@@ -44,7 +44,7 @@ class CampaignMission:
             constants.CampaignMission.SERVER_INPUTS: self.server_inputs,
             constants.CampaignMission.OBJECTIVES: self.objectives,
             constants.CampaignMission.AIRFIELDS: self.airfields,
-            constants.CampaignMission.DIVISION_UNITS: self.division_units
+            constants.CampaignMission.DIVISION_UNITS: self.units
         }
 
     @property
