@@ -187,7 +187,7 @@ class CampaignController:
             server_inputs=source_mission.server_inputs,
             objectives=source_mission.objectives,
             airfields=source_mission.airfields,
-            units=source_mission.division_units
+            units=source_mission.units
         )
 
     def save_mission_info(self, m, m_tvd_name):

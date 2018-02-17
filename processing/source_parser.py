@@ -60,7 +60,7 @@ def _find_division_units_and_kind(mission: model.SourceMission, text: str):
             if 'ASSAULT' in timer['name']:
                 mission.kind = 'assault'
                 continue
-            mission.division_units.append(timer)
+            mission.units.append(timer)
 
 
 class SourceParser:

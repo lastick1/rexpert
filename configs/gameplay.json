@@ -10,6 +10,16 @@
   "unlocks_max": 5,
   "division_repair": 15,
   "division_margin": 20000,
+  "division_unit_radius": {
+    "moscow": 166,
+    "stalingrad": 166,
+    "kuban": 166
+  },
+  "warehouse_unit_radius": {
+    "moscow": 166,
+    "stalingrad": 166,
+    "kuban": 166
+  },
   "airfield_radius": 2000,
   "airfield_min_planes": 20,
   "transfer_amount": 30,

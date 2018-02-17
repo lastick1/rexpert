@@ -35,7 +35,7 @@ TEST_MISSION = model.CampaignMission(
     kind='regular',
     file='result1',
     date='01.09.1941',
-    tvd_name='moscow-winter',
+    tvd_name='moscow',
     additional=dict(),
     server_inputs=[
         {'name': TEST_TARGET_BTD1_SERVER_INPUT, 'pos': TEST_TARGET_POS_BTD1}

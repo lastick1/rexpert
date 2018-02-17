@@ -14,26 +14,26 @@ DIVISION_RE = re.compile(
     '^REXPERT_(?P<side>[BR])(?P<type>[TAI])D(?P<number>\d)_(?P<durability>\d+).*$'
 )
 
+WAREHOUSE_RE = re.compile(
+    '^REXPERT_(?P<side>[BR])WH(?P<number>\d)_(?P<durability>\d+).*$'
+)
+
 
 def _to_campaign_mission(mission) -> CampaignMission:
     return mission
 
 
 class GroundTargetUnit:
-    """Наземная цель в составе дивизии, отслеживание её состояния"""
-
-    def __init__(self, name: str, pos: geometry.Point, radius: float):
+    """Часть кластерной цели (секция склада или подразделение дивизии)"""
+    def __init__(self, name: str, pos: geometry.Point, side: str, parent_name: str, durability: int, radius: float):
         self.name = name  # имя цели
         self._pos = pos  # центр цели
+        self._side = side  # сторона цели в виде буквы B или R
         self._radius = radius  # радиус цели, в котором она засчитывает килы
-        self._kills = 0
+        self._durability = durability  # количество килов цели до её уничтожения
+        self.parent_name = parent_name  # имя дивизии или склада
 
-        data = DIVISION_RE.match(name).groupdict()
-        self._durability = int(data['durability'])  # количество килов цели до её уничтожения
-        self._side = data['side']  # сторона цели в виде буквы B или R
-        self._number = data['number']
-        self.type = data['type']  # тип цели в виде буквы
-        self.division_name = f'{self._side}{self.type}D{self._number}'  # имя дивизии, к которой принадледит цель
+        self._kills = list()
 
     @property
     def country(self) -> int:
@@ -46,12 +46,29 @@ class GroundTargetUnit:
     @property
     def killed(self) -> bool:
         """Убита ли цель"""
-        return self._kills >= self._durability
+        return len(self._kills) >= self._durability
 
-    def check_kill(self, pos: geometry.Point):
-        """Проверить отношение кила к цели и учесть его"""
+    def try_add_kill(self, pos: geometry.Point):
+        """Проверить и добавить килл"""
         if self._pos.distance_to(x=pos.x, z=pos.z) < self._radius:
-            self._kills += 1
+            self._kills.append(pos)
+
+
+class DivisionUnit(GroundTargetUnit):
+    """Наземная цель в составе дивизии, отслеживание её состояния"""
+
+    def __init__(self, name: str, pos: geometry.Point, radius: float):
+        data = DIVISION_RE.match(name).groupdict()
+        self.type = data['type']  # тип цели в виде буквы
+        self.division_name = f'{data["side"]}{data["type"]}D{data["number"]}'  # имя дивизии, к которой принадлежит цель
+        super().__init__(name, pos, data['side'], self.division_name, int(data['durability']), radius)
+
+
+class WarehouseUnit(GroundTargetUnit):
+    def __init__(self, name: str, pos: geometry.Point, radius: float):
+        data = WAREHOUSE_RE.match(name).groupdict()
+        self.warehouse_name = f'{data["side"]}WH{data["number"]}'
+        super().__init__(name, pos, data["side"], self.warehouse_name, int(data['durability']), radius)
 
 
 class GroundController:
@@ -77,7 +94,7 @@ class GroundController:
     def _check_targets(self, kill: geometry.Point):
         """Проверить состояние целей и отправить инпуты в консоль при необходимости"""
         for target in self.targets:
-            target.check_kill(kill)
+            target.try_add_kill(kill)
             if target.killed:
                 self._send_input(target.division_name)
 
@@ -91,13 +108,6 @@ class GroundController:
                 self._server_inputs.add(server_input)
                 self.rcon.server_input(server_input)
 
-    def _get_tvd_name(self, mission) -> str:
-        """Получить имя ТВД из данных о миссии"""
-        for tvd_name in self.config.mgen.maps:
-            if tvd_name in mission.tvd_name:
-                return tvd_name
-        raise NameError(f'невозможно определить имя ТВД из guimap {mission.tvd_name}')
-
     def _get_unit_radius(self, tvd_name: str) -> int:
         """Получить радиус юнита дивизии из конфига"""
         return self.config.mgen.cfg[tvd_name]['division_unit_radius']
@@ -109,10 +119,18 @@ class GroundController:
         mission = _to_campaign_mission(self._ioc.campaign_controller.mission)
 
         for unit in mission.units:
-            self.targets.append(GroundTargetUnit(
-                unit['name'],
-                geometry.Point(x=unit['pos']['x'], z=unit['pos']['z']),
-                self._get_unit_radius(self._get_tvd_name(mission))))
+            if WAREHOUSE_RE.match(unit['name']):
+                self.targets.append(WarehouseUnit(
+                    unit['name'],
+                    geometry.Point(x=unit['pos']['x'], z=unit['pos']['z']),
+                    self.config.gameplay.warehouse_unit_radius[mission.tvd_name]
+                ))
+            if DIVISION_RE.match(unit['name']):
+                self.targets.append(DivisionUnit(
+                    unit['name'],
+                    geometry.Point(x=unit['pos']['x'], z=unit['pos']['z']),
+                    self.config.gameplay.division_unit_radius[mission.tvd_name]
+                ))
 
     def kill(self, atype: atypes.Atype3) -> None:
         """Обработать уничтожение наземного объекта"""

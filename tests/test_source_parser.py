@@ -62,7 +62,7 @@ class TestSourceParser(unittest.TestCase):
         # Act
         result = parser.parse(TEST_TVD_NAME, pathlib.Path('./testdata/mission_source/{}.Mission'.format(TEST_TVD_NAME)))
         # Assert
-        self.assertSequenceEqual(result.division_units, expected)
+        self.assertSequenceEqual(result.units, expected)
 
     def test_parse_mission_kind(self):
         """Определяется вид миссии - противостояние или захват"""

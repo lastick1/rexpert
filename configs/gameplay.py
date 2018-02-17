@@ -21,6 +21,8 @@ class Gameplay:
         self.initial_priority = {tvd_name: src['initial_priority_supply'][tvd_name] for tvd_name in src['maps']}
         self.division_repair = src['division_repair']
         self.division_margin = src['division_margin']
+        self.division_unit_radius = src['division_unit_radius']
+        self.warehouse_unit_radius = src['warehouse_unit_radius']
         self.unlocks_start = src['unlocks_start']
         self.unlocks_min = src['unlocks_min']
         self.unlocks_max = src['unlocks_max']

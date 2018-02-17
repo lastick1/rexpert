@@ -14,5 +14,5 @@ class SourceMission:
         self.server_inputs = list()
         self.objectives = list()
         self.airfields = list()
-        self.division_units = list()
+        self.units = list()  # юниты(таймеры) дивизий и складов в исходниках
         self.kind: str = None  # тип миссии - обычная или захват
