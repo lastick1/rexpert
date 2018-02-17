@@ -147,6 +147,11 @@ class Warehouses(CollectionWrapper):
             health=document[constants.Warehouse.HEALTH]
         )
 
+    def update(self, warehouse: model.Warehouse) -> None:
+        """Обновить/создать документ в БД"""
+        self.update_one(
+            self._make_filter(warehouse.tvd_name, warehouse.name), _update_request_body(warehouse.to_dict()))
+
     def load_by_name(self, tvd_name: str, name: str) -> model.Warehouse:
         """Загрузить данные склада по его имени"""
         return self._convert_from_document(self.collection.find_one(self._make_filter(tvd_name, name)))
