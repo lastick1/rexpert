@@ -86,7 +86,7 @@ class GeneratorMock(processing.Generator):
         super().__init__(config)
         self.generations = []
 
-    def make_mission(self, file_name: str, tvd_name: str):
+    def make_mission(self, file_name: str, tvd_name: str, assault_mission=False):
         self.generations.append((file_name, tvd_name))
 
     def make_ldb(self, tvd_name: str):
@@ -187,6 +187,15 @@ class AirfieldsControllerMock(processing.AirfieldsController):
 
     def finish(self, tvd_name: str, airfield_country: int, bot):
         pass
+
+
+class DivisionsControllerMock(processing.DivisionsController):
+    def __init__(self, ioc):
+        super().__init__(ioc)
+        self.damaged_divisions = set()
+
+    def damage_division(self, tvd_name: str, unit_name: str):
+        self.damaged_divisions.add(unit_name.split(sep='_')[1])
 
 
 class DependencyContainerMock(dependency_container.DependencyContainer):

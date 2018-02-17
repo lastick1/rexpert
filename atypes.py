@@ -56,6 +56,10 @@ class Atype3(Atype):
         self.target_id = target_id
         self.pos = pos
 
+    @property
+    def point(self) -> geometry.Point:
+        return geometry.Point(x=self.pos['x'], z=self.pos['z'])
+
 
 class Atype4(Atype):
     """Завершение вылета"""

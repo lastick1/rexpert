@@ -13,6 +13,8 @@ logging.basicConfig(
     format=u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s] %(message)s', level=logging.DEBUG)
 
 IOC = tests.mocks.DependencyContainerMock(pathlib.Path('./testdata/conf.ini'))
+DIVISIONS_CONTROLLER_MOCK = tests.mocks.DivisionsControllerMock(IOC)
+IOC._divisions_controller = DIVISIONS_CONTROLLER_MOCK
 
 TEST_TARGET_AIRFIELD_SERVER_INPUT = 'Verbovka'
 TEST_TARGET_BTD1_SERVER_INPUT = 'BTD1'
@@ -96,8 +98,8 @@ class TestGroundControl(unittest.TestCase):
         # Assert
         self.assertSequenceEqual([], controller.ground_kills)
 
-    def test_ground_target_kill(self):
-        """Обрабатывается уничтожение наземной цели"""
+    def test_division_unit_kill(self):
+        """Обрабатывается уничтожение подразделения дивизии"""
         controller = processing.GroundController(IOC)
         IOC.campaign_controller._mission = TEST_MISSION
         target_name = 'static_il2'
@@ -116,14 +118,7 @@ class TestGroundControl(unittest.TestCase):
         controller.kill(atypes.Atype3(123, -1, target.obj_id, TEST_TARGET_POS_BTD1_UNITS[0]))
         # Assert
         self.assertSequenceEqual([], IOC.console_mock.received_server_inputs)
-        IOC.divisions_controller.get_division(TEST_TARGET_BTD1_SERVER_INPUT)
-
-    def test_division_unit_kill(self):
-        """Обрабатывается уничтожение подразделения дивизии"""
-        controller = processing.GroundController(IOC)
-        # Act
-        # Assert
-        self.fail('not implemented')
+        self.assertIn('BTD1', DIVISIONS_CONTROLLER_MOCK.damaged_divisions)
 
 
 if __name__ == '__main__':

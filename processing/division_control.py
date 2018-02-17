@@ -1,4 +1,5 @@
 """Управление дивизиями"""
+import logging
 import re
 
 import configs
@@ -83,6 +84,7 @@ class DivisionsController:
         division.units -= 1
         if division.units < 0:
             division.units = 0
+        logging.debug(f'{division.tvd_name} division {division.name} lost unit:{unit_name}')
         self.storage.divisions.update(division)
 
     def repair_rate(self, penalties: int):
