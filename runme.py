@@ -1,5 +1,4 @@
 """Основной файл для запуска"""
-import datetime
 import pathlib
 import logging
 
@@ -52,10 +51,9 @@ def run():
     core.LogsReader(dependency_container.DependencyContainer()).start()
 
 
-print(datetime.datetime.now().strftime("[%H:%M:%S] Program Start."))
 logging.basicConfig(
     format=u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s] %(message)s', level=logging.DEBUG)
-
+logging.info("Program Start.")
 # compile_log()
 # compile_gif()
 # compile_ldf()

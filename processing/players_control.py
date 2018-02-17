@@ -133,3 +133,7 @@ class PlayersController:
         player = self.storage.players.find(account_id)
         player.online = False
         self.storage.players.update(player)
+
+    def end_sortie(self, atype: atypes.Atype4) -> None:
+        """Обработать завершение вылета"""
+        pass

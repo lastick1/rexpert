@@ -76,10 +76,10 @@ class ObjectsController:
         if airfield_id in self._objects:
             return self._objects[airfield_id]
 
-    def start_mission(self):
+    def start_mission(self) -> None:
         """Обработать начало миссии"""
 
-    def damage(self, atype: atypes.Atype2):
+    def damage(self, atype: atypes.Atype2) -> None:
         """Обработать событие урона"""
         target = self._objects[atype.target_id]
         target.update_pos(atype.pos)
@@ -89,7 +89,7 @@ class ObjectsController:
             if isinstance(attacker, log_objects.Aircraft):
                 _to_aircraft(attacker).add_damage(target, atype.damage)
 
-    def kill(self, atype: atypes.Atype3):
+    def kill(self, atype: atypes.Atype3) -> None:
         """Обработать событие убийства"""
         target = self.get_object(atype.target_id)
         target.kill(pos=atype.pos)
@@ -99,17 +99,17 @@ class ObjectsController:
             if isinstance(attacker, log_objects.Aircraft):
                 _to_aircraft(attacker).add_kill(target)
 
-    def takeoff(self, atype: atypes.Atype5):
+    def takeoff(self, atype: atypes.Atype5) -> None:
         """Обработать взлёт"""
         aircraft = self.get_aircraft(atype.aircraft_id)
         aircraft.takeoff(atype.pos)
 
-    def land(self, atype: atypes.Atype6):
+    def land(self, atype: atypes.Atype6) -> None:
         """Посадить самолёт"""
         aircraft = self.get_aircraft(atype.aircraft_id)
         aircraft.land(atype.pos, list(self._airfields), self.config.gameplay.airfield_radius)
 
-    def end_mission(self):
+    def end_mission(self) -> None:
         """Завершить миссию"""
         for aircraft in self._aircrafts:
             aircraft.landed = True
@@ -119,7 +119,7 @@ class ObjectsController:
         self._airfields.clear()
         self._aircrafts.clear()
 
-    def airfield(self, atype: atypes.Atype9):
+    def airfield(self, atype: atypes.Atype9) -> None:
         """Создать/обновленить аэродром"""
         if atype.airfield_id in self._objects:
             airfield = self.get_airfield(atype.airfield_id)
@@ -129,7 +129,7 @@ class ObjectsController:
             self._objects[atype.airfield_id] = airfield
             self._airfields.add(airfield)
 
-    def spawn(self, atype: atypes.Atype10):
+    def spawn(self, atype: atypes.Atype10) -> None:
         """Обработать появление игрока"""
         aircraft = self.get_aircraft(atype.aircraft_id)
         aircraft.update_pos(atype.pos)
@@ -139,16 +139,16 @@ class ObjectsController:
         else:
             print('Warning! not found bot')
 
-    def deinitialize(self, atype: atypes.Atype16):
+    def deinitialize(self, atype: atypes.Atype16) -> None:
         """Деинициализировать бота"""
         bot = self.get_bot(atype.bot_id)
         bot.deinitialize(atype.pos)
 
-    def change_pos(self, atype: atypes.Atype17):
+    def change_pos(self, atype: atypes.Atype17) -> None:
         """Измененить позицию объекта"""
         self.get_object(atype.object_id).update_pos(atype.pos)
 
-    def eject_leave(self, atype: atypes.Atype18):
+    def eject_leave(self, atype: atypes.Atype18) -> None:
         """Обработать прыжок с парашютом"""
         aircraft = self.get_aircraft(atype.parent_id)
         bot = self.get_bot(atype.bot_id)
@@ -159,3 +159,7 @@ class ObjectsController:
         if bot:
             bot.ejected = True
             print('Warning! not found bot')
+
+    def end_sortie(self, atype: atypes.Atype4) -> None:
+        """Обработать завершение вылета"""
+        pass

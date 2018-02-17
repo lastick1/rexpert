@@ -37,6 +37,7 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
             logging.warning('ignored bad string: [%s]', line)
             return
 
+        # noinspection PyBroadException
         try:
             atype = parse(line)
             atype_id = atype.pop('atype_id')
@@ -47,7 +48,9 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
             self.events_handlers[atype_id](**atype)
 
         except UnexpectedATypeWarning:
-            logging.warning('unexpected atype: [%s]', line)
+            logging.warning(f'unexpected atype: [{line}]')
+        except Exception as exception:
+            logging.exception(f'Error {exception} on line: {line}')
 
     @property
     def objects_controller(self) -> ObjectsController:
@@ -117,6 +120,8 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
                          shells: int, bombs: int, rockets: int, pos: dict) -> None:
         """AType 4 handler"""
         atype = atypes.Atype4(tik, aircraft_id, bot_id, cartridges, shells, bombs, rockets, pos)
+        self.objects_controller.end_sortie(atype)
+        self.players_controller.end_sortie(atype)
         # бывают события дубли - проверяем
 
     def event_takeoff(self, tik: int, aircraft_id: int, pos: dict) -> None:
