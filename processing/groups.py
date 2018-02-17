@@ -1,4 +1,5 @@
 """Манипуляции с файлами групп"""
+import logging
 import shutil
 import os
 import pathlib
@@ -81,13 +82,19 @@ class FrontLineGroup(Group):
                 for area in self.influences:
                     text += str(area)
                 text += self.ref_point_text
-                self.files[file_ext].write_text(text, encoding='utf-8')
+                file = pathlib.Path(self.files[file_ext])
+                if file.exists():
+                    file.write_text(text, encoding='utf-8')
+                else:
+                    logging.warning(f'file not exists: {file}')
             else:
                 # файлы локализации нужны, чтобы уменьшить вероятные проблемы (фризы)
                 file = pathlib.Path(self.files[file_ext])
                 content = '{}\n{}'.format('\ufeff', self.loc_text)
                 if file.exists():
                     file.write_text(content, encoding='utf-16-le')
+                else:
+                    logging.warning(f'file not exists: {file}')
 
     @property
     def loc_text(self):

@@ -1,6 +1,7 @@
 """Тестирование событий, связанных с игроками"""
 # pylint:disable=R0914,R0913
 import datetime
+import logging
 import pathlib
 import unittest
 
@@ -10,6 +11,9 @@ import constants
 import model
 import processing
 import tests
+
+logging.basicConfig(
+    format=u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s] %(message)s', level=logging.DEBUG)
 
 IOC = tests.mocks.DependencyContainerMock(pathlib.Path('./testdata/conf.ini'))
 MAIN = IOC.config.main

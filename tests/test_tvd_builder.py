@@ -1,4 +1,5 @@
 """Тестирование обновления папки ТВД"""
+import logging
 import pathlib
 import shutil
 import unittest
@@ -6,6 +7,9 @@ import unittest
 import model
 import processing
 import tests
+
+logging.basicConfig(
+    format=u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s] %(message)s', level=logging.DEBUG)
 
 IOC = tests.mocks.DependencyContainerMock(pathlib.Path('./testdata/conf.ini'))
 MOSCOW_FIELDS = pathlib.Path('./data/moscow_fields.csv')
@@ -91,7 +95,7 @@ class TestTvdBuilder(unittest.TestCase):
 
     def test_update(self):
         """Генерируется папка ТВД"""
-        shutil.copy('./data/scg/2/moscow-base_v2.ldf', './tmp/data/scg/2/')
+        shutil.copy('./data/scg/2/moscow_base.ldf', './tmp/data/scg/2/')
         airfields = processing.AirfieldsController.initialize_managed_airfields(IOC.config.mgen.airfields_data[MOSCOW])
         IOC.grid_controller.get_file = _get_xgml_file_mock
         builder = processing.TvdBuilder(MOSCOW, IOC)

@@ -1,4 +1,5 @@
 """Тестирование управления кампанией"""
+import logging
 import datetime
 import pathlib
 import shutil
@@ -9,6 +10,9 @@ import configs
 import model
 import processing
 import tests
+
+logging.basicConfig(
+    format=u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s] %(message)s', level=logging.DEBUG)
 
 DATE_FORMAT = '%d.%m.%Y'
 
@@ -95,7 +99,7 @@ class TestCampaignController(unittest.TestCase):
     def test_generate(self):
         """Генерируется указанная миссия"""
         shutil.copy('./data/scg/1/stalin-base.ldf', './tmp/data/scg/1/')
-        shutil.copy('./data/scg/2/moscow-base_v2.ldf', './tmp/data/scg/2/')
+        shutil.copy('./data/scg/2/moscow_base.ldf', './tmp/data/scg/2/')
         campaign = processing.CampaignController(IOC)
         IOC.grid_controller.get_file = self._get_xgml_file_mock
         campaign.initialize()
@@ -110,7 +114,7 @@ class TestCampaignController(unittest.TestCase):
     def test_generate_next_with_atype_19(self):
         """Генерируется следующая миссия с AType:19 в логе"""
         campaign = processing.CampaignController(IOC)
-        shutil.copy('./data/scg/2/moscow-base_v2.ldf', './tmp/data/scg/2/moscow-base_v2.ldf')
+        shutil.copy('./data/scg/2/moscow_base.ldf', './tmp/data/scg/2/moscow_base.ldf')
         IOC.grid_controller.get_file = self._get_xgml_file_mock
         IOC.source_parser.parse_in_dogfight = _parse_mock
         campaign.initialize_map(MOSCOW)

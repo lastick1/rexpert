@@ -1,5 +1,6 @@
 """Тестирование обработки событий"""
 import pathlib
+import logging
 import shutil
 import unittest
 
@@ -7,6 +8,9 @@ import configs
 import core
 import model
 import tests
+
+logging.basicConfig(
+    format=u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s] %(message)s', level=logging.DEBUG)
 
 TEST_LOG1 = './testdata/logs/spawn_takeoff_landing_despawn_missionReport(2017-09-17_09-05-09)[0].txt'
 TEST_LOG2 = './testdata/logs/target_bombing_crashlanded_on_af_missionReport(2017-09-23_19-31-30)[0].txt'
@@ -101,7 +105,7 @@ class TestIntegration(unittest.TestCase):
     def test_end_round(self):
         """Перераспределяются самолёты по аэродромам в конце миссии"""
         shutil.copy('./data/scg/1/stalin-base.ldf', './tmp/data/scg/1/')
-        shutil.copy('./data/scg/2/moscow-base_v2.ldf', './tmp/data/scg/2/')
+        shutil.copy('./data/scg/2/moscow_base.ldf', './tmp/data/scg/2/')
         IOC.source_parser.parse_in_dogfight = _parse_mock
         controller = core.EventsController(IOC)
         for tvd_name in IOC.config.mgen.maps:

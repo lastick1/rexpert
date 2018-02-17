@@ -33,12 +33,12 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         # TODO можно либо собирать список всех записей, либо использовать очередь
         # TODO https://docs.python.org/3/library/collections.html#deque-objects
         # TODO и собирать только 5-10 последних
-        if 'AType' not in line:
-            logging.warning('ignored bad string: [%s]', line)
-            return
 
         # noinspection PyBroadException
         try:
+            if 'AType' not in line:
+                raise NameError(f'ignored bad string: [{line}]')
+
             atype = parse(line)
             atype_id = atype.pop('atype_id')
             if atype_id is 0:

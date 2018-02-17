@@ -1,4 +1,5 @@
 """Тестирование обработки наземки"""
+import logging
 import pathlib
 import unittest
 
@@ -7,6 +8,9 @@ import geometry
 import model
 import processing
 import tests
+
+logging.basicConfig(
+    format=u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s] %(message)s', level=logging.DEBUG)
 
 IOC = tests.mocks.DependencyContainerMock(pathlib.Path('./testdata/conf.ini'))
 
@@ -89,6 +93,13 @@ class TestGroundControl(unittest.TestCase):
         controller.kill(atypes.Atype3(123, -1, target.obj_id, TEST_TARGET_POS))
         # Assert
         self.assertSequenceEqual([TEST_TARGET_SERVER_INPUT], IOC.console_mock.received_server_inputs)
+
+    def test_division_unit_kill(self):
+        """Обрабатывается уничтожение подразделения дивизии"""
+        controller = processing.GroundController(IOC)
+        # Act
+        # Assert
+        self.fail()
 
 
 if __name__ == '__main__':
