@@ -164,7 +164,6 @@ blocks_set; blocks_BAD1_016_8; main(scg\2\blocks_quickmission\ground\201\rexpert
 blocks_set; blocks_BTD1_001_14_AAA; main(scg\2\blocks_quickmission\ground\201\rexpert_btd1_001_14_aaa.group);
 blocks_set; blocks_BTD1_002_10_AAA; main(scg\2\blocks_quickmission\ground\201\rexpert_btd1_002_10_aaa.group);
 blocks_set; blocks_BTD1_003_10; main(scg\2\blocks_quickmission\ground\201\rexpert_btd1_003_10.group);
-blocks_set; blocks_BTD1_004_10; main(scg\2\blocks_quickmission\ground\201\rexpert_btd2_004_10.group);
 blocks_set; blocks_BTD1_005_7; main(scg\2\blocks_quickmission\ground\201\rexpert_btd1_005_7.group);
 blocks_set; blocks_BTD1_006_4_AAA; main(scg\2\blocks_quickmission\ground\201\rexpert_btd1_006_4_aaa.group);
 blocks_set; blocks_BTD1_008_3; main(scg\2\blocks_quickmission\ground\201\rexpert_btd1_008_3.group);
@@ -292,6 +291,7 @@ blocks_set; blocks_BAD1_CZ; main(scg\2\blocks_quickmission\activate_blue_divisio
 blocks_set; blocks_BID1_CZ; main(scg\2\blocks_quickmission\activate_blue_division.group);
 blocks_set; blocks_BTD1_007_3; main(scg\2\blocks_quickmission\ground\201\rexpert_btd1_007_3.group);
 blocks_set; blocks_BTD1_014_9; main(scg\2\blocks_quickmission\ground\201\rexpert_btd1_014_9.group);
+blocks_set; blocks_BTD1_004_10_AAA; main(scg\2\blocks_quickmission\ground\201\rexpert_btd1_004_10_aaa.group);
 
 #
 ## geo params
@@ -457,7 +457,6 @@ phase; BAD1_016_8; line(BAD1_016_REF,BAD1_ORIENTATION,0,1,180); blocks_BAD1_016_
 phase; BTD1_001_14_AAA; line(BTD1_AAA1_REF,BTD1_ORIENTATION,0,1,180); blocks_BTD1_001_14_AAA; ;;
 phase; BTD1_002_10_AAA; line(BTD1_AAA2_REF,BTD1_ORIENTATION,0,1,180); blocks_BTD1_002_10_AAA; ;;
 phase; BTD1_003_10; line(BTD1_003_REF,BTD1_ORIENTATION,0,1,180); blocks_BTD1_003_10; ;;
-phase; BTD1_004_10; line(BTD1_004_REF,BTD1_ORIENTATION,0,1,180); blocks_BTD1_004_10; ;;
 phase; BTD1_005_7; line(BTD1_005_REF,BTD1_ORIENTATION,0,1,180); blocks_BTD1_005_7; ;;
 phase; BTD1_006_4_AAA; line(BTD1_AAA3_REF,BTD1_ORIENTATION,0,1,180); blocks_BTD1_006_4_AAA; ;;
 phase; BTD1_008_3; line(BTD1_008_REF,BTD1_ORIENTATION,0,1,180); blocks_BTD1_008_3; ;;
@@ -585,6 +584,7 @@ phase; BAD1_CZ; at(BAD1); blocks_BAD1_CZ; clone_location;;
 phase; BID1_CZ; at(BID1); blocks_BID1_CZ; clone_location;;
 phase; BTD1_007_3; line(BTD1_007_REF,BTD1_ORIENTATION,0,1,180); blocks_BTD1_007_3; ;;
 phase; BTD1_014_9; line(BTD1_014_REF,BTD1_ORIENTATION,0,1,180); blocks_BTD1_014_9; ;;
+phase; BTD1_004_10_AAA; line(BTD1_004_REF,BTD1_ORIENTATION,0,1,180); blocks_BTD1_004_10_AAA; ;;
 
 #
 ## cases & switches
@@ -670,7 +670,6 @@ tlink; BTD1_CZ(TARGET_ATTACK_AREA); BTD1_001_14_AAA(TARGET_ATTACK_AREA);
 olink; BTD1_CZ(OBJECT_AAA); BTD1_001_14_AAA(OBJECT_AAA);
 tlink; BTD1_CZ(TARGET_ATTACK_AREA); BTD1_002_10_AAA(TARGET_ATTACK_AREA);
 olink; BTD1_CZ(OBJECT_AAA); BTD1_002_10_AAA(OBJECT_AAA);
-olink; BTD1_CZ(OBJECT_TANKS); BTD1_004_10(OBJECT_TANKS);
 olink; BTD1_CZ(OBJECT_TANKS); BTD1_005_7(OBJECT_TANKS);
 olink; BTD1_CZ(OBJECT_TANKS); BTD1_006_4_AAA(OBJECT_TANKS);
 tlink; BTD1_CZ(TARGET_ATTACK_AREA); BTD1_006_4_AAA(TARGET_ATTACK_AREA);
@@ -726,6 +725,8 @@ olink; BID1_CZ(OBJECT_ARTY); BID1_015_7(OBJECT_ARTY);
 olink; BID1_CZ(OBJECT_ARTY); BID1_016_8(OBJECT_ARTY);
 olink; BTD1_CZ(OBJECT_TANKS); BTD1_007_3(OBJECT_TANKS);
 olink; BTD1_CZ(OBJECT_TANKS); BTD1_014_9(OBJECT_TANKS);
+tlink; BTD1_CZ(TARGET_ATTACK_AREA); BTD1_004_10_AAA(TARGET_ATTACK_AREA);
+olink; BTD1_CZ(OBJECT_AAA); BTD1_004_10_AAA(OBJECT_AAA);
 
 #
 ## conditions
@@ -1323,6 +1324,8 @@ action; BAD1_CZ(CLOSER,Zone); <empty>();
 action; BAD1_CZ(FURTHER,Zone); <empty>();
 action; BID1_CZ(CLOSER,Zone); <empty>();
 action; BID1_CZ(FURTHER,Zone); <empty>();
+action; BTD1_004_10_AAA(AAA_2037mm,AILevel); <empty>();
+action; BTD1_004_10_AAA(AAA_mg,AILevel); <empty>();
 
 #
 ## unlinks
@@ -1492,7 +1495,6 @@ gui_helper; BAD1_016_8; -7016; 5129;
 gui_helper; BTD1_001_14_AAA; -4829; 4542;
 gui_helper; BTD1_002_10_AAA; -4349; 4536;
 gui_helper; BTD1_003_10; -3871; 4537;
-gui_helper; BTD1_004_10; -3395; 4538;
 gui_helper; BTD1_005_7; -2923; 4536;
 gui_helper; BTD1_006_4_AAA; -2459; 4532;
 gui_helper; BTD1_008_3; -1528; 4530;
@@ -1620,6 +1622,7 @@ gui_helper; BAD1_CZ; -8034; 3473;
 gui_helper; BID1_CZ; -6847; 6154;
 gui_helper; BTD1_007_3; -1993; 4528;
 gui_helper; BTD1_014_9; -2433; 5245;
+gui_helper; BTD1_004_10_AAA; -3405; 4539;
 gui_helper; check; -2388; 274;BLUE_FRONT_AF_1(free)
 gui_helper; check; -2387; 239;BLUE_FRONT_AF_1(coalition)
 gui_helper; check; -2389; 312;BLUE_FRONT_AF_1(range)
@@ -2209,3 +2212,5 @@ gui_helper; Zone; -7971; 3356;BAD1_CZ; (CLOSER);
 gui_helper; Zone; -7971; 3396;BAD1_CZ; (FURTHER);
 gui_helper; Zone; -6784; 6037;BID1_CZ; (CLOSER);
 gui_helper; Zone; -6784; 6077;BID1_CZ; (FURTHER);
+gui_helper; AILevel; -3337; 4452;BTD1_004_10_AAA; (AAA_2037mm);
+gui_helper; AILevel; -3337; 4492;BTD1_004_10_AAA; (AAA_mg);
