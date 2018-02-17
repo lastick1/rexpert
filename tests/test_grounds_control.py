@@ -16,7 +16,19 @@ IOC = tests.mocks.DependencyContainerMock(pathlib.Path('./testdata/conf.ini'))
 
 TEST_TARGET_SERVER_INPUT = 'BTD1'
 TEST_TARGET_HP = 3
-TEST_TARGET_POS = {'x': 555, 'z': 555}
+TEST_TARGET_POS_BTD1 = {'x': 156060.64, 'z': 132392.5}
+TEST_TARGET_POS_BTD1_UNITS = [
+    {'x': 155453.86, 'z': 130798.2},
+    {'x': 156461.58, 'z': 131861.16},
+    {'x': 155169.17, 'z': 133163.56},
+    {'x': 155055.39, 'z': 132101.14},
+    {'x': 155604.38, 'z': 131692.38},
+    {'x': 156010.75, 'z': 131154.91},
+    {'x': 156484.95, 'z': 133269.22},
+    {'x': 156907.78, 'z': 133390.91},
+    {'x': 157196.23, 'z': 134433.89},
+    {'x': 157767.08, 'z': 132920.91}
+]
 
 TEST_MISSION = model.CampaignMission(
     kind='regular',
@@ -25,18 +37,28 @@ TEST_MISSION = model.CampaignMission(
     guimap='moscow-winter',
     additional=dict(),
     server_inputs=[
-        {'name': TEST_TARGET_SERVER_INPUT, 'pos': TEST_TARGET_POS}
+        {'name': TEST_TARGET_SERVER_INPUT, 'pos': TEST_TARGET_POS_BTD1}
     ],
     objectives=[],
     airfields=[],
-    division_units=[
-        {'name': 'REXPERT_BTD1_3', 'pos': TEST_TARGET_POS}
+    units=[
+        {'name': 'REXPERT_BTD1_3', 'pos': TEST_TARGET_POS_BTD1_UNITS[0]},
+        {'name': 'REXPERT_BTD1_15', 'pos': TEST_TARGET_POS_BTD1_UNITS[1]},
+        {'name': 'REXPERT_BTD1_2', 'pos': TEST_TARGET_POS_BTD1_UNITS[2]},
+        {'name': 'REXPERT_BTD1_10', 'pos': TEST_TARGET_POS_BTD1_UNITS[3]},
+        {'name': 'REXPERT_BTD1_17', 'pos': TEST_TARGET_POS_BTD1_UNITS[4]},
+        {'name': 'REXPERT_BTD1_9', 'pos': TEST_TARGET_POS_BTD1_UNITS[5]},
+        {'name': 'REXPERT_BTD1_8', 'pos': TEST_TARGET_POS_BTD1_UNITS[6]},
+        {'name': 'REXPERT_BTD1_8', 'pos': TEST_TARGET_POS_BTD1_UNITS[7]},
+        {'name': 'REXPERT_BTD1_20', 'pos': TEST_TARGET_POS_BTD1_UNITS[8]},
+        {'name': 'REXPERT_BTD1_20', 'pos': TEST_TARGET_POS_BTD1_UNITS[9]}
     ]
 )
 
 
 class TestGroundControl(unittest.TestCase):
     """Тесты контроллера наземки"""
+
     def setUp(self):
         """Настройка перед тестами"""
 
@@ -85,12 +107,12 @@ class TestGroundControl(unittest.TestCase):
             tests.mocks.atype_12_stub(3, target_name, 101, 'Test ground target', -1))
         controller.start_mission()
         # Act
-        IOC.objects_controller.kill(atypes.Atype3(4444, attacker.obj_id, target.obj_id, TEST_TARGET_POS))
-        controller.kill(atypes.Atype3(123, -1, target.obj_id, TEST_TARGET_POS))
-        IOC.objects_controller.kill(atypes.Atype3(4444, attacker.obj_id, target.obj_id, TEST_TARGET_POS))
-        controller.kill(atypes.Atype3(123, -1, target.obj_id, TEST_TARGET_POS))
-        IOC.objects_controller.kill(atypes.Atype3(4444, attacker.obj_id, target.obj_id, TEST_TARGET_POS))
-        controller.kill(atypes.Atype3(123, -1, target.obj_id, TEST_TARGET_POS))
+        IOC.objects_controller.kill(atypes.Atype3(4444, attacker.obj_id, target.obj_id, TEST_TARGET_POS_BTD1))
+        controller.kill(atypes.Atype3(123, -1, target.obj_id, TEST_TARGET_POS_BTD1))
+        IOC.objects_controller.kill(atypes.Atype3(4444, attacker.obj_id, target.obj_id, TEST_TARGET_POS_BTD1))
+        controller.kill(atypes.Atype3(123, -1, target.obj_id, TEST_TARGET_POS_BTD1))
+        IOC.objects_controller.kill(atypes.Atype3(4444, attacker.obj_id, target.obj_id, TEST_TARGET_POS_BTD1))
+        controller.kill(atypes.Atype3(123, -1, target.obj_id, TEST_TARGET_POS_BTD1))
         # Assert
         self.assertSequenceEqual([TEST_TARGET_SERVER_INPUT], IOC.console_mock.received_server_inputs)
 

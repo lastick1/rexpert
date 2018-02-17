@@ -96,7 +96,7 @@ class GroundController:
         self.targets.clear()
         mission = _to_campaign_mission(self._ioc.campaign_controller.mission)
 
-        for unit in mission.division_units:
+        for unit in mission.units:
             self.targets.append(GroundTargetUnit(
                 unit['name'],
                 geometry.Point(x=unit['pos']['x'], z=unit['pos']['z']),

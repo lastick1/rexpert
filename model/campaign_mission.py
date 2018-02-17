@@ -15,7 +15,7 @@ class CampaignMission:
             server_inputs: list,
             objectives: list,
             airfields: list,
-            division_units: list
+            units: list
     ):
         self.kind = kind  # тип миссии - противостояние или захват
         self.file = file  # имя файла миссии - result1 или result2
@@ -28,7 +28,7 @@ class CampaignMission:
         self.server_inputs = server_inputs  # сервер инпуты в исходнике миссии
         self.objectives = objectives  # все обжективы в исходнике миссии
         self.airfields = airfields  # все аэродромы в исходнике миссии
-        self.division_units = division_units  # все юниты дивизий в исходнике миссии
+        self.units = units  # все юниты дивизий и складов в исходнике миссии
 
     def to_dict(self) -> dict:
         """Сериализация в словарь для MongoDB"""
