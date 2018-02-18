@@ -120,6 +120,25 @@ class TestGroundControl(unittest.TestCase):
         self.assertSequenceEqual([], IOC.console_mock.received_server_inputs)
         self.assertIn('BTD1', DIVISIONS_CONTROLLER_MOCK.damaged_divisions)
 
+    def test_division_kill(self):
+        """Обрабатывается уничтожение дивизии"""
+        controller = processing.GroundController(IOC)
+        IOC.campaign_controller._mission = TEST_MISSION
+        target_name = 'static_il2'
+        aircraft_name = 'I-16 type 24'
+        attacker = IOC.objects_controller.create_object(
+            tests.mocks.atype_12_stub(2, aircraft_name, 201, 'Test attacker', -1))
+        target = IOC.objects_controller.create_object(
+            tests.mocks.atype_12_stub(3, target_name, 101, 'Test ground target', -1))
+        controller.start_mission()
+        # Act
+        for pos in TEST_TARGET_POS_BTD1_UNITS:
+            for i in range(20):
+                IOC.objects_controller.kill(atypes.Atype3(4444, attacker.obj_id, target.obj_id, pos))
+                controller.kill(atypes.Atype3(123, -1, target.obj_id, pos))
+        # Assert
+        self.assertSequenceEqual(['BTD1'], IOC.console_mock.received_server_inputs)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
