@@ -73,6 +73,11 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         return self._ioc.divisions_controller
 
     @property
+    def warehouses_controller(self) -> processing.WarehouseController:
+        """Контроллер складов"""
+        return self._ioc.warehouses_controller
+
+    @property
     def ground_controller(self) -> processing.GroundController:
         """Контроллер наземки"""
         return self._ioc.ground_controller
@@ -96,6 +101,7 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         self.airfields_controller.start_mission()
         self.campaign_controller.start_mission(atype)
         self.divisions_controller.start_mission()
+        self.warehouses_controller.start_mission()
         self.ground_controller.start_mission()
         self.map_painter.update_map()
 

@@ -12,6 +12,7 @@ import processing
 import storage
 
 from .division_control import DivisionsController
+from .warehouse_control import WarehouseController
 from .grid_control import GridController
 from .source_parser import SourceParser
 from .airfields_control import AirfieldsController
@@ -38,6 +39,10 @@ class CampaignController:
     def divisions_controller(self) -> DivisionsController:
         """Контроллер дивизий"""
         return self._ioc.divisions_controller
+
+    @property
+    def warehouses_controller(self) -> WarehouseController:
+        return self._ioc.warehouses_controller
     
     @property
     def players_controller(self) -> processing.PlayersController:
@@ -108,6 +113,7 @@ class CampaignController:
         self.airfields_controller.initialize_tvd(tvd, campaign_map)
         self.storage.campaign_maps.update(campaign_map)
         self.divisions_controller.initialize_divisions(tvd_name)
+        self.warehouses_controller.initialize_warehouses(tvd_name)
 
     def reset(self):
         """Сбросить состояние кампании"""

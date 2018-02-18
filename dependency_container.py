@@ -19,6 +19,7 @@ class DependencyContainer:  # pylint: disable=R0902
         self._campaign_controller: processing.CampaignController = None
         self._airfields_controller: processing.AirfieldsController = None
         self._divisions_controller: processing.DivisionsController = None
+        self._warehouses_controller: processing.WarehouseController = None
         self._grid_controller: processing.GridController = None
         self._aircraft_vendor: processing.AircraftVendor = None
         self._source_parser: processing.SourceParser = None
@@ -89,6 +90,13 @@ class DependencyContainer:  # pylint: disable=R0902
         if not self._divisions_controller:
             self._divisions_controller = processing.DivisionsController(self)
         return self._divisions_controller
+
+    @property
+    def warehouses_controller(self) -> processing.WarehouseController:
+        """Контроллер складов"""
+        if not self._warehouses_controller:
+            self._warehouses_controller = processing.WarehouseController(self)
+        return self._warehouses_controller
 
     @property
     def grid_controller(self) -> processing.GridController:

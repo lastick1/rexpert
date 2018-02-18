@@ -63,6 +63,7 @@ class DivisionsController:
                     pos=self.config.mgen.cfg[tvd_name]['division_start_locations'][name]  # {'x': 0.0, 'z': 0.0}
                 )
             )
+        logging.info(f'{tvd_name} divisions initialized')
 
     def start_mission(self):
         """Обработать начало миссии - обновить положение дивизий из исходников"""

@@ -144,7 +144,8 @@ class Warehouses(CollectionWrapper):
         return model.Warehouse(
             name=document[constants.Warehouse.NAME],
             tvd_name=document[constants.TVD_NAME],
-            health=document[constants.Warehouse.HEALTH]
+            health=document[constants.Warehouse.HEALTH],
+            pos=document[constants.POS]
         )
 
     def update(self, warehouse: model.Warehouse) -> None:
