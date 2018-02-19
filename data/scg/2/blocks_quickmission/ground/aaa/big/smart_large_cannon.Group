@@ -1,0 +1,299 @@
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 2;
+  LinkTrId = 3;
+  XPos = -8750.000;
+  YPos = 17.795;
+  ZPos = 500.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\52k.txt";
+  Model = "graphics\artillery\52k\52k.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 3;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -8750.000;
+  YPos = 17.995;
+  ZPos = 500.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 2;
+  OnEvents
+  {
+    OnEvent
+    {
+      Type = 13;
+      TarId = 5;
+    }
+  }
+  OnReports
+  {
+    OnReport
+    {
+      Type = 0;
+      CmdId = 6;
+      TarId = 7;
+    }
+  }
+}
+
+MCU_Spawner
+{
+  Index = 6;
+  Name = "Trigger Spawner";
+  Desc = "";
+  Targets = [];
+  Objects = [3];
+  XPos = -8750.000;
+  YPos = 24.530;
+  ZPos = 430.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  SpawnAtMe = 0;
+}
+
+MCU_Delete
+{
+  Index = 9;
+  Name = "Trigger Delete";
+  Desc = "";
+  Targets = [];
+  Objects = [3];
+  XPos = -8780.000;
+  YPos = 24.530;
+  ZPos = 430.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Dynamic
+{
+  Index = 10;
+  Name = "AAA_BIG_TYPE";
+  Desc = "";
+  Targets = [3];
+  Objects = [];
+  XPos = -8750.119;
+  YPos = 17.795;
+  ZPos = 515.121;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "Script";
+  Property = "Model";
+  Property = "Country";
+  Property = "AILevel";
+}
+
+MCU_CMD_ForceComplete
+{
+  Index = 11;
+  Name = "command Force Complete";
+  Desc = "";
+  Targets = [];
+  Objects = [3];
+  XPos = -8770.000;
+  YPos = 17.795;
+  ZPos = 430.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Priority = 2;
+}
+
+MCU_H_Input
+{
+  Index = 12;
+  Name = "DEACTIVATE_LARGE_CANNONS";
+  Desc = "";
+  Targets = [11,13];
+  Objects = [];
+  XPos = -8770.000;
+  YPos = 24.530;
+  ZPos = 400.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Input
+{
+  Index = 14;
+  Name = "ACTIVATE_LARGE_CANNONS";
+  Desc = "";
+  Targets = [6];
+  Objects = [];
+  XPos = -8750.000;
+  YPos = 24.530;
+  ZPos = 400.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Timer
+{
+  Index = 13;
+  Name = "t2s";
+  Desc = "";
+  Targets = [9];
+  Objects = [];
+  XPos = -8780.000;
+  YPos = 24.530;
+  ZPos = 410.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 2;
+  Random = 100;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 16;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -8750.000;
+  YPos = 24.530;
+  ZPos = 500.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 25;
+  Backward = 25;
+  Left = 25;
+  Right = 25;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 17;
+  LinkTrId = 0;
+  XPos = -8750.006;
+  YPos = 17.795;
+  ZPos = 499.975;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Model = "graphics\blocks\art_position_big.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\art_position_big.txt";
+  Country = 0;
+  Desc = "";
+  Durability = 1000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_Deactivate
+{
+  Index = 5;
+  Name = "Trigger Deactivate";
+  Desc = "";
+  Targets = [6,11];
+  Objects = [];
+  XPos = -8758.834;
+  YPos = 17.795;
+  ZPos = 429.920;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_CMD_AttackArea
+{
+  Index = 7;
+  Name = "command AttackArea";
+  Desc = "";
+  Targets = [];
+  Objects = [3];
+  XPos = -8730.492;
+  YPos = 2500.000;
+  ZPos = 500.080;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  AttackGround = 0;
+  AttackAir = 1;
+  AttackGTargets = 0;
+  AttackArea = 6000;
+  Time = 59940;
+  Priority = 2;
+}
+
+MCU_H_Input
+{
+  Index = 20;
+  Name = "AAA_ON";
+  Desc = "";
+  Targets = [23];
+  Objects = [];
+  XPos = -8759.285;
+  YPos = 17.795;
+  ZPos = 400.042;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Activate
+{
+  Index = 21;
+  Name = "Trigger Activate";
+  Desc = "";
+  Targets = [6,11];
+  Objects = [];
+  XPos = -8759.199;
+  YPos = 17.795;
+  ZPos = 415.691;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Counter
+{
+  Index = 23;
+  Name = "x1";
+  Desc = "";
+  Targets = [21];
+  Objects = [];
+  XPos = -8759.354;
+  YPos = 17.795;
+  ZPos = 407.558;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Counter = 1;
+  Dropcount = 0;
+}
+

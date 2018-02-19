@@ -1,0 +1,132 @@
+MCU_TR_MissionObjective
+{
+  Index = 115;
+  Targets = [];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 390.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  LCName = 13;
+  LCDesc = 14;
+  TaskType = 14;
+  Coalition = 0;
+  Success = 1;
+  IconType = 0;
+}
+
+MCU_H_Dynamic
+{
+  Index = 116;
+  Name = "CAPTURE";
+  Desc = "";
+  Targets = [115];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 400.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "Coalition";
+}
+
+MCU_Counter
+{
+  Index = 118;
+  Name = "x1";
+  Desc = "";
+  Targets = [119,115];
+  Objects = [];
+  XPos = -460.000;
+  YPos = 17.795;
+  ZPos = 390.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Counter = 1;
+  Dropcount = 0;
+}
+
+MCU_H_Output
+{
+  Index = 119;
+  Name = "COUNTER";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -460.000;
+  YPos = 149.887;
+  ZPos = 400.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 121;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -449.000;
+  YPos = 149.887;
+  ZPos = 390.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+
+MCU_H_Input
+{
+  Index = 122;
+  Name = "DEACTIVATE_CAPTURE";
+  Desc = "";
+  Targets = [123];
+  Objects = [];
+  XPos = -480.000;
+  YPos = 17.795;
+  ZPos = 390.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Deactivate
+{
+  Index = 123;
+  Name = "Trigger Deactivate";
+  Desc = "";
+  Targets = [118];
+  Objects = [];
+  XPos = -470.000;
+  YPos = 17.795;
+  ZPos = 390.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Input
+{
+  Index = 125;
+  Name = "KILLED_EVENT";
+  Desc = "";
+  Targets = [118];
+  Objects = [];
+  XPos = -460.000;
+  YPos = 17.795;
+  ZPos = 380.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+

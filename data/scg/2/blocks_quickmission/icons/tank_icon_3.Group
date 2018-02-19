@@ -1,0 +1,134 @@
+MCU_H_Input
+{
+  Index = 2;
+  Name = "TARGET_TO_WP";
+  Desc = "";
+  Targets = [12];
+  Objects = [];
+  XPos = -276.307;
+  YPos = 0.000;
+  ZPos = -265.175;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Activate
+{
+  Index = 3;
+  Name = "Trigger Activate";
+  Desc = "";
+  Targets = [5];
+  Objects = [];
+  XPos = -276.307;
+  YPos = 17.795;
+  ZPos = -253.185;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Icon
+{
+  Index = 5;
+  Targets = [];
+  Objects = [];
+  XPos = -276.307;
+  YPos = 17.795;
+  ZPos = -247.298;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  LCName = 3;
+  LCDesc = 4;
+  IconId = 503;
+  RColor = 255;
+  GColor = 255;
+  BColor = 255;
+  LineType = 0;
+  Coalitions = [1, 2, 0];
+}
+
+MCU_H_Dynamic
+{
+  Index = 7;
+  Name = "ICON";
+  Desc = "";
+  Targets = [5];
+  Objects = [];
+  XPos = -276.307;
+  YPos = 17.795;
+  ZPos = -241.197;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "IconId";
+}
+
+MCU_H_Input
+{
+  Index = 8;
+  Name = "KILLED_TANKS";
+  Desc = "";
+  Targets = [9];
+  Objects = [];
+  XPos = -273.000;
+  YPos = 17.795;
+  ZPos = -265.180;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Deactivate
+{
+  Index = 9;
+  Name = "Trigger Deactivate";
+  Desc = "";
+  Targets = [5];
+  Objects = [];
+  XPos = -273.000;
+  YPos = 17.795;
+  ZPos = -253.190;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 11;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -276.329;
+  YPos = 17.795;
+  ZPos = -247.300;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+
+MCU_Counter
+{
+  Index = 12;
+  Name = "x1";
+  Desc = "";
+  Targets = [3];
+  Objects = [];
+  XPos = -276.356;
+  YPos = 17.795;
+  ZPos = -259.341;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Counter = 1;
+  Dropcount = 0;
+}
+

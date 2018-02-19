@@ -1,0 +1,274 @@
+MCU_CMD_AttackArea
+{
+  Index = 42;
+  Name = "command AttackArea";
+  Desc = "";
+  Targets = [];
+  Objects = [43];
+  XPos = -3439.725;
+  YPos = 38.405;
+  ZPos = 2010.137;
+  XOri = 0.00;
+  YOri = 83.76;
+  ZOri = 0.00;
+  AttackGround = 1;
+  AttackAir = 0;
+  AttackGTargets = 0;
+  AttackArea = 300;
+  Time = 14400;
+  Priority = 0;
+}
+
+MCU_Waypoint
+{
+  Index = 44;
+  Name = "Trigger Waypoint";
+  Desc = "";
+  Targets = [45];
+  Objects = [43];
+  XPos = -3432.762;
+  YPos = 37.612;
+  ZPos = 2003.662;
+  XOri = 0.00;
+  YOri = 282.29;
+  ZOri = 0.00;
+  Area = 1400;
+  Speed = 100;
+  Priority = 2;
+}
+
+MCU_Waypoint
+{
+  Index = 46;
+  Name = "Trigger Waypoint";
+  Desc = "";
+  Targets = [42,47];
+  Objects = [43];
+  XPos = -3440.512;
+  YPos = 37.612;
+  ZPos = 2015.816;
+  XOri = 0.00;
+  YOri = 282.40;
+  ZOri = 0.00;
+  Area = 500;
+  Speed = 100;
+  Priority = 0;
+}
+
+MCU_CMD_ForceComplete
+{
+  Index = 48;
+  Name = "command Force Complete";
+  Desc = "";
+  Targets = [];
+  Objects = [43];
+  XPos = -3430.876;
+  YPos = 53.414;
+  ZPos = 2049.770;
+  XOri = 0.00;
+  YOri = 0.11;
+  ZOri = 0.00;
+  Priority = 2;
+}
+
+MCU_Timer
+{
+  Index = 45;
+  Name = "t3s";
+  Desc = "";
+  Targets = [42,50];
+  Objects = [];
+  XPos = -3439.244;
+  YPos = 37.715;
+  ZPos = 2002.555;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 3;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 51;
+  Name = "t3s";
+  Desc = "";
+  Targets = [46,52];
+  Objects = [];
+  XPos = -3443.304;
+  YPos = 52.071;
+  ZPos = 2019.440;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 3;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 50;
+  Name = "t30s";
+  Desc = "";
+  Targets = [48,51];
+  Objects = [];
+  XPos = -3457.122;
+  YPos = 52.071;
+  ZPos = 2027.835;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 30;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 52;
+  Name = "t30s";
+  Desc = "";
+  Targets = [48,45];
+  Objects = [];
+  XPos = -3432.530;
+  YPos = 52.071;
+  ZPos = 2032.704;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 30;
+  Random = 100;
+}
+
+MCU_Deactivate
+{
+  Index = 47;
+  Name = "Trigger Deactivate";
+  Desc = "";
+  Targets = [52,45];
+  Objects = [];
+  XPos = -3437.846;
+  YPos = 40.223;
+  ZPos = 2018.228;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 43;
+  Name = "OBJECT_WP_TO_VEHICLE";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -3401.690;
+  YPos = 51.156;
+  ZPos = 2043.684;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Input
+{
+  Index = 57;
+  Name = "TARGET_TO_WP";
+  Desc = "";
+  Targets = [58];
+  Objects = [];
+  XPos = -3410.230;
+  YPos = 53.897;
+  ZPos = 2001.832;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 59;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -3434.841;
+  YPos = 53.342;
+  ZPos = 2007.547;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+
+MCU_Waypoint
+{
+  Index = 58;
+  Name = "Trigger Waypoint";
+  Desc = "";
+  Targets = [61,62];
+  Objects = [43];
+  XPos = -3414.726;
+  YPos = 37.612;
+  ZPos = 1996.517;
+  XOri = 0.00;
+  YOri = 282.29;
+  ZOri = 0.00;
+  Area = 2000;
+  Speed = 20;
+  Priority = 0;
+}
+
+MCU_CMD_Formation
+{
+  Index = 63;
+  Name = "Command Formation";
+  Desc = "";
+  Targets = [];
+  Objects = [43];
+  XPos = -3420.566;
+  YPos = 54.601;
+  ZPos = 2004.014;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+FormationType = 6;
+FormationDensity = 0;
+}
+
+MCU_Timer
+{
+  Index = 61;
+  Name = "t3s";
+  Desc = "";
+  Targets = [44];
+  Objects = [];
+  XPos = -3423.335;
+  YPos = 37.715;
+  ZPos = 1999.248;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 3;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 62;
+  Name = "t1s";
+  Desc = "";
+  Targets = [63];
+  Objects = [];
+  XPos = -3417.882;
+  YPos = 37.715;
+  ZPos = 2000.484;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+

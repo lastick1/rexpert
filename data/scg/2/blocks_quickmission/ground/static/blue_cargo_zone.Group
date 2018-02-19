@@ -1,0 +1,233 @@
+MCU_TR_ComplexTrigger
+{
+  Index = 2;
+  Name = "cargotrigger";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -1000.000;
+  YPos = 17.795;
+  ZPos = 0.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  Enabled = 0;
+  Cylinder = 0;
+  Radius = 300;
+  DamageThreshold = 1;
+  DamageReport = 50;
+  CheckVehicles = 0;
+  CheckPlanes = 1;
+  EventsFilterSpawned = 0;
+  EventsFilterEnteredSimple = 1;
+  EventsFilterEnteredAlive = 0;
+  EventsFilterLeftSimple = 0;
+  EventsFilterLeftAlive = 0;
+  EventsFilterFinishedSimple = 0;
+  EventsFilterFinishedAlive = 0;
+  EventsFilterStationaryAndAlive = 0;
+  EventsFilterFinishedStationaryAndAlive = 0;
+  EventsFilterTookOff = 0;
+  EventsFilterDamaged = 0;
+  EventsFilterCriticallyDamaged = 0;
+  EventsFilterRepaired = 0;
+  EventsFilterKilled = 0;
+  EventsFilterDropedBombs = 0;
+  EventsFilterFiredFlare = 0;
+  EventsFilterFiredRockets = 0;
+  EventsFilterDroppedCargoContainers = 0;
+  EventsFilterDeliveredCargo = 1;
+  EventsFilterParatrooperJumped = 0;
+  EventsFilterParatrooperLandedAlive = 0;
+  Country = 201;
+  ObjectName = "cargo";
+  OnEvents
+  {
+    OnEvent
+    {
+      Type = 76;
+      TarId = 3;
+    }
+    OnEvent
+    {
+      Type = 58;
+      TarId = 4;
+    }
+  }
+}
+
+MCU_Deactivate
+{
+  Index = 5;
+  Name = "Trigger Deactivate";
+  Desc = "";
+  Targets = [];
+  Objects = [2];
+  XPos = -1000.000;
+  YPos = 17.795;
+  ZPos = -110.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Activate
+{
+  Index = 6;
+  Name = "Trigger Activate";
+  Desc = "";
+  Targets = [];
+  Objects = [2];
+  XPos = -896.474;
+  YPos = 17.795;
+  ZPos = 0.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Input
+{
+  Index = 7;
+  Name = "KILLED_EVENT";
+  Desc = "";
+  Targets = [6];
+  Objects = [];
+  XPos = -803.138;
+  YPos = 17.795;
+  ZPos = 0.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Counter
+{
+  Index = 3;
+  Name = "xPlane";
+  Desc = "";
+  Targets = [5,9];
+  Objects = [];
+  XPos = -1100.000;
+  YPos = 17.795;
+  ZPos = 0.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Counter = 1;
+  Dropcount = 0;
+}
+
+MCU_H_Output
+{
+  Index = 10;
+  Name = "CARGO_EVENT";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -1200.000;
+  YPos = 17.795;
+  ZPos = 0.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Dynamic
+{
+  Index = 11;
+  Name = "COMPLEX";
+  Desc = "";
+  Targets = [2];
+  Objects = [];
+  XPos = -1000.000;
+  YPos = 17.795;
+  ZPos = 121.351;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "Radius";
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 12;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -1000.000;
+  YPos = 17.795;
+  ZPos = 0.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+
+MCU_H_Dynamic
+{
+  Index = 13;
+  Name = "PLANE";
+  Desc = "";
+  Targets = [3];
+  Objects = [];
+  XPos = -1100.000;
+  YPos = 17.795;
+  ZPos = 120.861;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "Counter";
+}
+
+MCU_TR_Subtitle
+{
+  Index = 4;
+  Name = "Translator Subtitle";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -900.000;
+  YPos = 17.795;
+  ZPos = -110.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  SubtitleInfo
+  {
+    Duration = 5;
+    FontSize = 30;
+    HAlign = 1;
+    VAlign = 0;
+    RColor = 22;
+    GColor = 66;
+    BColor = 154;
+    LCText = 3;
+  }
+  
+  Coalitions = [2];
+}
+
+MCU_Timer
+{
+  Index = 9;
+  Name = "5s";
+  Desc = "";
+  Targets = [10];
+  Objects = [];
+  XPos = -1144.486;
+  YPos = 17.795;
+  ZPos = -0.926;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 5;
+  Random = 100;
+}
+
