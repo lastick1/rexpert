@@ -1,0 +1,151 @@
+MCU_CMD_Behaviour
+{
+  Index = 153;
+  Name = "NEUT";
+  Desc = "";
+  Targets = [];
+  Objects = [154];
+  XPos = -5039.351;
+  YPos = 100.825;
+  ZPos = -5006.394;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Filter = 16;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  AILevel = 3;
+  Country = 0;
+  FloatParam = 0;
+}
+
+MCU_Timer
+{
+  Index = 155;
+  Name = "1s";
+  Desc = "";
+  Targets = [153,157,158,159,182];
+  Objects = [];
+  XPos = -5039.398;
+  YPos = 100.825;
+  ZPos = -5010.367;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 166;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -5035.978;
+  YPos = 17.795;
+  ZPos = -5000.119;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+
+MCU_H_Output
+{
+  Index = 157;
+  Name = "KILLED_EVENT";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -5037.512;
+  YPos = 17.795;
+  ZPos = -5017.502;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 158;
+  Name = "AAA_OFF";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -5036.033;
+  YPos = 17.795;
+  ZPos = -5017.482;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Deactivate
+{
+  Index = 159;
+  Name = "Trigger Deactivate";
+  Desc = "";
+  Targets = [155];
+  Objects = [];
+  XPos = -5037.302;
+  YPos = 17.795;
+  ZPos = -5012.054;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 154;
+  Name = "AF_MCU_OBJECT";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -5032.436;
+  YPos = 17.795;
+  ZPos = -5002.570;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Input
+{
+  Index = 180;
+  Name = "AF_SERVER_INPUT";
+  Desc = "";
+  Targets = [155];
+  Objects = [];
+  XPos = -5039.295;
+  YPos = 17.795;
+  ZPos = -5017.501;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 182;
+  Name = "KILLED_SUBTITLE";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -5042.830;
+  YPos = 17.795;
+  ZPos = -5010.306;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
