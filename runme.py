@@ -52,7 +52,7 @@ def run():
 
 
 logging.basicConfig(
-    format=u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s] %(message)s', level=logging.DEBUG)
+    format=u'%(asctime)s %(levelname)-8s %(filename)-40s:%(lineno)-3d # %(message)s', level=logging.DEBUG)
 logging.info("Program Start.")
 # compile_log()
 # compile_gif()
@@ -60,4 +60,4 @@ logging.info("Program Start.")
 # reset()
 # initialize_campaign()
 # generate('result1')
-run()
+# run()

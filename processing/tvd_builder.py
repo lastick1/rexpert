@@ -1,3 +1,5 @@
+"""Сборка папок ТВД (scg/1, scg/2, scg/3 итд)"""
+import logging
 import random
 import pathlib
 import datetime
@@ -139,12 +141,7 @@ class TvdBuilder:
 
     def update(self, tvd, airfields: list):
         """Обновление групп, баз локаций и файла параметров генерации в папке ТВД (data/scg/x)"""
-        print('[{}] Updating TVD folder: {} ({}) {}'.format(
-            datetime.datetime.now().strftime("%H:%M:%S"),
-            tvd.folder,
-            tvd.name,
-            tvd.date
-        ))
+        logging.info(f'Updating TVD folder: {tvd.folder} ({tvd.name}) {tvd.date}')
         self.update_icons(tvd)
         tvd.red_front_airfields.extend(self.airfields_selector.select_front(tvd.confrontation_east, airfields))
         tvd.blue_front_airfields.extend(self.airfields_selector.select_front(tvd.confrontation_west, airfields))
@@ -165,14 +162,14 @@ class TvdBuilder:
     @staticmethod
     def update_icons(tvd: model.Tvd):
         """Обновление группы иконок в соответствии с положением ЛФ"""
-        print('[{}] generating icons group...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
+        logging.info('generating icons group...')
         flg = processing.FrontLineGroup(tvd.border, tvd.influences, tvd.icons_group_file, tvd.right_top)
         flg.make()
-        print('... icons done')
+        logging.info('... icons done')
 
     def update_ldb(self, tvd: model.Tvd):
         """Обновление базы локаций до актуального состояния"""
-        print('[{}] generating Locations Data Base (LDB)...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
+        logging.info('generating Locations Data Base (LDB)...')
         with self.config.mgen.ldf_templates[self.name].open() as stream:
             ldf = stream.read()
         builder = processing.LocationsBuilder(ldf_base=ldf)
@@ -180,17 +177,18 @@ class TvdBuilder:
         ldf_text = builder.make_text()
         with pathlib.Path(self.config.mgen.ldf_files[self.name]).open(mode='w') as stream:
             stream.write(ldf_text)
-        print('... LDB done')
+        logging.info('... LDB done')
 
     def update_airfields(self, tvd: model.Tvd):
         """Генерация групп аэродромов для ТВД"""
-        print('[{}] generating airfields groups...'.format(datetime.datetime.now().strftime("%H:%M:%S")))
+        logging.info('generating airfields groups...')
         for airfield in tvd.red_front_airfields + [tvd.red_rear_airfield]:
             data = self._convert_airfield(airfield, 101)
             self.airfields_builder.make_airfield_group(data, airfield.x, airfield.z)
         for airfield in tvd.blue_front_airfields + [tvd.blue_rear_airfield]:
             data = self._convert_airfield(airfield, 201)
             self.airfields_builder.make_airfield_group(data, airfield.x, airfield.z)
+        logging.info('... airfields groups done')
 
     def _convert_airfield(self, airfield: model.ManagedAirfield, country: int) -> processing.Airfield:
         """Конвертировать тип управляемого аэродрома в тип генерируемого аэродрома"""
@@ -200,7 +198,7 @@ class TvdBuilder:
             for name in config['uncommon']:
                 if self.config.planes.name_to_key(name) == key_name:
                     return processing.Plane(number, config['common'], config['uncommon'][name])
-            raise NameError('Plane {} not found in config'.format(key_name))
+            raise NameError(f'Plane {key_name} not found in config')
 
         planes = list()
         for key in airfield.planes:

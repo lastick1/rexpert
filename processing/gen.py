@@ -1,5 +1,6 @@
 """Сборка бинарных файлов в scg и генерация миссий"""
 import subprocess
+import logging
 import time
 import shutil
 
@@ -47,10 +48,7 @@ class Generator:
         mission_template = tvd_folder.joinpath(self.cfg[tvd_name]['regular_mt_file']).absolute()
         if assault_mission:
             mission_template = tvd_folder.joinpath(self.cfg[tvd_name]['assault_mt_file']).absolute()
-        print("[{}] Generating new mission: [{}]...".format(
-            datetime.now().strftime("%H:%M:%S"),
-            file_name
-        ))
+        logging.info(f'Generating new mission: [{file_name}]...')
         now = str(datetime.now()).replace(":", "-").replace(" ", "_")
         with open(str(self.mission_gen_folder) + r"\missiongen_log_" + now + ".txt", "w") as missiongen_log:
             args = [
@@ -73,7 +71,7 @@ class Generator:
             mission_files.resave()
         mission_files.move_to_dogfight(file_name)
         mission_files.detach_src()
-        print("... generation done!")
+        logging.info('... generation done!')
 
     def save_files_for_zlo(self, file_name):
         """Копирование файлов для -DED-Zlodey"""
