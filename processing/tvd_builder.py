@@ -157,6 +157,7 @@ class TvdBuilder:
         )
         self.update_airfields(tvd)
         self.update_ldb(tvd)
+        # TODO добавить обновление lgb (обновление при инициализации твд или по необходимости - отсутствие lgb файла)
         self.randomize_defaultparams(tvd.date, self.config.generator.cfg[self.name])
 
     @staticmethod
