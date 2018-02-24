@@ -62,16 +62,18 @@ class Generator:
             generator = subprocess.Popen(args, cwd=str(self.mission_gen_folder), stdout=missiongen_log)
             generator.wait()
             time.sleep(0.5)
-
-        mission_files = MissionFiles(
-            self.game_folder.joinpath(r'.\data\Missions\result.Mission'),
-            self.game_folder,
-            self.resaver_folder)
-        if self.use_resaver:
-            mission_files.resave()
-        mission_files.move_to_dogfight(file_name)
-        mission_files.detach_src()
-        logging.info('... generation done!')
+        if generator.returncode is 0:
+            mission_files = MissionFiles(
+                self.game_folder.joinpath(r'.\data\Missions\result.Mission'),
+                self.game_folder,
+                self.resaver_folder)
+            if self.use_resaver:
+                mission_files.resave()
+            mission_files.move_to_dogfight(file_name)
+            mission_files.detach_src()
+            logging.info('... generation done!')
+        else:
+            logging.error('...generation failed!')
 
     def save_files_for_zlo(self, file_name):
         """Копирование файлов для -DED-Zlodey"""
