@@ -355,5 +355,11 @@ class LocationsBuilder:
             location.z += random.random() * distance - random.random() * distance
             self.locations[GROUND_OBJECTIVE].append(location)
 
+        for warehouse in tvd.warehouses:
+            location = Location(name=GROUND_OBJECTIVE, x=warehouse.pos['x'], z=warehouse.pos['z'],
+                                y=0, oy=0, length=10, width=10, country=warehouse.country)
+            location.types.add(BUILDING)
+            self.locations[GROUND_OBJECTIVE].append(location)
+
         self.locations[AIRFIELD].append(red_rear_af)
         self.locations[AIRFIELD].append(blue_rear_af)

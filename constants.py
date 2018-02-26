@@ -7,6 +7,7 @@ TVD_NAME = 'tvd_name'
 POS = 'pos'
 DATE_FORMAT = '%d.%m.%Y'
 NAME = 'name'
+COUNTRY = 'country'
 
 
 class Mongo:

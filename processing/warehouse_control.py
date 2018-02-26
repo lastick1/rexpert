@@ -6,7 +6,6 @@ import re
 import configs
 import model
 import storage
-import utils
 from model import CampaignMission
 
 
@@ -57,6 +56,7 @@ class WarehouseController:
                     name=data['name'],
                     health=100.0,
                     deaths=0,
+                    country=data['country'],
                     pos={'x': data['x'], 'z': data['z']}
                 )
             )
@@ -95,7 +95,7 @@ class WarehouseController:
         """Склады для следующей миссии"""
         # выбираются те склады, которые убивались меньшее количество раз, текущие склады в приоритете
         warehouses = self.storage.warehouses.load_by_tvd(tvd_name)
-        max_deaths = max(x for x in warehouses)
+        max_deaths = max(x.deaths for x in warehouses) + 1
         warehouses = list(x for x in warehouses if _to_warehouse(x).deaths < max_deaths)
         current = list(x for x in self._current_mission_warehouses if _to_warehouse(x).deaths < max_deaths)
         while len(current) < 2:

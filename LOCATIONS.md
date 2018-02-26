@@ -47,12 +47,12 @@
 - Tank - референсы дивизий для перемещения дивизий
 - AAAPosition - референс общевойсковой дивизии
 - Artillery - референс артиллерийской дивизии
-- Building
+- Building - референсы складов
 - Ship
 - Train
 - RailwayStation
 - SupplyDump
-- Factory - полевые склады (когда были тыловые отдельно - они были "билдинг", впрочем, уже не важно)
+- Factory - секции складов
 - Airfield
 - Port
 - ReconArea - "десант"

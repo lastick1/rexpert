@@ -33,7 +33,8 @@ class Generator:
     def make_lgb(self, tvd_name: str):
         """Скомпилировать общие (сцену) декорации ТВД"""
         lgb_file = pathlib.Path(self.mgen.lgb_files[tvd_name])
-        if not lgb_file.exists():
+        lgb_bin_file = pathlib.Path(self.mgen.lgb_bin_files[tvd_name])
+        if not lgb_bin_file.exists():
             logging.info('Generating LGB file...')
             args = [
                 str(self.main.mission_gen_folder.joinpath('./make_lgb.exe').absolute()),

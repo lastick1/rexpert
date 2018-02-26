@@ -106,6 +106,7 @@ class CampaignController:
     def initialize_map(self, tvd_name: str):
         """Инициализировать карту кампании"""
         self.grid_controller.initialize(tvd_name)
+        self.warehouses_controller.initialize_warehouses(tvd_name)
         start = self.config.mgen.cfg[tvd_name][START_DATE]
         order = list(self.config.mgen.maps).index(tvd_name) + 1
         campaign_map = model.CampaignMap(order=order, date=start, mission_date=start, tvd_name=tvd_name, months=list())
@@ -113,7 +114,6 @@ class CampaignController:
         self.airfields_controller.initialize_tvd(tvd, campaign_map)
         self.storage.campaign_maps.update(campaign_map)
         self.divisions_controller.initialize_divisions(tvd_name)
-        self.warehouses_controller.initialize_warehouses(tvd_name)
 
     def reset(self):
         """Сбросить состояние кампании"""

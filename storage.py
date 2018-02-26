@@ -146,6 +146,7 @@ class Warehouses(CollectionWrapper):
             tvd_name=document[constants.TVD_NAME],
             health=document[constants.Warehouse.HEALTH],
             deaths=document[constants.Warehouse.DEATHS],
+            country=document[constants.COUNTRY],
             pos=document[constants.POS]
         )
 

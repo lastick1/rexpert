@@ -14,10 +14,10 @@ from .airfields_builder import AirfieldsBuilder
 from .airfields_selector import AirfieldsSelector
 from .groups import FrontLineGroup, Group
 from .grid_control import GridController
-from .tvd_builder import TvdBuilder
 from .locations_builder import LocationsBuilder
 from .source_parser import SourceParser
 from .division_control import DivisionsController
 from .warehouse_control import WarehouseController
+from .tvd_builder import TvdBuilder
 from .campaign_control import CampaignController
 from .map_painter import MapPainter
