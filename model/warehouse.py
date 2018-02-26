@@ -14,10 +14,11 @@ WAREHOUSES = {
 
 class Warehouse:
     """Склад ресурсов"""
-    def __init__(self, name: str, tvd_name: str, health: float, pos: dict):
+    def __init__(self, name: str, tvd_name: str, health: float, deaths: int, pos: dict):
         self.name = name
         self.tvd_name = tvd_name
         self.health = health
+        self.deaths = deaths
         self.pos = pos
 
     def to_dict(self) -> dict:
@@ -26,5 +27,6 @@ class Warehouse:
             constants.ID: '{}_{}'.format(self.tvd_name, self.name),
             constants.TVD_NAME: self.tvd_name,
             constants.Warehouse.HEALTH: self.health,
+            constants.Warehouse.DEATHS: self.deaths,
             constants.POS: self.pos
         }

@@ -6,6 +6,7 @@ ID = '_id'
 TVD_NAME = 'tvd_name'
 POS = 'pos'
 DATE_FORMAT = '%d.%m.%Y'
+NAME = 'name'
 
 
 class Mongo:
@@ -27,7 +28,6 @@ class Player:
 
 class Airfield:
     """Константы модели данных аэродромов"""
-    NAME = 'name'
     PLANES = 'planes'
     SUPPLIES = 'supplies'
 
@@ -60,10 +60,9 @@ class CampaignMission:
 class Division:
     """Константы модели данных дивизии"""
     UNITS = 'units'
-    NAME = 'name'
 
 
 class Warehouse:
     """Константы модели данных склада"""
     HEALTH = 'health'
-    NAME = 'name'
+    DEATHS = 'deaths'

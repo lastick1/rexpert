@@ -17,7 +17,7 @@ class ManagedAirfield(geometry.Point):
         """Сериализация в словарь для MongoDB"""
         return {
             constants.ID: self.id,
-            constants.Airfield.NAME: self.name,
+            constants.NAME: self.name,
             constants.TVD_NAME: self.tvd_name,
             constants.POS: super().to_dict(),
             constants.Airfield.PLANES: self.planes,

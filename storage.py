@@ -102,14 +102,14 @@ class Divisions(CollectionWrapper):
     @staticmethod
     def _make_filter(tvd_name: str, division_name: str) -> dict:
         """Построить фильтр для поиска документа дивизии в БД"""
-        return {constants.TVD_NAME: tvd_name, constants.Division.NAME: division_name}
+        return {constants.TVD_NAME: tvd_name, constants.NAME: division_name}
 
     @staticmethod
     def _convert_from_document(document) -> model.Division:
         """Конвертировать документ из БД в объект класса дивизии"""
         return model.Division(
             tvd_name=document[constants.TVD_NAME],
-            name=document[constants.Division.NAME],
+            name=document[constants.NAME],
             units=document[constants.Division.UNITS],
             pos=document[constants.POS]
         )
@@ -136,15 +136,16 @@ class Warehouses(CollectionWrapper):
     @staticmethod
     def _make_filter(tvd_name: str, name: str) -> dict:
         """Построить фильтр для поиска документа склада в БД"""
-        return {constants.TVD_NAME: tvd_name, constants.Warehouse.NAME: name}
+        return {constants.TVD_NAME: tvd_name, constants.NAME: name}
 
     @staticmethod
     def _convert_from_document(document) -> model.Warehouse:
         """Конвертировать документ из БД в объект класса склада"""
         return model.Warehouse(
-            name=document[constants.Warehouse.NAME],
+            name=document[constants.NAME],
             tvd_name=document[constants.TVD_NAME],
             health=document[constants.Warehouse.HEALTH],
+            deaths=document[constants.Warehouse.DEATHS],
             pos=document[constants.POS]
         )
 
@@ -203,7 +204,7 @@ class Airfields(CollectionWrapper):
     def _convert_from_document(document) -> model.ManagedAirfield:
         """Конвертировать документ из БД в объект класса управляемого аэродрома"""
         return model.ManagedAirfield(
-            name=document[constants.Airfield.NAME],
+            name=document[constants.NAME],
             tvd_name=document[constants.TVD_NAME],
             x=float(document[constants.POS]['x']),
             z=float(document[constants.POS]['z']),

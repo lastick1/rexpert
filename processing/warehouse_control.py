@@ -45,6 +45,7 @@ class WarehouseController:
                     tvd_name=tvd_name,
                     name=data['name'],
                     health=100.0,
+                    deaths=0,
                     pos={'x': data['x'], 'z': data['z']}
                 )
             )
