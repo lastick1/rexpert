@@ -6,7 +6,7 @@ import json
 class Mgen:
     """Класс конфига генератора"""
     def __init__(self, game_folder: pathlib.Path):
-        with open('./configs/missiongen.json') as stream:
+        with open('./configs/mgen.json') as stream:
             src = json.load(stream)
         self.cfg = src
         self.maps = src['maps']
@@ -30,7 +30,10 @@ class Mgen:
                                   for x in self.maps}
         self._af_csv = {x: pathlib.Path(pathlib.Path('./data/').joinpath(src[x]['airfields_csv'])).absolute()
                         for x in self.maps}
+        self._warehouses_csv = {x: pathlib.Path(pathlib.Path('./data/').joinpath(src[x]['warehouses_csv'])).absolute()
+                                for x in self.maps}
         self._airfields_data = dict()
+        self._warehouses_data = dict()
 
     @property
     def airfields_data(self) -> dict:
@@ -48,6 +51,24 @@ class Mgen:
                             'tvd_name': tvd_name
                         })
         return self._airfields_data
+
+    @property
+    def warehouses_data(self) -> dict:
+        """Склады из файлов"""
+        if not self._warehouses_data:
+            for tvd_name in self.maps:
+                self._warehouses_data[tvd_name] = list()
+                with self._warehouses_csv[tvd_name].open() as stream:
+                    for line in stream.readlines():
+                        string = line.split(sep=';')
+                        self._warehouses_data[tvd_name].append({
+                            'name': string[0],
+                            'x': float(string[1]),
+                            'z': float(string[2]),
+                            'country': int(str(string[3]).rstrip('\n')),
+                            'tvd_name': tvd_name
+                        })
+        return self._warehouses_data
 
 
 class GeneratorParamsConfig:

@@ -34,6 +34,7 @@
     "default_params_dest": "defaultparams.dat",
     "daytime_csv": "daytime_moscow.csv",
     "airfields_csv": "moscow_fields.csv",
+    "warehouses_csv": "moscow_warehouses.csv",
     "af_groups_folders":{
       "red": ".\\blocks_quickmission\\airfields_red",
       "blue": ".\\blocks_quickmission\\airfields_blue"
@@ -48,14 +49,6 @@
       "RTD2": {"x": 259072.27, "z": 144831.89},
       "RAD1": {"x": 161485.69, "z": 162036.51},
       "RID1": {"x": 231282.78, "z": 163280.81}
-    },
-    "warehouses_start_locations": {
-      "BWH1": {"x": 0.0, "z": 0.0},
-      "BWH2": {"x": 0.0, "z": 0.0},
-      "BWH3": {"x": 0.0, "z": 0.0},
-      "RWH1": {"x": 0.0, "z": 0.0},
-      "RWH2": {"x": 0.0, "z": 0.0},
-      "RWH3": {"x": 0.0, "z": 0.0}
     },
     "start_date": "01.09.1941",
     "end_date": "31.01.1942"
@@ -75,6 +68,7 @@
     "default_params_dest": "defaultparams.dat",
     "daytime_csv": "daytime.csv",
     "airfields_csv": "stalin_fields.csv",
+    "warehouses_csv": "moscow_warehouses.csv",
     "af_groups_folders": {
       "red": ".\\blocks_quickmission\\airfields_red",
       "blue": ".\\blocks_quickmission\\airfields_blue"
@@ -89,14 +83,6 @@
       "RTD2": {"x": 0, "z": 0},
       "RAD1": {"x": 0, "z": 0},
       "RID1": {"x": 0, "z": 0}
-    },
-    "warehouses_start_locations": {
-      "BWH1": {"x": 0.0, "z": 0.0},
-      "BWH2": {"x": 0.0, "z": 0.0},
-      "BWH3": {"x": 0.0, "z": 0.0},
-      "RWH1": {"x": 0.0, "z": 0.0},
-      "RWH2": {"x": 0.0, "z": 0.0},
-      "RWH3": {"x": 0.0, "z": 0.0}
     },
     "start_date": "01.07.1942",
     "end_date": "28.02.1943"

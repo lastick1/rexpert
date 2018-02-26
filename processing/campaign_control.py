@@ -119,6 +119,9 @@ class CampaignController:
         """Сбросить состояние кампании"""
         self.storage.airfields.collection.drop()
         self.storage.campaign_maps.collection.drop()
+        self.storage.campaign_missions.collection.drop()
+        self.storage.divisions.collection.drop()
+        self.storage.warehouses.collection.drop()
 
     def _generate(self, mission_name: str, campaign_map: model.CampaignMap):
         """Сгенерировать миссию для указанной карты кампании"""

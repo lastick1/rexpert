@@ -39,13 +39,13 @@ class WarehouseController:
 
     def initialize_warehouses(self, tvd_name: str):
         """Инициализировать склады в кампании для указанного ТВД"""
-        for name in model.WAREHOUSES:
+        for data in self.config.mgen.warehouses_data[tvd_name]:
             self.storage.warehouses.update(
                 model.Warehouse(
                     tvd_name=tvd_name,
-                    name=name,
-                    health=model.WAREHOUSES[name],
-                    pos=self.config.mgen.cfg[tvd_name]['warehouses_start_locations'][name]
+                    name=data['name'],
+                    health=100.0,
+                    pos={'x': data['x'], 'z': data['z']}
                 )
             )
         logging.info(f'{tvd_name} warehouses initialized')
