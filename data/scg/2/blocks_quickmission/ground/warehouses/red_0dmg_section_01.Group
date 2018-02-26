@@ -1,0 +1,103 @@
+Block
+{
+  Name = "Block";
+  Index = 399;
+  LinkTrId = 0;
+  XPos = -401.808;
+  YPos = 17.795;
+  ZPos = 14120.669;
+  XOri = 0.00;
+  YOri = 90.11;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_block_smallwarehouse_150x100.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_block_smallwarehouse_150x100.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 400;
+  LinkTrId = 0;
+  XPos = -426.349;
+  YPos = 17.795;
+  ZPos = 14294.810;
+  XOri = 0.00;
+  YOri = 181.36;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_block_smallwarehouse2_150x100.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_block_smallwarehouse2_150x100.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 401;
+  LinkTrId = 0;
+  XPos = -157.265;
+  YPos = 17.795;
+  ZPos = 14061.275;
+  XOri = 0.00;
+  YOri = 90.73;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_block_fuel2_300x100.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_block_fuel2_300x100.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 402;
+  LinkTrId = 0;
+  XPos = -130.068;
+  YPos = 17.795;
+  ZPos = 14377.315;
+  XOri = 0.00;
+  YOri = 238.25;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_cornerr_01.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_cornerr_01.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 403;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -250.000;
+  YPos = 17.774;
+  ZPos = 14200.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 250;
+  Backward = 250;
+  Left = 200;
+  Right = 200;
+}
+

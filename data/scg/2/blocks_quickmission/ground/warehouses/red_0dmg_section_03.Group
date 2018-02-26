@@ -1,0 +1,103 @@
+MCU_H_ReferencePoint
+{
+  Index = 382;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -249.996;
+  YPos = 17.774;
+  ZPos = 16199.993;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 250;
+  Backward = 250;
+  Left = 200;
+  Right = 200;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 385;
+  LinkTrId = 0;
+  XPos = -114.171;
+  YPos = 17.795;
+  ZPos = 16071.118;
+  XOri = 0.00;
+  YOri = 285.82;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_block_fuel35m_300x100.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_block_fuel35m_300x100.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 386;
+  LinkTrId = 0;
+  XPos = -445.306;
+  YPos = 17.795;
+  ZPos = 16092.201;
+  XOri = 0.00;
+  YOri = 226.30;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_block_fuel25m_300x100.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_block_fuel25m_300x100.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 387;
+  LinkTrId = 0;
+  XPos = -326.518;
+  YPos = 17.795;
+  ZPos = 16337.881;
+  XOri = 0.00;
+  YOri = 90.40;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_block_fuel_300x100.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_block_fuel_300x100.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 388;
+  LinkTrId = 0;
+  XPos = -60.204;
+  YPos = 17.795;
+  ZPos = 16354.471;
+  XOri = 0.00;
+  YOri = 87.58;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_object_oil.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_object_oil.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+

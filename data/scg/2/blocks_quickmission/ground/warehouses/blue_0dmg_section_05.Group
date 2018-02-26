@@ -1,0 +1,82 @@
+MCU_H_ReferencePoint
+{
+  Index = 6;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -250.000;
+  YPos = 17.774;
+  ZPos = 4200.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 250;
+  Backward = 250;
+  Left = 200;
+  Right = 200;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 342;
+  LinkTrId = 0;
+  XPos = -86.266;
+  YPos = 17.795;
+  ZPos = 4303.785;
+  XOri = 0.00;
+  YOri = 209.36;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_block_smallwarehouse2_150x100.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_block_smallwarehouse2_150x100.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 343;
+  LinkTrId = 0;
+  XPos = -158.437;
+  YPos = 17.795;
+  ZPos = 4056.506;
+  XOri = 0.00;
+  YOri = 271.01;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_block_smallwarehouse2_300x100.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_block_smallwarehouse2_300x100.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 345;
+  LinkTrId = 0;
+  XPos = -439.193;
+  YPos = 17.795;
+  ZPos = 4244.901;
+  XOri = 0.00;
+  YOri = 1.34;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_block_smallwarehouse_300x100.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_block_smallwarehouse_300x100.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
