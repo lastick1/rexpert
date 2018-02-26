@@ -131,6 +131,7 @@ class CampaignController:
         airfields = self.storage.airfields.load_by_tvd(campaign_map.tvd_name)
         tvd_builder.update(tvd, self.divisions_controller.filter_airfields(campaign_map.tvd_name, airfields))
         self.generator.make_ldb(campaign_map.tvd_name)
+        self.generator.make_lgb(campaign_map.tvd_name)
         self.generator.make_mission(mission_name, campaign_map.tvd_name)
 
     def generate(self, mission_name):

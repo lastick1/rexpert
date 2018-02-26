@@ -16,6 +16,8 @@ class Mgen:
         self.make_ldb_folder = game_folder.joinpath('./bin/missiongen/').absolute()
         self.ldf_files = {x: self.tvd_folders[x].joinpath(src[x]['ldf_file']).absolute()
                           for x in self.maps}
+        self.lgb_files = {x: self.tvd_folders[x].joinpath(src[x]['lgb_file']).absolute()
+                          for x in self.maps}
         self.ldf_templates = {x: self.tvd_folders[x].joinpath(src[x]['ldf_base_file']).absolute()
                               for x in self.maps}
         self.daytime_files = {x: pathlib.Path(pathlib.Path('./data/').joinpath(src[x]['daytime_csv'])).absolute()
