@@ -62,6 +62,11 @@ class TvdBuilder:
         return self._ioc.grid_controller
 
     @property
+    def warehouses_controller(self) -> processing.WarehouseController:
+        """Контроллер складов"""
+        return self._ioc.warehouses_controller
+
+    @property
     def storage(self) -> storage.Storage:
         """Работа с БД"""
         return self._ioc.storage
@@ -101,7 +106,9 @@ class TvdBuilder:
             self.config.mgen.cfg[self.name]['tvd_folder'],
             date,
             self.config.mgen.cfg[self.name]['right_top'],
+            # TODO заменить на получение через divisions_controller
             self.storage.divisions.load_by_tvd(self.name),
+            self.warehouses_controller.next_warehouses(self.name),
             self.grid_controller.get_grid(self.name),
             self.config.mgen.icons_group_files[self.name]
         )

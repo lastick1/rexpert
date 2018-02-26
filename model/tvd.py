@@ -24,6 +24,7 @@ class Tvd:
             date: str,
             right_top: dict,
             divisions: list(),
+            warehouses: list(),
             grid: model.Grid,
             icons_group_file: pathlib.Path
     ):
@@ -32,6 +33,7 @@ class Tvd:
         self.date = datetime.datetime.strptime(date, constants.DATE_FORMAT)  # дата миссии
         self.right_top = right_top  # правый верхний угол карты
         self.divisions = divisions  # дивизии с их местоположением
+        self.warehouses = warehouses  # дивизии с их местоположением
         self.icons_group_file = icons_group_file  # файл группы иконок
         self.confrontation_east = list()  # восточная прифронтовая зона
         self.confrontation_west = list()  # западная прифронтовая зона

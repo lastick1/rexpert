@@ -1,6 +1,6 @@
 """Модель данных склада"""
 import constants
-
+import geometry
 
 WAREHOUSES = {
     'RWH1': 5,
@@ -30,3 +30,8 @@ class Warehouse:
             constants.Warehouse.DEATHS: self.deaths,
             constants.POS: self.pos
         }
+
+    @property
+    def point(self) -> geometry.Point:
+        """Точка склада"""
+        return geometry.Point(self.pos['x'], self.pos['z'])
