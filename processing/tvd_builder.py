@@ -157,7 +157,7 @@ class TvdBuilder:
         )
         self.update_airfields(tvd)
         self.update_ldb(tvd)
-        # TODO добавить обновление lgb (обновление при инициализации твд или по необходимости - отсутствие lgb файла)
+        self.update_lgb(tvd)
         self.randomize_defaultparams(tvd.date, self.config.generator.cfg[self.name])
 
     @staticmethod
@@ -179,6 +179,11 @@ class TvdBuilder:
         with pathlib.Path(self.config.mgen.ldf_files[self.name]).open(mode='w') as stream:
             stream.write(ldf_text)
         logging.info('... LDB done')
+
+    def update_lgb(self, tvd):
+        """Обновить LGB при необходимости"""
+        # TODO реализовать по необходимости - отсутствие lgb файла
+        logging.warning('Check LGB if missiongen stopping work')
 
     def update_airfields(self, tvd: model.Tvd):
         """Генерация групп аэродромов для ТВД"""
