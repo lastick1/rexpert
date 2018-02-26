@@ -158,18 +158,19 @@ class TvdBuilder:
         self.update_airfields(tvd)
         self.update_ldb(tvd)
         self.randomize_defaultparams(tvd.date, self.config.generator.cfg[self.name])
+        logging.info('TVD folder updated')
 
     @staticmethod
     def update_icons(tvd: model.Tvd):
         """Обновление группы иконок в соответствии с положением ЛФ"""
-        logging.info('generating icons group...')
+        logging.debug('Generating icons group...')
         flg = processing.FrontLineGroup(tvd.border, tvd.influences, tvd.icons_group_file, tvd.right_top)
         flg.make()
-        logging.info('... icons done')
+        logging.debug('... icons done')
 
     def update_ldb(self, tvd: model.Tvd):
         """Обновление базы локаций до актуального состояния"""
-        logging.info('generating Locations Data Base (LDB)...')
+        logging.debug('Generating Locations Data Base (LDB)...')
         with self.config.mgen.ldf_templates[self.name].open() as stream:
             ldf = stream.read()
         builder = processing.LocationsBuilder(ldf_base=ldf)
@@ -177,18 +178,18 @@ class TvdBuilder:
         ldf_text = builder.make_text()
         with pathlib.Path(self.config.mgen.ldf_files[self.name]).open(mode='w') as stream:
             stream.write(ldf_text)
-        logging.info('... LDB done')
+        logging.debug('... LDB done')
 
     def update_airfields(self, tvd: model.Tvd):
         """Генерация групп аэродромов для ТВД"""
-        logging.info('generating airfields groups...')
+        logging.debug('Generating airfields groups...')
         for airfield in tvd.red_front_airfields + [tvd.red_rear_airfield]:
             data = self._convert_airfield(airfield, 101)
             self.airfields_builder.make_airfield_group(data, airfield.x, airfield.z)
         for airfield in tvd.blue_front_airfields + [tvd.blue_rear_airfield]:
             data = self._convert_airfield(airfield, 201)
             self.airfields_builder.make_airfield_group(data, airfield.x, airfield.z)
-        logging.info('... airfields groups done')
+        logging.debug('... airfields groups done')
 
     def _convert_airfield(self, airfield: model.ManagedAirfield, country: int) -> processing.Airfield:
         """Конвертировать тип управляемого аэродрома в тип генерируемого аэродрома"""
