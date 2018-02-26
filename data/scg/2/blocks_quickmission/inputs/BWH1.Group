@@ -1,0 +1,119 @@
+MCU_H_ReferencePoint
+{
+  Index = 350;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -1140.000;
+  YPos = 17.795;
+  ZPos = 80.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+
+MCU_TR_ServerInput
+{
+  Index = 351;
+  Name = "BWH1";
+  Desc = "";
+  Targets = [353,352,356];
+  Objects = [];
+  XPos = -1140.000;
+  YPos = 17.795;
+  ZPos = 80.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+}
+
+MCU_H_Output
+{
+  Index = 352;
+  Name = "KILLED_EVENT";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -1140.000;
+  YPos = 17.795;
+  ZPos = 70.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 353;
+  Name = "AAA_OFF";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -1130.000;
+  YPos = 17.795;
+  ZPos = 80.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Icon
+{
+  Index = 354;
+  Targets = [];
+  Objects = [];
+  XPos = -1150.000;
+  YPos = 17.795;
+  ZPos = 80.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  LCName = 3;
+  LCDesc = 4;
+  IconId = 557;
+  RColor = 255;
+  GColor = 255;
+  BColor = 255;
+  LineType = 0;
+  Coalitions = [1, 2];
+}
+
+MCU_Deactivate
+{
+  Index = 355;
+  Name = "Trigger Deactivate";
+  Desc = "";
+  Targets = [356,354];
+  Objects = [];
+  XPos = -1150.000;
+  YPos = 17.795;
+  ZPos = 90.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Timer
+{
+  Index = 356;
+  Name = "t1s";
+  Desc = "";
+  Targets = [355];
+  Objects = [];
+  XPos = -1140.000;
+  YPos = 17.795;
+  ZPos = 90.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+

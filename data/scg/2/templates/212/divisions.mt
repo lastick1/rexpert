@@ -470,6 +470,10 @@ blocks_set; blocks_BLUE_WH2_02_0DMG; main(scg\2\blocks_quickmission\ground\wareh
 blocks_set; blocks_BLUE_WH2_03_0DMG; main(scg\2\blocks_quickmission\ground\warehouses\blue_0dmg_section_03.group);
 blocks_set; blocks_BLUE_WH2_04_0DMG; main(scg\2\blocks_quickmission\ground\warehouses\blue_0dmg_section_04.group);
 blocks_set; blocks_BLUE_WH2_05_0DMG; main(scg\2\blocks_quickmission\ground\warehouses\blue_0dmg_section_05.group);
+blocks_set; blocks_RED_WH1_SERVER_INPUT; main(scg\2\blocks_quickmission\inputs\rwh1.group);
+blocks_set; blocks_RED_WH2_SERVER_INPUT; main(scg\2\blocks_quickmission\inputs\rwh2.group);
+blocks_set; blocks_BLUE_WH1_SERVER_INPUT; main(scg\2\blocks_quickmission\inputs\bwh1.group);
+blocks_set; blocks_BLUE_WH2_SERVER_INPUT; main(scg\2\blocks_quickmission\inputs\bwh2.group);
 
 #
 ## geo params
@@ -941,6 +945,10 @@ phase; BLUE_WH2_02_0DMG; random(BLUE_WH2_REF); blocks_BLUE_WH2_02_0DMG; clone_lo
 phase; BLUE_WH2_03_0DMG; random(BLUE_WH2_REF); blocks_BLUE_WH2_03_0DMG; clone_location;;
 phase; BLUE_WH2_04_0DMG; random(BLUE_WH2_REF); blocks_BLUE_WH2_04_0DMG; clone_location;;
 phase; BLUE_WH2_05_0DMG; random(BLUE_WH2_REF); blocks_BLUE_WH2_05_0DMG; clone_location;;
+phase; RED_WH1_SERVER_INPUT; at(RED_WH1_REF); blocks_RED_WH1_SERVER_INPUT; clone_location;;
+phase; RED_WH2_SERVER_INPUT; at(RED_WH2_REF); blocks_RED_WH2_SERVER_INPUT; clone_location;;
+phase; BLUE_WH1_SERVER_INPUT; at(BLUE_WH1_REF); blocks_BLUE_WH1_SERVER_INPUT; clone_location;;
+phase; BLUE_WH2_SERVER_INPUT; at(BLUE_WH2_REF); blocks_BLUE_WH2_SERVER_INPUT; clone_location;;
 
 #
 ## cases & switches
@@ -1361,6 +1369,10 @@ tlink; BLUE_SMART_CHECKZONE_891_1142_1848_1863(ACTIVATE_LARGE_CANNONS); 85_88MM_
 tlink; BLUE_SMART_CHECKZONE_891_1142_1848_1863(DEACTIVATE_LARGE_CANNONS); 85_88MM_5_1774_1859(DEACTIVATE_LARGE_CANNONS);
 tlink; BLUE_SMART_CHECKZONE_891_1142_1848_1863(ACTIVATE_LARGE_CANNONS); 85_88MM_6_1775_1860(ACTIVATE_LARGE_CANNONS);
 tlink; BLUE_SMART_CHECKZONE_891_1142_1848_1863(DEACTIVATE_LARGE_CANNONS); 85_88MM_6_1775_1860(DEACTIVATE_LARGE_CANNONS);
+tlink; RED_WH1_SERVER_INPUT(AAA_OFF); RED_SMART_CHECKZONE_1628(AAA_OFF);
+tlink; RED_WH2_SERVER_INPUT(AAA_OFF); RED_SMART_CHECKZONE_1628_1643(AAA_OFF);
+tlink; BLUE_WH1_SERVER_INPUT(AAA_OFF); BLUE_SMART_CHECKZONE_891_1142_1848(AAA_OFF);
+tlink; BLUE_WH2_SERVER_INPUT(AAA_OFF); BLUE_SMART_CHECKZONE_891_1142_1848_1863(AAA_OFF);
 
 #
 ## conditions
@@ -3343,6 +3355,10 @@ gui_helper; BLUE_WH2_02_0DMG; -428; 10580;
 gui_helper; BLUE_WH2_03_0DMG; -430; 10797;
 gui_helper; BLUE_WH2_04_0DMG; -428; 11004;
 gui_helper; BLUE_WH2_05_0DMG; -426; 11209;
+gui_helper; RED_WH1_SERVER_INPUT; 3847; 7689;
+gui_helper; RED_WH2_SERVER_INPUT; 3989; 10353;
+gui_helper; BLUE_WH1_SERVER_INPUT; -1659; 7586;
+gui_helper; BLUE_WH2_SERVER_INPUT; -1664; 10381;
 gui_helper; check; -8542; 474;BLUE_REAR_AF_REFERENCE(coalition)
 gui_helper; check; -8544; 428;BLUE_REAR_AF_REFERENCE(location_type)
 gui_helper; check; -8544; 518;BLUE_REAR_AF_REFERENCE(range)
