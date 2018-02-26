@@ -101,3 +101,20 @@ class Tvd:
             if point.is_in_area(front_areas[country]):
                 result[country].append(point)
         return result
+
+    def is_rear(self, point: geometry.Point, country: int) -> bool:
+        """Находится ли точка на тыловой территории указанной страны"""
+        confrontations = {101: self.confrontation_east, 201: self.confrontation_west}
+        return self._is_rear(confrontations[country], self.influences[country], point)
+
+    def _is_rear(self, confrontation_area, influences, point):
+        """Расположена ли точка вне фронтовой зоны но на территории инфлюенса"""
+        return self._is_in_influences(point, influences) and not point.is_in_area(confrontation_area)
+
+    @staticmethod
+    def _is_in_influences(point, influences) -> bool:
+        """Находится ли точка в инфлюенсах страны"""
+        for boundary in influences:
+            if point.is_in_area(boundary.polygon):
+                return True
+        return False

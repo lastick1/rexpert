@@ -274,18 +274,6 @@ class LocationsBuilder:
         """Сериализовать локацию"""
         return str(location)
 
-    @staticmethod
-    def _is_in_influences(point, influences) -> bool:
-        """Находится ли точка в инфлюенсах страны"""
-        for boundary in influences:
-            if point.is_in_area(boundary.polygon):
-                return True
-        return False
-
-    def _is_rear(self, confrontation_area, influences, point):
-        """Расположена ли точка вне фронтовой зоны но на территории инфлюенса"""
-        return self._is_in_influences(point, influences) and not point.is_in_area(confrontation_area)
-
     def apply_tvd_setup(self, tvd: model.Tvd):
         """Покраска локаций в соответствии с их расположением в зоне влияния"""
         front_airfields = {101: tvd.red_front_airfields, 201: tvd.blue_front_airfields}
@@ -308,7 +296,7 @@ class LocationsBuilder:
                 continue
             if {TRANSPORT, FACTORY}.intersection(location.types):
                 for country in confrontations:
-                    if self._is_rear(confrontations[country], tvd.influences[country], location):
+                    if tvd.is_rear(location, country):
                         location.country = country
                         break
                 continue
@@ -320,7 +308,7 @@ class LocationsBuilder:
         for location in self.locations[GROUND_OBJECTIVE]:
             if {FACTORY}.intersection(location.types):
                 for country in confrontations:
-                    if self._is_rear(confrontations[country], tvd.influences[country], location):
+                    if tvd.is_rear(location, country):
                         location.country = country
                         break
                 continue
