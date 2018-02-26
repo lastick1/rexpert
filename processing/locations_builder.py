@@ -290,9 +290,10 @@ class LocationsBuilder:
         """Покраска локаций в соответствии с их расположением в зоне влияния"""
         front_airfields = {101: tvd.red_front_airfields, 201: tvd.blue_front_airfields}
         confrontations = {101: tvd.confrontation_east, 201: tvd.confrontation_west}
-        all_airfields = [tvd.red_rear_airfield, tvd.blue_rear_airfield
-                         ] + tvd.blue_front_airfields + tvd.red_front_airfields
         for location in self.locations[DECORATION]:
+            if AAA_POSITION in location.types:
+                location.country = tvd.get_country(location)
+                continue
             if PARKING in location.types:
                 for country in front_airfields:
                     for airfield in front_airfields[country]:
