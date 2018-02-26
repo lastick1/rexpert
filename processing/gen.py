@@ -1,12 +1,10 @@
 """Сборка бинарных файлов в scg и генерация миссий"""
+import datetime
+import pathlib
 import subprocess
 import logging
 import time
 import shutil
-
-from datetime import datetime
-
-import pathlib
 
 import configs
 
@@ -60,7 +58,7 @@ class Generator:
         if assault_mission:
             mission_template = tvd_folder.joinpath(self.mgen.cfg[tvd_name]['assault_mt_file']).absolute()
         logging.info(f'Generating new mission: [{file_name}]...')
-        now = str(datetime.now()).replace(":", "-").replace(" ", "_")
+        now = str(datetime.datetime.now()).replace(":", "-").replace(" ", "_")
         with open(str(self.main.mission_gen_folder) + r"\missiongen_log_" + now + ".txt", "w") as missiongen_log:
             args = [
                 str(self.main.mission_gen_folder) + r"\MissionGen.exe",
