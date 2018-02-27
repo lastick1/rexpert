@@ -64,7 +64,7 @@ class PlayersController:
             if not self.rcon.connected:
                 self.rcon.connect()
                 self.rcon.auth(self.config.main.rcon_login, self.config.main.rcon_password)
-            if self.unlocks_taken[player.account_id] > player.unlocks:
+            if not self.config.main.test_mode and self.unlocks_taken[player.account_id] > player.unlocks:
                 self.rcon.kick(player.account_id)
 
     def end_mission(self):

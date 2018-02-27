@@ -116,6 +116,7 @@ class GroundController:
         for target in self.targets:
             unit = _to_unit(target)
             if unit.killed and unit.point not in self._killed_units:
+                self._killed_units.add(unit.point)
                 if isinstance(unit, DivisionUnit):
                     self._ioc.divisions_controller.damage_division(unit.tvd_name, unit.name)
                 if isinstance(unit, WarehouseUnit):
