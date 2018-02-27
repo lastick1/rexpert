@@ -11,8 +11,8 @@ import model
 import processing
 import storage
 
-from .division_control import DivisionsController
-from .warehouse_control import WarehouseController
+from .divisions_control import DivisionsController
+from .warehouses_control import WarehouseController
 from .grid_control import GridController
 from .source_parser import SourceParser
 from .airfields_control import AirfieldsController
