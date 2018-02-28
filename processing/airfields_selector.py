@@ -62,10 +62,10 @@ class AirfieldsSelector:
                 result = list()
                 front.sort(key=utils.cmp_to_key(self._front_airfields_comparator))
                 result.append(front.pop())
-                front = self._remove_too_close(front, result)
+                front = self._remove_too_close(front, result, 15000)
                 front.reverse()
                 result.append(front.pop())
-                front = self._remove_too_close(front, result)
+                front = self._remove_too_close(front, result, 15000)
                 result.append(random.choice(front))
                 return result
             else:
@@ -74,15 +74,16 @@ class AirfieldsSelector:
             raise ValueError
 
     @staticmethod
-    def _remove_too_close(front: list, selected_airfields: list) -> list:
+    def _remove_too_close(src: list, check_points: list, distance: float) -> list:
+        """Убрать из списка точки, которые слишком блико к точкам второго списка"""
         result = list()
-        for airfield in front:
+        for point in src:
             close = False
-            for selected in selected_airfields:
-                if airfield.distance_to(selected.x, selected.z) < 15000:
+            for check in check_points:
+                if point.distance_to(check.x, check.z) < distance:
                     close = True
                     break
             if not close:
-                result.append(airfield)
+                result.append(point)
         return result
 
