@@ -14,7 +14,6 @@ logging.basicConfig(
 
 IOC = tests.mocks.DependencyContainerMock(pathlib.Path('./testdata/conf.ini'))
 DIVISIONS_CONTROLLER_MOCK = tests.mocks.DivisionsControllerMock(IOC)
-IOC._divisions_controller = DIVISIONS_CONTROLLER_MOCK
 
 TEST_TARGET_AIRFIELD_SERVER_INPUT = 'Verbovka'
 TEST_TARGET_BTD1_SERVER_INPUT = 'BTD1'
@@ -64,9 +63,11 @@ class TestGroundControl(unittest.TestCase):
 
     def setUp(self):
         """Настройка перед тестами"""
+        self._DIVISIONS_CONTROLLER = IOC._divisions_controller
 
     def tearDown(self):
         """Очистка после тестов"""
+        IOC._divisions_controller = self._DIVISIONS_CONTROLLER
 
     def test_kill(self):
         """Учитываются уничтоженные наземные цели"""
@@ -102,6 +103,7 @@ class TestGroundControl(unittest.TestCase):
         """Обрабатывается уничтожение подразделения дивизии"""
         controller = processing.GroundController(IOC)
         IOC.campaign_controller._mission = TEST_MISSION
+        IOC._divisions_controller = DIVISIONS_CONTROLLER_MOCK
         target_name = 'static_il2'
         aircraft_name = 'I-16 type 24'
         attacker = IOC.objects_controller.create_object(
@@ -130,6 +132,7 @@ class TestGroundControl(unittest.TestCase):
             tests.mocks.atype_12_stub(2, aircraft_name, 201, 'Test attacker', -1))
         target = IOC.objects_controller.create_object(
             tests.mocks.atype_12_stub(3, target_name, 101, 'Test ground target', -1))
+        IOC.storage.divisions.update(model.Division(TEST_MISSION.tvd_name, 'BTD1', 10, TEST_TARGET_POS_BTD1_UNITS[0]))
         controller.start_mission()
         # Act
         for pos in TEST_TARGET_POS_BTD1_UNITS:

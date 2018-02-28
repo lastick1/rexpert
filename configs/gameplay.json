@@ -8,6 +8,7 @@
   "unlocks_start": 1,
   "unlocks_min": 1,
   "unlocks_max": 5,
+  "division_death": 2,
   "division_repair": 15,
   "division_margin": 20000,
   "division_unit_radius": {

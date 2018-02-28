@@ -3,6 +3,7 @@ import logging
 import re
 
 import configs
+import rcon
 import storage
 import model
 
@@ -27,6 +28,7 @@ class DivisionsController:
     def __init__(self, ioc):
         self._ioc = ioc
         self._current_divisions = dict()
+        self._sent_inputs = set()
 
     @property
     def config(self) -> configs.Config:
@@ -37,6 +39,11 @@ class DivisionsController:
     def storage(self) -> storage.Storage:
         """Объект для работы с БД"""
         return self._ioc.storage
+
+    @property
+    def rcon(self) -> rcon.DServerRcon:
+        """Консоль сервера"""
+        return self._ioc.rcon
 
     def filter_airfields(self, tvd_name: str, airfields: list) -> list:
         """Отбросить аэродромы, расположенные близко к дивизиям"""
@@ -85,6 +92,9 @@ class DivisionsController:
         division.units -= 1
         if division.units < 0:
             division.units = 0
+        if division.units <= self.config.gameplay.division_death and division.name not in self._sent_inputs:
+            self._sent_inputs.add(division.name)
+            self.rcon.server_input(division.name)
         logging.debug(f'{division.tvd_name} division {division.name} lost unit:{unit_name}')
         self.storage.divisions.update(division)
 
