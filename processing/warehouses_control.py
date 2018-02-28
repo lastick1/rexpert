@@ -1,12 +1,12 @@
 """Контроль складов"""
 import logging
-import random
 import re
 
 import configs
 import model
 import storage
 from model import CampaignMission
+from .warehouses_selector import WarehousesSelector
 
 
 WAREHOUSE_INPUT_RE = re.compile(
@@ -91,22 +91,7 @@ class WarehouseController:
             if warehouse.point.distance_to(pos['x'], pos['z']) < 10:
                 return warehouse
 
-    def next_warehouses(self, tvd_name: str) -> list:
+    def next_warehouses(self, tvd: model.Tvd) -> list:
         """Склады для следующей миссии"""
-        return self._next_warehouses(101, tvd_name) + self._next_warehouses(201, tvd_name)
-
-    def _next_warehouses(self, country: int, tvd_name) -> list:
-        """Склады для следующей миссии для указанной стороны и указанного ТВД"""
-        # выбираются те склады, которые убивались меньшее количество раз, текущие склады в приоритете
-        warehouses = self.storage.warehouses.load_by_tvd(tvd_name)
-        max_deaths = max(x.deaths for x in warehouses if x.country == country) + 1
-        warehouses = list(x for x in warehouses
-                          if x.deaths < max_deaths
-                          and x.country == country)
-        current = list(x for x in self._current_mission_warehouses
-                       if x.deaths < max_deaths
-                       and x.country == country)
-        while len(current) < 2:
-            random.shuffle(warehouses)
-            current.append(warehouses.pop())
-        return current
+        selector = WarehousesSelector(self.storage.warehouses.load_by_tvd(tvd.name), self._current_mission_warehouses)
+        return selector.select(tvd)

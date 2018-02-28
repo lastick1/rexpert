@@ -24,7 +24,6 @@ class Tvd:
             date: str,
             right_top: dict,
             divisions: list(),
-            warehouses: list(),
             grid: model.Grid,
             icons_group_file: pathlib.Path
     ):
@@ -33,7 +32,7 @@ class Tvd:
         self.date = datetime.datetime.strptime(date, constants.DATE_FORMAT)  # дата миссии
         self.right_top = right_top  # правый верхний угол карты
         self.divisions = divisions  # дивизии с их местоположением
-        self.warehouses = warehouses  # дивизии с их местоположением
+        self.warehouses = list()  # дивизии с их местоположением
         self.icons_group_file = icons_group_file  # файл группы иконок
         self.confrontation_east = list()  # восточная прифронтовая зона
         self.confrontation_west = list()  # западная прифронтовая зона
@@ -59,6 +58,14 @@ class Tvd:
         if not self._nodes_list:
             self._nodes_list = self.grid.nodes_list
         return self._nodes_list
+
+    @property
+    def airfields(self) -> dict:
+        """Аэродромы сторон"""
+        return {
+            101: self.red_front_airfields + [self.red_rear_airfield],
+            201: self.blue_front_airfields + [self.blue_rear_airfield]
+        }
 
     def get_country(self, point: geometry.Point) -> int:
         """Определить страну, на территории которой находится точка"""

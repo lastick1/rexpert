@@ -108,7 +108,6 @@ class TvdBuilder:
             self.config.mgen.cfg[self.name]['right_top'],
             # TODO заменить на получение через divisions_controller
             self.storage.divisions.load_by_tvd(self.name),
-            self.warehouses_controller.next_warehouses(self.name),
             self.grid_controller.get_grid(self.name),
             self.config.mgen.icons_group_files[self.name]
         )
@@ -163,6 +162,7 @@ class TvdBuilder:
             airfields=airfields
         )
         self.update_airfields(tvd)
+        self.update_warehouses(tvd)
         self.update_ldb(tvd)
         self.randomize_defaultparams(tvd.date, self.config.generator.cfg[self.name])
         logging.info('TVD folder updated')
@@ -197,6 +197,10 @@ class TvdBuilder:
             data = self._convert_airfield(airfield, 201)
             self.airfields_builder.make_airfield_group(data, airfield.x, airfield.z)
         logging.debug('... airfields groups done')
+
+    def update_warehouses(self, tvd: model.Tvd):
+        """Выбор расположения складов"""
+        tvd.warehouses.extend(self.warehouses_controller.next_warehouses(tvd))
 
     def _convert_airfield(self, airfield: model.ManagedAirfield, country: int) -> processing.Airfield:
         """Конвертировать тип управляемого аэродрома в тип генерируемого аэродрома"""

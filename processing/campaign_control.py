@@ -155,11 +155,14 @@ class CampaignController:
         self._update_tik(atype.tik)
         campaign_map = self.campaign_map
         campaign_map.mission = self._mission
-        self._current_tvd = self.tvd_builders[campaign_map.tvd_name].get_tvd(
-            campaign_map.date.strftime(constants.DATE_FORMAT))
+        self._current_tvd = self._get_tvd(campaign_map.tvd_name, campaign_map.date.strftime(constants.DATE_FORMAT))
         self.storage.campaign_maps.update(campaign_map)
         # TODO сохранить миссию в базу (в документ model.CampaignMap и в коллекцию model.CampaignMissions)
         # TODO удалить файлы предыдущей миссии
+
+    def _get_tvd(self, tvd_name: str, date: str) -> model.Tvd:
+        """"""
+        return self.tvd_builders[tvd_name].get_tvd(date)
 
     def end_mission(self, atype: atypes.Atype7):
         """Обработать завершение миссии"""

@@ -150,6 +150,20 @@ def sort_points_clockwise(points, middle_point) -> list:
     return sorted(points, key=utils.cmp_to_key(comparator))
 
 
+def remove_too_close(src: list, check_points: list, radius: float) -> list:
+    """Убрать из списка точки, которые слишком блико к точкам второго списка"""
+    result = list()
+    for point in src:
+        close = False
+        for check in check_points:
+            if point.distance_to(check.x, check.z) < radius:
+                close = True
+                break
+        if not close:
+            result.append(point)
+    return result
+
+
 def jarvis_march(array: list) -> list:
     """Находит минимальную выпуклую оболочку в массиве точек"""
     # pylint: disable=C0103
