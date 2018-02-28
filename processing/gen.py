@@ -34,12 +34,13 @@ class Generator:
         """Скомпилировать общие (сцену) декорации ТВД"""
         lgb_file = pathlib.Path(self.mgen.lgb_files[tvd_name])
         lgb_bin_file = pathlib.Path(self.mgen.lgb_bin_files[tvd_name])
+        make_lgb = self.main.mission_gen_folder.joinpath('./make_lgb.exe').absolute()
         if not lgb_bin_file.exists():
+            if not make_lgb.exists():
+                logging.warning(f'make_lgb.exe not found {make_lgb}')
+                return
             logging.info('Generating LGB file...')
-            args = [
-                str(self.main.mission_gen_folder.joinpath('./make_lgb.exe').absolute()),
-                str(lgb_file)
-            ]
+            args = [str(make_lgb), str(lgb_file)]
             generator = subprocess.Popen(args, stdout=subprocess.DEVNULL)
             generator.wait()
             time.sleep(3)
