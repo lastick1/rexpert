@@ -12,9 +12,10 @@ WAREHOUSES = {
 }
 
 
-class Warehouse:
+class Warehouse(geometry.Point):
     """Склад ресурсов"""
     def __init__(self, name: str, tvd_name: str, health: float, deaths: int, country: int, pos: dict):
+        super().__init__(pos['x'], pos['z'])
         self.name = name
         self.tvd_name = tvd_name
         self.health = health
@@ -32,8 +33,3 @@ class Warehouse:
             constants.COUNTRY: self.country,
             constants.POS: self.pos
         }
-
-    @property
-    def point(self) -> geometry.Point:
-        """Точка склада"""
-        return geometry.Point(self.pos['x'], self.pos['z'])

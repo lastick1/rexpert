@@ -88,7 +88,7 @@ class WarehouseController:
         """Получить склад по координатам"""
         for name in self._current_tvd_warehouses:
             warehouse = _to_warehouse(self._current_tvd_warehouses[name])
-            if warehouse.point.distance_to(pos['x'], pos['z']) < 10:
+            if warehouse.distance_to(pos['x'], pos['z']) < 10:
                 return warehouse
 
     def next_warehouses(self, tvd: model.Tvd) -> list:

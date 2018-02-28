@@ -109,7 +109,7 @@ MCU_TR_Entity
 MCU_H_Input
 {
   Index = 5;
-  Name = "AF_MCU_INPUT_OBJECT";
+  Name = "AF_MCU_OBJECT";
   Desc = "";
   Targets = [];
   Objects = [3];
@@ -124,7 +124,7 @@ MCU_H_Input
 MCU_H_Input
 {
   Index = 6;
-  Name = "AF_MCU_INPUT_TARGET";
+  Name = "AF_MCU_TARGET";
   Desc = "";
   Targets = [3];
   Objects = [];
