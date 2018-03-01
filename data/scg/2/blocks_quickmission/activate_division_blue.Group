@@ -1,32 +1,13 @@
-MCU_H_ReferencePoint
-{
-  Index = 3014;
-  Name = "Helper Reference Point";
-  Desc = "";
-  Targets = [];
-  Objects = [];
-  XPos = -10000.000;
-  YPos = 17.795;
-  ZPos = 0.000;
-  XOri = 0.00;
-  YOri = 0.00;
-  ZOri = 0.00;
-  Forward = 50;
-  Backward = 50;
-  Left = 50;
-  Right = 50;
-}
-
 MCU_H_Output
 {
-  Index = 3016;
-  Name = "OBJECT_AAA";
+  Index = 66;
+  Name = "DEACTIVATE";
   Desc = "";
   Targets = [];
   Objects = [];
-  XPos = -10000.000;
+  XPos = -772.070;
   YPos = 17.795;
-  ZPos = 30.000;
+  ZPos = -603.492;
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;
@@ -34,44 +15,14 @@ MCU_H_Output
 
 MCU_H_Output
 {
-  Index = 3296;
-  Name = "OBJECT_TANKS";
+  Index = 61;
+  Name = "ACTIVATE";
   Desc = "";
   Targets = [];
   Objects = [];
-  XPos = -9990.000;
+  XPos = -775.059;
   YPos = 17.795;
-  ZPos = 20.000;
-  XOri = 0.00;
-  YOri = 0.00;
-  ZOri = 0.00;
-}
-
-MCU_H_Output
-{
-  Index = 3297;
-  Name = "OBJECT_ARTY";
-  Desc = "";
-  Targets = [];
-  Objects = [];
-  XPos = -9980.000;
-  YPos = 17.795;
-  ZPos = 20.000;
-  XOri = 0.00;
-  YOri = 0.00;
-  ZOri = 0.00;
-}
-
-MCU_H_Output
-{
-  Index = 3298;
-  Name = "TARGET_ATTACK_AREA";
-  Desc = "";
-  Targets = [];
-  Objects = [];
-  XPos = -10010.000;
-  YPos = 17.795;
-  ZPos = 20.000;
+  ZPos = -653.189;
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;
@@ -79,133 +30,217 @@ MCU_H_Output
 
 MCU_CheckZone
 {
-  Index = 3299;
-  Name = "Allies";
+  Index = 98;
+  Name = "CLOSER";
   Desc = "";
-  Targets = [3304,3300];
+  Targets = [99,100,101,61];
   Objects = [];
-  XPos = -9989.996;
-  YPos = 17.795;
-  ZPos = 0.000;
+  XPos = -813.821;
+  YPos = 121.891;
+  ZPos = -654.526;
   XOri = 0.00;
-  YOri = 0.00;
+  YOri = 359.89;
   ZOri = 0.00;
-  Zone = 15000;
+  Zone = 7000;
   Cylinder = 1;
   Closer = 1;
   PlaneCoalitions = [1];
 }
 
+MCU_CheckZone
+{
+  Index = 104;
+  Name = "FURTHER";
+  Desc = "";
+  Targets = [105,106,107,66];
+  Objects = [];
+  XPos = -813.303;
+  YPos = 121.891;
+  ZPos = -609.101;
+  XOri = 0.00;
+  YOri = 359.89;
+  ZOri = 0.00;
+  Zone = 8000;
+  Cylinder = 1;
+  Closer = 0;
+  PlaneCoalitions = [1];
+}
+
 MCU_Timer
 {
-  Index = 3300;
-  Name = "t30s";
+  Index = 109;
+  Name = "5s";
   Desc = "";
-  Targets = [3306,3309];
+  Targets = [98];
   Objects = [];
-  XPos = -10000.000;
-  YPos = 17.795;
-  ZPos = 10.000;
+  XPos = -823.224;
+  YPos = 121.891;
+  ZPos = -654.224;
   XOri = 0.00;
-  YOri = 0.00;
+  YOri = 359.89;
   ZOri = 0.00;
-  Time = 30;
+  Time = 5;
   Random = 100;
 }
 
 MCU_TR_MissionBegin
 {
-  Index = 3301;
+  Index = 110;
   Name = "Translator Mission Begin";
   Desc = "";
-  Targets = [3302];
+  Targets = [109];
   Objects = [];
-  XPos = -9980.000;
-  YPos = 17.795;
-  ZPos = -10.000;
+  XPos = -832.985;
+  YPos = 121.891;
+  ZPos = -654.259;
   XOri = 0.00;
-  YOri = 0.00;
+  YOri = 359.89;
   ZOri = 0.00;
   Enabled = 1;
 }
 
-MCU_Timer
+MCU_Deactivate
 {
-  Index = 3302;
-  Name = "t1m";
+  Index = 99;
+  Name = "Trigger Deactivate";
   Desc = "";
-  Targets = [3299];
+  Targets = [98];
   Objects = [];
-  XPos = -9990.000;
-  YPos = 17.795;
-  ZPos = -10.000;
+  XPos = -796.568;
+  YPos = 121.891;
+  ZPos = -671.630;
   XOri = 0.00;
-  YOri = 0.00;
+  YOri = 359.89;
   ZOri = 0.00;
-  Time = 60;
-  Random = 100;
+}
+
+MCU_Deactivate
+{
+  Index = 105;
+  Name = "Trigger Deactivate";
+  Desc = "";
+  Targets = [104];
+  Objects = [];
+  XPos = -791.514;
+  YPos = 121.891;
+  ZPos = -623.365;
+  XOri = 0.00;
+  YOri = 359.89;
+  ZOri = 0.00;
 }
 
 MCU_Activate
 {
-  Index = 3304;
-  Name = "Activate";
+  Index = 100;
+  Name = "Trigger Activate";
   Desc = "";
-  Targets = [];
-  Objects = [3296,3297];
-  XPos = -9990.000;
-  YPos = 17.795;
-  ZPos = 10.000;
+  Targets = [104];
+  Objects = [];
+  XPos = -805.819;
+  YPos = 121.891;
+  ZPos = -631.777;
   XOri = 0.00;
-  YOri = 0.00;
+  YOri = 359.89;
   ZOri = 0.00;
+}
+
+MCU_Activate
+{
+  Index = 106;
+  Name = "Trigger Activate";
+  Desc = "";
+  Targets = [98];
+  Objects = [];
+  XPos = -825.821;
+  YPos = 121.891;
+  ZPos = -630.727;
+  XOri = 0.00;
+  YOri = 359.89;
+  ZOri = 0.00;
+}
+
+MCU_Timer
+{
+  Index = 101;
+  Name = "1s";
+  Desc = "";
+  Targets = [104];
+  Objects = [];
+  XPos = -811.823;
+  YPos = 121.891;
+  ZPos = -631.349;
+  XOri = 0.00;
+  YOri = 359.89;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 107;
+  Name = "1s";
+  Desc = "";
+  Targets = [98];
+  Objects = [];
+  XPos = -819.694;
+  YPos = 121.891;
+  ZPos = -631.536;
+  XOri = 0.00;
+  YOri = 359.89;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
 }
 
 MCU_H_Dynamic
 {
-  Index = 3305;
-  Name = "CheckZone";
+  Index = 117;
+  Name = "CLOSER";
   Desc = "";
-  Targets = [3299];
+  Targets = [98];
   Objects = [];
-  XPos = -9980.000;
+  XPos = -813.768;
   YPos = 17.795;
-  ZPos = 0.000;
+  ZPos = -671.879;
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;
   Property = "Zone";
 }
 
-MCU_Activate
+MCU_H_Dynamic
 {
-  Index = 3306;
-  Name = "Activate";
+  Index = 118;
+  Name = "FURTHER";
   Desc = "";
-  Targets = [];
-  Objects = [3016];
-  XPos = -10000.000;
+  Targets = [104];
+  Objects = [];
+  XPos = -813.404;
   YPos = 17.795;
-  ZPos = 20.000;
+  ZPos = -593.408;
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;
+  Property = "Zone";
 }
 
-MCU_Timer
+MCU_H_ReferencePoint
 {
-  Index = 3309;
-  Name = "t15s";
+  Index = 119;
+  Name = "Helper Reference Point";
   Desc = "";
-  Targets = [3298];
+  Targets = [];
   Objects = [];
-  XPos = -10010.000;
+  XPos = -799.165;
   YPos = 17.795;
-  ZPos = 10.000;
+  ZPos = -631.603;
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;
-  Time = 15;
-  Random = 100;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
 }
 
