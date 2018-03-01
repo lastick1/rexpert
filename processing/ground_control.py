@@ -89,6 +89,11 @@ class WarehouseUnit(GroundTargetUnit):
         self.warehouse_name = f'{data["side"]}WH{data["number"]}'
         super().__init__(name, pos, data["side"], self.warehouse_name, int(data['durability']), radius, tvd_name)
 
+    @property
+    def killed(self):
+        """Убита ли цель"""
+        return len(self._kills) >= (self._durability * 0.80)
+
 
 class GroundController:
     """Контроллер обработки событий с наземными целями"""
