@@ -427,11 +427,11 @@ blocks_set; blocks_RED_WH1_02_0DMG; main(scg\2\blocks_quickmission\ground\wareho
 blocks_set; blocks_RED_WH1_03_0DMG; main(scg\2\blocks_quickmission\ground\warehouses\red_0dmg_section_03.group);
 blocks_set; blocks_RED_WH1_04_0DMG; main(scg\2\blocks_quickmission\ground\warehouses\red_0dmg_section_04.group);
 blocks_set; blocks_RED_WH1_05_0DMG; main(scg\2\blocks_quickmission\ground\warehouses\red_0dmg_section_05.group);
-blocks_set; blocks_RED_WH1_01_0DMG_1748; main(scg\2\blocks_quickmission\ground\warehouses\red_0dmg_section_01.group);
-blocks_set; blocks_RED_WH1_02_0DMG_1749; main(scg\2\blocks_quickmission\ground\warehouses\red_0dmg_section_02.group);
-blocks_set; blocks_RED_WH1_03_0DMG_1750; main(scg\2\blocks_quickmission\ground\warehouses\red_0dmg_section_03.group);
-blocks_set; blocks_RED_WH1_04_0DMG_1751; main(scg\2\blocks_quickmission\ground\warehouses\red_0dmg_section_04.group);
-blocks_set; blocks_RED_WH1_05_0DMG_1752; main(scg\2\blocks_quickmission\ground\warehouses\red_0dmg_section_05.group);
+blocks_set; blocks_RED_WH2_01_0DMG; main(scg\2\blocks_quickmission\ground\warehouses\red_0dmg_section_01.group);
+blocks_set; blocks_RED_WH2_02_0DMG; main(scg\2\blocks_quickmission\ground\warehouses\red_0dmg_section_02.group);
+blocks_set; blocks_RED_WH2_03_0DMG; main(scg\2\blocks_quickmission\ground\warehouses\red_0dmg_section_03.group);
+blocks_set; blocks_RED_WH2_04_0DMG; main(scg\2\blocks_quickmission\ground\warehouses\red_0dmg_section_04.group);
+blocks_set; blocks_RED_WH2_05_0DMG; main(scg\2\blocks_quickmission\ground\warehouses\red_0dmg_section_05.group);
 blocks_set; blocks_MG_1_1768; main(scg\2\blocks_quickmission\ground\aaa\small\smart_machine_gun.group);
 blocks_set; blocks_85_88MM_1_1769; main(scg\2\blocks_quickmission\ground\aaa\big\hq_smart_large_cannon.group);
 blocks_set; blocks_20_37MM_1_1770; main(scg\2\blocks_quickmission\ground\aaa\med\wh_smart_auto_cannon.group);
@@ -498,6 +498,26 @@ blocks_set; blocks_BID1_DELAY1_AAA_LAST; main(scg\2\blocks_quickmission\activati
 blocks_set; blocks_BID1_DELAY2_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
 blocks_set; blocks_BID1_DELAY3_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
 blocks_set; blocks_BID1_DELAY4_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
+blocks_set; blocks_REXPERT_RWH1_74; main(scg\2\blocks_quickmission\ground\warehouses\rexpert_rwh1_74.group);
+blocks_set; blocks_REXPERT_RWH1_52; main(scg\2\blocks_quickmission\ground\warehouses\rexpert_rwh1_52.group);
+blocks_set; blocks_REXPERT_RWH1_60; main(scg\2\blocks_quickmission\ground\warehouses\rexpert_rwh1_60.group);
+blocks_set; blocks_REXPERT_RWH1_54; main(scg\2\blocks_quickmission\ground\warehouses\rexpert_rwh1_54.group);
+blocks_set; blocks_REXPERT_RWH1_56; main(scg\2\blocks_quickmission\ground\warehouses\rexpert_rwh1_56.group);
+blocks_set; blocks_REXPERT_RWH2_74; main(scg\2\blocks_quickmission\ground\warehouses\rexpert_rwh2_74.group);
+blocks_set; blocks_REXPERT_RWH2_52; main(scg\2\blocks_quickmission\ground\warehouses\rexpert_rwh2_52.group);
+blocks_set; blocks_REXPERT_RWH2_60; main(scg\2\blocks_quickmission\ground\warehouses\rexpert_rwh2_60.group);
+blocks_set; blocks_REXPERT_RWH2_54; main(scg\2\blocks_quickmission\ground\warehouses\rexpert_rwh2_54.group);
+blocks_set; blocks_REXPERT_RWH2_56; main(scg\2\blocks_quickmission\ground\warehouses\rexpert_rwh2_56.group);
+blocks_set; blocks_REXPERT_BWH1_74; main(scg\2\blocks_quickmission\ground\warehouses\rexpert_bwh1_74.group);
+blocks_set; blocks_REXPERT_BWH1_52; main(scg\2\blocks_quickmission\ground\warehouses\rexpert_bwh1_52.group);
+blocks_set; blocks_REXPERT_BWH1_60; main(scg\2\blocks_quickmission\ground\warehouses\rexpert_bwh1_60.group);
+blocks_set; blocks_REXPERT_BWH1_54; main(scg\2\blocks_quickmission\ground\warehouses\rexpert_bwh1_54.group);
+blocks_set; blocks_REXPERT_BWH1_56; main(scg\2\blocks_quickmission\ground\warehouses\rexpert_bwh1_56.group);
+blocks_set; blocks_REXPERT_BWH2_74; main(scg\2\blocks_quickmission\ground\warehouses\rexpert_bwh2_74.group);
+blocks_set; blocks_REXPERT_BWH2_52; main(scg\2\blocks_quickmission\ground\warehouses\rexpert_bwh2_52.group);
+blocks_set; blocks_REXPERT_BWH2_60; main(scg\2\blocks_quickmission\ground\warehouses\rexpert_bwh2_60.group);
+blocks_set; blocks_REXPERT_BWH2_54; main(scg\2\blocks_quickmission\ground\warehouses\rexpert_bwh2_54.group);
+blocks_set; blocks_REXPERT_BWH2_56; main(scg\2\blocks_quickmission\ground\warehouses\rexpert_bwh2_56.group);
 
 #
 ## geo params
@@ -926,11 +946,11 @@ phase; RED_WH1_02_0DMG; random(RED_WH1_REF); blocks_RED_WH1_02_0DMG; clone_locat
 phase; RED_WH1_03_0DMG; random(RED_WH1_REF); blocks_RED_WH1_03_0DMG; clone_location;;
 phase; RED_WH1_04_0DMG; random(RED_WH1_REF); blocks_RED_WH1_04_0DMG; clone_location;;
 phase; RED_WH1_05_0DMG; random(RED_WH1_REF); blocks_RED_WH1_05_0DMG; clone_location;;
-phase; RED_WH1_01_0DMG_1748; random(RED_WH2_REF); blocks_RED_WH1_01_0DMG_1748; clone_location;;
-phase; RED_WH1_02_0DMG_1749; random(RED_WH2_REF); blocks_RED_WH1_02_0DMG_1749; clone_location;;
-phase; RED_WH1_03_0DMG_1750; random(RED_WH2_REF); blocks_RED_WH1_03_0DMG_1750; clone_location;;
-phase; RED_WH1_04_0DMG_1751; random(RED_WH2_REF); blocks_RED_WH1_04_0DMG_1751; clone_location;;
-phase; RED_WH1_05_0DMG_1752; random(RED_WH2_REF); blocks_RED_WH1_05_0DMG_1752; clone_location;;
+phase; RED_WH2_01_0DMG; random(RED_WH2_REF); blocks_RED_WH2_01_0DMG; clone_location;;
+phase; RED_WH2_02_0DMG; random(RED_WH2_REF); blocks_RED_WH2_02_0DMG; clone_location;;
+phase; RED_WH2_03_0DMG; random(RED_WH2_REF); blocks_RED_WH2_03_0DMG; clone_location;;
+phase; RED_WH2_04_0DMG; random(RED_WH2_REF); blocks_RED_WH2_04_0DMG; clone_location;;
+phase; RED_WH2_05_0DMG; random(RED_WH2_REF); blocks_RED_WH2_05_0DMG; clone_location;;
 phase; MG_1_1768; random(BLUE_WH1_REF); blocks_MG_1_1768; clone_location;;
 phase; 85_88MM_1_1769; random(20_37MM_2_1777); blocks_85_88MM_1_1769; clone_location;;
 phase; 20_37MM_1_1770; random(MG_1_1768); blocks_20_37MM_1_1770; clone_location;;
@@ -997,6 +1017,26 @@ phase; BID1_DELAY1_AAA_LAST; at(BID1_ACTIVATOR); blocks_BID1_DELAY1_AAA_LAST; cl
 phase; BID1_DELAY2_AAA_LAST; at(BID1_ACTIVATOR); blocks_BID1_DELAY2_AAA_LAST; clone_location;;
 phase; BID1_DELAY3_AAA_LAST; at(BID1_ACTIVATOR); blocks_BID1_DELAY3_AAA_LAST; clone_location;;
 phase; BID1_DELAY4_AAA_LAST; at(BID1_ACTIVATOR); blocks_BID1_DELAY4_AAA_LAST; clone_location;;
+phase; REXPERT_RWH1_74; at(RED_WH1_01_0DMG); blocks_REXPERT_RWH1_74; clone_location;;
+phase; REXPERT_RWH1_52; at(RED_WH1_02_0DMG); blocks_REXPERT_RWH1_52; clone_location;;
+phase; REXPERT_RWH1_60; at(RED_WH1_03_0DMG); blocks_REXPERT_RWH1_60; clone_location;;
+phase; REXPERT_RWH1_54; at(RED_WH1_04_0DMG); blocks_REXPERT_RWH1_54; clone_location;;
+phase; REXPERT_RWH1_56; at(RED_WH1_05_0DMG); blocks_REXPERT_RWH1_56; clone_location;;
+phase; REXPERT_RWH2_74; at(RED_WH2_01_0DMG); blocks_REXPERT_RWH2_74; clone_location;;
+phase; REXPERT_RWH2_52; at(RED_WH2_02_0DMG); blocks_REXPERT_RWH2_52; clone_location;;
+phase; REXPERT_RWH2_60; at(RED_WH2_03_0DMG); blocks_REXPERT_RWH2_60; clone_location;;
+phase; REXPERT_RWH2_54; at(RED_WH2_04_0DMG); blocks_REXPERT_RWH2_54; clone_location;;
+phase; REXPERT_RWH2_56; at(RED_WH2_05_0DMG); blocks_REXPERT_RWH2_56; clone_location;;
+phase; REXPERT_BWH1_74; at(BLUE_WH1_01_0DMG); blocks_REXPERT_BWH1_74; clone_location;;
+phase; REXPERT_BWH1_52; at(BLUE_WH1_02_0DMG); blocks_REXPERT_BWH1_52; clone_location;;
+phase; REXPERT_BWH1_60; at(BLUE_WH1_03_0DMG); blocks_REXPERT_BWH1_60; clone_location;;
+phase; REXPERT_BWH1_54; at(BLUE_WH1_04_0DMG); blocks_REXPERT_BWH1_54; clone_location;;
+phase; REXPERT_BWH1_56; at(BLUE_WH1_05_0DMG); blocks_REXPERT_BWH1_56; clone_location;;
+phase; REXPERT_BWH2_74; at(BLUE_WH2_01_0DMG); blocks_REXPERT_BWH2_74; clone_location;;
+phase; REXPERT_BWH2_52; at(BLUE_WH2_02_0DMG); blocks_REXPERT_BWH2_52; clone_location;;
+phase; REXPERT_BWH2_60; at(BLUE_WH2_03_0DMG); blocks_REXPERT_BWH2_60; clone_location;;
+phase; REXPERT_BWH2_54; at(BLUE_WH2_04_0DMG); blocks_REXPERT_BWH2_54; clone_location;;
+phase; REXPERT_BWH2_56; at(BLUE_WH2_05_0DMG); blocks_REXPERT_BWH2_56; clone_location;;
 
 #
 ## cases & switches
@@ -2396,21 +2436,21 @@ check; RED_WH1_04_0DMG; location_type(GroundObjective,Factory);
 check; RED_WH1_05_0DMG; free();
 check; RED_WH1_05_0DMG; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; RED_WH1_05_0DMG; location_type(GroundObjective,Factory);
-check; RED_WH1_01_0DMG_1748; location_type(GroundObjective,Factory);
-check; RED_WH1_01_0DMG_1748; free();
-check; RED_WH1_01_0DMG_1748; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; RED_WH1_02_0DMG_1749; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; RED_WH1_02_0DMG_1749; free();
-check; RED_WH1_02_0DMG_1749; location_type(GroundObjective,Factory);
-check; RED_WH1_03_0DMG_1750; free();
-check; RED_WH1_03_0DMG_1750; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; RED_WH1_03_0DMG_1750; location_type(GroundObjective,Factory);
-check; RED_WH1_04_0DMG_1751; free();
-check; RED_WH1_04_0DMG_1751; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; RED_WH1_04_0DMG_1751; location_type(GroundObjective,Factory);
-check; RED_WH1_05_0DMG_1752; free();
-check; RED_WH1_05_0DMG_1752; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; RED_WH1_05_0DMG_1752; location_type(GroundObjective,Factory);
+check; RED_WH2_01_0DMG; location_type(GroundObjective,Factory);
+check; RED_WH2_01_0DMG; free();
+check; RED_WH2_01_0DMG; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RED_WH2_02_0DMG; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RED_WH2_02_0DMG; free();
+check; RED_WH2_02_0DMG; location_type(GroundObjective,Factory);
+check; RED_WH2_03_0DMG; free();
+check; RED_WH2_03_0DMG; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RED_WH2_03_0DMG; location_type(GroundObjective,Factory);
+check; RED_WH2_04_0DMG; free();
+check; RED_WH2_04_0DMG; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RED_WH2_04_0DMG; location_type(GroundObjective,Factory);
+check; RED_WH2_05_0DMG; free();
+check; RED_WH2_05_0DMG; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RED_WH2_05_0DMG; location_type(GroundObjective,Factory);
 check; MG_1_1768; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; MG_1_1768; location_type(Decoration,AAAPosition);
 check; MG_1_1768; coalition(e);
@@ -3406,11 +3446,11 @@ gui_helper; RED_WH1_02_0DMG; 2339; 8332;
 gui_helper; RED_WH1_03_0DMG; 2339; 8544;
 gui_helper; RED_WH1_04_0DMG; 2349; 8745;
 gui_helper; RED_WH1_05_0DMG; 2350; 8933;
-gui_helper; RED_WH1_01_0DMG_1748; 2441; 10856;
-gui_helper; RED_WH1_02_0DMG_1749; 2447; 11061;
-gui_helper; RED_WH1_03_0DMG_1750; 2447; 11273;
-gui_helper; RED_WH1_04_0DMG_1751; 2457; 11474;
-gui_helper; RED_WH1_05_0DMG_1752; 2458; 11662;
+gui_helper; RED_WH2_01_0DMG; 2441; 10856;
+gui_helper; RED_WH2_02_0DMG; 2447; 11063;
+gui_helper; RED_WH2_03_0DMG; 2454; 11275;
+gui_helper; RED_WH2_04_0DMG; 2457; 11474;
+gui_helper; RED_WH2_05_0DMG; 2458; 11662;
 gui_helper; MG_1_1768; -2839; 9157;
 gui_helper; 85_88MM_1_1769; -3436; 9154;
 gui_helper; 20_37MM_1_1770; -2833; 9463;
@@ -3477,6 +3517,26 @@ gui_helper; BID1_DELAY1_AAA_LAST; -8578; 6490;
 gui_helper; BID1_DELAY2_AAA_LAST; -6535; 6484;
 gui_helper; BID1_DELAY3_AAA_LAST; -8628; 7644;
 gui_helper; BID1_DELAY4_AAA_LAST; -6529; 7664;
+gui_helper; REXPERT_RWH1_74; 2087; 8125;
+gui_helper; REXPERT_RWH1_52; 2090; 8329;
+gui_helper; REXPERT_RWH1_60; 2098; 8540;
+gui_helper; REXPERT_RWH1_54; 2102; 8745;
+gui_helper; REXPERT_RWH1_56; 2109; 8932;
+gui_helper; REXPERT_RWH2_74; 2210; 10846;
+gui_helper; REXPERT_RWH2_52; 2211; 11062;
+gui_helper; REXPERT_RWH2_60; 2213; 11269;
+gui_helper; REXPERT_RWH2_54; 2216; 11470;
+gui_helper; REXPERT_RWH2_56; 2221; 11660;
+gui_helper; REXPERT_BWH1_74; -1105; 8116;
+gui_helper; REXPERT_BWH1_52; -1106; 8327;
+gui_helper; REXPERT_BWH1_60; -1101; 8542;
+gui_helper; REXPERT_BWH1_54; -1100; 8748;
+gui_helper; REXPERT_BWH1_56; -1096; 8951;
+gui_helper; REXPERT_BWH2_74; -1093; 10854;
+gui_helper; REXPERT_BWH2_52; -1095; 11067;
+gui_helper; REXPERT_BWH2_60; -1091; 11280;
+gui_helper; REXPERT_BWH2_54; -1092; 11489;
+gui_helper; REXPERT_BWH2_56; -1087; 11689;
 gui_helper; check; -8542; 474;BLUE_REAR_AF_REFERENCE(coalition)
 gui_helper; check; -8544; 428;BLUE_REAR_AF_REFERENCE(location_type)
 gui_helper; check; -8544; 518;BLUE_REAR_AF_REFERENCE(range)
@@ -4399,24 +4459,24 @@ gui_helper; check; 2568; 8595;RED_WH1_03_0DMG(location_type)
 gui_helper; check; 2575; 8829;RED_WH1_04_0DMG(free)
 gui_helper; check; 2573; 8864;RED_WH1_04_0DMG(range)
 gui_helper; check; 2577; 8791;RED_WH1_04_0DMG(location_type)
-gui_helper; check; 2584; 9007;RED_WH1_05_0DMG(free)
-gui_helper; check; 2582; 9036;RED_WH1_05_0DMG(range)
+gui_helper; check; 2583; 9005;RED_WH1_05_0DMG(free)
+gui_helper; check; 2583; 9038;RED_WH1_05_0DMG(range)
 gui_helper; check; 2583; 8973;RED_WH1_05_0DMG(location_type)
-gui_helper; check; 2665; 10919;RED_WH1_01_0DMG_1748(location_type)
-gui_helper; check; 2668; 10953;RED_WH1_01_0DMG_1748(free)
-gui_helper; check; 2665; 10987;RED_WH1_01_0DMG_1748(range)
-gui_helper; check; 2669; 11178;RED_WH1_02_0DMG_1749(range)
-gui_helper; check; 2667; 11146;RED_WH1_02_0DMG_1749(free)
-gui_helper; check; 2665; 11110;RED_WH1_02_0DMG_1749(location_type)
-gui_helper; check; 2675; 11358;RED_WH1_03_0DMG_1750(free)
-gui_helper; check; 2675; 11391;RED_WH1_03_0DMG_1750(range)
-gui_helper; check; 2676; 11324;RED_WH1_03_0DMG_1750(location_type)
-gui_helper; check; 2683; 11558;RED_WH1_04_0DMG_1751(free)
-gui_helper; check; 2681; 11593;RED_WH1_04_0DMG_1751(range)
-gui_helper; check; 2685; 11520;RED_WH1_04_0DMG_1751(location_type)
-gui_helper; check; 2692; 11736;RED_WH1_05_0DMG_1752(free)
-gui_helper; check; 2690; 11765;RED_WH1_05_0DMG_1752(range)
-gui_helper; check; 2691; 11702;RED_WH1_05_0DMG_1752(location_type)
+gui_helper; check; 2665; 10919;RED_WH2_01_0DMG(location_type)
+gui_helper; check; 2668; 10953;RED_WH2_01_0DMG(free)
+gui_helper; check; 2665; 10987;RED_WH2_01_0DMG(range)
+gui_helper; check; 2669; 11178;RED_WH2_02_0DMG(range)
+gui_helper; check; 2667; 11146;RED_WH2_02_0DMG(free)
+gui_helper; check; 2665; 11110;RED_WH2_02_0DMG(location_type)
+gui_helper; check; 2675; 11358;RED_WH2_03_0DMG(free)
+gui_helper; check; 2675; 11391;RED_WH2_03_0DMG(range)
+gui_helper; check; 2676; 11324;RED_WH2_03_0DMG(location_type)
+gui_helper; check; 2683; 11558;RED_WH2_04_0DMG(free)
+gui_helper; check; 2681; 11593;RED_WH2_04_0DMG(range)
+gui_helper; check; 2685; 11520;RED_WH2_04_0DMG(location_type)
+gui_helper; check; 2692; 11736;RED_WH2_05_0DMG(free)
+gui_helper; check; 2690; 11765;RED_WH2_05_0DMG(range)
+gui_helper; check; 2691; 11702;RED_WH2_05_0DMG(location_type)
 gui_helper; check; -2618; 9211;MG_1_1768(range)
 gui_helper; check; -2618; 9174;MG_1_1768(location_type)
 gui_helper; check; -2617; 9245;MG_1_1768(coalition)
