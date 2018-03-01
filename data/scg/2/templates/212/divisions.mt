@@ -1507,6 +1507,8 @@ olink; BID1_DELAY4_AAA_LAST(OBJECT_ARTY); BID1_015_7(OBJECT_ARTY);
 olink; BID1_DELAY4_AAA_LAST(OBJECT_ARTY); BID1_016_8(OBJECT_ARTY);
 tlink; BID1_DELAY3_AAA_LAST(ACTIVATE); BID1_DELAY4_AAA_LAST(ACTIVATE);
 tlink; BID1_DELAY3_AAA_LAST(DEACTIVATE); BID1_DELAY4_AAA_LAST(DEACTIVATE);
+tlink; BAD1_DELAY1_AAA_LAST(ACTIVATE); BAD1_DELAY2_AAA_LAST(ACTIVATE);
+tlink; BAD1_DELAY1_AAA_LAST(DEACTIVATE); BAD1_DELAY2_AAA_LAST(DEACTIVATE);
 
 #
 ## conditions
@@ -3044,7 +3046,7 @@ gui_helper; RTD1_REF; 6870; 2363;
 gui_helper; RAD1_REF; 9149; 2396;
 gui_helper; RID1_REF; 8027; 6546;
 gui_helper; BTD1_REF; -4838; 2149;
-gui_helper; BAD1_REF; -7271; 2228;
+gui_helper; BAD1_REF; -7089; 2161;
 gui_helper; BID1_REF; -6002; 5965;
 gui_helper; RTD1_001_16_AAA; 3277; 3878;
 gui_helper; RTD1_002_5_AAA; 3752; 3878;
@@ -3572,8 +3574,8 @@ gui_helper; check; 8063; 6847;RID1(range)
 gui_helper; check; 9201; 2714;RAD1(range)
 gui_helper; check; -4738; 2074;BTD1_REF(location_type)
 gui_helper; check; -4731; 2117;BTD1_REF(coalition)
-gui_helper; check; -7199; 2180;BAD1_REF(coalition)
-gui_helper; check; -7201; 2136;BAD1_REF(location_type)
+gui_helper; check; -7017; 2113;BAD1_REF(coalition)
+gui_helper; check; -7019; 2069;BAD1_REF(location_type)
 gui_helper; check; -5936; 5935;BID1_REF(coalition)
 gui_helper; check; -5942; 5888;BID1_REF(location_type)
 gui_helper; check; -6966; 2528;BAD1(range)
