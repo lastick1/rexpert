@@ -26,6 +26,6 @@ $xposition =
 $yorientation = 0
 $zposition =
 $xtargetposition =
-$ztargetposition = 50000
+$ztargetposition =
 $tvd =
 $overlay =
