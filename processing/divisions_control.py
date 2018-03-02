@@ -74,8 +74,9 @@ class DivisionsController:
 
     def start_mission(self):
         """Обработать начало миссии - обновить положение дивизий из исходников"""
-        campaign_mission = _to_campaign_mission(self._ioc.campaign_controller.mission)
         self._current_divisions.clear()
+        self._sent_inputs.clear()
+        campaign_mission = _to_campaign_mission(self._ioc.campaign_controller.mission)
         for server_input in campaign_mission.server_inputs:
             if DIVISION_INPUT_RE.match(server_input['name']):
                 division = self.storage.divisions.load_by_name(campaign_mission.tvd_name, server_input['name'])

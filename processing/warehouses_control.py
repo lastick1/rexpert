@@ -4,6 +4,7 @@ import re
 
 import configs
 import model
+import rcon
 import storage
 from model import CampaignMission
 from .warehouses_selector import WarehousesSelector
@@ -36,6 +37,7 @@ class WarehouseController:
         self._ioc = ioc
         self._current_tvd_warehouses = dict()
         self._current_mission_warehouses = list()
+        self._sent_inputs = set()
 
     @property
     def config(self) -> configs.Config:
@@ -46,6 +48,11 @@ class WarehouseController:
     def storage(self) -> storage.Storage:
         """Объект для работы с БД"""
         return self._ioc.storage
+
+    @property
+    def rcon(self) -> rcon.DServerRcon:
+        """Консоль сервера"""
+        return self._ioc.rcon
 
     def initialize_warehouses(self, tvd_name: str):
         """Инициализировать склады в кампании для указанного ТВД"""
@@ -64,9 +71,10 @@ class WarehouseController:
 
     def start_mission(self):
         """Обработать начало миссии - обновить положение складов из исходников"""
-        campaign_mission = _to_campaign_mission(self._ioc.campaign_controller.mission)
         self._current_tvd_warehouses.clear()
         self._current_mission_warehouses.clear()
+        self._sent_inputs.clear()
+        campaign_mission = _to_campaign_mission(self._ioc.campaign_controller.mission)
         warehouses = self.storage.warehouses.load_by_tvd(campaign_mission.tvd_name)
         for warehouse in warehouses:
             self._current_tvd_warehouses[_to_warehouse(warehouse).name] = warehouse
@@ -78,7 +86,10 @@ class WarehouseController:
         """Зачесть уничтожение секции склада"""
         warehouse_name = unit_name.split(sep='_')[1]
         warehouse = self.storage.warehouses.load_by_name(tvd_name, warehouse_name)
-        warehouse.health -= 1
+        warehouse.health -= 15.0
+        if warehouse.health < 20 and warehouse.name not in self._sent_inputs:
+            self._sent_inputs.add(warehouse.name)
+            self.rcon.server_input(warehouse.name)
 
     def get_warehouse(self, warehouse_name: str) -> model.Warehouse:
         """Получить склад по имени для текущего ТВД"""
