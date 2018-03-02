@@ -335,8 +335,11 @@ class TvdBuilder:
             f'$guimap = {params_config[season.prefix]["guimap"]}\n',
             f'$hmap = {params_config[season.prefix]["hmap"]}\n',
             f'$textures = {params_config[season.prefix]["textures"]}\n',
-            f'$mapId = {params_config[season.prefix]["mapId"]}\n',
+            f'$mapId = {params_config[season.prefix]["mapId"]}\n'
         ]
+
+        for division in tvd.divisions:
+            lines.append(f'${division.name.lower()} = {int(division.units)}\n')
 
         with self.default_params_file.open(mode='w', encoding='utf-8-sig') as stream:
             stream.writelines(lines)
