@@ -330,15 +330,13 @@ class TvdBuilder:
             f'$zposition = {params_config["zposition"]}\n',
             f'$xtargetposition = {params_config["xtargetposition"]}\n',
             f'$ztargetposition = {params_config["ztargetposition"]}\n',
-            f'$loc_filename = {pathlib.Path(self.config.mgen.ldf_files[self.name]).name}\n'
+            f'$loc_filename = {pathlib.Path(self.config.mgen.ldf_files[self.name]).name}\n',
+            f'$forests = {params_config[season.prefix]["forests"]}\n',
+            f'$guimap = {params_config[season.prefix]["guimap"]}\n',
+            f'$hmap = {params_config[season.prefix]["hmap"]}\n',
+            f'$textures = {params_config[season.prefix]["textures"]}\n',
+            f'$mapId = {params_config[season.prefix]["mapId"]}\n',
         ]
-
-        for setting in params_config[season.prefix]:
-            if setting == 'wtype_diapason':
-                continue
-            value = params_config[season.prefix][setting]
-            string = f'${setting} = {value}\n'
-            lines.append(string)
 
         with self.default_params_file.open(mode='w', encoding='utf-8-sig') as stream:
             stream.writelines(lines)
