@@ -164,7 +164,7 @@ class TvdBuilder:
         self.update_airfields(tvd)
         self.update_warehouses(tvd)
         self.update_ldb(tvd)
-        self.randomize_defaultparams(tvd.date, self.config.generator.cfg[self.name])
+        self.update_defaultparams(tvd)
         logging.info('TVD folder updated')
 
     @staticmethod
@@ -262,74 +262,116 @@ class TvdBuilder:
         """Случайный момент времени между указанными значениями"""
         return start + datetime.timedelta(seconds=random.randint(0, int((end - start).total_seconds())))
 
-    def randomize_defaultparams(self, date, params_config: dict):
+    def update_defaultparams(self, tvd: model.Tvd):
         """Задать случайные параметры погоды, времени года и суток"""
+        lines = list()
+        params_config = self.config.generator.cfg[self.name]
         with self.default_params_template_file.open(encoding='utf-8-sig') as f:
             dfpr_lines = f.readlines()
         # случайное направление и сила ветра по высотам
         wind_direction0000 = random.randint(0, 360)
         wind_power0000 = random.randint(0, 2)
 
-        date = self.random_datetime(*self.date_day_duration(date))
+        date = self.random_datetime(*self.date_day_duration(tvd.date))
         season = self.date_season_data(date)
         # Случайная температура для сезона
         temperature = random.randint(season['min_temp'], season['max_temp'])
 
         for setting in params_config[season['season_prefix']]:
             for i in range(len(dfpr_lines)):
-                if dfpr_lines[i].startswith('${} ='.format(setting)):
-                    dfpr_lines[i] = '${} = {}\n'.format(
-                        setting, params_config[season['season_prefix']][setting])
+                if dfpr_lines[i].startswith(f'${setting} ='):
+                    value = params_config[season['season_prefix']][setting]
+                    string = f'${setting} = {value}\n'
+                    lines.append(string)
+                    dfpr_lines[i] = '${} = {}\n'.format(setting, value)
         weather_type = random.randint(*params_config[season['season_prefix']]['wtype_diapason'])
 
         w_preset = processing.WeatherPreset(processing.presets[weather_type])
         # задаём параметры defaultparams в соответствии с конфигом
+
         for y in range(len(dfpr_lines)):
             if dfpr_lines[y].startswith('$date ='):
-                dfpr_lines[y] = '$date = {}\n'.format(date.strftime(constants.DATE_FORMAT))
+                string = f'$date = {date.strftime(constants.DATE_FORMAT)}\n'
+                lines.append(string)
+                dfpr_lines[y] = string
             elif dfpr_lines[y].startswith('$time ='):
-                dfpr_lines[y] = '$time = {}\n'.format(date.strftime('%H:%M:%S'))
+                string = f'$time = {date.strftime("%H:%M:%S")}\n'
+                lines.append(string)
+                dfpr_lines[y] = string
             elif dfpr_lines[y].startswith('$seasonprefix ='):
-                sp = season['season_prefix']
-                if sp == 'au':
-                    sp = 'su'  # либо su либо wi должно быть season prefix
-                dfpr_lines[y] = '$seasonprefix = {}\n'.format(sp)
+                prefix = season['season_prefix']
+                if prefix == 'au':
+                    prefix = 'su'  # либо su либо wi должно быть season prefix
+                string = f'$seasonprefix = {prefix}\n'
+                lines.append(string)
+                dfpr_lines[y] = string
             elif dfpr_lines[y].startswith('$sunrise ='):
-                dfpr_lines[y] = '$sunrise = {}\n'.format(season['sunrise'])
+                value = season['sunrise']
+                lines.append(value)
+                dfpr_lines[y] = f'$sunrise = {value}\n'
             elif dfpr_lines[y].startswith('$sunset ='):
-                dfpr_lines[y] = '$sunset = {}\n'.format(season['sunset'])
+                value = season['sunset']
+                lines.append(value)
+                dfpr_lines[y] = f'$sunset = {value}\n'
             elif dfpr_lines[y].startswith('$winddirection ='):
-                dfpr_lines[y] = '$winddirection = {}\n'.format(wind_direction0000)
+                value = f'$winddirection = {wind_direction0000}\n'
+                lines.append(value)
+                dfpr_lines[y] = value
             elif dfpr_lines[y].startswith('$windpower ='):
-                dfpr_lines[y] = '$windpower = {}\n'.format(wind_power0000)
+                value = f'$windpower = {wind_power0000}\n'
+                lines.append(value)
+                dfpr_lines[y] = value
             elif dfpr_lines[y].startswith('$turbulence ='):
-                dfpr_lines[y] = '$turbulence = {}\n'.format(0)  # В топку турбулентность
+                value = f'$turbulence = {0}\n'  # В топку турбулентность
+                lines.append(value)
+                dfpr_lines[y] = value
             elif dfpr_lines[y].startswith('$cloudlevel ='):
-                dfpr_lines[y] = '$cloudlevel = {}\n'.format(w_preset.cloudlevel)
+                value = f'$cloudlevel = {w_preset.cloudlevel}\n'
+                lines.append(value)
+                dfpr_lines[y] = value
             elif dfpr_lines[y].startswith('$cloudheight ='):
-                dfpr_lines[y] = '$cloudheight = {}\n'.format(w_preset.cloudheight)
+                value = f'$cloudheight = {w_preset.cloudheight}\n'
+                lines.append(value)
+                dfpr_lines[y] = value
             elif dfpr_lines[y].startswith('$temperature ='):
-                dfpr_lines[y] = '$temperature = {}\n'.format(temperature)
+                value = f'$temperature = {temperature}\n'
+                lines.append(value)
+                dfpr_lines[y] = value
             elif dfpr_lines[y].startswith('$wtype ='):
-                dfpr_lines[y] = '$wtype = {}\n'.format(weather_type)
+                value = f'$wtype = {weather_type}\n'
+                lines.append(value)
+                dfpr_lines[y] = value
             elif dfpr_lines[y].startswith('$prevwtype ='):
-                dfpr_lines[y] = '$prevwtype = {}\n'.format(weather_type)
+                value = f'$prevwtype = {weather_type}\n'
+                lines.append(value)
+                dfpr_lines[y] = value
             elif dfpr_lines[y].startswith('$tvd ='):
-                dfpr_lines[y] = '$tvd = {}\n'.format(params_config['tvd'])
+                value = f'$tvd = {params_config["tvd"]}\n'
+                lines.append(value)
+                dfpr_lines[y] = value
             elif dfpr_lines[y].startswith('$overlay ='):
-                dfpr_lines[y] = '$overlay = {}\n'.format(params_config['overlay'])
+                value = f'$overlay = {params_config["overlay"]}\n'
+                lines.append(value)
+                dfpr_lines[y] = value
             elif dfpr_lines[y].startswith('$xposition ='):
-                dfpr_lines[y] = '$xposition = {}\n'.format(params_config['xposition'])
+                value = '$xposition = {}\n'.format(params_config["xposition"])
+                lines.append(value)
+                dfpr_lines[y] = value
             elif dfpr_lines[y].startswith('$zposition ='):
-                dfpr_lines[y] = '$zposition = {}\n'.format(params_config['zposition'])
+                value = f'$zposition = {params_config["zposition"]}\n'
+                lines.append(value)
+                dfpr_lines[y] = value
             elif dfpr_lines[y].startswith('$xtargetposition ='):
-                dfpr_lines[y] = '$xtargetposition = {}\n'.format(params_config['xtargetposition'])
+                value = f'$xtargetposition = {params_config["xtargetposition"]}\n'
+                lines.append(value)
+                dfpr_lines[y] = value
             elif dfpr_lines[y].startswith('$ztargetposition ='):
-                dfpr_lines[y] = '$ztargetposition = {}\n'.format(params_config['ztargetposition'])
+                value = f'$ztargetposition = {params_config["ztargetposition"]}\n'
+                lines.append(value)
+                dfpr_lines[y] = value
             elif dfpr_lines[y].startswith('$loc_filename ='):
-                dfpr_lines[y] = '$loc_filename = {}\n'.format(pathlib.Path(
-                    self.config.mgen.ldf_files[self.name]).name)
-            elif dfpr_lines[y].startswith('$period ='):
-                dfpr_lines[y] = '$period = {}\n'.format(1)
+                value = pathlib.Path(self.config.mgen.ldf_files[self.name]).name
+                lines.append(value)
+                dfpr_lines[y] = f'$loc_filename = {value}\n'
         with self.default_params_file.open(mode='w', encoding='utf-8-sig') as stream:
             stream.writelines(dfpr_lines)
