@@ -11,6 +11,54 @@ import processing
 import storage
 
 
+class Season:
+    """Данные сезона"""
+    def __init__(self, split: list):
+        self.start = split[0]
+        self.end = split[1]
+        self.sunrise = split[2]
+        self.sunset = split[3]
+        self.min_temp = int(split[4])
+        self.max_temp = int(split[5])
+        self.prefix = str(split[6]).rstrip()
+        self.sunrise_hour, self.sunrise_minute = self.sunrise.split(sep=':')
+        self.sunset_hour, self.sunset_minute = self.sunset.split(sep=':')
+
+    def start_for_year(self, year: int):
+        """Старт сезона для указанного года"""
+        return datetime.datetime(
+            year,
+            int(self.start.split(sep='.')[1]),
+            int(self.start.split(sep='.')[0])
+        )
+
+    def end_for_year(self, year: int):
+        """Конец сезона для указанного года"""
+        return datetime.datetime(
+                year,
+                int(self.end.split(sep='.')[1]),
+                int(self.end.split(sep='.')[0])
+            )
+
+    def sunrise_for_date(self, date: datetime.datetime) -> datetime.datetime:
+        """Рассвет для указанной даты"""
+        return datetime.datetime(
+            date.year,
+            date.month,
+            date.day,
+            hour=int(self.sunrise_hour),
+            minute=int(self.sunrise_minute))
+
+    def sunset_for_date(self, date: datetime.datetime) -> datetime.datetime:
+        """Закат для указанной даты"""
+        return datetime.datetime(
+            date.year,
+            date.month,
+            date.day,
+            hour=int(self.sunset_hour),
+            minute=int(self.sunset_minute))
+
+
 class TvdBuilder:
     """Класс подготовки папки ТВД, в которой лежат ресурсы для генерации миссии"""
 
@@ -83,19 +131,11 @@ class TvdBuilder:
         return self.config.mgen.data_folder.joinpath(self.config.mgen.cfg[self.name]['default_params_source'])
 
     @property
-    def seasons_data(self) -> tuple:
+    def seasons(self) -> tuple:
         """данные по сезонам из daytime.csv"""
         with self.config.mgen.daytime_files[self.name].open() as stream:
             return tuple(
-                (lambda z: {
-                    'start': z[0],
-                    'end': z[1],
-                    'sunrise': z[2],
-                    'sunset': z[3],
-                    'min_temp': int(z[4]),
-                    'max_temp': int(z[5]),
-                    'season_prefix': str(z[6]).rstrip()
-                })(x.split(sep=';'))
+                (lambda z: Season(z))(x.split(sep=';'))
                 for x in stream.readlines()
             )
 
@@ -217,48 +257,28 @@ class TvdBuilder:
             planes.append(find_plane_in_config(self.config.planes.cfg, key, airfield.planes[key]))
         return processing.Airfield(airfield.name, country, self.config.gameplay.airfield_radius, planes)
 
-    def date_day_duration(self, date):
+    def date_day_duration(self, date) -> tuple:
         """Рассвет и закат для указанной даты"""
-        season = self.season_data(date)
-        sunrise = datetime.datetime(
-            date.year,
-            date.month,
-            date.day,
-            hour=int(season['sunrise'].split(sep=':')[0]),
-            minute=int(season['sunrise'].split(sep=':')[1])
-        )
-        sunset = datetime.datetime(
-            date.year,
-            date.month,
-            date.day,
-            hour=int(season['sunset'].split(sep=':')[0]),
-            minute=int(season['sunset'].split(sep=':')[1])
-        )
+        season = self.season(date)
+        sunrise = season.sunrise_for_date(date)
+        sunset = season.sunset_for_date(date)
         return sunrise, sunset - datetime.timedelta(hours=1, minutes=30)
 
-    def season_data(self, date):
+    def season(self, date: datetime.datetime) -> Season:
         """Информация по сезону на указанную дату (из daytime.csv)"""
-        for season in self.seasons_data:
-            start = datetime.datetime(
-                date.year,
-                int(season['start'].split(sep='.')[1]),
-                int(season['start'].split(sep='.')[0])
-            )
-            end = datetime.datetime(
-                date.year,
-                int(season['end'].split(sep='.')[1]),
-                int(season['end'].split(sep='.')[0])
-            )
+        for season in self.seasons:
+            start = season.start_for_year(date.year)
+            end = season.end_for_year(date.year)
             if start <= date <= end:
                 return season
         raise NameError('Season not found')
 
-    def date_season_data(self, date: datetime.datetime):
-        """Данные по сезону на указанную дату"""
-        return self.season_data(datetime.datetime(date.year, date.month, date.day))
+    def date_season_data(self, date: datetime.datetime) -> Season:
+        """Данные по сезону на указанную дату без учёта времени"""
+        return self.season(datetime.datetime(date.year, date.month, date.day))
 
     @staticmethod
-    def random_datetime(start, end):
+    def random_datetime(start: datetime.datetime, end: datetime.datetime) -> datetime.datetime:
         """Случайный момент времени между указанными значениями"""
         return start + datetime.timedelta(seconds=random.randint(0, int((end - start).total_seconds())))
 
@@ -275,16 +295,16 @@ class TvdBuilder:
         date = self.random_datetime(*self.date_day_duration(tvd.date))
         season = self.date_season_data(date)
         # Случайная температура для сезона
-        temperature = random.randint(season['min_temp'], season['max_temp'])
+        temperature = random.randint(season.min_temp, season.max_temp)
 
-        for setting in params_config[season['season_prefix']]:
+        for setting in params_config[season.prefix]:
             for i in range(len(dfpr_lines)):
                 if dfpr_lines[i].startswith(f'${setting} ='):
-                    value = params_config[season['season_prefix']][setting]
+                    value = params_config[season.prefix][setting]
                     string = f'${setting} = {value}\n'
                     lines.append(string)
                     dfpr_lines[i] = '${} = {}\n'.format(setting, value)
-        weather_type = random.randint(*params_config[season['season_prefix']]['wtype_diapason'])
+        weather_type = random.randint(*params_config[season.prefix]['wtype_diapason'])
 
         w_preset = processing.WeatherPreset(processing.presets[weather_type])
         # задаём параметры defaultparams в соответствии с конфигом
@@ -299,18 +319,18 @@ class TvdBuilder:
                 lines.append(string)
                 dfpr_lines[y] = string
             elif dfpr_lines[y].startswith('$seasonprefix ='):
-                prefix = season['season_prefix']
+                prefix = season.prefix
                 if prefix == 'au':
                     prefix = 'su'  # либо su либо wi должно быть season prefix
                 string = f'$seasonprefix = {prefix}\n'
                 lines.append(string)
                 dfpr_lines[y] = string
             elif dfpr_lines[y].startswith('$sunrise ='):
-                value = season['sunrise']
+                value = season.sunrise
                 lines.append(value)
                 dfpr_lines[y] = f'$sunrise = {value}\n'
             elif dfpr_lines[y].startswith('$sunset ='):
-                value = season['sunset']
+                value = season.sunset
                 lines.append(value)
                 dfpr_lines[y] = f'$sunset = {value}\n'
             elif dfpr_lines[y].startswith('$winddirection ='):
