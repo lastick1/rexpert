@@ -3,8 +3,8 @@
 ## AirObjective
 
 - ReconFlight - декор филдов
-- BomberFlight
-- FighterPatrolFlight
+- BomberFlight - референс первого склада
+- FighterPatrolFlight - референс второго склада
 - Dogfight
 - DuelOpponent
 - Balloon - (старое) две точки для привязки "сценария" (технические - существуют только в шмудакторе и командере, не в базе)
