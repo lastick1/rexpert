@@ -341,5 +341,8 @@ class TvdBuilder:
         for division in tvd.divisions:
             lines.append(f'${division.name.lower()} = {int(division.units)}\n')
 
+        for warehouse in tvd.warehouses:
+            lines.append(f'${warehouse.server_input.lower()} = {warehouse.damage_level}\n')
+
         with self.default_params_file.open(mode='w', encoding='utf-8-sig') as stream:
             stream.writelines(lines)

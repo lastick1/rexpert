@@ -3,8 +3,8 @@
 ## AirObjective
 
 - ReconFlight - декор филдов
-- BomberFlight - референс первого склада
-- FighterPatrolFlight - референс второго склада
+- BomberFlight
+- FighterPatrolFlight
 - Dogfight
 - DuelOpponent
 - Balloon - (старое) две точки для привязки "сценария" (технические - существуют только в шмудакторе и командере, не в базе)
@@ -47,11 +47,11 @@
 - Tank - референсы дивизий для перемещения дивизий
 - AAAPosition - референс общевойсковой дивизии
 - Artillery - референс артиллерийской дивизии
-- Building - референсы складов
+- Building - референс первого склада
 - Ship
 - Train
 - RailwayStation
-- SupplyDump
+- SupplyDump - референс второго склада
 - Factory - секции складов
 - Airfield
 - Port

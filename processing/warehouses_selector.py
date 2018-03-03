@@ -24,7 +24,14 @@ class WarehousesSelector:
 
     def select(self, tvd: model.Tvd) -> list:
         """Выбрать склады для ТВД"""
-        return self._next_warehouses(101, tvd) + self._next_warehouses(201, tvd)
+        result = self._next_warehouses(101, tvd) + self._next_warehouses(201, tvd)
+        param_names = {
+            101: ['RWH1', 'RWH2'],
+            201: ['BWH1', 'BWH2']
+        }
+        for warehouse in result:
+            warehouse.server_input = param_names[warehouse.country].pop()
+        return result
 
     def _next_warehouses(self, country: int, tvd: model.Tvd) -> list:
         """Склады для следующей миссии для указанной стороны и указанного ТВД"""

@@ -22,6 +22,22 @@ class Warehouse(geometry.Point):
         self.deaths = deaths
         self.country = country
         self.pos = pos
+        self.server_input: str = None  # имя сервер инпута для генерации
+
+    @property
+    def damage_level(self) -> int:
+        """Уровень повреждений склада"""
+        if self.health < 20:
+            return 5
+        if self.health < 40:
+            return 4
+        if self.health < 60:
+            return 3
+        if self.health < 80:
+            return 2
+        if self.health < 100:
+            return 1
+        return 0
 
     def to_dict(self) -> dict:
         """Сериализация в словарь для MongoDB"""
