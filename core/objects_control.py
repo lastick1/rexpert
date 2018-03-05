@@ -139,7 +139,9 @@ class ObjectsController:
         if bot:
             bot.update_pos(atype.pos)
         else:
-            logging.warning('not found bot')
+            logging.warning(
+                f'not found bot on spawn [T:{atype.tik} PLID:{atype.aircraft_id} PID:{atype.bot_id}'
+                f'POS:{atype.pos} LOGIN:{atype.account_id} NAME:{atype.name} TYPE:{atype.aircraft_name}]')
 
     def deinitialize(self, atype: atypes.Atype16) -> None:
         """Деинициализировать бота"""
@@ -157,10 +159,12 @@ class ObjectsController:
         if aircraft:
             aircraft.ejected = True
         else:
-            logging.warning('Warning! not found aircraft')
+            logging.warning(
+                f'not found aircraft on eject [T:{atype.tik} AType:18 BOTID:{atype.bot_id} PARENTID:{atype.parent_id}]')
         if bot:
             bot.ejected = True
-            logging.warning('Warning! not found bot')
+            logging.warning(
+                f'not found bot on eject [T:{atype.tik} AType:18 BOTID:{atype.bot_id} PARENTID:{atype.parent_id}]')
 
     def end_sortie(self, atype: atypes.Atype4) -> None:
         """Обработать завершение вылета"""
