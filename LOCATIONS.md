@@ -50,7 +50,7 @@
 - Building - референс первого склада
 - Ship
 - Train
-- RailwayStation
+- RailwayStation - жд станции
 - SupplyDump - референс второго склада
 - Factory - секции складов
 - Airfield
