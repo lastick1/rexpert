@@ -1,0 +1,113 @@
+Group
+{
+  Name = "misc_big_1";
+  Index = 134;
+  Desc = "";
+  Block
+  {
+    Name = "misc_1";
+    Index = 135;
+    LinkTrId = 0;
+    XPos = 111057.030;
+    YPos = 144.782;
+    ZPos = 217895.497;
+    XOri = 0.00;
+    YOri = 280.18;
+    ZOri = 0.00;
+    Model = "graphics\blocks\scot_01.mgm";
+    Script = "LuaScripts\WorldObjects\Blocks\scot_01.txt";
+    Country = 0;
+    Desc = "";
+    Durability = 5000;
+    DamageReport = 50;
+    DamageThreshold = 1;
+    DeleteAfterDeath = 1;
+  }
+  
+
+  Block
+  {
+    Name = "misc_3";
+    Index = 136;
+    LinkTrId = 0;
+    XPos = 110883.506;
+    YPos = 144.782;
+    ZPos = 217639.244;
+    XOri = 0.00;
+    YOri = 53.00;
+    ZOri = 0.00;
+    Model = "graphics\blocks\meh_01.mgm";
+    Script = "LuaScripts\WorldObjects\Blocks\meh_01.txt";
+    Country = 0;
+    Desc = "";
+    Durability = 5000;
+    DamageReport = 50;
+    DamageThreshold = 1;
+    DeleteAfterDeath = 1;
+  }
+  
+
+  Block
+  {
+    Name = "misc_2";
+    Index = 137;
+    LinkTrId = 0;
+    XPos = 111304.633;
+    YPos = 144.782;
+    ZPos = 217697.129;
+    XOri = 0.00;
+    YOri = 141.73;
+    ZOri = 0.00;
+    Model = "graphics\blocks\sklad_01.mgm";
+    Script = "LuaScripts\WorldObjects\Blocks\sklad_01.txt";
+    Country = 0;
+    Desc = "";
+    Durability = 5000;
+    DamageReport = 50;
+    DamageThreshold = 1;
+    DeleteAfterDeath = 1;
+  }
+  
+
+}
+
+Block
+{
+  Name = "Block";
+  Index = 138;
+  LinkTrId = 0;
+  XPos = 110726.719;
+  YPos = 146.184;
+  ZPos = 217862.584;
+  XOri = 0.00;
+  YOri = 141.51;
+  ZOri = 0.00;
+  Model = "graphics\blocks\rwstation_b.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\rwstation_b.txt";
+  Country = 0;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 193;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 110700.000;
+  YPos = 148.469;
+  ZPos = 217700.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 500;
+  Backward = 500;
+  Left = 500;
+  Right = 500;
+}
+
