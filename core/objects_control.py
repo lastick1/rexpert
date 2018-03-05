@@ -1,4 +1,6 @@
 """Контроль объектов из логов миссии"""
+import logging
+
 import configs
 import atypes
 import log_objects
@@ -137,7 +139,7 @@ class ObjectsController:
         if bot:
             bot.update_pos(atype.pos)
         else:
-            print('Warning! not found bot')
+            logging.warning('not found bot')
 
     def deinitialize(self, atype: atypes.Atype16) -> None:
         """Деинициализировать бота"""
@@ -155,10 +157,10 @@ class ObjectsController:
         if aircraft:
             aircraft.ejected = True
         else:
-            print('Warning! not found aircraft')
+            logging.warning('Warning! not found aircraft')
         if bot:
             bot.ejected = True
-            print('Warning! not found bot')
+            logging.warning('Warning! not found bot')
 
     def end_sortie(self, atype: atypes.Atype4) -> None:
         """Обработать завершение вылета"""
