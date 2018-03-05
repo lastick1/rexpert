@@ -1218,10 +1218,10 @@ phase; REXPERT_RWH1_40; at(RED_WH1_03_40DMG); blocks_REXPERT_RWH1_40; clone_loca
 phase; REXPERT_RWH1_26_2; at(RED_WH1_04_40DMG); blocks_REXPERT_RWH1_26_2; clone_location;;
 phase; REXPERT_RWH1_30; at(RED_WH1_05_40DMG); blocks_REXPERT_RWH1_30; clone_location;;
 phase; RED_WH1_01_60DMG; at(REXPERT_RWH1_37); blocks_RED_WH1_01_60DMG; clone_location;;
-phase; RED_WH1_02_60DMG; random(REXPERT_RWH1_26_1); blocks_RED_WH1_02_60DMG; clone_location;;
+phase; RED_WH1_02_60DMG; at(REXPERT_RWH1_26_1); blocks_RED_WH1_02_60DMG; clone_location;;
 phase; RED_WH1_03_60DMG; at(REXPERT_RWH1_40); blocks_RED_WH1_03_60DMG; clone_location;;
 phase; RED_WH1_04_60DMG; at(REXPERT_RWH1_26_2); blocks_RED_WH1_04_60DMG; clone_location;;
-phase; RED_WH1_05_60DMG; random(REXPERT_RWH1_30); blocks_RED_WH1_05_60DMG; clone_location;;
+phase; RED_WH1_05_60DMG; at(REXPERT_RWH1_30); blocks_RED_WH1_05_60DMG; clone_location;;
 phase; REXPERT_RWH1_24; at(RED_WH1_01_60DMG); blocks_REXPERT_RWH1_24; clone_location;;
 phase; REXPERT_RWH1_19; at(RED_WH1_02_60DMG); blocks_REXPERT_RWH1_19; clone_location;;
 phase; REXPERT_RWH1_14; at(RED_WH1_03_60DMG); blocks_REXPERT_RWH1_14; clone_location;;
@@ -1248,10 +1248,10 @@ phase; RED_WH2_03_40DMG; at(REXPERT_RWH2_52_2); blocks_RED_WH2_03_40DMG; clone_l
 phase; RED_WH2_04_40DMG; at(REXPERT_RWH2_38); blocks_RED_WH2_04_40DMG; clone_location;;
 phase; RED_WH2_05_40DMG; at(REXPERT_RWH2_47); blocks_RED_WH2_05_40DMG; clone_location;;
 phase; RED_WH2_01_60DMG; at(REXPERT_RWH2_37); blocks_RED_WH2_01_60DMG; clone_location;;
-phase; RED_WH2_02_60DMG; random(REXPERT_RWH2_26_1); blocks_RED_WH2_02_60DMG; clone_location;;
+phase; RED_WH2_02_60DMG; at(REXPERT_RWH2_26_1); blocks_RED_WH2_02_60DMG; clone_location;;
 phase; RED_WH2_03_60DMG; at(REXPERT_RWH2_40); blocks_RED_WH2_03_60DMG; clone_location;;
 phase; RED_WH2_04_60DMG; at(REXPERT_RWH2_26_2); blocks_RED_WH2_04_60DMG; clone_location;;
-phase; RED_WH2_05_60DMG; random(REXPERT_RWH2_30); blocks_RED_WH2_05_60DMG; clone_location;;
+phase; RED_WH2_05_60DMG; at(REXPERT_RWH2_30); blocks_RED_WH2_05_60DMG; clone_location;;
 phase; RED_WH2_01_80DMG; at(REXPERT_RWH2_24); blocks_RED_WH2_01_80DMG; clone_location;;
 phase; RED_WH2_02_80DMG; at(REXPERT_RWH2_19); blocks_RED_WH2_02_80DMG; clone_location;;
 phase; RED_WH2_03_80DMG; at(REXPERT_RWH2_14); blocks_RED_WH2_03_80DMG; clone_location;;
