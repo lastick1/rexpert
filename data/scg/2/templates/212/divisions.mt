@@ -1147,7 +1147,7 @@ phase; RED_WH1_SERVER_INPUT; at(RED_WH1_REF); blocks_RED_WH1_SERVER_INPUT; clone
 phase; RED_WH2_SERVER_INPUT; at(RED_WH2_REF); blocks_RED_WH2_SERVER_INPUT; clone_location;;
 phase; BLUE_WH1_SERVER_INPUT; at(BLUE_WH1_REF); blocks_BLUE_WH1_SERVER_INPUT; clone_location;;
 phase; BLUE_WH2_SERVER_INPUT; at(BLUE_WH2_REF); blocks_BLUE_WH2_SERVER_INPUT; clone_location;;
-phase; RTD1_ACTIVATOR; at(RTD1_ORIENTATION); blocks_RTD1_ACTIVATOR; clone_location;;
+phase; RTD1_ACTIVATOR; at(RTD1); blocks_RTD1_ACTIVATOR; clone_location;;
 phase; RTD1_DELAY1_AAA_LAST; at(RTD1_ACTIVATOR); blocks_RTD1_DELAY1_AAA_LAST; clone_location;;
 phase; RTD1_DELAY2_AAA_LAST; at(RTD1_ACTIVATOR); blocks_RTD1_DELAY2_AAA_LAST; clone_location;;
 phase; RTD1_DELAY3_AAA_LAST; at(RTD1_ORIENTATION); blocks_RTD1_DELAY3_AAA_LAST; clone_location;;
