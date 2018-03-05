@@ -1,0 +1,132 @@
+MCU_H_ReferencePoint
+{
+  Index = 474;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -6250.009;
+  YPos = 17.774;
+  ZPos = 2199.992;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 250;
+  Backward = 250;
+  Left = 200;
+  Right = 200;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 477;
+  LinkTrId = 0;
+  XPos = -6114.184;
+  YPos = 17.795;
+  ZPos = 2071.117;
+  XOri = 0.00;
+  YOri = 285.82;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_block_fuel35m_300x100.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_block_fuel35m_300x100.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  Damaged
+  {
+    5 = 1;
+    6 = 1;
+    7 = 1;
+    8 = 1;
+    9 = 1;
+  }
+}
+
+Block
+{
+  Name = "Block";
+  Index = 478;
+  LinkTrId = 0;
+  XPos = -6445.319;
+  YPos = 17.795;
+  ZPos = 2092.200;
+  XOri = 0.00;
+  YOri = 226.30;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_block_fuel25m_300x100.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_block_fuel25m_300x100.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  Damaged
+  {
+    2 = 1;
+    3 = 1;
+    4 = 1;
+    5 = 1;
+    7 = 1;
+  }
+}
+
+Block
+{
+  Name = "Block";
+  Index = 479;
+  LinkTrId = 0;
+  XPos = -6326.531;
+  YPos = 17.795;
+  ZPos = 2337.880;
+  XOri = 0.00;
+  YOri = 90.40;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_block_fuel_300x100.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_block_fuel_300x100.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  Damaged
+  {
+    15 = 1;
+    16 = 1;
+    17 = 1;
+    18 = 1;
+    19 = 1;
+    20 = 1;
+    21 = 1;
+    23 = 1;
+    25 = 1;
+    30 = 1;
+  }
+}
+
+Block
+{
+  Name = "Block";
+  Index = 480;
+  LinkTrId = 0;
+  XPos = -6060.217;
+  YPos = 17.795;
+  ZPos = 2354.470;
+  XOri = 0.00;
+  YOri = 87.58;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_object_oil.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_object_oil.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+

@@ -1,0 +1,158 @@
+MCU_H_ReferencePoint
+{
+  Index = 443;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -4750.001;
+  YPos = 17.774;
+  ZPos = 2199.985;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 250;
+  Backward = 250;
+  Left = 200;
+  Right = 200;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 446;
+  LinkTrId = 0;
+  XPos = -4614.176;
+  YPos = 17.795;
+  ZPos = 2071.110;
+  XOri = 0.00;
+  YOri = 285.82;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_block_fuel35m_300x100.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_block_fuel35m_300x100.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  Damaged
+  {
+    4 = 1;
+    5 = 1;
+    6 = 1;
+    7 = 1;
+    8 = 1;
+    9 = 1;
+  }
+}
+
+Block
+{
+  Name = "Block";
+  Index = 447;
+  LinkTrId = 0;
+  XPos = -4945.311;
+  YPos = 17.795;
+  ZPos = 2092.193;
+  XOri = 0.00;
+  YOri = 226.30;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_block_fuel25m_300x100.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_block_fuel25m_300x100.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  Damaged
+  {
+    2 = 1;
+    3 = 1;
+    4 = 1;
+    5 = 1;
+    6 = 1;
+    7 = 1;
+  }
+}
+
+Block
+{
+  Name = "Block";
+  Index = 448;
+  LinkTrId = 0;
+  XPos = -4826.523;
+  YPos = 17.795;
+  ZPos = 2337.873;
+  XOri = 0.00;
+  YOri = 90.40;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_block_fuel_300x100.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_block_fuel_300x100.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  Damaged
+  {
+    7 = 1;
+    8 = 1;
+    9 = 1;
+    10 = 1;
+    11 = 1;
+    12 = 1;
+    13 = 1;
+    14 = 1;
+    15 = 1;
+    16 = 1;
+    17 = 1;
+    18 = 1;
+    19 = 1;
+    20 = 1;
+    21 = 1;
+    22 = 1;
+    23 = 1;
+    24 = 1;
+    25 = 1;
+    26 = 1;
+    27 = 1;
+    28 = 1;
+    29 = 1;
+    30 = 1;
+    31 = 1;
+    32 = 1;
+    33 = 1;
+    34 = 1;
+    35 = 1;
+    36 = 1;
+    37 = 1;
+    38 = 1;
+    39 = 1;
+    40 = 1;
+  }
+}
+
+Block
+{
+  Name = "Block";
+  Index = 449;
+  LinkTrId = 0;
+  XPos = -4560.209;
+  YPos = 17.795;
+  ZPos = 2354.463;
+  XOri = 0.00;
+  YOri = 87.58;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_object_oil.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_object_oil.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+

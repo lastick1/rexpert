@@ -1,0 +1,133 @@
+MCU_H_ReferencePoint
+{
+  Index = 441;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -4750.001;
+  YPos = 17.774;
+  ZPos = 199.985;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 250;
+  Backward = 250;
+  Left = 200;
+  Right = 200;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 459;
+  LinkTrId = 0;
+  XPos = -4926.354;
+  YPos = 17.795;
+  ZPos = 294.802;
+  XOri = 0.00;
+  YOri = 181.36;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_block_smallwarehouse2_150x100.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_block_smallwarehouse2_150x100.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  Damaged
+  {
+    7 = 1;
+    9 = 1;
+    10 = 1;
+    11 = 1;
+    12 = 1;
+    14 = 1;
+    15 = 1;
+    16 = 1;
+    17 = 1;
+    18 = 1;
+    8 = 1;
+    13 = 1;
+  }
+}
+
+Block
+{
+  Name = "Block";
+  Index = 460;
+  LinkTrId = 0;
+  XPos = -4657.270;
+  YPos = 17.795;
+  ZPos = 61.267;
+  XOri = 0.00;
+  YOri = 90.73;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_block_fuel2_300x100.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_block_fuel2_300x100.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  Damaged
+  {
+    15 = 1;
+    16 = 1;
+    17 = 1;
+    18 = 1;
+    19 = 1;
+    20 = 1;
+    21 = 1;
+    22 = 1;
+    23 = 1;
+    24 = 1;
+    25 = 1;
+    26 = 1;
+    27 = 1;
+    28 = 1;
+    29 = 1;
+    30 = 1;
+    31 = 1;
+    32 = 1;
+    33 = 1;
+    34 = 1;
+    35 = 1;
+    36 = 1;
+    37 = 1;
+    38 = 1;
+    39 = 1;
+    14 = 1;
+  }
+}
+
+Block
+{
+  Name = "Block";
+  Index = 461;
+  LinkTrId = 0;
+  XPos = -4630.073;
+  YPos = 17.795;
+  ZPos = 377.307;
+  XOri = 0.00;
+  YOri = 238.25;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_cornerr_01.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_cornerr_01.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  Damaged
+  {
+    3 = 1;
+    4 = 1;
+    5 = 1;
+    6 = 1;
+  }
+}
+

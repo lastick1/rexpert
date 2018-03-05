@@ -1,0 +1,36 @@
+MCU_H_ReferencePoint
+{
+  Index = 531;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -8750.023;
+  YPos = 17.774;
+  ZPos = 3200.020;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 250;
+  Backward = 250;
+  Left = 200;
+  Right = 200;
+}
+
+MCU_Timer
+{
+  Index = 843;
+  Name = "REXPERT_BWH2_38";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -8749.995;
+  YPos = 17.795;
+  ZPos = 3199.999;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 0;
+  Random = 100;
+}
+

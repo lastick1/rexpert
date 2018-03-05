@@ -1,0 +1,119 @@
+MCU_H_ReferencePoint
+{
+  Index = 599;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -6250.001;
+  YPos = 17.774;
+  ZPos = 17199.984;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 250;
+  Backward = 250;
+  Left = 200;
+  Right = 200;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 605;
+  LinkTrId = 0;
+  XPos = -6123.281;
+  YPos = 17.795;
+  ZPos = 17103.121;
+  XOri = 0.00;
+  YOri = 65.44;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_block_midwarehouse_200x140.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_block_midwarehouse_200x140.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  Damaged
+  {
+    6 = 1;
+    7 = 1;
+    8 = 1;
+    9 = 1;
+    10 = 1;
+    5 = 1;
+  }
+}
+
+Block
+{
+  Name = "Block";
+  Index = 608;
+  LinkTrId = 0;
+  XPos = -6412.417;
+  YPos = 17.795;
+  ZPos = 17331.296;
+  XOri = 0.00;
+  YOri = 94.67;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_block_smallwarehouse_150x100.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_block_smallwarehouse_150x100.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  Damaged
+  {
+    7 = 1;
+    8 = 1;
+    9 = 1;
+    11 = 1;
+    12 = 1;
+    16 = 1;
+    17 = 1;
+    18 = 1;
+    19 = 1;
+    20 = 1;
+    21 = 1;
+    22 = 1;
+    23 = 1;
+    26 = 1;
+    27 = 1;
+    29 = 1;
+  }
+}
+
+Block
+{
+  Name = "Block";
+  Index = 609;
+  LinkTrId = 0;
+  XPos = -6366.598;
+  YPos = 17.795;
+  ZPos = 17219.682;
+  XOri = 0.00;
+  YOri = 245.08;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_cornerr_02.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_cornerr_02.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  Damaged
+  {
+    4 = 1;
+    5 = 1;
+    6 = 1;
+    7 = 1;
+    8 = 1;
+    9 = 1;
+  }
+}
+

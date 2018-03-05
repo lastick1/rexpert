@@ -1,0 +1,148 @@
+MCU_H_ReferencePoint
+{
+  Index = 442;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -4750.001;
+  YPos = 17.774;
+  ZPos = 1199.985;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 250;
+  Backward = 250;
+  Left = 200;
+  Right = 200;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 455;
+  LinkTrId = 0;
+  XPos = -4689.966;
+  YPos = 17.795;
+  ZPos = 1294.734;
+  XOri = 0.00;
+  YOri = 250.84;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_200x140_01.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_200x140_01.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  Damaged
+  {
+    3 = 1;
+    4 = 1;
+    5 = 1;
+    6 = 1;
+    7 = 1;
+    8 = 1;
+    9 = 1;
+    10 = 1;
+    11 = 1;
+    12 = 1;
+  }
+}
+
+Block
+{
+  Name = "Block";
+  Index = 456;
+  LinkTrId = 0;
+  XPos = -4893.261;
+  YPos = 17.795;
+  ZPos = 1065.607;
+  XOri = 0.00;
+  YOri = 89.94;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_200x140_02.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_200x140_02.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  Damaged
+  {
+    7 = 1;
+    8 = 1;
+    9 = 1;
+    10 = 1;
+    11 = 1;
+    12 = 1;
+    13 = 1;
+    14 = 1;
+    15 = 1;
+    16 = 1;
+    17 = 1;
+    18 = 1;
+    19 = 1;
+  }
+}
+
+Block
+{
+  Name = "Block";
+  Index = 457;
+  LinkTrId = 0;
+  XPos = -4576.402;
+  YPos = 17.795;
+  ZPos = 1129.584;
+  XOri = 0.00;
+  YOri = 4.46;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_cornerl_01.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_cornerl_01.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  Damaged
+  {
+    4 = 1;
+    5 = 1;
+    6 = 1;
+    7 = 1;
+    8 = 1;
+  }
+}
+
+Block
+{
+  Name = "Block";
+  Index = 458;
+  LinkTrId = 0;
+  XPos = -4907.317;
+  YPos = 17.795;
+  ZPos = 1277.903;
+  XOri = 0.00;
+  YOri = 171.70;
+  ZOri = 0.00;
+  Model = "graphics\blocks\industrial_cornerl_02.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\industrial_cornerl_02.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  Damaged
+  {
+    5 = 1;
+    6 = 1;
+    7 = 1;
+    8 = 1;
+    9 = 1;
+  }
+}
+
