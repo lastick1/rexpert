@@ -1,6 +1,6 @@
 MCU_H_ReferencePoint
 {
-  Index = 350;
+  Index = 12;
   Name = "Helper Reference Point";
   Desc = "";
   Targets = [];
@@ -19,10 +19,10 @@ MCU_H_ReferencePoint
 
 MCU_TR_ServerInput
 {
-  Index = 351;
+  Index = 13;
   Name = "RWH2";
   Desc = "";
-  Targets = [353,352,356];
+  Targets = [14,15,16];
   Objects = [];
   XPos = -1140.000;
   YPos = 17.795;
@@ -35,7 +35,7 @@ MCU_TR_ServerInput
 
 MCU_H_Output
 {
-  Index = 352;
+  Index = 15;
   Name = "KILLED_EVENT";
   Desc = "";
   Targets = [];
@@ -50,7 +50,7 @@ MCU_H_Output
 
 MCU_H_Output
 {
-  Index = 353;
+  Index = 14;
   Name = "AAA_OFF";
   Desc = "";
   Targets = [];
@@ -61,59 +61,5 @@ MCU_H_Output
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;
-}
-
-MCU_Icon
-{
-  Index = 354;
-  Targets = [];
-  Objects = [];
-  XPos = -1150.000;
-  YPos = 17.795;
-  ZPos = 80.000;
-  XOri = 0.00;
-  YOri = 0.00;
-  ZOri = 0.00;
-  Enabled = 1;
-  LCName = 3;
-  LCDesc = 4;
-  IconId = 507;
-  RColor = 255;
-  GColor = 255;
-  BColor = 255;
-  LineType = 0;
-  Coalitions = [1, 2];
-}
-
-MCU_Deactivate
-{
-  Index = 355;
-  Name = "Trigger Deactivate";
-  Desc = "";
-  Targets = [356,354];
-  Objects = [];
-  XPos = -1150.000;
-  YPos = 17.795;
-  ZPos = 90.000;
-  XOri = 0.00;
-  YOri = 0.00;
-  ZOri = 0.00;
-}
-
-MCU_Timer
-{
-  Index = 356;
-  Name = "t1s";
-  Desc = "";
-  Targets = [355];
-  Objects = [];
-  XPos = -1140.000;
-  YPos = 17.795;
-  ZPos = 90.000;
-  XOri = 0.00;
-  YOri = 0.00;
-  ZOri = 0.00;
-  Time = 1;
-  Random = 100;
 }
 

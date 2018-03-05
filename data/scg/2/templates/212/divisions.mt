@@ -678,6 +678,26 @@ blocks_set; blocks_REXPERT_BWH2_13; main(scg\2\blocks_quickmission\ground\wareho
 blocks_set; blocks_REXPERT_BWH2_7; main(scg\2\blocks_quickmission\ground\warehouses\rexpert_bwh1_7.group);
 blocks_set; blocks_REXPERT_BWH2_9; main(scg\2\blocks_quickmission\ground\warehouses\rexpert_bwh2_9.group);
 blocks_set; blocks_REXPERT_BWH2_8; main(scg\2\blocks_quickmission\ground\warehouses\rexpert_bwh2_8.group);
+blocks_set; blocks_RED_WH1_01_ICON; main(scg\2\blocks_quickmission\icons\rwh_section_icon.group);
+blocks_set; blocks_RED_WH1_02_ICON; main(scg\2\blocks_quickmission\icons\rwh_section_icon.group);
+blocks_set; blocks_RED_WH1_03_ICON; main(scg\2\blocks_quickmission\icons\rwh_section_icon.group);
+blocks_set; blocks_RED_WH1_04_ICON; main(scg\2\blocks_quickmission\icons\rwh_section_icon.group);
+blocks_set; blocks_RED_WH1_05_ICON; main(scg\2\blocks_quickmission\icons\rwh_section_icon.group);
+blocks_set; blocks_RED_WH2_01_ICON; main(scg\2\blocks_quickmission\icons\rwh_section_icon.group);
+blocks_set; blocks_RED_WH2_02_ICON; main(scg\2\blocks_quickmission\icons\rwh_section_icon.group);
+blocks_set; blocks_RED_WH2_03_ICON; main(scg\2\blocks_quickmission\icons\rwh_section_icon.group);
+blocks_set; blocks_RED_WH2_04_ICON; main(scg\2\blocks_quickmission\icons\rwh_section_icon.group);
+blocks_set; blocks_RED_WH2_05_ICON; main(scg\2\blocks_quickmission\icons\rwh_section_icon.group);
+blocks_set; blocks_BLUE_WH1_01_ICON; main(scg\2\blocks_quickmission\icons\bwh_section_icon.group);
+blocks_set; blocks_BLUE_WH1_02_ICON; main(scg\2\blocks_quickmission\icons\bwh_section_icon.group);
+blocks_set; blocks_BLUE_WH1_03_ICON; main(scg\2\blocks_quickmission\icons\bwh_section_icon.group);
+blocks_set; blocks_BLUE_WH1_04_ICON; main(scg\2\blocks_quickmission\icons\bwh_section_icon.group);
+blocks_set; blocks_BLUE_WH1_05_ICON; main(scg\2\blocks_quickmission\icons\bwh_section_icon.group);
+blocks_set; blocks_BLUE_WH2_01_ICON; main(scg\2\blocks_quickmission\icons\bwh_section_icon.group);
+blocks_set; blocks_BLUE_WH2_02_ICON; main(scg\2\blocks_quickmission\icons\bwh_section_icon.group);
+blocks_set; blocks_BLUE_WH2_03_ICON; main(scg\2\blocks_quickmission\icons\bwh_section_icon.group);
+blocks_set; blocks_BLUE_WH2_04_ICON; main(scg\2\blocks_quickmission\icons\bwh_section_icon.group);
+blocks_set; blocks_BLUE_WH2_05_ICON; main(scg\2\blocks_quickmission\icons\bwh_section_icon.group);
 
 #
 ## geo params
@@ -1357,6 +1377,26 @@ phase; REXPERT_BWH2_13; at(BLUE_WH2_02_80DMG); blocks_REXPERT_BWH2_13; clone_loc
 phase; REXPERT_BWH2_7; at(BLUE_WH2_03_80DMG); blocks_REXPERT_BWH2_7; clone_location;;
 phase; REXPERT_BWH2_9; at(BLUE_WH2_04_80DMG); blocks_REXPERT_BWH2_9; clone_location;;
 phase; REXPERT_BWH2_8; at(BLUE_WH2_05_80DMG); blocks_REXPERT_BWH2_8; clone_location;;
+phase; RED_WH1_01_ICON; at(RED_WH1_01_0DMG); blocks_RED_WH1_01_ICON; clone_location;;
+phase; RED_WH1_02_ICON; at(RED_WH1_02_0DMG); blocks_RED_WH1_02_ICON; clone_location;;
+phase; RED_WH1_03_ICON; at(RED_WH1_03_0DMG); blocks_RED_WH1_03_ICON; clone_location;;
+phase; RED_WH1_04_ICON; at(RED_WH1_04_0DMG); blocks_RED_WH1_04_ICON; clone_location;;
+phase; RED_WH1_05_ICON; at(RED_WH1_05_0DMG); blocks_RED_WH1_05_ICON; clone_location;;
+phase; RED_WH2_01_ICON; at(RED_WH2_01_0DMG); blocks_RED_WH2_01_ICON; clone_location;;
+phase; RED_WH2_02_ICON; at(RED_WH2_02_0DMG); blocks_RED_WH2_02_ICON; clone_location;;
+phase; RED_WH2_03_ICON; at(RED_WH2_03_0DMG); blocks_RED_WH2_03_ICON; clone_location;;
+phase; RED_WH2_04_ICON; at(RED_WH2_04_0DMG); blocks_RED_WH2_04_ICON; clone_location;;
+phase; RED_WH2_05_ICON; at(RED_WH2_05_0DMG); blocks_RED_WH2_05_ICON; clone_location;;
+phase; BLUE_WH1_01_ICON; at(BLUE_WH1_01_0DMG); blocks_BLUE_WH1_01_ICON; clone_location;;
+phase; BLUE_WH1_02_ICON; at(BLUE_WH1_02_0DMG); blocks_BLUE_WH1_02_ICON; clone_location;;
+phase; BLUE_WH1_03_ICON; at(BLUE_WH1_03_0DMG); blocks_BLUE_WH1_03_ICON; clone_location;;
+phase; BLUE_WH1_04_ICON; at(BLUE_WH1_04_0DMG); blocks_BLUE_WH1_04_ICON; clone_location;;
+phase; BLUE_WH1_05_ICON; at(BLUE_WH1_05_0DMG); blocks_BLUE_WH1_05_ICON; clone_location;;
+phase; BLUE_WH2_01_ICON; at(BLUE_WH2_01_0DMG); blocks_BLUE_WH2_01_ICON; clone_location;;
+phase; BLUE_WH2_02_ICON; at(BLUE_WH2_02_0DMG); blocks_BLUE_WH2_02_ICON; clone_location;;
+phase; BLUE_WH2_03_ICON; at(BLUE_WH2_03_0DMG); blocks_BLUE_WH2_03_ICON; clone_location;;
+phase; BLUE_WH2_04_ICON; at(BLUE_WH2_04_0DMG); blocks_BLUE_WH2_04_ICON; clone_location;;
+phase; BLUE_WH2_05_ICON; at(BLUE_WH2_05_0DMG); blocks_BLUE_WH2_05_ICON; clone_location;;
 
 #
 ## cases & switches
@@ -1829,6 +1869,26 @@ tlink; BID1_DELAY3_AAA_LAST(ACTIVATE); BID1_DELAY4_AAA_LAST(ACTIVATE);
 tlink; BID1_DELAY3_AAA_LAST(DEACTIVATE); BID1_DELAY4_AAA_LAST(DEACTIVATE);
 tlink; BAD1_DELAY1_AAA_LAST(ACTIVATE); BAD1_DELAY2_AAA_LAST(ACTIVATE);
 tlink; BAD1_DELAY1_AAA_LAST(DEACTIVATE); BAD1_DELAY2_AAA_LAST(DEACTIVATE);
+tlink; RED_WH1_SERVER_INPUT(KILLED_EVENT); RED_WH1_01_ICON(KILLED_EVENT);
+tlink; RED_WH1_SERVER_INPUT(KILLED_EVENT); RED_WH1_02_ICON(KILLED_EVENT);
+tlink; RED_WH1_SERVER_INPUT(KILLED_EVENT); RED_WH1_03_ICON(KILLED_EVENT);
+tlink; RED_WH1_SERVER_INPUT(KILLED_EVENT); RED_WH1_04_ICON(KILLED_EVENT);
+tlink; RED_WH1_SERVER_INPUT(KILLED_EVENT); RED_WH1_05_ICON(KILLED_EVENT);
+tlink; RED_WH2_SERVER_INPUT(KILLED_EVENT); RED_WH2_01_ICON(KILLED_EVENT);
+tlink; RED_WH2_SERVER_INPUT(KILLED_EVENT); RED_WH2_02_ICON(KILLED_EVENT);
+tlink; RED_WH2_SERVER_INPUT(KILLED_EVENT); RED_WH2_03_ICON(KILLED_EVENT);
+tlink; RED_WH2_SERVER_INPUT(KILLED_EVENT); RED_WH2_04_ICON(KILLED_EVENT);
+tlink; RED_WH2_SERVER_INPUT(KILLED_EVENT); RED_WH2_05_ICON(KILLED_EVENT);
+tlink; BLUE_WH1_SERVER_INPUT(KILLED_EVENT); BLUE_WH1_01_ICON(KILLED_EVENT);
+tlink; BLUE_WH1_SERVER_INPUT(KILLED_EVENT); BLUE_WH1_02_ICON(KILLED_EVENT);
+tlink; BLUE_WH1_SERVER_INPUT(KILLED_EVENT); BLUE_WH1_03_ICON(KILLED_EVENT);
+tlink; BLUE_WH1_SERVER_INPUT(KILLED_EVENT); BLUE_WH1_04_ICON(KILLED_EVENT);
+tlink; BLUE_WH1_SERVER_INPUT(KILLED_EVENT); BLUE_WH1_05_ICON(KILLED_EVENT);
+tlink; BLUE_WH2_SERVER_INPUT(KILLED_EVENT); BLUE_WH2_01_ICON(KILLED_EVENT);
+tlink; BLUE_WH2_SERVER_INPUT(KILLED_EVENT); BLUE_WH2_02_ICON(KILLED_EVENT);
+tlink; BLUE_WH2_SERVER_INPUT(KILLED_EVENT); BLUE_WH2_03_ICON(KILLED_EVENT);
+tlink; BLUE_WH2_SERVER_INPUT(KILLED_EVENT); BLUE_WH2_04_ICON(KILLED_EVENT);
+tlink; BLUE_WH2_SERVER_INPUT(KILLED_EVENT); BLUE_WH2_05_ICON(KILLED_EVENT);
 
 #
 ## conditions
@@ -4309,6 +4369,26 @@ gui_helper; REXPERT_BWH2_13; 505; 11528;
 gui_helper; REXPERT_BWH2_7; 509; 11742;
 gui_helper; REXPERT_BWH2_9; 509; 11953;
 gui_helper; REXPERT_BWH2_8; 510; 12155;
+gui_helper; RED_WH1_01_ICON; 5119; 8256;
+gui_helper; RED_WH1_02_ICON; 5477; 8343;
+gui_helper; RED_WH1_03_ICON; 5814; 8393;
+gui_helper; RED_WH1_04_ICON; 6181; 8465;
+gui_helper; RED_WH1_05_ICON; 6654; 8536;
+gui_helper; RED_WH2_01_ICON; 5886; 11332;
+gui_helper; RED_WH2_02_ICON; 6244; 11419;
+gui_helper; RED_WH2_03_ICON; 6581; 11469;
+gui_helper; RED_WH2_04_ICON; 6948; 11541;
+gui_helper; RED_WH2_05_ICON; 7417; 11612;
+gui_helper; BLUE_WH1_01_ICON; -5218; 8878;
+gui_helper; BLUE_WH1_02_ICON; -4920; 8758;
+gui_helper; BLUE_WH1_03_ICON; -4534; 8636;
+gui_helper; BLUE_WH1_04_ICON; -4169; 8511;
+gui_helper; BLUE_WH1_05_ICON; -3797; 8410;
+gui_helper; BLUE_WH2_01_ICON; -6141; 12324;
+gui_helper; BLUE_WH2_02_ICON; -5843; 12204;
+gui_helper; BLUE_WH2_03_ICON; -5457; 12082;
+gui_helper; BLUE_WH2_04_ICON; -5092; 11957;
+gui_helper; BLUE_WH2_05_ICON; -4720; 11856;
 gui_helper; check; -8542; 474;BLUE_REAR_AF_REFERENCE(coalition)
 gui_helper; check; -8544; 428;BLUE_REAR_AF_REFERENCE(location_type)
 gui_helper; check; -8544; 518;BLUE_REAR_AF_REFERENCE(range)
