@@ -7,7 +7,7 @@
 - FighterPatrolFlight
 - Dogfight
 - DuelOpponent
-- Balloon - (старое) две точки для привязки "сценария" (технические - существуют только в шмудакторе и командере, не в базе)
+- Balloon
 
 ## Airfield
 
