@@ -39,6 +39,14 @@ class Warehouse(geometry.Point):
             return 1
         return 0
 
+    @property
+    def next_damage(self) -> float:
+        """Потеря хп при следующем уничтожении секции"""
+        result = 15.0 - self.damage_level * 3
+        if result > 0:
+            return result
+        return 2
+
     def to_dict(self) -> dict:
         """Сериализация в словарь для MongoDB"""
         return {

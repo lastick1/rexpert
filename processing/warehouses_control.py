@@ -100,7 +100,7 @@ class WarehouseController:
         if self._round_ended:
             logging.info(f'{warehouse.name} section {unit.name} {unit.pos} destroyed after round end')
             return
-        warehouse.health -= 15.0
+        warehouse.health -= warehouse.next_damage
         logging.info(f'{warehouse.name} section destroyed: {warehouse.health}')
         if warehouse.health < 20 and warehouse.name not in self._sent_inputs:
             self._sent_inputs.add(warehouse.name)
