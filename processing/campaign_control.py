@@ -1,8 +1,4 @@
 """Контроль миссий и хода кампании"""
-import datetime
-import json
-
-import pytz
 
 import atypes
 import configs
@@ -202,36 +198,6 @@ class CampaignController:
             airfields=source_mission.airfields,
             units=source_mission.units
         )
-
-    def save_mission_info(self, m, m_tvd_name):
-        """ Сохранение информации о миссии в JSON для сайта (UTC время конца, самолёты, дата миссии) """
-        print('[{}] Saving mission INFO: {}'.format(
-            datetime.datetime.now().strftime("%H:%M:%S"),
-            m.name
-        ))
-        period_id = self.tvds[m_tvd_name].current_date_stage_id
-        m_length = datetime.timedelta(
-            hours=self.config.main.mission_time['h'],
-            minutes=self.config.main.mission_time['m'],
-            seconds=self.config.main.mission_time['s']
-        )
-        m_start = datetime.datetime.strptime(
-            m.name, 'missionReport(%Y-%m-%d_%H-%M-%S)').replace(tzinfo=datetime.timezone.utc)
-        m_start.replace(tzinfo=pytz.timezone('Europe/Moscow'))
-        utc_offset = datetime.datetime.now() - datetime.datetime.utcnow()
-        result_utc_datetime = m_start - utc_offset + m_length
-
-        data = {
-            'period_id': period_id,
-            'm_date': str(m.src.date),
-            'm_end': int(result_utc_datetime.timestamp() * 1000),
-            'plane_images': list(map(
-                lambda x: self.stats.cfg['mission_info']['plane_images_files'][x],
-                self.stats.cfg['mission_info']['available_planes_by_period_id'][str(period_id)]
-            ))
-        }
-        with self.mission_info_file.open(mode='w') as stream:
-            json.dump(data, stream)
 
     def mission_result(self, atype: atypes.Atype8) -> None:
         """Обработать mission objective из логов"""
