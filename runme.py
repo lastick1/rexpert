@@ -53,6 +53,7 @@ def run():
 
 logging.basicConfig(
     format=u'%(asctime)s %(levelname)-8s %(filename)-40s:%(lineno)-3d # %(message)s', level=logging.DEBUG)
+logging.getLogger('PIL').setLevel(logging.WARNING)
 logging.info("Program Start.")
 # compile_log()
 # compile_gif()

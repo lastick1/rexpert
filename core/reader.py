@@ -1,4 +1,5 @@
 """Чтение логов"""
+import logging
 import pathlib
 import re
 import threading
@@ -50,7 +51,7 @@ class LogsReader:
 
         def do_work_until_stop(self):
             """Запустить бесконечный цикл"""
-            print('LogsReader started')
+            logging.info('LogsReader started')
             while not self.is_stopped:
                 names_set = sorted(self.read_mission_names())
                 for i in range(len(names_set)):
@@ -60,7 +61,7 @@ class LogsReader:
                     for line in log:
                         self._ioc.events_controller.process_line(line)
                 time.sleep(self.cycle)
-            print('LogsReader stopped')
+            logging.info('LogsReader stopped')
 
         def read_mission_names(self):
             """Прочитать имена миссий в папке логов"""
