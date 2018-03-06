@@ -2,7 +2,6 @@
 import logging
 import re
 
-import atypes
 import configs
 import model
 import rcon
