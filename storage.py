@@ -1,4 +1,6 @@
 """Работа с БД"""
+import logging
+
 import pymongo
 
 import configs
@@ -157,7 +159,10 @@ class Warehouses(CollectionWrapper):
 
     def load_by_name(self, tvd_name: str, name: str) -> model.Warehouse:
         """Загрузить данные склада по его имени"""
-        return self._convert_from_document(self.collection.find_one(self._make_filter(tvd_name, name)))
+        document = self.collection.find_one(self._make_filter(tvd_name, name))
+        if not document:
+            raise NameError(f'not found warehouse:{tvd_name} {name}')
+        return self._convert_from_document(document)
 
     def load_by_tvd(self, tvd_name: str) -> list:
         """Загрузить склады указанного ТВД"""

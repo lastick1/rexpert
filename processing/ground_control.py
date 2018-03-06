@@ -127,7 +127,7 @@ class GroundController:
                 if isinstance(unit, DivisionUnit):
                     self._ioc.divisions_controller.damage_division(unit.tvd_name, unit.name)
                 if isinstance(unit, WarehouseUnit):
-                    self._ioc.warehouses_controller.damage_warehouse(unit.tvd_name, unit.name)
+                    self._ioc.warehouses_controller.damage_warehouse(unit)
 
     def _send_input(self, server_input: str):
         """Отправить инпут на сервер, если он не был отправлен"""
@@ -179,7 +179,8 @@ class GroundController:
             for unit in self.targets:
                 if unit.try_add_kill(atype.point):
                     changed = True
-                    logging.info(f'ground kill in unit: {unit.name} at {unit.pos}')
+                    logging.debug(f'ground kill in unit: {unit.name} at {unit.pos}')
+                    break
             if changed:
                 self._check_targets()
 

@@ -17,9 +17,9 @@
     "kuban": 166
   },
   "warehouse_unit_radius": {
-    "moscow": 166,
-    "stalingrad": 166,
-    "kuban": 166
+    "moscow": 320,
+    "stalingrad": 320,
+    "kuban": 320
   },
   "airfield_radius": 2000,
   "airfield_min_planes": 20,

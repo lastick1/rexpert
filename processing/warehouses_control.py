@@ -7,6 +7,7 @@ import model
 import rcon
 import storage
 from model import CampaignMission
+from processing.ground_control import WarehouseUnit
 from .warehouses_selector import WarehousesSelector
 
 
@@ -37,6 +38,7 @@ class WarehouseController:
         self._ioc = ioc
         self._current_tvd_warehouses = dict()
         self._current_mission_warehouses = list()
+        self._warehouses_by_inputs = dict()
         self._sent_inputs = set()
 
     @property
@@ -80,12 +82,14 @@ class WarehouseController:
             self._current_tvd_warehouses[_to_warehouse(warehouse).name] = warehouse
         for server_input in campaign_mission.server_inputs:
             if WAREHOUSE_INPUT_RE.match(server_input['name']):
-                self._current_mission_warehouses.append(self.get_warehouse_by_coordinates(server_input['pos']))
+                warehouse = self.get_warehouse_by_coordinates(server_input['pos'])
+                self._current_mission_warehouses.append(warehouse)
+                self._warehouses_by_inputs[server_input['name']] = warehouse
 
-    def damage_warehouse(self, tvd_name: str, unit_name: str):
+    def damage_warehouse(self, unit: WarehouseUnit):
         """Зачесть уничтожение секции склада"""
-        warehouse_name = unit_name.split(sep='_')[1]
-        warehouse = self.storage.warehouses.load_by_name(tvd_name, warehouse_name)
+        server_input_name = unit.name.split(sep='_')[1]
+        warehouse = self._warehouses_by_inputs[server_input_name]
         warehouse.health -= 15.0
         logging.info(f'{warehouse.name} section destroyed: {warehouse.health}')
         if warehouse.health < 20 and warehouse.name not in self._sent_inputs:
