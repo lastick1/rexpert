@@ -87,9 +87,11 @@ class WarehouseController:
         warehouse_name = unit_name.split(sep='_')[1]
         warehouse = self.storage.warehouses.load_by_name(tvd_name, warehouse_name)
         warehouse.health -= 15.0
+        logging.info(f'{warehouse.name} section destroyed: {warehouse.health}')
         if warehouse.health < 20 and warehouse.name not in self._sent_inputs:
             self._sent_inputs.add(warehouse.name)
             self.rcon.server_input(warehouse.name)
+        self.storage.warehouses.update(warehouse)
 
     def get_warehouse(self, warehouse_name: str) -> model.Warehouse:
         """Получить склад по имени для текущего ТВД"""

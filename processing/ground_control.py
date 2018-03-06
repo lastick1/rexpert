@@ -1,4 +1,5 @@
 """Обработка событий с наземкой (дамаг, киллы), расчёт уничтожения целей (артпозиций, складов и т.п.)"""
+import logging
 import re
 
 import configs
@@ -23,22 +24,22 @@ def _to_campaign_mission(mission) -> CampaignMission:
     return mission
 
 
-class GroundTargetUnit:
+class GroundTargetUnit(geometry.Point):
     """Часть кластерной цели (секция склада или подразделение дивизии)"""
 
     def __init__(
             self,
             name: str,
-            point: geometry.Point,
+            pos: dict,
             side: str,
             parent_name: str,
             durability: int,
             radius: float,
             tvd_name: str
     ):
+        super().__init__(pos['x'], pos['z'])
         self.name = name  # имя цели
         self.tvd_name = tvd_name  # имя твд, на котором расположен объект
-        self.point = point  # центр цели
         self._side = side  # сторона цели в виде буквы B или R
         self._radius = radius  # радиус цели, в котором она засчитывает килы
         self._durability = durability  # количество килов цели до её уничтожения
@@ -61,7 +62,7 @@ class GroundTargetUnit:
 
     def try_add_kill(self, point: geometry.Point) -> bool:
         """Проверить и добавить килл"""
-        if self.point.distance_to(x=point.x, z=point.z) < self._radius:
+        if self.distance_to(x=point.x, z=point.z) < self._radius:
             self._kills.append(point)
             return True
         return False
@@ -74,7 +75,7 @@ def _to_unit(unit) -> GroundTargetUnit:
 class DivisionUnit(GroundTargetUnit):
     """Наземная цель в составе дивизии, отслеживание её состояния"""
 
-    def __init__(self, name: str, pos: geometry.Point, radius: float, tvd_name: str):
+    def __init__(self, name: str, pos: dict, radius: float, tvd_name: str):
         data = DIVISION_RE.match(name).groupdict()
         self.type = data['type']  # тип цели в виде буквы
         self.division_name = f'{data["side"]}{data["type"]}D{data["number"]}'  # имя дивизии, к которой принадлежит цель
@@ -84,7 +85,7 @@ class DivisionUnit(GroundTargetUnit):
 class WarehouseUnit(GroundTargetUnit):
     """Наземная цель в составе склада, отслеживание её состояния"""
 
-    def __init__(self, name: str, pos: geometry.Point, radius: float, tvd_name: str):
+    def __init__(self, name: str, pos: dict, radius: float, tvd_name: str):
         data = WAREHOUSE_RE.match(name).groupdict()
         self.warehouse_name = f'{data["side"]}WH{data["number"]}'
         super().__init__(name, pos, data["side"], self.warehouse_name, int(data['durability']), radius, tvd_name)
@@ -120,8 +121,8 @@ class GroundController:
         """Проверить состояние целей и отправить инпуты в консоль при необходимости"""
         for target in self.targets:
             unit = _to_unit(target)
-            if unit.killed and unit.point not in self._killed_units:
-                self._killed_units.add(unit.point)
+            if unit.killed not in self._killed_units:
+                self._killed_units.add(unit)
                 if isinstance(unit, DivisionUnit):
                     self._ioc.divisions_controller.damage_division(unit.tvd_name, unit.name)
                 if isinstance(unit, WarehouseUnit):
@@ -152,7 +153,7 @@ class GroundController:
             if WAREHOUSE_RE.match(unit['name']):
                 self.targets.append(WarehouseUnit(
                     unit['name'],
-                    geometry.Point(x=unit['pos']['x'], z=unit['pos']['z']),
+                    unit['pos'],
                     self.config.gameplay.warehouse_unit_radius[mission.tvd_name],
                     mission.tvd_name
                 ))
@@ -160,7 +161,7 @@ class GroundController:
             if DIVISION_RE.match(unit['name']):
                 self.targets.append(DivisionUnit(
                     unit['name'],
-                    geometry.Point(x=unit['pos']['x'], z=unit['pos']['z']),
+                    unit['pos'],
                     self.config.gameplay.division_unit_radius[mission.tvd_name],
                     mission.tvd_name
                 ))
@@ -177,6 +178,7 @@ class GroundController:
             for unit in self.targets:
                 if unit.try_add_kill(atype.point):
                     changed = True
+                    logging.info(f'ground kill in unit: {unit.name} at {unit.pos}')
             if changed:
                 self._check_targets()
 
