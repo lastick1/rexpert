@@ -1,4 +1,5 @@
 """Контроль миссий и хода кампании"""
+import logging
 
 import atypes
 import configs
@@ -153,6 +154,7 @@ class CampaignController:
         campaign_map.mission = self._mission
         self._current_tvd = self._get_tvd(campaign_map.tvd_name, campaign_map.date.strftime(constants.DATE_FORMAT))
         self.storage.campaign_maps.update(campaign_map)
+        logging.info(f'mission started {campaign_map.mission.date}, {campaign_map.mission.file}')
         # TODO сохранить миссию в базу (в документ model.CampaignMap и в коллекцию model.CampaignMissions)
         # TODO удалить файлы предыдущей миссии
 
@@ -162,6 +164,7 @@ class CampaignController:
 
     def end_mission(self, atype: atypes.Atype7):
         """Обработать завершение миссии"""
+        logging.info('mission ended')
         self._current_tvd = None
         self._update_tik(atype.tik)
         self._mission.is_correctly_completed = True
@@ -172,6 +175,7 @@ class CampaignController:
 
     def end_round(self, atype: atypes.Atype19):  # этот метод должен вызываться последним среди всех контроллеров
         """Обработать завершение раунда (4-минутный отсчёт до конца миссии)"""
+        logging.info('round ended')
         self._update_tik(atype.tik)
         # TODO подвести итог миссии
         # TODO отправить инпут завершения миссии (победа/ничья)

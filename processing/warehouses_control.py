@@ -2,6 +2,7 @@
 import logging
 import re
 
+import atypes
 import configs
 import model
 import rcon
@@ -40,6 +41,7 @@ class WarehouseController:
         self._current_mission_warehouses = list()
         self._warehouses_by_inputs = dict()
         self._sent_inputs = set()
+        self._round_ended: bool = False
 
     @property
     def config(self) -> configs.Config:
@@ -73,6 +75,7 @@ class WarehouseController:
 
     def start_mission(self):
         """Обработать начало миссии - обновить положение складов из исходников"""
+        self._round_ended = False
         self._current_tvd_warehouses.clear()
         self._current_mission_warehouses.clear()
         self._sent_inputs.clear()
@@ -86,10 +89,17 @@ class WarehouseController:
                 self._current_mission_warehouses.append(warehouse)
                 self._warehouses_by_inputs[server_input['name']] = warehouse
 
+    def end_round(self):
+        """Завершить раунд"""
+        self._round_ended = True
+
     def damage_warehouse(self, unit: WarehouseUnit):
         """Зачесть уничтожение секции склада"""
         server_input_name = unit.name.split(sep='_')[1]
         warehouse = self._warehouses_by_inputs[server_input_name]
+        if self._round_ended:
+            logging.info(f'{warehouse.name} section {unit.name} {unit.pos} destroyed after round end')
+            return
         warehouse.health -= 15.0
         logging.info(f'{warehouse.name} section destroyed: {warehouse.health}')
         if warehouse.health < 20 and warehouse.name not in self._sent_inputs:

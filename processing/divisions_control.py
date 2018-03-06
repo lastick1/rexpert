@@ -29,6 +29,7 @@ class DivisionsController:
         self._ioc = ioc
         self._current_divisions = dict()
         self._sent_inputs = set()
+        self._round_ended: bool = False
 
     @property
     def config(self) -> configs.Config:
@@ -74,6 +75,7 @@ class DivisionsController:
 
     def start_mission(self):
         """Обработать начало миссии - обновить положение дивизий из исходников"""
+        self._round_ended = False
         self._current_divisions.clear()
         self._sent_inputs.clear()
         campaign_mission = _to_campaign_mission(self._ioc.campaign_controller.mission)
@@ -86,10 +88,17 @@ class DivisionsController:
         for division in divisions:
             self._current_divisions[_to_division(division).name] = division
 
+    def end_round(self):
+        """Обработать завершение раунда"""
+        self._round_ended = True
+
     def damage_division(self, tvd_name: str, unit_name: str):
         """Зачесть уничтожение подразделения дивизии"""
         division_name = unit_name.split(sep='_')[1]
         division = self.storage.divisions.load_by_name(tvd_name, division_name)
+        if self._round_ended:
+            logging.info(f'{division.name} unit {unit_name} destroyed after round end')
+            return
         division.units -= 1
         if division.units < 0:
             division.units = 0

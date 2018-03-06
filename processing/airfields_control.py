@@ -1,4 +1,6 @@
 """Контроль состояния аэродромов (доступные самолёты, повреждения)"""
+import logging
+
 import atypes
 import configs
 import log_objects
@@ -59,7 +61,10 @@ class AirfieldsController:
         """Обработать появление самолёта на аэродроме"""
         managed_airfield = self.get_airfield_in_radius(
             tvd_name, atype.pos['x'], atype.pos['z'], self.config.gameplay.airfield_radius)
-        self.add_aircraft(tvd_name, airfield_country, managed_airfield.name, atype.aircraft_name, -1)
+        if not managed_airfield:
+            logging.warning(f'airfield not found: {atype}')
+        else:
+            self.add_aircraft(tvd_name, airfield_country, managed_airfield.name, atype.aircraft_name, -1)
 
     def finish(self, tvd_name: str, airfield_country: int, bot: log_objects.BotPilot):
         """Обработать деспаун самолёта на аэродроме"""

@@ -229,6 +229,8 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         """AType 19 handler"""
         atype = atypes.Atype19(tik)
         self.airfields_controller.end_round()
+        self.divisions_controller.end_round()
+        self.warehouses_controller.end_round()
         self.campaign_controller.end_round(atype)
 
     def event_player_connected(self, tik: int, account_id: str, profile_id: str) -> None:
