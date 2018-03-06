@@ -38,6 +38,7 @@ class GroundTargetUnit(geometry.Point):
             tvd_name: str
     ):
         super().__init__(pos['x'], pos['z'])
+        self.pos = pos
         self.name = name  # имя цели
         self.tvd_name = tvd_name  # имя твд, на котором расположен объект
         self._side = side  # сторона цели в виде буквы B или R
@@ -93,7 +94,7 @@ class WarehouseUnit(GroundTargetUnit):
     @property
     def killed(self):
         """Убита ли цель"""
-        return len(self._kills) >= (self._durability * 0.80)
+        return len(self._kills) >= int(self._durability * 0.80)
 
 
 class GroundController:
@@ -121,7 +122,7 @@ class GroundController:
         """Проверить состояние целей и отправить инпуты в консоль при необходимости"""
         for target in self.targets:
             unit = _to_unit(target)
-            if unit.killed not in self._killed_units:
+            if unit.killed and unit not in self._killed_units:
                 self._killed_units.add(unit)
                 if isinstance(unit, DivisionUnit):
                     self._ioc.divisions_controller.damage_division(unit.tvd_name, unit.name)

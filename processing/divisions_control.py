@@ -95,7 +95,11 @@ class DivisionsController:
             division.units = 0
         if division.units <= self.config.gameplay.division_death and division.name not in self._sent_inputs:
             self._sent_inputs.add(division.name)
-            self.rcon.server_input(division.name)
+            if not self.config.main.offline_mode:
+                if not self.rcon.connected:
+                    self.rcon.connect()
+                    self.rcon.auth(self.config.main.rcon_login, self.config.main.rcon_password)
+                self.rcon.server_input(division.name)
         logging.debug(f'{division.tvd_name} division {division.name} lost unit:{unit_name}')
         self.storage.divisions.update(division)
 
