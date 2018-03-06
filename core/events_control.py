@@ -175,6 +175,8 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         self.objects_controller.spawn(atype)
         self.players_controller.spawn(atype)
         tvd = self.campaign_controller.current_tvd
+        if atype.airstart:
+            logging.warning(f'airstart {atype}')
         self.airfields_controller.spawn_aircraft(tvd.name, tvd.get_country(atype.point), atype)
 
     def event_group(self, tik: int, group_id: int, members_id: int, leader_id: int) -> None:
