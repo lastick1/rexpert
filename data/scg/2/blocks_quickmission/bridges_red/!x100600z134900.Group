@@ -1,0 +1,61 @@
+Bridge
+{
+  Name = "Bridge1";
+  Index = 27;
+  LinkTrId = 0;
+  XPos = 100648.547;
+  YPos = 137.922;
+  ZPos = 134914.306;
+  XOri = 0.00;
+  YOri = 280.22;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_railroad_200.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_railroad_200.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 15000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Bridge
+{
+  Name = "Bridge1";
+  Index = 28;
+  LinkTrId = 0;
+  XPos = 100654.260;
+  YPos = 137.914;
+  ZPos = 134915.353;
+  XOri = 0.00;
+  YOri = 280.16;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_railroad_200.mgm";
+  Script = "LuaScripts\WorldObjects\bridge_railroad_200.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 15000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 142;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 100600.000;
+  YPos = 107.072;
+  ZPos = 134900.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 250;
+  Backward = 250;
+  Left = 250;
+  Right = 250;
+}
+

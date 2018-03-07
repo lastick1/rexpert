@@ -1,0 +1,124 @@
+Bridge
+{
+  Name = "Bridge";
+  Index = 44;
+  LinkTrId = 0;
+  XPos = 258318.333;
+  YPos = 60.842;
+  ZPos = 227241.847;
+  XOri = 0.00;
+  YOri = 270.09;
+  ZOri = 0.00;
+  Model = "graphics\bridges\br_rd_rampmed_up.mgm";
+  Script = "LuaScripts\WorldObjects\Bridges\br_rd_rampmed_up.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 15000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Bridge
+{
+  Name = "Bridge";
+  Index = 45;
+  LinkTrId = 0;
+  XPos = 258318.576;
+  YPos = 60.863;
+  ZPos = 227088.288;
+  XOri = 0.00;
+  YOri = 90.09;
+  ZOri = 0.00;
+  Model = "graphics\bridges\br_rd_rampmed_up.mgm";
+  Script = "LuaScripts\WorldObjects\Bridges\br_rd_rampmed_up.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 15000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Bridge
+{
+  Name = "Bridge";
+  Index = 46;
+  LinkTrId = 0;
+  XPos = 258318.561;
+  YPos = 60.860;
+  ZPos = 227100.136;
+  XOri = 0.00;
+  YOri = 270.09;
+  ZOri = 0.00;
+  Model = "graphics\bridges\br_rd_start_up_rgt.mgm";
+  Script = "LuaScripts\WorldObjects\Bridges\br_rd_start_up_rgt.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 15000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Bridge
+{
+  Name = "Bridge";
+  Index = 47;
+  LinkTrId = 0;
+  XPos = 258318.448;
+  YPos = 60.851;
+  ZPos = 227165.070;
+  XOri = 0.00;
+  YOri = 270.09;
+  ZOri = 0.00;
+  Model = "graphics\bridges\br_rd_trpz.mgm";
+  Script = "LuaScripts\WorldObjects\Bridges\br_rd_trpz.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 15000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Bridge
+{
+  Name = "Bridge";
+  Index = 48;
+  LinkTrId = 0;
+  XPos = 258318.347;
+  YPos = 60.844;
+  ZPos = 227229.976;
+  XOri = 0.00;
+  YOri = 270.09;
+  ZOri = 0.00;
+  Model = "graphics\bridges\br_rd_start_up_lft.mgm";
+  Script = "LuaScripts\WorldObjects\Bridges\br_rd_start_up_lft.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 15000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 70;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 258300.000;
+  YPos = 147.582;
+  ZPos = 227100.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 250;
+  Backward = 250;
+  Left = 250;
+  Right = 250;
+}
+
