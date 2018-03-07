@@ -194,7 +194,7 @@ class DivisionsControllerMock(processing.DivisionsController):
         super().__init__(ioc)
         self.damaged_divisions = set()
 
-    def damage_division(self, tvd_name: str, unit_name: str):
+    def damage_division(self, tik: int, tvd_name: str, unit_name: str):
         self.damaged_divisions.add(unit_name.split(sep='_')[1])
 
 

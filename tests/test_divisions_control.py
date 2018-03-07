@@ -39,7 +39,7 @@ class TestDivisionsControl(unittest.TestCase):
         controller.initialize_divisions(TEST_TVD_NAME)
         expected = IOC.storage.divisions.load_by_name(TEST_TVD_NAME, TEST_DIVISION_NAME1).units - 1
         # Act
-        controller.damage_division(TEST_TVD_NAME, TEST_UNIT_NAME1)
+        controller.damage_division(100, TEST_TVD_NAME, TEST_UNIT_NAME1)
         # Assert
         self.assertEqual(IOC.storage.divisions.load_by_name(TEST_TVD_NAME, TEST_DIVISION_NAME1).units, expected)
 
@@ -59,9 +59,10 @@ class TestDivisionsControl(unittest.TestCase):
         destroyed_warehouses = 0
         controller = processing.DivisionsController(IOC)
         controller.initialize_divisions(TEST_TVD_NAME)
-        controller.damage_division(TEST_TVD_NAME, TEST_UNIT_NAME1)
-        controller.damage_division(TEST_TVD_NAME, TEST_UNIT_NAME1)
-        controller.damage_division(TEST_TVD_NAME, TEST_UNIT_NAME2)
+        controller.damage_division(100, TEST_TVD_NAME, TEST_UNIT_NAME1)
+        controller.damage_division(100, TEST_TVD_NAME, TEST_UNIT_NAME1)
+        controller.damage_division(100, TEST_TVD_NAME, TEST_UNIT_NAME1)
+        controller.damage_division(100, TEST_TVD_NAME, TEST_UNIT_NAME2)
         current = IOC.storage.divisions.load_by_name(TEST_TVD_NAME, TEST_DIVISION_NAME1).units
         expected1 = current * controller.repair_rate(destroyed_warehouses)
         expected2 = model.DIVISIONS[TEST_DIVISION_NAME2]

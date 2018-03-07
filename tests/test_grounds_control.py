@@ -15,6 +15,7 @@ logging.basicConfig(
 IOC = tests.mocks.DependencyContainerMock(pathlib.Path('./testdata/conf.ini'))
 DIVISIONS_CONTROLLER_MOCK = tests.mocks.DivisionsControllerMock(IOC)
 
+TEST_DATE = '01.09.1941'
 TEST_TARGET_AIRFIELD_SERVER_INPUT = 'Verbovka'
 TEST_TARGET_BTD1_SERVER_INPUT = 'BTD1'
 TEST_TARGET_HP = 3
@@ -35,7 +36,7 @@ TEST_TARGET_POS_BTD1_UNITS = [
 TEST_MISSION = model.CampaignMission(
     kind='regular',
     file='result1',
-    date='01.09.1941',
+    date=TEST_DATE,
     tvd_name='moscow',
     additional=dict(),
     server_inputs=[
@@ -126,6 +127,8 @@ class TestGroundControl(unittest.TestCase):
         """Обрабатывается уничтожение дивизии"""
         controller = processing.GroundController(IOC)
         IOC.campaign_controller._mission = TEST_MISSION
+        IOC.campaign_controller._campaign_map = model.CampaignMap(
+            1, TEST_DATE, TEST_DATE, TEST_MISSION.tvd_name, list(), list(), TEST_MISSION)
         target_name = 'static_il2'
         aircraft_name = 'I-16 type 24'
         attacker = IOC.objects_controller.create_object(

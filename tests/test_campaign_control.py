@@ -104,12 +104,13 @@ class TestCampaignController(unittest.TestCase):
         IOC.grid_controller.get_file = self._get_xgml_file_mock
         campaign.initialize()
         campaign_map = IOC.storage.campaign_maps.load_by_tvd_name(MOSCOW)
-        campaign_map.set_date(IOC.config.mgen.cfg[MOSCOW]['end_date'])
+        campaign_map.set_date(IOC.config.mgen.cfg[MOSCOW]['start_date'])
         IOC.storage.campaign_maps.update(campaign_map)
+        campaign._campaign_map = campaign_map
         # Act
         campaign.generate('result2')
         # Assert
-        self.assertIn(('result2', STALIN), IOC.generator_mock.generations)
+        self.assertIn(('result2', MOSCOW), IOC.generator_mock.generations)
 
     def test_generate_next_with_atype_19(self):
         """Генерируется следующая миссия с AType:19 в логе"""
