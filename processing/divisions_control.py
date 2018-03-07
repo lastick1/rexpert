@@ -103,7 +103,7 @@ class DivisionsController:
         if division.units < 0:
             division.units = 0
         if division.units <= self.config.gameplay.division_death and division.name not in self._sent_inputs:
-            self._ioc.campaign_controller.register_action(model.DivisionKill(tik, division.name))
+            self._ioc.campaign_controller.register_action(model.DivisionKill(tik, division.country, division.name))
             self._sent_inputs.add(division.name)
             if not self.config.main.offline_mode:
                 if not self.rcon.connected:

@@ -34,6 +34,7 @@ class CampaignMaps(CollectionWrapper):
             if action[constants.GameplayAction.KIND] == model.DivisionKill.__name__:
                 act = model.DivisionKill(
                     action[constants.GameplayAction.TIK],
+                    action[constants.COUNTRY],
                     action[constants.GameplayAction.OBJECT_NAME]
                 )
                 act.date = datetime.datetime.strptime(action[constants.GameplayAction.DATE], constants.DATE_FORMAT)
@@ -41,6 +42,7 @@ class CampaignMaps(CollectionWrapper):
             elif action[constants.GameplayAction.KIND] == model.WarehouseDisable.__name__:
                 act = model.WarehouseDisable(
                     action[constants.GameplayAction.TIK],
+                    action[constants.COUNTRY],
                     action[constants.GameplayAction.OBJECT_NAME]
                 )
                 act.date = datetime.datetime.strptime(action[constants.GameplayAction.DATE], constants.DATE_FORMAT)

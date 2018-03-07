@@ -6,9 +6,10 @@ import datetime
 class GameplayAction:
     """Игровое действие"""
 
-    def __init__(self, tik: int, kind: str, object_name: str):
+    def __init__(self, tik: int, country: int, kind: str, object_name: str):
         self.date: datetime.datetime = None  # дата кампании, когда возникло событие
         self.tik = tik  # тик в миссии, в котором возникло событие
+        self.country = country  # сторона, которая выполнила действие
         self.kind = kind  # тип события
         self.object_name = object_name  # имя объекта, с которым связано событие
 
@@ -25,8 +26,8 @@ class GameplayAction:
 class DivisionKill(GameplayAction):
     """Уничтожение дивизии"""
 
-    def __init__(self, tik: int, division_name: str):
-        super().__init__(tik, self.__class__.__name__, division_name)
+    def __init__(self, tik: int, country: int, division_name: str):
+        super().__init__(tik, country, self.__class__.__name__, division_name)
 
     @property
     def division_name(self):
@@ -37,8 +38,8 @@ class DivisionKill(GameplayAction):
 class WarehouseDisable(GameplayAction):
     """Подавление склада (<40%)"""
 
-    def __init__(self, tik: int, warehouse_name: str):
-        super().__init__(tik, self.__class__.__name__, warehouse_name)
+    def __init__(self, tik: int, country: int, warehouse_name: str):
+        super().__init__(tik, country, self.__class__.__name__, warehouse_name)
 
     @property
     def warehouse_name(self):

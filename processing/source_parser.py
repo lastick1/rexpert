@@ -2,6 +2,7 @@
 import pathlib
 import datetime
 
+import constants
 import configs
 import model
 from .source_re import GUIMAP_RE, MISSION_DATE_RE, SERVER_INPUT_RE, MISSION_OBJECTIVE_RE
@@ -55,10 +56,10 @@ def _find_division_units_and_kind(mission: model.SourceMission, text: str):
         timer = {'name': match[0], 'pos': {'x': float(match[1]), 'z': float(match[2])}}
         if 'REXPERT' in timer['name']:
             if 'REGULAR' in timer['name']:
-                mission.kind = 'regular'
+                mission.kind = constants.CampaignMission.Kinds.REGULAR
                 continue
             if 'ASSAULT' in timer['name']:
-                mission.kind = 'assault'
+                mission.kind = constants.CampaignMission.Kinds.ASSAULT
                 continue
             mission.units.append(timer)
 
