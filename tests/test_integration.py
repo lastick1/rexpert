@@ -38,7 +38,7 @@ def _get_xgml_file_mock(tvd_name: str) -> str:
 
 def _load_all_campaign_maps():
     """Фальшивый метод загрузки карт кампании"""
-    return [model.CampaignMap(1, TEST_TVD_DATE, TEST_TVD_DATE, TEST_TVD_NAME, list())]
+    return [model.CampaignMap(1, TEST_TVD_DATE, TEST_TVD_DATE, TEST_TVD_NAME, list(), list())]
 
 
 def _parse_mock(name: str) -> model.SourceMission:

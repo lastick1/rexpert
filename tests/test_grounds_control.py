@@ -65,6 +65,7 @@ class TestGroundControl(unittest.TestCase):
     def setUp(self):
         """Настройка перед тестами"""
         self._DIVISIONS_CONTROLLER = IOC._divisions_controller
+        IOC.console_mock.received_server_inputs.clear()
 
     def tearDown(self):
         """Очистка после тестов"""
