@@ -698,6 +698,7 @@ blocks_set; blocks_BLUE_WH2_02_ICON; main(scg\2\blocks_quickmission\icons\bwh_se
 blocks_set; blocks_BLUE_WH2_03_ICON; main(scg\2\blocks_quickmission\icons\bwh_section_icon.group);
 blocks_set; blocks_BLUE_WH2_04_ICON; main(scg\2\blocks_quickmission\icons\bwh_section_icon.group);
 blocks_set; blocks_BLUE_WH2_05_ICON; main(scg\2\blocks_quickmission\icons\bwh_section_icon.group);
+blocks_set; blocks_REXPERT_REGULAR; main(scg\2\blocks_quickmission\rexpert_regular.group);
 
 #
 ## geo params
@@ -1397,6 +1398,7 @@ phase; BLUE_WH2_02_ICON; at(BLUE_WH2_02_0DMG); blocks_BLUE_WH2_02_ICON; clone_lo
 phase; BLUE_WH2_03_ICON; at(BLUE_WH2_03_0DMG); blocks_BLUE_WH2_03_ICON; clone_location;;
 phase; BLUE_WH2_04_ICON; at(BLUE_WH2_04_0DMG); blocks_BLUE_WH2_04_ICON; clone_location;;
 phase; BLUE_WH2_05_ICON; at(BLUE_WH2_05_0DMG); blocks_BLUE_WH2_05_ICON; clone_location;;
+phase; REXPERT_REGULAR; at(SERVER_SET); blocks_REXPERT_REGULAR; clone_location;;
 
 #
 ## cases & switches
@@ -4124,11 +4126,11 @@ gui_helper; RED_WH1_02_0DMG; 4559; 8855;
 gui_helper; RED_WH1_03_0DMG; 4559; 9067;
 gui_helper; RED_WH1_04_0DMG; 4562; 9269;
 gui_helper; RED_WH1_05_0DMG; 4563; 9457;
-gui_helper; RED_WH2_01_0DMG; 4608; 11369;
-gui_helper; RED_WH2_02_0DMG; 4608; 11578;
-gui_helper; RED_WH2_03_0DMG; 4610; 11783;
-gui_helper; RED_WH2_04_0DMG; 4609; 11980;
-gui_helper; RED_WH2_05_0DMG; 4609; 12177;
+gui_helper; RED_WH2_01_0DMG; 4305; 11384;
+gui_helper; RED_WH2_02_0DMG; 4305; 11593;
+gui_helper; RED_WH2_03_0DMG; 4307; 11798;
+gui_helper; RED_WH2_04_0DMG; 4306; 11995;
+gui_helper; RED_WH2_05_0DMG; 4306; 12192;
 gui_helper; MG_1_1768; -3741; 9694;
 gui_helper; 85_88MM_1_1769; -4338; 9691;
 gui_helper; 20_37MM_1_1770; -3735; 10000;
@@ -4200,11 +4202,11 @@ gui_helper; REXPERT_RWH1_52; 4310; 8852;
 gui_helper; REXPERT_RWH1_60; 4308; 9068;
 gui_helper; REXPERT_RWH1_54; 4311; 9265;
 gui_helper; REXPERT_RWH1_56; 4310; 9458;
-gui_helper; REXPERT_RWH2_74; 4362; 11369;
-gui_helper; REXPERT_RWH2_52; 4363; 11578;
-gui_helper; REXPERT_RWH2_60; 4365; 11782;
-gui_helper; REXPERT_RWH2_54; 4365; 11981;
-gui_helper; REXPERT_RWH2_56; 4368; 12175;
+gui_helper; REXPERT_RWH2_74; 4059; 11384;
+gui_helper; REXPERT_RWH2_52; 4060; 11593;
+gui_helper; REXPERT_RWH2_60; 4062; 11797;
+gui_helper; REXPERT_RWH2_54; 4062; 11996;
+gui_helper; REXPERT_RWH2_56; 4065; 12190;
 gui_helper; REXPERT_BWH1_74; -1653; 8629;
 gui_helper; REXPERT_BWH1_52; -1654; 8840;
 gui_helper; REXPERT_BWH1_60; -1649; 9055;
@@ -4255,46 +4257,46 @@ gui_helper; REXPERT_RWH1_13; 2188; 8838;
 gui_helper; REXPERT_RWH1_7; 2190; 9042;
 gui_helper; REXPERT_RWH1_9; 2191; 9245;
 gui_helper; REXPERT_RWH1_8; 2193; 9441;
-gui_helper; RED_WH2_01_20DMG; 4115; 11361;
-gui_helper; RED_WH2_02_20DMG; 4116; 11565;
-gui_helper; RED_WH2_03_20DMG; 4115; 11777;
-gui_helper; RED_WH2_04_20DMG; 4115; 11974;
-gui_helper; RED_WH2_05_20DMG; 4118; 12167;
-gui_helper; RED_WH2_01_40DMG; 3610; 11357;
-gui_helper; RED_WH2_02_40DMG; 3610; 11564;
-gui_helper; RED_WH2_03_40DMG; 3610; 11772;
-gui_helper; RED_WH2_04_40DMG; 3612; 11974;
-gui_helper; RED_WH2_05_40DMG; 3611; 12164;
-gui_helper; RED_WH2_01_60DMG; 3095; 11350;
-gui_helper; RED_WH2_02_60DMG; 3094; 11560;
-gui_helper; RED_WH2_03_60DMG; 3095; 11758;
-gui_helper; RED_WH2_04_60DMG; 3096; 11963;
-gui_helper; RED_WH2_05_60DMG; 3097; 12160;
-gui_helper; RED_WH2_01_80DMG; 2570; 11338;
-gui_helper; RED_WH2_02_80DMG; 2570; 11552;
-gui_helper; RED_WH2_03_80DMG; 2571; 11754;
-gui_helper; RED_WH2_04_80DMG; 2567; 11958;
-gui_helper; RED_WH2_05_80DMG; 2568; 12153;
-gui_helper; REXPERT_RWH2_55; 3851; 11357;
-gui_helper; REXPERT_RWH2_39; 3855; 11567;
-gui_helper; REXPERT_RWH2_52_2; 3854; 11776;
-gui_helper; REXPERT_RWH2_38; 3862; 11977;
-gui_helper; REXPERT_RWH2_47; 3859; 12168;
-gui_helper; REXPERT_RWH2_37; 3348; 11357;
-gui_helper; REXPERT_RWH2_26_1; 3358; 11568;
-gui_helper; REXPERT_RWH2_40; 3357; 11772;
-gui_helper; REXPERT_RWH2_26_2; 3357; 11970;
-gui_helper; REXPERT_RWH2_30; 3360; 12165;
-gui_helper; REXPERT_RWH2_24; 2819; 11348;
-gui_helper; REXPERT_RWH2_19; 2824; 11559;
-gui_helper; REXPERT_RWH2_14; 2829; 11760;
-gui_helper; REXPERT_RWH2_15; 2829; 11963;
-gui_helper; REXPERT_RWH2_17; 2830; 12159;
-gui_helper; REXPERT_RWH2_10; 2295; 11339;
-gui_helper; REXPERT_RWH2_13; 2296; 11550;
-gui_helper; REXPERT_RWH2_7; 2297; 11755;
-gui_helper; REXPERT_RWH2_9; 2300; 11960;
-gui_helper; REXPERT_RWH2_8; 2301; 12155;
+gui_helper; RED_WH2_01_20DMG; 3812; 11376;
+gui_helper; RED_WH2_02_20DMG; 3813; 11580;
+gui_helper; RED_WH2_03_20DMG; 3812; 11792;
+gui_helper; RED_WH2_04_20DMG; 3812; 11989;
+gui_helper; RED_WH2_05_20DMG; 3815; 12182;
+gui_helper; RED_WH2_01_40DMG; 3307; 11372;
+gui_helper; RED_WH2_02_40DMG; 3307; 11579;
+gui_helper; RED_WH2_03_40DMG; 3307; 11787;
+gui_helper; RED_WH2_04_40DMG; 3309; 11989;
+gui_helper; RED_WH2_05_40DMG; 3308; 12179;
+gui_helper; RED_WH2_01_60DMG; 2792; 11365;
+gui_helper; RED_WH2_02_60DMG; 2791; 11575;
+gui_helper; RED_WH2_03_60DMG; 2792; 11773;
+gui_helper; RED_WH2_04_60DMG; 2793; 11978;
+gui_helper; RED_WH2_05_60DMG; 2794; 12175;
+gui_helper; RED_WH2_01_80DMG; 2267; 11353;
+gui_helper; RED_WH2_02_80DMG; 2267; 11567;
+gui_helper; RED_WH2_03_80DMG; 2268; 11769;
+gui_helper; RED_WH2_04_80DMG; 2264; 11973;
+gui_helper; RED_WH2_05_80DMG; 2265; 12168;
+gui_helper; REXPERT_RWH2_55; 3548; 11372;
+gui_helper; REXPERT_RWH2_39; 3552; 11582;
+gui_helper; REXPERT_RWH2_52_2; 3551; 11791;
+gui_helper; REXPERT_RWH2_38; 3559; 11992;
+gui_helper; REXPERT_RWH2_47; 3556; 12183;
+gui_helper; REXPERT_RWH2_37; 3045; 11372;
+gui_helper; REXPERT_RWH2_26_1; 3055; 11583;
+gui_helper; REXPERT_RWH2_40; 3054; 11787;
+gui_helper; REXPERT_RWH2_26_2; 3054; 11985;
+gui_helper; REXPERT_RWH2_30; 3057; 12180;
+gui_helper; REXPERT_RWH2_24; 2516; 11363;
+gui_helper; REXPERT_RWH2_19; 2521; 11574;
+gui_helper; REXPERT_RWH2_14; 2526; 11775;
+gui_helper; REXPERT_RWH2_15; 2526; 11978;
+gui_helper; REXPERT_RWH2_17; 2527; 12174;
+gui_helper; REXPERT_RWH2_10; 1992; 11354;
+gui_helper; REXPERT_RWH2_13; 1993; 11565;
+gui_helper; REXPERT_RWH2_7; 1994; 11770;
+gui_helper; REXPERT_RWH2_9; 1997; 11975;
+gui_helper; REXPERT_RWH2_8; 1998; 12170;
 gui_helper; BLUE_WH1_01_20DMG; -1364; 8633;
 gui_helper; BLUE_WH1_02_20DMG; -1362; 8842;
 gui_helper; BLUE_WH1_03_20DMG; -1359; 9057;
@@ -4375,26 +4377,27 @@ gui_helper; REXPERT_BWH2_13; 505; 11528;
 gui_helper; REXPERT_BWH2_7; 509; 11742;
 gui_helper; REXPERT_BWH2_9; 509; 11953;
 gui_helper; REXPERT_BWH2_8; 510; 12155;
-gui_helper; RED_WH1_01_ICON; 5119; 8256;
-gui_helper; RED_WH1_02_ICON; 5477; 8343;
-gui_helper; RED_WH1_03_ICON; 5814; 8393;
-gui_helper; RED_WH1_04_ICON; 6181; 8465;
-gui_helper; RED_WH1_05_ICON; 6654; 8536;
-gui_helper; RED_WH2_01_ICON; 5886; 11332;
-gui_helper; RED_WH2_02_ICON; 6244; 11419;
-gui_helper; RED_WH2_03_ICON; 6581; 11469;
-gui_helper; RED_WH2_04_ICON; 6948; 11541;
-gui_helper; RED_WH2_05_ICON; 7417; 11612;
-gui_helper; BLUE_WH1_01_ICON; -5218; 8878;
-gui_helper; BLUE_WH1_02_ICON; -4920; 8758;
-gui_helper; BLUE_WH1_03_ICON; -4534; 8636;
-gui_helper; BLUE_WH1_04_ICON; -4169; 8511;
-gui_helper; BLUE_WH1_05_ICON; -3797; 8410;
-gui_helper; BLUE_WH2_01_ICON; -6141; 12324;
-gui_helper; BLUE_WH2_02_ICON; -5843; 12204;
-gui_helper; BLUE_WH2_03_ICON; -5457; 12082;
-gui_helper; BLUE_WH2_04_ICON; -5092; 11957;
-gui_helper; BLUE_WH2_05_ICON; -4720; 11856;
+gui_helper; RED_WH1_01_ICON; 2860; 8140;
+gui_helper; RED_WH1_02_ICON; 3228; 8136;
+gui_helper; RED_WH1_03_ICON; 3631; 8140;
+gui_helper; RED_WH1_04_ICON; 4028; 8142;
+gui_helper; RED_WH1_05_ICON; 4430; 8137;
+gui_helper; RED_WH2_01_ICON; 2615; 10853;
+gui_helper; RED_WH2_02_ICON; 3007; 10849;
+gui_helper; RED_WH2_03_ICON; 3395; 10848;
+gui_helper; RED_WH2_04_ICON; 3788; 10844;
+gui_helper; RED_WH2_05_ICON; 4176; 10849;
+gui_helper; BLUE_WH1_01_ICON; -1875; 8202;
+gui_helper; BLUE_WH1_02_ICON; -1502; 8195;
+gui_helper; BLUE_WH1_03_ICON; -1150; 8189;
+gui_helper; BLUE_WH1_04_ICON; -784; 8181;
+gui_helper; BLUE_WH1_05_ICON; -395; 8189;
+gui_helper; BLUE_WH2_01_ICON; -1897; 10867;
+gui_helper; BLUE_WH2_02_ICON; -1537; 10869;
+gui_helper; BLUE_WH2_03_ICON; -1153; 10864;
+gui_helper; BLUE_WH2_04_ICON; -768; 10857;
+gui_helper; BLUE_WH2_05_ICON; -362; 10856;
+gui_helper; REXPERT_REGULAR; 870; -216;
 gui_helper; check; -8542; 474;BLUE_REAR_AF_REFERENCE(coalition)
 gui_helper; check; -8544; 428;BLUE_REAR_AF_REFERENCE(location_type)
 gui_helper; check; -8544; 518;BLUE_REAR_AF_REFERENCE(range)
@@ -5320,21 +5323,21 @@ gui_helper; check; 4797; 9314;RED_WH1_04_0DMG(location_type)
 gui_helper; check; 4803; 9528;RED_WH1_05_0DMG(free)
 gui_helper; check; 4803; 9561;RED_WH1_05_0DMG(range)
 gui_helper; check; 4803; 9496;RED_WH1_05_0DMG(location_type)
-gui_helper; check; 4832; 11432;RED_WH2_01_0DMG(location_type)
-gui_helper; check; 4835; 11466;RED_WH2_01_0DMG(free)
-gui_helper; check; 4832; 11500;RED_WH2_01_0DMG(range)
-gui_helper; check; 4830; 11693;RED_WH2_02_0DMG(range)
-gui_helper; check; 4828; 11661;RED_WH2_02_0DMG(free)
-gui_helper; check; 4826; 11625;RED_WH2_02_0DMG(location_type)
-gui_helper; check; 4836; 11882;RED_WH2_03_0DMG(free)
-gui_helper; check; 4836; 11915;RED_WH2_03_0DMG(range)
-gui_helper; check; 4837; 11848;RED_WH2_03_0DMG(location_type)
-gui_helper; check; 4832; 12081;RED_WH2_04_0DMG(free)
-gui_helper; check; 4830; 12116;RED_WH2_04_0DMG(range)
-gui_helper; check; 4834; 12043;RED_WH2_04_0DMG(location_type)
-gui_helper; check; 4841; 12259;RED_WH2_05_0DMG(free)
-gui_helper; check; 4839; 12288;RED_WH2_05_0DMG(range)
-gui_helper; check; 4840; 12225;RED_WH2_05_0DMG(location_type)
+gui_helper; check; 4529; 11447;RED_WH2_01_0DMG(location_type)
+gui_helper; check; 4532; 11481;RED_WH2_01_0DMG(free)
+gui_helper; check; 4529; 11515;RED_WH2_01_0DMG(range)
+gui_helper; check; 4527; 11708;RED_WH2_02_0DMG(range)
+gui_helper; check; 4525; 11676;RED_WH2_02_0DMG(free)
+gui_helper; check; 4523; 11640;RED_WH2_02_0DMG(location_type)
+gui_helper; check; 4533; 11897;RED_WH2_03_0DMG(free)
+gui_helper; check; 4533; 11930;RED_WH2_03_0DMG(range)
+gui_helper; check; 4534; 11863;RED_WH2_03_0DMG(location_type)
+gui_helper; check; 4529; 12096;RED_WH2_04_0DMG(free)
+gui_helper; check; 4527; 12131;RED_WH2_04_0DMG(range)
+gui_helper; check; 4531; 12058;RED_WH2_04_0DMG(location_type)
+gui_helper; check; 4538; 12274;RED_WH2_05_0DMG(free)
+gui_helper; check; 4536; 12303;RED_WH2_05_0DMG(range)
+gui_helper; check; 4537; 12240;RED_WH2_05_0DMG(location_type)
 gui_helper; check; -3520; 9748;MG_1_1768(range)
 gui_helper; check; -3520; 9711;MG_1_1768(location_type)
 gui_helper; check; -3519; 9782;MG_1_1768(coalition)
@@ -6134,53 +6137,53 @@ gui_helper; del_dmg_not_60; 2783; 8814;REXPERT_RWH1_19; ();
 gui_helper; del_dmg_not_60; 2783; 9013;REXPERT_RWH1_14; ();
 gui_helper; del_dmg_not_60; 2786; 9219;REXPERT_RWH1_15; ();
 gui_helper; del_dmg_not_60; 2789; 9415;REXPERT_RWH1_17; ();
-gui_helper; del_dmg_not_0; 4678; 11348;RED_WH2_01_0DMG; ();
-gui_helper; del_dmg_not_0; 4429; 11348;REXPERT_RWH2_74; ();
-gui_helper; del_dmg_not_0; 4430; 11557;REXPERT_RWH2_52; ();
-gui_helper; del_dmg_not_0; 4678; 11557;RED_WH2_02_0DMG; ();
-gui_helper; del_dmg_not_0; 4432; 11761;REXPERT_RWH2_60; ();
-gui_helper; del_dmg_not_0; 4680; 11762;RED_WH2_03_0DMG; ();
-gui_helper; del_dmg_not_0; 4432; 11960;REXPERT_RWH2_54; ();
-gui_helper; del_dmg_not_0; 4679; 11959;RED_WH2_04_0DMG; ();
-gui_helper; del_dmg_not_0; 4435; 12154;REXPERT_RWH2_56; ();
-gui_helper; del_dmg_not_0; 4679; 12156;RED_WH2_05_0DMG; ();
-gui_helper; del_dmg_not_20; 3921; 11337;REXPERT_RWH2_55; ();
-gui_helper; del_dmg_not_20; 4185; 11341;RED_WH2_01_20DMG; ();
-gui_helper; del_dmg_not_20; 3925; 11547;REXPERT_RWH2_39; ();
-gui_helper; del_dmg_not_20; 4186; 11545;RED_WH2_02_20DMG; ();
-gui_helper; del_dmg_not_20; 3924; 11756;REXPERT_RWH2_52_2; ();
-gui_helper; del_dmg_not_20; 4185; 11757;RED_WH2_03_20DMG; ();
-gui_helper; del_dmg_not_20; 3932; 11957;REXPERT_RWH2_38; ();
-gui_helper; del_dmg_not_20; 4185; 11954;RED_WH2_04_20DMG; ();
-gui_helper; del_dmg_not_20; 3929; 12148;REXPERT_RWH2_47; ();
-gui_helper; del_dmg_not_20; 4188; 12147;RED_WH2_05_20DMG; ();
-gui_helper; del_dmg_not_40; 3417; 11336;REXPERT_RWH2_37; ();
-gui_helper; del_dmg_not_40; 3679; 11336;RED_WH2_01_40DMG; ();
-gui_helper; del_dmg_not_40; 3427; 11547;REXPERT_RWH2_26_1; ();
-gui_helper; del_dmg_not_40; 3679; 11543;RED_WH2_02_40DMG; ();
-gui_helper; del_dmg_not_40; 3426; 11751;REXPERT_RWH2_40; ();
-gui_helper; del_dmg_not_40; 3679; 11751;RED_WH2_03_40DMG; ();
-gui_helper; del_dmg_not_40; 3426; 11949;REXPERT_RWH2_26_2; ();
-gui_helper; del_dmg_not_40; 3681; 11953;RED_WH2_04_40DMG; ();
-gui_helper; del_dmg_not_40; 3429; 12144;REXPERT_RWH2_30; ();
-gui_helper; del_dmg_not_40; 3680; 12143;RED_WH2_05_40DMG; ();
-gui_helper; del_dmg_not_60; 2891; 11324;REXPERT_RWH2_24; ();
-gui_helper; del_dmg_not_60; 3167; 11326;RED_WH2_01_60DMG; ();
-gui_helper; del_dmg_not_60; 2900; 11536;REXPERT_RWH2_19; ();
-gui_helper; del_dmg_not_60; 3166; 11536;RED_WH2_02_60DMG; ();
-gui_helper; del_dmg_not_60; 2901; 11736;REXPERT_RWH2_14; ();
-gui_helper; del_dmg_not_60; 3167; 11734;RED_WH2_03_60DMG; ();
-gui_helper; del_dmg_not_60; 2901; 11939;REXPERT_RWH2_15; ();
-gui_helper; del_dmg_not_60; 3168; 11939;RED_WH2_04_60DMG; ();
-gui_helper; del_dmg_not_60; 2902; 12135;REXPERT_RWH2_17; ();
-gui_helper; del_dmg_not_60; 3169; 12136;RED_WH2_05_60DMG; ();
-gui_helper; del_dmg_not_80; 2636; 11316;RED_WH2_01_80DMG; ();
-gui_helper; del_dmg_not_80; 2361; 11317;REXPERT_RWH2_10; ();
-gui_helper; del_dmg_not_80; 2362; 11528;REXPERT_RWH2_13; ();
-gui_helper; del_dmg_not_80; 2639; 11532;RED_WH2_02_80DMG; ();
-gui_helper; del_dmg_not_80; 2363; 11733;REXPERT_RWH2_7; ();
-gui_helper; del_dmg_not_80; 2637; 11732;RED_WH2_03_80DMG; ();
-gui_helper; del_dmg_not_80; 2366; 11938;REXPERT_RWH2_9; ();
-gui_helper; del_dmg_not_80; 2633; 11936;RED_WH2_04_80DMG; ();
-gui_helper; del_dmg_not_80; 2367; 12133;REXPERT_RWH2_8; ();
-gui_helper; del_dmg_not_80; 2634; 12131;RED_WH2_05_80DMG; ();
+gui_helper; del_dmg_not_0; 4375; 11363;RED_WH2_01_0DMG; ();
+gui_helper; del_dmg_not_0; 4126; 11363;REXPERT_RWH2_74; ();
+gui_helper; del_dmg_not_0; 4127; 11572;REXPERT_RWH2_52; ();
+gui_helper; del_dmg_not_0; 4375; 11572;RED_WH2_02_0DMG; ();
+gui_helper; del_dmg_not_0; 4129; 11776;REXPERT_RWH2_60; ();
+gui_helper; del_dmg_not_0; 4377; 11777;RED_WH2_03_0DMG; ();
+gui_helper; del_dmg_not_0; 4129; 11975;REXPERT_RWH2_54; ();
+gui_helper; del_dmg_not_0; 4376; 11974;RED_WH2_04_0DMG; ();
+gui_helper; del_dmg_not_0; 4132; 12169;REXPERT_RWH2_56; ();
+gui_helper; del_dmg_not_0; 4376; 12171;RED_WH2_05_0DMG; ();
+gui_helper; del_dmg_not_20; 3618; 11352;REXPERT_RWH2_55; ();
+gui_helper; del_dmg_not_20; 3882; 11356;RED_WH2_01_20DMG; ();
+gui_helper; del_dmg_not_20; 3622; 11562;REXPERT_RWH2_39; ();
+gui_helper; del_dmg_not_20; 3883; 11560;RED_WH2_02_20DMG; ();
+gui_helper; del_dmg_not_20; 3621; 11771;REXPERT_RWH2_52_2; ();
+gui_helper; del_dmg_not_20; 3882; 11772;RED_WH2_03_20DMG; ();
+gui_helper; del_dmg_not_20; 3629; 11972;REXPERT_RWH2_38; ();
+gui_helper; del_dmg_not_20; 3882; 11969;RED_WH2_04_20DMG; ();
+gui_helper; del_dmg_not_20; 3626; 12163;REXPERT_RWH2_47; ();
+gui_helper; del_dmg_not_20; 3885; 12162;RED_WH2_05_20DMG; ();
+gui_helper; del_dmg_not_40; 3114; 11351;REXPERT_RWH2_37; ();
+gui_helper; del_dmg_not_40; 3376; 11351;RED_WH2_01_40DMG; ();
+gui_helper; del_dmg_not_40; 3124; 11562;REXPERT_RWH2_26_1; ();
+gui_helper; del_dmg_not_40; 3376; 11558;RED_WH2_02_40DMG; ();
+gui_helper; del_dmg_not_40; 3123; 11766;REXPERT_RWH2_40; ();
+gui_helper; del_dmg_not_40; 3376; 11766;RED_WH2_03_40DMG; ();
+gui_helper; del_dmg_not_40; 3123; 11964;REXPERT_RWH2_26_2; ();
+gui_helper; del_dmg_not_40; 3378; 11968;RED_WH2_04_40DMG; ();
+gui_helper; del_dmg_not_40; 3126; 12159;REXPERT_RWH2_30; ();
+gui_helper; del_dmg_not_40; 3377; 12158;RED_WH2_05_40DMG; ();
+gui_helper; del_dmg_not_60; 2588; 11339;REXPERT_RWH2_24; ();
+gui_helper; del_dmg_not_60; 2864; 11341;RED_WH2_01_60DMG; ();
+gui_helper; del_dmg_not_60; 2597; 11551;REXPERT_RWH2_19; ();
+gui_helper; del_dmg_not_60; 2863; 11551;RED_WH2_02_60DMG; ();
+gui_helper; del_dmg_not_60; 2598; 11751;REXPERT_RWH2_14; ();
+gui_helper; del_dmg_not_60; 2864; 11749;RED_WH2_03_60DMG; ();
+gui_helper; del_dmg_not_60; 2598; 11954;REXPERT_RWH2_15; ();
+gui_helper; del_dmg_not_60; 2865; 11954;RED_WH2_04_60DMG; ();
+gui_helper; del_dmg_not_60; 2599; 12150;REXPERT_RWH2_17; ();
+gui_helper; del_dmg_not_60; 2866; 12151;RED_WH2_05_60DMG; ();
+gui_helper; del_dmg_not_80; 2333; 11331;RED_WH2_01_80DMG; ();
+gui_helper; del_dmg_not_80; 2058; 11332;REXPERT_RWH2_10; ();
+gui_helper; del_dmg_not_80; 2059; 11543;REXPERT_RWH2_13; ();
+gui_helper; del_dmg_not_80; 2336; 11547;RED_WH2_02_80DMG; ();
+gui_helper; del_dmg_not_80; 2060; 11748;REXPERT_RWH2_7; ();
+gui_helper; del_dmg_not_80; 2334; 11747;RED_WH2_03_80DMG; ();
+gui_helper; del_dmg_not_80; 2063; 11953;REXPERT_RWH2_9; ();
+gui_helper; del_dmg_not_80; 2330; 11951;RED_WH2_04_80DMG; ();
+gui_helper; del_dmg_not_80; 2064; 12148;REXPERT_RWH2_8; ();
+gui_helper; del_dmg_not_80; 2331; 12146;RED_WH2_05_80DMG; ();
