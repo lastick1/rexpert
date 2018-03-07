@@ -27,7 +27,7 @@
 - Windsock - ветроуказатели аэродромов
 - CityFire
 - Spotter
-- Bridge -
+- Bridge - мосты (координатные группы)
 - AtArtPosition
 - FiringPoint
 - Siren - сирены аэродромов

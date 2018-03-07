@@ -43,6 +43,13 @@ class CampaignMap:
     ACTIONS = 'actions'
 
 
+class TvdNames:
+    """Имена ТВД"""
+    MOSCOW = 'moscow'
+    STALIN = 'stalingrad'
+    KUBAN = 'kuban'
+
+
 class GameplayAction:
     """Константы модели данных игровых событий"""
     DATE = 'date'
@@ -65,6 +72,11 @@ class CampaignMission:
     OBJECTIVES = 'objectives'
     AIRFIELDS = 'airfields'
     DIVISION_UNITS = 'division_units'
+
+    class Kinds:
+        """Типы миссий"""
+        ASSAULT = 'assault'
+        REGULAR = 'regular'
 
 
 class Division:
