@@ -92,7 +92,7 @@ class DivisionsController:
         """Обработать завершение раунда"""
         self._round_ended = True
 
-    def damage_division(self, tvd_name: str, unit_name: str):
+    def damage_division(self, tik: int, tvd_name: str, unit_name: str):
         """Зачесть уничтожение подразделения дивизии"""
         division_name = unit_name.split(sep='_')[1]
         division = self.storage.divisions.load_by_name(tvd_name, division_name)
@@ -103,6 +103,7 @@ class DivisionsController:
         if division.units < 0:
             division.units = 0
         if division.units <= self.config.gameplay.division_death and division.name not in self._sent_inputs:
+            self._ioc.campaign_controller.register_action(model.DivisionKill(tik, division.name))
             self._sent_inputs.add(division.name)
             if not self.config.main.offline_mode:
                 if not self.rcon.connected:

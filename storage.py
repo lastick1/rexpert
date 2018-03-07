@@ -1,5 +1,5 @@
 """Работа с БД"""
-import logging
+import datetime
 
 import pymongo
 
@@ -27,6 +27,27 @@ class CampaignMaps(CollectionWrapper):
     """Работа с документами карт кампании в БД"""
 
     @staticmethod
+    def _convert_actions(actions: list) -> list:
+        """Конвертировать игровые действия из документа"""
+        result = list()
+        for action in actions:
+            if action[constants.GameplayAction.KIND] == model.DivisionKill.__name__:
+                act = model.DivisionKill(
+                    action[constants.GameplayAction.TIK],
+                    action[constants.GameplayAction.OBJECT_NAME]
+                )
+                act.date = datetime.datetime.strptime(action[constants.GameplayAction.DATE], constants.DATE_FORMAT)
+                result.append(act)
+            elif action[constants.GameplayAction.KIND] == model.WarehouseDisable.__name__:
+                act = model.WarehouseDisable(
+                    action[constants.GameplayAction.TIK],
+                    action[constants.GameplayAction.OBJECT_NAME]
+                )
+                act.date = datetime.datetime.strptime(action[constants.GameplayAction.DATE], constants.DATE_FORMAT)
+                result.append(act)
+        return result
+
+    @staticmethod
     def _convert_from_document(document) -> model.CampaignMap:
         """Конвертировать документ из БД в объект класса карты кампании"""
         return model.CampaignMap(
@@ -35,6 +56,7 @@ class CampaignMaps(CollectionWrapper):
             mission_date=document[constants.CampaignMap.MISSION_DATE],
             tvd_name=document[constants.TVD_NAME],
             months=document[constants.CampaignMap.MONTHS],
+            actions=CampaignMaps._convert_actions(document[constants.CampaignMap.ACTIONS]),
             mission=CampaignMissions.convert_from_document(document[constants.CampaignMap.MISSION])
         )
 

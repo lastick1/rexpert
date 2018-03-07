@@ -25,6 +25,7 @@ class CampaignController:
         self._mission: model.CampaignMission = None
         self._campaign_map: model.CampaignMap = None
         self._current_tvd: model.Tvd = None
+        self._round_ended: bool = False
         self.tvd_builders = {x: processing.TvdBuilder(x, ioc) for x in ioc.config.mgen.maps}
 
     @property
@@ -74,10 +75,7 @@ class CampaignController:
     @property
     def campaign_map(self) -> model.CampaignMap:
         """Текущая карта кампании"""
-        for campaign_maps in self.storage.campaign_maps.load_all():
-            if not campaign_maps.is_ended(self.config.mgen.cfg[campaign_maps.tvd_name][END_DATE]):
-                return campaign_maps
-        raise NameError('Campaign finished')
+        return self._campaign_map
 
     @property
     def next_name(self) -> str:
@@ -106,7 +104,8 @@ class CampaignController:
         self.warehouses_controller.initialize_warehouses(tvd_name)
         start = self.config.mgen.cfg[tvd_name][START_DATE]
         order = list(self.config.mgen.maps).index(tvd_name) + 1
-        campaign_map = model.CampaignMap(order=order, date=start, mission_date=start, tvd_name=tvd_name, months=list())
+        campaign_map = model.CampaignMap(
+            order=order, date=start, mission_date=start, tvd_name=tvd_name, months=list(), actions=list())
         tvd = self.tvd_builders[campaign_map.tvd_name].get_tvd(campaign_map.date.strftime(constants.DATE_FORMAT))
         self.airfields_controller.initialize_tvd(tvd, campaign_map)
         self.storage.campaign_maps.update(campaign_map)
@@ -146,20 +145,31 @@ class CampaignController:
 
     def start_mission(self, atype: atypes.Atype0):
         """Обработать начало миссии"""
+        self._round_ended = False
         source_mission = self.source_parser.parse_in_dogfight(
             atype.file_path.replace('Multiplayer/Dogfight', '').replace('\\', '').replace('.msnbin', ''))
         self._mission = self._make_campaign_mission(atype, source_mission)
+        self._campaign_map = self.storage.campaign_maps.load_by_tvd_name(self._mission.tvd_name)
         self._update_tik(atype.tik)
-        campaign_map = self.campaign_map
-        campaign_map.mission = self._mission
-        self._current_tvd = self._get_tvd(campaign_map.tvd_name, campaign_map.date.strftime(constants.DATE_FORMAT))
-        self.storage.campaign_maps.update(campaign_map)
-        logging.info(f'mission started {campaign_map.mission.date}, {campaign_map.mission.file}')
+        self._campaign_map.mission = self._mission
+        self._current_tvd = self._get_tvd(
+            self._campaign_map.tvd_name, self._campaign_map.date.strftime(constants.DATE_FORMAT))
+        self.storage.campaign_maps.update(self._campaign_map)
+        logging.info(f'mission started {self._campaign_map.mission.date}, {self._campaign_map.mission.file}')
         # TODO сохранить миссию в базу (в документ model.CampaignMap и в коллекцию model.CampaignMissions)
         # TODO удалить файлы предыдущей миссии
 
+    def register_action(self, action: model.GameplayAction) -> None:
+        """Зарегистрировать игровое событие"""
+        action.date = self._mission.date
+        if not self._round_ended:
+            self._campaign_map.actions.append(action)
+            self.storage.campaign_maps.update(self._campaign_map)
+        else:
+            logging.warning(f'{action.__class__.__name__} after round end {action.object_name}')
+
     def _get_tvd(self, tvd_name: str, date: str) -> model.Tvd:
-        """"""
+        """Получить ТВД (создаётся заново)"""
         return self.tvd_builders[tvd_name].get_tvd(date)
 
     def end_mission(self, atype: atypes.Atype7):
@@ -177,7 +187,10 @@ class CampaignController:
         """Обработать завершение раунда (4-минутный отсчёт до конца миссии)"""
         logging.info('round ended')
         self._update_tik(atype.tik)
+        self._round_ended = True
+
         # TODO подвести итог миссии
+        # TODO если сторона переходит в наступление, то увеличить счётчик смертей у склада
         # TODO отправить инпут завершения миссии (победа/ничья)
         # TODO определить имя ТВД для следующей миссии
         # TODO обновить папку ТВД

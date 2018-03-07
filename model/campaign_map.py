@@ -15,6 +15,7 @@ class CampaignMap:
             mission_date: str,
             tvd_name: str,
             months: list,
+            actions: list,
             mission: CampaignMission = None
     ):
         self.order = order  # порядковый номер карты кампании
@@ -22,6 +23,7 @@ class CampaignMap:
         self.mission_date = datetime.datetime.strptime(mission_date, constants.DATE_FORMAT)  # дата текущей миссии
         self.tvd_name = tvd_name  # имя твд
         self.months = months  # завершённые месяцы
+        self.actions = actions  # игровые действия на карте
         self.mission = mission
 
     def to_dict(self) -> dict:
@@ -32,6 +34,7 @@ class CampaignMap:
             constants.CampaignMap.DATE: self.date.strftime(constants.DATE_FORMAT),
             constants.CampaignMap.MISSION_DATE: self.mission_date.strftime(constants.DATE_FORMAT),
             constants.CampaignMap.MONTHS: self.months,
+            constants.CampaignMap.ACTIONS: list(x.to_dict() for x in self.actions),
             constants.CampaignMap.MISSION: self.mission.to_dict() if self.mission else None
         }
 

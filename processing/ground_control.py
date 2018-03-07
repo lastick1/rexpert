@@ -118,16 +118,16 @@ class GroundController:
         return self._ioc.rcon
 
     # TODO подумать над тем, чтобы дёргать этот обработчик на атайп15, а не на каждый кил
-    def _check_targets(self):
+    def _check_targets(self, tik: int):
         """Проверить состояние целей и отправить инпуты в консоль при необходимости"""
         for target in self.targets:
             unit = _to_unit(target)
             if unit.killed and unit not in self._killed_units:
                 self._killed_units.add(unit)
                 if isinstance(unit, DivisionUnit):
-                    self._ioc.divisions_controller.damage_division(unit.tvd_name, unit.name)
+                    self._ioc.divisions_controller.damage_division(tik, unit.tvd_name, unit.name)
                 if isinstance(unit, WarehouseUnit):
-                    self._ioc.warehouses_controller.damage_warehouse(unit)
+                    self._ioc.warehouses_controller.damage_warehouse(tik, unit)
 
     def _send_input(self, server_input: str):
         """Отправить инпут на сервер, если он не был отправлен"""
@@ -182,7 +182,7 @@ class GroundController:
                     logging.debug(f'ground kill in unit: {unit.name} at {unit.pos}')
                     break
             if changed:
-                self._check_targets()
+                self._check_targets(atype.tik)
 
     def mission_result(self, atype: atypes.Atype8) -> None:
         """Обработать mission objective в логах"""

@@ -92,7 +92,7 @@ class WarehouseController:
         """Завершить раунд"""
         self._round_ended = True
 
-    def damage_warehouse(self, unit: WarehouseUnit):
+    def damage_warehouse(self, tik: int, unit: WarehouseUnit):
         """Зачесть уничтожение секции склада"""
         server_input_name = unit.name.split(sep='_')[1]
         warehouse = self._warehouses_by_inputs[server_input_name]
@@ -101,9 +101,11 @@ class WarehouseController:
             return
         warehouse.health -= warehouse.next_damage
         logging.info(f'{warehouse.name} section destroyed: {warehouse.health}')
-        if warehouse.health < 20 and warehouse.name not in self._sent_inputs:
-            self._sent_inputs.add(warehouse.name)
-            self.rcon.server_input(warehouse.name)
+        if warehouse.health < 20 and server_input_name not in self._sent_inputs:
+            self._sent_inputs.add(server_input_name)
+            self.rcon.server_input(server_input_name)
+        if warehouse.health < 40:
+            self._ioc.campaign_controller.register_action(model.WarehouseDisable(tik, warehouse.name))
         self.storage.warehouses.update(warehouse)
 
     def get_warehouse(self, warehouse_name: str) -> model.Warehouse:

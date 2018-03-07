@@ -40,6 +40,15 @@ class CampaignMap:
     MISSION_DATE = 'mission_date'
     MONTHS = 'months'
     MISSION = 'mission'
+    ACTIONS = 'actions'
+
+
+class GameplayAction:
+    """Константы модели данных игровых событий"""
+    DATE = 'date'
+    TIK = 'tik'
+    KIND = 'kind'
+    OBJECT_NAME = 'object_name'
 
 
 class CampaignMission:
