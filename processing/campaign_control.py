@@ -188,13 +188,17 @@ class CampaignController:
         logging.info('round ended')
         self._update_tik(atype.tik)
         self._round_ended = True
-
-        # TODO подвести итог миссии
-        # TODO если сторона переходит в наступление, то увеличить счётчик смертей у склада
-        # TODO отправить инпут завершения миссии (победа/ничья)
-        # TODO определить имя ТВД для следующей миссии
-        # TODO обновить папку ТВД
-        self.generate(self.next_name)
+        attack = self._campaign_map.country_attacked()
+        if attack:
+            # TODO реализовать
+            self.generate_attack(attack)
+        else:
+            # TODO подвести итог миссии
+            # TODO если сторона переходит в наступление, то увеличить счётчик смертей у склада
+            # TODO отправить инпут завершения миссии (победа/ничья)
+            # TODO определить имя ТВД для следующей миссии
+            # TODO обновить папку ТВД
+            self.generate(self.next_name)
 
     @staticmethod
     def _make_campaign_mission(atype: atypes.Atype0, source_mission: model.SourceMission) -> model.CampaignMission:
