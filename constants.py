@@ -27,6 +27,12 @@ class Player:
     LIGHT = 'light'
 
 
+class Country:
+    """Коды стран"""
+    USSR = 101
+    GERMANY = 201
+
+
 class Airfield:
     """Константы модели данных аэродромов"""
     PLANES = 'planes'

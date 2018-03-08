@@ -296,6 +296,7 @@ class TestPlayersController(unittest.TestCase):
         document = IOC.storage.players.collection.find_one(FILTER)
         self.assertEqual(expect, document[constants.Player.UNLOCKS])
 
+    @unittest.skip('not implemented')
     def test_do_not_give_for_bailout(self):
         """Не даётся модификация за вылет с киллом и прыжком"""
         self.fail('not implemented')

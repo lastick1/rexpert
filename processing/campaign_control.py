@@ -163,7 +163,7 @@ class CampaignController:
         """Зарегистрировать игровое событие"""
         action.date = self._mission.date
         if not self._round_ended:
-            self._campaign_map.actions.append(action)
+            self._campaign_map.register_action(action)
             self.storage.campaign_maps.update(self._campaign_map)
         else:
             logging.warning(f'{action.__class__.__name__} after round end {action.object_name}')
