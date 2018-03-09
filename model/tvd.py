@@ -43,6 +43,7 @@ class Tvd:
         self.blue_rear_airfield = None  # немецкий тыловой аэродром в миссии
         self._border: list = None
         self._nodes_list: list = None
+        self.attack_location: geometry.Point = None  # точка атакуемого аэродрома
         self.grid = grid  # граф этого ТВД
 
     @property

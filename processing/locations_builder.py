@@ -356,5 +356,11 @@ class LocationsBuilder:
             location.types.add(types[warehouse.server_input])
             self.locations[GROUND_OBJECTIVE].append(location)
 
+        if tvd.attack_location:
+            location = Location(name=GROUND_OBJECTIVE, x=tvd.attack_location.x, z=tvd.attack_location.z,
+                                y=0, oy=0, length=10, width=10)
+            location.types.add(AIRFIELD)
+            self.locations[GROUND_OBJECTIVE].append(location)
+
         self.locations[AIRFIELD].append(red_rear_af)
         self.locations[AIRFIELD].append(blue_rear_af)

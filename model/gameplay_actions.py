@@ -23,6 +23,17 @@ class GameplayAction:
         }
 
 
+class AirfieldKill(GameplayAction):
+    """Уничтожение аэродрома"""
+    def __init__(self, tik: int, country: int, airfield_name: str):
+        super().__init__(tik, country, self.__class__.__name__, airfield_name)
+
+    @property
+    def airfield_name(self):
+        """Уничтоженный аэродром"""
+        return self.object_name
+
+
 class DivisionKill(GameplayAction):
     """Уничтожение дивизии"""
 

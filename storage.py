@@ -47,6 +47,14 @@ class CampaignMaps(CollectionWrapper):
                 )
                 act.date = datetime.datetime.strptime(action[constants.GameplayAction.DATE], constants.DATE_FORMAT)
                 result.append(act)
+            elif action[constants.GameplayAction.KIND] == model.AirfieldKill.__name__:
+                act = model.AirfieldKill(
+                    action[constants.GameplayAction.TIK],
+                    action[constants.COUNTRY],
+                    action[constants.GameplayAction.OBJECT_NAME]
+                )
+                act.date = datetime.datetime.strptime(action[constants.GameplayAction.DATE], constants.DATE_FORMAT)
+                result.append(act)
         return result
 
     @staticmethod

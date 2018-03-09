@@ -53,6 +53,10 @@ class AirfieldsController:
             if airfield.distance_to(x=x, z=z) < radius:
                 return airfield
 
+    def get_airfield_by_name(self, tvd_name: str, airfield_name) -> model.ManagedAirfield:
+        """Получить аэродром по имени"""
+        return self.storage.airfields.load_by_name(tvd_name, airfield_name)
+
     def start_mission(self):
         """Обработать начало миссии"""
         self.current_airfields.clear()

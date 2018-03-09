@@ -4,7 +4,7 @@ import datetime
 import constants
 
 from .campaign_mission import CampaignMission
-from .gameplay_actions import GameplayAction, DivisionKill, WarehouseDisable
+from .gameplay_actions import GameplayAction, AirfieldKill, DivisionKill, WarehouseDisable
 
 
 class CampaignMap:
@@ -114,3 +114,8 @@ class CampaignMap:
         # это крайне маловероятное событие, что обе страны одновременно выполнят задачи для перехода в наступление
         # время берётся по тику в логах сервера
         raise NameError(f'It happened: both countries completed tasks at the same tik')
+
+    @property
+    def killed_airfields(self) -> dict:
+        """Уничтоженные аэродромы"""
+        return {x.country: x.airfield_name for x in self._actions if isinstance(x, AirfieldKill)}

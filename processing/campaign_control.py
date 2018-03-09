@@ -119,13 +119,22 @@ class CampaignController:
         self.storage.divisions.collection.drop()
         self.storage.warehouses.collection.drop()
 
-    def _generate(self, mission_name: str, date: str, tvd_name: str, attacking_country: int):
+    def _generate(self,
+                  mission_name: str,
+                  date: str,
+                  tvd_name: str,
+                  attacking_country: int,
+                  attacked_airfield_name: str = None):
         """Сгенерировать миссию для указанной даты и ТВД кампании"""
         tvd_builder = self.tvd_builders[tvd_name]
         tvd = tvd_builder.get_tvd(date)
         # Генерация первой миссии
         airfields = self.storage.airfields.load_by_tvd(tvd_name)
-        tvd_builder.update(tvd, self.divisions_controller.filter_airfields(tvd_name, airfields))
+        if attacked_airfield_name:
+            tvd_builder.update(
+                tvd, airfields, self.airfields_controller.get_airfield_by_name(tvd_name, attacked_airfield_name))
+        else:
+            tvd_builder.update(tvd, self.divisions_controller.filter_airfields(tvd_name, airfields))
         self.generator.make_ldb(tvd_name)
         self.generator.make_lgb(tvd_name)
 
@@ -134,9 +143,9 @@ class CampaignController:
 
         self.generator.make_mission(mission_template, mission_name, tvd_name)
 
-    def generate(self, mission_name, tvd_name: str, date: str, attacking_country=0):
+    def generate(self, mission_name, tvd_name: str, date: str, attacking_country=0, attacked_airfield_name: str = None):
         """Сгенерировать текущую миссию кампании с указанным именем"""
-        self._generate(mission_name, date, tvd_name, attacking_country)
+        self._generate(mission_name, date, tvd_name, attacking_country, attacked_airfield_name)
 
     def initialize(self):
         """Инициализировать кампанию в БД и сгенерировать первую миссию"""
@@ -184,8 +193,6 @@ class CampaignController:
         self._mission.is_correctly_completed = True
         self.storage.campaign_missions.update(self._mission)
         # TODO "приземлить" всех
-        # TODO подвести итог ТВД, если он изменился
-        # TODO подвести итог кампании, если она закончилась
 
     def end_round(self, atype: atypes.Atype19):  # этот метод должен вызываться последним среди всех контроллеров
         """Обработать завершение раунда (4-минутный отсчёт до конца миссии)"""
@@ -193,15 +200,21 @@ class CampaignController:
         self._update_tik(atype.tik)
         self._round_ended = True
         # TODO подвести итог миссии
-        # TODO если сторона переходит в наступление, то увеличить счётчик смертей у склада
+        # TODO если сторона переходит в наступление, то увеличить счётчик смертей у склада и "починить" его
         # TODO отправить инпут завершения миссии (победа/ничья)
+        # TODO подвести итог кампании, если она закончилась
+        # TODO подвести итог ТВД, если он изменился
         # TODO определить имя ТВД для следующей миссии
-        # TODO обновить папку ТВД
+
+        killed_airfields = self._campaign_map.killed_airfields
+        attack = self._campaign_map.country_attacked()
         self._generate(
             self.next_name,
             self._campaign_map.date.strftime(constants.DATE_FORMAT),
             self._campaign_map.tvd_name,
-            self._campaign_map.country_attacked())
+            attack,
+            killed_airfields[attack])
+        self.storage.campaign_maps.update(self._campaign_map)
 
     @staticmethod
     def _make_campaign_mission(atype: atypes.Atype0, source_mission: model.SourceMission) -> model.CampaignMission:

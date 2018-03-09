@@ -6,6 +6,7 @@ import datetime
 
 import configs
 import constants
+import geometry
 import model
 import processing
 import storage
@@ -185,12 +186,19 @@ class TvdBuilder:
             }
         tvd.influences = areas
 
-    def update(self, tvd, airfields: list):
+    def update(self, tvd, airfields: list, attacked_airfield: geometry.Point = None):
         """Обновление групп, баз локаций и файла параметров генерации в папке ТВД (data/scg/x)"""
-        logging.info(f'Updating TVD folder: {tvd.folder} ({tvd.name}) {tvd.date}')
+        mission_type = constants.CampaignMission.Kinds.REGULAR
+        if attacked_airfield:
+            mission_type = constants.CampaignMission.Kinds.ASSAULT
+        logging.info(f'Updating TVD folder ({mission_type}): {tvd.folder} ({tvd.name}) {tvd.date}')
         self.update_icons(tvd)
-        tvd.red_front_airfields.extend(self.airfields_selector.select_front(tvd.confrontation_east, airfields))
-        tvd.blue_front_airfields.extend(self.airfields_selector.select_front(tvd.confrontation_west, airfields))
+        if attacked_airfield:
+            front_af_source = geometry.remove_too_close(airfields, [attacked_airfield], 30000)
+        else:
+            front_af_source = airfields
+        tvd.red_front_airfields.extend(self.airfields_selector.select_front(tvd.confrontation_east, front_af_source))
+        tvd.blue_front_airfields.extend(self.airfields_selector.select_front(tvd.confrontation_west, front_af_source))
         tvd.red_rear_airfield = self.airfields_selector.select_rear(
             influence=tvd.influences[101][0].polygon,
             front_area=tvd.confrontation_east,
@@ -201,6 +209,7 @@ class TvdBuilder:
             front_area=tvd.confrontation_west,
             airfields=airfields
         )
+        tvd.attack_location = attacked_airfield
         self.update_airfields(tvd)
         self.update_warehouses(tvd)
         self.update_ldb(tvd)
