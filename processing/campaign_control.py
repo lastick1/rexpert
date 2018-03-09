@@ -119,7 +119,7 @@ class CampaignController:
         self.storage.divisions.collection.drop()
         self.storage.warehouses.collection.drop()
 
-    def _generate(self, mission_name: str, campaign_map: model.CampaignMap):
+    def _generate(self, mission_name: str, campaign_map: model.CampaignMap, attacking_country: int):
         """Сгенерировать миссию для указанной карты кампании"""
         tvd_builder = self.tvd_builders[campaign_map.tvd_name]
         tvd = tvd_builder.get_tvd(campaign_map.date.strftime(constants.DATE_FORMAT))
@@ -128,19 +128,23 @@ class CampaignController:
         tvd_builder.update(tvd, self.divisions_controller.filter_airfields(campaign_map.tvd_name, airfields))
         self.generator.make_ldb(campaign_map.tvd_name)
         self.generator.make_lgb(campaign_map.tvd_name)
-        self.generator.make_mission(mission_name, campaign_map.tvd_name)
 
-    def generate(self, mission_name):
+        mission_template = str(self.config.mgen.tvd_folders[campaign_map.tvd_name].joinpath(
+            self.config.mgen.cfg[campaign_map.tvd_name]['mission_templates'][str(attacking_country)]).absolute())
+
+        self.generator.make_mission(mission_template, mission_name, campaign_map.tvd_name)
+
+    def generate(self, mission_name, attacking_country=0):
         """Сгенерировать текущую миссию кампании с указанным именем"""
-        self._generate(mission_name, self.campaign_map)
+        self._generate(mission_name, self.campaign_map, attacking_country)
 
     def initialize(self):
-        """Инициализировать кампанию в БД"""
+        """Инициализировать кампанию в БД и сгенерировать первую миссию"""
         for tvd_name in self.config.mgen.maps:
             self.initialize_map(tvd_name)
 
-        campaign_map = self.storage.campaign_maps.load_by_order(1)
-        self._generate('result1', campaign_map)
+        self._campaign_map = self.storage.campaign_maps.load_by_order(1)
+        self.generate('result1')
         self.players_controller.reset()
 
     def start_mission(self, atype: atypes.Atype0):
@@ -188,17 +192,12 @@ class CampaignController:
         logging.info('round ended')
         self._update_tik(atype.tik)
         self._round_ended = True
-        attack = self._campaign_map.country_attacked()
-        if attack:
-            # TODO реализовать
-            self.generate_attack(attack)
-        else:
-            # TODO подвести итог миссии
-            # TODO если сторона переходит в наступление, то увеличить счётчик смертей у склада
-            # TODO отправить инпут завершения миссии (победа/ничья)
-            # TODO определить имя ТВД для следующей миссии
-            # TODO обновить папку ТВД
-            self.generate(self.next_name)
+        # TODO подвести итог миссии
+        # TODO если сторона переходит в наступление, то увеличить счётчик смертей у склада
+        # TODO отправить инпут завершения миссии (победа/ничья)
+        # TODO определить имя ТВД для следующей миссии
+        # TODO обновить папку ТВД
+        self._generate(self.next_name, self._campaign_map, self._campaign_map.country_attacked())
 
     @staticmethod
     def _make_campaign_mission(atype: atypes.Atype0, source_mission: model.SourceMission) -> model.CampaignMission:

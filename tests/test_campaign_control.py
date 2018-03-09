@@ -148,6 +148,17 @@ class TestCampaignController(unittest.TestCase):
         campaign_map = IOC.storage.campaign_maps.load_by_order(order)
         self.assertSequenceEqual(campaign_map.months, [campaign_map.date.strftime(DATE_FORMAT)])
 
+    def test_initialize(self):
+        """Инициализируется кампания"""
+        shutil.copy('./data/scg/1/stalin-base.ldf', './tmp/data/scg/1/')
+        shutil.copy('./data/scg/2/moscow_base.ldf', './tmp/data/scg/2/')
+        campaign = processing.CampaignController(IOC)
+        IOC.grid_controller.get_file = self._get_xgml_file_mock
+        # Act
+        campaign.initialize()
+        # Assert
+        self.assertIn(('result1', MOSCOW), IOC.generator_mock.generations)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

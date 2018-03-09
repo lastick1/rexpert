@@ -46,19 +46,16 @@ class Generator:
             time.sleep(3)
             logging.info('... LGB done')
 
-    def make_mission(self, file_name: str, tvd_name: str, assault_mission=False):
+    def make_mission(self, mission_template: str, file_name: str, tvd_name: str):
         """
         Метод генерирует и перемещает миссию в папку Multiplayer/Dogfight
+        :param mission_template: путь к файлу шаблона миссии
         :param file_name: имя файла миссии
         :param tvd_name: имя карты
-        :param assault_mission: тип миссии (обычная или наступление)
         :return:
         """
         tvd_folder = self.mgen.tvd_folders[tvd_name]
         default_params = tvd_folder.joinpath(self.mgen.cfg[tvd_name]['default_params_dest']).absolute()
-        mission_template = tvd_folder.joinpath(self.mgen.cfg[tvd_name]['regular_mt_file']).absolute()
-        if assault_mission:
-            mission_template = tvd_folder.joinpath(self.mgen.cfg[tvd_name]['assault_mt_file']).absolute()
         logging.info(f'Generating new mission: [{file_name}]...')
         now = str(datetime.datetime.now()).replace(":", "-").replace(" ", "_")
         with open(str(self.main.mission_gen_folder) + r"\missiongen_log_" + now + ".txt", "w") as missiongen_log:
@@ -67,7 +64,7 @@ class Generator:
                 "--params",
                 str(default_params),
                 "--all-langs",
-                str(mission_template)
+                mission_template
             ]
             # запуск генератора миссии
             generator = subprocess.Popen(args, cwd=str(self.main.mission_gen_folder), stdout=missiongen_log)
