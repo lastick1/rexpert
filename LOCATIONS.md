@@ -53,7 +53,7 @@
 - RailwayStation - жд станции
 - SupplyDump - референс второго склада
 - Factory - секции складов
-- Airfield
+- Airfield - референс атакуемого аэродрома (миссии захвата)
 - Port
 - ReconArea - "десант"
 
