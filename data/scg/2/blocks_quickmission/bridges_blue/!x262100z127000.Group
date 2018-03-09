@@ -1,7 +1,7 @@
 Bridge
 {
   Name = "Bridge";
-  Index = 32;
+  Index = 81;
   LinkTrId = 0;
   XPos = 262216.313;
   YPos = 78.704;
@@ -22,7 +22,7 @@ Bridge
 Bridge
 {
   Name = "Bridge";
-  Index = 33;
+  Index = 82;
   LinkTrId = 0;
   XPos = 262225.329;
   YPos = 78.707;
@@ -43,7 +43,7 @@ Bridge
 Bridge
 {
   Name = "Bridge";
-  Index = 34;
+  Index = 83;
   LinkTrId = 0;
   XPos = 262041.696;
   YPos = 78.643;
@@ -64,7 +64,7 @@ Bridge
 Bridge
 {
   Name = "Bridge";
-  Index = 35;
+  Index = 84;
   LinkTrId = 0;
   XPos = 262032.672;
   YPos = 78.639;
@@ -85,7 +85,7 @@ Bridge
 Bridge
 {
   Name = "Bridge";
-  Index = 36;
+  Index = 85;
   LinkTrId = 0;
   XPos = 262090.909;
   YPos = 78.666;
@@ -106,7 +106,7 @@ Bridge
 Bridge
 {
   Name = "Bridge";
-  Index = 37;
+  Index = 86;
   LinkTrId = 0;
   XPos = 262167.042;
   YPos = 78.687;
@@ -127,7 +127,7 @@ Bridge
 Bridge
 {
   Name = "Bridge";
-  Index = 38;
+  Index = 87;
   LinkTrId = 0;
   XPos = 262222.028;
   YPos = 78.701;
@@ -148,7 +148,7 @@ Bridge
 Bridge
 {
   Name = "Bridge";
-  Index = 39;
+  Index = 88;
   LinkTrId = 0;
   XPos = 262231.043;
   YPos = 78.704;
@@ -169,7 +169,7 @@ Bridge
 Bridge
 {
   Name = "Bridge";
-  Index = 40;
+  Index = 89;
   LinkTrId = 0;
   XPos = 262047.411;
   YPos = 78.642;
@@ -190,7 +190,7 @@ Bridge
 Bridge
 {
   Name = "Bridge";
-  Index = 41;
+  Index = 90;
   LinkTrId = 0;
   XPos = 262038.387;
   YPos = 78.638;
@@ -211,7 +211,7 @@ Bridge
 Bridge
 {
   Name = "Bridge";
-  Index = 42;
+  Index = 91;
   LinkTrId = 0;
   XPos = 262096.624;
   YPos = 78.665;
@@ -232,7 +232,7 @@ Bridge
 Bridge
 {
   Name = "Bridge";
-  Index = 43;
+  Index = 92;
   LinkTrId = 0;
   XPos = 262172.757;
   YPos = 78.685;
@@ -252,7 +252,7 @@ Bridge
 
 MCU_H_ReferencePoint
 {
-  Index = 72;
+  Index = 93;
   Name = "Helper Reference Point";
   Desc = "";
   Targets = [];
@@ -267,5 +267,236 @@ MCU_H_ReferencePoint
   Backward = 250;
   Left = 250;
   Right = 250;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 231;
+  LinkTrId = 0;
+  XPos = 261893.802;
+  YPos = 91.397;
+  ZPos = 127265.775;
+  XOri = 0.00;
+  YOri = 141.57;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_tower_2.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_tower_2.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 2000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 232;
+  LinkTrId = 0;
+  XPos = 261448.037;
+  YPos = 83.229;
+  ZPos = 127126.886;
+  XOri = 0.00;
+  YOri = 338.58;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_dugouts_1.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_dugouts_1.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 233;
+  LinkTrId = 0;
+  XPos = 261696.050;
+  YPos = 81.965;
+  ZPos = 127518.611;
+  XOri = 0.00;
+  YOri = 227.60;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_dugouts_2.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_dugouts_2.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 235;
+  LinkTrId = 0;
+  XPos = 261394.732;
+  YPos = 83.534;
+  ZPos = 127315.827;
+  XOri = 0.00;
+  YOri = 271.94;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_barak.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_barak.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 3000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 237;
+  LinkTrId = 0;
+  XPos = 261691.778;
+  YPos = 82.394;
+  ZPos = 127510.072;
+  XOri = 0.00;
+  YOri = 227.60;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_ford-g917.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_ford-g917.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 239;
+  LinkTrId = 0;
+  XPos = 261383.891;
+  YPos = 83.543;
+  ZPos = 127328.489;
+  XOri = 0.00;
+  YOri = 123.55;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_horch830.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_horch830.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 240;
+  LinkTrId = 0;
+  XPos = 261652.299;
+  YPos = 80.504;
+  ZPos = 127546.501;
+  XOri = 0.00;
+  YOri = 227.60;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_ford-g917.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_ford-g917.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 241;
+  LinkTrId = 0;
+  XPos = 261438.763;
+  YPos = 82.989;
+  ZPos = 127108.013;
+  XOri = 0.00;
+  YOri = 8.30;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_ford-g917.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_ford-g917.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 500;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 243;
+  LinkTrId = 0;
+  XPos = 261344.268;
+  YPos = 81.568;
+  ZPos = 126653.636;
+  XOri = 0.00;
+  YOri = 304.98;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_saray.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_saray.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 244;
+  LinkTrId = 0;
+  XPos = 261396.369;
+  YPos = 81.107;
+  ZPos = 126688.676;
+  XOri = 0.00;
+  YOri = 304.98;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_saray.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_saray.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 245;
+  LinkTrId = 0;
+  XPos = 261445.491;
+  YPos = 82.453;
+  ZPos = 126722.521;
+  XOri = 0.00;
+  YOri = 304.98;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_saray.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_saray.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
 }
 
