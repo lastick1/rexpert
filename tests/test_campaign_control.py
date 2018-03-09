@@ -108,7 +108,7 @@ class TestCampaignController(unittest.TestCase):
         IOC.storage.campaign_maps.update(campaign_map)
         campaign._campaign_map = campaign_map
         # Act
-        campaign.generate('result2')
+        campaign.generate('result2', MOSCOW, '03.09.1941')
         # Assert
         self.assertIn(('result2', MOSCOW), IOC.generator_mock.generations)
 

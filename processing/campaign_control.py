@@ -119,24 +119,24 @@ class CampaignController:
         self.storage.divisions.collection.drop()
         self.storage.warehouses.collection.drop()
 
-    def _generate(self, mission_name: str, campaign_map: model.CampaignMap, attacking_country: int):
-        """Сгенерировать миссию для указанной карты кампании"""
-        tvd_builder = self.tvd_builders[campaign_map.tvd_name]
-        tvd = tvd_builder.get_tvd(campaign_map.date.strftime(constants.DATE_FORMAT))
+    def _generate(self, mission_name: str, date: str, tvd_name: str, attacking_country: int):
+        """Сгенерировать миссию для указанной даты и ТВД кампании"""
+        tvd_builder = self.tvd_builders[tvd_name]
+        tvd = tvd_builder.get_tvd(date)
         # Генерация первой миссии
-        airfields = self.storage.airfields.load_by_tvd(campaign_map.tvd_name)
-        tvd_builder.update(tvd, self.divisions_controller.filter_airfields(campaign_map.tvd_name, airfields))
-        self.generator.make_ldb(campaign_map.tvd_name)
-        self.generator.make_lgb(campaign_map.tvd_name)
+        airfields = self.storage.airfields.load_by_tvd(tvd_name)
+        tvd_builder.update(tvd, self.divisions_controller.filter_airfields(tvd_name, airfields))
+        self.generator.make_ldb(tvd_name)
+        self.generator.make_lgb(tvd_name)
 
-        mission_template = str(self.config.mgen.tvd_folders[campaign_map.tvd_name].joinpath(
-            self.config.mgen.cfg[campaign_map.tvd_name]['mission_templates'][str(attacking_country)]).absolute())
+        mission_template = str(self.config.mgen.tvd_folders[tvd_name].joinpath(
+            self.config.mgen.cfg[tvd_name]['mission_templates'][str(attacking_country)]).absolute())
 
-        self.generator.make_mission(mission_template, mission_name, campaign_map.tvd_name)
+        self.generator.make_mission(mission_template, mission_name, tvd_name)
 
-    def generate(self, mission_name, attacking_country=0):
+    def generate(self, mission_name, tvd_name: str, date: str, attacking_country=0):
         """Сгенерировать текущую миссию кампании с указанным именем"""
-        self._generate(mission_name, self.campaign_map, attacking_country)
+        self._generate(mission_name, date, tvd_name, attacking_country)
 
     def initialize(self):
         """Инициализировать кампанию в БД и сгенерировать первую миссию"""
@@ -144,7 +144,7 @@ class CampaignController:
             self.initialize_map(tvd_name)
 
         self._campaign_map = self.storage.campaign_maps.load_by_order(1)
-        self.generate('result1')
+        self.generate('result1', self._campaign_map.tvd_name, self._campaign_map.date.strftime(constants.DATE_FORMAT))
         self.players_controller.reset()
 
     def start_mission(self, atype: atypes.Atype0):
@@ -197,7 +197,11 @@ class CampaignController:
         # TODO отправить инпут завершения миссии (победа/ничья)
         # TODO определить имя ТВД для следующей миссии
         # TODO обновить папку ТВД
-        self._generate(self.next_name, self._campaign_map, self._campaign_map.country_attacked())
+        self._generate(
+            self.next_name,
+            self._campaign_map.date.strftime(constants.DATE_FORMAT),
+            self._campaign_map.tvd_name,
+            self._campaign_map.country_attacked())
 
     @staticmethod
     def _make_campaign_mission(atype: atypes.Atype0, source_mission: model.SourceMission) -> model.CampaignMission:

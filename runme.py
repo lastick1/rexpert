@@ -40,10 +40,10 @@ def initialize_campaign():
     controller.initialize()
 
 
-def generate(name: str):
+def generate(name: str, tvd_name: str, date: str, attacking_country=0):
     """Сгенерировать миссию"""
     controller = processing.CampaignController(dependency_container.DependencyContainer())
-    controller.generate(name)
+    controller.generate(name, tvd_name, date, attacking_country=attacking_country)
 
 
 def run():
@@ -60,5 +60,5 @@ logging.info("Program Start.")
 # compile_ldf()
 # reset()
 # initialize_campaign()
-# generate('result1')
+# generate('result1', 'moscow', '01.09.1941', attacking_country=0)
 run()
