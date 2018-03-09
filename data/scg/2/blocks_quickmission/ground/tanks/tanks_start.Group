@@ -1,0 +1,83 @@
+MCU_H_Output
+{
+  Index = 103;
+  Name = "START";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -3151.797;
+  YPos = 17.795;
+  ZPos = 3619.621;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_TR_MissionBegin
+{
+  Index = 104;
+  Name = "Translator Mission Begin";
+  Desc = "";
+  Targets = [105];
+  Objects = [];
+  XPos = -3087.437;
+  YPos = 17.795;
+  ZPos = 3665.197;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+}
+
+MCU_Timer
+{
+  Index = 105;
+  Name = "t15s";
+  Desc = "";
+  Targets = [103];
+  Objects = [];
+  XPos = -3148.080;
+  YPos = 17.795;
+  ZPos = 3667.537;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 0;
+  Random = 100;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 106;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -3119.436;
+  YPos = 17.795;
+  ZPos = 3639.689;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+
+MCU_H_Dynamic
+{
+  Index = 107;
+  Name = "DELAY";
+  Desc = "";
+  Targets = [105];
+  Objects = [];
+  XPos = -3128.391;
+  YPos = 17.795;
+  ZPos = 3650.279;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "Time";
+}
+
