@@ -539,6 +539,9 @@ blocks_set; blocks_BLUE_TANKS_3; main(scg\2\blocks_quickmission\scenario\tanks_x
 blocks_set; blocks_BT_ICON_3; main(scg\2\blocks_quickmission\icons\tank_icon_3.group);
 blocks_set; blocks_BLUE_TANKS_1_START_2062_2065; main(scg\2\blocks_quickmission\ground\tanks\tanks_start.group);
 blocks_set; blocks_BLUE_TARGET_LOCATION_2061_2066; main(scg\2\blocks_quickmission\scenario\target_location.group);
+blocks_set; blocks_TEST_AF1; main(scg\2\blocks_quickmission\test\blue_test_airfield.group);
+blocks_set; blocks_TEST_AF1_2056; main(scg\2\blocks_quickmission\test\blue_test_airfield.group);
+blocks_set; blocks_TEST_AF1_2057; main(scg\2\blocks_quickmission\test\blue_test_airfield.group);
 
 #
 ## geo params
@@ -1079,6 +1082,9 @@ phase; BLUE_TANKS_3; random(RED_DEFENCES3); blocks_BLUE_TANKS_3; clone_location;
 phase; BT_ICON_3; at(BLUE_TANKS_3); blocks_BT_ICON_3; clone_location;;
 phase; BLUE_TANKS_1_START_2062_2065; at(BLUE_TANKS_3); blocks_BLUE_TANKS_1_START_2062_2065; clone_location;;
 phase; BLUE_TARGET_LOCATION_2061_2066; at(RED_DEFENCES3); blocks_BLUE_TARGET_LOCATION_2061_2066; clone_location;;
+phase; TEST_AF1; at(BLUE_TANKS_1); blocks_TEST_AF1; clone_location;;
+phase; TEST_AF1_2056; at(BLUE_TANKS_2); blocks_TEST_AF1_2056; clone_location;;
+phase; TEST_AF1_2057; at(BLUE_TANKS_3); blocks_TEST_AF1_2057; clone_location;;
 
 #
 ## cases & switches
@@ -1477,8 +1483,8 @@ check; RED_DEFENCES3; coalition(f);
 check; RED_DEFENCES1; coalition(f);
 check; RED_DEFENCES3; location_type(GroundObjective,Tank);
 check; RED_DEFENCES1; location_type(GroundObjective,Tank);
-check; RED_DEFENCES3; range(PRIMARY_LINK_PHASE,closest_outof,5000);
-check; RED_DEFENCES1; range(PRIMARY_LINK_PHASE,closest_outof,5000);
+check; RED_DEFENCES3; range(PRIMARY_LINK_PHASE,closest_outof,18000);
+check; RED_DEFENCES1; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; RAD1_AAA5_REF; free();
 check; RAD1_AAA5_REF; location_type(Decoration,Dogfight);
 check; RAD1_AAA5_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
@@ -2273,7 +2279,7 @@ check; MISSION_TARGET_REF; location_type(GroundObjective,Airfield);
 check; RED_DEFENCES2; free();
 check; RED_DEFENCES2; coalition(f);
 check; RED_DEFENCES2; location_type(GroundObjective,Tank);
-check; RED_DEFENCES2; range(PRIMARY_LINK_PHASE,closest_outof,5000);
+check; RED_DEFENCES2; range(PRIMARY_LINK_PHASE,closest_outof,9000);
 check; BLUE_TANKS_1; range(PRIMARY_LINK_PHASE,closest_outof,4000);
 check; BLUE_TANKS_2; location_type(Decoration,Transport);
 check; BLUE_TANKS_2; free();
@@ -3531,6 +3537,9 @@ gui_helper; BLUE_TANKS_3; 14395; 6447;
 gui_helper; BT_ICON_3; 14373; 6810;
 gui_helper; BLUE_TANKS_1_START_2062_2065; 14380; 6052;
 gui_helper; BLUE_TARGET_LOCATION_2061_2066; 13694; 6518;
+gui_helper; TEST_AF1; 13980; 3540;
+gui_helper; TEST_AF1_2056; 14208; 3764;
+gui_helper; TEST_AF1_2057; 13923; 3891;
 gui_helper; check; -8542; 474;BLUE_REAR_AF_REFERENCE(coalition)
 gui_helper; check; -8544; 428;BLUE_REAR_AF_REFERENCE(location_type)
 gui_helper; check; -8544; 518;BLUE_REAR_AF_REFERENCE(range)
