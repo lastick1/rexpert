@@ -300,6 +300,17 @@ class LocationsBuilder:
                         location.country = country
                         break
                 continue
+            if BRIDGE in location.types:
+                country = tvd.get_country(location)
+                close = False
+                for airfield in front_airfields[country]:
+                    if location.distance_to(airfield.x, airfield.z) < 30000:
+                        close = True
+                        break
+                if not close:
+                    location.country = country
+                continue
+
             for country in confrontations:
                 if location.is_in_area(confrontations[country]):
                     location.country = country
@@ -317,6 +328,16 @@ class LocationsBuilder:
                     if location.is_in_area(confrontations[country]):
                         location.country = country
                         break
+            if RAILWAY_STATION in location.types:
+                country = tvd.get_country(location)
+                close = False
+                for airfield in front_airfields[country]:
+                    if location.distance_to(airfield.x, airfield.z) < 30000:
+                        close = True
+                        break
+                if not close:
+                    location.country = country
+                continue
 
         red_rear_af = Location(
             name=AIRFIELD, x=tvd.red_rear_airfield.x, z=tvd.red_rear_airfield.z, y=0, oy=0, length=10, width=10)
