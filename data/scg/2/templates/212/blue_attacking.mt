@@ -2327,6 +2327,13 @@ check; BLUE_STATION_2; free();
 check; BLUE_STATION_3; coalition(e);
 check; BLUE_STATION_3; range(PRIMARY_LINK_PHASE,closest_outof,40000);
 check; BLUE_STATION_3; free();
+check; BLUE_STATION_3; location_type(GroundObjective,RailwayStation);
+check; BLUE_STATION_2; location_type(GroundObjective,RailwayStation);
+check; BLUE_STATION_1; location_type(GroundObjective,RailwayStation);
+check; BLUE_BRIDGE_4; location_type(Decoration,Bridge);
+check; BLUE_BRIDGE_3; location_type(Decoration,Bridge);
+check; BLUE_BRIDGE_2; location_type(Decoration,Bridge);
+check; BLUE_BRIDGE_1; location_type(Decoration,Bridge);
 
 #
 ## property actions
@@ -3579,7 +3586,7 @@ gui_helper; TEST_AF1_2056; 4098; 9127;
 gui_helper; TEST_AF1_2057; 3813; 9254;
 gui_helper; BLUE_BRIDGE_1; -92; 7459;
 gui_helper; BLUE_STATION_1; -928; 8912;
-gui_helper; BLUE_BRIDGE_1_ICON_AND_INPUT; -89; 7240;
+gui_helper; BLUE_BRIDGE_1_ICON_AND_INPUT; -91; 7234;
 gui_helper; BLUE_BRIDGE_2; -522; 7738;
 gui_helper; BLUE_BRIDGE_3; -891; 7989;
 gui_helper; BLUE_BRIDGE_4; -1269; 8392;
@@ -3588,7 +3595,7 @@ gui_helper; BLUE_BRIDGE_3_ICON_AND_INPUT; -874; 7738;
 gui_helper; BLUE_BRIDGE_4_ICON_AND_INPUT; -1227; 8146;
 gui_helper; BLUE_STATION_2; -441; 9176;
 gui_helper; BLUE_STATION_3; 87; 9512;
-gui_helper; BLUE_STATION_1_ICON_AND_INPUT; -918; 8703;
+gui_helper; BLUE_STATION_1_ICON_AND_INPUT; -915; 8686;
 gui_helper; BLUE_STATION_2_ICON_AND_INPUT; -412; 8892;
 gui_helper; BLUE_STATION_3_ICON_AND_INPUT; 65; 9240;
 gui_helper; check; -8542; 474;BLUE_REAR_AF_REFERENCE(coalition)
@@ -4428,6 +4435,13 @@ gui_helper; check; -189; 9195;BLUE_STATION_2(free)
 gui_helper; check; 342; 9591;BLUE_STATION_3(coalition)
 gui_helper; check; 335; 9648;BLUE_STATION_3(range)
 gui_helper; check; 339; 9531;BLUE_STATION_3(free)
+gui_helper; check; 341; 9473;BLUE_STATION_3(location_type)
+gui_helper; check; -182; 9134;BLUE_STATION_2(location_type)
+gui_helper; check; -682; 8875;BLUE_STATION_1(location_type)
+gui_helper; check; -1045; 8365;BLUE_BRIDGE_4(location_type)
+gui_helper; check; -674; 7954;BLUE_BRIDGE_3(location_type)
+gui_helper; check; -281; 7699;BLUE_BRIDGE_2(location_type)
+gui_helper; check; 125; 7415;BLUE_BRIDGE_1(location_type)
 gui_helper; AILevel; 2994; 6625;RAD1_001_6_AAA; (AAA_2037mm);
 gui_helper; AILevel; 3509; 6633;RAD1_002_7_AAA; (AAA_2037mm);
 gui_helper; AILevel; 6828; 10209;RAD1_010_8_AAA; (AAA_8885mm);
