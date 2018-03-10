@@ -20,41 +20,32 @@ WAREHOUSE_RE = re.compile(
 )
 
 
+BRIDGE_RE = re.compile(
+    ''
+)
+
+
+RW_STATION_RE = re.compile(
+    ''
+)
+
+
 def _to_campaign_mission(mission) -> CampaignMission:
     return mission
 
 
-class GroundTargetUnit(geometry.Point):
-    """Часть кластерной цели (секция склада или подразделение дивизии)"""
+class GroundTarget(geometry.Point):
+    """Наземная цель"""
 
-    def __init__(
-            self,
-            name: str,
-            pos: dict,
-            side: str,
-            parent_name: str,
-            durability: int,
-            radius: float,
-            tvd_name: str
-    ):
-        super().__init__(pos['x'], pos['z'])
+    def __init__(self, server_input: str, pos: dict, durability: int, country: int, radius: float):
+        super().__init__(x=pos['x'], z=pos['z'])
         self.pos = pos
-        self.name = name  # имя цели
-        self.tvd_name = tvd_name  # имя твд, на котором расположен объект
-        self._side = side  # сторона цели в виде буквы B или R
-        self._radius = radius  # радиус цели, в котором она засчитывает килы
+        self.server_input = server_input
+        self.country = country
         self._durability = durability  # количество килов цели до её уничтожения
-        self.parent_name = parent_name  # имя дивизии или склада
+        self._radius = radius  # радиус цели, в котором она засчитывает килы
 
         self._kills = list()
-
-    @property
-    def country(self) -> int:
-        """Сторона, к которой принадлежит цель"""
-        if self._side == 'R':
-            return 101
-        if self._side == 'B':
-            return 201
 
     @property
     def killed(self) -> bool:
@@ -68,9 +59,60 @@ class GroundTargetUnit(geometry.Point):
             return True
         return False
 
+    @property
+    def name(self):
+        """имя цели"""
+        return self.server_input
 
-def _to_unit(unit) -> GroundTargetUnit:
-    return unit
+
+class BridgeTarget(GroundTarget):
+    """Мост"""
+
+    def __init__(self, server_input: str, pos: dict):
+        country = 0
+        if 'blue' in server_input:
+            country = 201
+        if 'red' in server_input:
+            country = 101
+        super().__init__(server_input, pos, 15, country, 1000)
+
+
+class RailwayStationTarget(GroundTarget):
+    """Железнодорожная станция"""
+
+    def __init__(self, server_input: str, pos: dict):
+        country = 0
+        if 'blue' in server_input:
+            country = 201
+        if 'red' in server_input:
+            country = 101
+        super().__init__(server_input, pos, 35, country, 2000)
+
+
+class GroundTargetUnit(GroundTarget):
+    """Часть кластерной цели (секция склада или подразделение дивизии)"""
+
+    def __init__(
+            self,
+            name: str,
+            pos: dict,
+            side: str,
+            parent_name: str,
+            durability: int,
+            radius: float,
+            tvd_name: str
+    ):
+        country = 0
+        if side == 'B':
+            country = 201
+        if side == 'R':
+            country = 101
+        super().__init__(name, pos, durability, country, radius)
+        self.tvd_name = tvd_name  # имя твд, на котором расположен объект
+        self._side = side  # сторона цели в виде буквы B или R
+        self.parent_name = parent_name  # имя дивизии или склада
+
+        self._kills = list()
 
 
 class DivisionUnit(GroundTargetUnit):
@@ -121,13 +163,25 @@ class GroundController:
     def _check_targets(self, tik: int):
         """Проверить состояние целей и отправить инпуты в консоль при необходимости"""
         for target in self.targets:
-            unit = _to_unit(target)
-            if unit.killed and unit not in self._killed_units:
-                self._killed_units.add(unit)
-                if isinstance(unit, DivisionUnit):
-                    self._ioc.divisions_controller.damage_division(tik, unit.tvd_name, unit.name)
-                if isinstance(unit, WarehouseUnit):
-                    self._ioc.warehouses_controller.damage_warehouse(tik, unit)
+            if isinstance(target, GroundTargetUnit):
+                self._check_unit(tik, target)
+                continue
+            if isinstance(target, GroundTarget):
+                self._check_target(target)
+
+    def _check_unit(self, tik: int, unit: GroundTargetUnit):
+        """Проверить юнит составной цели"""
+        if unit.killed and unit not in self._killed_units:
+            self._killed_units.add(unit)
+            if isinstance(unit, DivisionUnit):
+                self._ioc.divisions_controller.damage_division(tik, unit.tvd_name, unit.name)
+            if isinstance(unit, WarehouseUnit):
+                self._ioc.warehouses_controller.damage_warehouse(tik, unit)
+
+    def _check_target(self, target: GroundTarget):
+        """Проверить цель"""
+        if target.killed:
+            self._send_input(target.server_input)
 
     def _send_input(self, server_input: str):
         """Отправить инпут на сервер, если он не был отправлен"""
@@ -143,12 +197,11 @@ class GroundController:
         """Получить радиус юнита дивизии из конфига"""
         return self.config.mgen.cfg[tvd_name]['division_unit_radius']
 
-    def start_mission(self):
+    def start_mission(self, mission: CampaignMission):
         """Обработать начало миссии"""
         self._killed_units.clear()
         self.ground_kills.clear()
         self.targets.clear()
-        mission = _to_campaign_mission(self._ioc.campaign_controller.mission)
 
         for unit in mission.units:
             if WAREHOUSE_RE.match(unit['name']):
@@ -167,6 +220,12 @@ class GroundController:
                     mission.tvd_name
                 ))
                 continue
+        for server_input in mission.server_inputs:
+            if BRIDGE_RE.match(server_input['name']):
+                self.targets.append(BridgeTarget(server_input['name'], server_input['pos']))
+                continue
+            if RW_STATION_RE.match(server_input['name']):
+                self.targets.append(RailwayStationTarget(server_input['name'], server_input['pos']))
 
     def kill(self, atype: atypes.Atype3) -> None:
         """Обработать уничтожение наземного объекта"""
@@ -176,10 +235,10 @@ class GroundController:
             self.ground_kills.append(kill)
             target.kill(atype.pos)
             changed = False
-            for unit in self.targets:
-                if unit.try_add_kill(atype.point):
+            for target in self.targets:
+                if target.try_add_kill(atype.point):
                     changed = True
-                    logging.debug(f'ground kill in unit: {unit.name} at {unit.pos}')
+                    logging.debug(f'ground kill in unit: {target.name} at {target.pos}')
                     break
             if changed:
                 self._check_targets(atype.tik)

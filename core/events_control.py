@@ -102,7 +102,7 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         self.campaign_controller.start_mission(atype)
         self.divisions_controller.start_mission()
         self.warehouses_controller.start_mission()
-        self.ground_controller.start_mission()
+        self.ground_controller.start_mission(self.campaign_controller.mission)
         self.map_painter.update_map()
 
     def event_hit(self, tik: int, ammo: str, attacker_id: int, target_id: int) -> None:

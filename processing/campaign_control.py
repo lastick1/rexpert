@@ -213,7 +213,7 @@ class CampaignController:
             self._campaign_map.date.strftime(constants.DATE_FORMAT),
             self._campaign_map.tvd_name,
             attack,
-            killed_airfields[attack])
+            killed_airfields[attack] if attack else None)
         self.storage.campaign_maps.update(self._campaign_map)
 
     @staticmethod

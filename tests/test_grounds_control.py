@@ -112,7 +112,7 @@ class TestGroundControl(unittest.TestCase):
             tests.mocks.atype_12_stub(2, aircraft_name, 201, 'Test attacker', -1))
         target = IOC.objects_controller.create_object(
             tests.mocks.atype_12_stub(3, target_name, 101, 'Test ground target', -1))
-        controller.start_mission()
+        controller.start_mission(IOC.campaign_controller.mission)
         # Act
         IOC.objects_controller.kill(atypes.Atype3(4444, attacker.obj_id, target.obj_id, TEST_TARGET_POS_BTD1_UNITS[0]))
         controller.kill(atypes.Atype3(123, -1, target.obj_id, TEST_TARGET_POS_BTD1_UNITS[0]))
@@ -137,7 +137,7 @@ class TestGroundControl(unittest.TestCase):
         target = IOC.objects_controller.create_object(
             tests.mocks.atype_12_stub(3, target_name, 101, 'Test ground target', -1))
         IOC.storage.divisions.update(model.Division(TEST_MISSION.tvd_name, 'BTD1', 10, TEST_TARGET_POS_BTD1_UNITS[0]))
-        controller.start_mission()
+        controller.start_mission(IOC.campaign_controller.mission)
         # Act
         for pos in TEST_TARGET_POS_BTD1_UNITS:
             for i in range(20):
