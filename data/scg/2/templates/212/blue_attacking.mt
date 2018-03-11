@@ -510,7 +510,6 @@ blocks_set; blocks_BLUE_WH2_02_ICON; main(scg\2\blocks_quickmission\icons\bwh_se
 blocks_set; blocks_BLUE_WH2_03_ICON; main(scg\2\blocks_quickmission\icons\bwh_section_icon.group);
 blocks_set; blocks_BLUE_WH2_04_ICON; main(scg\2\blocks_quickmission\icons\bwh_section_icon.group);
 blocks_set; blocks_BLUE_WH2_05_ICON; main(scg\2\blocks_quickmission\icons\bwh_section_icon.group);
-blocks_set; blocks_REXPERT_REGULAR; main(scg\2\blocks_quickmission\rexpert_regular.group);
 blocks_set; blocks_RED_REAR_AF1_DECOR; main(scg\2\blocks_quickmission\af_decor_red\!x100000z156500.group);
 blocks_set; blocks_RED_FRONT_AF3_DECOR; main(scg\2\blocks_quickmission\af_decor_red\!x100000z156500.group);
 blocks_set; blocks_RED_FRONT_AF2_DECOR; main(scg\2\blocks_quickmission\af_decor_red\!x100000z156500.group);
@@ -553,6 +552,7 @@ blocks_set; blocks_BLUE_STATION_3; main(scg\2\blocks_quickmission\stations_blue\
 blocks_set; blocks_BLUE_STATION_1_ICON_AND_INPUT; main(scg\2\blocks_quickmission\icons\blue_railway_station_1.group);
 blocks_set; blocks_BLUE_STATION_2_ICON_AND_INPUT; main(scg\2\blocks_quickmission\icons\blue_railway_station_2.group);
 blocks_set; blocks_BLUE_STATION_3_ICON_AND_INPUT; main(scg\2\blocks_quickmission\icons\blue_railway_station_3.group);
+blocks_set; blocks_REXPERT_ASSAULT; main(scg\2\blocks_quickmission\rexpert_assault.group);
 
 #
 ## geo params
@@ -1064,7 +1064,6 @@ phase; BLUE_WH2_02_ICON; at(BLUE_WH2_02_0DMG); blocks_BLUE_WH2_02_ICON; clone_lo
 phase; BLUE_WH2_03_ICON; at(BLUE_WH2_03_0DMG); blocks_BLUE_WH2_03_ICON; clone_location;;
 phase; BLUE_WH2_04_ICON; at(BLUE_WH2_04_0DMG); blocks_BLUE_WH2_04_ICON; clone_location;;
 phase; BLUE_WH2_05_ICON; at(BLUE_WH2_05_0DMG); blocks_BLUE_WH2_05_ICON; clone_location;;
-phase; REXPERT_REGULAR; at(SERVER_SET); blocks_REXPERT_REGULAR; clone_location;;
 phase; RED_REAR_AF1_DECOR; random(RED_REAF_AF1); blocks_RED_REAR_AF1_DECOR; clone_location;scg\2\blocks_quickmission\af_decor_red;
 phase; RED_FRONT_AF3_DECOR; random(RED_FRONT_AF3); blocks_RED_FRONT_AF3_DECOR; clone_location;scg\2\blocks_quickmission\af_decor_red;
 phase; RED_FRONT_AF2_DECOR; random(RED_FRONT_AF2); blocks_RED_FRONT_AF2_DECOR; clone_location;scg\2\blocks_quickmission\af_decor_red;
@@ -1107,6 +1106,7 @@ phase; BLUE_STATION_3; random(MISSION_TARGET_REF); blocks_BLUE_STATION_3; clone_
 phase; BLUE_STATION_1_ICON_AND_INPUT; at(BLUE_STATION_1); blocks_BLUE_STATION_1_ICON_AND_INPUT; clone_location;;
 phase; BLUE_STATION_2_ICON_AND_INPUT; at(BLUE_STATION_2); blocks_BLUE_STATION_2_ICON_AND_INPUT; clone_location;;
 phase; BLUE_STATION_3_ICON_AND_INPUT; at(BLUE_STATION_3); blocks_BLUE_STATION_3_ICON_AND_INPUT; clone_location;;
+phase; REXPERT_ASSAULT; at(SERVER_SET); blocks_REXPERT_ASSAULT; clone_location;;
 
 #
 ## cases & switches
@@ -3555,7 +3555,6 @@ gui_helper; BLUE_WH2_02_ICON; -13364; 3716;
 gui_helper; BLUE_WH2_03_ICON; -12980; 3711;
 gui_helper; BLUE_WH2_04_ICON; -12595; 3704;
 gui_helper; BLUE_WH2_05_ICON; -12189; 3703;
-gui_helper; REXPERT_REGULAR; 870; -216;
 gui_helper; RED_REAR_AF1_DECOR; 9900; 89;
 gui_helper; RED_FRONT_AF3_DECOR; 7947; -435;
 gui_helper; RED_FRONT_AF2_DECOR; 5998; -368;
@@ -3598,6 +3597,7 @@ gui_helper; BLUE_STATION_3; 87; 9512;
 gui_helper; BLUE_STATION_1_ICON_AND_INPUT; -915; 8686;
 gui_helper; BLUE_STATION_2_ICON_AND_INPUT; -412; 8892;
 gui_helper; BLUE_STATION_3_ICON_AND_INPUT; 65; 9240;
+gui_helper; REXPERT_ASSAULT; 899; -277;
 gui_helper; check; -8542; 474;BLUE_REAR_AF_REFERENCE(coalition)
 gui_helper; check; -8544; 428;BLUE_REAR_AF_REFERENCE(location_type)
 gui_helper; check; -8544; 518;BLUE_REAR_AF_REFERENCE(range)
