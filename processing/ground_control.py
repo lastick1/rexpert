@@ -246,3 +246,11 @@ class GroundController:
     def mission_result(self, atype: atypes.Atype8) -> None:
         """Обработать mission objective в логах"""
         pass
+
+    def killed_bridges(self, country: int) -> int:
+        """Количество убитых мостов указанной стороны"""
+        return len(tuple(x for x in self.targets if isinstance(x, BridgeTarget) and x.country == country))
+
+    def killed_stations(self, country: int) -> int:
+        """Количество убитых мостов указанной стороны"""
+        return len(tuple(x for x in self.targets if isinstance(x, RailwayStationTarget) and x.country == country))

@@ -8,6 +8,7 @@ import model
 import processing
 import storage
 
+from .ground_control import GroundController
 from .divisions_control import DivisionsController
 from .warehouses_control import WarehouseController
 from .grid_control import GridController
@@ -56,6 +57,11 @@ class CampaignController:
     def airfields_controller(self) -> AirfieldsController:
         """Поставщик самолётов"""
         return self._ioc.airfields_controller
+
+    @property
+    def ground_controller(self) -> GroundController:
+        """Контроллер наземки"""
+        return self._ioc.ground_controller
 
     @property
     def source_parser(self) -> SourceParser:
@@ -205,6 +211,14 @@ class CampaignController:
         # TODO подвести итог кампании, если она закончилась
         # TODO подвести итог ТВД, если он изменился
         # TODO определить имя ТВД для следующей миссии
+        if self._mission.kind == constants.CampaignMission.Kinds.ASSAULT:
+            country = self._mission.assault_country
+            if self.ground_controller.killed_stations(country) < 2 and self.ground_controller.killed_bridges(country) < 3:
+                pos = self._mission.assault_pos
+                logging.info(f'{country} captured airfield at {pos}')
+                self.grid_controller.capture(self._mission.tvd_name, pos, country)
+                self._campaign_map.register_capture()
+                self.storage.campaign_maps.update(self._campaign_map)
 
         killed_airfields = self._campaign_map.killed_airfields
         attack = self._campaign_map.country_attacked()

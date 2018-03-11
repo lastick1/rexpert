@@ -48,6 +48,23 @@ class CampaignMission:
         }
 
     @property
+    def assault_country(self) -> int:
+        """Атакующая страна в миссии"""
+        for mission_objective in self.objectives:
+            if mission_objective['obj_type'] == 14 and mission_objective['coalition'] == 1:
+                return constants.Country.USSR
+            if mission_objective['obj_type'] == 14 and mission_objective['coalition'] == 2:
+                return constants.Country.GERMANY
+        raise NameError('Not assault mission')
+
+    @property
+    def assault_pos(self) -> dict:
+        """Точка, которую атакуют"""
+        for mission_objective in self.objectives:
+            if mission_objective['obj_type'] == 14:
+                return mission_objective['pos']
+
+    @property
     def map_icons(self) -> dict:
         """Иконки целей для изображения карты и планнера"""
         icons = {
