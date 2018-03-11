@@ -84,9 +84,9 @@ class PlayersController:
                 self.rcon.connect()
                 self.rcon.auth(self.config.main.rcon_login, self.config.main.rcon_password)
             if self.unlocks_taken[player.account_id] > player.unlocks:
-                message = f'{player.nickname} TAKEOFF is FORBIDDEN FOR YOU on this aircraft {player.unlocks}'
+                message = f'{player.nickname} TAKEOFF is FORBIDDEN FOR YOU on this aircraft. Available unlocks {player.unlocks}'
             else:
-                message = f'{player.nickname} takeoff granted! {player.unlocks}'
+                message = f'{player.nickname} takeoff granted! Available unlocks {player.unlocks}'
             self.rcon.private_message(player.account_id, message)
 
         self.storage.players.update(player)
