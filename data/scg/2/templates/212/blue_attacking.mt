@@ -111,59 +111,6 @@ blocks_set; blocks_BLUE_SMART_CHECKZONE_891_1222; main(scg\2\blocks_quickmission
 blocks_set; blocks_MEDIUM_CANNON_86_883_180_1223; main(scg\2\blocks_quickmission\ground\aaa\med\smart_auto_cannon.group);
 blocks_set; blocks_MEDIUM_CANNON2_87_884_181_1224; main(scg\2\blocks_quickmission\ground\aaa\med\smart_auto_cannon.group);
 blocks_set; blocks_MEDIUM_CANNON6_91_888_192_1225; main(scg\2\blocks_quickmission\ground\aaa\med\smart_auto_cannon.group);
-blocks_set; blocks_PHASE_1; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_REF; main(scg\2\blocks_quickmission\ref_point.group);
-blocks_set; blocks_PHASE_1_13; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_17; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_21; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_25; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_30; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_34; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_38; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_42; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_46; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_59; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_13_60; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_17_61; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_21_62; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_25_63; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_30_64; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_34_65; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_38_66; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_42_67; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_46_68; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_107; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_13_108; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_17_109; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_21_110; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_25_111; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_30_112; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_34_113; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_38_114; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_42_115; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_46_116; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_155; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_13_156; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_17_157; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_21_158; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_25_159; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_30_160; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_34_161; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_38_162; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_42_163; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_46_164; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_155_194; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_13_156_195; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_17_157_196; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_21_158_197; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_25_159_198; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_30_160_199; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_34_161_200; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_38_162_201; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_42_163_202; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_46_164_203; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_42_163_202_242; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
-blocks_set; blocks_PHASE_1_46_164_203_243; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
 blocks_set; blocks_RED_SMART_CHECKZONE; main(scg\2\blocks_quickmission\smart_red_checkzone.group);
 blocks_set; blocks_LARGE_CANNON; main(scg\2\blocks_quickmission\ground\aaa\big\smart_large_cannon.group);
 blocks_set; blocks_MEDIUM_CANNON; main(scg\2\blocks_quickmission\ground\aaa\med\smart_auto_cannon.group);
@@ -223,10 +170,10 @@ blocks_set; blocks_BLUE_FRONT_AF_1_KILLED; main(scg\2\blocks_quickmission\airfie
 blocks_set; blocks_BLUE_FRONT_AF_2_KILLED; main(scg\2\blocks_quickmission\airfields\killed.group);
 blocks_set; blocks_BLUE_FRONT_AF_3_KILLED; main(scg\2\blocks_quickmission\airfields\killed.group);
 blocks_set; blocks_BLUE_REAR_AF1; main(scg\2\blocks_quickmission\airfields_blue\!x119961z143087.group);
-blocks_set; blocks_RED_REAF_AF1; main(scg\2\blocks_quickmission\airfields_red\!x183997z163162.group);
-blocks_set; blocks_RED_FRONT_AF1; main(scg\2\blocks_quickmission\airfields_red\!x183997z163162.group);
-blocks_set; blocks_RED_FRONT_AF2; main(scg\2\blocks_quickmission\airfields_red\!x183997z163162.group);
-blocks_set; blocks_RED_FRONT_AF3; main(scg\2\blocks_quickmission\airfields_red\!x183997z163162.group);
+blocks_set; blocks_RED_REAF_AF1; main(scg\2\blocks_quickmission\airfields_red\!x19794z147440.group);
+blocks_set; blocks_RED_FRONT_AF1; main(scg\2\blocks_quickmission\airfields_red\!x19794z147440.group);
+blocks_set; blocks_RED_FRONT_AF2; main(scg\2\blocks_quickmission\airfields_red\!x19794z147440.group);
+blocks_set; blocks_RED_FRONT_AF3; main(scg\2\blocks_quickmission\airfields_red\!x19794z147440.group);
 blocks_set; blocks_BLUE_FRONT_AF1; main(scg\2\blocks_quickmission\airfields_blue\!x119961z143087.group);
 blocks_set; blocks_BLUE_FRONT_AF2; main(scg\2\blocks_quickmission\airfields_blue\!x119961z143087.group);
 blocks_set; blocks_BLUE_FRONT_AF3; main(scg\2\blocks_quickmission\airfields_blue\!x119961z143087.group);
@@ -510,14 +457,14 @@ blocks_set; blocks_BLUE_WH2_02_ICON; main(scg\2\blocks_quickmission\icons\bwh_se
 blocks_set; blocks_BLUE_WH2_03_ICON; main(scg\2\blocks_quickmission\icons\bwh_section_icon.group);
 blocks_set; blocks_BLUE_WH2_04_ICON; main(scg\2\blocks_quickmission\icons\bwh_section_icon.group);
 blocks_set; blocks_BLUE_WH2_05_ICON; main(scg\2\blocks_quickmission\icons\bwh_section_icon.group);
-blocks_set; blocks_RED_REAR_AF1_DECOR; main(scg\2\blocks_quickmission\af_decor_red\!x100000z156500.group);
-blocks_set; blocks_RED_FRONT_AF3_DECOR; main(scg\2\blocks_quickmission\af_decor_red\!x100000z156500.group);
-blocks_set; blocks_RED_FRONT_AF2_DECOR; main(scg\2\blocks_quickmission\af_decor_red\!x100000z156500.group);
-blocks_set; blocks_RED_FRONT_AF1_DECOR; main(scg\2\blocks_quickmission\af_decor_red\!x100000z156500.group);
-blocks_set; blocks_BLUE_REAR_AF1_DECOR; main(scg\2\blocks_quickmission\af_decor_blue\!x100000z156500.group);
-blocks_set; blocks_BLUE_FRONT_AF3_DECOR; main(scg\2\blocks_quickmission\af_decor_blue\!x100000z156500.group);
-blocks_set; blocks_BLUE_FRONT_AF2_DECOR; main(scg\2\blocks_quickmission\af_decor_blue\!x100000z156500.group);
-blocks_set; blocks_BLUE_FRONT_AF1_DECOR; main(scg\2\blocks_quickmission\af_decor_blue\!x100000z156500.group);
+blocks_set; blocks_AF4_DECOR_RED; main(scg\2\blocks_quickmission\af_decor_red\!x100000z156500.group);
+blocks_set; blocks_AF3_DECOR_RED; main(scg\2\blocks_quickmission\af_decor_red\!x100000z156500.group);
+blocks_set; blocks_AF2_DECOR_RED; main(scg\2\blocks_quickmission\af_decor_red\!x100000z156500.group);
+blocks_set; blocks_AF1_DECOR_RED; main(scg\2\blocks_quickmission\af_decor_red\!x100000z156500.group);
+blocks_set; blocks_AF4_DECOR_BLUE; main(scg\2\blocks_quickmission\af_decor_blue\!x100000z156500.group);
+blocks_set; blocks_AF3_DECOR_BLUE; main(scg\2\blocks_quickmission\af_decor_blue\!x100000z156500.group);
+blocks_set; blocks_AF2_DECOR_BLUE; main(scg\2\blocks_quickmission\af_decor_blue\!x100000z156500.group);
+blocks_set; blocks_AF1_DECOR_BLUE; main(scg\2\blocks_quickmission\af_decor_blue\!x100000z156500.group);
 blocks_set; blocks_BLUE_TARGET_LOCATION; main(scg\2\blocks_quickmission\scenario\target_location.group);
 blocks_set; blocks_BLUE_TANKS_1; main(scg\2\blocks_quickmission\scenario\tanks_x8.group);
 blocks_set; blocks_BT_ICON_1; main(scg\2\blocks_quickmission\icons\tank_icon_1.group);
@@ -586,6 +533,77 @@ blocks_set; blocks_MEDIUM_CANNON_86_883_1134_2219_2279; main(scg\2\blocks_quickm
 blocks_set; blocks_MEDIUM_CANNON3_88_885_1136_2220_2280; main(scg\2\blocks_quickmission\ground\aaa\med\smart_auto_cannon.group);
 blocks_set; blocks_BLUE_SMART_CHECKZONE_891_1142_2221_2281; main(scg\2\blocks_quickmission\smart_blue_checkzone.group);
 blocks_set; blocks_MEDIUM_CANNON_86_883_180_1143_2222_2282; main(scg\2\blocks_quickmission\ground\aaa\med\smart_auto_cannon.group);
+blocks_set; blocks_W_FIELD_DECOR; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_REF; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_W_FIELD_DECOR_2502; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2506; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2510; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2514; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2518; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2522; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2526; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2530; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2534; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2538; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2502_2539; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2506_2540; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2510_2541; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2514_2542; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2518_2543; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2522_2544; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2526_2545; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2530_2546; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2534_2547; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2578; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2502_2579; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2506_2580; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2510_2581; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2514_2582; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2518_2583; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2522_2584; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2526_2585; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2530_2586; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2534_2587; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2618; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2502_2619; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2506_2620; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2510_2621; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2514_2622; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2518_2623; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2522_2624; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2526_2625; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2530_2626; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2534_2627; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2658; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2502_2659; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2506_2660; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2510_2661; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2514_2662; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2518_2663; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2522_2664; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2526_2665; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2530_2666; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2534_2667; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2698; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_W_FIELD_DECOR_2502_2699; main(scg\2\blocks_quickmission\af_decor_neut\!x100000z156500.group);
+blocks_set; blocks_SIREN_BLUE_1; main(scg\2\blocks_quickmission\ground\effects\siren_ger.group);
+blocks_set; blocks_WINDSOCK_5; main(scg\2\blocks_quickmission\windsock.group);
+blocks_set; blocks_SIREN_RED_1; main(scg\2\blocks_quickmission\ground\effects\siren_rus.group);
+blocks_set; blocks_WINDSOCK_1; main(scg\2\blocks_quickmission\windsock.group);
+blocks_set; blocks_SIREN_RED_2; main(scg\2\blocks_quickmission\ground\effects\siren_rus.group);
+blocks_set; blocks_WINDSOCK_2; main(scg\2\blocks_quickmission\windsock.group);
+blocks_set; blocks_SIREN_RED_3; main(scg\2\blocks_quickmission\ground\effects\siren_rus.group);
+blocks_set; blocks_WINDSOCK_3; main(scg\2\blocks_quickmission\windsock.group);
+blocks_set; blocks_SIREN_RED_4; main(scg\2\blocks_quickmission\ground\effects\siren_rus.group);
+blocks_set; blocks_WINDSOCK_4; main(scg\2\blocks_quickmission\windsock.group);
+blocks_set; blocks_SIREN_BLUE_2; main(scg\2\blocks_quickmission\ground\effects\siren_ger.group);
+blocks_set; blocks_WINDSOCK_6; main(scg\2\blocks_quickmission\windsock.group);
+blocks_set; blocks_SIREN_BLUE_3; main(scg\2\blocks_quickmission\ground\effects\siren_ger.group);
+blocks_set; blocks_WINDSOCK_7; main(scg\2\blocks_quickmission\windsock.group);
+blocks_set; blocks_SIREN_BLUE_4; main(scg\2\blocks_quickmission\ground\effects\siren_ger.group);
+blocks_set; blocks_WINDSOCK_8; main(scg\2\blocks_quickmission\windsock.group);
+blocks_set; blocks_BLUE_BEACON; main(scg\2\blocks_quickmission\ground\effects\beacon.group);
+blocks_set; blocks_RED_BEACON; main(scg\2\blocks_quickmission\ground\effects\beacon.group);
 
 #
 ## geo params
@@ -698,59 +716,6 @@ phase; BLUE_SMART_CHECKZONE_891_1222; at(BLUE_REAR_AF1); blocks_BLUE_SMART_CHECK
 phase; MEDIUM_CANNON_86_883_180_1223; random(BLUE_SMART_CHECKZONE_891_1222); blocks_MEDIUM_CANNON_86_883_180_1223; clone_location;;
 phase; MEDIUM_CANNON2_87_884_181_1224; random(BLUE_SMART_CHECKZONE_891_1222); blocks_MEDIUM_CANNON2_87_884_181_1224; clone_location;;
 phase; MEDIUM_CANNON6_91_888_192_1225; random(BLUE_SMART_CHECKZONE_891_1222); blocks_MEDIUM_CANNON6_91_888_192_1225; clone_location;;
-phase; PHASE_1; random(REF); blocks_PHASE_1; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; REF; server_targetpos(); blocks_REF; ;;
-phase; PHASE_1_13; random(PHASE_1); blocks_PHASE_1_13; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_17; random(PHASE_1); blocks_PHASE_1_17; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_21; random(PHASE_1); blocks_PHASE_1_21; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_25; random(PHASE_1); blocks_PHASE_1_25; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_30; random(PHASE_1); blocks_PHASE_1_30; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_34; random(PHASE_1); blocks_PHASE_1_34; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_38; random(PHASE_1); blocks_PHASE_1_38; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_42; random(PHASE_1); blocks_PHASE_1_42; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_46; random(PHASE_1); blocks_PHASE_1_46; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_59; random(PHASE_1_46); blocks_PHASE_1_59; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_13_60; random(PHASE_1_59); blocks_PHASE_1_13_60; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_17_61; random(PHASE_1_59); blocks_PHASE_1_17_61; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_21_62; random(PHASE_1_59); blocks_PHASE_1_21_62; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_25_63; random(PHASE_1_59); blocks_PHASE_1_25_63; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_30_64; random(PHASE_1_59); blocks_PHASE_1_30_64; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_34_65; random(PHASE_1_59); blocks_PHASE_1_34_65; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_38_66; random(PHASE_1_59); blocks_PHASE_1_38_66; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_42_67; random(PHASE_1_59); blocks_PHASE_1_42_67; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_46_68; random(PHASE_1_59); blocks_PHASE_1_46_68; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_107; random(PHASE_1_46_68); blocks_PHASE_1_107; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_13_108; random(PHASE_1_107); blocks_PHASE_1_13_108; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_17_109; random(PHASE_1_107); blocks_PHASE_1_17_109; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_21_110; random(PHASE_1_107); blocks_PHASE_1_21_110; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_25_111; random(PHASE_1_107); blocks_PHASE_1_25_111; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_30_112; random(PHASE_1_107); blocks_PHASE_1_30_112; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_34_113; random(PHASE_1_107); blocks_PHASE_1_34_113; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_38_114; random(PHASE_1_107); blocks_PHASE_1_38_114; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_42_115; random(PHASE_1_107); blocks_PHASE_1_42_115; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_46_116; random(PHASE_1_107); blocks_PHASE_1_46_116; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_155; random(PHASE_1_46_116); blocks_PHASE_1_155; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_13_156; random(PHASE_1_155); blocks_PHASE_1_13_156; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_17_157; random(PHASE_1_155); blocks_PHASE_1_17_157; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_21_158; random(PHASE_1_155); blocks_PHASE_1_21_158; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_25_159; random(PHASE_1_155); blocks_PHASE_1_25_159; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_30_160; random(PHASE_1_155); blocks_PHASE_1_30_160; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_34_161; random(PHASE_1_155); blocks_PHASE_1_34_161; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_38_162; random(PHASE_1_155); blocks_PHASE_1_38_162; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_42_163; random(PHASE_1_155); blocks_PHASE_1_42_163; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_46_164; random(PHASE_1_155); blocks_PHASE_1_46_164; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_155_194; random(PHASE_1_46_164); blocks_PHASE_1_155_194; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_13_156_195; random(PHASE_1_155_194); blocks_PHASE_1_13_156_195; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_17_157_196; random(PHASE_1_155_194); blocks_PHASE_1_17_157_196; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_21_158_197; random(PHASE_1_155_194); blocks_PHASE_1_21_158_197; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_25_159_198; random(PHASE_1_155_194); blocks_PHASE_1_25_159_198; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_30_160_199; random(PHASE_1_155_194); blocks_PHASE_1_30_160_199; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_34_161_200; random(PHASE_1_155_194); blocks_PHASE_1_34_161_200; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_38_162_201; random(PHASE_1_155_194); blocks_PHASE_1_38_162_201; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_42_163_202; random(PHASE_1_155_194); blocks_PHASE_1_42_163_202; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_46_164_203; random(PHASE_1_155_194); blocks_PHASE_1_46_164_203; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_42_163_202_242; random(PHASE_1_46_164_203); blocks_PHASE_1_42_163_202_242; clone_location;scg\2\blocks_quickmission\af_decor_neut;
-phase; PHASE_1_46_164_203_243; random(PHASE_1_42_163_202_242); blocks_PHASE_1_46_164_203_243; clone_location;scg\2\blocks_quickmission\af_decor_neut;
 phase; RED_SMART_CHECKZONE; at(RED_FRONT_AF_3_KILLED); blocks_RED_SMART_CHECKZONE; clone_location;;
 phase; LARGE_CANNON; random(RED_SMART_CHECKZONE); blocks_LARGE_CANNON; clone_location;;
 phase; MEDIUM_CANNON; random(RED_SMART_CHECKZONE); blocks_MEDIUM_CANNON; clone_location;;
@@ -1097,14 +1062,14 @@ phase; BLUE_WH2_02_ICON; at(BLUE_WH2_02_0DMG); blocks_BLUE_WH2_02_ICON; clone_lo
 phase; BLUE_WH2_03_ICON; at(BLUE_WH2_03_0DMG); blocks_BLUE_WH2_03_ICON; clone_location;;
 phase; BLUE_WH2_04_ICON; at(BLUE_WH2_04_0DMG); blocks_BLUE_WH2_04_ICON; clone_location;;
 phase; BLUE_WH2_05_ICON; at(BLUE_WH2_05_0DMG); blocks_BLUE_WH2_05_ICON; clone_location;;
-phase; RED_REAR_AF1_DECOR; random(RED_REAF_AF1); blocks_RED_REAR_AF1_DECOR; clone_location;scg\2\blocks_quickmission\af_decor_red;
-phase; RED_FRONT_AF3_DECOR; random(RED_FRONT_AF3); blocks_RED_FRONT_AF3_DECOR; clone_location;scg\2\blocks_quickmission\af_decor_red;
-phase; RED_FRONT_AF2_DECOR; random(RED_FRONT_AF2); blocks_RED_FRONT_AF2_DECOR; clone_location;scg\2\blocks_quickmission\af_decor_red;
-phase; RED_FRONT_AF1_DECOR; random(RED_FRONT_AF1); blocks_RED_FRONT_AF1_DECOR; clone_location;scg\2\blocks_quickmission\af_decor_red;
-phase; BLUE_REAR_AF1_DECOR; random(BLUE_REAR_AF1); blocks_BLUE_REAR_AF1_DECOR; clone_location;scg\2\blocks_quickmission\af_decor_blue;
-phase; BLUE_FRONT_AF3_DECOR; random(BLUE_FRONT_AF3); blocks_BLUE_FRONT_AF3_DECOR; clone_location;scg\2\blocks_quickmission\af_decor_blue;
-phase; BLUE_FRONT_AF2_DECOR; random(BLUE_FRONT_AF2); blocks_BLUE_FRONT_AF2_DECOR; clone_location;scg\2\blocks_quickmission\af_decor_blue;
-phase; BLUE_FRONT_AF1_DECOR; random(BLUE_FRONT_AF1); blocks_BLUE_FRONT_AF1_DECOR; clone_location;scg\2\blocks_quickmission\af_decor_blue;
+phase; AF4_DECOR_RED; random(RED_REAF_AF1); blocks_AF4_DECOR_RED; clone_location;scg\2\blocks_quickmission\af_decor_red;
+phase; AF3_DECOR_RED; random(RED_FRONT_AF3); blocks_AF3_DECOR_RED; clone_location;scg\2\blocks_quickmission\af_decor_red;
+phase; AF2_DECOR_RED; random(RED_FRONT_AF2); blocks_AF2_DECOR_RED; clone_location;scg\2\blocks_quickmission\af_decor_red;
+phase; AF1_DECOR_RED; random(RED_FRONT_AF1); blocks_AF1_DECOR_RED; clone_location;scg\2\blocks_quickmission\af_decor_red;
+phase; AF4_DECOR_BLUE; random(BLUE_REAR_AF1); blocks_AF4_DECOR_BLUE; clone_location;scg\2\blocks_quickmission\af_decor_blue;
+phase; AF3_DECOR_BLUE; random(BLUE_FRONT_AF3); blocks_AF3_DECOR_BLUE; clone_location;scg\2\blocks_quickmission\af_decor_blue;
+phase; AF2_DECOR_BLUE; random(BLUE_FRONT_AF2); blocks_AF2_DECOR_BLUE; clone_location;scg\2\blocks_quickmission\af_decor_blue;
+phase; AF1_DECOR_BLUE; random(BLUE_FRONT_AF1); blocks_AF1_DECOR_BLUE; clone_location;scg\2\blocks_quickmission\af_decor_blue;
 phase; BLUE_TARGET_LOCATION; at(RED_DEFENCES1); blocks_BLUE_TARGET_LOCATION; clone_location;;
 phase; BLUE_TANKS_1; random(RED_DEFENCES1); blocks_BLUE_TANKS_1; clone_location;;
 phase; BT_ICON_1; at(BLUE_TANKS_1); blocks_BT_ICON_1; clone_location;;
@@ -1173,6 +1138,77 @@ phase; MEDIUM_CANNON_86_883_1134_2219_2279; random(BLUE_SMART_CHECKZONE_891_1142
 phase; MEDIUM_CANNON3_88_885_1136_2220_2280; random(BLUE_SMART_CHECKZONE_891_1142_2221_2281); blocks_MEDIUM_CANNON3_88_885_1136_2220_2280; clone_location;;
 phase; BLUE_SMART_CHECKZONE_891_1142_2221_2281; at(BLUE_STATION_3); blocks_BLUE_SMART_CHECKZONE_891_1142_2221_2281; clone_location;;
 phase; MEDIUM_CANNON_86_883_180_1143_2222_2282; random(BLUE_SMART_CHECKZONE_891_1142_2221_2281); blocks_MEDIUM_CANNON_86_883_180_1143_2222_2282; clone_location;;
+phase; W_FIELD_DECOR; random(REF); blocks_W_FIELD_DECOR; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; REF; server_targetpos(); blocks_REF; ;;
+phase; W_FIELD_DECOR_2502; random(W_FIELD_DECOR); blocks_W_FIELD_DECOR_2502; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2506; random(W_FIELD_DECOR); blocks_W_FIELD_DECOR_2506; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2510; random(W_FIELD_DECOR); blocks_W_FIELD_DECOR_2510; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2514; random(W_FIELD_DECOR); blocks_W_FIELD_DECOR_2514; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2518; random(W_FIELD_DECOR); blocks_W_FIELD_DECOR_2518; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2522; random(W_FIELD_DECOR); blocks_W_FIELD_DECOR_2522; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2526; random(W_FIELD_DECOR); blocks_W_FIELD_DECOR_2526; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2530; random(W_FIELD_DECOR); blocks_W_FIELD_DECOR_2530; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2534; random(W_FIELD_DECOR); blocks_W_FIELD_DECOR_2534; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2538; random(W_FIELD_DECOR_2534); blocks_W_FIELD_DECOR_2538; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2502_2539; random(W_FIELD_DECOR_2538); blocks_W_FIELD_DECOR_2502_2539; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2506_2540; random(W_FIELD_DECOR_2538); blocks_W_FIELD_DECOR_2506_2540; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2510_2541; random(W_FIELD_DECOR_2538); blocks_W_FIELD_DECOR_2510_2541; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2514_2542; random(W_FIELD_DECOR_2538); blocks_W_FIELD_DECOR_2514_2542; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2518_2543; random(W_FIELD_DECOR_2538); blocks_W_FIELD_DECOR_2518_2543; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2522_2544; random(W_FIELD_DECOR_2538); blocks_W_FIELD_DECOR_2522_2544; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2526_2545; random(W_FIELD_DECOR_2538); blocks_W_FIELD_DECOR_2526_2545; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2530_2546; random(W_FIELD_DECOR_2538); blocks_W_FIELD_DECOR_2530_2546; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2534_2547; random(W_FIELD_DECOR_2538); blocks_W_FIELD_DECOR_2534_2547; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2578; random(W_FIELD_DECOR_2534_2547); blocks_W_FIELD_DECOR_2578; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2502_2579; random(W_FIELD_DECOR_2578); blocks_W_FIELD_DECOR_2502_2579; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2506_2580; random(W_FIELD_DECOR_2578); blocks_W_FIELD_DECOR_2506_2580; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2510_2581; random(W_FIELD_DECOR_2578); blocks_W_FIELD_DECOR_2510_2581; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2514_2582; random(W_FIELD_DECOR_2578); blocks_W_FIELD_DECOR_2514_2582; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2518_2583; random(W_FIELD_DECOR_2578); blocks_W_FIELD_DECOR_2518_2583; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2522_2584; random(W_FIELD_DECOR_2578); blocks_W_FIELD_DECOR_2522_2584; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2526_2585; random(W_FIELD_DECOR_2578); blocks_W_FIELD_DECOR_2526_2585; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2530_2586; random(W_FIELD_DECOR_2578); blocks_W_FIELD_DECOR_2530_2586; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2534_2587; random(W_FIELD_DECOR_2578); blocks_W_FIELD_DECOR_2534_2587; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2618; random(W_FIELD_DECOR_2534_2587); blocks_W_FIELD_DECOR_2618; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2502_2619; random(W_FIELD_DECOR_2618); blocks_W_FIELD_DECOR_2502_2619; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2506_2620; random(W_FIELD_DECOR_2618); blocks_W_FIELD_DECOR_2506_2620; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2510_2621; random(W_FIELD_DECOR_2618); blocks_W_FIELD_DECOR_2510_2621; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2514_2622; random(W_FIELD_DECOR_2618); blocks_W_FIELD_DECOR_2514_2622; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2518_2623; random(W_FIELD_DECOR_2618); blocks_W_FIELD_DECOR_2518_2623; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2522_2624; random(W_FIELD_DECOR_2618); blocks_W_FIELD_DECOR_2522_2624; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2526_2625; random(W_FIELD_DECOR_2618); blocks_W_FIELD_DECOR_2526_2625; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2530_2626; random(W_FIELD_DECOR_2618); blocks_W_FIELD_DECOR_2530_2626; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2534_2627; random(W_FIELD_DECOR_2618); blocks_W_FIELD_DECOR_2534_2627; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2658; random(W_FIELD_DECOR_2534_2627); blocks_W_FIELD_DECOR_2658; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2502_2659; random(W_FIELD_DECOR_2658); blocks_W_FIELD_DECOR_2502_2659; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2506_2660; random(W_FIELD_DECOR_2658); blocks_W_FIELD_DECOR_2506_2660; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2510_2661; random(W_FIELD_DECOR_2658); blocks_W_FIELD_DECOR_2510_2661; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2514_2662; random(W_FIELD_DECOR_2658); blocks_W_FIELD_DECOR_2514_2662; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2518_2663; random(W_FIELD_DECOR_2658); blocks_W_FIELD_DECOR_2518_2663; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2522_2664; random(W_FIELD_DECOR_2658); blocks_W_FIELD_DECOR_2522_2664; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2526_2665; random(W_FIELD_DECOR_2658); blocks_W_FIELD_DECOR_2526_2665; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2530_2666; random(W_FIELD_DECOR_2658); blocks_W_FIELD_DECOR_2530_2666; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2534_2667; random(W_FIELD_DECOR_2658); blocks_W_FIELD_DECOR_2534_2667; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2698; random(W_FIELD_DECOR_2534_2667); blocks_W_FIELD_DECOR_2698; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; W_FIELD_DECOR_2502_2699; random(W_FIELD_DECOR_2698); blocks_W_FIELD_DECOR_2502_2699; clone_location;scg\2\blocks_quickmission\af_decor_neut;
+phase; SIREN_BLUE_1; random(BLUE_FRONT_AF1); blocks_SIREN_BLUE_1; clone_location;;
+phase; WINDSOCK_5; random(BLUE_FRONT_AF1); blocks_WINDSOCK_5; clone_location;;
+phase; SIREN_RED_1; random(RED_FRONT_AF1); blocks_SIREN_RED_1; clone_location;;
+phase; WINDSOCK_1; random(RED_FRONT_AF1); blocks_WINDSOCK_1; clone_location;;
+phase; SIREN_RED_2; random(RED_FRONT_AF2); blocks_SIREN_RED_2; clone_location;;
+phase; WINDSOCK_2; random(RED_FRONT_AF2); blocks_WINDSOCK_2; clone_location;;
+phase; SIREN_RED_3; random(RED_FRONT_AF3); blocks_SIREN_RED_3; clone_location;;
+phase; WINDSOCK_3; random(RED_FRONT_AF3); blocks_WINDSOCK_3; clone_location;;
+phase; SIREN_RED_4; random(RED_REAF_AF1); blocks_SIREN_RED_4; clone_location;;
+phase; WINDSOCK_4; random(RED_REAF_AF1); blocks_WINDSOCK_4; clone_location;;
+phase; SIREN_BLUE_2; random(BLUE_FRONT_AF2); blocks_SIREN_BLUE_2; clone_location;;
+phase; WINDSOCK_6; random(BLUE_FRONT_AF2); blocks_WINDSOCK_6; clone_location;;
+phase; SIREN_BLUE_3; random(BLUE_FRONT_AF3); blocks_SIREN_BLUE_3; clone_location;;
+phase; WINDSOCK_7; random(BLUE_FRONT_AF3); blocks_WINDSOCK_7; clone_location;;
+phase; SIREN_BLUE_4; random(BLUE_REAR_AF1); blocks_SIREN_BLUE_4; clone_location;;
+phase; WINDSOCK_8; random(BLUE_REAR_AF1); blocks_WINDSOCK_8; clone_location;;
+phase; BLUE_BEACON; random(BLUE_REAR_AF1); blocks_BLUE_BEACON; clone_location;;
+phase; RED_BEACON; random(RED_REAF_AF1); blocks_RED_BEACON; clone_location;;
 
 #
 ## cases & switches
@@ -1842,162 +1878,6 @@ check; MEDIUM_CANNON2_87_884_181_1224; free();
 check; MEDIUM_CANNON6_91_888_192_1225; location_type(Decoration,AAAPosition);
 check; MEDIUM_CANNON6_91_888_192_1225; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; MEDIUM_CANNON6_91_888_192_1225; free();
-check; PHASE_1; location_type(AirObjective,ReconFlight);
-check; PHASE_1; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1; free();
-check; PHASE_1_13; location_type(AirObjective,ReconFlight);
-check; PHASE_1_13; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_13; free();
-check; PHASE_1_17; location_type(AirObjective,ReconFlight);
-check; PHASE_1_17; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_17; free();
-check; PHASE_1_21; location_type(AirObjective,ReconFlight);
-check; PHASE_1_21; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_21; free();
-check; PHASE_1_25; location_type(AirObjective,ReconFlight);
-check; PHASE_1_25; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_25; free();
-check; PHASE_1_30; location_type(AirObjective,ReconFlight);
-check; PHASE_1_30; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_30; free();
-check; PHASE_1_34; location_type(AirObjective,ReconFlight);
-check; PHASE_1_34; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_34; free();
-check; PHASE_1_38; location_type(AirObjective,ReconFlight);
-check; PHASE_1_38; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_38; free();
-check; PHASE_1_42; location_type(AirObjective,ReconFlight);
-check; PHASE_1_42; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_42; free();
-check; PHASE_1_46; location_type(AirObjective,ReconFlight);
-check; PHASE_1_46; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_46; free();
-check; PHASE_1_59; location_type(AirObjective,ReconFlight);
-check; PHASE_1_59; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_59; free();
-check; PHASE_1_13_60; location_type(AirObjective,ReconFlight);
-check; PHASE_1_13_60; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_13_60; free();
-check; PHASE_1_17_61; location_type(AirObjective,ReconFlight);
-check; PHASE_1_17_61; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_17_61; free();
-check; PHASE_1_21_62; location_type(AirObjective,ReconFlight);
-check; PHASE_1_21_62; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_21_62; free();
-check; PHASE_1_25_63; location_type(AirObjective,ReconFlight);
-check; PHASE_1_25_63; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_25_63; free();
-check; PHASE_1_30_64; location_type(AirObjective,ReconFlight);
-check; PHASE_1_30_64; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_30_64; free();
-check; PHASE_1_34_65; location_type(AirObjective,ReconFlight);
-check; PHASE_1_34_65; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_34_65; free();
-check; PHASE_1_38_66; location_type(AirObjective,ReconFlight);
-check; PHASE_1_38_66; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_38_66; free();
-check; PHASE_1_42_67; location_type(AirObjective,ReconFlight);
-check; PHASE_1_42_67; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_42_67; free();
-check; PHASE_1_46_68; location_type(AirObjective,ReconFlight);
-check; PHASE_1_46_68; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_46_68; free();
-check; PHASE_1_107; location_type(AirObjective,ReconFlight);
-check; PHASE_1_107; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_107; free();
-check; PHASE_1_13_108; location_type(AirObjective,ReconFlight);
-check; PHASE_1_13_108; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_13_108; free();
-check; PHASE_1_17_109; location_type(AirObjective,ReconFlight);
-check; PHASE_1_17_109; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_17_109; free();
-check; PHASE_1_21_110; location_type(AirObjective,ReconFlight);
-check; PHASE_1_21_110; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_21_110; free();
-check; PHASE_1_25_111; location_type(AirObjective,ReconFlight);
-check; PHASE_1_25_111; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_25_111; free();
-check; PHASE_1_30_112; location_type(AirObjective,ReconFlight);
-check; PHASE_1_30_112; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_30_112; free();
-check; PHASE_1_34_113; location_type(AirObjective,ReconFlight);
-check; PHASE_1_34_113; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_34_113; free();
-check; PHASE_1_38_114; location_type(AirObjective,ReconFlight);
-check; PHASE_1_38_114; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_38_114; free();
-check; PHASE_1_42_115; location_type(AirObjective,ReconFlight);
-check; PHASE_1_42_115; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_42_115; free();
-check; PHASE_1_46_116; location_type(AirObjective,ReconFlight);
-check; PHASE_1_46_116; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_46_116; free();
-check; PHASE_1_155; location_type(AirObjective,ReconFlight);
-check; PHASE_1_155; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_155; free();
-check; PHASE_1_13_156; location_type(AirObjective,ReconFlight);
-check; PHASE_1_13_156; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_13_156; free();
-check; PHASE_1_17_157; location_type(AirObjective,ReconFlight);
-check; PHASE_1_17_157; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_17_157; free();
-check; PHASE_1_21_158; location_type(AirObjective,ReconFlight);
-check; PHASE_1_21_158; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_21_158; free();
-check; PHASE_1_25_159; location_type(AirObjective,ReconFlight);
-check; PHASE_1_25_159; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_25_159; free();
-check; PHASE_1_30_160; location_type(AirObjective,ReconFlight);
-check; PHASE_1_30_160; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_30_160; free();
-check; PHASE_1_34_161; location_type(AirObjective,ReconFlight);
-check; PHASE_1_34_161; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_34_161; free();
-check; PHASE_1_38_162; location_type(AirObjective,ReconFlight);
-check; PHASE_1_38_162; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_38_162; free();
-check; PHASE_1_42_163; location_type(AirObjective,ReconFlight);
-check; PHASE_1_42_163; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_42_163; free();
-check; PHASE_1_46_164; location_type(AirObjective,ReconFlight);
-check; PHASE_1_46_164; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_46_164; free();
-check; PHASE_1_155_194; location_type(AirObjective,ReconFlight);
-check; PHASE_1_155_194; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_155_194; free();
-check; PHASE_1_13_156_195; location_type(AirObjective,ReconFlight);
-check; PHASE_1_13_156_195; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_13_156_195; free();
-check; PHASE_1_17_157_196; location_type(AirObjective,ReconFlight);
-check; PHASE_1_17_157_196; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_17_157_196; free();
-check; PHASE_1_21_158_197; location_type(AirObjective,ReconFlight);
-check; PHASE_1_21_158_197; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_21_158_197; free();
-check; PHASE_1_25_159_198; location_type(AirObjective,ReconFlight);
-check; PHASE_1_25_159_198; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_25_159_198; free();
-check; PHASE_1_30_160_199; location_type(AirObjective,ReconFlight);
-check; PHASE_1_30_160_199; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_30_160_199; free();
-check; PHASE_1_34_161_200; location_type(AirObjective,ReconFlight);
-check; PHASE_1_34_161_200; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_34_161_200; free();
-check; PHASE_1_38_162_201; location_type(AirObjective,ReconFlight);
-check; PHASE_1_38_162_201; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_38_162_201; free();
-check; PHASE_1_42_163_202; location_type(AirObjective,ReconFlight);
-check; PHASE_1_42_163_202; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_42_163_202; free();
-check; PHASE_1_46_164_203; location_type(AirObjective,ReconFlight);
-check; PHASE_1_46_164_203; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_46_164_203; free();
-check; PHASE_1_42_163_202_242; location_type(AirObjective,ReconFlight);
-check; PHASE_1_42_163_202_242; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_42_163_202_242; free();
-check; PHASE_1_46_164_203_243; location_type(AirObjective,ReconFlight);
-check; PHASE_1_46_164_203_243; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; PHASE_1_46_164_203_243; free();
 check; LARGE_CANNON; location_type(Decoration,AAAPosition);
 check; LARGE_CANNON; free();
 check; LARGE_CANNON; range(PRIMARY_LINK_PHASE,closest_outof,1);
@@ -2406,14 +2286,14 @@ check; BLUE_WH2_04_0DMG; location_type(GroundObjective,Factory);
 check; BLUE_WH2_05_0DMG; free();
 check; BLUE_WH2_05_0DMG; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; BLUE_WH2_05_0DMG; location_type(GroundObjective,Factory);
-check; RED_REAR_AF1_DECOR; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; RED_FRONT_AF3_DECOR; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; RED_FRONT_AF2_DECOR; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; RED_FRONT_AF1_DECOR; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; BLUE_REAR_AF1_DECOR; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; BLUE_FRONT_AF3_DECOR; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; BLUE_FRONT_AF2_DECOR; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; BLUE_FRONT_AF1_DECOR; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; AF4_DECOR_RED; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; AF3_DECOR_RED; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; AF2_DECOR_RED; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; AF1_DECOR_RED; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; AF4_DECOR_BLUE; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; AF3_DECOR_BLUE; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; AF2_DECOR_BLUE; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; AF1_DECOR_BLUE; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; BLUE_TANKS_1; location_type(Decoration,Transport);
 check; BLUE_TANKS_1; free();
 check; MISSION_TARGET_REF; location_type(GroundObjective,Airfield);
@@ -2540,6 +2420,208 @@ check; MEDIUM_CANNON3_88_885_1136_2220_2280; free();
 check; MEDIUM_CANNON_86_883_180_1143_2222_2282; location_type(Decoration,AAAPosition);
 check; MEDIUM_CANNON_86_883_180_1143_2222_2282; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; MEDIUM_CANNON_86_883_180_1143_2222_2282; free();
+check; W_FIELD_DECOR; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR; free();
+check; W_FIELD_DECOR_2502; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2502; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2502; free();
+check; W_FIELD_DECOR_2506; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2506; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2506; free();
+check; W_FIELD_DECOR_2510; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2510; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2510; free();
+check; W_FIELD_DECOR_2514; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2514; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2514; free();
+check; W_FIELD_DECOR_2518; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2518; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2518; free();
+check; W_FIELD_DECOR_2522; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2522; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2522; free();
+check; W_FIELD_DECOR_2526; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2526; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2526; free();
+check; W_FIELD_DECOR_2530; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2530; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2530; free();
+check; W_FIELD_DECOR_2534; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2534; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2534; free();
+check; W_FIELD_DECOR_2538; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2538; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2538; free();
+check; W_FIELD_DECOR_2502_2539; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2502_2539; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2502_2539; free();
+check; W_FIELD_DECOR_2506_2540; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2506_2540; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2506_2540; free();
+check; W_FIELD_DECOR_2510_2541; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2510_2541; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2510_2541; free();
+check; W_FIELD_DECOR_2514_2542; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2514_2542; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2514_2542; free();
+check; W_FIELD_DECOR_2518_2543; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2518_2543; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2518_2543; free();
+check; W_FIELD_DECOR_2522_2544; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2522_2544; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2522_2544; free();
+check; W_FIELD_DECOR_2526_2545; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2526_2545; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2526_2545; free();
+check; W_FIELD_DECOR_2530_2546; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2530_2546; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2530_2546; free();
+check; W_FIELD_DECOR_2534_2547; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2534_2547; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2534_2547; free();
+check; W_FIELD_DECOR_2578; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2578; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2578; free();
+check; W_FIELD_DECOR_2502_2579; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2502_2579; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2502_2579; free();
+check; W_FIELD_DECOR_2506_2580; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2506_2580; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2506_2580; free();
+check; W_FIELD_DECOR_2510_2581; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2510_2581; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2510_2581; free();
+check; W_FIELD_DECOR_2514_2582; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2514_2582; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2514_2582; free();
+check; W_FIELD_DECOR_2518_2583; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2518_2583; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2518_2583; free();
+check; W_FIELD_DECOR_2522_2584; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2522_2584; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2522_2584; free();
+check; W_FIELD_DECOR_2526_2585; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2526_2585; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2526_2585; free();
+check; W_FIELD_DECOR_2530_2586; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2530_2586; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2530_2586; free();
+check; W_FIELD_DECOR_2534_2587; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2534_2587; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2534_2587; free();
+check; W_FIELD_DECOR_2618; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2618; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2618; free();
+check; W_FIELD_DECOR_2502_2619; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2502_2619; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2502_2619; free();
+check; W_FIELD_DECOR_2506_2620; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2506_2620; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2506_2620; free();
+check; W_FIELD_DECOR_2510_2621; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2510_2621; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2510_2621; free();
+check; W_FIELD_DECOR_2514_2622; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2514_2622; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2514_2622; free();
+check; W_FIELD_DECOR_2518_2623; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2518_2623; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2518_2623; free();
+check; W_FIELD_DECOR_2522_2624; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2522_2624; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2522_2624; free();
+check; W_FIELD_DECOR_2526_2625; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2526_2625; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2526_2625; free();
+check; W_FIELD_DECOR_2530_2626; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2530_2626; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2530_2626; free();
+check; W_FIELD_DECOR_2534_2627; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2534_2627; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2534_2627; free();
+check; W_FIELD_DECOR_2658; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2658; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2658; free();
+check; W_FIELD_DECOR_2502_2659; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2502_2659; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2502_2659; free();
+check; W_FIELD_DECOR_2506_2660; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2506_2660; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2506_2660; free();
+check; W_FIELD_DECOR_2510_2661; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2510_2661; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2510_2661; free();
+check; W_FIELD_DECOR_2514_2662; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2514_2662; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2514_2662; free();
+check; W_FIELD_DECOR_2518_2663; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2518_2663; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2518_2663; free();
+check; W_FIELD_DECOR_2522_2664; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2522_2664; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2522_2664; free();
+check; W_FIELD_DECOR_2526_2665; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2526_2665; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2526_2665; free();
+check; W_FIELD_DECOR_2530_2666; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2530_2666; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2530_2666; free();
+check; W_FIELD_DECOR_2534_2667; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2534_2667; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2534_2667; free();
+check; W_FIELD_DECOR_2698; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2698; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2698; free();
+check; W_FIELD_DECOR_2502_2699; location_type(AirObjective,ReconFlight);
+check; W_FIELD_DECOR_2502_2699; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_FIELD_DECOR_2502_2699; free();
+check; AF1_DECOR_BLUE; location_type(AirObjective,ReconFlight);
+check; AF2_DECOR_BLUE; location_type(AirObjective,ReconFlight);
+check; AF3_DECOR_BLUE; location_type(AirObjective,ReconFlight);
+check; AF4_DECOR_BLUE; location_type(AirObjective,ReconFlight);
+check; AF1_DECOR_RED; location_type(AirObjective,ReconFlight);
+check; AF2_DECOR_RED; location_type(AirObjective,ReconFlight);
+check; AF3_DECOR_RED; location_type(AirObjective,ReconFlight);
+check; AF4_DECOR_RED; location_type(AirObjective,ReconFlight);
+check; SIREN_BLUE_1; location_type(Decoration,Siren);
+check; SIREN_BLUE_1; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; WINDSOCK_5; location_type(Decoration,Windsock);
+check; WINDSOCK_5; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; SIREN_RED_1; location_type(Decoration,Siren);
+check; SIREN_RED_1; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; WINDSOCK_1; location_type(Decoration,Windsock);
+check; WINDSOCK_1; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; SIREN_RED_2; location_type(Decoration,Siren);
+check; SIREN_RED_2; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; WINDSOCK_2; location_type(Decoration,Windsock);
+check; WINDSOCK_2; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; SIREN_RED_3; location_type(Decoration,Siren);
+check; SIREN_RED_3; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; WINDSOCK_3; location_type(Decoration,Windsock);
+check; WINDSOCK_3; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; SIREN_RED_4; location_type(Decoration,Siren);
+check; SIREN_RED_4; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; WINDSOCK_4; location_type(Decoration,Windsock);
+check; WINDSOCK_4; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; SIREN_BLUE_2; location_type(Decoration,Siren);
+check; SIREN_BLUE_2; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; WINDSOCK_6; location_type(Decoration,Windsock);
+check; WINDSOCK_6; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; SIREN_BLUE_3; location_type(Decoration,Siren);
+check; SIREN_BLUE_3; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; WINDSOCK_7; location_type(Decoration,Windsock);
+check; WINDSOCK_7; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; SIREN_BLUE_4; location_type(Decoration,Siren);
+check; SIREN_BLUE_4; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; WINDSOCK_8; location_type(Decoration,Windsock);
+check; WINDSOCK_8; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; BLUE_BEACON; location_type(Decoration,NDB);
+check; BLUE_BEACON; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; BLUE_BEACON; free();
+check; RED_BEACON; location_type(Decoration,NDB);
+check; RED_BEACON; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RED_BEACON; free();
 
 #
 ## property actions
@@ -3340,6 +3422,16 @@ action; BLUE_SMART_CHECKZONE_891_1142_2221_2281(MACHINE_GUNS,Time); <empty>();
 action; BLUE_SMART_CHECKZONE_891_1142_2221_2281(Outer Zone,Zone); <empty>();
 action; MEDIUM_CANNON_86_883_180_1143_2222_2282(AAA_MED_TYPE,Model); set_model(AAA LT static cannon,random enemy);
 action; MEDIUM_CANNON_86_883_180_1143_2222_2282(AAA_MED_TYPE,Country); set_country(enemy);
+action; SIREN_BLUE_1(Proximity,Distance); set(Distance,6000);
+action; SIREN_RED_1(Proximity,Distance); set(Distance,6000);
+action; SIREN_RED_2(Proximity,Distance); set(Distance,6000);
+action; SIREN_RED_3(Proximity,Distance); set(Distance,6000);
+action; SIREN_RED_4(Proximity,Distance); set(Distance,6000);
+action; SIREN_BLUE_2(Proximity,Distance); set(Distance,6000);
+action; SIREN_BLUE_3(Proximity,Distance); set(Distance,6000);
+action; SIREN_BLUE_4(Proximity,Distance); set(Distance,6000);
+action; BLUE_BEACON(BEACON,Country); set_country(enemy);
+action; RED_BEACON(BEACON,Country); set_country(friendly);
 
 #
 ## unlinks
@@ -3456,59 +3548,6 @@ gui_helper; BLUE_SMART_CHECKZONE_891_1222; -9217; -1475;
 gui_helper; MEDIUM_CANNON_86_883_180_1223; -8444; -2904;
 gui_helper; MEDIUM_CANNON2_87_884_181_1224; -8018; -3282;
 gui_helper; MEDIUM_CANNON6_91_888_192_1225; -8406; -1608;
-gui_helper; PHASE_1; -69; -6388;
-gui_helper; REF; 708; -6993;
-gui_helper; PHASE_1_13; -66; -6155;
-gui_helper; PHASE_1_17; -66; -5934;
-gui_helper; PHASE_1_21; -63; -5701;
-gui_helper; PHASE_1_25; -68; -5462;
-gui_helper; PHASE_1_30; -68; -5226;
-gui_helper; PHASE_1_34; -83; -4985;
-gui_helper; PHASE_1_38; -80; -4729;
-gui_helper; PHASE_1_42; -70; -4491;
-gui_helper; PHASE_1_46; -81; -4273;
-gui_helper; PHASE_1_59; 279; -6355;
-gui_helper; PHASE_1_13_60; 282; -6122;
-gui_helper; PHASE_1_17_61; 282; -5901;
-gui_helper; PHASE_1_21_62; 285; -5668;
-gui_helper; PHASE_1_25_63; 280; -5429;
-gui_helper; PHASE_1_30_64; 280; -5193;
-gui_helper; PHASE_1_34_65; 265; -4952;
-gui_helper; PHASE_1_38_66; 268; -4696;
-gui_helper; PHASE_1_42_67; 278; -4458;
-gui_helper; PHASE_1_46_68; 267; -4240;
-gui_helper; PHASE_1_107; 583; -6386;
-gui_helper; PHASE_1_13_108; 586; -6153;
-gui_helper; PHASE_1_17_109; 586; -5932;
-gui_helper; PHASE_1_21_110; 589; -5699;
-gui_helper; PHASE_1_25_111; 584; -5460;
-gui_helper; PHASE_1_30_112; 584; -5224;
-gui_helper; PHASE_1_34_113; 569; -4983;
-gui_helper; PHASE_1_38_114; 572; -4727;
-gui_helper; PHASE_1_42_115; 582; -4489;
-gui_helper; PHASE_1_46_116; 571; -4271;
-gui_helper; PHASE_1_155; 893; -6370;
-gui_helper; PHASE_1_13_156; 896; -6137;
-gui_helper; PHASE_1_17_157; 896; -5916;
-gui_helper; PHASE_1_21_158; 899; -5683;
-gui_helper; PHASE_1_25_159; 894; -5444;
-gui_helper; PHASE_1_30_160; 894; -5208;
-gui_helper; PHASE_1_34_161; 879; -4967;
-gui_helper; PHASE_1_38_162; 882; -4711;
-gui_helper; PHASE_1_42_163; 892; -4473;
-gui_helper; PHASE_1_46_164; 881; -4255;
-gui_helper; PHASE_1_155_194; 1203; -6363;
-gui_helper; PHASE_1_13_156_195; 1206; -6130;
-gui_helper; PHASE_1_17_157_196; 1206; -5909;
-gui_helper; PHASE_1_21_158_197; 1209; -5676;
-gui_helper; PHASE_1_25_159_198; 1204; -5437;
-gui_helper; PHASE_1_30_160_199; 1204; -5201;
-gui_helper; PHASE_1_34_161_200; 1189; -4960;
-gui_helper; PHASE_1_38_162_201; 1192; -4704;
-gui_helper; PHASE_1_42_163_202; 1202; -4466;
-gui_helper; PHASE_1_46_164_203; 1191; -4248;
-gui_helper; PHASE_1_42_163_202_242; 1515; -6359;
-gui_helper; PHASE_1_46_164_203_243; 1504; -6141;
 gui_helper; RED_SMART_CHECKZONE; 7438; -1450;
 gui_helper; LARGE_CANNON; 6426; -3710;
 gui_helper; MEDIUM_CANNON; 6428; -3295;
@@ -3855,14 +3894,14 @@ gui_helper; BLUE_WH2_02_ICON; -12616; 3716;
 gui_helper; BLUE_WH2_03_ICON; -12232; 3711;
 gui_helper; BLUE_WH2_04_ICON; -11847; 3704;
 gui_helper; BLUE_WH2_05_ICON; -11441; 3703;
-gui_helper; RED_REAR_AF1_DECOR; 9900; 89;
-gui_helper; RED_FRONT_AF3_DECOR; 7947; -435;
-gui_helper; RED_FRONT_AF2_DECOR; 5998; -368;
-gui_helper; RED_FRONT_AF1_DECOR; 4042; -444;
-gui_helper; BLUE_REAR_AF1_DECOR; -9247; 71;
-gui_helper; BLUE_FRONT_AF3_DECOR; -6982; -415;
-gui_helper; BLUE_FRONT_AF2_DECOR; -4758; -383;
-gui_helper; BLUE_FRONT_AF1_DECOR; -2482; -304;
+gui_helper; AF4_DECOR_RED; 9900; 89;
+gui_helper; AF3_DECOR_RED; 7947; -435;
+gui_helper; AF2_DECOR_RED; 5998; -368;
+gui_helper; AF1_DECOR_RED; 4042; -444;
+gui_helper; AF4_DECOR_BLUE; -9247; 71;
+gui_helper; AF3_DECOR_BLUE; -6982; -415;
+gui_helper; AF2_DECOR_BLUE; -4758; -383;
+gui_helper; AF1_DECOR_BLUE; -2482; -304;
 gui_helper; BLUE_TARGET_LOCATION; 3263; 4496;
 gui_helper; BLUE_TANKS_1; 3790; 4482;
 gui_helper; BT_ICON_1; 3808; 4838;
@@ -3931,6 +3970,77 @@ gui_helper; MEDIUM_CANNON_86_883_1134_2219_2279; -26; 11858;
 gui_helper; MEDIUM_CANNON3_88_885_1136_2220_2280; -7; 12686;
 gui_helper; BLUE_SMART_CHECKZONE_891_1142_2221_2281; -660; 12789;
 gui_helper; MEDIUM_CANNON_86_883_180_1143_2222_2282; -35; 12248;
+gui_helper; W_FIELD_DECOR; 39; -6055;
+gui_helper; REF; 816; -6660;
+gui_helper; W_FIELD_DECOR_2502; 27; -5802;
+gui_helper; W_FIELD_DECOR_2506; 28; -5568;
+gui_helper; W_FIELD_DECOR_2510; 29; -5339;
+gui_helper; W_FIELD_DECOR_2514; 31; -5105;
+gui_helper; W_FIELD_DECOR_2518; 28; -4876;
+gui_helper; W_FIELD_DECOR_2522; 32; -4636;
+gui_helper; W_FIELD_DECOR_2526; 33; -4384;
+gui_helper; W_FIELD_DECOR_2530; 25; -4140;
+gui_helper; W_FIELD_DECOR_2534; 29; -3920;
+gui_helper; W_FIELD_DECOR_2538; 390; -6056;
+gui_helper; W_FIELD_DECOR_2502_2539; 378; -5803;
+gui_helper; W_FIELD_DECOR_2506_2540; 379; -5569;
+gui_helper; W_FIELD_DECOR_2510_2541; 380; -5340;
+gui_helper; W_FIELD_DECOR_2514_2542; 382; -5106;
+gui_helper; W_FIELD_DECOR_2518_2543; 379; -4877;
+gui_helper; W_FIELD_DECOR_2522_2544; 383; -4637;
+gui_helper; W_FIELD_DECOR_2526_2545; 384; -4385;
+gui_helper; W_FIELD_DECOR_2530_2546; 376; -4141;
+gui_helper; W_FIELD_DECOR_2534_2547; 380; -3921;
+gui_helper; W_FIELD_DECOR_2578; 711; -6056;
+gui_helper; W_FIELD_DECOR_2502_2579; 699; -5803;
+gui_helper; W_FIELD_DECOR_2506_2580; 700; -5569;
+gui_helper; W_FIELD_DECOR_2510_2581; 701; -5340;
+gui_helper; W_FIELD_DECOR_2514_2582; 703; -5106;
+gui_helper; W_FIELD_DECOR_2518_2583; 700; -4877;
+gui_helper; W_FIELD_DECOR_2522_2584; 704; -4637;
+gui_helper; W_FIELD_DECOR_2526_2585; 705; -4385;
+gui_helper; W_FIELD_DECOR_2530_2586; 697; -4141;
+gui_helper; W_FIELD_DECOR_2534_2587; 701; -3921;
+gui_helper; W_FIELD_DECOR_2618; 1039; -6053;
+gui_helper; W_FIELD_DECOR_2502_2619; 1027; -5800;
+gui_helper; W_FIELD_DECOR_2506_2620; 1028; -5566;
+gui_helper; W_FIELD_DECOR_2510_2621; 1029; -5337;
+gui_helper; W_FIELD_DECOR_2514_2622; 1031; -5103;
+gui_helper; W_FIELD_DECOR_2518_2623; 1028; -4874;
+gui_helper; W_FIELD_DECOR_2522_2624; 1032; -4634;
+gui_helper; W_FIELD_DECOR_2526_2625; 1033; -4382;
+gui_helper; W_FIELD_DECOR_2530_2626; 1025; -4138;
+gui_helper; W_FIELD_DECOR_2534_2627; 1029; -3918;
+gui_helper; W_FIELD_DECOR_2658; 1346; -6056;
+gui_helper; W_FIELD_DECOR_2502_2659; 1334; -5803;
+gui_helper; W_FIELD_DECOR_2506_2660; 1335; -5569;
+gui_helper; W_FIELD_DECOR_2510_2661; 1336; -5340;
+gui_helper; W_FIELD_DECOR_2514_2662; 1338; -5106;
+gui_helper; W_FIELD_DECOR_2518_2663; 1335; -4877;
+gui_helper; W_FIELD_DECOR_2522_2664; 1339; -4637;
+gui_helper; W_FIELD_DECOR_2526_2665; 1340; -4385;
+gui_helper; W_FIELD_DECOR_2530_2666; 1332; -4141;
+gui_helper; W_FIELD_DECOR_2534_2667; 1336; -3921;
+gui_helper; W_FIELD_DECOR_2698; 1674; -6063;
+gui_helper; W_FIELD_DECOR_2502_2699; 1662; -5810;
+gui_helper; SIREN_BLUE_1; -1777; -600;
+gui_helper; WINDSOCK_5; -1542; -599;
+gui_helper; SIREN_RED_1; 3025; -634;
+gui_helper; WINDSOCK_1; 3266; -627;
+gui_helper; SIREN_RED_2; 4906; -591;
+gui_helper; WINDSOCK_2; 5147; -584;
+gui_helper; SIREN_RED_3; 6878; -580;
+gui_helper; WINDSOCK_3; 7119; -573;
+gui_helper; SIREN_RED_4; 8971; -122;
+gui_helper; WINDSOCK_4; 9212; -115;
+gui_helper; SIREN_BLUE_2; -4063; -604;
+gui_helper; WINDSOCK_6; -3828; -603;
+gui_helper; SIREN_BLUE_3; -6226; -684;
+gui_helper; WINDSOCK_7; -5991; -683;
+gui_helper; SIREN_BLUE_4; -8491; -232;
+gui_helper; WINDSOCK_8; -8256; -231;
+gui_helper; BLUE_BEACON; -9233; -401;
+gui_helper; RED_BEACON; 9811; -291;
 gui_helper; check; -8542; 474;BLUE_REAR_AF_REFERENCE(coalition)
 gui_helper; check; -8544; 428;BLUE_REAR_AF_REFERENCE(location_type)
 gui_helper; check; -8544; 518;BLUE_REAR_AF_REFERENCE(range)
@@ -4161,162 +4271,6 @@ gui_helper; check; -8008; -3024;MEDIUM_CANNON2_87_884_181_1224(free)
 gui_helper; check; -8386; -1432;MEDIUM_CANNON6_91_888_192_1225(location_type)
 gui_helper; check; -8393; -1392;MEDIUM_CANNON6_91_888_192_1225(range)
 gui_helper; check; -8392; -1357;MEDIUM_CANNON6_91_888_192_1225(free)
-gui_helper; check; -57; -6210;PHASE_1(location_type)
-gui_helper; check; 44; -6209;PHASE_1(range)
-gui_helper; check; 102; -6209;PHASE_1(free)
-gui_helper; check; -54; -5977;PHASE_1_13(location_type)
-gui_helper; check; 47; -5976;PHASE_1_13(range)
-gui_helper; check; 110; -5976;PHASE_1_13(free)
-gui_helper; check; -54; -5756;PHASE_1_17(location_type)
-gui_helper; check; 47; -5755;PHASE_1_17(range)
-gui_helper; check; 110; -5755;PHASE_1_17(free)
-gui_helper; check; -51; -5523;PHASE_1_21(location_type)
-gui_helper; check; 50; -5522;PHASE_1_21(range)
-gui_helper; check; 113; -5522;PHASE_1_21(free)
-gui_helper; check; -56; -5284;PHASE_1_25(location_type)
-gui_helper; check; 45; -5283;PHASE_1_25(range)
-gui_helper; check; 108; -5283;PHASE_1_25(free)
-gui_helper; check; -56; -5048;PHASE_1_30(location_type)
-gui_helper; check; 45; -5047;PHASE_1_30(range)
-gui_helper; check; 108; -5047;PHASE_1_30(free)
-gui_helper; check; -71; -4807;PHASE_1_34(location_type)
-gui_helper; check; 30; -4806;PHASE_1_34(range)
-gui_helper; check; 93; -4806;PHASE_1_34(free)
-gui_helper; check; -68; -4551;PHASE_1_38(location_type)
-gui_helper; check; 33; -4550;PHASE_1_38(range)
-gui_helper; check; 96; -4550;PHASE_1_38(free)
-gui_helper; check; -58; -4313;PHASE_1_42(location_type)
-gui_helper; check; 43; -4312;PHASE_1_42(range)
-gui_helper; check; 106; -4312;PHASE_1_42(free)
-gui_helper; check; -66; -4105;PHASE_1_46(location_type)
-gui_helper; check; 35; -4104;PHASE_1_46(range)
-gui_helper; check; 98; -4104;PHASE_1_46(free)
-gui_helper; check; 291; -6177;PHASE_1_59(location_type)
-gui_helper; check; 392; -6176;PHASE_1_59(range)
-gui_helper; check; 455; -6176;PHASE_1_59(free)
-gui_helper; check; 294; -5944;PHASE_1_13_60(location_type)
-gui_helper; check; 395; -5943;PHASE_1_13_60(range)
-gui_helper; check; 458; -5943;PHASE_1_13_60(free)
-gui_helper; check; 294; -5723;PHASE_1_17_61(location_type)
-gui_helper; check; 395; -5722;PHASE_1_17_61(range)
-gui_helper; check; 458; -5722;PHASE_1_17_61(free)
-gui_helper; check; 297; -5490;PHASE_1_21_62(location_type)
-gui_helper; check; 398; -5489;PHASE_1_21_62(range)
-gui_helper; check; 461; -5489;PHASE_1_21_62(free)
-gui_helper; check; 292; -5251;PHASE_1_25_63(location_type)
-gui_helper; check; 393; -5250;PHASE_1_25_63(range)
-gui_helper; check; 456; -5250;PHASE_1_25_63(free)
-gui_helper; check; 292; -5015;PHASE_1_30_64(location_type)
-gui_helper; check; 393; -5014;PHASE_1_30_64(range)
-gui_helper; check; 456; -5014;PHASE_1_30_64(free)
-gui_helper; check; 277; -4774;PHASE_1_34_65(location_type)
-gui_helper; check; 378; -4773;PHASE_1_34_65(range)
-gui_helper; check; 441; -4773;PHASE_1_34_65(free)
-gui_helper; check; 280; -4518;PHASE_1_38_66(location_type)
-gui_helper; check; 381; -4517;PHASE_1_38_66(range)
-gui_helper; check; 444; -4517;PHASE_1_38_66(free)
-gui_helper; check; 290; -4280;PHASE_1_42_67(location_type)
-gui_helper; check; 391; -4279;PHASE_1_42_67(range)
-gui_helper; check; 454; -4279;PHASE_1_42_67(free)
-gui_helper; check; 282; -4072;PHASE_1_46_68(location_type)
-gui_helper; check; 383; -4071;PHASE_1_46_68(range)
-gui_helper; check; 446; -4071;PHASE_1_46_68(free)
-gui_helper; check; 595; -6208;PHASE_1_107(location_type)
-gui_helper; check; 696; -6207;PHASE_1_107(range)
-gui_helper; check; 759; -6207;PHASE_1_107(free)
-gui_helper; check; 598; -5975;PHASE_1_13_108(location_type)
-gui_helper; check; 699; -5974;PHASE_1_13_108(range)
-gui_helper; check; 762; -5974;PHASE_1_13_108(free)
-gui_helper; check; 598; -5754;PHASE_1_17_109(location_type)
-gui_helper; check; 699; -5753;PHASE_1_17_109(range)
-gui_helper; check; 762; -5753;PHASE_1_17_109(free)
-gui_helper; check; 601; -5521;PHASE_1_21_110(location_type)
-gui_helper; check; 702; -5520;PHASE_1_21_110(range)
-gui_helper; check; 765; -5520;PHASE_1_21_110(free)
-gui_helper; check; 596; -5282;PHASE_1_25_111(location_type)
-gui_helper; check; 697; -5281;PHASE_1_25_111(range)
-gui_helper; check; 760; -5281;PHASE_1_25_111(free)
-gui_helper; check; 596; -5046;PHASE_1_30_112(location_type)
-gui_helper; check; 697; -5045;PHASE_1_30_112(range)
-gui_helper; check; 760; -5045;PHASE_1_30_112(free)
-gui_helper; check; 581; -4805;PHASE_1_34_113(location_type)
-gui_helper; check; 682; -4804;PHASE_1_34_113(range)
-gui_helper; check; 745; -4804;PHASE_1_34_113(free)
-gui_helper; check; 584; -4549;PHASE_1_38_114(location_type)
-gui_helper; check; 685; -4548;PHASE_1_38_114(range)
-gui_helper; check; 748; -4548;PHASE_1_38_114(free)
-gui_helper; check; 594; -4311;PHASE_1_42_115(location_type)
-gui_helper; check; 695; -4310;PHASE_1_42_115(range)
-gui_helper; check; 758; -4310;PHASE_1_42_115(free)
-gui_helper; check; 586; -4103;PHASE_1_46_116(location_type)
-gui_helper; check; 687; -4102;PHASE_1_46_116(range)
-gui_helper; check; 750; -4102;PHASE_1_46_116(free)
-gui_helper; check; 905; -6192;PHASE_1_155(location_type)
-gui_helper; check; 1006; -6191;PHASE_1_155(range)
-gui_helper; check; 1069; -6191;PHASE_1_155(free)
-gui_helper; check; 908; -5959;PHASE_1_13_156(location_type)
-gui_helper; check; 1009; -5958;PHASE_1_13_156(range)
-gui_helper; check; 1072; -5958;PHASE_1_13_156(free)
-gui_helper; check; 908; -5738;PHASE_1_17_157(location_type)
-gui_helper; check; 1009; -5737;PHASE_1_17_157(range)
-gui_helper; check; 1072; -5737;PHASE_1_17_157(free)
-gui_helper; check; 911; -5505;PHASE_1_21_158(location_type)
-gui_helper; check; 1012; -5504;PHASE_1_21_158(range)
-gui_helper; check; 1075; -5504;PHASE_1_21_158(free)
-gui_helper; check; 906; -5266;PHASE_1_25_159(location_type)
-gui_helper; check; 1007; -5265;PHASE_1_25_159(range)
-gui_helper; check; 1070; -5265;PHASE_1_25_159(free)
-gui_helper; check; 906; -5030;PHASE_1_30_160(location_type)
-gui_helper; check; 1007; -5029;PHASE_1_30_160(range)
-gui_helper; check; 1070; -5029;PHASE_1_30_160(free)
-gui_helper; check; 891; -4789;PHASE_1_34_161(location_type)
-gui_helper; check; 992; -4788;PHASE_1_34_161(range)
-gui_helper; check; 1055; -4788;PHASE_1_34_161(free)
-gui_helper; check; 894; -4533;PHASE_1_38_162(location_type)
-gui_helper; check; 995; -4532;PHASE_1_38_162(range)
-gui_helper; check; 1058; -4532;PHASE_1_38_162(free)
-gui_helper; check; 904; -4295;PHASE_1_42_163(location_type)
-gui_helper; check; 1005; -4294;PHASE_1_42_163(range)
-gui_helper; check; 1068; -4294;PHASE_1_42_163(free)
-gui_helper; check; 896; -4087;PHASE_1_46_164(location_type)
-gui_helper; check; 997; -4086;PHASE_1_46_164(range)
-gui_helper; check; 1060; -4086;PHASE_1_46_164(free)
-gui_helper; check; 1215; -6185;PHASE_1_155_194(location_type)
-gui_helper; check; 1316; -6184;PHASE_1_155_194(range)
-gui_helper; check; 1379; -6184;PHASE_1_155_194(free)
-gui_helper; check; 1218; -5952;PHASE_1_13_156_195(location_type)
-gui_helper; check; 1319; -5951;PHASE_1_13_156_195(range)
-gui_helper; check; 1382; -5951;PHASE_1_13_156_195(free)
-gui_helper; check; 1218; -5731;PHASE_1_17_157_196(location_type)
-gui_helper; check; 1319; -5730;PHASE_1_17_157_196(range)
-gui_helper; check; 1382; -5730;PHASE_1_17_157_196(free)
-gui_helper; check; 1221; -5498;PHASE_1_21_158_197(location_type)
-gui_helper; check; 1322; -5497;PHASE_1_21_158_197(range)
-gui_helper; check; 1385; -5497;PHASE_1_21_158_197(free)
-gui_helper; check; 1216; -5259;PHASE_1_25_159_198(location_type)
-gui_helper; check; 1317; -5258;PHASE_1_25_159_198(range)
-gui_helper; check; 1380; -5258;PHASE_1_25_159_198(free)
-gui_helper; check; 1216; -5023;PHASE_1_30_160_199(location_type)
-gui_helper; check; 1317; -5022;PHASE_1_30_160_199(range)
-gui_helper; check; 1380; -5022;PHASE_1_30_160_199(free)
-gui_helper; check; 1201; -4782;PHASE_1_34_161_200(location_type)
-gui_helper; check; 1302; -4781;PHASE_1_34_161_200(range)
-gui_helper; check; 1365; -4781;PHASE_1_34_161_200(free)
-gui_helper; check; 1204; -4526;PHASE_1_38_162_201(location_type)
-gui_helper; check; 1305; -4525;PHASE_1_38_162_201(range)
-gui_helper; check; 1368; -4525;PHASE_1_38_162_201(free)
-gui_helper; check; 1214; -4288;PHASE_1_42_163_202(location_type)
-gui_helper; check; 1315; -4287;PHASE_1_42_163_202(range)
-gui_helper; check; 1378; -4287;PHASE_1_42_163_202(free)
-gui_helper; check; 1206; -4080;PHASE_1_46_164_203(location_type)
-gui_helper; check; 1307; -4079;PHASE_1_46_164_203(range)
-gui_helper; check; 1370; -4079;PHASE_1_46_164_203(free)
-gui_helper; check; 1527; -6181;PHASE_1_42_163_202_242(location_type)
-gui_helper; check; 1628; -6180;PHASE_1_42_163_202_242(range)
-gui_helper; check; 1691; -6180;PHASE_1_42_163_202_242(free)
-gui_helper; check; 1519; -5973;PHASE_1_46_164_203_243(location_type)
-gui_helper; check; 1620; -5972;PHASE_1_46_164_203_243(range)
-gui_helper; check; 1683; -5972;PHASE_1_46_164_203_243(free)
 gui_helper; check; 6447; -3536;LARGE_CANNON(location_type)
 gui_helper; check; 6447; -3487;LARGE_CANNON(free)
 gui_helper; check; 6447; -3450;LARGE_CANNON(range)
@@ -4725,14 +4679,14 @@ gui_helper; check; -13102; 4850;BLUE_WH2_04_0DMG(location_type)
 gui_helper; check; -13098; 5086;BLUE_WH2_05_0DMG(free)
 gui_helper; check; -13098; 5123;BLUE_WH2_05_0DMG(range)
 gui_helper; check; -13098; 5051;BLUE_WH2_05_0DMG(location_type)
-gui_helper; check; 9954; 45;RED_REAR_AF1_DECOR(range)
-gui_helper; check; 8006; -482;RED_FRONT_AF3_DECOR(range)
-gui_helper; check; 6041; -415;RED_FRONT_AF2_DECOR(range)
-gui_helper; check; 4080; -491;RED_FRONT_AF1_DECOR(range)
-gui_helper; check; -9230; 30;BLUE_REAR_AF1_DECOR(range)
-gui_helper; check; -6965; -456;BLUE_FRONT_AF3_DECOR(range)
-gui_helper; check; -4741; -424;BLUE_FRONT_AF2_DECOR(range)
-gui_helper; check; -2465; -345;BLUE_FRONT_AF1_DECOR(range)
+gui_helper; check; 9954; 45;AF4_DECOR_RED(range)
+gui_helper; check; 8006; -482;AF3_DECOR_RED(range)
+gui_helper; check; 6041; -415;AF2_DECOR_RED(range)
+gui_helper; check; 4080; -491;AF1_DECOR_RED(range)
+gui_helper; check; -9230; 30;AF4_DECOR_BLUE(range)
+gui_helper; check; -6965; -456;AF3_DECOR_BLUE(range)
+gui_helper; check; -4741; -424;AF2_DECOR_BLUE(range)
+gui_helper; check; -2465; -345;AF1_DECOR_BLUE(range)
 gui_helper; check; 3936; 4459;BLUE_TANKS_1(location_type)
 gui_helper; check; 3930; 4657;BLUE_TANKS_1(free)
 gui_helper; check; 750; 8612;MISSION_TARGET_REF(location_type)
@@ -4859,6 +4813,208 @@ gui_helper; check; 10; 12935;MEDIUM_CANNON3_88_885_1136_2220_2280(free)
 gui_helper; check; -15; 12424;MEDIUM_CANNON_86_883_180_1143_2222_2282(location_type)
 gui_helper; check; -18; 12464;MEDIUM_CANNON_86_883_180_1143_2222_2282(range)
 gui_helper; check; -17; 12499;MEDIUM_CANNON_86_883_180_1143_2222_2282(free)
+gui_helper; check; 51; -5877;W_FIELD_DECOR(location_type)
+gui_helper; check; 152; -5876;W_FIELD_DECOR(range)
+gui_helper; check; 210; -5876;W_FIELD_DECOR(free)
+gui_helper; check; 39; -5624;W_FIELD_DECOR_2502(location_type)
+gui_helper; check; 140; -5623;W_FIELD_DECOR_2502(range)
+gui_helper; check; 198; -5623;W_FIELD_DECOR_2502(free)
+gui_helper; check; 40; -5390;W_FIELD_DECOR_2506(location_type)
+gui_helper; check; 141; -5389;W_FIELD_DECOR_2506(range)
+gui_helper; check; 199; -5389;W_FIELD_DECOR_2506(free)
+gui_helper; check; 41; -5161;W_FIELD_DECOR_2510(location_type)
+gui_helper; check; 142; -5160;W_FIELD_DECOR_2510(range)
+gui_helper; check; 200; -5160;W_FIELD_DECOR_2510(free)
+gui_helper; check; 43; -4927;W_FIELD_DECOR_2514(location_type)
+gui_helper; check; 144; -4926;W_FIELD_DECOR_2514(range)
+gui_helper; check; 202; -4926;W_FIELD_DECOR_2514(free)
+gui_helper; check; 40; -4698;W_FIELD_DECOR_2518(location_type)
+gui_helper; check; 141; -4697;W_FIELD_DECOR_2518(range)
+gui_helper; check; 199; -4697;W_FIELD_DECOR_2518(free)
+gui_helper; check; 44; -4458;W_FIELD_DECOR_2522(location_type)
+gui_helper; check; 145; -4457;W_FIELD_DECOR_2522(range)
+gui_helper; check; 203; -4457;W_FIELD_DECOR_2522(free)
+gui_helper; check; 45; -4206;W_FIELD_DECOR_2526(location_type)
+gui_helper; check; 146; -4205;W_FIELD_DECOR_2526(range)
+gui_helper; check; 204; -4205;W_FIELD_DECOR_2526(free)
+gui_helper; check; 37; -3962;W_FIELD_DECOR_2530(location_type)
+gui_helper; check; 138; -3961;W_FIELD_DECOR_2530(range)
+gui_helper; check; 196; -3961;W_FIELD_DECOR_2530(free)
+gui_helper; check; 41; -3745;W_FIELD_DECOR_2534(location_type)
+gui_helper; check; 142; -3744;W_FIELD_DECOR_2534(range)
+gui_helper; check; 200; -3744;W_FIELD_DECOR_2534(free)
+gui_helper; check; 402; -5878;W_FIELD_DECOR_2538(location_type)
+gui_helper; check; 503; -5877;W_FIELD_DECOR_2538(range)
+gui_helper; check; 561; -5877;W_FIELD_DECOR_2538(free)
+gui_helper; check; 390; -5625;W_FIELD_DECOR_2502_2539(location_type)
+gui_helper; check; 491; -5624;W_FIELD_DECOR_2502_2539(range)
+gui_helper; check; 549; -5624;W_FIELD_DECOR_2502_2539(free)
+gui_helper; check; 391; -5391;W_FIELD_DECOR_2506_2540(location_type)
+gui_helper; check; 492; -5390;W_FIELD_DECOR_2506_2540(range)
+gui_helper; check; 550; -5390;W_FIELD_DECOR_2506_2540(free)
+gui_helper; check; 392; -5162;W_FIELD_DECOR_2510_2541(location_type)
+gui_helper; check; 493; -5161;W_FIELD_DECOR_2510_2541(range)
+gui_helper; check; 551; -5161;W_FIELD_DECOR_2510_2541(free)
+gui_helper; check; 394; -4928;W_FIELD_DECOR_2514_2542(location_type)
+gui_helper; check; 495; -4927;W_FIELD_DECOR_2514_2542(range)
+gui_helper; check; 553; -4927;W_FIELD_DECOR_2514_2542(free)
+gui_helper; check; 391; -4699;W_FIELD_DECOR_2518_2543(location_type)
+gui_helper; check; 492; -4698;W_FIELD_DECOR_2518_2543(range)
+gui_helper; check; 550; -4698;W_FIELD_DECOR_2518_2543(free)
+gui_helper; check; 395; -4459;W_FIELD_DECOR_2522_2544(location_type)
+gui_helper; check; 496; -4458;W_FIELD_DECOR_2522_2544(range)
+gui_helper; check; 554; -4458;W_FIELD_DECOR_2522_2544(free)
+gui_helper; check; 396; -4207;W_FIELD_DECOR_2526_2545(location_type)
+gui_helper; check; 497; -4206;W_FIELD_DECOR_2526_2545(range)
+gui_helper; check; 555; -4206;W_FIELD_DECOR_2526_2545(free)
+gui_helper; check; 388; -3963;W_FIELD_DECOR_2530_2546(location_type)
+gui_helper; check; 489; -3962;W_FIELD_DECOR_2530_2546(range)
+gui_helper; check; 547; -3962;W_FIELD_DECOR_2530_2546(free)
+gui_helper; check; 392; -3746;W_FIELD_DECOR_2534_2547(location_type)
+gui_helper; check; 493; -3745;W_FIELD_DECOR_2534_2547(range)
+gui_helper; check; 551; -3745;W_FIELD_DECOR_2534_2547(free)
+gui_helper; check; 723; -5878;W_FIELD_DECOR_2578(location_type)
+gui_helper; check; 824; -5877;W_FIELD_DECOR_2578(range)
+gui_helper; check; 882; -5877;W_FIELD_DECOR_2578(free)
+gui_helper; check; 711; -5625;W_FIELD_DECOR_2502_2579(location_type)
+gui_helper; check; 812; -5624;W_FIELD_DECOR_2502_2579(range)
+gui_helper; check; 870; -5624;W_FIELD_DECOR_2502_2579(free)
+gui_helper; check; 712; -5391;W_FIELD_DECOR_2506_2580(location_type)
+gui_helper; check; 813; -5390;W_FIELD_DECOR_2506_2580(range)
+gui_helper; check; 871; -5390;W_FIELD_DECOR_2506_2580(free)
+gui_helper; check; 713; -5162;W_FIELD_DECOR_2510_2581(location_type)
+gui_helper; check; 814; -5161;W_FIELD_DECOR_2510_2581(range)
+gui_helper; check; 872; -5161;W_FIELD_DECOR_2510_2581(free)
+gui_helper; check; 715; -4928;W_FIELD_DECOR_2514_2582(location_type)
+gui_helper; check; 816; -4927;W_FIELD_DECOR_2514_2582(range)
+gui_helper; check; 874; -4927;W_FIELD_DECOR_2514_2582(free)
+gui_helper; check; 712; -4699;W_FIELD_DECOR_2518_2583(location_type)
+gui_helper; check; 813; -4698;W_FIELD_DECOR_2518_2583(range)
+gui_helper; check; 871; -4698;W_FIELD_DECOR_2518_2583(free)
+gui_helper; check; 716; -4459;W_FIELD_DECOR_2522_2584(location_type)
+gui_helper; check; 817; -4458;W_FIELD_DECOR_2522_2584(range)
+gui_helper; check; 875; -4458;W_FIELD_DECOR_2522_2584(free)
+gui_helper; check; 717; -4207;W_FIELD_DECOR_2526_2585(location_type)
+gui_helper; check; 818; -4206;W_FIELD_DECOR_2526_2585(range)
+gui_helper; check; 876; -4206;W_FIELD_DECOR_2526_2585(free)
+gui_helper; check; 709; -3963;W_FIELD_DECOR_2530_2586(location_type)
+gui_helper; check; 810; -3962;W_FIELD_DECOR_2530_2586(range)
+gui_helper; check; 868; -3962;W_FIELD_DECOR_2530_2586(free)
+gui_helper; check; 713; -3746;W_FIELD_DECOR_2534_2587(location_type)
+gui_helper; check; 814; -3745;W_FIELD_DECOR_2534_2587(range)
+gui_helper; check; 872; -3745;W_FIELD_DECOR_2534_2587(free)
+gui_helper; check; 1051; -5875;W_FIELD_DECOR_2618(location_type)
+gui_helper; check; 1152; -5874;W_FIELD_DECOR_2618(range)
+gui_helper; check; 1210; -5874;W_FIELD_DECOR_2618(free)
+gui_helper; check; 1039; -5622;W_FIELD_DECOR_2502_2619(location_type)
+gui_helper; check; 1140; -5621;W_FIELD_DECOR_2502_2619(range)
+gui_helper; check; 1198; -5621;W_FIELD_DECOR_2502_2619(free)
+gui_helper; check; 1040; -5388;W_FIELD_DECOR_2506_2620(location_type)
+gui_helper; check; 1141; -5387;W_FIELD_DECOR_2506_2620(range)
+gui_helper; check; 1199; -5387;W_FIELD_DECOR_2506_2620(free)
+gui_helper; check; 1041; -5159;W_FIELD_DECOR_2510_2621(location_type)
+gui_helper; check; 1142; -5158;W_FIELD_DECOR_2510_2621(range)
+gui_helper; check; 1200; -5158;W_FIELD_DECOR_2510_2621(free)
+gui_helper; check; 1043; -4925;W_FIELD_DECOR_2514_2622(location_type)
+gui_helper; check; 1144; -4924;W_FIELD_DECOR_2514_2622(range)
+gui_helper; check; 1202; -4924;W_FIELD_DECOR_2514_2622(free)
+gui_helper; check; 1040; -4696;W_FIELD_DECOR_2518_2623(location_type)
+gui_helper; check; 1141; -4695;W_FIELD_DECOR_2518_2623(range)
+gui_helper; check; 1199; -4695;W_FIELD_DECOR_2518_2623(free)
+gui_helper; check; 1044; -4456;W_FIELD_DECOR_2522_2624(location_type)
+gui_helper; check; 1145; -4455;W_FIELD_DECOR_2522_2624(range)
+gui_helper; check; 1203; -4455;W_FIELD_DECOR_2522_2624(free)
+gui_helper; check; 1045; -4204;W_FIELD_DECOR_2526_2625(location_type)
+gui_helper; check; 1146; -4203;W_FIELD_DECOR_2526_2625(range)
+gui_helper; check; 1204; -4203;W_FIELD_DECOR_2526_2625(free)
+gui_helper; check; 1037; -3960;W_FIELD_DECOR_2530_2626(location_type)
+gui_helper; check; 1138; -3959;W_FIELD_DECOR_2530_2626(range)
+gui_helper; check; 1196; -3959;W_FIELD_DECOR_2530_2626(free)
+gui_helper; check; 1041; -3743;W_FIELD_DECOR_2534_2627(location_type)
+gui_helper; check; 1142; -3742;W_FIELD_DECOR_2534_2627(range)
+gui_helper; check; 1200; -3742;W_FIELD_DECOR_2534_2627(free)
+gui_helper; check; 1358; -5878;W_FIELD_DECOR_2658(location_type)
+gui_helper; check; 1459; -5877;W_FIELD_DECOR_2658(range)
+gui_helper; check; 1517; -5877;W_FIELD_DECOR_2658(free)
+gui_helper; check; 1346; -5625;W_FIELD_DECOR_2502_2659(location_type)
+gui_helper; check; 1447; -5624;W_FIELD_DECOR_2502_2659(range)
+gui_helper; check; 1505; -5624;W_FIELD_DECOR_2502_2659(free)
+gui_helper; check; 1347; -5391;W_FIELD_DECOR_2506_2660(location_type)
+gui_helper; check; 1448; -5390;W_FIELD_DECOR_2506_2660(range)
+gui_helper; check; 1506; -5390;W_FIELD_DECOR_2506_2660(free)
+gui_helper; check; 1348; -5162;W_FIELD_DECOR_2510_2661(location_type)
+gui_helper; check; 1449; -5161;W_FIELD_DECOR_2510_2661(range)
+gui_helper; check; 1507; -5161;W_FIELD_DECOR_2510_2661(free)
+gui_helper; check; 1350; -4928;W_FIELD_DECOR_2514_2662(location_type)
+gui_helper; check; 1451; -4927;W_FIELD_DECOR_2514_2662(range)
+gui_helper; check; 1509; -4927;W_FIELD_DECOR_2514_2662(free)
+gui_helper; check; 1347; -4699;W_FIELD_DECOR_2518_2663(location_type)
+gui_helper; check; 1448; -4698;W_FIELD_DECOR_2518_2663(range)
+gui_helper; check; 1506; -4698;W_FIELD_DECOR_2518_2663(free)
+gui_helper; check; 1351; -4459;W_FIELD_DECOR_2522_2664(location_type)
+gui_helper; check; 1452; -4458;W_FIELD_DECOR_2522_2664(range)
+gui_helper; check; 1510; -4458;W_FIELD_DECOR_2522_2664(free)
+gui_helper; check; 1352; -4207;W_FIELD_DECOR_2526_2665(location_type)
+gui_helper; check; 1453; -4206;W_FIELD_DECOR_2526_2665(range)
+gui_helper; check; 1511; -4206;W_FIELD_DECOR_2526_2665(free)
+gui_helper; check; 1344; -3963;W_FIELD_DECOR_2530_2666(location_type)
+gui_helper; check; 1445; -3962;W_FIELD_DECOR_2530_2666(range)
+gui_helper; check; 1503; -3962;W_FIELD_DECOR_2530_2666(free)
+gui_helper; check; 1348; -3746;W_FIELD_DECOR_2534_2667(location_type)
+gui_helper; check; 1449; -3745;W_FIELD_DECOR_2534_2667(range)
+gui_helper; check; 1507; -3745;W_FIELD_DECOR_2534_2667(free)
+gui_helper; check; 1686; -5885;W_FIELD_DECOR_2698(location_type)
+gui_helper; check; 1787; -5884;W_FIELD_DECOR_2698(range)
+gui_helper; check; 1845; -5884;W_FIELD_DECOR_2698(free)
+gui_helper; check; 1674; -5632;W_FIELD_DECOR_2502_2699(location_type)
+gui_helper; check; 1775; -5631;W_FIELD_DECOR_2502_2699(range)
+gui_helper; check; 1833; -5631;W_FIELD_DECOR_2502_2699(free)
+gui_helper; check; -2416; -98;AF1_DECOR_BLUE(location_type)
+gui_helper; check; -4692; -177;AF2_DECOR_BLUE(location_type)
+gui_helper; check; -6916; -209;AF3_DECOR_BLUE(location_type)
+gui_helper; check; -9181; 276;AF4_DECOR_BLUE(location_type)
+gui_helper; check; 4108; -238;AF1_DECOR_RED(location_type)
+gui_helper; check; 6064; -162;AF2_DECOR_RED(location_type)
+gui_helper; check; 8013; -229;AF3_DECOR_RED(location_type)
+gui_helper; check; 9966; 294;AF4_DECOR_RED(location_type)
+gui_helper; check; -1749; -414;SIREN_BLUE_1(location_type)
+gui_helper; check; -1749; -378;SIREN_BLUE_1(range)
+gui_helper; check; -1519; -417;WINDSOCK_5(location_type)
+gui_helper; check; -1517; -376;WINDSOCK_5(range)
+gui_helper; check; 3051; -455;SIREN_RED_1(location_type)
+gui_helper; check; 3051; -413;SIREN_RED_1(range)
+gui_helper; check; 3288; -445;WINDSOCK_1(location_type)
+gui_helper; check; 3290; -404;WINDSOCK_1(range)
+gui_helper; check; 4932; -412;SIREN_RED_2(location_type)
+gui_helper; check; 4932; -370;SIREN_RED_2(range)
+gui_helper; check; 5169; -402;WINDSOCK_2(location_type)
+gui_helper; check; 5171; -361;WINDSOCK_2(range)
+gui_helper; check; 6904; -401;SIREN_RED_3(location_type)
+gui_helper; check; 6904; -359;SIREN_RED_3(range)
+gui_helper; check; 7141; -391;WINDSOCK_3(location_type)
+gui_helper; check; 7143; -350;WINDSOCK_3(range)
+gui_helper; check; 8997; 57;SIREN_RED_4(location_type)
+gui_helper; check; 8997; 99;SIREN_RED_4(range)
+gui_helper; check; 9234; 67;WINDSOCK_4(location_type)
+gui_helper; check; 9236; 108;WINDSOCK_4(range)
+gui_helper; check; -4035; -418;SIREN_BLUE_2(location_type)
+gui_helper; check; -4035; -382;SIREN_BLUE_2(range)
+gui_helper; check; -3805; -421;WINDSOCK_6(location_type)
+gui_helper; check; -3803; -380;WINDSOCK_6(range)
+gui_helper; check; -6198; -498;SIREN_BLUE_3(location_type)
+gui_helper; check; -6198; -462;SIREN_BLUE_3(range)
+gui_helper; check; -5968; -501;WINDSOCK_7(location_type)
+gui_helper; check; -5966; -460;WINDSOCK_7(range)
+gui_helper; check; -8463; -46;SIREN_BLUE_4(location_type)
+gui_helper; check; -8463; -10;SIREN_BLUE_4(range)
+gui_helper; check; -8233; -49;WINDSOCK_8(location_type)
+gui_helper; check; -8231; -8;WINDSOCK_8(range)
+gui_helper; check; -9212; -221;BLUE_BEACON(location_type)
+gui_helper; check; -9218; -183;BLUE_BEACON(range)
+gui_helper; check; -9221; -145;BLUE_BEACON(free)
+gui_helper; check; 9832; -111;RED_BEACON(location_type)
+gui_helper; check; 9826; -73;RED_BEACON(range)
+gui_helper; check; 9823; -35;RED_BEACON(free)
 gui_helper; AILevel; 2994; 6625;RAD1_001_6_AAA; (AAA_2037mm);
 gui_helper; AILevel; 3509; 6633;RAD1_002_7_AAA; (AAA_2037mm);
 gui_helper; AILevel; 6828; 10209;RAD1_010_8_AAA; (AAA_8885mm);
@@ -5655,3 +5811,13 @@ gui_helper; Time; -543; 12666;BLUE_SMART_CHECKZONE_891_1142_2221_2281; (MACHINE_
 gui_helper; Zone; -543; 12706;BLUE_SMART_CHECKZONE_891_1142_2221_2281; (Outer Zone);
 gui_helper; Model; 43; 12181;MEDIUM_CANNON_86_883_180_1143_2222_2282; (AAA_MED_TYPE);
 gui_helper; Country; 43; 12221;MEDIUM_CANNON_86_883_180_1143_2222_2282; (AAA_MED_TYPE);
+gui_helper; Distance; -1700; -626;SIREN_BLUE_1; (Proximity);
+gui_helper; Distance; 3097; -667;SIREN_RED_1; (Proximity);
+gui_helper; Distance; 4978; -624;SIREN_RED_2; (Proximity);
+gui_helper; Distance; 6950; -613;SIREN_RED_3; (Proximity);
+gui_helper; Distance; 9043; -155;SIREN_RED_4; (Proximity);
+gui_helper; Distance; -3986; -630;SIREN_BLUE_2; (Proximity);
+gui_helper; Distance; -6149; -710;SIREN_BLUE_3; (Proximity);
+gui_helper; Distance; -8414; -258;SIREN_BLUE_4; (Proximity);
+gui_helper; Country; -9167; -422;BLUE_BEACON; (BEACON);
+gui_helper; Country; 9877; -312;RED_BEACON; (BEACON);
