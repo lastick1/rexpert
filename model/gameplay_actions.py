@@ -19,7 +19,8 @@ class GameplayAction:
             constants.GameplayAction.DATE: self.date.strftime(constants.DATE_FORMAT),
             constants.GameplayAction.TIK: self.tik,
             constants.GameplayAction.KIND: self.kind,
-            constants.GameplayAction.OBJECT_NAME: self.object_name
+            constants.GameplayAction.OBJECT_NAME: self.object_name,
+            constants.COUNTRY: self.country
         }
 
 

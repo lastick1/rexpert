@@ -20,8 +20,12 @@ END_DATE = 'end_date'
 
 
 class CampaignController:
+    instances = 0
     """Контролеер кампании"""
     def __init__(self, ioc):
+        CampaignController.instances += 1
+        if CampaignController.instances > 1:
+            raise NameError(f'Campaign controller instances 2')
         self._ioc = ioc
         self._mission: model.CampaignMission = None
         self._campaign_map: model.CampaignMap = None
@@ -189,7 +193,10 @@ class CampaignController:
 
     def _get_tvd(self, tvd_name: str, date: str) -> model.Tvd:
         """Получить ТВД (создаётся заново)"""
-        return self.tvd_builders[tvd_name].get_tvd(date)
+        result = self.tvd_builders[tvd_name].get_tvd(date)
+        if not result:
+            logging.critical(f'tvd not built')
+        return result
 
     def end_mission(self, atype: atypes.Atype7):
         """Обработать завершение миссии"""
@@ -222,6 +229,7 @@ class CampaignController:
 
         killed_airfields = self._campaign_map.killed_airfields
         attack = self._campaign_map.country_attacked()
+        # TODO отремонтировать дивизии
         self._generate(
             self.next_name,
             self._campaign_map.date.strftime(constants.DATE_FORMAT),
