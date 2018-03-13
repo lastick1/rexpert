@@ -91,7 +91,7 @@ class PlayersController:
 
         self.storage.players.update(player)
 
-    def finish(self, bot: log_objects.BotPilot):
+    def finish(self, bot: log_objects.BotPilot, on_airfield=True):
         """Обработать конец вылета (деинициализация бота)"""
         player = None
         changed = False
@@ -102,7 +102,7 @@ class PlayersController:
         ff_damage = len(bot.aircraft.friendly_fire_damages) > 0
         friendly_fire = ff_damage or ff_kills
 
-        if not friendly_fire and bot.aircraft.landed and has_kills or has_damage:
+        if not friendly_fire and bot.aircraft.landed and has_kills or has_damage and on_airfield:
             changed = True
             player = self._get_player(bot)
             player.unlocks += 1

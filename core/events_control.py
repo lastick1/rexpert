@@ -213,9 +213,9 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         bot = self._ioc.objects_controller.get_bot(atype.bot_id)
         if not bot:
             raise NameError(f'Bot not found: {atype.bot_id}')
-        self.players_controller.finish(bot)
         tvd = self.campaign_controller.current_tvd
-        self.airfields_controller.finish(tvd.name, tvd.get_country(atype.point), bot)
+        on_airfield = self.airfields_controller.finish(tvd.name, tvd.get_country(atype.point), bot)
+        self.players_controller.finish(bot, on_airfield)
         self.objects_controller.deinitialize(atype)
 
     def event_pos_changed(self, tik: int, object_id: int, pos: dict) -> None:

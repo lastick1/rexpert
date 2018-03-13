@@ -70,13 +70,15 @@ class AirfieldsController:
         else:
             self.add_aircraft(tvd_name, airfield_country, managed_airfield.name, atype.aircraft_name, -1)
 
-    def finish(self, tvd_name: str, airfield_country: int, bot: log_objects.BotPilot):
+    def finish(self, tvd_name: str, airfield_country: int, bot: log_objects.BotPilot) -> bool:
         """Обработать деспаун самолёта на аэродроме"""
         xpos = bot.aircraft.pos['x']
         zpos = bot.aircraft.pos['z']
         managed_airfield = self.get_airfield_in_radius(tvd_name, xpos, zpos, self.config.gameplay.airfield_radius)
         if managed_airfield:
             self.add_aircraft(tvd_name, airfield_country, managed_airfield.name, bot.aircraft.log_name, 1)
+            return True
+        return False
 
     @staticmethod
     def get_country(airfield, tvd) -> int:
