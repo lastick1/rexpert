@@ -107,6 +107,9 @@ class WarehouseController:
             self._notify_counter = 0
         for warehouse in warehouses:
             if not self.config.main.offline_mode:
+                if not self.rcon.connected:
+                    self.rcon.connect()
+                    self.rcon.auth(self.config.main.rcon_login, self.config.main.rcon_password)
                 self.rcon.info_message(f'{warehouse.name} warehouse state is {warehouse.health}/100')
 
     def damage_warehouse(self, tik: int, unit: WarehouseUnit):
