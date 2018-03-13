@@ -116,7 +116,7 @@
       "AvPayloads": "",
       "country": 201,
       "_default_number": 150,
-      "_squadron_size": 8
+      "_squadron_size": 6
     },
     "bf 110 g-2": {
       "Name": "",
@@ -127,7 +127,7 @@
       "AvPayloads": "",
       "country": 201,
       "_default_number": 150,
-      "_squadron_size": 8
+      "_squadron_size": 6
     },
     "fw 190 a-3": {
       "Name": "",
@@ -160,7 +160,7 @@
       "AvPayloads": "",
       "country": 201,
       "_default_number": 150,
-      "_squadron_size": 6
+      "_squadron_size": 1
     },
     "he 111 h-16": {
       "Name": "",
@@ -171,7 +171,7 @@
       "AvPayloads": "",
       "country": 201,
       "_default_number": 150,
-      "_squadron_size": 6
+      "_squadron_size": 1
     },
     "hs 129 b-2": {
       "Name": "",
@@ -204,7 +204,7 @@
       "AvPayloads": "",
       "country": 101,
       "_default_number": 150,
-      "_squadron_size": 8
+      "_squadron_size": 6
     },
     "il-2 mod.1942": {
       "Name": "",
@@ -215,7 +215,7 @@
       "AvPayloads": "",
       "country": 101,
       "_default_number": 150,
-      "_squadron_size": 8
+      "_squadron_size": 6
     },
     "il-2 mod.1943": {
       "Name": "",
@@ -226,7 +226,7 @@
       "AvPayloads": "",
       "country": 101,
       "_default_number": 150,
-      "_squadron_size": 8
+      "_squadron_size": 6
     },
     "ju 52 3mg4e": {
       "Name": "",
@@ -248,7 +248,7 @@
       "AvPayloads": "",
       "country": 201,
       "_default_number": 150,
-      "_squadron_size": 8
+      "_squadron_size": 6
     },
     "ju 88 a-4": {
       "Name": "",
@@ -259,7 +259,7 @@
       "AvPayloads": "",
       "country": 201,
       "_default_number": 150,
-      "_squadron_size": 6
+      "_squadron_size": 1
     },
     "la-5 ser.8": {
       "Name": "",
@@ -325,7 +325,7 @@
       "AvPayloads": "",
       "country": 101,
       "_default_number": 150,
-      "_squadron_size": 6
+      "_squadron_size": 2
     },
     "pe-2 ser.87": {
       "Name": "",
@@ -336,7 +336,7 @@
       "AvPayloads": "",
       "country": 101,
       "_default_number": 150,
-      "_squadron_size": 6
+      "_squadron_size": 2
     },
     "spitfire mk.vb": {
       "Name": "",
