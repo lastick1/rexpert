@@ -96,12 +96,12 @@ class WarehouseController:
     def notify(self):
         """Отправить состояние складов в чат"""
         self._notify_counter += 1
-        warehouses = tuple()
+        warehouses = list()
         if self._notify_counter % 4 == 3:
-            warehouses = (x for x in self._current_mission_warehouses if x.country == 101)
+            warehouses.extend(x for x in self._current_mission_warehouses if x.country == 101)
             logging.info(f'{self._notify_counter},{len(warehouses)} notify warehouses state for 101')
         if self._notify_counter % 4 == 2:
-            warehouses = (x for x in self._current_mission_warehouses if x.country == 201)
+            warehouses.extend(x for x in self._current_mission_warehouses if x.country == 201)
             logging.info(f'{self._notify_counter},{len(warehouses)} notify warehouses state for 201')
         if self._notify_counter % 4 == 0:
             self._notify_counter = 0
