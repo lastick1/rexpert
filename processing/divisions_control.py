@@ -91,6 +91,8 @@ class DivisionsController:
     def end_round(self):
         """Обработать завершение раунда"""
         self._round_ended = True
+        for division in self._current_divisions:
+            self.repair_division(division.tvd_name, division.name, 0)
 
     def damage_division(self, tik: int, tvd_name: str, unit_name: str):
         """Зачесть уничтожение подразделения дивизии"""
