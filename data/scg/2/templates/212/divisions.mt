@@ -723,8 +723,6 @@ blocks_set; blocks_SIREN_BLUE_3; main(scg\2\blocks_quickmission\ground\effects\s
 blocks_set; blocks_WINDSOCK_7; main(scg\2\blocks_quickmission\windsock.group);
 blocks_set; blocks_SIREN_BLUE_4; main(scg\2\blocks_quickmission\ground\effects\siren_ger.group);
 blocks_set; blocks_WINDSOCK_8; main(scg\2\blocks_quickmission\windsock.group);
-blocks_set; blocks_RED_BEACON; main(scg\2\blocks_quickmission\ground\effects\beacon.group);
-blocks_set; blocks_BLUE_BEACON; main(scg\2\blocks_quickmission\ground\effects\beacon.group);
 
 #
 ## geo params
@@ -1449,8 +1447,6 @@ phase; SIREN_BLUE_3; random(BLUE_FRONT_AF3); blocks_SIREN_BLUE_3; clone_location
 phase; WINDSOCK_7; random(BLUE_FRONT_AF3); blocks_WINDSOCK_7; clone_location;;
 phase; SIREN_BLUE_4; random(BLUE_REAR_AF1); blocks_SIREN_BLUE_4; clone_location;;
 phase; WINDSOCK_8; random(BLUE_REAR_AF1); blocks_WINDSOCK_8; clone_location;;
-phase; RED_BEACON; random(RED_REAF_AF1); blocks_RED_BEACON; clone_location;;
-phase; BLUE_BEACON; random(BLUE_REAR_AF1); blocks_BLUE_BEACON; clone_location;;
 
 #
 ## cases & switches
@@ -3051,12 +3047,6 @@ check; SIREN_BLUE_4; location_type(Decoration,Siren);
 check; SIREN_BLUE_4; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; WINDSOCK_8; location_type(Decoration,Windsock);
 check; WINDSOCK_8; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; RED_BEACON; location_type(Decoration,NDB);
-check; RED_BEACON; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; RED_BEACON; free();
-check; BLUE_BEACON; location_type(Decoration,NDB);
-check; BLUE_BEACON; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; BLUE_BEACON; free();
 
 #
 ## property actions
@@ -3808,8 +3798,6 @@ action; SIREN_BLUE_1(Proximity,Distance); set(Distance,6000);
 action; SIREN_BLUE_2(Proximity,Distance); set(Distance,6000);
 action; SIREN_BLUE_3(Proximity,Distance); set(Distance,6000);
 action; SIREN_BLUE_4(Proximity,Distance); set(Distance,6000);
-action; RED_BEACON(BEACON,Country); set_country(friendly);
-action; BLUE_BEACON(BEACON,Country); set_country(enemy);
 
 #
 ## unlinks
@@ -4538,8 +4526,6 @@ gui_helper; SIREN_BLUE_3; -6183; -611;
 gui_helper; WINDSOCK_7; -5948; -610;
 gui_helper; SIREN_BLUE_4; -8401; -212;
 gui_helper; WINDSOCK_8; -8166; -211;
-gui_helper; RED_BEACON; 9867; -333;
-gui_helper; BLUE_BEACON; -9198; -383;
 gui_helper; check; -8542; 474;BLUE_REAR_AF_REFERENCE(coalition)
 gui_helper; check; -8544; 428;BLUE_REAR_AF_REFERENCE(location_type)
 gui_helper; check; -8544; 518;BLUE_REAR_AF_REFERENCE(range)
@@ -5638,12 +5624,6 @@ gui_helper; check; -8373; -26;SIREN_BLUE_4(location_type)
 gui_helper; check; -8373; 10;SIREN_BLUE_4(range)
 gui_helper; check; -8143; -29;WINDSOCK_8(location_type)
 gui_helper; check; -8141; 12;WINDSOCK_8(range)
-gui_helper; check; 9888; -153;RED_BEACON(location_type)
-gui_helper; check; 9882; -115;RED_BEACON(range)
-gui_helper; check; 9879; -77;RED_BEACON(free)
-gui_helper; check; -9177; -203;BLUE_BEACON(location_type)
-gui_helper; check; -9183; -165;BLUE_BEACON(range)
-gui_helper; check; -9186; -127;BLUE_BEACON(free)
 gui_helper; AILevel; 3336; 3792;RTD1_001_16_AAA; (AAA_2037mm);
 gui_helper; AILevel; 3336; 3832;RTD1_001_16_AAA; (AAA_8885mm);
 gui_helper; AILevel; 3821; 3818;RTD1_002_5_AAA; (AAA_mg);
@@ -6391,5 +6371,3 @@ gui_helper; Distance; -1634; -602;SIREN_BLUE_1; (Proximity);
 gui_helper; Distance; -3945; -634;SIREN_BLUE_2; (Proximity);
 gui_helper; Distance; -6106; -637;SIREN_BLUE_3; (Proximity);
 gui_helper; Distance; -8324; -238;SIREN_BLUE_4; (Proximity);
-gui_helper; Country; 9933; -354;RED_BEACON; (BEACON);
-gui_helper; Country; -9132; -404;BLUE_BEACON; (BEACON);

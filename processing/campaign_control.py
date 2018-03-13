@@ -176,6 +176,7 @@ class CampaignController:
         self._campaign_map = self.storage.campaign_maps.load_by_tvd_name(self._mission.tvd_name)
         self._update_tik(atype.tik)
         self._campaign_map.mission = self._mission
+        self._campaign_map.date = self._mission.date
         self._current_tvd = self._get_tvd(
             self._campaign_map.tvd_name, self._campaign_map.date.strftime(constants.DATE_FORMAT))
         self.storage.campaign_maps.update(self._campaign_map)
