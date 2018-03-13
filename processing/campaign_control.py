@@ -1,4 +1,5 @@
 """Контроль миссий и хода кампании"""
+import datetime
 import logging
 
 import atypes
@@ -232,7 +233,7 @@ class CampaignController:
         # TODO отремонтировать дивизии
         self._generate(
             self.next_name,
-            self._campaign_map.date.strftime(constants.DATE_FORMAT),
+            self._campaign_map.date.strftime(constants.DATE_FORMAT) + datetime.timedelta(days=1),
             self._campaign_map.tvd_name,
             attack,
             killed_airfields[attack] if attack else None)
