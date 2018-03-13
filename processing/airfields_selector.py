@@ -57,8 +57,9 @@ class AirfieldsSelector:
         if airfields:
             front = list()
             for airfield in airfields:
-                if airfield.is_in_area(front_area):
+                if airfield.is_in_area(front_area) or airfield.is_in_vertices_of_area(front_area, 1000):
                     front.append(airfield)
+            # d = {x.name: x.to_dict() for x in front}
             if front:
                 result = list()
                 front.sort(key=utils.cmp_to_key(self._front_airfields_comparator))
@@ -66,7 +67,8 @@ class AirfieldsSelector:
                 front = geometry.remove_too_close(front, result, 15000)
                 front.reverse()
                 result.append(front.pop())
-                front = geometry.remove_too_close(front, result, 15000)
+                distance = 1000000000 / result[0].distance_to(result[1].x, result[1].z) + 10000
+                front = geometry.remove_too_close(front, result, distance)
                 result.append(random.choice(front))
                 return result
             else:
