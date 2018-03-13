@@ -99,7 +99,7 @@ class DivisionsController:
         division_name = unit_name.split(sep='_')[1]
         division = self.storage.divisions.load_by_name(tvd_name, division_name)
         if self._round_ended:
-            logging.info(f'{division.name} unit {unit_name} destroyed after round end')
+            logging.warning(f'{division.name} unit {unit_name} destroyed after round end')
             return
         division.units -= 1
         if division.units < 0:
@@ -112,7 +112,7 @@ class DivisionsController:
                     self.rcon.connect()
                     self.rcon.auth(self.config.main.rcon_login, self.config.main.rcon_password)
                 self.rcon.server_input(division.name)
-        logging.debug(f'{division.tvd_name} division {division.name} lost unit:{unit_name}')
+        logging.info(f'{division.tvd_name} division {division.name} lost unit:{unit_name}')
         self.storage.divisions.update(division)
 
     def repair_rate(self, penalties: int):

@@ -158,11 +158,11 @@ class ObjectsController:
         if aircraft:
             aircraft.ejected = True
         else:
-            logging.warning(
+            logging.error(
                 f'not found aircraft on eject [{atype}]')
         if bot:
             bot.ejected = True
-            logging.warning(
+            logging.error(
                 f'not found bot on eject [{atype}]')
 
     def end_sortie(self, atype: atypes.Atype4) -> None:

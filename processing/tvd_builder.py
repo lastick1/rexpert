@@ -295,6 +295,7 @@ class TvdBuilder:
         """Задать случайные параметры погоды, времени года и суток"""
         params_config = self.config.generator.cfg[self.name]
         date = self.random_datetime(*self.date_day_duration(tvd.date))
+        logging.debug(f'Updating defaultparams: DATE[{tvd.date}->{date}]')
         season = self.date_season_data(date)
 
         # настройки погоды
