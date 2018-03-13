@@ -91,9 +91,8 @@ class PlayersController:
 
         self.storage.players.update(player)
 
-    def finish(self, atype: atypes.Atype16):
+    def finish(self, bot: log_objects.BotPilot):
         """Обработать конец вылета (деинициализация бота)"""
-        bot = self.objects_controller.get_bot(atype.bot_id)
         player = None
         changed = False
 

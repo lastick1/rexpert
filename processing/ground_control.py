@@ -238,7 +238,7 @@ class GroundController:
             for target in self.targets:
                 if target.try_add_kill(atype.point):
                     changed = True
-                    logging.debug(f'ground kill in unit: {target.name} at {target.pos}')
+                    # logging.debug(f'ground kill in unit: {target.name} at {target.pos}')
                     break
             if changed:
                 self._check_targets(atype.tik)

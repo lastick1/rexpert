@@ -41,6 +41,7 @@ class WarehouseController:
         self._warehouses_by_inputs = dict()
         self._sent_inputs = set()
         self._round_ended: bool = False
+        self._notify_counter = 0
 
     @property
     def config(self) -> configs.Config:
@@ -91,6 +92,22 @@ class WarehouseController:
     def end_round(self):
         """Завершить раунд"""
         self._round_ended = True
+
+    def notify(self):
+        """Отправить состояние складов в чат"""
+        self._notify_counter += 1
+        warehouses = tuple()
+        if self._notify_counter % 4 == 3:
+            warehouses = (x for x in self._current_mission_warehouses if x.country == 101)
+            logging.info(f'{self._notify_counter},{len(warehouses)} notify warehouses state for 101')
+        if self._notify_counter % 4 == 2:
+            warehouses = (x for x in self._current_mission_warehouses if x.country == 201)
+            logging.info(f'{self._notify_counter},{len(warehouses)} notify warehouses state for 201')
+        if self._notify_counter % 4 == 0:
+            self._notify_counter = 0
+        for warehouse in warehouses:
+            if not self.config.main.offline_mode:
+                self.rcon.info_message(f'{warehouse.name} warehouse state is {warehouse.health}/100')
 
     def damage_warehouse(self, tik: int, unit: WarehouseUnit):
         """Зачесть уничтожение секции склада"""
