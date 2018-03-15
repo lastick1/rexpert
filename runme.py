@@ -55,10 +55,14 @@ logging.basicConfig(
     format=u'%(asctime)s %(levelname)-8s %(filename)-40s:%(lineno)-3d # %(message)s', level=logging.DEBUG)
 logging.getLogger('PIL').setLevel(logging.WARNING)
 logging.info("Program Start.")
-# compile_log()
-# compile_gif()
-# compile_ldf()
-# reset()
+# compile_log()  # объединить лог в один файл
+# compile_gif()  # собрать картинки в гифку
+# compile_ldf()  # объединить файлы баз локаций
+
+# reset()  # обнуление состояния кампании
 # initialize_campaign()
+# генерация атаки
 # generate('result1', 'moscow', '01.09.1941', attacking_country=201, attacked_airfield_name='vatulino')
+# генерация противостояния
+# generate('result1', 'moscow', '01.09.1941')
 run()
