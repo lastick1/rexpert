@@ -24,7 +24,7 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
             self.event_game_object, self.event_influence_area, self.event_influence_area_boundary,
             self.event_log_version, self.event_bot_deinitialization, self.event_pos_changed,
             self.event_bot_eject_leave, self.event_round_end, self.event_player_connected,
-            self.event_player_disconnected)
+            self.event_player_disconnected, self.event_tank_travel)
 
     def process_line(self, line: str):
         """Точка входа обработки события"""
@@ -166,11 +166,10 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
     def event_player(self, tik: int, aircraft_id: int, bot_id: int, account_id: str,
                      profile_id: str, name: str, pos: dict, aircraft_name: str, country_id: int,
                      coal_id: int, airfield_id: int, airstart: bool, parent_id: int,
-                     payload_id: int, fuel: float, skin: str, weapon_mods_id: list,
                      cartridges: int, shells: int, bombs: int, rockets: int, form: str) -> None:
         """AType 10 handler"""
         atype = atypes.Atype10(tik, aircraft_id, bot_id, account_id, profile_id, name, pos, aircraft_name, country_id,
-                               coal_id, airfield_id, airstart, parent_id, payload_id, fuel, skin, weapon_mods_id,
+                               coal_id, airfield_id, airstart, parent_id,
                                cartridges, shells, bombs, rockets, form)
         self.objects_controller.spawn(atype)
         self.players_controller.spawn(atype)
@@ -246,3 +245,6 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         """AType 21 handler"""
         atype = atypes.Atype21(tik, account_id, profile_id)
         self.players_controller.disconnect(atype.account_id)
+
+    def event_tank_travel(self, tik, parent_id, pos):
+        pass

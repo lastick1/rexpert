@@ -174,7 +174,6 @@ class Atype10(Atype):
     def __init__(self, tik: int, aircraft_id: int, bot_id: int, account_id: str,
                  profile_id: str, name: str, pos: dict, aircraft_name: str, country_id: int,
                  coal_id: int, airfield_id: int, airstart: bool, parent_id: int,
-                 payload_id: int, fuel: float, skin: str, weapon_mods_id: list,
                  cartridges: int, shells: int, bombs: int, rockets: int, form: str):
         super().__init__(tik)
         self.aircraft_id = aircraft_id
@@ -189,10 +188,10 @@ class Atype10(Atype):
         self.airfield_id = airfield_id
         self.airstart = airstart
         self.parent_id = parent_id
-        self.payload_id = payload_id
-        self.fuel = fuel
-        self.skin = skin
-        self.weapon_mods_id = weapon_mods_id
+        self.payload_id = 1  # payload_id
+        self.fuel = 1  # fuel
+        self.skin = ''  # skin
+        self.weapon_mods_id = list()  # weapon_mods_id
         self.cartridges = cartridges
         self.shells = shells
         self.bombs = bombs
