@@ -1,0 +1,3907 @@
+#1CGS Location Database file
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 16917.020;
+  YPos = 50.214;
+  ZPos = 18333.050;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 254284.589;
+  YPos = 24.855;
+  ZPos = 61031.686;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 253792.114;
+  YPos = 24.855;
+  ZPos = 71289.521;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 237782.203;
+  YPos = 24.855;
+  ZPos = 99321.036;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 254761.080;
+  YPos = 24.855;
+  ZPos = 87474.278;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 236611.036;
+  YPos = 24.855;
+  ZPos = 78201.903;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 262510.076;
+  YPos = 24.855;
+  ZPos = 95563.552;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 271268.797;
+  YPos = 24.855;
+  ZPos = 79544.399;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 278969.021;
+  YPos = 24.855;
+  ZPos = 98089.315;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 261654.164;
+  YPos = 24.855;
+  ZPos = 107564.916;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 248551.720;
+  YPos = 24.855;
+  ZPos = 103437.995;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 244283.509;
+  YPos = 24.855;
+  ZPos = 111565.043;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 272761.185;
+  YPos = 24.855;
+  ZPos = 113286.732;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 274851.388;
+  YPos = 24.855;
+  ZPos = 120865.473;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 247891.491;
+  YPos = 24.855;
+  ZPos = 143793.070;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 252602.281;
+  YPos = 24.855;
+  ZPos = 166202.114;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 271053.757;
+  YPos = 24.855;
+  ZPos = 154043.577;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 272677.943;
+  YPos = 24.855;
+  ZPos = 148931.509;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 268083.644;
+  YPos = 24.855;
+  ZPos = 163478.073;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 249382.891;
+  YPos = 24.855;
+  ZPos = 180034.957;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 264343.949;
+  YPos = 24.855;
+  ZPos = 184662.173;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 236030.690;
+  YPos = 24.855;
+  ZPos = 186028.447;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 253573.362;
+  YPos = 24.855;
+  ZPos = 208130.589;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 258129.563;
+  YPos = 24.855;
+  ZPos = 193057.382;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 229484.430;
+  YPos = 24.855;
+  ZPos = 191859.374;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 242441.715;
+  YPos = 24.855;
+  ZPos = 199081.083;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 217324.496;
+  YPos = 24.855;
+  ZPos = 195724.878;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 213346.804;
+  YPos = 24.855;
+  ZPos = 201983.542;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 203515.008;
+  YPos = 24.855;
+  ZPos = 216633.727;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 238357.962;
+  YPos = 24.855;
+  ZPos = 219495.615;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 241268.882;
+  YPos = 24.855;
+  ZPos = 213026.845;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 234178.751;
+  YPos = 24.855;
+  ZPos = 229291.439;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 225144.124;
+  YPos = 24.855;
+  ZPos = 227974.460;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 233631.007;
+  YPos = 24.855;
+  ZPos = 238344.103;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 252574.138;
+  YPos = 24.855;
+  ZPos = 219751.086;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 253936.118;
+  YPos = 24.855;
+  ZPos = 234922.062;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 279464.268;
+  YPos = 24.855;
+  ZPos = 219827.293;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 276737.994;
+  YPos = 24.855;
+  ZPos = 232906.855;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 247952.175;
+  YPos = 24.855;
+  ZPos = 244617.645;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 239805.244;
+  YPos = 24.855;
+  ZPos = 243026.405;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 211737.808;
+  YPos = 24.855;
+  ZPos = 230816.522;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 216903.245;
+  YPos = 24.855;
+  ZPos = 243002.543;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 261867.283;
+  YPos = 24.855;
+  ZPos = 258574.498;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 271892.178;
+  YPos = 24.855;
+  ZPos = 245643.421;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 280705.806;
+  YPos = 24.855;
+  ZPos = 256616.648;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 289811.221;
+  YPos = 24.855;
+  ZPos = 262212.758;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 304396.262;
+  YPos = 24.855;
+  ZPos = 267609.746;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 306801.210;
+  YPos = 24.855;
+  ZPos = 277725.703;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 215378.048;
+  YPos = 24.855;
+  ZPos = 256539.511;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 229587.781;
+  YPos = 24.855;
+  ZPos = 266414.506;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 244486.185;
+  YPos = 24.855;
+  ZPos = 263404.947;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 222670.135;
+  YPos = 24.855;
+  ZPos = 267039.331;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 184834.820;
+  YPos = 24.855;
+  ZPos = 240569.296;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 224574.460;
+  YPos = 24.855;
+  ZPos = 282831.890;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 215021.892;
+  YPos = 24.855;
+  ZPos = 277607.046;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 254543.268;
+  YPos = 24.855;
+  ZPos = 296222.333;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 256396.751;
+  YPos = 24.855;
+  ZPos = 275931.428;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 267140.461;
+  YPos = 24.855;
+  ZPos = 290332.907;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 276066.433;
+  YPos = 24.855;
+  ZPos = 281124.990;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 272958.900;
+  YPos = 24.855;
+  ZPos = 257156.783;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 281984.756;
+  YPos = 24.855;
+  ZPos = 291692.022;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 297813.300;
+  YPos = 24.855;
+  ZPos = 301592.816;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 295439.957;
+  YPos = 24.855;
+  ZPos = 284908.082;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 302498.844;
+  YPos = 24.855;
+  ZPos = 326946.381;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 284223.787;
+  YPos = 24.855;
+  ZPos = 314261.819;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 268974.728;
+  YPos = 24.855;
+  ZPos = 309308.141;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 263574.705;
+  YPos = 24.855;
+  ZPos = 318379.333;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 239147.859;
+  YPos = 24.855;
+  ZPos = 292440.627;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 237713.595;
+  YPos = 24.855;
+  ZPos = 273400.530;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 213680.647;
+  YPos = 24.855;
+  ZPos = 296912.658;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 220327.806;
+  YPos = 24.855;
+  ZPos = 307763.003;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 242851.151;
+  YPos = 24.855;
+  ZPos = 310874.998;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 249978.186;
+  YPos = 24.855;
+  ZPos = 324633.991;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 217392.360;
+  YPos = 24.855;
+  ZPos = 321866.140;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 221349.189;
+  YPos = 24.855;
+  ZPos = 337553.689;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 218432.890;
+  YPos = 24.855;
+  ZPos = 346780.254;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 224138.327;
+  YPos = 24.855;
+  ZPos = 327435.239;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 238015.826;
+  YPos = 24.855;
+  ZPos = 333748.736;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 259198.171;
+  YPos = 24.855;
+  ZPos = 332398.476;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 275950.210;
+  YPos = 24.855;
+  ZPos = 333648.676;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 289293.962;
+  YPos = 24.855;
+  ZPos = 329904.803;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 286640.255;
+  YPos = 24.855;
+  ZPos = 344399.287;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 273376.494;
+  YPos = 24.855;
+  ZPos = 353787.640;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 266656.424;
+  YPos = 24.855;
+  ZPos = 342239.220;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 251130.697;
+  YPos = 24.855;
+  ZPos = 346235.582;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 210292.423;
+  YPos = 24.855;
+  ZPos = 368108.836;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 214552.166;
+  YPos = 24.855;
+  ZPos = 354927.649;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 226943.837;
+  YPos = 24.855;
+  ZPos = 367467.980;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 239725.875;
+  YPos = 24.855;
+  ZPos = 364976.805;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 244117.956;
+  YPos = 24.855;
+  ZPos = 394526.234;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 239402.753;
+  YPos = 24.855;
+  ZPos = 377875.588;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 282820.621;
+  YPos = 24.855;
+  ZPos = 364367.209;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 296041.619;
+  YPos = 24.855;
+  ZPos = 358308.946;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 305583.883;
+  YPos = 24.855;
+  ZPos = 342006.491;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 265809.871;
+  YPos = 24.855;
+  ZPos = 368703.718;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 262798.862;
+  YPos = 24.855;
+  ZPos = 353955.221;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 204499.973;
+  YPos = 24.855;
+  ZPos = 351625.931;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 215839.591;
+  YPos = 24.855;
+  ZPos = 333949.880;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 200193.213;
+  YPos = 24.855;
+  ZPos = 380885.892;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 233538.473;
+  YPos = 24.855;
+  ZPos = 356518.896;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 214088.401;
+  YPos = 24.855;
+  ZPos = 376821.902;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 232867.545;
+  YPos = 24.855;
+  ZPos = 389611.295;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 209316.260;
+  YPos = 24.855;
+  ZPos = 389551.421;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 201384.210;
+  YPos = 24.855;
+  ZPos = 389035.336;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 195267.087;
+  YPos = 24.855;
+  ZPos = 399273.361;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 195602.920;
+  YPos = 24.855;
+  ZPos = 406476.164;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 204475.834;
+  YPos = 24.855;
+  ZPos = 398366.155;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 247033.014;
+  YPos = 24.855;
+  ZPos = 413895.482;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 262071.174;
+  YPos = 24.855;
+  ZPos = 423068.296;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 265165.771;
+  YPos = 24.855;
+  ZPos = 390403.769;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 279899.177;
+  YPos = 24.855;
+  ZPos = 388951.291;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 299172.146;
+  YPos = 24.855;
+  ZPos = 378583.843;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 296431.749;
+  YPos = 24.855;
+  ZPos = 394722.979;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 292048.299;
+  YPos = 24.855;
+  ZPos = 424675.761;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 273407.125;
+  YPos = 24.855;
+  ZPos = 406666.241;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 194689.532;
+  YPos = 24.855;
+  ZPos = 423262.175;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 224077.655;
+  YPos = 24.855;
+  ZPos = 379851.927;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 255011.145;
+  YPos = 24.855;
+  ZPos = 147009.687;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 257365.597;
+  YPos = 24.855;
+  ZPos = 156336.534;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 250935.950;
+  YPos = 24.855;
+  ZPos = 284824.077;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 248331.970;
+  YPos = 24.855;
+  ZPos = 300740.415;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+GroundObjective
+{
+  Name = "GroundObjective";
+  Desc = "";
+  XPos = 271091.623;
+  YPos = 24.855;
+  ZPos = 267215.639;
+  OY = 0.000;
+  Length = 500;
+  Width = 500;
+  Transport = 0;
+  Armoured = 0;
+  Tank = 1;
+  AAAPosition = 0;
+  Artillery = 0;
+  Building = 0;
+  Ship = 0;
+  Train = 0;
+  RailwayStation = 0;
+  SupplyDump = 0;
+  Factory = 0;
+  Airfield = 0;
+  Port = 0;
+  ReconArea = 0;
+  TroopsConcentration = 0;
+  Ferry = 0;
+  FrontlineStrongpoint = 0;
+  FrontlineEdge = 0;
+  RailwayJunction = 0;
+  Vehicle = 0;
+}
+
+#end of file
