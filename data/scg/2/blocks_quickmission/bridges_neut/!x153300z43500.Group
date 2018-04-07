@@ -1,132 +1,6 @@
-Bridge
-{
-  Name = "Bridge";
-  Index = 86;
-  LinkTrId = 0;
-  XPos = 153412.560;
-  YPos = 129.762;
-  ZPos = 43498.135;
-  XOri = 0.00;
-  YOri = 179.48;
-  ZOri = 0.00;
-  Model = "graphics\bridges\br_rw_start_up_lft.mgm";
-  Script = "LuaScripts\WorldObjects\Bridges\br_rw_start_up_lft.txt";
-  Country = 0;
-  Desc = "";
-  Durability = 120000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Bridge
-{
-  Name = "Bridge";
-  Index = 87;
-  LinkTrId = 0;
-  XPos = 153424.425;
-  YPos = 129.765;
-  ZPos = 43498.057;
-  XOri = 0.00;
-  YOri = 179.48;
-  ZOri = 0.00;
-  Model = "graphics\bridges\br_rw_rampmed_up.mgm";
-  Script = "LuaScripts\WorldObjects\Bridges\br_rw_rampmed_up.txt";
-  Country = 0;
-  Desc = "";
-  Durability = 120000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Bridge
-{
-  Name = "Bridge";
-  Index = 88;
-  LinkTrId = 0;
-  XPos = 153347.648;
-  YPos = 129.748;
-  ZPos = 43498.777;
-  XOri = 0.00;
-  YOri = 179.48;
-  ZOri = 0.00;
-  Model = "graphics\bridges\br_rw_trpz.mgm";
-  Script = "LuaScripts\WorldObjects\Bridges\br_rw_trpz.txt";
-  Country = 0;
-  Desc = "";
-  Durability = 120000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Bridge
-{
-  Name = "Bridge";
-  Index = 89;
-  LinkTrId = 0;
-  XPos = 153182.389;
-  YPos = 129.739;
-  ZPos = 43500.432;
-  XOri = 0.00;
-  YOri = 179.48;
-  ZOri = 0.00;
-  Model = "graphics\bridges\br_rw_start_up_rgt.mgm";
-  Script = "LuaScripts\WorldObjects\Bridges\br_rw_start_up_rgt.txt";
-  Country = 0;
-  Desc = "";
-  Durability = 120000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Bridge
-{
-  Name = "Bridge";
-  Index = 90;
-  LinkTrId = 0;
-  XPos = 153170.507;
-  YPos = 129.733;
-  ZPos = 43500.521;
-  XOri = 0.00;
-  YOri = 359.48;
-  ZOri = 0.00;
-  Model = "graphics\bridges\br_rw_rampmed_up.mgm";
-  Script = "LuaScripts\WorldObjects\Bridges\br_rw_rampmed_up.txt";
-  Country = 0;
-  Desc = "";
-  Durability = 120000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Bridge
-{
-  Name = "Bridge";
-  Index = 91;
-  LinkTrId = 0;
-  XPos = 153247.326;
-  YPos = 129.748;
-  ZPos = 43499.782;
-  XOri = 0.00;
-  YOri = 179.48;
-  ZOri = 0.00;
-  Model = "graphics\bridges\br_rw_trpz.mgm";
-  Script = "LuaScripts\WorldObjects\Bridges\br_rw_trpz.txt";
-  Country = 0;
-  Desc = "";
-  Durability = 120000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
 MCU_H_ReferencePoint
 {
-  Index = 150;
+  Index = 57;
   Name = "Helper Reference Point";
   Desc = "";
   Targets = [];
@@ -141,5 +15,144 @@ MCU_H_ReferencePoint
   Backward = 250;
   Left = 250;
   Right = 250;
+}
+
+Group
+{
+  Name = "Group";
+  Index = 1067;
+  Desc = "";
+  Bridge
+  {
+    Name = "Bridge";
+    Index = 1068;
+    LinkTrId = 0;
+    XPos = 153412.560;
+    YPos = 129.753;
+    ZPos = 43498.135;
+    XOri = 0.00;
+    YOri = 179.48;
+    ZOri = 0.00;
+    Model = "graphics\bridges\br_rw_start_up_lft.mgm";
+    Script = "LuaScripts\WorldObjects\Bridges\br_rw_start_up_lft.txt";
+    Country = 0;
+    Desc = "";
+    Durability = 50000;
+    DamageReport = 50;
+    DamageThreshold = 1;
+    DeleteAfterDeath = 1;
+  }
+  
+
+  Bridge
+  {
+    Name = "Bridge";
+    Index = 1069;
+    LinkTrId = 0;
+    XPos = 153424.425;
+    YPos = 129.753;
+    ZPos = 43498.057;
+    XOri = 0.00;
+    YOri = 179.48;
+    ZOri = 0.00;
+    Model = "graphics\bridges\br_rw_rampmed_up.mgm";
+    Script = "LuaScripts\WorldObjects\Bridges\br_rw_rampmed_up.txt";
+    Country = 0;
+    Desc = "";
+    Durability = 50000;
+    DamageReport = 50;
+    DamageThreshold = 1;
+    DeleteAfterDeath = 1;
+  }
+  
+
+  Bridge
+  {
+    Name = "Bridge";
+    Index = 1070;
+    LinkTrId = 0;
+    XPos = 153347.648;
+    YPos = 129.753;
+    ZPos = 43498.777;
+    XOri = 0.00;
+    YOri = 179.48;
+    ZOri = 0.00;
+    Model = "graphics\bridges\br_rw_trpz.mgm";
+    Script = "LuaScripts\WorldObjects\Bridges\br_rw_trpz.txt";
+    Country = 0;
+    Desc = "";
+    Durability = 50000;
+    DamageReport = 50;
+    DamageThreshold = 1;
+    DeleteAfterDeath = 1;
+  }
+  
+
+  Bridge
+  {
+    Name = "Bridge";
+    Index = 1071;
+    LinkTrId = 0;
+    XPos = 153182.389;
+    YPos = 129.753;
+    ZPos = 43500.432;
+    XOri = 0.00;
+    YOri = 179.48;
+    ZOri = 0.00;
+    Model = "graphics\bridges\br_rw_start_up_rgt.mgm";
+    Script = "LuaScripts\WorldObjects\Bridges\br_rw_start_up_rgt.txt";
+    Country = 0;
+    Desc = "";
+    Durability = 50000;
+    DamageReport = 50;
+    DamageThreshold = 1;
+    DeleteAfterDeath = 1;
+  }
+  
+
+  Bridge
+  {
+    Name = "Bridge";
+    Index = 1072;
+    LinkTrId = 0;
+    XPos = 153170.507;
+    YPos = 129.753;
+    ZPos = 43500.521;
+    XOri = 0.00;
+    YOri = 359.48;
+    ZOri = 0.00;
+    Model = "graphics\bridges\br_rw_rampmed_up.mgm";
+    Script = "LuaScripts\WorldObjects\Bridges\br_rw_rampmed_up.txt";
+    Country = 0;
+    Desc = "";
+    Durability = 50000;
+    DamageReport = 50;
+    DamageThreshold = 1;
+    DeleteAfterDeath = 1;
+  }
+  
+
+  Bridge
+  {
+    Name = "Bridge";
+    Index = 1073;
+    LinkTrId = 0;
+    XPos = 153247.326;
+    YPos = 129.753;
+    ZPos = 43499.782;
+    XOri = 0.00;
+    YOri = 179.48;
+    ZOri = 0.00;
+    Model = "graphics\bridges\br_rw_trpz.mgm";
+    Script = "LuaScripts\WorldObjects\Bridges\br_rw_trpz.txt";
+    Country = 0;
+    Desc = "";
+    Durability = 50000;
+    DamageReport = 50;
+    DamageThreshold = 1;
+    DeleteAfterDeath = 1;
+  }
+  
+
 }
 

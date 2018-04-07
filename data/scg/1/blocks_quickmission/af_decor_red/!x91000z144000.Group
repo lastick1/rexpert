@@ -1,0 +1,1363 @@
+Block
+{
+  Name = "Block";
+  Index = 4295;
+  LinkTrId = 0;
+  XPos = 91582.533;
+  YPos = 134.588;
+  ZPos = 143868.001;
+  XOri = 0.00;
+  YOri = 202.62;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_zis_fuel.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_zis_fuel.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4296;
+  LinkTrId = 0;
+  XPos = 90973.155;
+  YPos = 134.588;
+  ZPos = 143415.064;
+  XOri = 0.00;
+  YOri = 102.63;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_zis_fuel.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_zis_fuel.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4297;
+  LinkTrId = 0;
+  XPos = 90966.381;
+  YPos = 134.588;
+  ZPos = 143410.218;
+  XOri = 0.00;
+  YOri = 102.63;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_zis_fuel.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_zis_fuel.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4298;
+  LinkTrId = 0;
+  XPos = 90957.729;
+  YPos = 134.588;
+  ZPos = 143411.630;
+  XOri = 0.00;
+  YOri = 102.63;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_zis_fuel.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_zis_fuel.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4299;
+  LinkTrId = 0;
+  XPos = 91578.503;
+  YPos = 134.588;
+  ZPos = 143921.369;
+  XOri = 0.00;
+  YOri = 179.43;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_zis_fuel.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_zis_fuel.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4300;
+  LinkTrId = 0;
+  XPos = 91926.853;
+  YPos = 134.588;
+  ZPos = 144621.156;
+  XOri = 0.00;
+  YOri = 116.50;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_zis.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_zis.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4301;
+  LinkTrId = 0;
+  XPos = 91909.700;
+  YPos = 134.588;
+  ZPos = 144619.295;
+  XOri = 0.00;
+  YOri = 116.50;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_zis.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_zis.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4302;
+  LinkTrId = 0;
+  XPos = 90787.069;
+  YPos = 134.588;
+  ZPos = 143110.233;
+  XOri = 0.00;
+  YOri = 208.33;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_zis.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_zis.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4303;
+  LinkTrId = 0;
+  XPos = 90959.722;
+  YPos = 134.588;
+  ZPos = 142863.807;
+  XOri = 0.00;
+  YOri = 104.35;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_zis.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_zis.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4304;
+  LinkTrId = 0;
+  XPos = 91940.514;
+  YPos = 134.588;
+  ZPos = 144629.680;
+  XOri = 0.00;
+  YOri = 116.50;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_zis.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_zis.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4305;
+  LinkTrId = 0;
+  XPos = 90819.957;
+  YPos = 134.588;
+  ZPos = 143062.051;
+  XOri = 0.00;
+  YOri = 178.88;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_ammo_3.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_3.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4306;
+  LinkTrId = 0;
+  XPos = 91255.944;
+  YPos = 134.588;
+  ZPos = 143062.707;
+  XOri = 0.00;
+  YOri = 122.17;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_dugouts_2.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_dugouts_2.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4307;
+  LinkTrId = 0;
+  XPos = 91489.561;
+  YPos = 134.588;
+  ZPos = 144381.052;
+  XOri = 0.00;
+  YOri = 273.06;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_hangars_3.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_hangars_3.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4308;
+  LinkTrId = 0;
+  XPos = 91171.763;
+  YPos = 134.588;
+  ZPos = 144382.116;
+  XOri = 0.00;
+  YOri = 222.37;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_saray.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_saray.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4309;
+  LinkTrId = 0;
+  XPos = 91196.697;
+  YPos = 134.588;
+  ZPos = 144405.632;
+  XOri = 0.00;
+  YOri = 222.37;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_saray.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_saray.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4310;
+  LinkTrId = 0;
+  XPos = 91671.698;
+  YPos = 134.588;
+  ZPos = 143878.689;
+  XOri = 0.00;
+  YOri = 28.48;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_gsm_1.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_gsm_1.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4311;
+  LinkTrId = 0;
+  XPos = 91937.375;
+  YPos = 134.588;
+  ZPos = 144588.402;
+  XOri = 0.00;
+  YOri = 292.81;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_sklad.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_sklad.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 50000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4312;
+  LinkTrId = 0;
+  XPos = 92032.312;
+  YPos = 134.588;
+  ZPos = 144627.735;
+  XOri = 0.00;
+  YOri = 292.81;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_sklad.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_sklad.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 50000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4313;
+  LinkTrId = 0;
+  XPos = 91504.847;
+  YPos = 134.588;
+  ZPos = 142868.880;
+  XOri = 0.00;
+  YOri = 23.33;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_sklad.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_sklad.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 50000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4316;
+  LinkTrId = 0;
+  XPos = 90775.636;
+  YPos = 134.588;
+  ZPos = 144671.916;
+  XOri = 0.00;
+  YOri = 107.54;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_dugouts_1.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_dugouts_1.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4317;
+  LinkTrId = 0;
+  XPos = 89930.553;
+  YPos = 134.588;
+  ZPos = 143312.130;
+  XOri = 0.00;
+  YOri = 10.12;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_il2.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_il2.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 7000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4318;
+  LinkTrId = 0;
+  XPos = 90693.004;
+  YPos = 134.588;
+  ZPos = 143812.768;
+  XOri = 0.00;
+  YOri = 62.66;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_il2_net.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_il2_net.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 7000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4319;
+  LinkTrId = 0;
+  XPos = 91790.047;
+  YPos = 134.588;
+  ZPos = 144027.724;
+  XOri = 0.00;
+  YOri = 212.36;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_i16_net.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_i16_net.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 7000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4320;
+  LinkTrId = 0;
+  XPos = 91758.999;
+  YPos = 134.588;
+  ZPos = 144088.765;
+  XOri = 0.00;
+  YOri = 212.36;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_i16_net.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_i16_net.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 7000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4321;
+  LinkTrId = 0;
+  XPos = 89929.194;
+  YPos = 134.588;
+  ZPos = 143194.192;
+  XOri = 0.00;
+  YOri = 10.12;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_il2.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_il2.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 7000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4322;
+  LinkTrId = 0;
+  XPos = 90723.026;
+  YPos = 134.588;
+  ZPos = 143804.616;
+  XOri = 0.00;
+  YOri = 62.66;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_lagg3_net.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_lagg3_net.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4323;
+  LinkTrId = 0;
+  XPos = 89919.688;
+  YPos = 134.588;
+  ZPos = 143233.031;
+  XOri = 0.00;
+  YOri = 2.96;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_lagg3.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_lagg3.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4324;
+  LinkTrId = 0;
+  XPos = 90499.809;
+  YPos = 134.588;
+  ZPos = 144377.246;
+  XOri = 0.00;
+  YOri = 278.31;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_mig3.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_mig3.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4325;
+  LinkTrId = 0;
+  XPos = 90570.675;
+  YPos = 134.588;
+  ZPos = 144381.462;
+  XOri = 0.00;
+  YOri = 278.31;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_mig3.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_mig3.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4326;
+  LinkTrId = 0;
+  XPos = 90744.233;
+  YPos = 134.588;
+  ZPos = 143791.353;
+  XOri = 0.00;
+  YOri = 62.66;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_lagg3_net.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_lagg3_net.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4327;
+  LinkTrId = 0;
+  XPos = 90456.404;
+  YPos = 134.588;
+  ZPos = 143672.453;
+  XOri = 0.00;
+  YOri = 198.40;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_pe2_open.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_pe2_open.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 9000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4328;
+  LinkTrId = 0;
+  XPos = 90472.478;
+  YPos = 134.588;
+  ZPos = 143607.200;
+  XOri = 0.00;
+  YOri = 198.40;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_pe2.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_pe2.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 9000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4329;
+  LinkTrId = 0;
+  XPos = 90783.149;
+  YPos = 134.588;
+  ZPos = 143123.850;
+  XOri = 0.00;
+  YOri = 252.67;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_pe2.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_pe2.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 9000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4330;
+  LinkTrId = 0;
+  XPos = 90719.283;
+  YPos = 134.588;
+  ZPos = 143148.925;
+  XOri = 0.00;
+  YOri = 250.39;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_pe2.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_pe2.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 9000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4331;
+  LinkTrId = 0;
+  XPos = 90435.255;
+  YPos = 134.588;
+  ZPos = 143738.265;
+  XOri = 0.00;
+  YOri = 198.40;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_pe2_open.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_pe2_open.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 9000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4332;
+  LinkTrId = 0;
+  XPos = 89860.633;
+  YPos = 134.588;
+  ZPos = 143450.728;
+  XOri = 0.00;
+  YOri = 34.48;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_nets_3_3.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_nets_3_3.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4334;
+  LinkTrId = 0;
+  XPos = 90294.159;
+  YPos = 134.588;
+  ZPos = 143311.394;
+  XOri = 0.00;
+  YOri = 149.63;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_nets_1_4.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_nets_1_4.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4335;
+  LinkTrId = 0;
+  XPos = 91608.772;
+  YPos = 134.588;
+  ZPos = 143929.241;
+  XOri = 0.00;
+  YOri = 165.05;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_gsm_1.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_gsm_1.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4336;
+  LinkTrId = 0;
+  XPos = 91514.161;
+  YPos = 134.588;
+  ZPos = 144255.931;
+  XOri = 0.00;
+  YOri = 183.15;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_ammo_1.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_1.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4337;
+  LinkTrId = 0;
+  XPos = 90351.438;
+  YPos = 134.588;
+  ZPos = 143246.065;
+  XOri = 0.00;
+  YOri = 309.00;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_ammo_2.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_2.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4338;
+  LinkTrId = 0;
+  XPos = 90562.774;
+  YPos = 134.588;
+  ZPos = 144181.162;
+  XOri = 0.00;
+  YOri = 103.00;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_ammo_4.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_4.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4339;
+  LinkTrId = 0;
+  XPos = 89921.446;
+  YPos = 134.588;
+  ZPos = 143267.356;
+  XOri = 0.00;
+  YOri = 357.75;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_nets_2_5.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_nets_2_5.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4340;
+  LinkTrId = 0;
+  XPos = 91227.465;
+  YPos = 134.588;
+  ZPos = 144434.151;
+  XOri = 0.00;
+  YOri = 222.37;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_saray.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_saray.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4341;
+  LinkTrId = 0;
+  XPos = 91285.596;
+  YPos = 134.588;
+  ZPos = 144480.650;
+  XOri = 0.00;
+  YOri = 222.37;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_saray.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_saray.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4345;
+  LinkTrId = 0;
+  XPos = 90973.726;
+  YPos = 134.588;
+  ZPos = 143373.641;
+  XOri = 0.00;
+  YOri = 279.41;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_gsm_2.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_gsm_2.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4346;
+  LinkTrId = 0;
+  XPos = 89740.359;
+  YPos = 134.588;
+  ZPos = 143922.919;
+  XOri = 0.00;
+  YOri = 6.86;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_dugouts_3.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_dugouts_3.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4347;
+  LinkTrId = 0;
+  XPos = 90306.355;
+  YPos = 134.588;
+  ZPos = 143340.183;
+  XOri = 0.00;
+  YOri = 143.30;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_gazaa.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_gazaa.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4348;
+  LinkTrId = 0;
+  XPos = 90272.078;
+  YPos = 134.588;
+  ZPos = 143279.289;
+  XOri = 0.00;
+  YOri = 169.90;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_gazaa.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_gazaa.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4349;
+  LinkTrId = 0;
+  XPos = 91452.712;
+  YPos = 134.588;
+  ZPos = 144375.252;
+  XOri = 0.00;
+  YOri = 187.25;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_gazaa.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_gazaa.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4350;
+  LinkTrId = 0;
+  XPos = 91475.827;
+  YPos = 134.588;
+  ZPos = 144270.427;
+  XOri = 0.00;
+  YOri = 254.88;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_gazaa.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_gazaa.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4351;
+  LinkTrId = 0;
+  XPos = 90324.088;
+  YPos = 134.588;
+  ZPos = 143376.884;
+  XOri = 0.00;
+  YOri = 143.30;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_gazaa.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_gazaa.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4352;
+  LinkTrId = 0;
+  XPos = 90470.724;
+  YPos = 134.588;
+  ZPos = 143525.551;
+  XOri = 0.00;
+  YOri = 121.55;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_ammo_3.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_3.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4453;
+  LinkTrId = 0;
+  XPos = 90277.305;
+  YPos = 127.975;
+  ZPos = 143557.719;
+  XOri = 0.00;
+  YOri = 178.54;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_tower_2.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_tower_2.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4454;
+  LinkTrId = 0;
+  XPos = 91150.227;
+  YPos = 143.022;
+  ZPos = 143960.797;
+  XOri = 0.00;
+  YOri = 249.76;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_tower_1.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_tower_1.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4455;
+  LinkTrId = 0;
+  XPos = 90946.047;
+  YPos = 33.004;
+  ZPos = 142840.344;
+  XOri = 0.00;
+  YOri = 112.65;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_dugouts_1.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_dugouts_1.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4456;
+  LinkTrId = 0;
+  XPos = 90425.961;
+  YPos = 33.004;
+  ZPos = 142737.594;
+  XOri = 0.00;
+  YOri = 99.89;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_ammo_4.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_4.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4457;
+  LinkTrId = 0;
+  XPos = 90878.453;
+  YPos = 33.004;
+  ZPos = 143247.938;
+  XOri = 0.00;
+  YOri = 184.72;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_ammo_1.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_1.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4458;
+  LinkTrId = 0;
+  XPos = 90933.008;
+  YPos = 33.004;
+  ZPos = 143392.813;
+  XOri = 0.00;
+  YOri = 190.91;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_gsm_2.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_gsm_2.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4459;
+  LinkTrId = 0;
+  XPos = 91625.611;
+  YPos = 134.588;
+  ZPos = 143847.990;
+  XOri = 0.00;
+  YOri = 244.16;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_gsm_1.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_gsm_1.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4460;
+  LinkTrId = 0;
+  XPos = 91445.336;
+  YPos = 33.004;
+  ZPos = 143811.750;
+  XOri = 0.00;
+  YOri = 43.43;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_ammo_4.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_4.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4461;
+  LinkTrId = 0;
+  XPos = 91795.195;
+  YPos = 33.004;
+  ZPos = 144031.188;
+  XOri = 0.00;
+  YOri = 204.47;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_caponiers_10_h_3.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_10_h_3.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4462;
+  LinkTrId = 0;
+  XPos = 90465.461;
+  YPos = 33.004;
+  ZPos = 143675.125;
+  XOri = 0.00;
+  YOri = 196.42;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_caponiers_10_h_3.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_10_h_3.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4463;
+  LinkTrId = 0;
+  XPos = 90501.742;
+  YPos = 33.004;
+  ZPos = 144383.641;
+  XOri = 0.00;
+  YOri = 274.50;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_caponiers_10_h_3.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_10_h_3.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 4464;
+  LinkTrId = 0;
+  XPos = 90721.125;
+  YPos = 33.004;
+  ZPos = 143153.500;
+  XOri = 0.00;
+  YOri = 250.13;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_caponiers_10_h_3.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_10_h_3.txt";
+  Country = 101;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 5045;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 91000.000;
+  YPos = 134.588;
+  ZPos = 144000.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+

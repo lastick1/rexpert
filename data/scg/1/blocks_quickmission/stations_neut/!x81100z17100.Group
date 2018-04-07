@@ -1,0 +1,91 @@
+Block
+{
+  Name = "Block";
+  Index = 173;
+  LinkTrId = 0;
+  XPos = 81190.508;
+  YPos = 114.442;
+  ZPos = 17140.351;
+  XOri = 0.00;
+  YOri = 28.49;
+  ZOri = 0.00;
+  Model = "graphics\blocks\rwstation_s2.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\rwstation_s2.txt";
+  Country = 0;
+  Desc = "";
+  Durability = 10000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Group
+{
+  Name = "Group";
+  Index = 5026;
+  Desc = "";
+  Block
+  {
+    Name = "misc_3";
+    Index = 5027;
+    LinkTrId = 0;
+    XPos = 81058.250;
+    YPos = 114.342;
+    ZPos = 17096.369;
+    XOri = 0.00;
+    YOri = 19.56;
+    ZOri = 0.00;
+    Model = "graphics\blocks\meh_01.mgm";
+    Script = "LuaScripts\WorldObjects\Blocks\meh_01.txt";
+    Country = 0;
+    Desc = "";
+    Durability = 10000;
+    DamageReport = 50;
+    DamageThreshold = 1;
+    DeleteAfterDeath = 1;
+  }
+  
+
+  Block
+  {
+    Name = "misc_2";
+    Index = 5028;
+    LinkTrId = 0;
+    XPos = 81161.223;
+    YPos = 114.342;
+    ZPos = 16962.340;
+    XOri = 0.00;
+    YOri = 109.26;
+    ZOri = 0.00;
+    Model = "graphics\blocks\sklad_01.mgm";
+    Script = "LuaScripts\WorldObjects\Blocks\sklad_01.txt";
+    Country = 0;
+    Desc = "";
+    Durability = 10000;
+    DamageReport = 50;
+    DamageThreshold = 1;
+    DeleteAfterDeath = 1;
+  }
+  
+
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 11919;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 81100.000;
+  YPos = 114.352;
+  ZPos = 17100.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+

@@ -1,0 +1,40 @@
+Block
+{
+  Name = "Block";
+  Index = 122;
+  LinkTrId = 0;
+  XPos = 208300.085;
+  YPos = 101.756;
+  ZPos = 208975.372;
+  XOri = 0.00;
+  YOri = 51.54;
+  ZOri = 0.00;
+  Model = "graphics\blocks\rwstation_s2.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\rwstation_s2.txt";
+  Country = 0;
+  Desc = "";
+  Durability = 10000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 11954;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 208300.000;
+  YPos = 101.239;
+  ZPos = 209000.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+

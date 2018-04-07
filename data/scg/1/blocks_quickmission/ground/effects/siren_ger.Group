@@ -1,0 +1,417 @@
+Vehicle
+{
+  Name = "";
+  Index = 2;
+  LinkTrId = 3;
+  XPos = -5000.002;
+  YPos = 17.795;
+  ZPos = 0.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\horch830.txt";
+  Model = "graphics\vehicles\horch\horch830.mgm";
+  Desc = "";
+  Country = 201;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 3;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -5000.002;
+  YPos = 17.995;
+  ZPos = 0.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 2;
+  OnEvents
+  {
+    OnEvent
+    {
+      Type = 13;
+      TarId = 5;
+    }
+  }
+}
+
+MCU_Proximity
+{
+  Index = 6;
+  Name = "Trigger Proximity";
+  Desc = "";
+  Targets = [7,8,9];
+  Objects = [3];
+  XPos = -5003.819;
+  YPos = 17.795;
+  ZPos = -5.930;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Distance = 3000;
+  Closer = 1;
+  PlaneCoalitions = [1];
+}
+
+MCU_Timer
+{
+  Index = 10;
+  Name = "3s";
+  Desc = "";
+  Targets = [6,11];
+  Objects = [];
+  XPos = -5007.872;
+  YPos = 17.795;
+  ZPos = -5.896;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 3;
+  Random = 100;
+}
+
+MCU_TR_MissionBegin
+{
+  Index = 12;
+  Name = "Translator Mission Begin";
+  Desc = "";
+  Targets = [10];
+  Objects = [];
+  XPos = -5008.584;
+  YPos = 17.795;
+  ZPos = -5.889;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+}
+
+MCU_H_Dynamic
+{
+  Index = 13;
+  Name = "Proximity";
+  Desc = "";
+  Targets = [6];
+  Objects = [];
+  XPos = -5003.867;
+  YPos = 17.795;
+  ZPos = -9.969;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "Distance";
+}
+
+MCU_Deactivate
+{
+  Index = 7;
+  Name = "Trigger Deactivate";
+  Desc = "";
+  Targets = [6];
+  Objects = [];
+  XPos = -5005.440;
+  YPos = 17.795;
+  ZPos = -7.507;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Timer
+{
+  Index = 8;
+  Name = "7m";
+  Desc = "";
+  Targets = [16,17];
+  Objects = [];
+  XPos = -5003.823;
+  YPos = 17.795;
+  ZPos = -3.036;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 420;
+  Random = 100;
+}
+
+MCU_Activate
+{
+  Index = 16;
+  Name = "Trigger Activate";
+  Desc = "";
+  Targets = [6];
+  Objects = [];
+  XPos = -5005.353;
+  YPos = 17.795;
+  ZPos = -4.318;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Timer
+{
+  Index = 17;
+  Name = "1s";
+  Desc = "";
+  Targets = [6];
+  Objects = [];
+  XPos = -5006.282;
+  YPos = 17.795;
+  ZPos = -4.310;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 9;
+  Name = "1s";
+  Desc = "";
+  Targets = [21,22,23,24];
+  Objects = [];
+  XPos = -5002.344;
+  YPos = 17.795;
+  ZPos = -5.961;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_CMD_Flare
+{
+  Index = 21;
+  Name = "red";
+  Desc = "";
+  Targets = [];
+  Objects = [3];
+  XPos = -5000.000;
+  YPos = 17.795;
+  ZPos = -4.453;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Color = 0;
+}
+
+MCU_CMD_Effect
+{
+  Index = 22;
+  Name = "start";
+  Desc = "";
+  Targets = [];
+  Objects = [27];
+  XPos = -5002.343;
+  YPos = 17.795;
+  ZPos = -7.238;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  ActionType = 0;
+}
+
+MCU_Timer
+{
+  Index = 23;
+  Name = "15s";
+  Desc = "";
+  Targets = [29,21];
+  Objects = [];
+  XPos = -5001.058;
+  YPos = 17.795;
+  ZPos = -5.976;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 15;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 24;
+  Name = "5m";
+  Desc = "";
+  Targets = [31];
+  Objects = [];
+  XPos = -5001.475;
+  YPos = 17.795;
+  ZPos = -6.625;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 300;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 29;
+  Name = "15s";
+  Desc = "";
+  Targets = [21];
+  Objects = [];
+  XPos = -4999.997;
+  YPos = 17.795;
+  ZPos = -5.967;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 15;
+  Random = 100;
+}
+
+MCU_CMD_Effect
+{
+  Index = 31;
+  Name = "stop";
+  Desc = "";
+  Targets = [];
+  Objects = [27];
+  XPos = -5001.470;
+  YPos = 17.795;
+  ZPos = -7.257;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  ActionType = 1;
+}
+
+Effect
+{
+  Name = "Effect";
+  Index = 34;
+  LinkTrId = 27;
+  XPos = -5001.918;
+  YPos = 25.000;
+  ZPos = -8.109;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "luascripts\worldobjects\mapemitters\siren.txt";
+  Model = "";
+  Desc = "";
+}
+
+MCU_TR_Entity
+{
+  Index = 27;
+  Name = "Effect entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -5001.918;
+  YPos = 25.200;
+  ZPos = -8.109;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 34;
+}
+
+MCU_Deactivate
+{
+  Index = 5;
+  Name = "Trigger Deactivate";
+  Desc = "";
+  Targets = [8,6,17];
+  Objects = [];
+  XPos = -5001.926;
+  YPos = 17.795;
+  ZPos = -4.299;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 37;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -5000.000;
+  YPos = 17.795;
+  ZPos = 3.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 10;
+  Backward = 10;
+  Left = 10;
+  Right = 10;
+}
+
+Effect
+{
+  Name = "Effect";
+  Index = 38;
+  LinkTrId = 39;
+  XPos = -5000.000;
+  YPos = 17.795;
+  ZPos = 3.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "luascripts\worldobjects\mapemitters\landfire.txt";
+  Model = "";
+  Desc = "";
+}
+
+MCU_TR_Entity
+{
+  Index = 39;
+  Name = "Effect entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -5000.000;
+  YPos = 17.995;
+  ZPos = 3.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 38;
+}
+
+MCU_CMD_Effect
+{
+  Index = 11;
+  Name = "START";
+  Desc = "";
+  Targets = [];
+  Objects = [39];
+  XPos = -5007.856;
+  YPos = 17.795;
+  ZPos = -4.348;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  ActionType = 0;
+}
+

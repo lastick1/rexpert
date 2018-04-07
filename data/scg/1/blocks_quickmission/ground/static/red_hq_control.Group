@@ -1,0 +1,506 @@
+MCU_H_ReferencePoint
+{
+  Index = 100;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -9454.603;
+  YPos = 108.598;
+  ZPos = -3769.967;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 23;
+  Backward = 23;
+  Left = 32;
+  Right = 32;
+}
+
+MCU_Timer
+{
+  Index = 101;
+  Name = "3s";
+  Desc = "";
+  Targets = [102,103,104];
+  Objects = [];
+  XPos = -9454.862;
+  YPos = 17.795;
+  ZPos = -3769.961;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 3;
+  Random = 100;
+}
+
+MCU_Deactivate
+{
+  Index = 102;
+  Name = "Trigger Deactivate";
+  Desc = "";
+  Targets = [101,106];
+  Objects = [];
+  XPos = -9454.654;
+  YPos = 24.530;
+  ZPos = -3769.041;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Dynamic
+{
+  Index = 107;
+  Name = "Plane_in";
+  Desc = "";
+  Targets = [108];
+  Objects = [];
+  XPos = -9451.201;
+  YPos = 1000.000;
+  ZPos = -3768.489;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "Zone";
+}
+
+MCU_TR_MissionBegin
+{
+  Index = 109;
+  Name = "Translator Mission Begin";
+  Desc = "";
+  Targets = [110];
+  Objects = [];
+  XPos = -9455.618;
+  YPos = 24.530;
+  ZPos = -3772.291;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+}
+
+MCU_Timer
+{
+  Index = 110;
+  Name = "t4s";
+  Desc = "";
+  Targets = [108,112];
+  Objects = [];
+  XPos = -9454.863;
+  YPos = 24.530;
+  ZPos = -3772.287;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 4;
+  Random = 100;
+}
+
+MCU_CheckZone
+{
+  Index = 108;
+  Name = "plane_in";
+  Desc = "";
+  Targets = [114,115,116,117];
+  Objects = [];
+  XPos = -9453.248;
+  YPos = 17.795;
+  ZPos = -3768.455;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Zone = 14000;
+  Cylinder = 0;
+  Closer = 1;
+  PlaneCoalitions = [2];
+}
+
+MCU_CheckZone
+{
+  Index = 118;
+  Name = "plane_out";
+  Desc = "";
+  Targets = [112,115,119,120];
+  Objects = [];
+  XPos = -9453.226;
+  YPos = 17.795;
+  ZPos = -3771.021;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Zone = 15000;
+  Cylinder = 0;
+  Closer = 0;
+  PlaneCoalitions = [2];
+}
+
+MCU_H_Dynamic
+{
+  Index = 121;
+  Name = "Plane_out";
+  Desc = "";
+  Targets = [118];
+  Objects = [];
+  XPos = -9451.186;
+  YPos = 1000.000;
+  ZPos = -3771.052;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "Zone";
+}
+
+MCU_Deactivate
+{
+  Index = 114;
+  Name = "Trigger Deactivate";
+  Desc = "";
+  Targets = [108];
+  Objects = [];
+  XPos = -9453.776;
+  YPos = 17.795;
+  ZPos = -3767.522;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Deactivate
+{
+  Index = 112;
+  Name = "Trigger Deactivate";
+  Desc = "";
+  Targets = [118];
+  Objects = [];
+  XPos = -9453.867;
+  YPos = 17.795;
+  ZPos = -3772.287;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Timer
+{
+  Index = 115;
+  Name = "t1s";
+  Desc = "";
+  Targets = [108,118];
+  Objects = [];
+  XPos = -9453.557;
+  YPos = 17.795;
+  ZPos = -3769.943;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Activate
+{
+  Index = 116;
+  Name = "Trigger Activate";
+  Desc = "";
+  Targets = [118];
+  Objects = [];
+  XPos = -9452.265;
+  YPos = 17.795;
+  ZPos = -3769.285;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Activate
+{
+  Index = 119;
+  Name = "Trigger Activate";
+  Desc = "";
+  Targets = [108];
+  Objects = [];
+  XPos = -9452.268;
+  YPos = 17.795;
+  ZPos = -3770.503;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 117;
+  Name = "ACTIVATE_LARGE_CANNONS";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -9453.262;
+  YPos = 17.795;
+  ZPos = -3766.050;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Icon
+{
+  Index = 106;
+  Targets = [];
+  Objects = [];
+  XPos = -9454.333;
+  YPos = 186.389;
+  ZPos = -3769.973;
+  XOri = 0.00;
+  YOri = 70.04;
+  ZOri = 0.00;
+  Enabled = 1;
+  LCName = 15;
+  LCDesc = 16;
+  IconId = 507;
+  RColor = 255;
+  GColor = 255;
+  BColor = 255;
+  LineType = 0;
+  Coalitions = [1, 0, 2];
+}
+
+MCU_H_Output
+{
+  Index = 120;
+  Name = "DEACTIVATE_LARGE_CANNONS";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -9452.759;
+  YPos = 17.795;
+  ZPos = -3772.303;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Timer
+{
+  Index = 103;
+  Name = "t5s";
+  Desc = "";
+  Targets = [131];
+  Objects = [];
+  XPos = -9455.336;
+  YPos = 17.795;
+  ZPos = -3769.095;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 5;
+  Random = 100;
+}
+
+MCU_H_Output
+{
+  Index = 104;
+  Name = "KILLED_EVENT";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -9454.904;
+  YPos = 17.795;
+  ZPos = -3766.093;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_TR_ServerInput
+{
+  Index = 133;
+  Name = "rus_hq";
+  Desc = "";
+  Targets = [101];
+  Objects = [];
+  XPos = -9455.534;
+  YPos = 24.530;
+  ZPos = -3769.957;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+}
+
+MCU_TR_Subtitle
+{
+  Index = 131;
+  Name = "Translator Subtitle";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -9456.061;
+  YPos = 17.795;
+  ZPos = -3769.082;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  SubtitleInfo
+  {
+    Duration = 10;
+    FontSize = 30;
+    HAlign = 1;
+    VAlign = 0;
+    RColor = 191;
+    GColor = 0;
+    BColor = 0;
+    LCText = 17;
+  }
+  
+  Coalitions = [0, 1, 2];
+}
+
+MCU_TR_ServerInput
+{
+  Index = 135;
+  Name = "rus_industrial";
+  Desc = "";
+  Targets = [136];
+  Objects = [];
+  XPos = -9455.530;
+  YPos = 17.795;
+  ZPos = -3769.960;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+}
+
+MCU_Timer
+{
+  Index = 136;
+  Name = "5s";
+  Desc = "";
+  Targets = [138,139,112,114,120,140,141,104];
+  Objects = [];
+  XPos = -9454.971;
+  YPos = 17.795;
+  ZPos = -3770.941;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 5;
+  Random = 100;
+}
+
+MCU_H_Output
+{
+  Index = 138;
+  Name = "PLANESET_SWITCH";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -9456.339;
+  YPos = 17.795;
+  ZPos = -3772.285;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Timer
+{
+  Index = 139;
+  Name = "t5s";
+  Desc = "";
+  Targets = [144];
+  Objects = [];
+  XPos = -9455.547;
+  YPos = 17.795;
+  ZPos = -3770.961;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 5;
+  Random = 100;
+}
+
+MCU_TR_Subtitle
+{
+  Index = 144;
+  Name = "IND_sub";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -9456.192;
+  YPos = 17.795;
+  ZPos = -3770.962;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  SubtitleInfo
+  {
+    Duration = 10;
+    FontSize = 30;
+    HAlign = 1;
+    VAlign = 0;
+    RColor = 191;
+    GColor = 0;
+    BColor = 0;
+    LCText = 18;
+  }
+  
+  Coalitions = [0, 1, 2];
+}
+
+MCU_Activate
+{
+  Index = 140;
+  Name = "Trigger Activate";
+  Desc = "";
+  Targets = [147];
+  Objects = [];
+  XPos = -9453.888;
+  YPos = 17.795;
+  ZPos = -3770.974;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Icon
+{
+  Index = 147;
+  Targets = [];
+  Objects = [];
+  XPos = -9454.096;
+  YPos = 17.795;
+  ZPos = -3769.974;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  LCName = 19;
+  LCDesc = 20;
+  IconId = 0;
+  RColor = 255;
+  GColor = 255;
+  BColor = 255;
+  LineType = 0;
+  Coalitions = [1, 2, 0];
+}
+
+MCU_Deactivate
+{
+  Index = 141;
+  Name = "Trigger Deactivate";
+  Desc = "";
+  Targets = [136];
+  Objects = [];
+  XPos = -9454.848;
+  YPos = 17.795;
+  ZPos = -3771.544;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+

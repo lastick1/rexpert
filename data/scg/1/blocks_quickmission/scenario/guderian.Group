@@ -1,0 +1,322 @@
+MCU_TR_MissionBegin
+{
+  Index = 2;
+  Name = "Mission Begin";
+  Desc = "";
+  Targets = [3];
+  Objects = [];
+  XPos = -2641.943;
+  YPos = 17.795;
+  ZPos = 3559.147;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+}
+
+MCU_H_Output
+{
+  Index = 4;
+  Name = "START_1";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -2641.940;
+  YPos = 17.795;
+  ZPos = 3555.041;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 5;
+  Name = "START_2";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -2643.546;
+  YPos = 17.795;
+  ZPos = 3555.056;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 6;
+  Name = "START_3";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -2645.697;
+  YPos = 17.795;
+  ZPos = 3555.106;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 7;
+  Name = "START_4";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -2647.911;
+  YPos = 17.795;
+  ZPos = 3555.154;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Input
+{
+  Index = 8;
+  Name = "KILLED_TANKS";
+  Desc = "";
+  Targets = [9,10,11,12];
+  Objects = [];
+  XPos = -2643.528;
+  YPos = 17.795;
+  ZPos = 3561.405;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 13;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -2640.482;
+  YPos = 17.795;
+  ZPos = 3558.719;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+
+MCU_Counter
+{
+  Index = 9;
+  Name = "x2";
+  Desc = "";
+  Targets = [15];
+  Objects = [];
+  XPos = -2645.636;
+  YPos = 17.795;
+  ZPos = 3560.295;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Counter = 2;
+  Dropcount = 0;
+}
+
+MCU_Counter
+{
+  Index = 10;
+  Name = "x3";
+  Desc = "";
+  Targets = [17];
+  Objects = [];
+  XPos = -2647.937;
+  YPos = 17.795;
+  ZPos = 3560.338;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Counter = 3;
+  Dropcount = 0;
+}
+
+MCU_Timer
+{
+  Index = 3;
+  Name = "t5s";
+  Desc = "";
+  Targets = [4,19];
+  Objects = [];
+  XPos = -2641.951;
+  YPos = 17.795;
+  ZPos = 3557.170;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 5;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 12;
+  Name = "DELAY_2";
+  Desc = "";
+  Targets = [5];
+  Objects = [];
+  XPos = -2643.579;
+  YPos = 17.795;
+  ZPos = 3557.893;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 21;
+  Name = "DELAY_3";
+  Desc = "";
+  Targets = [6];
+  Objects = [];
+  XPos = -2645.657;
+  YPos = 17.795;
+  ZPos = 3557.423;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 22;
+  Name = "DELAY_4";
+  Desc = "";
+  Targets = [7];
+  Objects = [];
+  XPos = -2647.908;
+  YPos = 17.795;
+  ZPos = 3557.420;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Deactivate
+{
+  Index = 19;
+  Name = "Deactivate";
+  Desc = "";
+  Targets = [21,22];
+  Objects = [];
+  XPos = -2646.758;
+  YPos = 17.795;
+  ZPos = 3556.444;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Timer
+{
+  Index = 11;
+  Name = "t1s";
+  Desc = "";
+  Targets = [21,22];
+  Objects = [];
+  XPos = -2646.685;
+  YPos = 17.795;
+  ZPos = 3558.519;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Activate
+{
+  Index = 15;
+  Name = "Activate";
+  Desc = "";
+  Targets = [21];
+  Objects = [];
+  XPos = -2645.652;
+  YPos = 17.795;
+  ZPos = 3558.916;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Activate
+{
+  Index = 17;
+  Name = "Activate";
+  Desc = "";
+  Targets = [22];
+  Objects = [];
+  XPos = -2647.941;
+  YPos = 17.795;
+  ZPos = 3558.956;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Dynamic
+{
+  Index = 27;
+  Name = "DELAY_1";
+  Desc = "";
+  Targets = [12];
+  Objects = [];
+  XPos = -2642.837;
+  YPos = 17.795;
+  ZPos = 3555.044;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "Time";
+}
+
+MCU_H_Dynamic
+{
+  Index = 28;
+  Name = "DELAY_2";
+  Desc = "";
+  Targets = [21];
+  Objects = [];
+  XPos = -2645.176;
+  YPos = 17.795;
+  ZPos = 3555.086;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "Time";
+}
+
+MCU_H_Dynamic
+{
+  Index = 29;
+  Name = "DELAY_3";
+  Desc = "";
+  Targets = [22];
+  Objects = [];
+  XPos = -2647.184;
+  YPos = 17.795;
+  ZPos = 3555.165;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "Time";
+}
+

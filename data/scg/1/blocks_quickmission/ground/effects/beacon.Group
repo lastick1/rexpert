@@ -1,0 +1,81 @@
+Vehicle
+{
+  Name = "";
+  Index = 2;
+  LinkTrId = 3;
+  XPos = -924.000;
+  YPos = 17.795;
+  ZPos = -632.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\ndb.txt";
+  Model = "graphics\vehicles\ndb\ndb.mgm";
+  Desc = "";
+  Country = 0;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 1;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 3;
+  Name = " entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -924.000;
+  YPos = 17.995;
+  ZPos = -632.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 2;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 4;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -924.001;
+  YPos = 17.795;
+  ZPos = -632.024;
+  XOri = 0.00;
+  YOri = 359.88;
+  ZOri = 0.00;
+  Forward = 2.5;
+  Backward = 2.5;
+  Left = 1.5;
+  Right = 1.5;
+}
+
+MCU_H_Dynamic
+{
+  Index = 5;
+  Name = "BEACON";
+  Desc = "";
+  Targets = [3];
+  Objects = [];
+  XPos = -923.985;
+  YPos = 17.795;
+  ZPos = -635.236;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "Country";
+}
+

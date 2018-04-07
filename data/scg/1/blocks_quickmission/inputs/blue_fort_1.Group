@@ -1,0 +1,50 @@
+MCU_H_Output
+{
+  Index = 709;
+  Name = "FORT_INPUT";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -483.477;
+  YPos = 17.795;
+  ZPos = 154.735;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 710;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -483.408;
+  YPos = 17.795;
+  ZPos = 113.661;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+
+MCU_TR_ServerInput
+{
+  Index = 711;
+  Name = "blue_fort_1";
+  Desc = "";
+  Targets = [709];
+  Objects = [];
+  XPos = -483.595;
+  YPos = 17.795;
+  ZPos = 68.834;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+}
+

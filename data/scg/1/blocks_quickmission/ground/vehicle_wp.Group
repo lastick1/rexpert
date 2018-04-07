@@ -1,0 +1,98 @@
+MCU_Waypoint
+{
+  Index = 2;
+  Name = "VEHICLE_WP";
+  Desc = "";
+  Targets = [3];
+  Objects = [4];
+  XPos = -3663.940;
+  YPos = 0.000;
+  ZPos = 3693.910;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Area = 20;
+  Speed = 50;
+  Priority = 1;
+}
+
+MCU_H_Input
+{
+  Index = 5;
+  Name = "TARGET_TO_WP";
+  Desc = "";
+  Targets = [2];
+  Objects = [];
+  XPos = -3719.230;
+  YPos = 0.000;
+  ZPos = 3731.230;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 4;
+  Name = "OBJECT_WP_TO_VEHICLE";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -3719.170;
+  YPos = 0.000;
+  ZPos = 3655.770;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 7;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -3663.670;
+  YPos = 0.000;
+  ZPos = 3693.900;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 2;
+  Backward = 2;
+  Left = 2;
+  Right = 2;
+}
+
+MCU_H_Extended
+{
+  Index = 8;
+  Name = "Extended";
+  Desc = "";
+  Targets = [2];
+  Objects = [];
+  XPos = -3665.125;
+  YPos = 0.000;
+  ZPos = 3802.237;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Order = 1;
+}
+
+MCU_H_Output
+{
+  Index = 3;
+  Name = "TARGET_TO_WP";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -3594.840;
+  YPos = 0.000;
+  ZPos = 3693.920;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+

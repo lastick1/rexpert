@@ -1,0 +1,82 @@
+Bridge
+{
+  Name = "Bridge";
+  Index = 12677;
+  LinkTrId = 0;
+  XPos = 83080.417;
+  YPos = 57.629;
+  ZPos = 85695.330;
+  XOri = 0.00;
+  YOri = 326.42;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_road_200.mgm";
+  Script = "LuaScripts\WorldObjects\Bridges\bridge_road_200.txt";
+  Country = 0;
+  Desc = "";
+  Durability = 15000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 12678;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 83100.000;
+  YPos = 4.629;
+  ZPos = 85700.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 12691;
+  LinkTrId = 0;
+  XPos = 82913.271;
+  YPos = 57.918;
+  ZPos = 85004.971;
+  XOri = 0.00;
+  YOri = 26.99;
+  ZOri = 0.00;
+  Model = "graphics\blocks\meh_01.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\meh_01.txt";
+  Country = 0;
+  Desc = "";
+  Durability = 10000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 12692;
+  LinkTrId = 0;
+  XPos = 82205.553;
+  YPos = 61.300;
+  ZPos = 85361.678;
+  XOri = 0.00;
+  YOri = 307.07;
+  ZOri = 0.00;
+  Model = "graphics\blocks\sklad_01.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\sklad_01.txt";
+  Country = 0;
+  Desc = "";
+  Durability = 10000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+

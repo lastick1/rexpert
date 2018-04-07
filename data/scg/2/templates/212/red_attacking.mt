@@ -602,6 +602,68 @@ blocks_set; blocks_SIREN_RED_3; main(scg\2\blocks_quickmission\ground\effects\si
 blocks_set; blocks_WINDSOCK_3; main(scg\2\blocks_quickmission\windsock.group);
 blocks_set; blocks_SIREN_RED_4; main(scg\2\blocks_quickmission\ground\effects\siren_rus.group);
 blocks_set; blocks_WINDSOCK_4; main(scg\2\blocks_quickmission\windsock.group);
+blocks_set; blocks_RED_BEACON; main(scg\2\blocks_quickmission\ground\effects\beacon.group);
+blocks_set; blocks_BLUE_BEACON; main(scg\2\blocks_quickmission\ground\effects\beacon.group);
+blocks_set; blocks_W_BRIDGES_DECOR; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2482; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2486; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2491; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2495; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2499; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2503; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2507; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2482_2508; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2486_2509; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2491_2510; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2495_2511; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2499_2512; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2503_2513; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2535; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2482_2536; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2486_2537; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2491_2538; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2495_2539; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2499_2540; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2503_2541; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2563; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2482_2564; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2486_2565; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2491_2566; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2495_2567; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2499_2568; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2503_2569; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2591; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2482_2592; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2486_2593; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2491_2594; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2495_2595; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2499_2596; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2503_2597; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_BRIDGES_DECOR_2619; main(scg\2\blocks_quickmission\bridges_neut\!x100500z73900.group);
+blocks_set; blocks_W_STATION_DECOR_2406; main(scg\2\blocks_quickmission\stations_neut\!x104300z125600.group);
+blocks_set; blocks_W_STATION_DECOR_2402; main(scg\2\blocks_quickmission\stations_neut\!x104300z125600.group);
+blocks_set; blocks_W_STATION_DECOR_2398; main(scg\2\blocks_quickmission\stations_neut\!x104300z125600.group);
+blocks_set; blocks_W_STATION_DECOR_2394; main(scg\2\blocks_quickmission\stations_neut\!x104300z125600.group);
+blocks_set; blocks_W_STATION_DECOR_2390; main(scg\2\blocks_quickmission\stations_neut\!x104300z125600.group);
+blocks_set; blocks_W_STATION_DECOR; main(scg\2\blocks_quickmission\stations_neut\!x104300z125600.group);
+blocks_set; blocks_W_STATION_DECOR_2410; main(scg\2\blocks_quickmission\stations_neut\!x104300z125600.group);
+blocks_set; blocks_W_STATION_DECOR_2390_2411; main(scg\2\blocks_quickmission\stations_neut\!x104300z125600.group);
+blocks_set; blocks_W_STATION_DECOR_2394_2412; main(scg\2\blocks_quickmission\stations_neut\!x104300z125600.group);
+blocks_set; blocks_W_STATION_DECOR_2398_2413; main(scg\2\blocks_quickmission\stations_neut\!x104300z125600.group);
+blocks_set; blocks_W_STATION_DECOR_2402_2414; main(scg\2\blocks_quickmission\stations_neut\!x104300z125600.group);
+blocks_set; blocks_W_STATION_DECOR_2406_2415; main(scg\2\blocks_quickmission\stations_neut\!x104300z125600.group);
+blocks_set; blocks_W_STATION_DECOR_2434; main(scg\2\blocks_quickmission\stations_neut\!x104300z125600.group);
+blocks_set; blocks_W_STATION_DECOR_2390_2435; main(scg\2\blocks_quickmission\stations_neut\!x104300z125600.group);
+blocks_set; blocks_W_STATION_DECOR_2394_2436; main(scg\2\blocks_quickmission\stations_neut\!x104300z125600.group);
+blocks_set; blocks_W_STATION_DECOR_2398_2437; main(scg\2\blocks_quickmission\stations_neut\!x104300z125600.group);
+blocks_set; blocks_W_STATION_DECOR_2402_2438; main(scg\2\blocks_quickmission\stations_neut\!x104300z125600.group);
+blocks_set; blocks_W_STATION_DECOR_2406_2439; main(scg\2\blocks_quickmission\stations_neut\!x104300z125600.group);
+blocks_set; blocks_W_STATION_DECOR_2458; main(scg\2\blocks_quickmission\stations_neut\!x104300z125600.group);
+blocks_set; blocks_W_STATION_DECOR_2390_2459; main(scg\2\blocks_quickmission\stations_neut\!x104300z125600.group);
+blocks_set; blocks_W_STATION_DECOR_2394_2460; main(scg\2\blocks_quickmission\stations_neut\!x104300z125600.group);
+blocks_set; blocks_W_STATION_DECOR_2398_2461; main(scg\2\blocks_quickmission\stations_neut\!x104300z125600.group);
+blocks_set; blocks_W_STATION_DECOR_2402_2462; main(scg\2\blocks_quickmission\stations_neut\!x104300z125600.group);
+blocks_set; blocks_MISSION_DESCRIPTION; main(scg\2\blocks_quickmission\moscow_description1.group);
 
 #
 ## geo params
@@ -1205,6 +1267,68 @@ phase; SIREN_RED_3; random(RED_FRONT_AF3); blocks_SIREN_RED_3; clone_location;;
 phase; WINDSOCK_3; random(RED_FRONT_AF3); blocks_WINDSOCK_3; clone_location;;
 phase; SIREN_RED_4; random(RED_REAF_AF1); blocks_SIREN_RED_4; clone_location;;
 phase; WINDSOCK_4; random(RED_REAF_AF1); blocks_WINDSOCK_4; clone_location;;
+phase; RED_BEACON; random(RED_REAF_AF1); blocks_RED_BEACON; clone_location;;
+phase; BLUE_BEACON; random(BLUE_REAR_AF1); blocks_BLUE_BEACON; clone_location;;
+phase; W_BRIDGES_DECOR; random(REF); blocks_W_BRIDGES_DECOR; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2482; random(W_BRIDGES_DECOR); blocks_W_BRIDGES_DECOR_2482; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2486; random(W_BRIDGES_DECOR); blocks_W_BRIDGES_DECOR_2486; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2491; random(W_BRIDGES_DECOR); blocks_W_BRIDGES_DECOR_2491; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2495; random(W_BRIDGES_DECOR); blocks_W_BRIDGES_DECOR_2495; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2499; random(W_BRIDGES_DECOR); blocks_W_BRIDGES_DECOR_2499; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2503; random(W_BRIDGES_DECOR); blocks_W_BRIDGES_DECOR_2503; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2507; random(W_BRIDGES_DECOR_2503); blocks_W_BRIDGES_DECOR_2507; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2482_2508; random(W_BRIDGES_DECOR_2507); blocks_W_BRIDGES_DECOR_2482_2508; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2486_2509; random(W_BRIDGES_DECOR_2507); blocks_W_BRIDGES_DECOR_2486_2509; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2491_2510; random(W_BRIDGES_DECOR_2507); blocks_W_BRIDGES_DECOR_2491_2510; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2495_2511; random(W_BRIDGES_DECOR_2507); blocks_W_BRIDGES_DECOR_2495_2511; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2499_2512; random(W_BRIDGES_DECOR_2507); blocks_W_BRIDGES_DECOR_2499_2512; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2503_2513; random(W_BRIDGES_DECOR_2507); blocks_W_BRIDGES_DECOR_2503_2513; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2535; random(W_BRIDGES_DECOR_2503_2513); blocks_W_BRIDGES_DECOR_2535; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2482_2536; random(W_BRIDGES_DECOR_2535); blocks_W_BRIDGES_DECOR_2482_2536; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2486_2537; random(W_BRIDGES_DECOR_2535); blocks_W_BRIDGES_DECOR_2486_2537; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2491_2538; random(W_BRIDGES_DECOR_2535); blocks_W_BRIDGES_DECOR_2491_2538; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2495_2539; random(W_BRIDGES_DECOR_2535); blocks_W_BRIDGES_DECOR_2495_2539; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2499_2540; random(W_BRIDGES_DECOR_2535); blocks_W_BRIDGES_DECOR_2499_2540; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2503_2541; random(W_BRIDGES_DECOR_2535); blocks_W_BRIDGES_DECOR_2503_2541; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2563; random(W_BRIDGES_DECOR_2503_2541); blocks_W_BRIDGES_DECOR_2563; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2482_2564; random(W_BRIDGES_DECOR_2563); blocks_W_BRIDGES_DECOR_2482_2564; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2486_2565; random(W_BRIDGES_DECOR_2563); blocks_W_BRIDGES_DECOR_2486_2565; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2491_2566; random(W_BRIDGES_DECOR_2563); blocks_W_BRIDGES_DECOR_2491_2566; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2495_2567; random(W_BRIDGES_DECOR_2563); blocks_W_BRIDGES_DECOR_2495_2567; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2499_2568; random(W_BRIDGES_DECOR_2563); blocks_W_BRIDGES_DECOR_2499_2568; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2503_2569; random(W_BRIDGES_DECOR_2563); blocks_W_BRIDGES_DECOR_2503_2569; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2591; random(W_BRIDGES_DECOR_2503_2569); blocks_W_BRIDGES_DECOR_2591; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2482_2592; random(W_BRIDGES_DECOR_2591); blocks_W_BRIDGES_DECOR_2482_2592; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2486_2593; random(W_BRIDGES_DECOR_2591); blocks_W_BRIDGES_DECOR_2486_2593; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2491_2594; random(W_BRIDGES_DECOR_2591); blocks_W_BRIDGES_DECOR_2491_2594; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2495_2595; random(W_BRIDGES_DECOR_2591); blocks_W_BRIDGES_DECOR_2495_2595; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2499_2596; random(W_BRIDGES_DECOR_2591); blocks_W_BRIDGES_DECOR_2499_2596; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2503_2597; random(W_BRIDGES_DECOR_2591); blocks_W_BRIDGES_DECOR_2503_2597; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_BRIDGES_DECOR_2619; random(W_BRIDGES_DECOR_2503_2597); blocks_W_BRIDGES_DECOR_2619; clone_location;scg\2\blocks_quickmission\bridges_neut;
+phase; W_STATION_DECOR_2406; random(W_STATION_DECOR); blocks_W_STATION_DECOR_2406; clone_location;scg\2\blocks_quickmission\stations_neut;
+phase; W_STATION_DECOR_2402; random(W_STATION_DECOR); blocks_W_STATION_DECOR_2402; clone_location;scg\2\blocks_quickmission\stations_neut;
+phase; W_STATION_DECOR_2398; random(W_STATION_DECOR); blocks_W_STATION_DECOR_2398; clone_location;scg\2\blocks_quickmission\stations_neut;
+phase; W_STATION_DECOR_2394; random(W_STATION_DECOR); blocks_W_STATION_DECOR_2394; clone_location;scg\2\blocks_quickmission\stations_neut;
+phase; W_STATION_DECOR_2390; random(W_STATION_DECOR); blocks_W_STATION_DECOR_2390; clone_location;scg\2\blocks_quickmission\stations_neut;
+phase; W_STATION_DECOR; random(REF); blocks_W_STATION_DECOR; clone_location;scg\2\blocks_quickmission\stations_neut;
+phase; W_STATION_DECOR_2410; random(W_STATION_DECOR_2406); blocks_W_STATION_DECOR_2410; clone_location;scg\2\blocks_quickmission\stations_neut;
+phase; W_STATION_DECOR_2390_2411; random(W_STATION_DECOR_2410); blocks_W_STATION_DECOR_2390_2411; clone_location;scg\2\blocks_quickmission\stations_neut;
+phase; W_STATION_DECOR_2394_2412; random(W_STATION_DECOR_2410); blocks_W_STATION_DECOR_2394_2412; clone_location;scg\2\blocks_quickmission\stations_neut;
+phase; W_STATION_DECOR_2398_2413; random(W_STATION_DECOR_2410); blocks_W_STATION_DECOR_2398_2413; clone_location;scg\2\blocks_quickmission\stations_neut;
+phase; W_STATION_DECOR_2402_2414; random(W_STATION_DECOR_2410); blocks_W_STATION_DECOR_2402_2414; clone_location;scg\2\blocks_quickmission\stations_neut;
+phase; W_STATION_DECOR_2406_2415; random(W_STATION_DECOR_2410); blocks_W_STATION_DECOR_2406_2415; clone_location;scg\2\blocks_quickmission\stations_neut;
+phase; W_STATION_DECOR_2434; random(W_STATION_DECOR_2406_2415); blocks_W_STATION_DECOR_2434; clone_location;scg\2\blocks_quickmission\stations_neut;
+phase; W_STATION_DECOR_2390_2435; random(W_STATION_DECOR_2434); blocks_W_STATION_DECOR_2390_2435; clone_location;scg\2\blocks_quickmission\stations_neut;
+phase; W_STATION_DECOR_2394_2436; random(W_STATION_DECOR_2434); blocks_W_STATION_DECOR_2394_2436; clone_location;scg\2\blocks_quickmission\stations_neut;
+phase; W_STATION_DECOR_2398_2437; random(W_STATION_DECOR_2434); blocks_W_STATION_DECOR_2398_2437; clone_location;scg\2\blocks_quickmission\stations_neut;
+phase; W_STATION_DECOR_2402_2438; random(W_STATION_DECOR_2434); blocks_W_STATION_DECOR_2402_2438; clone_location;scg\2\blocks_quickmission\stations_neut;
+phase; W_STATION_DECOR_2406_2439; random(W_STATION_DECOR_2434); blocks_W_STATION_DECOR_2406_2439; clone_location;scg\2\blocks_quickmission\stations_neut;
+phase; W_STATION_DECOR_2458; random(W_STATION_DECOR_2406_2439); blocks_W_STATION_DECOR_2458; clone_location;scg\2\blocks_quickmission\stations_neut;
+phase; W_STATION_DECOR_2390_2459; random(W_STATION_DECOR_2458); blocks_W_STATION_DECOR_2390_2459; clone_location;scg\2\blocks_quickmission\stations_neut;
+phase; W_STATION_DECOR_2394_2460; random(W_STATION_DECOR_2458); blocks_W_STATION_DECOR_2394_2460; clone_location;scg\2\blocks_quickmission\stations_neut;
+phase; W_STATION_DECOR_2398_2461; random(W_STATION_DECOR_2458); blocks_W_STATION_DECOR_2398_2461; clone_location;scg\2\blocks_quickmission\stations_neut;
+phase; W_STATION_DECOR_2402_2462; random(W_STATION_DECOR_2458); blocks_W_STATION_DECOR_2402_2462; clone_location;scg\2\blocks_quickmission\stations_neut;
+phase; MISSION_DESCRIPTION; at(SERVER_SET); blocks_MISSION_DESCRIPTION; clone_location;;
 
 #
 ## cases & switches
@@ -2611,6 +2735,189 @@ check; SIREN_RED_4; location_type(Decoration,Siren);
 check; SIREN_RED_4; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; WINDSOCK_4; location_type(Decoration,Windsock);
 check; WINDSOCK_4; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RED_BEACON; location_type(Decoration,NDB);
+check; RED_BEACON; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RED_BEACON; free();
+check; BLUE_BEACON; location_type(Decoration,NDB);
+check; BLUE_BEACON; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; BLUE_BEACON; free();
+check; W_BRIDGES_DECOR; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR; free();
+check; W_BRIDGES_DECOR_2482; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2482; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2482; free();
+check; W_BRIDGES_DECOR_2486; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2486; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2486; free();
+check; W_BRIDGES_DECOR_2491; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2491; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2491; free();
+check; W_BRIDGES_DECOR_2495; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2495; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2495; free();
+check; W_BRIDGES_DECOR_2499; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2499; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2499; free();
+check; W_BRIDGES_DECOR_2503; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2503; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2503; free();
+check; W_BRIDGES_DECOR_2507; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2507; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2507; free();
+check; W_BRIDGES_DECOR_2482_2508; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2482_2508; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2482_2508; free();
+check; W_BRIDGES_DECOR_2486_2509; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2486_2509; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2486_2509; free();
+check; W_BRIDGES_DECOR_2491_2510; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2491_2510; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2491_2510; free();
+check; W_BRIDGES_DECOR_2495_2511; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2495_2511; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2495_2511; free();
+check; W_BRIDGES_DECOR_2499_2512; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2499_2512; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2499_2512; free();
+check; W_BRIDGES_DECOR_2503_2513; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2503_2513; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2503_2513; free();
+check; W_BRIDGES_DECOR_2535; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2535; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2535; free();
+check; W_BRIDGES_DECOR_2482_2536; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2482_2536; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2482_2536; free();
+check; W_BRIDGES_DECOR_2486_2537; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2486_2537; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2486_2537; free();
+check; W_BRIDGES_DECOR_2491_2538; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2491_2538; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2491_2538; free();
+check; W_BRIDGES_DECOR_2495_2539; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2495_2539; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2495_2539; free();
+check; W_BRIDGES_DECOR_2499_2540; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2499_2540; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2499_2540; free();
+check; W_BRIDGES_DECOR_2503_2541; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2503_2541; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2503_2541; free();
+check; W_BRIDGES_DECOR_2563; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2563; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2563; free();
+check; W_BRIDGES_DECOR_2482_2564; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2482_2564; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2482_2564; free();
+check; W_BRIDGES_DECOR_2486_2565; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2486_2565; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2486_2565; free();
+check; W_BRIDGES_DECOR_2491_2566; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2491_2566; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2491_2566; free();
+check; W_BRIDGES_DECOR_2495_2567; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2495_2567; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2495_2567; free();
+check; W_BRIDGES_DECOR_2499_2568; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2499_2568; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2499_2568; free();
+check; W_BRIDGES_DECOR_2503_2569; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2503_2569; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2503_2569; free();
+check; W_BRIDGES_DECOR_2591; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2591; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2591; free();
+check; W_BRIDGES_DECOR_2482_2592; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2482_2592; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2482_2592; free();
+check; W_BRIDGES_DECOR_2486_2593; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2486_2593; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2486_2593; free();
+check; W_BRIDGES_DECOR_2491_2594; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2491_2594; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2491_2594; free();
+check; W_BRIDGES_DECOR_2495_2595; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2495_2595; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2495_2595; free();
+check; W_BRIDGES_DECOR_2499_2596; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2499_2596; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2499_2596; free();
+check; W_BRIDGES_DECOR_2503_2597; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2503_2597; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2503_2597; free();
+check; W_BRIDGES_DECOR_2619; location_type(Decoration,Bridge);
+check; W_BRIDGES_DECOR_2619; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_BRIDGES_DECOR_2619; free();
+check; W_STATION_DECOR_2406; location_type(GroundObjective,RailwayStation);
+check; W_STATION_DECOR_2406; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_STATION_DECOR_2406; free();
+check; W_STATION_DECOR_2402; location_type(GroundObjective,RailwayStation);
+check; W_STATION_DECOR_2402; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_STATION_DECOR_2402; free();
+check; W_STATION_DECOR_2398; location_type(GroundObjective,RailwayStation);
+check; W_STATION_DECOR_2398; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_STATION_DECOR_2398; free();
+check; W_STATION_DECOR_2394; location_type(GroundObjective,RailwayStation);
+check; W_STATION_DECOR_2394; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_STATION_DECOR_2394; free();
+check; W_STATION_DECOR_2390; location_type(GroundObjective,RailwayStation);
+check; W_STATION_DECOR_2390; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_STATION_DECOR_2390; free();
+check; W_STATION_DECOR; location_type(GroundObjective,RailwayStation);
+check; W_STATION_DECOR; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_STATION_DECOR; free();
+check; W_STATION_DECOR_2410; location_type(GroundObjective,RailwayStation);
+check; W_STATION_DECOR_2410; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_STATION_DECOR_2410; free();
+check; W_STATION_DECOR_2390_2411; location_type(GroundObjective,RailwayStation);
+check; W_STATION_DECOR_2390_2411; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_STATION_DECOR_2390_2411; free();
+check; W_STATION_DECOR_2394_2412; location_type(GroundObjective,RailwayStation);
+check; W_STATION_DECOR_2394_2412; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_STATION_DECOR_2394_2412; free();
+check; W_STATION_DECOR_2398_2413; location_type(GroundObjective,RailwayStation);
+check; W_STATION_DECOR_2398_2413; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_STATION_DECOR_2398_2413; free();
+check; W_STATION_DECOR_2402_2414; location_type(GroundObjective,RailwayStation);
+check; W_STATION_DECOR_2402_2414; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_STATION_DECOR_2402_2414; free();
+check; W_STATION_DECOR_2406_2415; location_type(GroundObjective,RailwayStation);
+check; W_STATION_DECOR_2406_2415; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_STATION_DECOR_2406_2415; free();
+check; W_STATION_DECOR_2434; location_type(GroundObjective,RailwayStation);
+check; W_STATION_DECOR_2434; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_STATION_DECOR_2434; free();
+check; W_STATION_DECOR_2390_2435; location_type(GroundObjective,RailwayStation);
+check; W_STATION_DECOR_2390_2435; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_STATION_DECOR_2390_2435; free();
+check; W_STATION_DECOR_2394_2436; location_type(GroundObjective,RailwayStation);
+check; W_STATION_DECOR_2394_2436; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_STATION_DECOR_2394_2436; free();
+check; W_STATION_DECOR_2398_2437; location_type(GroundObjective,RailwayStation);
+check; W_STATION_DECOR_2398_2437; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_STATION_DECOR_2398_2437; free();
+check; W_STATION_DECOR_2402_2438; location_type(GroundObjective,RailwayStation);
+check; W_STATION_DECOR_2402_2438; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_STATION_DECOR_2402_2438; free();
+check; W_STATION_DECOR_2406_2439; location_type(GroundObjective,RailwayStation);
+check; W_STATION_DECOR_2406_2439; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_STATION_DECOR_2406_2439; free();
+check; W_STATION_DECOR_2458; location_type(GroundObjective,RailwayStation);
+check; W_STATION_DECOR_2458; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_STATION_DECOR_2458; free();
+check; W_STATION_DECOR_2390_2459; location_type(GroundObjective,RailwayStation);
+check; W_STATION_DECOR_2390_2459; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_STATION_DECOR_2390_2459; free();
+check; W_STATION_DECOR_2394_2460; location_type(GroundObjective,RailwayStation);
+check; W_STATION_DECOR_2394_2460; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_STATION_DECOR_2394_2460; free();
+check; W_STATION_DECOR_2398_2461; location_type(GroundObjective,RailwayStation);
+check; W_STATION_DECOR_2398_2461; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_STATION_DECOR_2398_2461; free();
+check; W_STATION_DECOR_2402_2462; location_type(GroundObjective,RailwayStation);
+check; W_STATION_DECOR_2402_2462; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; W_STATION_DECOR_2402_2462; free();
 
 #
 ## property actions
@@ -3422,6 +3729,8 @@ action; SIREN_BLUE_4(Proximity,Distance); set(Distance,6000);
 action; SIREN_RED_2(Proximity,Distance); set(Distance,6000);
 action; SIREN_RED_3(Proximity,Distance); set(Distance,6000);
 action; SIREN_RED_4(Proximity,Distance); set(Distance,6000);
+action; RED_BEACON(BEACON,Country); set_country(friendly);
+action; BLUE_BEACON(BEACON,Country); set_country(enemy);
 
 #
 ## unlinks
@@ -4029,6 +4338,68 @@ gui_helper; SIREN_RED_3; 6872; -617;
 gui_helper; WINDSOCK_3; 7113; -610;
 gui_helper; SIREN_RED_4; 8952; -181;
 gui_helper; WINDSOCK_4; 9193; -174;
+gui_helper; RED_BEACON; 9820; -252;
+gui_helper; BLUE_BEACON; -9231; -375;
+gui_helper; W_BRIDGES_DECOR; -1784; -6025;
+gui_helper; W_BRIDGES_DECOR_2482; -1784; -5812;
+gui_helper; W_BRIDGES_DECOR_2486; -1787; -5594;
+gui_helper; W_BRIDGES_DECOR_2491; -1789; -5369;
+gui_helper; W_BRIDGES_DECOR_2495; -1786; -5151;
+gui_helper; W_BRIDGES_DECOR_2499; -1789; -4928;
+gui_helper; W_BRIDGES_DECOR_2503; -1786; -4712;
+gui_helper; W_BRIDGES_DECOR_2507; -1507; -6031;
+gui_helper; W_BRIDGES_DECOR_2482_2508; -1507; -5818;
+gui_helper; W_BRIDGES_DECOR_2486_2509; -1510; -5600;
+gui_helper; W_BRIDGES_DECOR_2491_2510; -1512; -5375;
+gui_helper; W_BRIDGES_DECOR_2495_2511; -1509; -5157;
+gui_helper; W_BRIDGES_DECOR_2499_2512; -1512; -4934;
+gui_helper; W_BRIDGES_DECOR_2503_2513; -1509; -4718;
+gui_helper; W_BRIDGES_DECOR_2535; -1256; -6030;
+gui_helper; W_BRIDGES_DECOR_2482_2536; -1256; -5817;
+gui_helper; W_BRIDGES_DECOR_2486_2537; -1259; -5599;
+gui_helper; W_BRIDGES_DECOR_2491_2538; -1261; -5374;
+gui_helper; W_BRIDGES_DECOR_2495_2539; -1258; -5156;
+gui_helper; W_BRIDGES_DECOR_2499_2540; -1261; -4933;
+gui_helper; W_BRIDGES_DECOR_2503_2541; -1258; -4717;
+gui_helper; W_BRIDGES_DECOR_2563; -1010; -6030;
+gui_helper; W_BRIDGES_DECOR_2482_2564; -1010; -5817;
+gui_helper; W_BRIDGES_DECOR_2486_2565; -1013; -5599;
+gui_helper; W_BRIDGES_DECOR_2491_2566; -1015; -5374;
+gui_helper; W_BRIDGES_DECOR_2495_2567; -1012; -5156;
+gui_helper; W_BRIDGES_DECOR_2499_2568; -1015; -4933;
+gui_helper; W_BRIDGES_DECOR_2503_2569; -1012; -4717;
+gui_helper; W_BRIDGES_DECOR_2591; -751; -6020;
+gui_helper; W_BRIDGES_DECOR_2482_2592; -751; -5807;
+gui_helper; W_BRIDGES_DECOR_2486_2593; -754; -5589;
+gui_helper; W_BRIDGES_DECOR_2491_2594; -756; -5364;
+gui_helper; W_BRIDGES_DECOR_2495_2595; -753; -5146;
+gui_helper; W_BRIDGES_DECOR_2499_2596; -756; -4923;
+gui_helper; W_BRIDGES_DECOR_2503_2597; -753; -4707;
+gui_helper; W_BRIDGES_DECOR_2619; -485; -6034;
+gui_helper; W_STATION_DECOR_2406; 1996; -4796;
+gui_helper; W_STATION_DECOR_2402; 1991; -5039;
+gui_helper; W_STATION_DECOR_2398; 1994; -5286;
+gui_helper; W_STATION_DECOR_2394; 1992; -5533;
+gui_helper; W_STATION_DECOR_2390; 1990; -5770;
+gui_helper; W_STATION_DECOR; 1987; -6023;
+gui_helper; W_STATION_DECOR_2410; 2296; -6018;
+gui_helper; W_STATION_DECOR_2390_2411; 2299; -5765;
+gui_helper; W_STATION_DECOR_2394_2412; 2301; -5528;
+gui_helper; W_STATION_DECOR_2398_2413; 2303; -5281;
+gui_helper; W_STATION_DECOR_2402_2414; 2300; -5034;
+gui_helper; W_STATION_DECOR_2406_2415; 2305; -4791;
+gui_helper; W_STATION_DECOR_2434; 2572; -6020;
+gui_helper; W_STATION_DECOR_2390_2435; 2575; -5767;
+gui_helper; W_STATION_DECOR_2394_2436; 2577; -5530;
+gui_helper; W_STATION_DECOR_2398_2437; 2579; -5283;
+gui_helper; W_STATION_DECOR_2402_2438; 2576; -5036;
+gui_helper; W_STATION_DECOR_2406_2439; 2581; -4793;
+gui_helper; W_STATION_DECOR_2458; 2853; -6024;
+gui_helper; W_STATION_DECOR_2390_2459; 2856; -5771;
+gui_helper; W_STATION_DECOR_2394_2460; 2858; -5534;
+gui_helper; W_STATION_DECOR_2398_2461; 2860; -5287;
+gui_helper; W_STATION_DECOR_2402_2462; 2857; -5040;
+gui_helper; MISSION_DESCRIPTION; 356; -168;
 gui_helper; check; -8542; 474;BLUE_REAR_AF_REFERENCE(coalition)
 gui_helper; check; -8544; 428;BLUE_REAR_AF_REFERENCE(location_type)
 gui_helper; check; -8544; 518;BLUE_REAR_AF_REFERENCE(range)
@@ -4996,6 +5367,189 @@ gui_helper; check; 8978; -2;SIREN_RED_4(location_type)
 gui_helper; check; 8978; 40;SIREN_RED_4(range)
 gui_helper; check; 9215; 8;WINDSOCK_4(location_type)
 gui_helper; check; 9217; 49;WINDSOCK_4(range)
+gui_helper; check; 9841; -72;RED_BEACON(location_type)
+gui_helper; check; 9835; -34;RED_BEACON(range)
+gui_helper; check; 9832; 4;RED_BEACON(free)
+gui_helper; check; -9210; -195;BLUE_BEACON(location_type)
+gui_helper; check; -9216; -157;BLUE_BEACON(range)
+gui_helper; check; -9220; -111;BLUE_BEACON(free)
+gui_helper; check; -1766; -5854;W_BRIDGES_DECOR(location_type)
+gui_helper; check; -1673; -5854;W_BRIDGES_DECOR(range)
+gui_helper; check; -1612; -5855;W_BRIDGES_DECOR(free)
+gui_helper; check; -1766; -5641;W_BRIDGES_DECOR_2482(location_type)
+gui_helper; check; -1673; -5641;W_BRIDGES_DECOR_2482(range)
+gui_helper; check; -1612; -5642;W_BRIDGES_DECOR_2482(free)
+gui_helper; check; -1769; -5423;W_BRIDGES_DECOR_2486(location_type)
+gui_helper; check; -1676; -5423;W_BRIDGES_DECOR_2486(range)
+gui_helper; check; -1615; -5424;W_BRIDGES_DECOR_2486(free)
+gui_helper; check; -1771; -5198;W_BRIDGES_DECOR_2491(location_type)
+gui_helper; check; -1678; -5198;W_BRIDGES_DECOR_2491(range)
+gui_helper; check; -1617; -5199;W_BRIDGES_DECOR_2491(free)
+gui_helper; check; -1768; -4980;W_BRIDGES_DECOR_2495(location_type)
+gui_helper; check; -1675; -4980;W_BRIDGES_DECOR_2495(range)
+gui_helper; check; -1614; -4981;W_BRIDGES_DECOR_2495(free)
+gui_helper; check; -1771; -4757;W_BRIDGES_DECOR_2499(location_type)
+gui_helper; check; -1678; -4757;W_BRIDGES_DECOR_2499(range)
+gui_helper; check; -1617; -4758;W_BRIDGES_DECOR_2499(free)
+gui_helper; check; -1768; -4541;W_BRIDGES_DECOR_2503(location_type)
+gui_helper; check; -1675; -4541;W_BRIDGES_DECOR_2503(range)
+gui_helper; check; -1614; -4542;W_BRIDGES_DECOR_2503(free)
+gui_helper; check; -1489; -5860;W_BRIDGES_DECOR_2507(location_type)
+gui_helper; check; -1396; -5860;W_BRIDGES_DECOR_2507(range)
+gui_helper; check; -1335; -5861;W_BRIDGES_DECOR_2507(free)
+gui_helper; check; -1489; -5647;W_BRIDGES_DECOR_2482_2508(location_type)
+gui_helper; check; -1396; -5647;W_BRIDGES_DECOR_2482_2508(range)
+gui_helper; check; -1335; -5648;W_BRIDGES_DECOR_2482_2508(free)
+gui_helper; check; -1492; -5429;W_BRIDGES_DECOR_2486_2509(location_type)
+gui_helper; check; -1399; -5429;W_BRIDGES_DECOR_2486_2509(range)
+gui_helper; check; -1338; -5430;W_BRIDGES_DECOR_2486_2509(free)
+gui_helper; check; -1494; -5204;W_BRIDGES_DECOR_2491_2510(location_type)
+gui_helper; check; -1401; -5204;W_BRIDGES_DECOR_2491_2510(range)
+gui_helper; check; -1340; -5205;W_BRIDGES_DECOR_2491_2510(free)
+gui_helper; check; -1491; -4986;W_BRIDGES_DECOR_2495_2511(location_type)
+gui_helper; check; -1398; -4986;W_BRIDGES_DECOR_2495_2511(range)
+gui_helper; check; -1337; -4987;W_BRIDGES_DECOR_2495_2511(free)
+gui_helper; check; -1494; -4763;W_BRIDGES_DECOR_2499_2512(location_type)
+gui_helper; check; -1401; -4763;W_BRIDGES_DECOR_2499_2512(range)
+gui_helper; check; -1340; -4764;W_BRIDGES_DECOR_2499_2512(free)
+gui_helper; check; -1491; -4547;W_BRIDGES_DECOR_2503_2513(location_type)
+gui_helper; check; -1398; -4547;W_BRIDGES_DECOR_2503_2513(range)
+gui_helper; check; -1337; -4548;W_BRIDGES_DECOR_2503_2513(free)
+gui_helper; check; -1238; -5859;W_BRIDGES_DECOR_2535(location_type)
+gui_helper; check; -1145; -5859;W_BRIDGES_DECOR_2535(range)
+gui_helper; check; -1084; -5860;W_BRIDGES_DECOR_2535(free)
+gui_helper; check; -1238; -5646;W_BRIDGES_DECOR_2482_2536(location_type)
+gui_helper; check; -1145; -5646;W_BRIDGES_DECOR_2482_2536(range)
+gui_helper; check; -1084; -5647;W_BRIDGES_DECOR_2482_2536(free)
+gui_helper; check; -1241; -5428;W_BRIDGES_DECOR_2486_2537(location_type)
+gui_helper; check; -1148; -5428;W_BRIDGES_DECOR_2486_2537(range)
+gui_helper; check; -1087; -5429;W_BRIDGES_DECOR_2486_2537(free)
+gui_helper; check; -1243; -5203;W_BRIDGES_DECOR_2491_2538(location_type)
+gui_helper; check; -1150; -5203;W_BRIDGES_DECOR_2491_2538(range)
+gui_helper; check; -1089; -5204;W_BRIDGES_DECOR_2491_2538(free)
+gui_helper; check; -1240; -4985;W_BRIDGES_DECOR_2495_2539(location_type)
+gui_helper; check; -1147; -4985;W_BRIDGES_DECOR_2495_2539(range)
+gui_helper; check; -1086; -4986;W_BRIDGES_DECOR_2495_2539(free)
+gui_helper; check; -1243; -4762;W_BRIDGES_DECOR_2499_2540(location_type)
+gui_helper; check; -1150; -4762;W_BRIDGES_DECOR_2499_2540(range)
+gui_helper; check; -1089; -4763;W_BRIDGES_DECOR_2499_2540(free)
+gui_helper; check; -1240; -4546;W_BRIDGES_DECOR_2503_2541(location_type)
+gui_helper; check; -1147; -4546;W_BRIDGES_DECOR_2503_2541(range)
+gui_helper; check; -1086; -4547;W_BRIDGES_DECOR_2503_2541(free)
+gui_helper; check; -992; -5859;W_BRIDGES_DECOR_2563(location_type)
+gui_helper; check; -899; -5859;W_BRIDGES_DECOR_2563(range)
+gui_helper; check; -838; -5860;W_BRIDGES_DECOR_2563(free)
+gui_helper; check; -992; -5646;W_BRIDGES_DECOR_2482_2564(location_type)
+gui_helper; check; -899; -5646;W_BRIDGES_DECOR_2482_2564(range)
+gui_helper; check; -838; -5647;W_BRIDGES_DECOR_2482_2564(free)
+gui_helper; check; -995; -5428;W_BRIDGES_DECOR_2486_2565(location_type)
+gui_helper; check; -902; -5428;W_BRIDGES_DECOR_2486_2565(range)
+gui_helper; check; -841; -5429;W_BRIDGES_DECOR_2486_2565(free)
+gui_helper; check; -997; -5203;W_BRIDGES_DECOR_2491_2566(location_type)
+gui_helper; check; -904; -5203;W_BRIDGES_DECOR_2491_2566(range)
+gui_helper; check; -843; -5204;W_BRIDGES_DECOR_2491_2566(free)
+gui_helper; check; -994; -4985;W_BRIDGES_DECOR_2495_2567(location_type)
+gui_helper; check; -901; -4985;W_BRIDGES_DECOR_2495_2567(range)
+gui_helper; check; -840; -4986;W_BRIDGES_DECOR_2495_2567(free)
+gui_helper; check; -997; -4762;W_BRIDGES_DECOR_2499_2568(location_type)
+gui_helper; check; -904; -4762;W_BRIDGES_DECOR_2499_2568(range)
+gui_helper; check; -843; -4763;W_BRIDGES_DECOR_2499_2568(free)
+gui_helper; check; -994; -4546;W_BRIDGES_DECOR_2503_2569(location_type)
+gui_helper; check; -901; -4546;W_BRIDGES_DECOR_2503_2569(range)
+gui_helper; check; -840; -4547;W_BRIDGES_DECOR_2503_2569(free)
+gui_helper; check; -733; -5849;W_BRIDGES_DECOR_2591(location_type)
+gui_helper; check; -640; -5849;W_BRIDGES_DECOR_2591(range)
+gui_helper; check; -579; -5850;W_BRIDGES_DECOR_2591(free)
+gui_helper; check; -733; -5636;W_BRIDGES_DECOR_2482_2592(location_type)
+gui_helper; check; -640; -5636;W_BRIDGES_DECOR_2482_2592(range)
+gui_helper; check; -579; -5637;W_BRIDGES_DECOR_2482_2592(free)
+gui_helper; check; -736; -5418;W_BRIDGES_DECOR_2486_2593(location_type)
+gui_helper; check; -643; -5418;W_BRIDGES_DECOR_2486_2593(range)
+gui_helper; check; -582; -5419;W_BRIDGES_DECOR_2486_2593(free)
+gui_helper; check; -738; -5193;W_BRIDGES_DECOR_2491_2594(location_type)
+gui_helper; check; -645; -5193;W_BRIDGES_DECOR_2491_2594(range)
+gui_helper; check; -584; -5194;W_BRIDGES_DECOR_2491_2594(free)
+gui_helper; check; -735; -4975;W_BRIDGES_DECOR_2495_2595(location_type)
+gui_helper; check; -642; -4975;W_BRIDGES_DECOR_2495_2595(range)
+gui_helper; check; -581; -4976;W_BRIDGES_DECOR_2495_2595(free)
+gui_helper; check; -738; -4752;W_BRIDGES_DECOR_2499_2596(location_type)
+gui_helper; check; -645; -4752;W_BRIDGES_DECOR_2499_2596(range)
+gui_helper; check; -584; -4753;W_BRIDGES_DECOR_2499_2596(free)
+gui_helper; check; -735; -4536;W_BRIDGES_DECOR_2503_2597(location_type)
+gui_helper; check; -642; -4536;W_BRIDGES_DECOR_2503_2597(range)
+gui_helper; check; -581; -4537;W_BRIDGES_DECOR_2503_2597(free)
+gui_helper; check; -467; -5863;W_BRIDGES_DECOR_2619(location_type)
+gui_helper; check; -374; -5863;W_BRIDGES_DECOR_2619(range)
+gui_helper; check; -313; -5864;W_BRIDGES_DECOR_2619(free)
+gui_helper; check; 2015; -4624;W_STATION_DECOR_2406(location_type)
+gui_helper; check; 2116; -4621;W_STATION_DECOR_2406(range)
+gui_helper; check; 2179; -4620;W_STATION_DECOR_2406(free)
+gui_helper; check; 2010; -4867;W_STATION_DECOR_2402(location_type)
+gui_helper; check; 2111; -4864;W_STATION_DECOR_2402(range)
+gui_helper; check; 2174; -4863;W_STATION_DECOR_2402(free)
+gui_helper; check; 2013; -5114;W_STATION_DECOR_2398(location_type)
+gui_helper; check; 2114; -5111;W_STATION_DECOR_2398(range)
+gui_helper; check; 2177; -5110;W_STATION_DECOR_2398(free)
+gui_helper; check; 2011; -5361;W_STATION_DECOR_2394(location_type)
+gui_helper; check; 2112; -5358;W_STATION_DECOR_2394(range)
+gui_helper; check; 2175; -5357;W_STATION_DECOR_2394(free)
+gui_helper; check; 2009; -5598;W_STATION_DECOR_2390(location_type)
+gui_helper; check; 2110; -5595;W_STATION_DECOR_2390(range)
+gui_helper; check; 2173; -5594;W_STATION_DECOR_2390(free)
+gui_helper; check; 2006; -5851;W_STATION_DECOR(location_type)
+gui_helper; check; 2107; -5848;W_STATION_DECOR(range)
+gui_helper; check; 2170; -5847;W_STATION_DECOR(free)
+gui_helper; check; 2315; -5846;W_STATION_DECOR_2410(location_type)
+gui_helper; check; 2416; -5843;W_STATION_DECOR_2410(range)
+gui_helper; check; 2479; -5842;W_STATION_DECOR_2410(free)
+gui_helper; check; 2318; -5593;W_STATION_DECOR_2390_2411(location_type)
+gui_helper; check; 2419; -5590;W_STATION_DECOR_2390_2411(range)
+gui_helper; check; 2482; -5589;W_STATION_DECOR_2390_2411(free)
+gui_helper; check; 2320; -5356;W_STATION_DECOR_2394_2412(location_type)
+gui_helper; check; 2421; -5353;W_STATION_DECOR_2394_2412(range)
+gui_helper; check; 2484; -5352;W_STATION_DECOR_2394_2412(free)
+gui_helper; check; 2322; -5109;W_STATION_DECOR_2398_2413(location_type)
+gui_helper; check; 2423; -5106;W_STATION_DECOR_2398_2413(range)
+gui_helper; check; 2486; -5105;W_STATION_DECOR_2398_2413(free)
+gui_helper; check; 2319; -4862;W_STATION_DECOR_2402_2414(location_type)
+gui_helper; check; 2420; -4859;W_STATION_DECOR_2402_2414(range)
+gui_helper; check; 2483; -4858;W_STATION_DECOR_2402_2414(free)
+gui_helper; check; 2324; -4619;W_STATION_DECOR_2406_2415(location_type)
+gui_helper; check; 2425; -4616;W_STATION_DECOR_2406_2415(range)
+gui_helper; check; 2488; -4615;W_STATION_DECOR_2406_2415(free)
+gui_helper; check; 2591; -5848;W_STATION_DECOR_2434(location_type)
+gui_helper; check; 2692; -5845;W_STATION_DECOR_2434(range)
+gui_helper; check; 2755; -5844;W_STATION_DECOR_2434(free)
+gui_helper; check; 2594; -5595;W_STATION_DECOR_2390_2435(location_type)
+gui_helper; check; 2695; -5592;W_STATION_DECOR_2390_2435(range)
+gui_helper; check; 2758; -5591;W_STATION_DECOR_2390_2435(free)
+gui_helper; check; 2596; -5358;W_STATION_DECOR_2394_2436(location_type)
+gui_helper; check; 2697; -5355;W_STATION_DECOR_2394_2436(range)
+gui_helper; check; 2760; -5354;W_STATION_DECOR_2394_2436(free)
+gui_helper; check; 2598; -5111;W_STATION_DECOR_2398_2437(location_type)
+gui_helper; check; 2699; -5108;W_STATION_DECOR_2398_2437(range)
+gui_helper; check; 2762; -5107;W_STATION_DECOR_2398_2437(free)
+gui_helper; check; 2595; -4864;W_STATION_DECOR_2402_2438(location_type)
+gui_helper; check; 2696; -4861;W_STATION_DECOR_2402_2438(range)
+gui_helper; check; 2759; -4860;W_STATION_DECOR_2402_2438(free)
+gui_helper; check; 2600; -4621;W_STATION_DECOR_2406_2439(location_type)
+gui_helper; check; 2701; -4618;W_STATION_DECOR_2406_2439(range)
+gui_helper; check; 2764; -4617;W_STATION_DECOR_2406_2439(free)
+gui_helper; check; 2872; -5852;W_STATION_DECOR_2458(location_type)
+gui_helper; check; 2973; -5849;W_STATION_DECOR_2458(range)
+gui_helper; check; 3036; -5848;W_STATION_DECOR_2458(free)
+gui_helper; check; 2875; -5599;W_STATION_DECOR_2390_2459(location_type)
+gui_helper; check; 2976; -5596;W_STATION_DECOR_2390_2459(range)
+gui_helper; check; 3039; -5595;W_STATION_DECOR_2390_2459(free)
+gui_helper; check; 2877; -5362;W_STATION_DECOR_2394_2460(location_type)
+gui_helper; check; 2978; -5359;W_STATION_DECOR_2394_2460(range)
+gui_helper; check; 3041; -5358;W_STATION_DECOR_2394_2460(free)
+gui_helper; check; 2879; -5115;W_STATION_DECOR_2398_2461(location_type)
+gui_helper; check; 2980; -5112;W_STATION_DECOR_2398_2461(range)
+gui_helper; check; 3043; -5111;W_STATION_DECOR_2398_2461(free)
+gui_helper; check; 2876; -4868;W_STATION_DECOR_2402_2462(location_type)
+gui_helper; check; 2977; -4865;W_STATION_DECOR_2402_2462(range)
+gui_helper; check; 3040; -4864;W_STATION_DECOR_2402_2462(free)
 gui_helper; Model; -5776; -3848;LARGE_CANNON_85_882; (AAA_BIG_TYPE);
 gui_helper; Country; -5776; -3808;LARGE_CANNON_85_882; (AAA_BIG_TYPE);
 gui_helper; AILevel; -5777; -3886;LARGE_CANNON_85_882; (AAA_BIG_TYPE);
@@ -5803,3 +6357,5 @@ gui_helper; Distance; -8417; -285;SIREN_BLUE_4; (Proximity);
 gui_helper; Distance; 5040; -606;SIREN_RED_2; (Proximity);
 gui_helper; Distance; 6944; -650;SIREN_RED_3; (Proximity);
 gui_helper; Distance; 9024; -214;SIREN_RED_4; (Proximity);
+gui_helper; Country; 9886; -273;RED_BEACON; (BEACON);
+gui_helper; Country; -9165; -396;BLUE_BEACON; (BEACON);

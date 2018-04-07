@@ -1,0 +1,50 @@
+MCU_H_Output
+{
+  Index = 2;
+  Name = "ARTY_INPUT";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -483.477;
+  YPos = 17.795;
+  ZPos = 154.735;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 3;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -483.408;
+  YPos = 17.795;
+  ZPos = 111.975;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+
+MCU_TR_ServerInput
+{
+  Index = 4;
+  Name = "red_arty_2";
+  Desc = "";
+  Targets = [2];
+  Objects = [];
+  XPos = -483.595;
+  YPos = 17.795;
+  ZPos = 69.048;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+}
+

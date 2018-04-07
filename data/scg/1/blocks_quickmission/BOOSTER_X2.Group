@@ -1,0 +1,114 @@
+MCU_H_Input
+{
+  Index = 2;
+  Name = "KILLED_ARTY";
+  Desc = "";
+  Targets = [3];
+  Objects = [];
+  XPos = -1166.080;
+  YPos = 17.795;
+  ZPos = -499.890;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Input
+{
+  Index = 4;
+  Name = "KILLED_FORT";
+  Desc = "";
+  Targets = [3];
+  Objects = [];
+  XPos = -1476.260;
+  YPos = 17.795;
+  ZPos = -499.886;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Counter
+{
+  Index = 3;
+  Name = "x3";
+  Desc = "";
+  Targets = [6];
+  Objects = [];
+  XPos = -1476.260;
+  YPos = 17.795;
+  ZPos = -961.245;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Counter = 3;
+  Dropcount = 0;
+}
+
+MCU_H_Output
+{
+  Index = 7;
+  Name = "KILLED_ARTY";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -1476.257;
+  YPos = 17.795;
+  ZPos = -1382.497;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 8;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -1345.105;
+  YPos = 17.795;
+  ZPos = -924.495;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 240.382;
+  Backward = 224.063;
+  Left = 503.289;
+  Right = 510.542;
+}
+
+MCU_Timer
+{
+  Index = 6;
+  Name = "3s";
+  Desc = "";
+  Targets = [7];
+  Objects = [];
+  XPos = -1476.260;
+  YPos = 17.795;
+  ZPos = -1163.754;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 3;
+  Random = 100;
+}
+
+MCU_H_Dynamic
+{
+  Index = 10;
+  Name = "summa";
+  Desc = "";
+  Targets = [3];
+  Objects = [];
+  XPos = -1166.080;
+  YPos = 17.795;
+  ZPos = -961.250;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "Counter";
+}
+

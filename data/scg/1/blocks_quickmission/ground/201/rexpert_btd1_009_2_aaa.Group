@@ -1,0 +1,375 @@
+MCU_H_ReferencePoint
+{
+  Index = 851;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -375.000;
+  YPos = 17.777;
+  ZPos = 14550.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 75;
+  Backward = 75;
+  Left = 150;
+  Right = 150;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1107;
+  LinkTrId = 1108;
+  XPos = -352.210;
+  YPos = 17.795;
+  ZPos = 14479.061;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\pz38t.txt";
+  Model = "graphics\vehicles\pz38t\pz38t.mgm";
+  Desc = "";
+  Country = 201;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 1108;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -352.210;
+  YPos = 17.995;
+  ZPos = 14479.061;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 1107;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1110;
+  LinkTrId = 1111;
+  XPos = -353.107;
+  YPos = 17.795;
+  ZPos = 14562.493;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\pz38t.txt";
+  Model = "graphics\vehicles\pz38t\pz38t.mgm";
+  Desc = "";
+  Country = 201;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 1111;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -353.107;
+  YPos = 17.995;
+  ZPos = 14562.493;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 1110;
+}
+
+Ground
+{
+  Name = "Ground";
+  Index = 1113;
+  LinkTrId = 0;
+  XPos = -378.861;
+  YPos = 17.795;
+  ZPos = 14643.228;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Model = "graphics\grounds\crater_16.mgm";
+  Desc = "";
+  DamageReport = 50;
+  DamageThreshold = 1;
+}
+
+Ground
+{
+  Name = "Ground";
+  Index = 1114;
+  LinkTrId = 0;
+  XPos = -335.467;
+  YPos = 17.795;
+  ZPos = 14624.435;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Model = "graphics\grounds\crater_16.mgm";
+  Desc = "";
+  DamageReport = 50;
+  DamageThreshold = 1;
+}
+
+Ground
+{
+  Name = "Ground";
+  Index = 1115;
+  LinkTrId = 0;
+  XPos = -336.607;
+  YPos = 17.795;
+  ZPos = 14544.399;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Model = "graphics\grounds\crater_16.mgm";
+  Desc = "";
+  DamageReport = 50;
+  DamageThreshold = 1;
+}
+
+Ground
+{
+  Name = "Ground";
+  Index = 1116;
+  LinkTrId = 0;
+  XPos = -361.461;
+  YPos = 17.795;
+  ZPos = 14532.770;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Model = "graphics\grounds\crater_16.mgm";
+  Desc = "";
+  DamageReport = 50;
+  DamageThreshold = 1;
+}
+
+Ground
+{
+  Name = "Ground";
+  Index = 1117;
+  LinkTrId = 0;
+  XPos = -416.870;
+  YPos = 17.795;
+  ZPos = 14456.839;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Model = "graphics\grounds\crater_16.mgm";
+  Desc = "";
+  DamageReport = 50;
+  DamageThreshold = 1;
+}
+
+Ground
+{
+  Name = "Ground";
+  Index = 1118;
+  LinkTrId = 0;
+  XPos = -420.291;
+  YPos = 17.795;
+  ZPos = 14603.001;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Model = "graphics\grounds\crater_16.mgm";
+  Desc = "";
+  DamageReport = 50;
+  DamageThreshold = 1;
+}
+
+Ground
+{
+  Name = "Ground";
+  Index = 1119;
+  LinkTrId = 0;
+  XPos = -327.942;
+  YPos = 17.795;
+  ZPos = 14430.844;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Model = "graphics\grounds\crater_16.mgm";
+  Desc = "";
+  DamageReport = 50;
+  DamageThreshold = 1;
+}
+
+MCU_Timer
+{
+  Index = 1120;
+  Name = "REXPERT_BTD1_2";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -371.085;
+  YPos = 17.795;
+  ZPos = 14551.142;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 0;
+  Random = 100;
+}
+
+MCU_H_Input
+{
+  Index = 1121;
+  Name = "OBJECT_TANKS";
+  Desc = "";
+  Targets = [];
+  Objects = [1111,1108];
+  XPos = -323.038;
+  YPos = 17.774;
+  ZPos = 14534.314;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+Vehicle
+{
+  Name = "mg";
+  Index = 1122;
+  LinkTrId = 1123;
+  XPos = -420.387;
+  YPos = 17.795;
+  ZPos = 14603.218;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\mg34-aa.txt";
+  Model = "graphics\artillery\mg34-aa\mg34-aa.mgm";
+  Desc = "";
+  Country = 201;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 1123;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -420.387;
+  YPos = 17.995;
+  ZPos = 14603.218;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 1122;
+}
+
+MCU_CMD_AttackArea
+{
+  Index = 1125;
+  Name = "AMG_AttackArea";
+  Desc = "";
+  Targets = [];
+  Objects = [1123];
+  XPos = -325.430;
+  YPos = 1517.800;
+  ZPos = 14562.352;
+  XOri = 0.00;
+  YOri = 147.56;
+  ZOri = 0.00;
+  AttackGround = 0;
+  AttackAir = 1;
+  AttackGTargets = 0;
+  AttackArea = 3000;
+  Time = 59940;
+  Priority = 1;
+}
+
+MCU_H_Input
+{
+  Index = 1126;
+  Name = "TARGET_ATTACK_AREA";
+  Desc = "";
+  Targets = [1125];
+  Objects = [];
+  XPos = -319.916;
+  YPos = 17.795;
+  ZPos = 14599.572;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Input
+{
+  Index = 1127;
+  Name = "OBJECT_AAA";
+  Desc = "";
+  Targets = [];
+  Objects = [1123];
+  XPos = -356.381;
+  YPos = 17.795;
+  ZPos = 14604.098;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Dynamic
+{
+  Index = 2545;
+  Name = "AAA_mg";
+  Desc = "";
+  Targets = [1123];
+  Objects = [];
+  XPos = -406.731;
+  YPos = 17.770;
+  ZPos = 14582.177;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "AILevel";
+}
+

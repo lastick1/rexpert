@@ -1,0 +1,226 @@
+MCU_H_ReferencePoint
+{
+  Index = 2;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -1.682;
+  YPos = 17.795;
+  ZPos = -1.522;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+
+MCU_Counter
+{
+  Index = 3;
+  Name = "Progress 20";
+  Desc = "";
+  Targets = [13];
+  Objects = [];
+  XPos = -0.634;
+  YPos = 17.795;
+  ZPos = 0.552;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Counter = 36;
+  Dropcount = 0;
+}
+
+MCU_H_Dynamic
+{
+  Index = 4;
+  Name = "PROGRESS_20";
+  Desc = "";
+  Targets = [3];
+  Objects = [];
+  XPos = -0.607;
+  YPos = 17.795;
+  ZPos = -3.922;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "Counter";
+}
+
+MCU_Counter
+{
+  Index = 6;
+  Name = "Progress 40";
+  Desc = "";
+  Targets = [14];
+  Objects = [];
+  XPos = -1.526;
+  YPos = 17.795;
+  ZPos = 0.547;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Counter = 72;
+  Dropcount = 0;
+}
+
+MCU_H_Dynamic
+{
+  Index = 7;
+  Name = "PROGRESS_40";
+  Desc = "";
+  Targets = [6];
+  Objects = [];
+  XPos = -1.499;
+  YPos = 17.795;
+  ZPos = -3.926;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "Counter";
+}
+
+MCU_Counter
+{
+  Index = 8;
+  Name = "Progress 60";
+  Desc = "";
+  Targets = [15];
+  Objects = [];
+  XPos = -2.495;
+  YPos = 17.795;
+  ZPos = 0.593;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Counter = 108;
+  Dropcount = 0;
+}
+
+MCU_H_Dynamic
+{
+  Index = 9;
+  Name = "PROGRESS_60";
+  Desc = "";
+  Targets = [8];
+  Objects = [];
+  XPos = -2.468;
+  YPos = 17.795;
+  ZPos = -3.880;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "Counter";
+}
+
+MCU_Counter
+{
+  Index = 10;
+  Name = "Progress 80";
+  Desc = "";
+  Targets = [16];
+  Objects = [];
+  XPos = -3.623;
+  YPos = 17.795;
+  ZPos = 0.593;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Counter = 144;
+  Dropcount = 0;
+}
+
+MCU_H_Dynamic
+{
+  Index = 11;
+  Name = "PROGRESS_80";
+  Desc = "";
+  Targets = [10];
+  Objects = [];
+  XPos = -3.596;
+  YPos = 17.795;
+  ZPos = -3.880;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "Counter";
+}
+
+MCU_H_Input
+{
+  Index = 12;
+  Name = "TICK";
+  Desc = "";
+  Targets = [3,6,8,10];
+  Objects = [];
+  XPos = -2.031;
+  YPos = 17.795;
+  ZPos = -0.288;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 13;
+  Name = "PROGRESS_20";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -0.630;
+  YPos = 17.774;
+  ZPos = 2.891;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 14;
+  Name = "PROGRESS_40";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -1.564;
+  YPos = 17.774;
+  ZPos = 2.845;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 15;
+  Name = "PROGRESS_60";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -2.510;
+  YPos = 17.774;
+  ZPos = 2.902;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 16;
+  Name = "PROGRESS_80";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -3.615;
+  YPos = 17.774;
+  ZPos = 2.936;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+

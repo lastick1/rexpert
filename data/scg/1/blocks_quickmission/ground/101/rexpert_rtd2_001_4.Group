@@ -1,0 +1,235 @@
+MCU_H_ReferencePoint
+{
+  Index = 1466;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -75.005;
+  YPos = 17.774;
+  ZPos = 50549.994;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 75;
+  Backward = 75;
+  Left = 150;
+  Right = 150;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1499;
+  LinkTrId = 1500;
+  XPos = -13.956;
+  YPos = 17.795;
+  ZPos = 50442.297;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\kv1-41.txt";
+  Model = "graphics\vehicles\kv1-41\kv1-41.mgm";
+  Desc = "";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 1500;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -13.956;
+  YPos = 17.995;
+  ZPos = 50442.297;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 1499;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1501;
+  LinkTrId = 1502;
+  XPos = -43.425;
+  YPos = 17.795;
+  ZPos = 50482.114;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\kv1-41.txt";
+  Model = "graphics\vehicles\kv1-41\kv1-41.mgm";
+  Desc = "";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 1502;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -43.425;
+  YPos = 17.995;
+  ZPos = 50482.114;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 1501;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1503;
+  LinkTrId = 1504;
+  XPos = -61.196;
+  YPos = 17.795;
+  ZPos = 50527.329;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\kv1-41.txt";
+  Model = "graphics\vehicles\kv1-41\kv1-41.mgm";
+  Desc = "";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 1504;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -61.196;
+  YPos = 17.995;
+  ZPos = 50527.329;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 1503;
+}
+
+Vehicle
+{
+  Name = "Vehicle";
+  Index = 1505;
+  LinkTrId = 1506;
+  XPos = -85.265;
+  YPos = 17.795;
+  ZPos = 50576.368;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\kv1-41.txt";
+  Model = "graphics\vehicles\kv1-41\kv1-41.mgm";
+  Desc = "";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 1506;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -85.265;
+  YPos = 17.995;
+  ZPos = 50576.368;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 1505;
+}
+
+MCU_H_Input
+{
+  Index = 2156;
+  Name = "OBJECT_TANKS";
+  Desc = "";
+  Targets = [];
+  Objects = [1500,1502,1504,1506];
+  XPos = -92.699;
+  YPos = 17.774;
+  ZPos = 50471.346;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Timer
+{
+  Index = 2351;
+  Name = "REXPERT_RTD2_4";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -74.000;
+  YPos = 17.795;
+  ZPos = 50550.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 0;
+  Random = 100;
+}
+

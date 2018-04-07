@@ -1,0 +1,644 @@
+MCU_H_ReferencePoint
+{
+  Index = 368;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -450.959;
+  YPos = 17.795;
+  ZPos = 355.979;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+
+MCU_H_Input
+{
+  Index = 369;
+  Name = "KILLED_EVENT";
+  Desc = "";
+  Targets = [370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404];
+  Objects = [];
+  XPos = -457.045;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 405;
+  Name = "KILLED_EVENT";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -444.000;
+  YPos = 17.795;
+  ZPos = 356.003;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Timer
+{
+  Index = 383;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 384;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 385;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 386;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 387;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 388;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 389;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 371;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 372;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 373;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 374;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 375;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 376;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 377;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 378;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 379;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 380;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 381;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 382;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 370;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 394;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 395;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 397;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 398;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 399;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 392;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 391;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 390;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 396;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 393;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 403;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 404;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 402;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 401;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 400;
+  Name = "t1s";
+  Desc = "";
+  Targets = [405];
+  Objects = [];
+  XPos = -450.000;
+  YPos = 17.795;
+  ZPos = 356.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+

@@ -1,0 +1,113 @@
+Bridge
+{
+  Name = "Bridge";
+  Index = 385;
+  LinkTrId = 0;
+  XPos = 130217.660;
+  YPos = 0.004;
+  ZPos = 291997.111;
+  XOri = 0.00;
+  YOri = 135.25;
+  ZOri = 0.00;
+  Model = "graphics\bridges\bridge_road_250.mgm";
+  Script = "LuaScripts\WorldObjects\Bridges\bridge_road_250.txt";
+  Country = 0;
+  Desc = "";
+  Durability = 15000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 386;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 130200.000;
+  YPos = 4.629;
+  ZPos = 292000.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+
+Group
+{
+  Name = "Group";
+  Index = 11571;
+  Desc = "";
+  Block
+  {
+    Name = "misc_1";
+    Index = 11043;
+    LinkTrId = 0;
+    XPos = 130432.145;
+    YPos = 45.953;
+    ZPos = 291369.566;
+    XOri = 0.00;
+    YOri = 16.86;
+    ZOri = 0.00;
+    Model = "graphics\blocks\scot_01.mgm";
+    Script = "LuaScripts\WorldObjects\Blocks\scot_01.txt";
+    Country = 0;
+    Desc = "";
+    Durability = 10000;
+    DamageReport = 50;
+    DamageThreshold = 1;
+    DeleteAfterDeath = 1;
+  }
+  
+
+  Block
+  {
+    Name = "misc_2";
+    Index = 11045;
+    LinkTrId = 0;
+    XPos = 130600.275;
+    YPos = 45.953;
+    ZPos = 291638.620;
+    XOri = 0.00;
+    YOri = 238.41;
+    ZOri = 0.00;
+    Model = "graphics\blocks\sklad_01.mgm";
+    Script = "LuaScripts\WorldObjects\Blocks\sklad_01.txt";
+    Country = 0;
+    Desc = "";
+    Durability = 10000;
+    DamageReport = 50;
+    DamageThreshold = 1;
+    DeleteAfterDeath = 1;
+  }
+  
+
+  Block
+  {
+    Name = "misc_3";
+    Index = 11044;
+    LinkTrId = 0;
+    XPos = 130706.892;
+    YPos = 45.953;
+    ZPos = 291227.124;
+    XOri = 0.00;
+    YOri = 149.70;
+    ZOri = 0.00;
+    Model = "graphics\blocks\meh_01.mgm";
+    Script = "LuaScripts\WorldObjects\Blocks\meh_01.txt";
+    Country = 0;
+    Desc = "";
+    Durability = 10000;
+    DamageReport = 50;
+    DamageThreshold = 1;
+    DeleteAfterDeath = 1;
+  }
+  
+
+}
+

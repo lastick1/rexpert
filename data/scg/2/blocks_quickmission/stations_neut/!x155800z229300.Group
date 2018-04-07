@@ -13,7 +13,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\meh_01.txt";
   Country = 0;
   Desc = "";
-  Durability = 5000;
+  Durability = 10000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -34,7 +34,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\sklad_01.txt";
   Country = 0;
   Desc = "";
-  Durability = 5000;
+  Durability = 10000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -55,7 +55,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\rwstation_s1.txt";
   Country = 0;
   Desc = "";
-  Durability = 5000;
+  Durability = 10000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;

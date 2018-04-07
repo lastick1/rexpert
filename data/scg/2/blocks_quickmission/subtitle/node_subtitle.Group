@@ -1,0 +1,107 @@
+MCU_H_ReferencePoint
+{
+  Index = 2;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 48.433;
+  YPos = 17.795;
+  ZPos = -100.013;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 15;
+  Backward = 15;
+  Left = 15;
+  Right = 15;
+}
+
+MCU_H_Input
+{
+  Index = 3;
+  Name = "COUNTER_BLUE";
+  Desc = "";
+  Targets = [4];
+  Objects = [];
+  XPos = 49.033;
+  YPos = 17.795;
+  ZPos = -97.831;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_TR_Subtitle
+{
+  Index = 4;
+  Name = "Translator Subtitle";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 49.065;
+  YPos = 17.795;
+  ZPos = -102.343;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  SubtitleInfo
+  {
+    Duration = 10;
+    FontSize = 40;
+    HAlign = 1;
+    VAlign = 0;
+    RColor = 20;
+    GColor = 66;
+    BColor = 154;
+    LCText = 3;
+  }
+  
+  Coalitions = [0, 1, 2];
+}
+
+MCU_H_Input
+{
+  Index = 6;
+  Name = "COUNTER_RED";
+  Desc = "";
+  Targets = [7];
+  Objects = [];
+  XPos = 47.785;
+  YPos = 17.795;
+  ZPos = -97.837;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_TR_Subtitle
+{
+  Index = 7;
+  Name = "Translator Subtitle";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 47.791;
+  YPos = 17.795;
+  ZPos = -102.310;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  SubtitleInfo
+  {
+    Duration = 10;
+    FontSize = 40;
+    HAlign = 1;
+    VAlign = 0;
+    RColor = 191;
+    GColor = 0;
+    BColor = 0;
+    LCText = 4;
+  }
+  
+  Coalitions = [0, 1, 2];
+}
+

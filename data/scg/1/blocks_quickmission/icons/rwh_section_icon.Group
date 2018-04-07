@@ -1,0 +1,69 @@
+MCU_Icon
+{
+  Index = 19;
+  Targets = [];
+  Objects = [];
+  XPos = -1150.000;
+  YPos = 17.795;
+  ZPos = 80.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  LCName = 5;
+  LCDesc = 6;
+  IconId = 507;
+  RColor = 255;
+  GColor = 255;
+  BColor = 255;
+  LineType = 0;
+  Coalitions = [1, 2];
+}
+
+MCU_Deactivate
+{
+  Index = 20;
+  Name = "Trigger Deactivate";
+  Desc = "";
+  Targets = [16,19];
+  Objects = [];
+  XPos = -1150.000;
+  YPos = 17.795;
+  ZPos = 90.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Timer
+{
+  Index = 16;
+  Name = "t1s";
+  Desc = "";
+  Targets = [20];
+  Objects = [];
+  XPos = -1140.000;
+  YPos = 17.795;
+  ZPos = 90.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_H_Input
+{
+  Index = 22;
+  Name = "KILLED_EVENT";
+  Desc = "";
+  Targets = [16];
+  Objects = [];
+  XPos = -1130.000;
+  YPos = 17.795;
+  ZPos = 90.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+

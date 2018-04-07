@@ -1,0 +1,65 @@
+MCU_H_ReferencePoint
+{
+  Index = 33;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -1140.000;
+  YPos = 17.795;
+  ZPos = 80.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+
+MCU_TR_ServerInput
+{
+  Index = 34;
+  Name = "BWH2";
+  Desc = "";
+  Targets = [35,36,37];
+  Objects = [];
+  XPos = -1140.000;
+  YPos = 17.795;
+  ZPos = 80.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+}
+
+MCU_H_Output
+{
+  Index = 36;
+  Name = "KILLED_EVENT";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -1140.000;
+  YPos = 17.795;
+  ZPos = 70.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 35;
+  Name = "AAA_OFF";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -1130.000;
+  YPos = 17.795;
+  ZPos = 80.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+

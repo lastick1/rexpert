@@ -1,0 +1,82 @@
+MCU_Waypoint
+{
+  Index = 276;
+  Name = "SHIP_WP";
+  Desc = "";
+  Targets = [277];
+  Objects = [278];
+  XPos = -658.789;
+  YPos = 17.795;
+  ZPos = 1746.243;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Area = 20;
+  Speed = 30;
+  Priority = 1;
+}
+
+MCU_H_Input
+{
+  Index = 279;
+  Name = "SHIP_WP";
+  Desc = "";
+  Targets = [276];
+  Objects = [];
+  XPos = -774.964;
+  YPos = 17.795;
+  ZPos = 1746.749;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 278;
+  Name = "OBJECT_ON_SHIP_WP";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -578.056;
+  YPos = 17.795;
+  ZPos = 1628.137;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 281;
+  Name = "";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -658.754;
+  YPos = 17.795;
+  ZPos = 1746.346;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 10;
+  Backward = 10;
+  Left = 10;
+  Right = 10;
+}
+
+MCU_H_Output
+{
+  Index = 277;
+  Name = "SHIP_WP";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -535.598;
+  YPos = 17.795;
+  ZPos = 1747.763;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+

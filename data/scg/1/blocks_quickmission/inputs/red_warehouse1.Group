@@ -1,0 +1,115 @@
+MCU_H_ReferencePoint
+{
+  Index = 2;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -9468.301;
+  YPos = 17.795;
+  ZPos = -3801.973;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 5;
+  Backward = 5;
+  Left = 5;
+  Right = 5;
+}
+
+MCU_H_Output
+{
+  Index = 3;
+  Name = "SERVER_INPUT";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -9466.085;
+  YPos = 17.795;
+  ZPos = -3804.170;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 4;
+  Name = "front_warehouseKILLSUBred";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -9466.055;
+  YPos = 17.795;
+  ZPos = -3800.241;
+  XOri = 0.00;
+  YOri = 271.50;
+  ZOri = 0.00;
+}
+
+MCU_TR_ServerInput
+{
+  Index = 5;
+  Name = "red_warehouse1_half";
+  Desc = "";
+  Targets = [6];
+  Objects = [];
+  XPos = -9468.995;
+  YPos = 24.530;
+  ZPos = -3802.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+}
+
+MCU_Counter
+{
+  Index = 6;
+  Name = "x1";
+  Desc = "";
+  Targets = [3,4];
+  Objects = [];
+  XPos = -9468.109;
+  YPos = 17.795;
+  ZPos = -3802.452;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Counter = 1;
+  Dropcount = 0;
+}
+
+MCU_TR_ServerInput
+{
+  Index = 8;
+  Name = "red_warehouse1_full";
+  Desc = "";
+  Targets = [9];
+  Objects = [];
+  XPos = -9468.990;
+  YPos = 24.530;
+  ZPos = -3802.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+}
+
+MCU_Counter
+{
+  Index = 9;
+  Name = "x1";
+  Desc = "";
+  Targets = [3,4];
+  Objects = [];
+  XPos = -9468.074;
+  YPos = 17.795;
+  ZPos = -3801.514;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Counter = 1;
+  Dropcount = 0;
+}
+

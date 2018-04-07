@@ -1,0 +1,296 @@
+Airfield
+{
+  Name = "klimovo";
+  Index = 2;
+  LinkTrId = 3;
+  XPos = 0.000;
+  YPos = 0.000;
+  ZPos = 0.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Model = "graphics\airfields\fakefield.mgm";
+  Script = "LuaScripts\WorldObjects\Airfields\fakefield.txt";
+  Country = 201;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  Callsign = 0;
+  Callnum = 0;
+  Planes
+  {
+    Plane
+    {
+      SetIndex = 0;
+      Number = 15;
+      AILevel = 1;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\get_planes\ju523mg4e\ju523mg4e.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\ju523mg4e.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "";
+      AvSkins = "";
+      AvPayloads = "";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 0;
+      Number = 24;
+      AILevel = 1;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\get_planes\ju88a4\ju88a4.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\ju88a4.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "";
+      AvSkins = "";
+      AvPayloads = "";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 0;
+      Number = 24;
+      AILevel = 1;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\get_planes\ju87d3\ju87d3.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\ju87d3.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "";
+      AvSkins = "";
+      AvPayloads = "";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 0;
+      Number = 60;
+      AILevel = 1;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\get_planes\bf109e7\bf109e7.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\bf109e7.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "";
+      AvSkins = "";
+      AvPayloads = "";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 0;
+      Number = 48;
+      AILevel = 1;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\get_planes\mc202s8\mc202s8.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\mc202s8.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "";
+      AvSkins = "";
+      AvPayloads = "";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 0;
+      Number = 24;
+      AILevel = 1;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\get_planes\he111h6\he111h6.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\he111h6.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "";
+      AvSkins = "";
+      AvPayloads = "";
+      Callsign = 0;
+      Callnum = 0;
+    }
+    Plane
+    {
+      SetIndex = 0;
+      Number = 8;
+      AILevel = 1;
+      StartInAir = 2;
+      Engageable = 1;
+      Vulnerable = 1;
+      LimitAmmo = 1;
+      AIRTBDecision = 1;
+      Renewable = 0;
+      PayloadId = 0;
+      WMMask = 1;
+      Fuel = 1;
+      RouteTime = 0;
+      RenewTime = 1800;
+      Altitude = 500;
+      Spotter = -1;
+      Model = "graphics\get_planes\bf110e2\bf110e2.mgm";
+      Script = "LuaScripts\WorldObjects\Planes\bf110e2.txt";
+      Name = "";
+      Skin = "";
+      AvMods = "";
+      AvSkins = "";
+      AvPayloads = "";
+      Callsign = 0;
+      Callnum = 0;
+    }
+  }
+  ReturnPlanes = 1;
+  Hydrodrome = 0;
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 2000;
+}
+
+MCU_TR_Entity
+{
+  Index = 3;
+  Name = "Airfield entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 0.000;
+  YPos = 0.000;
+  ZPos = 0.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  MisObjID = 2;
+}
+
+MCU_H_Input
+{
+  Index = 5;
+  Name = "AF_MCU_OBJECT";
+  Desc = "";
+  Targets = [];
+  Objects = [3];
+  XPos = 10.000;
+  YPos = 0.000;
+  ZPos = 0.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Input
+{
+  Index = 6;
+  Name = "AF_MCU_TARGET";
+  Desc = "";
+  Targets = [3];
+  Objects = [];
+  XPos = 0.000;
+  YPos = 0.000;
+  ZPos = 10.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 10;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 0.000;
+  YPos = 0.000;
+  ZPos = 0.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 11;
+  Backward = 11;
+  Left = 11;
+  Right = 11;
+}

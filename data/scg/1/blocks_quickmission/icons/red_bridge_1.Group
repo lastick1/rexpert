@@ -1,0 +1,89 @@
+MCU_H_ReferencePoint
+{
+  Index = 2;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 0.000;
+  YPos = 17.795;
+  ZPos = -10.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 5;
+  Backward = 5;
+  Left = 5;
+  Right = 5;
+}
+
+MCU_TR_ServerInput
+{
+  Index = 3;
+  Name = "red_bridge_1";
+  Desc = "";
+  Targets = [5];
+  Objects = [];
+  XPos = -0.308;
+  YPos = 17.795;
+  ZPos = -10.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+}
+
+MCU_Timer
+{
+  Index = 5;
+  Name = "t1s";
+  Desc = "";
+  Targets = [6];
+  Objects = [];
+  XPos = -5.000;
+  YPos = 17.795;
+  ZPos = -5.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Deactivate
+{
+  Index = 6;
+  Name = "Trigger Deactivate";
+  Desc = "";
+  Targets = [7,5];
+  Objects = [];
+  XPos = 5.000;
+  YPos = 17.795;
+  ZPos = -5.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Icon
+{
+  Index = 7;
+  Targets = [];
+  Objects = [];
+  XPos = 0.300;
+  YPos = 17.795;
+  ZPos = -10.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  LCName = 3;
+  LCDesc = 4;
+  IconId = 510;
+  RColor = 255;
+  GColor = 255;
+  BColor = 255;
+  LineType = 0;
+  Coalitions = [1, 2];
+}
+

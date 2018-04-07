@@ -1,0 +1,70 @@
+MCU_H_ReferencePoint
+{
+  Index = 2;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -5.000;
+  YPos = 17.795;
+  ZPos = 5.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 5;
+  Backward = 5;
+  Left = 5;
+  Right = 5;
+}
+
+MCU_TR_MissionObjective
+{
+  Index = 3;
+  Targets = [];
+  Objects = [];
+  XPos = -4.213;
+  YPos = 17.795;
+  ZPos = 5.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  LCName = 3;
+  LCDesc = 4;
+  TaskType = 14;
+  Coalition = 0;
+  Success = 1;
+  IconType = 0;
+}
+
+MCU_H_Dynamic
+{
+  Index = 4;
+  Name = "CAPTURE";
+  Desc = "";
+  Targets = [3];
+  Objects = [];
+  XPos = -4.304;
+  YPos = 17.795;
+  ZPos = 6.492;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "Coalition";
+}
+
+MCU_H_Input
+{
+  Index = 5;
+  Name = "COUNTER";
+  Desc = "";
+  Targets = [3];
+  Objects = [];
+  XPos = -4.374;
+  YPos = 17.795;
+  ZPos = 2.668;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+

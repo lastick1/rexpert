@@ -1,0 +1,301 @@
+MCU_TR_Subtitle
+{
+  Index = 2;
+  Name = "x2red";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -3435.086;
+  YPos = 190.241;
+  ZPos = -2780.037;
+  XOri = 0.00;
+  YOri = 70.04;
+  ZOri = 0.00;
+  Enabled = 1;
+  SubtitleInfo
+  {
+    Duration = 5;
+    FontSize = 30;
+    HAlign = 1;
+    VAlign = 0;
+    RColor = 191;
+    GColor = 0;
+    BColor = 0;
+    LCText = 3;
+  }
+  
+  Coalitions = [0, 1, 2];
+}
+
+MCU_H_Input
+{
+  Index = 3;
+  Name = "boosterSUBred";
+  Desc = "";
+  Targets = [4,5];
+  Objects = [];
+  XPos = -3435.686;
+  YPos = 17.795;
+  ZPos = -2772.983;
+  XOri = 0.00;
+  YOri = 271.50;
+  ZOri = 0.00;
+}
+
+MCU_TR_Subtitle
+{
+  Index = 6;
+  Name = "x15blue";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -3437.806;
+  YPos = 190.241;
+  ZPos = -2780.039;
+  XOri = 0.00;
+  YOri = 157.93;
+  ZOri = 0.00;
+  Enabled = 1;
+  SubtitleInfo
+  {
+    Duration = 5;
+    FontSize = 30;
+    HAlign = 1;
+    VAlign = 0;
+    RColor = 191;
+    GColor = 0;
+    BColor = 0;
+    LCText = 4;
+  }
+  
+  Coalitions = [0, 1, 2];
+}
+
+MCU_H_Input
+{
+  Index = 7;
+  Name = "boosterSUBblue";
+  Desc = "";
+  Targets = [8,9];
+  Objects = [];
+  XPos = -3437.297;
+  YPos = 17.795;
+  ZPos = -2772.992;
+  XOri = 0.00;
+  YOri = 359.39;
+  ZOri = 0.00;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 10;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -3436.440;
+  YPos = 17.795;
+  ZPos = -2776.140;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+
+MCU_Counter
+{
+  Index = 8;
+  Name = "x1";
+  Desc = "";
+  Targets = [12];
+  Objects = [];
+  XPos = -3437.810;
+  YPos = 17.795;
+  ZPos = -2774.441;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Counter = 1;
+  Dropcount = 0;
+}
+
+MCU_Counter
+{
+  Index = 4;
+  Name = "x2";
+  Desc = "";
+  Targets = [14];
+  Objects = [];
+  XPos = -3435.085;
+  YPos = 17.795;
+  ZPos = -2774.441;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Counter = 2;
+  Dropcount = 0;
+}
+
+MCU_Counter
+{
+  Index = 5;
+  Name = "x1";
+  Desc = "";
+  Targets = [16];
+  Objects = [];
+  XPos = -3436.088;
+  YPos = 17.795;
+  ZPos = -2774.491;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Counter = 1;
+  Dropcount = 0;
+}
+
+MCU_Counter
+{
+  Index = 9;
+  Name = "x2";
+  Desc = "";
+  Targets = [18];
+  Objects = [];
+  XPos = -3436.857;
+  YPos = 17.795;
+  ZPos = -2774.458;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Counter = 2;
+  Dropcount = 0;
+}
+
+MCU_TR_Subtitle
+{
+  Index = 19;
+  Name = "x15red";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -3436.086;
+  YPos = 190.241;
+  ZPos = -2780.041;
+  XOri = 0.00;
+  YOri = 70.04;
+  ZOri = 0.00;
+  Enabled = 1;
+  SubtitleInfo
+  {
+    Duration = 5;
+    FontSize = 30;
+    HAlign = 1;
+    VAlign = 0;
+    RColor = 191;
+    GColor = 0;
+    BColor = 0;
+    LCText = 5;
+  }
+  
+  Coalitions = [0, 1, 2];
+}
+
+MCU_TR_Subtitle
+{
+  Index = 20;
+  Name = "x2blue";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -3436.868;
+  YPos = 190.241;
+  ZPos = -2780.040;
+  XOri = 0.00;
+  YOri = 157.93;
+  ZOri = 0.00;
+  Enabled = 1;
+  SubtitleInfo
+  {
+    Duration = 5;
+    FontSize = 30;
+    HAlign = 1;
+    VAlign = 0;
+    RColor = 191;
+    GColor = 0;
+    BColor = 0;
+    LCText = 6;
+  }
+  
+  Coalitions = [0, 1, 2];
+}
+
+MCU_Timer
+{
+  Index = 14;
+  Name = "12s";
+  Desc = "";
+  Targets = [2];
+  Objects = [];
+  XPos = -3435.086;
+  YPos = 17.795;
+  ZPos = -2775.318;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 12;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 16;
+  Name = "12s";
+  Desc = "";
+  Targets = [19];
+  Objects = [];
+  XPos = -3436.086;
+  YPos = 17.795;
+  ZPos = -2775.330;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 12;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 18;
+  Name = "12s";
+  Desc = "";
+  Targets = [20];
+  Objects = [];
+  XPos = -3436.856;
+  YPos = 17.795;
+  ZPos = -2775.318;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 12;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 12;
+  Name = "12s";
+  Desc = "";
+  Targets = [6];
+  Objects = [];
+  XPos = -3437.806;
+  YPos = 17.795;
+  ZPos = -2775.318;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 12;
+  Random = 100;
+}
+

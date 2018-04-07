@@ -1,0 +1,67 @@
+MCU_H_ReferencePoint
+{
+  Index = 4;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -9.000;
+  YPos = 17.795;
+  ZPos = 10.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+
+MCU_TR_ServerInput
+{
+  Index = 5;
+  Name = "RID1";
+  Desc = "";
+  Targets = [7];
+  Objects = [];
+  XPos = -10.000;
+  YPos = 17.795;
+  ZPos = 10.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+}
+
+MCU_H_Output
+{
+  Index = 6;
+  Name = "KILLED";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -20.000;
+  YPos = 17.795;
+  ZPos = 20.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Counter
+{
+  Index = 7;
+  Name = "x1";
+  Desc = "";
+  Targets = [6];
+  Objects = [];
+  XPos = -20.000;
+  YPos = 17.795;
+  ZPos = 10.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Counter = 1;
+  Dropcount = 0;
+}
+

@@ -1,0 +1,71 @@
+MCU_Icon
+{
+  Index = 18;
+  Targets = [];
+  Objects = [];
+  XPos = -11.000;
+  YPos = 74.125;
+  ZPos = 10.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  LCName = 11;
+  LCDesc = 12;
+  IconId = 511;
+  RColor = 255;
+  GColor = 255;
+  BColor = 255;
+  LineType = 0;
+  Coalitions = [1, 2];
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 19;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -10.000;
+  YPos = 74.125;
+  ZPos = 10.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+
+MCU_Deactivate
+{
+  Index = 20;
+  Name = "Trigger Deactivate";
+  Desc = "";
+  Targets = [18];
+  Objects = [];
+  XPos = -20.000;
+  YPos = 74.125;
+  ZPos = 10.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Input
+{
+  Index = 21;
+  Name = "KILLED";
+  Desc = "";
+  Targets = [20];
+  Objects = [];
+  XPos = -20.000;
+  YPos = 74.125;
+  ZPos = 20.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+

@@ -1,0 +1,124 @@
+Block
+{
+  Name = "Block";
+  Index = 12713;
+  LinkTrId = 0;
+  XPos = 79596.470;
+  YPos = 92.895;
+  ZPos = 12156.298;
+  XOri = 0.00;
+  YOri = 342.16;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_nets_3_3.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_nets_3_3.txt";
+  Country = 0;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 12728;
+  LinkTrId = 0;
+  XPos = 79577.738;
+  YPos = 92.895;
+  ZPos = 11578.133;
+  XOri = 0.00;
+  YOri = 201.26;
+  ZOri = 0.00;
+  Model = "graphics\blocks\static_gazaa.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\static_gazaa.txt";
+  Country = 0;
+  Desc = "";
+  Durability = 5000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 12731;
+  LinkTrId = 0;
+  XPos = 79721.156;
+  YPos = 92.895;
+  ZPos = 11593.172;
+  XOri = 0.00;
+  YOri = 165.82;
+  ZOri = 0.00;
+  Model = "graphics\blocks\tacinskaya_1.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\tacinskaya_1.txt";
+  Country = 0;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 12732;
+  LinkTrId = 0;
+  XPos = 79801.797;
+  YPos = 92.895;
+  ZPos = 12036.447;
+  XOri = 0.00;
+  YOri = 164.92;
+  ZOri = 0.00;
+  Model = "graphics\blocks\tacinskaya_2.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\tacinskaya_2.txt";
+  Country = 0;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 12733;
+  LinkTrId = 0;
+  XPos = 79826.555;
+  YPos = 92.895;
+  ZPos = 12411.123;
+  XOri = 0.00;
+  YOri = 165.70;
+  ZOri = 0.00;
+  Model = "graphics\blocks\tacinskaya_3.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\tacinskaya_3.txt";
+  Country = 0;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 12734;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = 79500.000;
+  YPos = 92.895;
+  ZPos = 12000.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+

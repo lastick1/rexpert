@@ -12,7 +12,7 @@ Block
   Model = "graphics\blocks\arf_gsm_1.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_gsm_1.txt";
   Desc = "";
-  Durability = 2000;
+  Durability = 5000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -32,7 +32,7 @@ Block
   Model = "graphics\blocks\arf_gsm_2.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_gsm_2.txt";
   Desc = "";
-  Durability = 2000;
+  Durability = 5000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -52,7 +52,7 @@ Block
   Model = "graphics\blocks\arf_nets_2_5.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_nets_2_5.txt";
   Desc = "";
-  Durability = 2000;
+  Durability = 5000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -72,7 +72,7 @@ Block
   Model = "graphics\blocks\arf_nets_3_3.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_nets_3_3.txt";
   Desc = "";
-  Durability = 2000;
+  Durability = 5000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -111,7 +111,7 @@ Block
   Model = "graphics\blocks\arf_caponiers_9_h_3.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_9_h_3.txt";
   Desc = "";
-  Durability = 2000;
+  Durability = 25000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -131,7 +131,7 @@ Block
   Model = "graphics\blocks\arf_caponiers_9_h_3.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_9_h_3.txt";
   Desc = "";
-  Durability = 2000;
+  Durability = 25000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -151,7 +151,7 @@ Block
   Model = "graphics\blocks\arf_caponiers_10_h_3.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_10_h_3.txt";
   Desc = "";
-  Durability = 2000;
+  Durability = 25000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -171,7 +171,7 @@ Block
   Model = "graphics\blocks\arf_caponiers_10_h_3.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_10_h_3.txt";
   Desc = "";
-  Durability = 2000;
+  Durability = 25000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -191,7 +191,7 @@ Block
   Model = "graphics\blocks\arf_tower_2.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_tower_2.txt";
   Desc = "";
-  Durability = 2000;
+  Durability = 5000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;

@@ -1,0 +1,52 @@
+MCU_Timer
+{
+  Index = 2;
+  Name = "Trigger Timer";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -10.000;
+  YPos = 17.795;
+  ZPos = 10.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 0;
+  Random = 100;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 3;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -9.000;
+  YPos = 17.795;
+  ZPos = 10.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+
+MCU_H_Dynamic
+{
+  Index = 4;
+  Name = "TIMER_UNIT";
+  Desc = "";
+  Targets = [2];
+  Objects = [];
+  XPos = -5.000;
+  YPos = 17.795;
+  ZPos = 10.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "Name";
+}
+

@@ -1,0 +1,311 @@
+MCU_CMD_Behaviour
+{
+  Index = 4;
+  Name = "NEUT";
+  Desc = "";
+  Targets = [];
+  Objects = [32];
+  XPos = -5006.395;
+  YPos = 100.825;
+  ZPos = -5003.905;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Filter = 16;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  AILevel = 3;
+  Country = 0;
+  FloatParam = 0;
+}
+
+MCU_Timer
+{
+  Index = 6;
+  Name = "1s";
+  Desc = "";
+  Targets = [4,7,8,9,10];
+  Objects = [];
+  XPos = -5006.442;
+  YPos = 100.825;
+  ZPos = -5007.878;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Timer
+{
+  Index = 7;
+  Name = "repair time";
+  Desc = "";
+  Targets = [12,13,36];
+  Objects = [];
+  XPos = -4999.622;
+  YPos = 17.795;
+  ZPos = -5007.885;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 2400;
+  Random = 100;
+}
+
+MCU_H_Dynamic
+{
+  Index = 14;
+  Name = "Repair";
+  Desc = "";
+  Targets = [7];
+  Objects = [];
+  XPos = -4999.693;
+  YPos = 17.795;
+  ZPos = -5015.125;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "Time";
+}
+
+MCU_CMD_Behaviour
+{
+  Index = 12;
+  Name = "RUS";
+  Desc = "";
+  Targets = [];
+  Objects = [32];
+  XPos = -4999.542;
+  YPos = 17.795;
+  ZPos = -5003.968;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Filter = 16;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  AILevel = 2;
+  Country = 101;
+  FloatParam = 0;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 16;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -5003.022;
+  YPos = 17.795;
+  ZPos = -4997.630;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+
+MCU_H_Output
+{
+  Index = 8;
+  Name = "KILLED_EVENT";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -5004.556;
+  YPos = 17.795;
+  ZPos = -5015.013;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 9;
+  Name = "AAA_OFF";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -5003.043;
+  YPos = 17.795;
+  ZPos = -5015.039;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 13;
+  Name = "AAA_ON";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -5001.359;
+  YPos = 17.795;
+  ZPos = -5015.087;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Input
+{
+  Index = 23;
+  Name = "PLANESET_SWITCH";
+  Desc = "";
+  Targets = [24];
+  Objects = [];
+  XPos = -5003.234;
+  YPos = 17.795;
+  ZPos = -5006.488;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_CMD_Behaviour
+{
+  Index = 24;
+  Name = "switch";
+  Desc = "";
+  Targets = [];
+  Objects = [32];
+  XPos = -5003.197;
+  YPos = 17.795;
+  ZPos = -5003.722;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Filter = 32;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 1;
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  AILevel = 2;
+  Country = 0;
+  FloatParam = 1;
+}
+
+MCU_Deactivate
+{
+  Index = 10;
+  Name = "Trigger Deactivate";
+  Desc = "";
+  Targets = [6];
+  Objects = [];
+  XPos = -5004.346;
+  YPos = 17.795;
+  ZPos = -5009.565;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Input
+{
+  Index = 27;
+  Name = "CARGO_EVENT";
+  Desc = "";
+  Targets = [28,29];
+  Objects = [];
+  XPos = -4998.180;
+  YPos = 17.795;
+  ZPos = -5015.037;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Timer
+{
+  Index = 29;
+  Name = "1s";
+  Desc = "";
+  Targets = [13,12,36];
+  Objects = [];
+  XPos = -4997.566;
+  YPos = 17.795;
+  ZPos = -5012.385;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 1;
+  Random = 100;
+}
+
+MCU_Deactivate
+{
+  Index = 28;
+  Name = "Trigger Deactivate";
+  Desc = "";
+  Targets = [7];
+  Objects = [];
+  XPos = -4998.637;
+  YPos = 17.795;
+  ZPos = -5012.385;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 32;
+  Name = "AF_MCU_OBJECT";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -4999.480;
+  YPos = 17.795;
+  ZPos = -5000.081;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Input
+{
+  Index = 34;
+  Name = "AF_SERVER_INPUT";
+  Desc = "";
+  Targets = [6];
+  Objects = [];
+  XPos = -5006.339;
+  YPos = 17.795;
+  ZPos = -5015.012;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Output
+{
+  Index = 36;
+  Name = "ALIVE_EVENT";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -4995.486;
+  YPos = 17.795;
+  ZPos = -5007.931;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+

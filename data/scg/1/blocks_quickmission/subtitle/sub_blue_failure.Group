@@ -1,0 +1,195 @@
+MCU_H_Input
+{
+  Index = 1161;
+  Name = "PROGRESS_20";
+  Desc = "";
+  Targets = [1166];
+  Objects = [];
+  XPos = -17.201;
+  YPos = 17.795;
+  ZPos = 8.336;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Input
+{
+  Index = 1162;
+  Name = "PROGRESS_40";
+  Desc = "";
+  Targets = [1185];
+  Objects = [];
+  XPos = -18.135;
+  YPos = 17.795;
+  ZPos = 8.325;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Input
+{
+  Index = 1163;
+  Name = "PROGRESS_60";
+  Desc = "";
+  Targets = [1186];
+  Objects = [];
+  XPos = -19.183;
+  YPos = 17.795;
+  ZPos = 8.313;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Input
+{
+  Index = 1164;
+  Name = "PROGRESS_80";
+  Desc = "";
+  Targets = [1187];
+  Objects = [];
+  XPos = -20.140;
+  YPos = 17.795;
+  ZPos = 8.268;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 1165;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -15.230;
+  YPos = 17.795;
+  ZPos = 7.926;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+
+MCU_TR_Subtitle
+{
+  Index = 1166;
+  Name = "PROGRESS_20";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -17.220;
+  YPos = 17.795;
+  ZPos = 11.690;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  SubtitleInfo
+  {
+    Duration = 30;
+    FontSize = 22;
+    HAlign = 0;
+    VAlign = 0;
+    RColor = 191;
+    GColor = 0;
+    BColor = 0;
+    LCText = 33;
+  }
+  
+  Coalitions = [2];
+}
+
+MCU_TR_Subtitle
+{
+  Index = 1185;
+  Name = "PROGRESS_40";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -18.199;
+  YPos = 17.795;
+  ZPos = 11.698;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  SubtitleInfo
+  {
+    Duration = 30;
+    FontSize = 22;
+    HAlign = 0;
+    VAlign = 0;
+    RColor = 191;
+    GColor = 0;
+    BColor = 0;
+    LCText = 34;
+  }
+  
+  Coalitions = [2];
+}
+
+MCU_TR_Subtitle
+{
+  Index = 1186;
+  Name = "PROGRESS_60";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -19.235;
+  YPos = 17.795;
+  ZPos = 11.721;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  SubtitleInfo
+  {
+    Duration = 30;
+    FontSize = 22;
+    HAlign = 0;
+    VAlign = 0;
+    RColor = 191;
+    GColor = 0;
+    BColor = 0;
+    LCText = 35;
+  }
+  
+  Coalitions = [2];
+}
+
+MCU_TR_Subtitle
+{
+  Index = 1187;
+  Name = "PROGRESS_80";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -20.181;
+  YPos = 17.795;
+  ZPos = 11.710;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  SubtitleInfo
+  {
+    Duration = 30;
+    FontSize = 22;
+    HAlign = 0;
+    VAlign = 0;
+    RColor = 191;
+    GColor = 0;
+    BColor = 0;
+    LCText = 36;
+  }
+  
+  Coalitions = [2];
+}
+

@@ -1,0 +1,328 @@
+MCU_H_ReferencePoint
+{
+  Index = 1471;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -75.005;
+  YPos = 17.778;
+  ZPos = 54149.994;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 75;
+  Backward = 75;
+  Left = 150;
+  Right = 150;
+}
+
+Block
+{
+  Name = "Block";
+  Index = 1486;
+  LinkTrId = 0;
+  XPos = -123.111;
+  YPos = 17.795;
+  ZPos = 54219.181;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Model = "graphics\blocks\arf_dugouts_1.mgm";
+  Script = "LuaScripts\WorldObjects\Blocks\arf_dugouts_1.txt";
+  Country = 0;
+  Desc = "";
+  Durability = 25000;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+}
+
+Vehicle
+{
+  Name = "25mm";
+  Index = 1547;
+  LinkTrId = 1548;
+  XPos = -28.140;
+  YPos = 17.795;
+  ZPos = 54028.083;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\zis5-72k.txt";
+  Model = "graphics\vehicles\zis\zis5-72k.mgm";
+  Desc = "";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 1548;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -28.140;
+  YPos = 17.995;
+  ZPos = 54028.083;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 1547;
+}
+
+Vehicle
+{
+  Name = "25mm";
+  Index = 1549;
+  LinkTrId = 1550;
+  XPos = -91.070;
+  YPos = 17.795;
+  ZPos = 54088.854;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\zis5-72k.txt";
+  Model = "graphics\vehicles\zis\zis5-72k.mgm";
+  Desc = "";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 1550;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -91.070;
+  YPos = 17.995;
+  ZPos = 54088.854;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 1549;
+}
+
+Vehicle
+{
+  Name = "25mm";
+  Index = 1551;
+  LinkTrId = 1552;
+  XPos = -47.265;
+  YPos = 17.795;
+  ZPos = 54177.388;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\zis5-72k.txt";
+  Model = "graphics\vehicles\zis\zis5-72k.mgm";
+  Desc = "";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 1552;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -47.265;
+  YPos = 17.995;
+  ZPos = 54177.388;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 1551;
+}
+
+Vehicle
+{
+  Name = "25mm";
+  Index = 1553;
+  LinkTrId = 1554;
+  XPos = -27.214;
+  YPos = 17.795;
+  ZPos = 54268.699;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Script = "LuaScripts\WorldObjects\vehicles\zis5-72k.txt";
+  Model = "graphics\vehicles\zis\zis5-72k.mgm";
+  Desc = "";
+  Country = 101;
+  NumberInFormation = 0;
+  Vulnerable = 1;
+  Engageable = 1;
+  LimitAmmo = 0;
+  AILevel = 1;
+  DamageReport = 50;
+  DamageThreshold = 1;
+  DeleteAfterDeath = 1;
+  CoopStart = 0;
+  Spotter = -1;
+  BeaconChannel = 0;
+  Callsign = 0;
+}
+
+MCU_TR_Entity
+{
+  Index = 1554;
+  Name = "Vehicle entity";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -27.214;
+  YPos = 17.995;
+  ZPos = 54268.699;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 0;
+  MisObjID = 1553;
+}
+
+MCU_H_Input
+{
+  Index = 2253;
+  Name = "TARGET_ATTACK_AREA";
+  Desc = "";
+  Targets = [2254,2255];
+  Objects = [];
+  XPos = -23.160;
+  YPos = 17.795;
+  ZPos = 54140.149;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_H_Input
+{
+  Index = 2256;
+  Name = "OBJECT_AAA";
+  Desc = "";
+  Targets = [];
+  Objects = [1552,1550,1548,1554];
+  XPos = -124.553;
+  YPos = 17.795;
+  ZPos = 54098.688;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_CMD_AttackArea
+{
+  Index = 2254;
+  Name = "2037mm_AttackArea";
+  Desc = "";
+  Targets = [];
+  Objects = [1548,1550];
+  XPos = -14.060;
+  YPos = 2517.770;
+  ZPos = 54092.037;
+  XOri = 0.00;
+  YOri = 187.31;
+  ZOri = 0.00;
+  AttackGround = 0;
+  AttackAir = 1;
+  AttackGTargets = 0;
+  AttackArea = 5000;
+  Time = 59940;
+  Priority = 1;
+}
+
+MCU_CMD_AttackArea
+{
+  Index = 2255;
+  Name = "2037mm_AttackArea";
+  Desc = "";
+  Targets = [];
+  Objects = [1552,1554];
+  XPos = -8.830;
+  YPos = 2517.770;
+  ZPos = 54220.408;
+  XOri = 0.00;
+  YOri = 187.31;
+  ZOri = 0.00;
+  AttackGround = 0;
+  AttackAir = 1;
+  AttackGTargets = 0;
+  AttackArea = 5000;
+  Time = 59940;
+  Priority = 1;
+}
+
+MCU_Timer
+{
+  Index = 2357;
+  Name = "REXPERT_RTD2_7";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -74.000;
+  YPos = 17.795;
+  ZPos = 54150.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 0;
+  Random = 100;
+}
+
+MCU_H_Dynamic
+{
+  Index = 2567;
+  Name = "AAA_2037mm";
+  Desc = "";
+  Targets = [1548,1550,1552,1554];
+  Objects = [];
+  XPos = -54.416;
+  YPos = 17.795;
+  ZPos = 54107.845;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+

@@ -1,0 +1,107 @@
+MCU_TR_Subtitle
+{
+  Index = 8;
+  Name = "Translator Subtitle";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -3435.327;
+  YPos = 190.241;
+  ZPos = -2769.635;
+  XOri = 0.00;
+  YOri = 70.04;
+  ZOri = 0.00;
+  Enabled = 1;
+  SubtitleInfo
+  {
+    Duration = 5;
+    FontSize = 30;
+    HAlign = 1;
+    VAlign = 0;
+    RColor = 191;
+    GColor = 0;
+    BColor = 0;
+    LCText = 3;
+  }
+  
+  Coalitions = [0, 1, 2];
+}
+
+MCU_H_Input
+{
+  Index = 9;
+  Name = "TANK_KILLSUB_RED";
+  Desc = "";
+  Targets = [8];
+  Objects = [];
+  XPos = -3435.310;
+  YPos = 17.795;
+  ZPos = -2762.404;
+  XOri = 0.00;
+  YOri = 271.50;
+  ZOri = 0.00;
+}
+
+MCU_TR_Subtitle
+{
+  Index = 10;
+  Name = "Translator Subtitle";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -3436.907;
+  YPos = 190.241;
+  ZPos = -2769.574;
+  XOri = 0.00;
+  YOri = 157.93;
+  ZOri = 0.00;
+  Enabled = 1;
+  SubtitleInfo
+  {
+    Duration = 5;
+    FontSize = 30;
+    HAlign = 1;
+    VAlign = 0;
+    RColor = 191;
+    GColor = 0;
+    BColor = 0;
+    LCText = 4;
+  }
+  
+  Coalitions = [0, 1, 2];
+}
+
+MCU_H_Input
+{
+  Index = 11;
+  Name = "TANK_KILLSUB_BLUE";
+  Desc = "";
+  Targets = [10];
+  Objects = [];
+  XPos = -3436.921;
+  YPos = 17.795;
+  ZPos = -2762.425;
+  XOri = 0.00;
+  YOri = 359.39;
+  ZOri = 0.00;
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 12;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -3436.064;
+  YPos = 17.795;
+  ZPos = -2765.549;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 50;
+  Backward = 50;
+  Left = 50;
+  Right = 50;
+}
+
