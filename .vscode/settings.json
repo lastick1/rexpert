@@ -7,5 +7,6 @@
     "python.unitTest.nosetestsEnabled": true,
     "python.linting.pylintArgs": [
         "--rcfile=.rcfile"
-    ]
+    ],
+    "python.jediEnabled": false
 }

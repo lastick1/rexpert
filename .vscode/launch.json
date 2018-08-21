@@ -5,134 +5,36 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python",
+            "name": "runme.py run",
             "type": "python",
             "request": "launch",
             "stopOnEntry": false,
-            "pythonPath": "${config:python.pythonPath}",
-            "program": "${file}",
-            "cwd": "${workspaceRoot}",
-            "env": {},
-            "envFile": "${workspaceRoot}/.env",
-            "debugOptions": [
-                "RedirectOutput"
-            ]
-        },
-        {
-            "name": "PySpark",
-            "type": "python",
-            "request": "launch",
-            "stopOnEntry": true,
-            "osx": {
-                "pythonPath": "${env:SPARK_HOME}/bin/spark-submit"
-            },
-            "windows": {
-                "pythonPath": "${env:SPARK_HOME}/bin/spark-submit.cmd"
-            },
-            "linux": {
-                "pythonPath": "${env:SPARK_HOME}/bin/spark-submit"
-            },
-            "program": "${file}",
-            "cwd": "${workspaceRoot}",
-            "env": {},
-            "envFile": "${workspaceRoot}/.env",
-            "debugOptions": [
-                "RedirectOutput"
-            ]
-        },
-        {
-            "program": "${file}",
-            "name": "Python Module",
-            "type": "python",
-            "request": "launch",
-            "stopOnEntry": true,
-            "pythonPath": "${config:python.pythonPath}",
-            "module": "module.name",
-            "cwd": "${workspaceRoot}/.env",
-            "env": {},
-            "envFile": "${workspaceRoot}/.env",
-            "debugOptions": [
-                "RedirectOutput"
-            ]
-        },
-        {
-            "name": "Integrated Terminal/Console",
-            "type": "python",
-            "request": "launch",
-            "stopOnEntry": true,
-            "pythonPath": "${config:python.pythonPath}",
-            "program": "${file}",
-            "cwd": "",
-            "console": "integratedTerminal",
-            "env": {},
-            "envFile": "${workspaceRoot}/.env",
-            "debugOptions": [
-            ]
-        },
-        {
-            "name": "External Terminal/Console",
-            "type": "python",
-            "request": "launch",
-            "stopOnEntry": true,
-            "pythonPath": "${config:python.pythonPath}",
-            "program": "${file}",
-            "cwd": "",
-            "console": "externalTerminal",
-            "env": {},
-            "envFile": "${workspaceRoot}/.env",
-            "debugOptions": [
-            ]
-        },
-        {
-            "name": "Django",
-            "type": "python",
-            "request": "launch",
-            "stopOnEntry": true,
-            "pythonPath": "${config:python.pythonPath}",
-            "program": "${workspaceRoot}/manage.py",
-            "cwd": "${workspaceRoot}",
-            "args": [
-                "runserver",
-                "--noreload",
-                "--nothreading"
-            ],
-            "env": {},
-            "envFile": "${workspaceRoot}/.env",
-            "debugOptions": [
-                "RedirectOutput",
-                "DjangoDebugging"
-            ]
-        },
-        {
-            "name": "Flask",
-            "type": "python",
-            "request": "launch",
-            "stopOnEntry": false,
-            "pythonPath": "${config:python.pythonPath}",
-            "program": "fully qualified path fo 'flask' executable. Generally located along with python interpreter",
-            "cwd": "${workspaceRoot}",
-            "env": {
-                "FLASK_APP": "${workspaceRoot}/quickstart/app.py"
-            },
+            "pythonPath": "${workspaceRoot}/.venv/Scripts/python.exe",
+            "program": "${workspaceRoot}/runme.py",
             "args": [
                 "run",
-                "--no-debugger",
-                "--no-reload"
             ],
+            "cwd": "${workspaceRoot}",
+            "env": {},
             "envFile": "${workspaceRoot}/.env",
             "debugOptions": [
                 "RedirectOutput"
             ]
         },
         {
-            "name": "Flask (old)",
+            "name": "runme.py reset",
             "type": "python",
             "request": "launch",
             "stopOnEntry": false,
-            "pythonPath": "${config:python.pythonPath}",
-            "program": "${workspaceRoot}/run.py",
+            "pythonPath": "${workspaceRoot}/.venv/Scripts/python.exe",
+            "program": "${workspaceRoot}/runme.py",
+            "args": [
+                "reset",
+                // "generate",
+                // "attack",
+                // "moscow"
+            ],
             "cwd": "${workspaceRoot}",
-            "args": [],
             "env": {},
             "envFile": "${workspaceRoot}/.env",
             "debugOptions": [
@@ -140,36 +42,19 @@
             ]
         },
         {
-            "program": "${file}",
-            "name": "Pyramid",
+            "name": "runme.py generate attack moscow 19.10.1942",
             "type": "python",
             "request": "launch",
-            "stopOnEntry": true,
-            "pythonPath": "${config:python.pythonPath}",
-            "cwd": "${workspaceRoot}",
-            "env": {},
-            "envFile": "${workspaceRoot}/.env",
+            "stopOnEntry": false,
+            "pythonPath": "${workspaceRoot}/.venv/Scripts/python.exe",
+            "program": "${workspaceRoot}/runme.py",
             "args": [
-                "${workspaceRoot}/development.ini"
+                "generate",
+                "attack",
+                "moscow",
+                "19.10.1942"
             ],
-            "debugOptions": [
-                "RedirectOutput",
-                "Pyramid"
-            ]
-        },
-        {
-            "name": "Watson",
-            "type": "python",
-            "request": "launch",
-            "stopOnEntry": true,
-            "pythonPath": "${config:python.pythonPath}",
-            "program": "${workspaceRoot}/console.py",
             "cwd": "${workspaceRoot}",
-            "args": [
-                "dev",
-                "runserver",
-                "--noreload=True"
-            ],
             "env": {},
             "envFile": "${workspaceRoot}/.env",
             "debugOptions": [
@@ -177,14 +62,22 @@
             ]
         },
         {
-            "name": "Attach (Remote Debug)",
+            "name": "runme.py compile ldf",
             "type": "python",
-            "request": "attach",
-            "localRoot": "${workspaceRoot}",
-            "remoteRoot": "${workspaceRoot}",
-            "port": 3000,
-            "secret": "my_secret",
-            "host": "localhost"
+            "request": "launch",
+            "stopOnEntry": false,
+            "pythonPath": "${workspaceRoot}/.venv/Scripts/python.exe",
+            "program": "${workspaceRoot}/runme.py",
+            "args": [
+                "compile",
+                "ldf"
+            ],
+            "cwd": "${workspaceRoot}",
+            "env": {},
+            "envFile": "${workspaceRoot}/.env",
+            "debugOptions": [
+                "RedirectOutput"
+            ]
         }
     ]
 }
