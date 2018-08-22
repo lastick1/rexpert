@@ -86,7 +86,7 @@ class TestTvdBuilder(unittest.TestCase):
 
         def call_update():
             """Обновить аэродромы"""
-            builder.update_airfields(tvd)
+            builder.update_airfield_groups(tvd)
 
         try:
             call_update()

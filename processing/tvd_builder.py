@@ -193,6 +193,15 @@ class TvdBuilder:
             mission_type = constants.CampaignMission.Kinds.ASSAULT
         logging.info(f'Updating TVD folder ({mission_type}): {tvd.folder} ({tvd.name}) {tvd.date}')
         self.update_icons(tvd)
+        self.update_airfields(attacked_airfield, airfields, tvd)
+        self.update_airfield_groups(tvd)
+        self.update_warehouses(tvd)
+        self.update_ldb(tvd)
+        self.update_defaultparams(tvd)
+        logging.info('TVD folder updated')
+
+    def update_airfields(self, attacked_airfield, airfields, tvd):
+        """Обновить аэродромы в ТВД для генерации"""
         if attacked_airfield:
             front_af_source = geometry.remove_too_close(airfields, [attacked_airfield], 30000)
         else:
@@ -210,11 +219,6 @@ class TvdBuilder:
             airfields=airfields
         )
         tvd.attack_location = attacked_airfield
-        self.update_airfields(tvd)
-        self.update_warehouses(tvd)
-        self.update_ldb(tvd)
-        self.update_defaultparams(tvd)
-        logging.info('TVD folder updated')
 
     @staticmethod
     def update_icons(tvd: model.Tvd):
@@ -236,7 +240,7 @@ class TvdBuilder:
             stream.write(ldf_text)
         logging.debug('... LDB done')
 
-    def update_airfields(self, tvd: model.Tvd):
+    def update_airfield_groups(self, tvd: model.Tvd):
         """Генерация групп аэродромов для ТВД"""
         logging.debug('Generating airfields groups...')
         for airfield in tvd.red_front_airfields + [tvd.red_rear_airfield]:
