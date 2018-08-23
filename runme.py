@@ -157,6 +157,8 @@ def main(args: list):
             initialize_campaign()
         elif _command == 'reset':
             reset()
+        elif _command == 'initialize':
+            initialize_campaign()
         elif _args_count > 2:
             if _command == 'generate':
                 _generate(args[2:])
