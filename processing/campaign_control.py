@@ -21,8 +21,9 @@ END_DATE = 'end_date'
 
 
 class CampaignController:
-    instances = 0
     """Контролеер кампании"""
+    instances = 0
+
     def __init__(self, ioc):
         CampaignController.instances += 1
         if CampaignController.instances > 1:
@@ -32,7 +33,8 @@ class CampaignController:
         self._campaign_map: model.CampaignMap = None
         self._current_tvd: model.Tvd = None
         self._round_ended: bool = False
-        self.tvd_builders = {x: processing.TvdBuilder(x, ioc) for x in ioc.config.mgen.maps}
+        self.tvd_builders = {x: processing.TvdBuilder(
+            x, ioc) for x in ioc.config.mgen.maps}
 
     @property
     def config(self) -> configs.Config:
@@ -46,8 +48,9 @@ class CampaignController:
 
     @property
     def warehouses_controller(self) -> WarehouseController:
+        """Контроллер складов"""
         return self._ioc.warehouses_controller
-    
+
     @property
     def players_controller(self) -> processing.PlayersController:
         """Контроллер игроков"""
@@ -77,7 +80,7 @@ class CampaignController:
     def storage(self) -> storage.Storage:
         """Объект для работы с БД"""
         return self._ioc.storage
-    
+
     @property
     def generator(self) -> processing.Generator:
         """Генератор миссий (управляет missiongen.exe)"""
@@ -117,7 +120,8 @@ class CampaignController:
         order = list(self.config.mgen.maps).index(tvd_name) + 1
         campaign_map = model.CampaignMap(
             order=order, date=start, mission_date=start, tvd_name=tvd_name, months=list(), actions=list())
-        tvd = self.tvd_builders[campaign_map.tvd_name].get_tvd(campaign_map.date.strftime(constants.DATE_FORMAT))
+        tvd = self.tvd_builders[campaign_map.tvd_name].get_tvd(
+            campaign_map.date.strftime(constants.DATE_FORMAT))
         self.airfields_controller.initialize_tvd(tvd, campaign_map)
         self.storage.campaign_maps.update(campaign_map)
         self.divisions_controller.initialize_divisions(tvd_name)
@@ -145,7 +149,8 @@ class CampaignController:
             tvd_builder.update(
                 tvd, airfields, self.airfields_controller.get_airfield_by_name(tvd_name, attacked_airfield_name))
         else:
-            tvd_builder.update(tvd, self.divisions_controller.filter_airfields(tvd_name, airfields))
+            tvd_builder.update(
+                tvd, self.divisions_controller.filter_airfields(tvd_name, airfields))
         self.generator.make_ldb(tvd_name)
         self.generator.make_lgb(tvd_name)
 
@@ -156,7 +161,8 @@ class CampaignController:
 
     def generate(self, mission_name, tvd_name: str, date: str, attacking_country=0, attacked_airfield_name: str = None):
         """Сгенерировать текущую миссию кампании с указанным именем"""
-        self._generate(mission_name, date, tvd_name, attacking_country, attacked_airfield_name)
+        self._generate(mission_name, date, tvd_name,
+                       attacking_country, attacked_airfield_name)
 
     def initialize(self):
         """Инициализировать кампанию в БД и сгенерировать первую миссию"""
@@ -164,7 +170,8 @@ class CampaignController:
             self.initialize_map(tvd_name)
 
         self._campaign_map = self.storage.campaign_maps.load_by_order(1)
-        self.generate('result1', self._campaign_map.tvd_name, self._campaign_map.date.strftime(constants.DATE_FORMAT))
+        self.generate('result1', self._campaign_map.tvd_name,
+                      self._campaign_map.date.strftime(constants.DATE_FORMAT))
         self.players_controller.reset()
 
     def start_mission(self, atype: atypes.Atype0):
@@ -173,14 +180,16 @@ class CampaignController:
         source_mission = self.source_parser.parse_in_dogfight(
             atype.file_path.replace('Multiplayer/Dogfight', '').replace('\\', '').replace('.msnbin', ''))
         self._mission = self._make_campaign_mission(atype, source_mission)
-        self._campaign_map = self.storage.campaign_maps.load_by_tvd_name(self._mission.tvd_name)
+        self._campaign_map = self.storage.campaign_maps.load_by_tvd_name(
+            self._mission.tvd_name)
         self._update_tik(atype.tik)
         self._campaign_map.mission = self._mission
         self._campaign_map.date = self._mission.date
         self._current_tvd = self._get_tvd(
             self._campaign_map.tvd_name, self._campaign_map.date.strftime(constants.DATE_FORMAT))
         self.storage.campaign_maps.update(self._campaign_map)
-        logging.info(f'mission started {self._campaign_map.mission.date}, {self._campaign_map.mission.file}')
+        logging.info(
+            f'mission started {self._campaign_map.mission.date}, {self._campaign_map.mission.file}')
         # TODO сохранить миссию в базу (в документ model.CampaignMap и в коллекцию model.CampaignMissions)
         # TODO удалить файлы предыдущей миссии
 
@@ -191,7 +200,8 @@ class CampaignController:
             self._campaign_map.register_action(action)
             self.storage.campaign_maps.update(self._campaign_map)
         else:
-            logging.warning(f'{action.__class__.__name__} after round end {action.object_name}')
+            logging.warning(
+                f'{action.__class__.__name__} after round end {action.object_name}')
 
     def _get_tvd(self, tvd_name: str, date: str) -> model.Tvd:
         """Получить ТВД (создаётся заново)"""
@@ -209,7 +219,8 @@ class CampaignController:
         self.storage.campaign_missions.update(self._mission)
         # TODO "приземлить" всех
 
-    def end_round(self, atype: atypes.Atype19):  # этот метод должен вызываться последним среди всех контроллеров
+    # этот метод должен вызываться последним среди всех контроллеров
+    def end_round(self, atype: atypes.Atype19):
         """Обработать завершение раунда (4-минутный отсчёт до конца миссии)"""
         logging.info('round ended')
         self._update_tik(atype.tik)
@@ -225,7 +236,8 @@ class CampaignController:
             if self.ground_controller.killed_stations(country) < 2 and self.ground_controller.killed_bridges(country) < 3:
                 pos = self._mission.assault_pos
                 logging.info(f'{country} captured airfield at {pos}')
-                self.grid_controller.capture(self._mission.tvd_name, pos, country)
+                self.grid_controller.capture(
+                    self._mission.tvd_name, pos, country)
                 self._campaign_map.register_capture()
                 self.storage.campaign_maps.update(self._campaign_map)
 
@@ -234,7 +246,8 @@ class CampaignController:
         # TODO отремонтировать дивизии
         self._generate(
             self.next_name,
-            self._campaign_map.date.strftime(constants.DATE_FORMAT) + datetime.timedelta(days=1),
+            self._campaign_map.date.strftime(
+                constants.DATE_FORMAT) + datetime.timedelta(days=1),
             self._campaign_map.tvd_name,
             attack,
             killed_airfields[attack] if attack else None)

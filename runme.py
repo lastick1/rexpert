@@ -8,14 +8,16 @@ import processing
 import dependency_container
 
 
-MAIN_HELP = """Usage: runme.py <command>
+MAIN_HELP = """
+Usage: runme.py <command>
 
 where <command> is one of:
     run, initialize, reset, generate, compile
 
 runme.py help <command>"""
 
-GENERATE_HELP = """generate usage: runme.py generate [attack] <mission_name> <tvd_name> <date>
+GENERATE_HELP = """
+generate usage: runme.py generate [attack] <mission_name> <tvd_name> <date>
     [<attacking_country> <attacked_airfield_name>]
 
 where
@@ -26,20 +28,24 @@ where
         attacking_country is one of: 101, 201
         attacked_airfield_name is the airfield name from moscow_fields.csv or stalin_fields.csv or kuban_fields.csv"""
 
-RUN_HELP = """run usage: runme.py run
+RUN_HELP = """
+run usage: runme.py run
     program start reading game log files, produced by dserver.exe and begin controlling campaign"""
 
-COMPILE_HELP = """compile usage: runme.py compile <task>
+COMPILE_HELP = """
+compile usage: runme.py compile <task>
 
 where task is one of: gif, ldf, log
     gif: program compiles map thumbnails from current/map_thumbnails directory into gif animation file
     ldf: program compiles separate location database files into one large
     log: program compiles game text log file from ./tmp directory into one large"""
 
-RESET_HELP = """reset usage: runme.py reset
+RESET_HELP = """
+reset usage: runme.py reset
     program resets campaign and players progress to initial values"""
 
-INITIALIZE_HELP = """initialize usage: runme.py initialize
+INITIALIZE_HELP = """
+initialize usage: runme.py initialize
     program creates required database, files and prepares all to start up the server"""
 
 
@@ -53,6 +59,8 @@ def show_help(command: str):
         print(RESET_HELP)
     elif command == 'initialize':
         print(INITIALIZE_HELP)
+    elif command == 'generate':
+        print(GENERATE_HELP)
     else:
         print(MAIN_HELP)
 
@@ -124,9 +132,9 @@ def _generate(args: list):
         elif _args_count == 3:
             generate(*args)
         else:
-            show_help(GENERATE_HELP)
+            show_help('generate')
     else:
-        show_help(GENERATE_HELP)
+        show_help('generate')
 
 
 def run():

@@ -1,4 +1,5 @@
 """Сборка базы локаций"""
+import logging
 import random
 import re
 
@@ -141,7 +142,7 @@ def parse_decoration(text: str) -> Location:
         if int(tmp[-2].partition('= ')[-1]):
             result.types.add(LANDING_SIGN)
     except ValueError as error:
-        print(error)
+        logging.error(error)
     return result
 
 

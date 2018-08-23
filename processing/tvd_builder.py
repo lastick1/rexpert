@@ -14,6 +14,7 @@ import storage
 
 class Season:
     """Данные сезона"""
+
     def __init__(self, split: list):
         self.start = split[0]
         self.end = split[1]
@@ -36,10 +37,10 @@ class Season:
     def end_for_year(self, year: int):
         """Конец сезона для указанного года"""
         return datetime.datetime(
-                year,
-                int(self.end.split(sep='.')[1]),
-                int(self.end.split(sep='.')[0])
-            )
+            year,
+            int(self.end.split(sep='.')[1]),
+            int(self.end.split(sep='.')[0])
+        )
 
     def sunrise_for_date(self, date: datetime.datetime) -> datetime.datetime:
         """Рассвет для указанной даты"""
@@ -90,7 +91,8 @@ class TvdBuilder:
     def airfields_selector(self) -> processing.AirfieldsSelector:
         """Выборщик аэродромов"""
         if not self._airfields_selector:
-            self._airfields_selector = processing.AirfieldsSelector(main=self.config.main)
+            self._airfields_selector = processing.AirfieldsSelector(
+                main=self.config.main)
         return self._airfields_selector
 
     @property
@@ -102,7 +104,8 @@ class TvdBuilder:
             east = self.config.mgen.cfg[self.name]['right_top']['z'] + offset
             south = 0 - offset
             west = 0 - offset
-            self._boundary_builder = processing.BoundaryBuilder(north=north, east=east, south=south, west=west)
+            self._boundary_builder = processing.BoundaryBuilder(
+                north=north, east=east, south=south, west=west)
         return self._boundary_builder
 
     @property
@@ -123,7 +126,8 @@ class TvdBuilder:
     @property
     def default_params_file(self) -> pathlib.Path:
         """Файл параметров для missiongen.exe"""
-        tvd_folder = self.config.main.game_folder.joinpath(self.config.mgen.cfg[self.name]['tvd_folder'])
+        tvd_folder = self.config.main.game_folder.joinpath(
+            self.config.mgen.cfg[self.name]['tvd_folder'])
         return tvd_folder.joinpath(self.config.mgen.cfg[self.name]['default_params_dest'])
 
     @property
@@ -157,13 +161,17 @@ class TvdBuilder:
 
     def _make_influences(self, tvd):
         """Построить зоны влияния в соответствии с графом"""
-        tvd.confrontation_east = self.boundary_builder.confrontation_east(tvd.grid)
-        tvd.confrontation_west = self.boundary_builder.confrontation_west(tvd.grid)
+        tvd.confrontation_east = self.boundary_builder.confrontation_east(
+            tvd.grid)
+        tvd.confrontation_west = self.boundary_builder.confrontation_west(
+            tvd.grid)
 
         influence_east = self.boundary_builder.influence_east(tvd.border)
         influence_west = self.boundary_builder.influence_west(tvd.border)
-        east_boundary = model.Boundary(influence_east[0].x, influence_east[0].z, influence_east)
-        west_boundary = model.Boundary(influence_west[0].x, influence_west[0].z, influence_west)
+        east_boundary = model.Boundary(
+            influence_east[0].x, influence_east[0].z, influence_east)
+        west_boundary = model.Boundary(
+            influence_west[0].x, influence_west[0].z, influence_west)
         east_influences = list(model.Boundary(node.x, node.z, node.neighbors_sorted)
                                for node in tvd.nodes_list if node.country == 101)
         west_influences = list(model.Boundary(node.x, node.z, node.neighbors_sorted)
@@ -191,7 +199,8 @@ class TvdBuilder:
         mission_type = constants.CampaignMission.Kinds.REGULAR
         if attacked_airfield:
             mission_type = constants.CampaignMission.Kinds.ASSAULT
-        logging.info(f'Updating TVD folder ({mission_type}): {tvd.folder} ({tvd.name}) {tvd.date}')
+        logging.info(
+            f'Updating TVD folder ({mission_type}): {tvd.folder} ({tvd.name}) {tvd.date}')
         self.update_icons(tvd)
         self.update_airfields(attacked_airfield, airfields, tvd)
         self.update_airfield_groups(tvd)
@@ -203,11 +212,14 @@ class TvdBuilder:
     def update_airfields(self, attacked_airfield, airfields, tvd):
         """Обновить аэродромы в ТВД для генерации"""
         if attacked_airfield:
-            front_af_source = geometry.remove_too_close(airfields, [attacked_airfield], 30000)
+            front_af_source = geometry.remove_too_close(
+                airfields, [attacked_airfield], 30000)
         else:
             front_af_source = airfields
-        tvd.red_front_airfields.extend(self.airfields_selector.select_front(tvd.confrontation_east, front_af_source))
-        tvd.blue_front_airfields.extend(self.airfields_selector.select_front(tvd.confrontation_west, front_af_source))
+        tvd.red_front_airfields.extend(self.airfields_selector.select_front(
+            tvd.confrontation_east, front_af_source))
+        tvd.blue_front_airfields.extend(self.airfields_selector.select_front(
+            tvd.confrontation_west, front_af_source))
         tvd.red_rear_airfield = self.airfields_selector.select_rear(
             influence=tvd.influences[101][0].polygon,
             front_area=tvd.confrontation_east,
@@ -224,7 +236,8 @@ class TvdBuilder:
     def update_icons(tvd: model.Tvd):
         """Обновление группы иконок в соответствии с положением ЛФ"""
         logging.debug('Generating icons group...')
-        flg = processing.FrontLineGroup(tvd.border, tvd.influences, tvd.icons_group_file, tvd.right_top)
+        flg = processing.FrontLineGroup(
+            tvd.border, tvd.influences, tvd.icons_group_file, tvd.right_top)
         flg.make()
         logging.debug('... icons done')
 
@@ -245,10 +258,12 @@ class TvdBuilder:
         logging.debug('Generating airfields groups...')
         for airfield in tvd.red_front_airfields + [tvd.red_rear_airfield]:
             data = self._convert_airfield(airfield, 101)
-            self.airfields_builder.make_airfield_group(data, airfield.x, airfield.z)
+            self.airfields_builder.make_airfield_group(
+                data, airfield.x, airfield.z)
         for airfield in tvd.blue_front_airfields + [tvd.blue_rear_airfield]:
             data = self._convert_airfield(airfield, 201)
-            self.airfields_builder.make_airfield_group(data, airfield.x, airfield.z)
+            self.airfields_builder.make_airfield_group(
+                data, airfield.x, airfield.z)
         logging.debug('... airfields groups done')
 
     def update_warehouses(self, tvd: model.Tvd):
@@ -267,7 +282,8 @@ class TvdBuilder:
 
         planes = list()
         for key in airfield.planes:
-            planes.append(find_plane_in_config(self.config.planes.cfg, key, airfield.planes[key]))
+            planes.append(find_plane_in_config(
+                self.config.planes.cfg, key, airfield.planes[key]))
         return processing.Airfield(airfield.name, country, self.config.gameplay.airfield_radius, planes)
 
     def date_day_duration(self, date) -> tuple:
@@ -303,7 +319,8 @@ class TvdBuilder:
         season = self.date_season_data(date)
 
         # настройки погоды
-        weather_type = random.randint(*params_config[season.prefix]['wtype_diapason'])
+        weather_type = random.randint(
+            *params_config[season.prefix]['wtype_diapason'])
         w_preset = processing.WeatherPreset(processing.presets[weather_type])
         # случайное направление и сила ветра по высотам
         wind_direction0000 = random.randint(0, 360)
@@ -356,7 +373,8 @@ class TvdBuilder:
             lines.append(f'${division.name.lower()} = {int(division.units)}\n')
 
         for warehouse in tvd.warehouses:
-            lines.append(f'${warehouse.server_input.lower()} = {warehouse.damage_level}\n')
+            lines.append(
+                f'${warehouse.server_input.lower()} = {warehouse.damage_level}\n')
 
         with self.default_params_file.open(mode='w', encoding='utf-8-sig') as stream:
             stream.writelines(lines)
