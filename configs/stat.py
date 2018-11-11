@@ -17,3 +17,4 @@ class Stats:
         self.time_remaining = stats_static.joinpath(self.json_files['elapsed_time'])
         self.credits_data = stats_static.joinpath(self.json_files['planes_data'])
         self.payloads = stats_static.joinpath(self.json_files['payloads'])
+        self.current_airfields =  stats_static.joinpath(self.json_files['current_airfields'])

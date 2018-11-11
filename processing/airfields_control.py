@@ -1,5 +1,6 @@
 """Контроль состояния аэродромов (доступные самолёты, повреждения)"""
 import logging
+import json
 
 import atypes
 import configs
@@ -60,6 +61,17 @@ class AirfieldsController:
 
     def start_mission(self):
         """Обработать начало миссии"""
+        current_tvd = self.campaign_controller.current_tvd
+        mission_airfields = list()
+        for airfield in self.storage.airfields.load_by_tvd(tvd_name=current_tvd.name):
+            mission_airfields.append({
+                'country': current_tvd.get_country(airfield),
+                'name': airfield.name,
+                'x': airfield.x,
+                'z': airfield.z
+            })
+        with open(self.config.stat.current_airfields, mode='w') as stream:
+            stream.write(json.dumps(mission_airfields))
         self.current_airfields.clear()
 
     def spawn_aircraft(self, tvd_name: str, airfield_country: int, atype: atypes.Atype10):
