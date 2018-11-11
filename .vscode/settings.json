@@ -8,5 +8,6 @@
     "python.linting.pylintArgs": [
         "--rcfile=.rcfile"
     ],
-    "python.jediEnabled": false
+    "python.jediEnabled": false,
+    "python.linting.pylintEnabled": true
 }
