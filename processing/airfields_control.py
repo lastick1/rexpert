@@ -25,6 +25,7 @@ class AirfieldsController:
 
     @property
     def campaign_controller(self):
+        """Контроллер кампании"""
         return self._ioc.campaign_controller
 
     @property
