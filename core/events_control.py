@@ -12,6 +12,7 @@ from .parse_mission_log_line import parse, UnexpectedATypeWarning
 
 class EventsController:  # pylint: disable=R0902,R0904,R0913
     """Контроллер обработки событий из логов"""
+
     def __init__(self, _ioc):
         self._ioc = _ioc
         self.countries = dict()
@@ -95,7 +96,8 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
     def event_mission_start(self, tik: int, date: datetime.datetime, file_path: str,
                             game_type_id, countries: dict, settings, mods, preset_id) -> None:
         """AType 0 handler"""
-        atype = atypes.Atype0(tik, date, file_path, game_type_id, countries, settings, mods, preset_id)
+        atype = atypes.Atype0(tik, date, file_path, game_type_id,
+                              countries, settings, mods, preset_id)
         self.objects_controller.start_mission()
         self.players_controller.start_mission()
         self.airfields_controller.start_mission()
@@ -126,7 +128,8 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
     def event_sortie_end(self, tik: int, aircraft_id: int, bot_id: int, cartridges: int,
                          shells: int, bombs: int, rockets: int, pos: dict) -> None:
         """AType 4 handler"""
-        atype = atypes.Atype4(tik, aircraft_id, bot_id, cartridges, shells, bombs, rockets, pos)
+        atype = atypes.Atype4(tik, aircraft_id, bot_id,
+                              cartridges, shells, bombs, rockets, pos)
         self.objects_controller.end_sortie(atype)
         self.players_controller.end_sortie(atype)
         # бывают события дубли - проверяем
@@ -151,14 +154,16 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
     def event_mission_result(self, tik: int, object_id: int, coal_id: int, task_type_id: int,
                              success: int, icon_type_id: int, pos: dict) -> None:
         """AType 8 handler"""
-        atype = atypes.Atype8(tik, object_id, coal_id, task_type_id, success, icon_type_id, pos)
+        atype = atypes.Atype8(tik, object_id, coal_id,
+                              task_type_id, success, icon_type_id, pos)
         self.ground_controller.mission_result(atype)
         self.campaign_controller.mission_result(atype)
 
     def event_airfield(self, tik: int, airfield_id: int, country_id: int, coal_id: int,
                        aircraft_id_list: list, pos: dict) -> None:
         """AType 9 handler"""
-        atype = atypes.Atype9(tik, airfield_id, country_id, coal_id, aircraft_id_list, pos)
+        atype = atypes.Atype9(tik, airfield_id, country_id,
+                              coal_id, aircraft_id_list, pos)
         self.objects_controller.airfield(atype)
         self.airfields_controller.spawn_airfield(atype)
 
@@ -176,7 +181,8 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         tvd = self.campaign_controller.current_tvd
         if atype.airstart:
             logging.warning(f'airstart {atype}')
-        self.airfields_controller.spawn_aircraft(tvd.name, tvd.get_country(atype.point), atype)
+        self.airfields_controller.spawn_aircraft(
+            tvd.name, tvd.get_country(atype.point), atype)
 
     def event_group(self, tik: int, group_id: int, members_id: int, leader_id: int) -> None:
         """AType 11 handler"""
@@ -186,13 +192,15 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
     def event_game_object(self, tik: int, object_id: int, object_name: str, country_id: int,
                           coal_id: int, name: str, parent_id: int) -> None:
         """AType 12 handler"""
-        atype = atypes.Atype12(tik, object_id, object_name, country_id, coal_id, name, parent_id)
+        atype = atypes.Atype12(tik, object_id, object_name,
+                               country_id, coal_id, name, parent_id)
         self.objects_controller.create_object(atype)
 
     def event_influence_area(self, tik: int, area_id: int, country_id: int, coal_id: int,
                              enabled: bool, in_air: bool) -> None:
         """AType 13 handler"""
-        atype = atypes.Atype13(tik, area_id, country_id, coal_id, enabled, in_air)
+        atype = atypes.Atype13(tik, area_id, country_id,
+                               coal_id, enabled, in_air)
         self.players_controller.influence_area(atype)
 
     def event_influence_area_boundary(self, tik: int, area_id: int, boundary) -> None:
@@ -213,7 +221,8 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         if not bot:
             raise NameError(f'Bot not found: {atype.bot_id}')
         tvd = self.campaign_controller.current_tvd
-        on_airfield = self.airfields_controller.finish(tvd.name, tvd.get_country(atype.point), bot)
+        on_airfield = self.airfields_controller.finish(
+            tvd.name, tvd.get_country(atype.point), bot)
         self.players_controller.finish(bot, on_airfield)
         self.objects_controller.deinitialize(atype)
 
@@ -246,5 +255,12 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         atype = atypes.Atype21(tik, account_id, profile_id)
         self.players_controller.disconnect(atype.account_id)
 
-    def event_tank_travel(self, tik, parent_id, pos):
+    def event_tank_travel(self, tik: int, parent_id: str, pos: dict):
+        """Atype 22 handler
+
+        Arguments:
+            tik {int} -- [description]
+            parent_id {str} -- [description]
+            pos {dict} -- [description]
+        """
         pass
