@@ -1,4 +1,4 @@
-"""Сборка папок ТВД (scg/1, scg/2, scg/3 итд)"""
+"""Сборка папок ТВД (scg/1, scg/2, scg/3 и т.д.)"""
 import logging
 import random
 import pathlib

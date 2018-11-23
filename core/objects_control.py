@@ -27,7 +27,7 @@ class ObjectsController:
 
     @property
     def objects(self) -> configs.Objects:
-        """Словарь объёктов логах"""
+        """Словарь объектов логах"""
         return self._ioc.objects
 
     def create_object(self, atype: atypes.Atype12) -> log_objects.Object:
@@ -122,7 +122,7 @@ class ObjectsController:
         self._aircrafts.clear()
 
     def airfield(self, atype: atypes.Atype9) -> None:
-        """Создать/обновленить аэродром"""
+        """Создать/обновить аэродром"""
         if atype.airfield_id in self._objects:
             airfield = self.get_airfield(atype.airfield_id)
             airfield.update(atype.country_id, atype.coal_id)
@@ -148,7 +148,7 @@ class ObjectsController:
         bot.deinitialize(atype.pos)
 
     def change_pos(self, atype: atypes.Atype17) -> None:
-        """Измененить позицию объекта"""
+        """Изменить позицию объекта"""
         self.get_object(atype.object_id).update_pos(atype.pos)
 
     def eject_leave(self, atype: atypes.Atype18) -> None:

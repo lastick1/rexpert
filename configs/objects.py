@@ -1,4 +1,4 @@
-"""Объёкты, встречаемые в логах"""
+"""Объекты, встречаемые в логах"""
 import codecs
 
 
@@ -14,7 +14,7 @@ class Object:
 
 
 class Objects(dict):
-    """Словарь объёктов"""
+    """Словарь объектов"""
     def __init__(self):
         with codecs.open(r'.\configs\objects.csv', encoding='utf-8') as stream:
             lines = stream.readlines()

@@ -55,12 +55,12 @@ class DServerRcon:
                 self.authed = False
                 self.socket.connect((self.tcp_ip, self.tcp_port))
                 self.connected = True
-            except:
+            except Exception:
                 self.connected = False
                 self.authed = False
 
     def reconnect(self):
-        """Переподключение к консоли"""
+        """Пере подключение к консоли"""
         self.socket.close()
         self.socket = socket(AF_INET, SOCK_STREAM)
         self.socket.settimeout(500)
@@ -161,7 +161,7 @@ class DServerRcon:
         return resp
 
     def server_input(self, server_input):
-        """Отправка сервер-инпута в логику миссии"""
+        """Отправка сервер-инпут в логику миссии"""
         if not self.connected:
             raise NameError("Not connected")
         resp = self.__rcon_send_raw_command("serverinput {0}".format(server_input))

@@ -53,9 +53,9 @@ class Grid:
         def _is_reversed(a: model.Node, b: model.Node) -> bool:
             """Прямой или обратный порядок построения ЛФ"""
             # pylint: disable=C0103
-            # 1. получаем цветные вершины треугольников со стороной - отрезком лф
+            # 1. получаем цветные вершины треугольников со стороной - отрезком линии фронта
             colored = set(a.neighbors) & set(b.neighbors)
-            # 2. проверяем, какая из них слева от отрезка лф
+            # 2. проверяем, какая из них слева от отрезка линии фронта
             for c in colored:
                 rotation = geometry.rotate(a, b, c)
                 if rotation < 0 and c.country == 101:

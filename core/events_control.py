@@ -80,12 +80,12 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
 
     @property
     def ground_controller(self) -> processing.GroundController:
-        """Контроллер наземки"""
+        """Контроллер наземных целей"""
         return self._ioc.ground_controller
 
     @property
     def map_painter(self) -> processing.MapPainter:
-        """Отрисовщик карт миссий"""
+        """Генератор изображений карт миссий"""
         return self._ioc.map_painter
 
     @property

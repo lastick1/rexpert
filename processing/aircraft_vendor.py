@@ -41,7 +41,7 @@ class MonthSupply:
 
     @property
     def remain_aircrafts(self) -> list:
-        """Названия оставщихся самолётов"""
+        """Названия оставшихся самолётов"""
         result = list()
         for i in range(len(self.aircrafts)):
             if self.amounts[i] > 0:

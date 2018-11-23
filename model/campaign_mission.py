@@ -66,7 +66,7 @@ class CampaignMission:
 
     @property
     def map_icons(self) -> dict:
-        """Иконки целей для изображения карты и планнера"""
+        """Иконки целей для изображения карты и планировщика"""
         icons = {
             '1': {
                 'flames': [],

@@ -1,6 +1,6 @@
 """События в игровом процессе"""
-import constants
 import datetime
+import constants
 
 
 class GameplayAction:

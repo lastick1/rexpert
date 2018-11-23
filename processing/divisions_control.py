@@ -24,7 +24,7 @@ def _to_division(division) -> model.Division:
 
 
 class DivisionsController:
-    """Управляение созданием, уроном, состоянием дивизий"""
+    """Управление созданием, уроном, состоянием дивизий"""
     def __init__(self, ioc):
         self._ioc = ioc
         self._current_divisions = dict()

@@ -130,10 +130,10 @@ class Node(geometry.Point):
             v = q.get()  # извлекаем вершину из очереди
             neighbors = v.neighbors if ignore_country else set(x for x in v.neighbors if x.country == self.country)
             for w in neighbors:  # запускаем обход из всех вершин, смежных с вершиной v
-                if w in used:  # если вершина уже была посещена, то пропускаем ее
+                if w in used:  # если вершина уже была посещена, то пропускаем её
                     continue
                 q.put(w)  # добавляем вершину в очередь обхода
-                used.add(w)  # помечаем вершину как пройденную
+                used.add(w)  # помечаем вершину как пройдённую
                 path[w.key] = v
         return path, used
 

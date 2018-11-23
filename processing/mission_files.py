@@ -70,4 +70,4 @@ class MissionFiles:
 
     # TODO сделать вместо detach - zip архив
     def zip_src(self):
-        raise NotImplemented
+        raise NotImplementedError

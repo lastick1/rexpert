@@ -38,7 +38,7 @@ class Player:
         }
 
     def get_nickname(self) -> str:
-        """Полчить ник"""
+        """Получить ник"""
         return self._nickname
 
     def set_nickname(self, value: str) -> None:

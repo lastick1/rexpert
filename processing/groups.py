@@ -28,9 +28,9 @@ class Group:
         for file_ext in self.files:
             self.files[file_ext] = pathlib.Path(shutil.copy(str(self.files[file_ext]), dest))
 
-    def rename(self, dst):
-        """Смена имён файлов на dst"""
-        dst_path = os.path.dirname(str(self.files['Group'])) + '\\' + dst
+    def rename(self, to):
+        """Смена имён файлов на to"""
+        dst_path = os.path.dirname(str(self.files['Group'])) + '\\' + to
         for file_ext in self.files:
             tmp = pathlib.Path(dst_path + '.' + file_ext)
             if tmp.exists():
@@ -38,14 +38,14 @@ class Group:
             self.files[file_ext].rename(tmp)
             self.files[file_ext] = tmp
 
-    def replace_content(self, src, dst):
-        """Замена src в содержимом файлов группы на dst"""
+    def replace_content(self, src, to):
+        """Замена src в содержимом файлов группы на to"""
         for file_ext in self.files:
             if file_ext == 'Group':
-                content = self.files[file_ext].read_text(encoding='utf-8').replace(src, dst)
+                content = self.files[file_ext].read_text(encoding='utf-8').replace(src, to)
                 self.files[file_ext].write_text(content, encoding='utf-8')
             else:
-                content = self.files[file_ext].read_text(encoding='utf-16-le').replace(src, dst)
+                content = self.files[file_ext].read_text(encoding='utf-16-le').replace(src, to)
                 self.files[file_ext].write_text(content, encoding='utf-16-le')
 
 

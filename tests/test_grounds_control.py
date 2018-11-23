@@ -1,4 +1,4 @@
-"""Тестирование обработки наземки"""
+"""Тестирование обработки наземных целей"""
 import logging
 import pathlib
 import unittest
@@ -60,7 +60,7 @@ TEST_MISSION = model.CampaignMission(
 
 
 class TestGroundControl(unittest.TestCase):
-    """Тесты контроллера наземки"""
+    """Тесты контроллера наземных целей"""
 
     def setUp(self):
         """Настройка перед тестами"""

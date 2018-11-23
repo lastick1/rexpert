@@ -1,6 +1,7 @@
-from PIL import Image
+"""Функции создания изображений карт из кусочков"""
 import os
 import re
+from PIL import Image
 
 
 def merge_map(map_dir=r'./tiles/kuban/tiles/04/', output='map.png'):

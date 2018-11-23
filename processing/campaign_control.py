@@ -21,7 +21,7 @@ END_DATE = 'end_date'
 
 
 class CampaignController:
-    """Контролеер кампании"""
+    """Контроллер кампании"""
     instances = 0
 
     def __init__(self, ioc):
@@ -68,7 +68,7 @@ class CampaignController:
 
     @property
     def ground_controller(self) -> GroundController:
-        """Контроллер наземки"""
+        """Контроллер наземных целей"""
         return self._ioc.ground_controller
 
     @property
