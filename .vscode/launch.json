@@ -50,7 +50,7 @@
             "cwd": "${workspaceRoot}"
         },
         {
-            "name": "runme.py generate result1 stalingrad 19.10.1942",
+            "name": "runme.py generate",
             "type": "python",
             "request": "launch",
             "program": "${workspaceRoot}/runme.py",
@@ -63,7 +63,7 @@
             "cwd": "${workspaceRoot}"
         },
         {
-            "name": "runme.py generate attack result1 moscow 19.10.1941",
+            "name": "runme.py generate attack",
             "type": "python",
             "request": "launch",
             "program": "${workspaceRoot}/runme.py",

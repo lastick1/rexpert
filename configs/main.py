@@ -31,9 +31,9 @@ class Main:  # pylint: disable=R0903,R0902,C0301
         self.rcon_port = int(src['RCON']['rcon_port'])
         self.rcon_login = src['RCON']['rcon_login']
         self.rcon_password = src['RCON']['rcon_password']
-        self.logs_directory = Path(src['DSERVER']['logs_directory'])
-        self.arch_directory = Path(src['DSERVER']['arch_directory'])
-        self.chat_directory = Path(src['DSERVER']['chat_directory'])
+        self.logs_directory = src['DSERVER']['logs_directory']
+        self.arch_directory = src['DSERVER']['arch_directory']
+        self.chat_directory = src['DSERVER']['chat_directory']
         self.msrc_directory = Path(src['NEW_STATS']['msrc_directory'])
         self.connection_string = 'dbname={} host={} port={} user={} password={}'.format(
             src['STATS']['database'],
