@@ -117,7 +117,7 @@ class DServerRcon:
     def info_message(self, message):
         """Сообщение всем пользователям"""
         if not self.connected:
-            raise NameError("Not connected")
+            raise NameError("RCon not connected")
         resp = self.__rcon_send_raw_command("chatmsg 0 0 {}".format(message))
         return resp
 

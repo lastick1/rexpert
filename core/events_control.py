@@ -100,12 +100,12 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
                               countries, settings, mods, preset_id)
         self.objects_controller.start_mission()
         self.players_controller.start_mission()
-        self.airfields_controller.start_mission()
         self.campaign_controller.start_mission(atype)
+        self.airfields_controller.start_mission()
         self.divisions_controller.start_mission()
         self.warehouses_controller.start_mission()
         self.ground_controller.start_mission(self.campaign_controller.mission)
-        self.map_painter.update_map()
+        # self.map_painter.update_map()
 
     def event_hit(self, tik: int, ammo: str, attacker_id: int, target_id: int) -> None:
         """AType 1 handler"""
