@@ -4,9 +4,9 @@ import logging
 import datetime
 import atypes
 import processing
+
+
 from .objects_control import ObjectsController
-
-
 from .parse_mission_log_line import parse, UnexpectedATypeWarning
 
 
