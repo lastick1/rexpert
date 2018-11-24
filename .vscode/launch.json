@@ -5,28 +5,41 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "runme.py",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceRoot}/runme.py",
+            "console": "integratedTerminal",
+            "args": [
+            ],
+            "cwd": "${workspaceRoot}"
+        },
+        {
+            "name": "runme.py initialize",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceRoot}/runme.py",
+            "console": "integratedTerminal",
+            "args": [
+                "initialize"
+            ],
+            "cwd": "${workspaceRoot}"
+        },
+        {
             "name": "runme.py run",
             "type": "python",
             "request": "launch",
-            "stopOnEntry": false,
-            "pythonPath": "${workspaceRoot}/.venv/Scripts/python.exe",
             "program": "${workspaceRoot}/runme.py",
+            "console": "integratedTerminal",
             "args": [
                 "run",
             ],
-            "cwd": "${workspaceRoot}",
-            "env": {},
-            "envFile": "${workspaceRoot}/.env",
-            "debugOptions": [
-                "RedirectOutput"
-            ]
+            "cwd": "${workspaceRoot}"
         },
         {
             "name": "runme.py reset",
             "type": "python",
             "request": "launch",
-            "stopOnEntry": false,
-            "pythonPath": "${workspaceRoot}/.venv/Scripts/python.exe",
             "program": "${workspaceRoot}/runme.py",
             "args": [
                 "reset",
@@ -34,19 +47,12 @@
                 // "attack",
                 // "moscow"
             ],
-            "cwd": "${workspaceRoot}",
-            "env": {},
-            "envFile": "${workspaceRoot}/.env",
-            "debugOptions": [
-                "RedirectOutput"
-            ]
+            "cwd": "${workspaceRoot}"
         },
         {
-            "name": "runme.py generate result1 stalingrad 19.10.1942",
+            "name": "runme.py generate",
             "type": "python",
             "request": "launch",
-            "stopOnEntry": false,
-            "pythonPath": "${workspaceRoot}/.venv/Scripts/python.exe",
             "program": "${workspaceRoot}/runme.py",
             "args": [
                 "generate",
@@ -54,19 +60,12 @@
                 "stalingrad",
                 "19.10.1942"
             ],
-            "cwd": "${workspaceRoot}",
-            "env": {},
-            "envFile": "${workspaceRoot}/.env",
-            "debugOptions": [
-                "RedirectOutput"
-            ]
+            "cwd": "${workspaceRoot}"
         },
         {
-            "name": "runme.py generate attack result1 moscow 19.10.1941",
+            "name": "runme.py generate attack",
             "type": "python",
             "request": "launch",
-            "stopOnEntry": false,
-            "pythonPath": "${workspaceRoot}/.venv/Scripts/python.exe",
             "program": "${workspaceRoot}/runme.py",
             "args": [
                 "generate",
@@ -75,30 +74,18 @@
                 "moscow",
                 "19.10.1941"
             ],
-            "cwd": "${workspaceRoot}",
-            "env": {},
-            "envFile": "${workspaceRoot}/.env",
-            "debugOptions": [
-                "RedirectOutput"
-            ]
+            "cwd": "${workspaceRoot}"
         },
         {
             "name": "runme.py compile ldf",
             "type": "python",
             "request": "launch",
-            "stopOnEntry": false,
-            "pythonPath": "${workspaceRoot}/.venv/Scripts/python.exe",
             "program": "${workspaceRoot}/runme.py",
             "args": [
                 "compile",
                 "ldf"
             ],
-            "cwd": "${workspaceRoot}",
-            "env": {},
-            "envFile": "${workspaceRoot}/.env",
-            "debugOptions": [
-                "RedirectOutput"
-            ]
+            "cwd": "${workspaceRoot}"
         }
     ]
 }

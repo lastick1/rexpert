@@ -36,7 +36,7 @@ class Tvd:
         self.icons_group_file = icons_group_file  # файл группы иконок
         self.confrontation_east = list()  # восточная прифронтовая зона
         self.confrontation_west = list()  # западная прифронтовая зона
-        self.influences = dict()  # инфлюенсы СССР и Германии
+        self.influences = dict()  # инфлюэнцы СССР и Германии
         self.red_front_airfields = list()  # советские аэродромы в миссии
         self.red_rear_airfield = None  # советский тыловой аэродром в миссии
         self.blue_front_airfields = list()  # немецкие аэродромы в миссии
@@ -116,12 +116,12 @@ class Tvd:
         return self._is_rear(confrontations[country], self.influences[country], point)
 
     def _is_rear(self, confrontation_area, influences, point):
-        """Расположена ли точка вне фронтовой зоны но на территории инфлюенса"""
+        """Расположена ли точка вне фронтовой зоны но на территории инфлюэнца"""
         return self._is_in_influences(point, influences) and not point.is_in_area(confrontation_area)
 
     @staticmethod
     def _is_in_influences(point, influences) -> bool:
-        """Находится ли точка в инфлюенсах страны"""
+        """Находится ли точка в инфлюэнцах страны"""
         for boundary in influences:
             if point.is_in_area(boundary.polygon):
                 return True

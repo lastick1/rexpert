@@ -1,4 +1,4 @@
-"""Обработка событий с наземкой (дамаг, киллы), расчёт уничтожения целей (артпозиций, складов и т.п.)"""
+"""Обработка событий с наземными объектами (дамаг, килы), расчёт уничтожения целей (артпозиций, складов и т.п.)"""
 import logging
 import re
 
@@ -53,7 +53,7 @@ class GroundTarget(geometry.Point):
         return len(self._kills) >= self._durability
 
     def try_add_kill(self, point: geometry.Point) -> bool:
-        """Проверить и добавить килл"""
+        """Проверить и добавить кил"""
         if self.distance_to(x=point.x, z=point.z) < self._radius:
             self._kills.append(point)
             return True

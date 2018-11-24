@@ -2,6 +2,7 @@
 import subprocess
 import time
 import os
+import shutil
 
 from datetime import datetime
 from pathlib import Path
@@ -29,22 +30,19 @@ class MissionFiles:
         """ Перемещение файлов миссии в указанную папку с заменой """
         for file_ext in self.files:
             tmp = Path(str(dst) + '.' + file_ext)
-            self.files[file_ext].replace(tmp)
+            new_path = str(tmp)
+            shutil.move(str(self.files[file_ext]), new_path)
             self.files[file_ext] = tmp
 
-    def move_to_dogfight(self, name: str):
+    def move_to_dogfight(self, name: str, game_folder: Path):
         """ Перемещение файлов миссии в папку Multiplayer/Dogfight с заменой
         :param name: Имя файлов миссии"""
         # меняем в лист-файле пути к файлам локализации
         content = self.files['list'].read_text(encoding='utf-8').replace('missions/', 'multiplayer/dogfight/')
         content = content.replace('result', name)
         self.files['list'].write_text(content, encoding='utf-8')
-        # вычисляем путь к папке data
-        d = os.path.dirname(str(self.files['Mission']))
-        while d.split(sep='\\')[-1] != 'data':
-            d = str(Path(d).joinpath(os.pardir).resolve())
         # переносим файлы с заменой
-        self._replace(Path(d).joinpath('.\\Multiplayer\\Dogfight\\' + name))
+        self._replace(Path(game_folder).joinpath('data\\Multiplayer\\Dogfight\\' + name))
 
     def resave(self):
         now = str(datetime.now()).replace(":", "-").replace(" ", "_")
@@ -70,4 +68,4 @@ class MissionFiles:
 
     # TODO сделать вместо detach - zip архив
     def zip_src(self):
-        raise NotImplemented
+        raise NotImplementedError

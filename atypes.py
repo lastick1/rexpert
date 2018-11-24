@@ -68,6 +68,7 @@ class Atype3(Atype):
 
     @property
     def point(self) -> geometry.Point:
+        """Координаты события"""
         return geometry.Point(x=self.pos['x'], z=self.pos['z'])
 
     def __str__(self):

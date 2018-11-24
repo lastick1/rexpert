@@ -145,7 +145,7 @@ def run():
 def main(args: list):
     """Основная точка входа в приложение"""
     _args_count = len(args)
-    if _args_count > 0:
+    if _args_count > 1:
         logging.basicConfig(
             format=u'%(asctime)s %(levelname)-8s %(filename)-40s:%(lineno)-3d # %(message)s', level=logging.DEBUG)
         logging.getLogger('PIL').setLevel(logging.WARNING)
