@@ -126,9 +126,9 @@ class TvdBuilder:
     @property
     def default_params_file(self) -> pathlib.Path:
         """Файл параметров для missiongen.exe"""
-        tvd_folder = self.config.main.game_folder.joinpath(
+        tvd_folder = pathlib.Path('.').joinpath(
             self.config.mgen.cfg[self.name]['tvd_folder'])
-        return tvd_folder.joinpath(self.config.mgen.cfg[self.name]['default_params_dest'])
+        return tvd_folder.joinpath(self.config.mgen.cfg[self.name]['default_params_dest']).absolute()
 
     @property
     def default_params_template_file(self):

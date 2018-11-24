@@ -18,3 +18,8 @@ sandbox.py
 /tmp/
 /movie.gif
 /data/ldf/*_base.ldf
+data/scg/2/blocks_quickmission/airfields_red
+data/scg/2/blocks_quickmission/airfields_blue
+*.ldb
+*.lgb
+data/scg/2/*.ldf
