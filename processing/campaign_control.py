@@ -1,6 +1,8 @@
 """Контроль миссий и хода кампании"""
 import datetime
 import logging
+import shutil
+import pathlib
 
 import atypes
 import configs
@@ -165,7 +167,11 @@ class CampaignController:
                        attacking_country, attacked_airfield_name)
 
     def initialize(self):
-        """Инициализировать кампанию в БД и сгенерировать первую миссию"""
+        """Инициализировать кампанию в БД, обновить файлы в data/scg и сгенерировать первую миссию"""
+        scg_path = pathlib.Path(self.config.main.game_folder.joinpath('data/scg'))
+        if not scg_path.exists():
+            logging.info('Copy data/scg to game/data/scg.')
+            shutil.copytree(r'./data/scg', str(scg_path.absolute()))
         for tvd_name in self.config.mgen.maps:
             self.initialize_map(tvd_name)
 
