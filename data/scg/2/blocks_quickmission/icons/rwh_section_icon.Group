@@ -1,31 +1,9 @@
-MCU_Icon
-{
-  Index = 19;
-  Targets = [];
-  Objects = [];
-  XPos = -1150.000;
-  YPos = 17.795;
-  ZPos = 80.000;
-  XOri = 0.00;
-  YOri = 0.00;
-  ZOri = 0.00;
-  Enabled = 1;
-  LCName = 5;
-  LCDesc = 6;
-  IconId = 507;
-  RColor = 255;
-  GColor = 255;
-  BColor = 255;
-  LineType = 0;
-  Coalitions = [1, 2];
-}
-
 MCU_Deactivate
 {
-  Index = 20;
+  Index = 19301;
   Name = "Trigger Deactivate";
   Desc = "";
-  Targets = [16,19];
+  Targets = [19302,19305,19309,19308,19307];
   Objects = [];
   XPos = -1150.000;
   YPos = 17.795;
@@ -37,10 +15,10 @@ MCU_Deactivate
 
 MCU_Timer
 {
-  Index = 16;
+  Index = 19302;
   Name = "t1s";
   Desc = "";
-  Targets = [20];
+  Targets = [19301];
   Objects = [];
   XPos = -1140.000;
   YPos = 17.795;
@@ -54,10 +32,10 @@ MCU_Timer
 
 MCU_H_Input
 {
-  Index = 22;
+  Index = 19304;
   Name = "KILLED_EVENT";
   Desc = "";
-  Targets = [16];
+  Targets = [19302];
   Objects = [];
   XPos = -1130.000;
   YPos = 17.795;
@@ -65,5 +43,93 @@ MCU_H_Input
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;
+}
+
+MCU_Icon
+{
+  Index = 19305;
+  Targets = [19309];
+  Objects = [];
+  XPos = -900.000;
+  YPos = 74.125;
+  ZPos = 280.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  LCName = 94;
+  LCDesc = 95;
+  IconId = 0;
+  RColor = 192;
+  GColor = 10;
+  BColor = 10;
+  LineType = 20;
+  Coalitions = [1, 2];
+}
+
+MCU_Icon
+{
+  Index = 19307;
+  Targets = [19305];
+  Objects = [];
+  XPos = -900.000;
+  YPos = 74.125;
+  ZPos = -120.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  LCName = 96;
+  LCDesc = 97;
+  IconId = 0;
+  RColor = 192;
+  GColor = 10;
+  BColor = 10;
+  LineType = 20;
+  Coalitions = [1, 2];
+}
+
+MCU_Icon
+{
+  Index = 19308;
+  Targets = [19307];
+  Objects = [];
+  XPos = -1400.000;
+  YPos = 74.125;
+  ZPos = -120.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  LCName = 98;
+  LCDesc = 99;
+  IconId = 0;
+  RColor = 192;
+  GColor = 10;
+  BColor = 10;
+  LineType = 20;
+  Coalitions = [1, 2];
+}
+
+MCU_Icon
+{
+  Index = 19309;
+  Targets = [19308];
+  Objects = [];
+  XPos = -1400.000;
+  YPos = 74.125;
+  ZPos = 280.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  LCName = 100;
+  LCDesc = 101;
+  IconId = 0;
+  RColor = 192;
+  GColor = 10;
+  BColor = 10;
+  LineType = 20;
+  Coalitions = [1, 2];
 }
 

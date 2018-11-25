@@ -1,0 +1,107 @@
+MCU_H_ReferencePoint
+{
+  Index = 2;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -75.000;
+  YPos = 17.774;
+  ZPos = -150.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 75;
+  Backward = 75;
+  Left = 150;
+  Right = 150;
+}
+
+MCU_Icon
+{
+  Index = 3;
+  Targets = [4];
+  Objects = [];
+  XPos = -150.000;
+  YPos = 17.795;
+  ZPos = 0.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  LCName = 3;
+  LCDesc = 4;
+  IconId = 0;
+  RColor = 10;
+  GColor = 10;
+  BColor = 192;
+  LineType = 22;
+  Coalitions = [1, 2];
+}
+
+MCU_Icon
+{
+  Index = 4;
+  Targets = [6];
+  Objects = [];
+  XPos = 0.000;
+  YPos = 17.795;
+  ZPos = 0.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  LCName = 5;
+  LCDesc = 6;
+  IconId = 0;
+  RColor = 10;
+  GColor = 10;
+  BColor = 192;
+  LineType = 22;
+  Coalitions = [1, 2];
+}
+
+MCU_Icon
+{
+  Index = 6;
+  Targets = [8];
+  Objects = [];
+  XPos = 0.000;
+  YPos = 17.795;
+  ZPos = -300.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  LCName = 7;
+  LCDesc = 8;
+  IconId = 0;
+  RColor = 10;
+  GColor = 10;
+  BColor = 192;
+  LineType = 22;
+  Coalitions = [1, 2];
+}
+
+MCU_Icon
+{
+  Index = 8;
+  Targets = [3];
+  Objects = [];
+  XPos = -150.000;
+  YPos = 17.795;
+  ZPos = -300.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  LCName = 9;
+  LCDesc = 10;
+  IconId = 0;
+  RColor = 10;
+  GColor = 10;
+  BColor = 192;
+  LineType = 22;
+  Coalitions = [1, 2];
+}
+
