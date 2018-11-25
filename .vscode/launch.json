@@ -57,8 +57,8 @@
             "args": [
                 "generate",
                 "result1",
-                "stalingrad",
-                "19.10.1942"
+                "moscow",
+                "01.09.1941"
             ],
             "cwd": "${workspaceRoot}"
         },
