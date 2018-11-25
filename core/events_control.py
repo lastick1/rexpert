@@ -170,8 +170,8 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
     # pylint: disable=R0914
     def event_player(self, tik: int, aircraft_id: int, bot_id: int, account_id: str,
                      profile_id: str, name: str, pos: dict, aircraft_name: str, country_id: int,
-                     coal_id: int, airfield_id: int, airstart: bool, parent_id: int,
-                     payload_id: int, fuel: float, skin: str, weapon_mods_id: list,
+                     coal_id: int, airfield_id: int, airstart: bool, parent_id: int, is_player: int,
+                     is_tracking_stat: int, payload_id: int, fuel: float, skin: str, weapon_mods_id: list,
                      cartridges: int, shells: int, bombs: int, rockets: int, form: str) -> None:
         """AType 10 handler"""
         atype = atypes.Atype10(tik, aircraft_id, bot_id, account_id, profile_id, name, pos, aircraft_name, country_id,
