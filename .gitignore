@@ -22,4 +22,5 @@ data/scg/2/blocks_quickmission/airfields_red
 data/scg/2/blocks_quickmission/airfields_blue
 *.ldb
 *.lgb
-data/scg/2/*.ldf
+data/scg/*/*.ldf
+data/scg/*/*.dat
