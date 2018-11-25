@@ -61,15 +61,17 @@ atype_9 = re.compile(r'^T:(?P<tik>\d+) AType:9 AID:(?P<airfield_id>\d+) COUNTRY:
                      r'POS\((?P<pos>.+)\) IDS\((?P<aircraft_id_list>[,\-\d]*)\)$')
 
 # респаун игрока (INAIR: 0 - в воздухе, 1 - с полосы (двигатель вкл), 2 - со стоянки
-# T:2186 AType:10 PLID:105480 PID:106504 BUL:1000 SH:0 BOMB:0 RCT:0 (24602.203,38.541,22096.617)
-# IDS:94adf9ab-11f1-47cb-a4eb-7a95321499bb LOGIN:da3ebe2b-cfe8-4d72-b0b6-ac4577857c34 NAME:WilWil
-# TYPE:Sopwith Camel COUNTRY:101 FORM:0 FIELD:24576 INAIR:0 PARENT:-1
-# PAYLOAD:2 FUEL:0.120 SKIN:bristolf2bf2/f2bf2_def.dds WM:3
+# T:15 AType:10 PLID:276479 PID:277503 BUL:2000 SH:0 BOMB:0 RCT:0 (133119.406,998.935,185101.141)
+# IDS:6f3b5e69-38d7-4d83-868c-4e7b8129f41a LOGIN:60dc67e3-ffb2-4df3-a6e5-579e945b4018 NAME:=FB=Vaal
+# TYPE:Il-2 mod.1942 COUNTRY:101 FORM:0 FIELD:0 INAIR:0 PARENT:-1 ISPL:1 ISTSTART:1 PAYLOAD:0 FUEL:1.000 SKIN: WM:1
 atype_10 = re.compile(r'^T:(?P<tik>\d+) AType:10 PLID:(?P<aircraft_id>\d+) PID:(?P<bot_id>\d+) BUL:(?P<cartridges>\d+) '
                       r'SH:(?P<shells>\d+) BOMB:(?P<bombs>\d+) RCT:(?P<rockets>\d+) \((?P<pos>.+)\) '
-                      r'IDS:(?P<profile_id>[-\w]{36}) LOGIN:(?P<account_id>[-\w]{36}) NAME:(?P<name>.+) '
-                      r'TYPE:(?P<aircraft_name>[\w\(\) .\-_]+) COUNTRY:(?P<country_id>\d{1,3}) FORM:(?P<form>\d+) '
-                      r'FIELD:(?P<airfield_id>\d+) INAIR:(?P<airstart>\d) PARENT:(?P<parent_id>[-\d]+) ')
+                      r'IDS:(?P<profile_id>[-\w]{36}) LOGIN:(?P<account_id>[-\w]{36}) NAME:(?P<name>.*) '
+                      r'TYPE:(?P<aircraft_name>[\w\(\) .\-_/]+) COUNTRY:(?P<country_id>\d{1,3}) FORM:(?P<form>\d+) '
+                      r'FIELD:(?P<airfield_id>\d+) INAIR:(?P<airstart>\d) PARENT:(?P<parent_id>[-\d]+) '
+                      r'ISPL:(?P<is_player>\d+) ISTSTART:(?P<is_tracking_stat>\d+) '
+                      r'PAYLOAD:(?P<payload_id>\d+) FUEL:(?P<fuel>\S{5,6}) '
+                      r'SKIN:(?P<skin>[\S ]*) WM:(?P<weapon_mods_id>\d+)')
 
 
 # группа объектов, с лидером и список членов
@@ -84,7 +86,7 @@ atype_11 = re.compile(r'^T:(?P<tik>\d+) AType:11 GID:(?P<group_id>\d+) '
 # T:171760 AType:12 ID:1266700 TYPE:CParachute_1266700 COUNTRY:101 NAME:CParachute_1266700 PID:-1
 # T:15 AType:12 ID:137215 TYPE:LaGG-3 ser.29 COUNTRY:101 NAME:LaGG-3 ser.29 PID:-1 POS(19666.344,998.778,33864.637)
 atype_12 = re.compile(r'^T:(?P<tik>\d+) AType:12 ID:(?P<object_id>\d+) '
-                      r'TYPE:(?P<object_name>[ .\'\-\w\(\)]*)(\[-?\d+,-?\d+\])* '
+                      r'TYPE:(?P<object_name>[ .\'\-\w\(\)/]*)(\[-?\d+,-?\d+\])* '
                       r'COUNTRY:(?P<country_id>\d{1,3}) NAME:(?P<name>.*) PID:(?P<parent_id>[-\d]+)')
 
 # зона, количество самолетов в воздухе для каждой коалиции (0, 1, 2, 3, 4, 5, 6, 7) находящихся в данный момент в зоне
