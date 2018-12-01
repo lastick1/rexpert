@@ -4,8 +4,8 @@
 ## block sets
 #
 blocks_set; blocks_SERVER_SET; main(scg\2\blocks_quickmission\ref_point.group);
-blocks_set; blocks_BLUE_REAR_AF_REFERENCE; main(scg\2\blocks_quickmission\ref_point.group);
-blocks_set; blocks_RED_REAR_AF_REFERENCE; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_BLUE_REAR_AF1_REFERENCE; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RED_REAR_AF1_REFERENCE; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_FL_ICONS; main(scg\2\blocks_quickmission\icons\fl_icon.group);
 blocks_set; blocks_BTD1; main(scg\2\blocks_quickmission\inputs\btd1.group);
 blocks_set; blocks_BAD1; main(scg\2\blocks_quickmission\inputs\bad1.group);
@@ -38,10 +38,6 @@ blocks_set; blocks_RTD1_009_7; main(scg\2\blocks_quickmission\ground\101\rexpert
 blocks_set; blocks_RTD1_010_6; main(scg\2\blocks_quickmission\ground\101\rexpert_rid1_010_6.group);
 blocks_set; blocks_RTD1_011_16; main(scg\2\blocks_quickmission\ground\101\rexpert_rtd1_011_16.group);
 blocks_set; blocks_RTD1_012_12_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rtd1_012_12_aaa.group);
-blocks_set; blocks_RTD1_013_10; main(scg\2\blocks_quickmission\ground\101\rexpert_rtd1_013_10.group);
-blocks_set; blocks_RTD1_014_6; main(scg\2\blocks_quickmission\ground\101\rexpert_rtd1_014_6.group);
-blocks_set; blocks_RTD1_015_4; main(scg\2\blocks_quickmission\ground\101\rexpert_rtd1_015_4.group);
-blocks_set; blocks_RTD1_016_7_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rtd1_016_7_aaa.group);
 blocks_set; blocks_RAD1_001_6_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_001_6_aaa.group);
 blocks_set; blocks_RAD1_002_7_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_002_7_aaa.group);
 blocks_set; blocks_RAD1_004_4; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_004_4.group);
@@ -52,9 +48,6 @@ blocks_set; blocks_RAD1_009_9; main(scg\2\blocks_quickmission\ground\101\rexpert
 blocks_set; blocks_RAD1_010_8_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_010_8_aaa.group);
 blocks_set; blocks_RAD1_011_7; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_011_7.group);
 blocks_set; blocks_RAD1_012_4_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_012_4_aaa.group);
-blocks_set; blocks_RAD1_013_9; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_013_9.group);
-blocks_set; blocks_RAD1_015_4; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_015_4.group);
-blocks_set; blocks_RAD1_016_5; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_016_5.group);
 blocks_set; blocks_RID1_001_7; main(scg\2\blocks_quickmission\ground\101\rexpert_rid1_001_7.group);
 blocks_set; blocks_RID1_002_7; main(scg\2\blocks_quickmission\ground\101\rexpert_rid1_002_7.group);
 blocks_set; blocks_RID1_003_7; main(scg\2\blocks_quickmission\ground\101\rexpert_rid1_003_7.group);
@@ -66,8 +59,6 @@ blocks_set; blocks_RID1_008_4; main(scg\2\blocks_quickmission\ground\101\rexpert
 blocks_set; blocks_RID1_009_3; main(scg\2\blocks_quickmission\ground\101\rexpert_rid1_009_3.group);
 blocks_set; blocks_RID1_010_6; main(scg\2\blocks_quickmission\ground\101\rexpert_rid1_010_6.group);
 blocks_set; blocks_RID1_012_13; main(scg\2\blocks_quickmission\ground\101\rexpert_rid1_012_13.group);
-blocks_set; blocks_RID1_014_10; main(scg\2\blocks_quickmission\ground\101\rexpert_rid1_014_10.group);
-blocks_set; blocks_RID1_013_10_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rid1_013_10_aaa.group);
 blocks_set; blocks_BID1_001_12_AAA; main(scg\2\blocks_quickmission\ground\201\rexpert_bid1_001_12_aaa.group);
 blocks_set; blocks_BID1_002_10; main(scg\2\blocks_quickmission\ground\201\rexpert_bid1_002_10.group);
 blocks_set; blocks_BID1_003_10; main(scg\2\blocks_quickmission\ground\201\rexpert_bid1_003_10.group);
@@ -80,10 +71,6 @@ blocks_set; blocks_BID1_009_19_AAA; main(scg\2\blocks_quickmission\ground\201\re
 blocks_set; blocks_BID1_010_3; main(scg\2\blocks_quickmission\ground\201\rexpert_bid1_010_3.group);
 blocks_set; blocks_BID1_011_9_AAA; main(scg\2\blocks_quickmission\ground\201\rexpert_bid1_011_9_aaa.group);
 blocks_set; blocks_BID1_012_13_AAA; main(scg\2\blocks_quickmission\ground\201\rexpert_bid1_012_13_aaa.group);
-blocks_set; blocks_BID1_013_6; main(scg\2\blocks_quickmission\ground\201\rexpert_bid1_013_6.group);
-blocks_set; blocks_BID1_014_8; main(scg\2\blocks_quickmission\ground\201\rexpert_bid1_014_8.group);
-blocks_set; blocks_BID1_015_7; main(scg\2\blocks_quickmission\ground\201\rexpert_bid1_015_7.group);
-blocks_set; blocks_BID1_016_8; main(scg\2\blocks_quickmission\ground\201\rexpert_bid1_016_8.group);
 blocks_set; blocks_BAD1_001_10; main(scg\2\blocks_quickmission\ground\201\rexpert_bad1_001_10.group);
 blocks_set; blocks_BAD1_002_9; main(scg\2\blocks_quickmission\ground\201\rexpert_bad1_002_9.group);
 blocks_set; blocks_BAD1_003_7; main(scg\2\blocks_quickmission\ground\201\rexpert_bad1_003_7.group);
@@ -95,11 +82,7 @@ blocks_set; blocks_BAD1_008_9_AAA; main(scg\2\blocks_quickmission\ground\201\rex
 blocks_set; blocks_BAD1_009_15_AAA; main(scg\2\blocks_quickmission\ground\201\rexpert_bad1_009_15_aaa.group);
 blocks_set; blocks_BAD1_010_24_AAA; main(scg\2\blocks_quickmission\ground\201\rexpert_bad1_010_24_aaa.group);
 blocks_set; blocks_BAD1_011_12; main(scg\2\blocks_quickmission\ground\201\rexpert_bad1_011_12.group);
-blocks_set; blocks_BAD1_013_6; main(scg\2\blocks_quickmission\ground\201\rexpert_bad1_013_6.group);
 blocks_set; blocks_BAD1_012_8; main(scg\2\blocks_quickmission\ground\201\rexpert_bad1_012_8.group);
-blocks_set; blocks_BAD1_014_6; main(scg\2\blocks_quickmission\ground\201\rexpert_bad1_014_6.group);
-blocks_set; blocks_BAD1_015_7_AAA; main(scg\2\blocks_quickmission\ground\201\rexpert_bad1_015_7_aaa.group);
-blocks_set; blocks_BAD1_016_8; main(scg\2\blocks_quickmission\ground\201\rexpert_bid1_016_8.group);
 blocks_set; blocks_BTD1_001_14_AAA; main(scg\2\blocks_quickmission\ground\201\rexpert_btd1_001_14_aaa.group);
 blocks_set; blocks_BTD1_002_10_AAA; main(scg\2\blocks_quickmission\ground\201\rexpert_btd1_002_10_aaa.group);
 blocks_set; blocks_BTD1_003_10; main(scg\2\blocks_quickmission\ground\201\rexpert_btd1_003_10.group);
@@ -110,9 +93,6 @@ blocks_set; blocks_BTD1_009_2_AAA; main(scg\2\blocks_quickmission\ground\201\rex
 blocks_set; blocks_BTD1_010_8_AAA; main(scg\2\blocks_quickmission\ground\201\rexpert_btd1_010_8_aaa.group);
 blocks_set; blocks_BTD1_011_10_AAA; main(scg\2\blocks_quickmission\ground\201\rexpert_btd1_011_10_aaa.group);
 blocks_set; blocks_BTD1_012_6; main(scg\2\blocks_quickmission\ground\201\rexpert_btd1_012_6.group);
-blocks_set; blocks_BTD1_013_4; main(scg\2\blocks_quickmission\ground\201\rexpert_btd1_013_4.group);
-blocks_set; blocks_BTD1_015_13; main(scg\2\blocks_quickmission\ground\201\rexpert_btd1_015_13.group);
-blocks_set; blocks_BTD1_016_6; main(scg\2\blocks_quickmission\ground\201\rexpert_btd1_016_6.group);
 blocks_set; blocks_BTD1_ORIENTATION; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BTD1_AAA1_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BTD1_AAA2_REF; main(scg\2\blocks_quickmission\ref_point.group);
@@ -126,14 +106,7 @@ blocks_set; blocks_BTD1_005_REF; main(scg\2\blocks_quickmission\ref_point.group)
 blocks_set; blocks_BTD1_007_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BTD1_008_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BTD1_012_REF; main(scg\2\blocks_quickmission\ref_point.group);
-blocks_set; blocks_BTD1_013_REF; main(scg\2\blocks_quickmission\ref_point.group);
-blocks_set; blocks_BTD1_014_REF; main(scg\2\blocks_quickmission\ref_point.group);
-blocks_set; blocks_BTD1_015_REF; main(scg\2\blocks_quickmission\ref_point.group);
-blocks_set; blocks_BTD1_016_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BAD1_012_REF; main(scg\2\blocks_quickmission\ref_point.group);
-blocks_set; blocks_BAD1_013_REF; main(scg\2\blocks_quickmission\ref_point.group);
-blocks_set; blocks_BAD1_014_REF; main(scg\2\blocks_quickmission\ref_point.group);
-blocks_set; blocks_BAD1_016_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BAD1_011_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BAD1_004_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BAD1_002_REF; main(scg\2\blocks_quickmission\ref_point.group);
@@ -145,12 +118,8 @@ blocks_set; blocks_BAD1_AAA2_REF; main(scg\2\blocks_quickmission\ref_point.group
 blocks_set; blocks_BAD1_AAA3_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BAD1_AAA4_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BAD1_AAA5_REF; main(scg\2\blocks_quickmission\ref_point.group);
-blocks_set; blocks_BAD1_AAA6_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BAD1_ORIENTATION; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BID1_004_REF; main(scg\2\blocks_quickmission\ref_point.group);
-blocks_set; blocks_BID1_013_REF; main(scg\2\blocks_quickmission\ref_point.group);
-blocks_set; blocks_BID1_014_REF; main(scg\2\blocks_quickmission\ref_point.group);
-blocks_set; blocks_BID1_016_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BID1_003_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BID1_AAA1_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BID1_AAA3_REF; main(scg\2\blocks_quickmission\ref_point.group);
@@ -158,7 +127,6 @@ blocks_set; blocks_BID1_AAA2_REF; main(scg\2\blocks_quickmission\ref_point.group
 blocks_set; blocks_BID1_005_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BID1_010_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BID1_002_REF; main(scg\2\blocks_quickmission\ref_point.group);
-blocks_set; blocks_BID1_015_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BID1_007_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BID1_008_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BID1_AAA4_REF; main(scg\2\blocks_quickmission\ref_point.group);
@@ -171,25 +139,17 @@ blocks_set; blocks_RTD1_AAA4_REF; main(scg\2\blocks_quickmission\ref_point.group
 blocks_set; blocks_RTD1_AAA5_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RTD1_004_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RTD1_003_12_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rtd1_003_12_aaa.group);
-blocks_set; blocks_RTD1_AAA6_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RTD1_004_REF_806; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RTD1_005_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RTD1_008_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RTD1_009_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RTD1_010_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RTD1_011_REF; main(scg\2\blocks_quickmission\ref_point.group);
-blocks_set; blocks_RTD1_013_REF; main(scg\2\blocks_quickmission\ref_point.group);
-blocks_set; blocks_RTD1_014_REF; main(scg\2\blocks_quickmission\ref_point.group);
-blocks_set; blocks_RTD1_015_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RTD1_ORIENTATION; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RAD1_AAA5_REF; main(scg\2\blocks_quickmission\ref_point.group);
-blocks_set; blocks_RAD1_AAA7_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RAD1_009_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RAD1_004_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RAD1_011_REF; main(scg\2\blocks_quickmission\ref_point.group);
-blocks_set; blocks_RAD1_013_REF; main(scg\2\blocks_quickmission\ref_point.group);
-blocks_set; blocks_RAD1_016_REF; main(scg\2\blocks_quickmission\ref_point.group);
-blocks_set; blocks_RAD1_015_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RAD1_AAA1_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RAD1_AAA2_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RAD1_AAA3_REF; main(scg\2\blocks_quickmission\ref_point.group);
@@ -200,18 +160,12 @@ blocks_set; blocks_RAD1_006_REF; main(scg\2\blocks_quickmission\ref_point.group)
 blocks_set; blocks_RAD1_007_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RAD1_003_13_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_003_13_aaa.group);
 blocks_set; blocks_RAD1_008_4_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_008_4_aaa.group);
-blocks_set; blocks_RAD1_014_4_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rad1_014_4_aaa.group);
 blocks_set; blocks_RAD1_ORIENTATION; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RID1_011_7_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rid1_011_7_aaa.group);
-blocks_set; blocks_RID1_015_4_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rid1_015_4_aaa.group);
-blocks_set; blocks_RID1_016_9_AAA; main(scg\2\blocks_quickmission\ground\101\rexpert_rid1_016_9_aaa.group);
 blocks_set; blocks_RID1_AAA2_REF; main(scg\2\blocks_quickmission\ref_point.group);
-blocks_set; blocks_RID1_AAA4_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RID1_009_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RID1_003_REF; main(scg\2\blocks_quickmission\ref_point.group);
-blocks_set; blocks_RID1_014_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RID1_012_REF; main(scg\2\blocks_quickmission\ref_point.group);
-blocks_set; blocks_RID1_AAA3_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RID1_AAA1_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RID1_010_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RID1_002_REF; main(scg\2\blocks_quickmission\ref_point.group);
@@ -220,10 +174,8 @@ blocks_set; blocks_RID1_005_REF; main(scg\2\blocks_quickmission\ref_point.group)
 blocks_set; blocks_RID1_006_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RID1_007_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RID1_008_REF; main(scg\2\blocks_quickmission\ref_point.group);
-blocks_set; blocks_RID1_AAA5_REF; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RID1_ORIENTATION; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BTD1_007_3; main(scg\2\blocks_quickmission\ground\201\rexpert_btd1_007_3.group);
-blocks_set; blocks_BTD1_014_9; main(scg\2\blocks_quickmission\ground\201\rexpert_btd1_014_9.group);
 blocks_set; blocks_BTD1_004_10_AAA; main(scg\2\blocks_quickmission\ground\201\rexpert_btd1_004_10_aaa.group);
 blocks_set; blocks_LARGE_CANNON_85_882; main(scg\2\blocks_quickmission\ground\aaa\big\smart_large_cannon.group);
 blocks_set; blocks_MEDIUM_CANNON_86_883; main(scg\2\blocks_quickmission\ground\aaa\med\smart_auto_cannon.group);
@@ -421,32 +373,26 @@ blocks_set; blocks_RTD1_ACTIVATOR; main(scg\2\blocks_quickmission\activate_divis
 blocks_set; blocks_RTD1_DELAY1_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
 blocks_set; blocks_RTD1_DELAY2_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
 blocks_set; blocks_RTD1_DELAY3_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
-blocks_set; blocks_RTD1_DELAY4_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
 blocks_set; blocks_RAD1_ACTIVATOR; main(scg\2\blocks_quickmission\activate_division_red.group);
 blocks_set; blocks_RAD1_DELAY2_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
 blocks_set; blocks_RAD1_DELAY1_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
 blocks_set; blocks_RAD1_DELAY3_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
-blocks_set; blocks_RAD1_DELAY4_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
 blocks_set; blocks_RID1_ACTIVATOR; main(scg\2\blocks_quickmission\activate_division_red.group);
 blocks_set; blocks_RID1_DELAY1_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
 blocks_set; blocks_RID1_DELAY2_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
 blocks_set; blocks_RID1_DELAY3_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
-blocks_set; blocks_RID1_DELAY4_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
 blocks_set; blocks_BTD1_ACTIVATOR; main(scg\2\blocks_quickmission\activate_division_blue.group);
 blocks_set; blocks_BTD1_DELAY1_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
 blocks_set; blocks_BTD1_DELAY2_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
 blocks_set; blocks_BTD1_DELAY3_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
-blocks_set; blocks_BTD1_DELAY4_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
 blocks_set; blocks_BAD1_ACTIVATOR; main(scg\2\blocks_quickmission\activate_division_blue.group);
 blocks_set; blocks_BAD1_DELAY1_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
 blocks_set; blocks_BAD1_DELAY2_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
 blocks_set; blocks_BAD1_DELAY3_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
-blocks_set; blocks_BAD1_DELAY4_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
 blocks_set; blocks_BID1_ACTIVATOR; main(scg\2\blocks_quickmission\activate_division_blue.group);
 blocks_set; blocks_BID1_DELAY1_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
 blocks_set; blocks_BID1_DELAY2_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
 blocks_set; blocks_BID1_DELAY3_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
-blocks_set; blocks_BID1_DELAY4_AAA_LAST; main(scg\2\blocks_quickmission\activation_delay_aaa_last.group);
 blocks_set; blocks_REXPERT_RWH1_74; main(scg\2\blocks_quickmission\ground\warehouses\rexpert_rwh1_74.group);
 blocks_set; blocks_REXPERT_RWH1_52; main(scg\2\blocks_quickmission\ground\warehouses\rexpert_rwh1_52.group);
 blocks_set; blocks_REXPERT_RWH1_60; main(scg\2\blocks_quickmission\ground\warehouses\rexpert_rwh1_60.group);
@@ -802,10 +748,6 @@ blocks_set; blocks_RAD1_UNIT9_ICON; main(scg\2\blocks_quickmission\icons\red_div
 blocks_set; blocks_RAD1_UNIT10_ICON; main(scg\2\blocks_quickmission\icons\red_division_unit.group);
 blocks_set; blocks_RAD1_UNIT11_ICON; main(scg\2\blocks_quickmission\icons\red_division_unit.group);
 blocks_set; blocks_RAD1_UNIT12_ICON; main(scg\2\blocks_quickmission\icons\red_division_unit.group);
-blocks_set; blocks_RAD1_UNIT13_ICON; main(scg\2\blocks_quickmission\icons\red_division_unit.group);
-blocks_set; blocks_RAD1_UNIT14_ICON; main(scg\2\blocks_quickmission\icons\red_division_unit.group);
-blocks_set; blocks_RAD1_UNIT15_ICON; main(scg\2\blocks_quickmission\icons\red_division_unit.group);
-blocks_set; blocks_RAD1_UNIT16_ICON; main(scg\2\blocks_quickmission\icons\red_division_unit.group);
 blocks_set; blocks_RAD1_UNIT2_ICON; main(scg\2\blocks_quickmission\icons\red_division_unit.group);
 blocks_set; blocks_RAD1_UNIT1_ICON; main(scg\2\blocks_quickmission\icons\red_division_unit.group);
 blocks_set; blocks_RAD1_ORIENTATION2; main(scg\2\blocks_quickmission\ref_point.group);
@@ -822,10 +764,6 @@ blocks_set; blocks_RTD1_009_ICON; main(scg\2\blocks_quickmission\icons\red_divis
 blocks_set; blocks_RTD1_010_ICON; main(scg\2\blocks_quickmission\icons\red_division_unit.group);
 blocks_set; blocks_RTD1_011_ICON; main(scg\2\blocks_quickmission\icons\red_division_unit.group);
 blocks_set; blocks_RTD1_012_ICON; main(scg\2\blocks_quickmission\icons\red_division_unit.group);
-blocks_set; blocks_RTD1_013_ICON; main(scg\2\blocks_quickmission\icons\red_division_unit.group);
-blocks_set; blocks_RTD1_014_ICON; main(scg\2\blocks_quickmission\icons\red_division_unit.group);
-blocks_set; blocks_RTD1_015_ICON; main(scg\2\blocks_quickmission\icons\red_division_unit.group);
-blocks_set; blocks_RTD1_016_ICON; main(scg\2\blocks_quickmission\icons\red_division_unit.group);
 blocks_set; blocks_RID1_ORIENTATION2; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_RID1_003_ICON; main(scg\2\blocks_quickmission\icons\red_division_unit.group);
 blocks_set; blocks_RID1_004_ICON; main(scg\2\blocks_quickmission\icons\red_division_unit.group);
@@ -839,10 +777,6 @@ blocks_set; blocks_RID1_009_ICON; main(scg\2\blocks_quickmission\icons\red_divis
 blocks_set; blocks_RID1_010_ICON; main(scg\2\blocks_quickmission\icons\red_division_unit.group);
 blocks_set; blocks_RID1_011_ICON; main(scg\2\blocks_quickmission\icons\red_division_unit.group);
 blocks_set; blocks_RID1_012_ICON; main(scg\2\blocks_quickmission\icons\red_division_unit.group);
-blocks_set; blocks_RID1_013_ICON; main(scg\2\blocks_quickmission\icons\red_division_unit.group);
-blocks_set; blocks_RID1_014_ICON; main(scg\2\blocks_quickmission\icons\red_division_unit.group);
-blocks_set; blocks_RID1_015_ICON; main(scg\2\blocks_quickmission\icons\red_division_unit.group);
-blocks_set; blocks_RID1_016_ICON; main(scg\2\blocks_quickmission\icons\red_division_unit.group);
 blocks_set; blocks_BTD1_ORIENTATION2; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BTD_001_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
 blocks_set; blocks_BTD_002_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
@@ -856,10 +790,6 @@ blocks_set; blocks_BTD_009_ICON; main(scg\2\blocks_quickmission\icons\blue_divis
 blocks_set; blocks_BTD_010_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
 blocks_set; blocks_BTD_011_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
 blocks_set; blocks_BTD_012_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
-blocks_set; blocks_BTD_013_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
-blocks_set; blocks_BTD_014_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
-blocks_set; blocks_BTD_015_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
-blocks_set; blocks_BTD_016_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
 blocks_set; blocks_BAD1_ORIENTATION2; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BAD1_001_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
 blocks_set; blocks_BAD1_002_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
@@ -873,10 +803,6 @@ blocks_set; blocks_BAD1_009_ICON; main(scg\2\blocks_quickmission\icons\blue_divi
 blocks_set; blocks_BAD1_010_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
 blocks_set; blocks_BAD1_011_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
 blocks_set; blocks_BAD1_012_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
-blocks_set; blocks_BAD1_013_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
-blocks_set; blocks_BAD1_014_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
-blocks_set; blocks_BAD1_015_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
-blocks_set; blocks_BAD1_016_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
 blocks_set; blocks_BID1_ORIENTATION2; main(scg\2\blocks_quickmission\ref_point.group);
 blocks_set; blocks_BID1_001_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
 blocks_set; blocks_BID1_002_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
@@ -890,17 +816,51 @@ blocks_set; blocks_BID1_009_ICON; main(scg\2\blocks_quickmission\icons\blue_divi
 blocks_set; blocks_BID1_010_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
 blocks_set; blocks_BID1_011_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
 blocks_set; blocks_BID1_012_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
-blocks_set; blocks_BID1_013_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
-blocks_set; blocks_BID1_014_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
-blocks_set; blocks_BID1_015_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
-blocks_set; blocks_BID1_016_ICON; main(scg\2\blocks_quickmission\icons\blue_division_unit.group);
+blocks_set; blocks_RED_REAR_AF2_REFERENCE; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_RED_REAF_AF1_2834; main(scg\2\blocks_quickmission\airfields_red\!x19794z147440.group);
+blocks_set; blocks_AF4_DECOR_RED_2835; main(scg\2\blocks_quickmission\af_decor_red\!x100000z156500.group);
+blocks_set; blocks_SIREN_RED_4_2836; main(scg\2\blocks_quickmission\ground\effects\siren_rus.group);
+blocks_set; blocks_WINDSOCK_4_2837; main(scg\2\blocks_quickmission\windsock.group);
+blocks_set; blocks_RED_BEACON_2838; main(scg\2\blocks_quickmission\ground\effects\beacon.group);
+blocks_set; blocks_RED_SMART_CHECKZONE_1447_2852; main(scg\2\blocks_quickmission\smart_red_checkzone.group);
+blocks_set; blocks_LARGE_CANNON_1448_2853; main(scg\2\blocks_quickmission\ground\aaa\big\smart_large_cannon.group);
+blocks_set; blocks_MEDIUM_CANNON_1449_2854; main(scg\2\blocks_quickmission\ground\aaa\med\smart_auto_cannon.group);
+blocks_set; blocks_MEDIUM_CANNON2_1450_2855; main(scg\2\blocks_quickmission\ground\aaa\med\smart_auto_cannon.group);
+blocks_set; blocks_MEDIUM_CANNON3_1451_2856; main(scg\2\blocks_quickmission\ground\aaa\med\smart_auto_cannon.group);
+blocks_set; blocks_MEDIUM_CANNON4_1452_2857; main(scg\2\blocks_quickmission\ground\aaa\med\smart_auto_cannon.group);
+blocks_set; blocks_MEDIUM_CANNON5_1453_2858; main(scg\2\blocks_quickmission\ground\aaa\med\smart_auto_cannon.group);
+blocks_set; blocks_MEDIUM_CANNON6_1454_2859; main(scg\2\blocks_quickmission\ground\aaa\med\smart_auto_cannon.group);
+blocks_set; blocks_SMALL_CANNON_1455_2860; main(scg\2\blocks_quickmission\ground\aaa\small\smart_machine_gun.group);
+blocks_set; blocks_SMALL_CANNON2_1456_2861; main(scg\2\blocks_quickmission\ground\aaa\small\smart_machine_gun.group);
+blocks_set; blocks_MEDIUM_CANNON_504_1457_2862; main(scg\2\blocks_quickmission\ground\aaa\med\smart_auto_cannon.group);
+blocks_set; blocks_MEDIUM_CANNON2_505_1458_2863; main(scg\2\blocks_quickmission\ground\aaa\med\smart_auto_cannon.group);
+blocks_set; blocks_MEDIUM_CANNON4_516_1459_2864; main(scg\2\blocks_quickmission\ground\aaa\med\smart_auto_cannon.group);
+blocks_set; blocks_BLUE_REAR_AF2_REFERENCE; main(scg\2\blocks_quickmission\ref_point.group);
+blocks_set; blocks_BLUE_REAR_AF2; main(scg\2\blocks_quickmission\airfields_blue\!x119961z143087.group);
+blocks_set; blocks_AF4_DECOR_BLUE_2939; main(scg\2\blocks_quickmission\af_decor_blue\!x100000z156500.group);
+blocks_set; blocks_SIREN_BLUE_4_2940; main(scg\2\blocks_quickmission\ground\effects\siren_ger.group);
+blocks_set; blocks_WINDSOCK_8_2941; main(scg\2\blocks_quickmission\windsock.group);
+blocks_set; blocks_BLUE_BEACON_2942; main(scg\2\blocks_quickmission\ground\effects\beacon.group);
+blocks_set; blocks_LARGE_CANNON_85_882_1213_2956; main(scg\2\blocks_quickmission\ground\aaa\big\smart_large_cannon.group);
+blocks_set; blocks_MEDIUM_CANNON_86_883_1214_2957; main(scg\2\blocks_quickmission\ground\aaa\med\smart_auto_cannon.group);
+blocks_set; blocks_MEDIUM_CANNON2_87_884_1215_2958; main(scg\2\blocks_quickmission\ground\aaa\med\smart_auto_cannon.group);
+blocks_set; blocks_MEDIUM_CANNON3_88_885_1216_2959; main(scg\2\blocks_quickmission\ground\aaa\med\smart_auto_cannon.group);
+blocks_set; blocks_MEDIUM_CANNON4_89_886_1217_2960; main(scg\2\blocks_quickmission\ground\aaa\med\smart_auto_cannon.group);
+blocks_set; blocks_MEDIUM_CANNON5_90_887_1218_2961; main(scg\2\blocks_quickmission\ground\aaa\med\smart_auto_cannon.group);
+blocks_set; blocks_MEDIUM_CANNON6_91_888_1219_2962; main(scg\2\blocks_quickmission\ground\aaa\med\smart_auto_cannon.group);
+blocks_set; blocks_SMALL_CANNON_92_889_1220_2963; main(scg\2\blocks_quickmission\ground\aaa\small\smart_machine_gun.group);
+blocks_set; blocks_SMALL_CANNON2_93_890_1221_2964; main(scg\2\blocks_quickmission\ground\aaa\small\smart_machine_gun.group);
+blocks_set; blocks_BLUE_SMART_CHECKZONE_891_1222_2965; main(scg\2\blocks_quickmission\smart_blue_checkzone.group);
+blocks_set; blocks_MEDIUM_CANNON_86_883_180_1223_2966; main(scg\2\blocks_quickmission\ground\aaa\med\smart_auto_cannon.group);
+blocks_set; blocks_MEDIUM_CANNON2_87_884_181_1224_2967; main(scg\2\blocks_quickmission\ground\aaa\med\smart_auto_cannon.group);
+blocks_set; blocks_MEDIUM_CANNON6_91_888_192_1225_2968; main(scg\2\blocks_quickmission\ground\aaa\med\smart_auto_cannon.group);
 
 #
 ## geo params
 #
 phase; SERVER_SET; server_setpos(); blocks_SERVER_SET; ;;
-phase; BLUE_REAR_AF_REFERENCE; random(SERVER_SET); blocks_BLUE_REAR_AF_REFERENCE; clone_location;;
-phase; RED_REAR_AF_REFERENCE; random(SERVER_SET); blocks_RED_REAR_AF_REFERENCE; clone_location;;
+phase; BLUE_REAR_AF1_REFERENCE; random(SERVER_SET); blocks_BLUE_REAR_AF1_REFERENCE; clone_location;;
+phase; RED_REAR_AF1_REFERENCE; random(SERVER_SET); blocks_RED_REAR_AF1_REFERENCE; clone_location;;
 phase; FL_ICONS; at(SERVER_SET); blocks_FL_ICONS; clone_location;;
 phase; BTD1; random(BTD1_REF); blocks_BTD1; clone_location;;
 phase; BAD1; random(BAD1_REF); blocks_BAD1; clone_location;;
@@ -933,10 +893,6 @@ phase; RTD1_009_7; line(RTD1_009_REF,RTD1_ORIENTATION2,0,1,0); blocks_RTD1_009_7
 phase; RTD1_010_6; line(RTD1_010_REF,RTD1_ORIENTATION2,0,1,0); blocks_RTD1_010_6; ;;
 phase; RTD1_011_16; line(RTD1_011_REF,RTD1_ORIENTATION2,0,1,0); blocks_RTD1_011_16; ;;
 phase; RTD1_012_12_AAA; line(RTD1_AAA5_REF,RTD1_ORIENTATION2,0,1,0); blocks_RTD1_012_12_AAA; ;;
-phase; RTD1_013_10; line(RTD1_013_REF,RTD1_ORIENTATION2,0,1,0); blocks_RTD1_013_10; ;;
-phase; RTD1_014_6; line(RTD1_014_REF,RTD1_ORIENTATION2,0,1,0); blocks_RTD1_014_6; ;;
-phase; RTD1_015_4; line(RTD1_015_REF,RTD1_ORIENTATION2,0,1,0); blocks_RTD1_015_4; ;;
-phase; RTD1_016_7_AAA; line(RTD1_AAA6_REF,RTD1_ORIENTATION2,0,1,0); blocks_RTD1_016_7_AAA; ;;
 phase; RAD1_001_6_AAA; line(RAD1_AAA1_REF,RAD1_ORIENTATION2,0,1,0); blocks_RAD1_001_6_AAA; ;;
 phase; RAD1_002_7_AAA; line(RAD1_AAA2_REF,RAD1_ORIENTATION2,0,1,0); blocks_RAD1_002_7_AAA; ;;
 phase; RAD1_004_4; line(RAD1_004_REF,RAD1_ORIENTATION2,0,1,0); blocks_RAD1_004_4; ;;
@@ -947,9 +903,6 @@ phase; RAD1_009_9; line(RAD1_009_REF,RAD1_ORIENTATION2,0,1,0); blocks_RAD1_009_9
 phase; RAD1_010_8_AAA; line(RAD1_AAA5_REF,RAD1_ORIENTATION2,0,1,0); blocks_RAD1_010_8_AAA; ;;
 phase; RAD1_011_7; line(RAD1_011_REF,RAD1_ORIENTATION2,0,1,0); blocks_RAD1_011_7; ;;
 phase; RAD1_012_4_AAA; line(RAD1_AAA6_REF,RAD1_ORIENTATION2,0,1,0); blocks_RAD1_012_4_AAA; ;;
-phase; RAD1_013_9; line(RAD1_013_REF,RAD1_ORIENTATION2,0,1,0); blocks_RAD1_013_9; ;;
-phase; RAD1_015_4; line(RAD1_015_REF,RAD1_ORIENTATION2,0,1,0); blocks_RAD1_015_4; ;;
-phase; RAD1_016_5; line(RAD1_016_REF,RAD1_ORIENTATION2,0,1,0); blocks_RAD1_016_5; ;;
 phase; RID1_001_7; line(RID1_001_REF,RID1_ORIENTATION2,0,1,180); blocks_RID1_001_7; ;;
 phase; RID1_002_7; line(RID1_002_REF,RID1_ORIENTATION2,0,1,180); blocks_RID1_002_7; ;;
 phase; RID1_003_7; line(RID1_003_REF,RID1_ORIENTATION2,0,1,180); blocks_RID1_003_7; ;;
@@ -961,8 +914,6 @@ phase; RID1_008_4; line(RID1_008_REF,RID1_ORIENTATION2,0,1,180); blocks_RID1_008
 phase; RID1_009_3; line(RID1_009_REF,RID1_ORIENTATION2,0,1,180); blocks_RID1_009_3; ;;
 phase; RID1_010_6; line(RID1_010_REF,RID1_ORIENTATION2,0,1,180); blocks_RID1_010_6; ;;
 phase; RID1_012_13; line(RID1_012_REF,RID1_ORIENTATION2,0,1,180); blocks_RID1_012_13; ;;
-phase; RID1_014_10; line(RID1_014_REF,RID1_ORIENTATION2,0,1,180); blocks_RID1_014_10; ;;
-phase; RID1_013_10_AAA; line(RID1_AAA3_REF,RID1_ORIENTATION2,0,1,180); blocks_RID1_013_10_AAA; ;;
 phase; BID1_001_12_AAA; line(BID1_AAA1_REF,BID1_ORIENTATION2,0,1,180); blocks_BID1_001_12_AAA; ;;
 phase; BID1_002_10; line(BID1_002_REF,BID1_ORIENTATION2,0,1,180); blocks_BID1_002_10; ;;
 phase; BID1_003_10; line(BID1_003_REF,BID1_ORIENTATION2,0,1,180); blocks_BID1_003_10; ;;
@@ -975,10 +926,6 @@ phase; BID1_009_19_AAA; line(BID1_AAA3_REF,BID1_ORIENTATION2,0,1,180); blocks_BI
 phase; BID1_010_3; line(BID1_010_REF,BID1_ORIENTATION2,0,1,180); blocks_BID1_010_3; ;;
 phase; BID1_011_9_AAA; line(BID1_AAA4_REF,BID1_ORIENTATION2,0,1,180); blocks_BID1_011_9_AAA; ;;
 phase; BID1_012_13_AAA; line(BID1_AAA5_REF,BID1_ORIENTATION2,0,1,180); blocks_BID1_012_13_AAA; ;;
-phase; BID1_013_6; line(BID1_013_REF,BID1_ORIENTATION2,0,1,180); blocks_BID1_013_6; ;;
-phase; BID1_014_8; line(BID1_014_REF,BID1_ORIENTATION2,0,1,180); blocks_BID1_014_8; ;;
-phase; BID1_015_7; line(BID1_015_REF,BID1_ORIENTATION2,0,1,180); blocks_BID1_015_7; ;;
-phase; BID1_016_8; line(BID1_016_REF,BID1_ORIENTATION2,0,1,180); blocks_BID1_016_8; ;;
 phase; BAD1_001_10; line(BAD1_001_REF,BAD1_ORIENTATION2,0,1,180); blocks_BAD1_001_10; ;;
 phase; BAD1_002_9; line(BAD1_002_REF,BAD1_ORIENTATION2,0,1,180); blocks_BAD1_002_9; ;;
 phase; BAD1_003_7; line(BAD1_003_REF,BAD1_ORIENTATION2,0,1,180); blocks_BAD1_003_7; ;;
@@ -990,11 +937,7 @@ phase; BAD1_008_9_AAA; line(BAD1_AAA3_REF,BAD1_ORIENTATION2,0,1,180); blocks_BAD
 phase; BAD1_009_15_AAA; line(BAD1_AAA4_REF,BAD1_ORIENTATION2,0,1,180); blocks_BAD1_009_15_AAA; ;;
 phase; BAD1_010_24_AAA; line(BAD1_AAA5_REF,BAD1_ORIENTATION2,0,1,180); blocks_BAD1_010_24_AAA; ;;
 phase; BAD1_011_12; line(BAD1_011_REF,BAD1_ORIENTATION2,0,1,180); blocks_BAD1_011_12; ;;
-phase; BAD1_013_6; line(BAD1_013_REF,BAD1_ORIENTATION2,0,1,180); blocks_BAD1_013_6; ;;
 phase; BAD1_012_8; line(BAD1_012_REF,BAD1_ORIENTATION2,0,1,180); blocks_BAD1_012_8; ;;
-phase; BAD1_014_6; line(BAD1_014_REF,BAD1_ORIENTATION2,0,1,180); blocks_BAD1_014_6; ;;
-phase; BAD1_015_7_AAA; line(BAD1_AAA6_REF,BAD1_ORIENTATION2,0,1,180); blocks_BAD1_015_7_AAA; ;;
-phase; BAD1_016_8; line(BAD1_016_REF,BAD1_ORIENTATION2,0,1,180); blocks_BAD1_016_8; ;;
 phase; BTD1_001_14_AAA; line(BTD1_AAA1_REF,BTD1_ORIENTATION2,0,1,180); blocks_BTD1_001_14_AAA; ;;
 phase; BTD1_002_10_AAA; line(BTD1_AAA2_REF,BTD1_ORIENTATION2,0,1,180); blocks_BTD1_002_10_AAA; ;;
 phase; BTD1_003_10; line(BTD1_003_REF,BTD1_ORIENTATION2,0,1,180); blocks_BTD1_003_10; ;;
@@ -1005,9 +948,6 @@ phase; BTD1_009_2_AAA; line(BTD1_AAA4_REF,BTD1_ORIENTATION2,0,1,180); blocks_BTD
 phase; BTD1_010_8_AAA; line(BTD1_AAA5_REF,BTD1_ORIENTATION2,0,1,180); blocks_BTD1_010_8_AAA; ;;
 phase; BTD1_011_10_AAA; line(BTD1_AAA6_REF,BTD1_ORIENTATION2,0,1,180); blocks_BTD1_011_10_AAA; ;;
 phase; BTD1_012_6; line(BTD1_012_REF,BTD1_ORIENTATION2,0,1,180); blocks_BTD1_012_6; ;;
-phase; BTD1_013_4; line(BTD1_013_REF,BTD1_ORIENTATION2,0,1,180); blocks_BTD1_013_4; ;;
-phase; BTD1_015_13; line(BTD1_015_REF,BTD1_ORIENTATION2,0,1,180); blocks_BTD1_015_13; ;;
-phase; BTD1_016_6; line(BTD1_016_REF,BTD1_ORIENTATION2,0,1,180); blocks_BTD1_016_6; ;;
 phase; BTD1_ORIENTATION; random(BTD1); blocks_BTD1_ORIENTATION; clone_location;;
 phase; BTD1_AAA1_REF; random(BTD1); blocks_BTD1_AAA1_REF; clone_location;;
 phase; BTD1_AAA2_REF; random(BTD1); blocks_BTD1_AAA2_REF; clone_location;;
@@ -1021,14 +961,7 @@ phase; BTD1_005_REF; random(BTD1); blocks_BTD1_005_REF; clone_location;;
 phase; BTD1_007_REF; random(BTD1); blocks_BTD1_007_REF; clone_location;;
 phase; BTD1_008_REF; random(BTD1); blocks_BTD1_008_REF; clone_location;;
 phase; BTD1_012_REF; random(BTD1); blocks_BTD1_012_REF; clone_location;;
-phase; BTD1_013_REF; random(BTD1); blocks_BTD1_013_REF; clone_location;;
-phase; BTD1_014_REF; random(BTD1); blocks_BTD1_014_REF; clone_location;;
-phase; BTD1_015_REF; random(BTD1); blocks_BTD1_015_REF; clone_location;;
-phase; BTD1_016_REF; random(BTD1); blocks_BTD1_016_REF; clone_location;;
 phase; BAD1_012_REF; random(BAD1); blocks_BAD1_012_REF; clone_location;;
-phase; BAD1_013_REF; random(BAD1); blocks_BAD1_013_REF; clone_location;;
-phase; BAD1_014_REF; random(BAD1); blocks_BAD1_014_REF; clone_location;;
-phase; BAD1_016_REF; random(BAD1); blocks_BAD1_016_REF; clone_location;;
 phase; BAD1_011_REF; random(BAD1); blocks_BAD1_011_REF; clone_location;;
 phase; BAD1_004_REF; random(BAD1); blocks_BAD1_004_REF; clone_location;;
 phase; BAD1_002_REF; random(BAD1); blocks_BAD1_002_REF; clone_location;;
@@ -1040,12 +973,8 @@ phase; BAD1_AAA2_REF; random(BAD1); blocks_BAD1_AAA2_REF; clone_location;;
 phase; BAD1_AAA3_REF; random(BAD1); blocks_BAD1_AAA3_REF; clone_location;;
 phase; BAD1_AAA4_REF; random(BAD1); blocks_BAD1_AAA4_REF; clone_location;;
 phase; BAD1_AAA5_REF; random(BAD1); blocks_BAD1_AAA5_REF; clone_location;;
-phase; BAD1_AAA6_REF; random(BAD1); blocks_BAD1_AAA6_REF; clone_location;;
 phase; BAD1_ORIENTATION; random(BAD1); blocks_BAD1_ORIENTATION; clone_location;;
 phase; BID1_004_REF; random(BID1); blocks_BID1_004_REF; clone_location;;
-phase; BID1_013_REF; random(BID1); blocks_BID1_013_REF; clone_location;;
-phase; BID1_014_REF; random(BID1); blocks_BID1_014_REF; clone_location;;
-phase; BID1_016_REF; random(BID1); blocks_BID1_016_REF; clone_location;;
 phase; BID1_003_REF; random(BID1); blocks_BID1_003_REF; clone_location;;
 phase; BID1_AAA1_REF; random(BID1); blocks_BID1_AAA1_REF; clone_location;;
 phase; BID1_AAA3_REF; random(BID1); blocks_BID1_AAA3_REF; clone_location;;
@@ -1053,7 +982,6 @@ phase; BID1_AAA2_REF; random(BID1); blocks_BID1_AAA2_REF; clone_location;;
 phase; BID1_005_REF; random(BID1); blocks_BID1_005_REF; clone_location;;
 phase; BID1_010_REF; random(BID1); blocks_BID1_010_REF; clone_location;;
 phase; BID1_002_REF; random(BID1); blocks_BID1_002_REF; clone_location;;
-phase; BID1_015_REF; random(BID1); blocks_BID1_015_REF; clone_location;;
 phase; BID1_007_REF; random(BID1); blocks_BID1_007_REF; clone_location;;
 phase; BID1_008_REF; random(BID1); blocks_BID1_008_REF; clone_location;;
 phase; BID1_AAA4_REF; random(BID1); blocks_BID1_AAA4_REF; clone_location;;
@@ -1066,25 +994,17 @@ phase; RTD1_AAA4_REF; random(RTD1); blocks_RTD1_AAA4_REF; clone_location;;
 phase; RTD1_AAA5_REF; random(RTD1); blocks_RTD1_AAA5_REF; clone_location;;
 phase; RTD1_004_REF; random(RTD1); blocks_RTD1_004_REF; clone_location;;
 phase; RTD1_003_12_AAA; line(RTD1_AAA3_REF,RTD1_ORIENTATION2,0,1,0); blocks_RTD1_003_12_AAA; ;;
-phase; RTD1_AAA6_REF; random(RTD1); blocks_RTD1_AAA6_REF; clone_location;;
 phase; RTD1_004_REF_806; random(RTD1); blocks_RTD1_004_REF_806; clone_location;;
 phase; RTD1_005_REF; random(RTD1); blocks_RTD1_005_REF; clone_location;;
 phase; RTD1_008_REF; random(RTD1); blocks_RTD1_008_REF; clone_location;;
 phase; RTD1_009_REF; random(RTD1); blocks_RTD1_009_REF; clone_location;;
 phase; RTD1_010_REF; random(RTD1); blocks_RTD1_010_REF; clone_location;;
 phase; RTD1_011_REF; random(RTD1); blocks_RTD1_011_REF; clone_location;;
-phase; RTD1_013_REF; random(RTD1); blocks_RTD1_013_REF; clone_location;;
-phase; RTD1_014_REF; random(RTD1); blocks_RTD1_014_REF; clone_location;;
-phase; RTD1_015_REF; random(RTD1); blocks_RTD1_015_REF; clone_location;;
 phase; RTD1_ORIENTATION; random(RTD1); blocks_RTD1_ORIENTATION; clone_location;;
 phase; RAD1_AAA5_REF; random(RAD1); blocks_RAD1_AAA5_REF; clone_location;;
-phase; RAD1_AAA7_REF; random(RAD1); blocks_RAD1_AAA7_REF; clone_location;;
 phase; RAD1_009_REF; random(RAD1); blocks_RAD1_009_REF; clone_location;;
 phase; RAD1_004_REF; random(RAD1); blocks_RAD1_004_REF; clone_location;;
 phase; RAD1_011_REF; random(RAD1); blocks_RAD1_011_REF; clone_location;;
-phase; RAD1_013_REF; random(RAD1); blocks_RAD1_013_REF; clone_location;;
-phase; RAD1_016_REF; random(RAD1); blocks_RAD1_016_REF; clone_location;;
-phase; RAD1_015_REF; random(RAD1); blocks_RAD1_015_REF; clone_location;;
 phase; RAD1_AAA1_REF; random(RAD1); blocks_RAD1_AAA1_REF; clone_location;;
 phase; RAD1_AAA2_REF; random(RAD1); blocks_RAD1_AAA2_REF; clone_location;;
 phase; RAD1_AAA3_REF; random(RAD1); blocks_RAD1_AAA3_REF; clone_location;;
@@ -1095,18 +1015,12 @@ phase; RAD1_006_REF; random(RAD1); blocks_RAD1_006_REF; clone_location;;
 phase; RAD1_007_REF; random(RAD1); blocks_RAD1_007_REF; clone_location;;
 phase; RAD1_003_13_AAA; line(RAD1_AAA3_REF,RAD1_ORIENTATION2,0,1,0); blocks_RAD1_003_13_AAA; ;;
 phase; RAD1_008_4_AAA; line(RAD1_AAA4_REF,RAD1_ORIENTATION2,0,1,0); blocks_RAD1_008_4_AAA; ;;
-phase; RAD1_014_4_AAA; line(RAD1_AAA7_REF,RAD1_ORIENTATION2,0,1,0); blocks_RAD1_014_4_AAA; ;;
 phase; RAD1_ORIENTATION; random(RAD1); blocks_RAD1_ORIENTATION; clone_location;;
 phase; RID1_011_7_AAA; line(RID1_AAA2_REF,RID1_ORIENTATION2,0,1,180); blocks_RID1_011_7_AAA; ;;
-phase; RID1_015_4_AAA; line(RID1_AAA4_REF,RID1_ORIENTATION2,0,1,180); blocks_RID1_015_4_AAA; ;;
-phase; RID1_016_9_AAA; line(RID1_AAA5_REF,RID1_ORIENTATION2,0,1,180); blocks_RID1_016_9_AAA; ;;
 phase; RID1_AAA2_REF; random(RID1); blocks_RID1_AAA2_REF; clone_location;;
-phase; RID1_AAA4_REF; random(RID1); blocks_RID1_AAA4_REF; clone_location;;
 phase; RID1_009_REF; random(RID1); blocks_RID1_009_REF; clone_location;;
 phase; RID1_003_REF; random(RID1); blocks_RID1_003_REF; clone_location;;
-phase; RID1_014_REF; random(RID1); blocks_RID1_014_REF; clone_location;;
 phase; RID1_012_REF; random(RID1); blocks_RID1_012_REF; clone_location;;
-phase; RID1_AAA3_REF; random(RID1); blocks_RID1_AAA3_REF; clone_location;;
 phase; RID1_AAA1_REF; random(RID1); blocks_RID1_AAA1_REF; clone_location;;
 phase; RID1_010_REF; random(RID1); blocks_RID1_010_REF; clone_location;;
 phase; RID1_002_REF; random(RID1); blocks_RID1_002_REF; clone_location;;
@@ -1115,10 +1029,8 @@ phase; RID1_005_REF; random(RID1); blocks_RID1_005_REF; clone_location;;
 phase; RID1_006_REF; random(RID1); blocks_RID1_006_REF; clone_location;;
 phase; RID1_007_REF; random(RID1); blocks_RID1_007_REF; clone_location;;
 phase; RID1_008_REF; random(RID1); blocks_RID1_008_REF; clone_location;;
-phase; RID1_AAA5_REF; random(RID1); blocks_RID1_AAA5_REF; clone_location;;
 phase; RID1_ORIENTATION; random(RID1); blocks_RID1_ORIENTATION; clone_location;;
 phase; BTD1_007_3; line(BTD1_007_REF,BTD1_ORIENTATION2,0,1,180); blocks_BTD1_007_3; ;;
-phase; BTD1_014_9; line(BTD1_014_REF,BTD1_ORIENTATION2,0,1,180); blocks_BTD1_014_9; ;;
 phase; BTD1_004_10_AAA; line(BTD1_004_REF,BTD1_ORIENTATION2,0,1,180); blocks_BTD1_004_10_AAA; ;;
 phase; LARGE_CANNON_85_882; random(BLUE_SMART_CHECKZONE_891); blocks_LARGE_CANNON_85_882; clone_location;;
 phase; MEDIUM_CANNON_86_883; random(BLUE_SMART_CHECKZONE_891); blocks_MEDIUM_CANNON_86_883; clone_location;;
@@ -1232,8 +1144,8 @@ phase; RED_FRONT_AF_3_KILLED; at(RED_FRONT_AF3); blocks_RED_FRONT_AF_3_KILLED; c
 phase; BLUE_FRONT_AF_1_KILLED; at(BLUE_FRONT_AF1); blocks_BLUE_FRONT_AF_1_KILLED; clone_location;;
 phase; BLUE_FRONT_AF_2_KILLED; at(BLUE_FRONT_AF2); blocks_BLUE_FRONT_AF_2_KILLED; clone_location;;
 phase; BLUE_FRONT_AF_3_KILLED; at(BLUE_FRONT_AF3); blocks_BLUE_FRONT_AF_3_KILLED; clone_location;;
-phase; BLUE_REAR_AF1; random(BLUE_REAR_AF_REFERENCE); blocks_BLUE_REAR_AF1; clone_location;scg\2\blocks_quickmission\airfields_blue;
-phase; RED_REAF_AF1; random(RED_REAR_AF_REFERENCE); blocks_RED_REAF_AF1; clone_location;scg\2\blocks_quickmission\airfields_red;
+phase; BLUE_REAR_AF1; random(BLUE_REAR_AF1_REFERENCE); blocks_BLUE_REAR_AF1; clone_location;scg\2\blocks_quickmission\airfields_blue;
+phase; RED_REAF_AF1; random(RED_REAR_AF1_REFERENCE); blocks_RED_REAF_AF1; clone_location;scg\2\blocks_quickmission\airfields_red;
 phase; RED_FRONT_AF1; random(SERVER_SET); blocks_RED_FRONT_AF1; clone_location;scg\2\blocks_quickmission\airfields_red;
 phase; RED_FRONT_AF2; random(SERVER_SET); blocks_RED_FRONT_AF2; clone_location;scg\2\blocks_quickmission\airfields_red;
 phase; RED_FRONT_AF3; random(SERVER_SET); blocks_RED_FRONT_AF3; clone_location;scg\2\blocks_quickmission\airfields_red;
@@ -1316,32 +1228,26 @@ phase; RTD1_ACTIVATOR; at(RTD1); blocks_RTD1_ACTIVATOR; clone_location;;
 phase; RTD1_DELAY1_AAA_LAST; at(RTD1_ACTIVATOR); blocks_RTD1_DELAY1_AAA_LAST; clone_location;;
 phase; RTD1_DELAY2_AAA_LAST; at(RTD1_ACTIVATOR); blocks_RTD1_DELAY2_AAA_LAST; clone_location;;
 phase; RTD1_DELAY3_AAA_LAST; at(RTD1_ACTIVATOR); blocks_RTD1_DELAY3_AAA_LAST; clone_location;;
-phase; RTD1_DELAY4_AAA_LAST; at(RTD1_ACTIVATOR); blocks_RTD1_DELAY4_AAA_LAST; clone_location;;
 phase; RAD1_ACTIVATOR; at(RAD1_ICON); blocks_RAD1_ACTIVATOR; clone_location;;
 phase; RAD1_DELAY2_AAA_LAST; at(RAD1_ACTIVATOR); blocks_RAD1_DELAY2_AAA_LAST; clone_location;;
 phase; RAD1_DELAY1_AAA_LAST; at(RAD1_ACTIVATOR); blocks_RAD1_DELAY1_AAA_LAST; clone_location;;
 phase; RAD1_DELAY3_AAA_LAST; at(RAD1_ACTIVATOR); blocks_RAD1_DELAY3_AAA_LAST; clone_location;;
-phase; RAD1_DELAY4_AAA_LAST; at(RAD1_ACTIVATOR); blocks_RAD1_DELAY4_AAA_LAST; clone_location;;
 phase; RID1_ACTIVATOR; at(RID1_ICON); blocks_RID1_ACTIVATOR; clone_location;;
 phase; RID1_DELAY1_AAA_LAST; at(RID1_ACTIVATOR); blocks_RID1_DELAY1_AAA_LAST; clone_location;;
 phase; RID1_DELAY2_AAA_LAST; at(RID1_ACTIVATOR); blocks_RID1_DELAY2_AAA_LAST; clone_location;;
 phase; RID1_DELAY3_AAA_LAST; at(RID1_ACTIVATOR); blocks_RID1_DELAY3_AAA_LAST; clone_location;;
-phase; RID1_DELAY4_AAA_LAST; at(RID1_ACTIVATOR); blocks_RID1_DELAY4_AAA_LAST; clone_location;;
 phase; BTD1_ACTIVATOR; at(BTD1); blocks_BTD1_ACTIVATOR; clone_location;;
 phase; BTD1_DELAY1_AAA_LAST; at(BTD1_ACTIVATOR); blocks_BTD1_DELAY1_AAA_LAST; clone_location;;
 phase; BTD1_DELAY2_AAA_LAST; at(BTD1_ACTIVATOR); blocks_BTD1_DELAY2_AAA_LAST; clone_location;;
 phase; BTD1_DELAY3_AAA_LAST; at(BTD1_ACTIVATOR); blocks_BTD1_DELAY3_AAA_LAST; clone_location;;
-phase; BTD1_DELAY4_AAA_LAST; at(BTD1_ACTIVATOR); blocks_BTD1_DELAY4_AAA_LAST; clone_location;;
 phase; BAD1_ACTIVATOR; at(BAD1); blocks_BAD1_ACTIVATOR; clone_location;;
 phase; BAD1_DELAY1_AAA_LAST; at(BAD1_ACTIVATOR); blocks_BAD1_DELAY1_AAA_LAST; clone_location;;
 phase; BAD1_DELAY2_AAA_LAST; at(BAD1_ACTIVATOR); blocks_BAD1_DELAY2_AAA_LAST; clone_location;;
 phase; BAD1_DELAY3_AAA_LAST; at(BAD1_ACTIVATOR); blocks_BAD1_DELAY3_AAA_LAST; clone_location;;
-phase; BAD1_DELAY4_AAA_LAST; at(BAD1_ACTIVATOR); blocks_BAD1_DELAY4_AAA_LAST; clone_location;;
 phase; BID1_ACTIVATOR; at(BID1); blocks_BID1_ACTIVATOR; clone_location;;
 phase; BID1_DELAY1_AAA_LAST; at(BID1_ACTIVATOR); blocks_BID1_DELAY1_AAA_LAST; clone_location;;
 phase; BID1_DELAY2_AAA_LAST; at(BID1_ACTIVATOR); blocks_BID1_DELAY2_AAA_LAST; clone_location;;
 phase; BID1_DELAY3_AAA_LAST; at(BID1_ACTIVATOR); blocks_BID1_DELAY3_AAA_LAST; clone_location;;
-phase; BID1_DELAY4_AAA_LAST; at(BID1_ACTIVATOR); blocks_BID1_DELAY4_AAA_LAST; clone_location;;
 phase; REXPERT_RWH1_74; at(RED_WH1_01_0DMG); blocks_REXPERT_RWH1_74; clone_location;;
 phase; REXPERT_RWH1_52; at(RED_WH1_02_0DMG); blocks_REXPERT_RWH1_52; clone_location;;
 phase; REXPERT_RWH1_60; at(RED_WH1_03_0DMG); blocks_REXPERT_RWH1_60; clone_location;;
@@ -1697,10 +1603,6 @@ phase; RAD1_UNIT9_ICON; line(RAD1_009_REF,RAD1_ORIENTATION2,0,1,0); blocks_RAD1_
 phase; RAD1_UNIT10_ICON; line(RAD1_AAA5_REF,RAD1_ORIENTATION2,0,1,0); blocks_RAD1_UNIT10_ICON; ;;
 phase; RAD1_UNIT11_ICON; line(RAD1_011_REF,RAD1_ORIENTATION2,0,1,0); blocks_RAD1_UNIT11_ICON; ;;
 phase; RAD1_UNIT12_ICON; line(RAD1_AAA6_REF,RAD1_ORIENTATION2,0,1,0); blocks_RAD1_UNIT12_ICON; ;;
-phase; RAD1_UNIT13_ICON; line(RAD1_013_REF,RAD1_ORIENTATION2,0,1,0); blocks_RAD1_UNIT13_ICON; ;;
-phase; RAD1_UNIT14_ICON; line(RAD1_AAA7_REF,RAD1_ORIENTATION2,0,1,0); blocks_RAD1_UNIT14_ICON; ;;
-phase; RAD1_UNIT15_ICON; line(RAD1_015_REF,RAD1_ORIENTATION2,0,1,0); blocks_RAD1_UNIT15_ICON; ;;
-phase; RAD1_UNIT16_ICON; line(RAD1_016_REF,RAD1_ORIENTATION2,0,1,0); blocks_RAD1_UNIT16_ICON; ;;
 phase; RAD1_UNIT2_ICON; line(RAD1_AAA2_REF,RAD1_ORIENTATION2,0,1,0); blocks_RAD1_UNIT2_ICON; ;;
 phase; RAD1_UNIT1_ICON; line(RAD1_AAA1_REF,RAD1_ORIENTATION2,0,1,0); blocks_RAD1_UNIT1_ICON; ;;
 phase; RAD1_ORIENTATION2; line(RAD1,RAD1_ORIENTATION,0,3000,180); blocks_RAD1_ORIENTATION2; ;;
@@ -1717,10 +1619,6 @@ phase; RTD1_009_ICON; line(RTD1_009_REF,RTD1_ORIENTATION2,0,1,0); blocks_RTD1_00
 phase; RTD1_010_ICON; line(RTD1_010_REF,RTD1_ORIENTATION2,0,1,0); blocks_RTD1_010_ICON; ;;
 phase; RTD1_011_ICON; line(RTD1_011_REF,RTD1_ORIENTATION2,0,1,0); blocks_RTD1_011_ICON; ;;
 phase; RTD1_012_ICON; line(RTD1_AAA5_REF,RTD1_ORIENTATION2,0,1,0); blocks_RTD1_012_ICON; ;;
-phase; RTD1_013_ICON; line(RTD1_013_REF,RTD1_ORIENTATION2,0,1,0); blocks_RTD1_013_ICON; ;;
-phase; RTD1_014_ICON; line(RTD1_014_REF,RTD1_ORIENTATION2,0,1,0); blocks_RTD1_014_ICON; ;;
-phase; RTD1_015_ICON; line(RTD1_015_REF,RTD1_ORIENTATION2,0,1,0); blocks_RTD1_015_ICON; ;;
-phase; RTD1_016_ICON; line(RTD1_AAA6_REF,RTD1_ORIENTATION2,0,1,0); blocks_RTD1_016_ICON; ;;
 phase; RID1_ORIENTATION2; line(RID1,RID1_ORIENTATION,0,3000,180); blocks_RID1_ORIENTATION2; ;;
 phase; RID1_003_ICON; line(RID1_003_REF,RID1_ORIENTATION2,0,1,0); blocks_RID1_003_ICON; ;;
 phase; RID1_004_ICON; line(RID1_AAA1_REF,RID1_ORIENTATION2,0,1,0); blocks_RID1_004_ICON; ;;
@@ -1734,10 +1632,6 @@ phase; RID1_009_ICON; line(RID1_009_REF,RID1_ORIENTATION2,0,1,0); blocks_RID1_00
 phase; RID1_010_ICON; line(RID1_010_REF,RID1_ORIENTATION2,0,1,0); blocks_RID1_010_ICON; ;;
 phase; RID1_011_ICON; line(RID1_AAA2_REF,RID1_ORIENTATION2,0,1,0); blocks_RID1_011_ICON; ;;
 phase; RID1_012_ICON; line(RID1_012_REF,RID1_ORIENTATION2,0,1,0); blocks_RID1_012_ICON; ;;
-phase; RID1_013_ICON; line(RID1_AAA3_REF,RID1_ORIENTATION2,0,1,0); blocks_RID1_013_ICON; ;;
-phase; RID1_014_ICON; line(RID1_014_REF,RID1_ORIENTATION2,0,1,0); blocks_RID1_014_ICON; ;;
-phase; RID1_015_ICON; line(RID1_AAA4_REF,RID1_ORIENTATION2,0,1,0); blocks_RID1_015_ICON; ;;
-phase; RID1_016_ICON; line(RID1_AAA5_REF,RID1_ORIENTATION2,0,1,0); blocks_RID1_016_ICON; ;;
 phase; BTD1_ORIENTATION2; line(BTD1,BTD1_ORIENTATION,0,3000,180); blocks_BTD1_ORIENTATION2; ;;
 phase; BTD_001_ICON; line(BTD1_AAA1_REF,BTD1_ORIENTATION2,0,1,0); blocks_BTD_001_ICON; ;;
 phase; BTD_002_ICON; line(BTD1_AAA2_REF,BTD1_ORIENTATION2,0,1,0); blocks_BTD_002_ICON; ;;
@@ -1751,10 +1645,6 @@ phase; BTD_009_ICON; line(BTD1_AAA4_REF,BTD1_ORIENTATION2,0,1,0); blocks_BTD_009
 phase; BTD_010_ICON; line(BTD1_AAA5_REF,BTD1_ORIENTATION2,0,1,0); blocks_BTD_010_ICON; ;;
 phase; BTD_011_ICON; line(BTD1_AAA6_REF,BTD1_ORIENTATION2,0,1,0); blocks_BTD_011_ICON; ;;
 phase; BTD_012_ICON; line(BTD1_012_REF,BTD1_ORIENTATION2,0,1,0); blocks_BTD_012_ICON; ;;
-phase; BTD_013_ICON; line(BTD1_013_REF,BTD1_ORIENTATION2,0,1,0); blocks_BTD_013_ICON; ;;
-phase; BTD_014_ICON; line(BTD1_014_REF,BTD1_ORIENTATION2,0,1,0); blocks_BTD_014_ICON; ;;
-phase; BTD_015_ICON; line(BTD1_015_REF,BTD1_ORIENTATION2,0,1,0); blocks_BTD_015_ICON; ;;
-phase; BTD_016_ICON; line(BTD1_016_REF,BTD1_ORIENTATION2,0,1,0); blocks_BTD_016_ICON; ;;
 phase; BAD1_ORIENTATION2; line(BAD1,BAD1_ORIENTATION,0,3000,180); blocks_BAD1_ORIENTATION2; ;;
 phase; BAD1_001_ICON; line(BAD1_001_REF,BAD1_ORIENTATION2,0,1,0); blocks_BAD1_001_ICON; ;;
 phase; BAD1_002_ICON; line(BAD1_002_REF,BAD1_ORIENTATION2,0,1,0); blocks_BAD1_002_ICON; ;;
@@ -1768,10 +1658,6 @@ phase; BAD1_009_ICON; line(BAD1_AAA4_REF,BAD1_ORIENTATION2,0,1,0); blocks_BAD1_0
 phase; BAD1_010_ICON; line(BAD1_AAA5_REF,BAD1_ORIENTATION2,0,1,0); blocks_BAD1_010_ICON; ;;
 phase; BAD1_011_ICON; line(BAD1_011_REF,BAD1_ORIENTATION2,0,1,0); blocks_BAD1_011_ICON; ;;
 phase; BAD1_012_ICON; line(BAD1_012_REF,BAD1_ORIENTATION2,0,1,0); blocks_BAD1_012_ICON; ;;
-phase; BAD1_013_ICON; line(BAD1_013_REF,BAD1_ORIENTATION2,0,1,0); blocks_BAD1_013_ICON; ;;
-phase; BAD1_014_ICON; line(BAD1_014_REF,BAD1_ORIENTATION2,0,1,0); blocks_BAD1_014_ICON; ;;
-phase; BAD1_015_ICON; line(BAD1_AAA6_REF,BAD1_ORIENTATION2,0,1,0); blocks_BAD1_015_ICON; ;;
-phase; BAD1_016_ICON; line(BAD1_016_REF,BAD1_ORIENTATION2,0,1,0); blocks_BAD1_016_ICON; ;;
 phase; BID1_ORIENTATION2; line(BID1,BID1_ORIENTATION,0,3000,180); blocks_BID1_ORIENTATION2; ;;
 phase; BID1_001_ICON; line(BID1_AAA1_REF,BID1_ORIENTATION2,0,1,0); blocks_BID1_001_ICON; ;;
 phase; BID1_002_ICON; line(BID1_002_REF,BID1_ORIENTATION2,0,1,0); blocks_BID1_002_ICON; ;;
@@ -1785,10 +1671,44 @@ phase; BID1_009_ICON; line(BID1_AAA3_REF,BID1_ORIENTATION2,0,1,0); blocks_BID1_0
 phase; BID1_010_ICON; line(BID1_010_REF,BID1_ORIENTATION2,0,1,0); blocks_BID1_010_ICON; ;;
 phase; BID1_011_ICON; line(BID1_AAA4_REF,BID1_ORIENTATION2,0,1,0); blocks_BID1_011_ICON; ;;
 phase; BID1_012_ICON; line(BID1_AAA5_REF,BID1_ORIENTATION2,0,1,0); blocks_BID1_012_ICON; ;;
-phase; BID1_013_ICON; line(BID1_013_REF,BID1_ORIENTATION2,0,1,0); blocks_BID1_013_ICON; ;;
-phase; BID1_014_ICON; line(BID1_014_REF,BID1_ORIENTATION2,0,1,0); blocks_BID1_014_ICON; ;;
-phase; BID1_015_ICON; line(BID1_015_REF,BID1_ORIENTATION2,0,1,0); blocks_BID1_015_ICON; ;;
-phase; BID1_016_ICON; line(BID1_016_REF,BID1_ORIENTATION2,0,1,0); blocks_BID1_016_ICON; ;;
+phase; RED_REAR_AF2_REFERENCE; random(RED_REAR_AF1_REFERENCE); blocks_RED_REAR_AF2_REFERENCE; clone_location;;
+phase; RED_REAF_AF1_2834; random(RED_REAR_AF2_REFERENCE); blocks_RED_REAF_AF1_2834; clone_location;scg\2\blocks_quickmission\airfields_red;
+phase; AF4_DECOR_RED_2835; random(RED_REAF_AF1_2834); blocks_AF4_DECOR_RED_2835; clone_location;scg\2\blocks_quickmission\af_decor_red;
+phase; SIREN_RED_4_2836; random(RED_REAF_AF1_2834); blocks_SIREN_RED_4_2836; clone_location;;
+phase; WINDSOCK_4_2837; random(RED_REAF_AF1_2834); blocks_WINDSOCK_4_2837; clone_location;;
+phase; RED_BEACON_2838; random(RED_REAF_AF1_2834); blocks_RED_BEACON_2838; clone_location;;
+phase; RED_SMART_CHECKZONE_1447_2852; at(RED_REAF_AF1_2834); blocks_RED_SMART_CHECKZONE_1447_2852; clone_location;;
+phase; LARGE_CANNON_1448_2853; random(RED_SMART_CHECKZONE_1447_2852); blocks_LARGE_CANNON_1448_2853; clone_location;;
+phase; MEDIUM_CANNON_1449_2854; random(RED_SMART_CHECKZONE_1447_2852); blocks_MEDIUM_CANNON_1449_2854; clone_location;;
+phase; MEDIUM_CANNON2_1450_2855; random(RED_SMART_CHECKZONE_1447_2852); blocks_MEDIUM_CANNON2_1450_2855; clone_location;;
+phase; MEDIUM_CANNON3_1451_2856; random(RED_SMART_CHECKZONE_1447_2852); blocks_MEDIUM_CANNON3_1451_2856; clone_location;;
+phase; MEDIUM_CANNON4_1452_2857; random(RED_SMART_CHECKZONE_1447_2852); blocks_MEDIUM_CANNON4_1452_2857; clone_location;;
+phase; MEDIUM_CANNON5_1453_2858; random(RED_SMART_CHECKZONE_1447_2852); blocks_MEDIUM_CANNON5_1453_2858; clone_location;;
+phase; MEDIUM_CANNON6_1454_2859; random(RED_SMART_CHECKZONE_1447_2852); blocks_MEDIUM_CANNON6_1454_2859; clone_location;;
+phase; SMALL_CANNON_1455_2860; random(RED_SMART_CHECKZONE_1447_2852); blocks_SMALL_CANNON_1455_2860; clone_location;;
+phase; SMALL_CANNON2_1456_2861; random(RED_SMART_CHECKZONE_1447_2852); blocks_SMALL_CANNON2_1456_2861; clone_location;;
+phase; MEDIUM_CANNON_504_1457_2862; random(RED_SMART_CHECKZONE_1447_2852); blocks_MEDIUM_CANNON_504_1457_2862; clone_location;;
+phase; MEDIUM_CANNON2_505_1458_2863; random(RED_SMART_CHECKZONE_1447_2852); blocks_MEDIUM_CANNON2_505_1458_2863; clone_location;;
+phase; MEDIUM_CANNON4_516_1459_2864; random(RED_SMART_CHECKZONE_1447_2852); blocks_MEDIUM_CANNON4_516_1459_2864; clone_location;;
+phase; BLUE_REAR_AF2_REFERENCE; random(BLUE_REAR_AF1_REFERENCE); blocks_BLUE_REAR_AF2_REFERENCE; clone_location;;
+phase; BLUE_REAR_AF2; random(BLUE_REAR_AF2_REFERENCE); blocks_BLUE_REAR_AF2; clone_location;scg\2\blocks_quickmission\airfields_blue;
+phase; AF4_DECOR_BLUE_2939; random(BLUE_REAR_AF2); blocks_AF4_DECOR_BLUE_2939; clone_location;scg\2\blocks_quickmission\af_decor_blue;
+phase; SIREN_BLUE_4_2940; random(BLUE_REAR_AF2); blocks_SIREN_BLUE_4_2940; clone_location;;
+phase; WINDSOCK_8_2941; random(BLUE_REAR_AF2); blocks_WINDSOCK_8_2941; clone_location;;
+phase; BLUE_BEACON_2942; random(BLUE_REAR_AF2); blocks_BLUE_BEACON_2942; clone_location;;
+phase; LARGE_CANNON_85_882_1213_2956; random(BLUE_SMART_CHECKZONE_891_1222_2965); blocks_LARGE_CANNON_85_882_1213_2956; clone_location;;
+phase; MEDIUM_CANNON_86_883_1214_2957; random(BLUE_SMART_CHECKZONE_891_1222_2965); blocks_MEDIUM_CANNON_86_883_1214_2957; clone_location;;
+phase; MEDIUM_CANNON2_87_884_1215_2958; random(BLUE_SMART_CHECKZONE_891_1222_2965); blocks_MEDIUM_CANNON2_87_884_1215_2958; clone_location;;
+phase; MEDIUM_CANNON3_88_885_1216_2959; random(BLUE_SMART_CHECKZONE_891_1222_2965); blocks_MEDIUM_CANNON3_88_885_1216_2959; clone_location;;
+phase; MEDIUM_CANNON4_89_886_1217_2960; random(BLUE_SMART_CHECKZONE_891_1222_2965); blocks_MEDIUM_CANNON4_89_886_1217_2960; clone_location;;
+phase; MEDIUM_CANNON5_90_887_1218_2961; random(BLUE_SMART_CHECKZONE_891_1222_2965); blocks_MEDIUM_CANNON5_90_887_1218_2961; clone_location;;
+phase; MEDIUM_CANNON6_91_888_1219_2962; random(BLUE_SMART_CHECKZONE_891_1222_2965); blocks_MEDIUM_CANNON6_91_888_1219_2962; clone_location;;
+phase; SMALL_CANNON_92_889_1220_2963; random(BLUE_SMART_CHECKZONE_891_1222_2965); blocks_SMALL_CANNON_92_889_1220_2963; clone_location;;
+phase; SMALL_CANNON2_93_890_1221_2964; random(BLUE_SMART_CHECKZONE_891_1222_2965); blocks_SMALL_CANNON2_93_890_1221_2964; clone_location;;
+phase; BLUE_SMART_CHECKZONE_891_1222_2965; at(BLUE_REAR_AF2); blocks_BLUE_SMART_CHECKZONE_891_1222_2965; clone_location;;
+phase; MEDIUM_CANNON_86_883_180_1223_2966; random(BLUE_SMART_CHECKZONE_891_1222_2965); blocks_MEDIUM_CANNON_86_883_180_1223_2966; clone_location;;
+phase; MEDIUM_CANNON2_87_884_181_1224_2967; random(BLUE_SMART_CHECKZONE_891_1222_2965); blocks_MEDIUM_CANNON2_87_884_181_1224_2967; clone_location;;
+phase; MEDIUM_CANNON6_91_888_192_1225_2968; random(BLUE_SMART_CHECKZONE_891_1222_2965); blocks_MEDIUM_CANNON6_91_888_192_1225_2968; clone_location;;
 
 #
 ## cases & switches
@@ -2109,22 +2029,12 @@ olink; RTD1_DELAY3_AAA_LAST(OBJECT_TANKS); RTD1_011_16(OBJECT_TANKS);
 olink; RTD1_DELAY3_AAA_LAST(OBJECT_AAA); RTD1_012_12_AAA(OBJECT_AAA);
 tlink; RTD1_DELAY3_AAA_LAST(TARGET_ATTACK_AREA); RTD1_012_12_AAA(TARGET_ATTACK_AREA);
 olink; RTD1_DELAY3_AAA_LAST(OBJECT_TANKS); RTD1_012_12_AAA(OBJECT_TANKS);
-olink; RTD1_DELAY4_AAA_LAST(OBJECT_TANKS); RTD1_013_10(OBJECT_TANKS);
-olink; RTD1_DELAY4_AAA_LAST(OBJECT_TANKS); RTD1_014_6(OBJECT_TANKS);
-olink; RTD1_DELAY4_AAA_LAST(OBJECT_TANKS); RTD1_015_4(OBJECT_TANKS);
-olink; RTD1_DELAY4_AAA_LAST(OBJECT_AAA); RTD1_016_7_AAA(OBJECT_AAA);
-tlink; RTD1_DELAY4_AAA_LAST(TARGET_ATTACK_AREA); RTD1_016_7_AAA(TARGET_ATTACK_AREA);
-olink; RTD1_DELAY4_AAA_LAST(OBJECT_TANKS); RTD1_016_7_AAA(OBJECT_TANKS);
-tlink; RTD1_DELAY3_AAA_LAST(ACTIVATE); RTD1_DELAY4_AAA_LAST(ACTIVATE);
-tlink; RTD1_DELAY3_AAA_LAST(DEACTIVATE); RTD1_DELAY4_AAA_LAST(DEACTIVATE);
 tlink; RAD1_DELAY1_AAA_LAST(ACTIVATE); RAD1_DELAY2_AAA_LAST(ACTIVATE);
 tlink; RAD1_DELAY1_AAA_LAST(DEACTIVATE); RAD1_DELAY2_AAA_LAST(DEACTIVATE);
 tlink; RAD1_ACTIVATOR(DEACTIVATE); RAD1_DELAY1_AAA_LAST(DEACTIVATE);
 tlink; RAD1_ACTIVATOR(ACTIVATE); RAD1_DELAY1_AAA_LAST(ACTIVATE);
 tlink; RAD1_DELAY2_AAA_LAST(ACTIVATE); RAD1_DELAY3_AAA_LAST(ACTIVATE);
 tlink; RAD1_DELAY2_AAA_LAST(DEACTIVATE); RAD1_DELAY3_AAA_LAST(DEACTIVATE);
-tlink; RAD1_DELAY3_AAA_LAST(ACTIVATE); RAD1_DELAY4_AAA_LAST(ACTIVATE);
-tlink; RAD1_DELAY3_AAA_LAST(DEACTIVATE); RAD1_DELAY4_AAA_LAST(DEACTIVATE);
 olink; RAD1_DELAY1_AAA_LAST(OBJECT_AAA); RAD1_001_6_AAA(OBJECT_AAA);
 olink; RAD1_DELAY1_AAA_LAST(OBJECT_ARTY); RAD1_001_6_AAA(OBJECT_ARTY);
 tlink; RAD1_DELAY1_AAA_LAST(TARGET_ATTACK_AREA); RAD1_001_6_AAA(TARGET_ATTACK_AREA);
@@ -2144,19 +2054,12 @@ tlink; RAD1_DELAY3_AAA_LAST(TARGET_ATTACK_AREA); RAD1_010_8_AAA(TARGET_ATTACK_AR
 olink; RAD1_DELAY3_AAA_LAST(OBJECT_ARTY); RAD1_011_7(OBJECT_ARTY);
 olink; RAD1_DELAY3_AAA_LAST(OBJECT_AAA); RAD1_012_4_AAA(OBJECT_AAA);
 tlink; RAD1_DELAY3_AAA_LAST(TARGET_ATTACK_AREA); RAD1_012_4_AAA(TARGET_ATTACK_AREA);
-olink; RAD1_DELAY4_AAA_LAST(OBJECT_ARTY); RAD1_013_9(OBJECT_ARTY);
-olink; RAD1_DELAY4_AAA_LAST(OBJECT_AAA); RAD1_014_4_AAA(OBJECT_AAA);
-tlink; RAD1_DELAY4_AAA_LAST(TARGET_ATTACK_AREA); RAD1_014_4_AAA(TARGET_ATTACK_AREA);
-olink; RAD1_DELAY4_AAA_LAST(OBJECT_ARTY); RAD1_015_4(OBJECT_ARTY);
-olink; RAD1_DELAY4_AAA_LAST(OBJECT_ARTY); RAD1_016_5(OBJECT_ARTY);
 tlink; RID1_ACTIVATOR(DEACTIVATE); RID1_DELAY1_AAA_LAST(DEACTIVATE);
 tlink; RID1_ACTIVATOR(ACTIVATE); RID1_DELAY1_AAA_LAST(ACTIVATE);
 tlink; RID1_DELAY1_AAA_LAST(ACTIVATE); RID1_DELAY2_AAA_LAST(ACTIVATE);
 tlink; RID1_DELAY1_AAA_LAST(DEACTIVATE); RID1_DELAY2_AAA_LAST(DEACTIVATE);
 tlink; RID1_DELAY2_AAA_LAST(ACTIVATE); RID1_DELAY3_AAA_LAST(ACTIVATE);
 tlink; RID1_DELAY2_AAA_LAST(DEACTIVATE); RID1_DELAY3_AAA_LAST(DEACTIVATE);
-tlink; RID1_DELAY3_AAA_LAST(ACTIVATE); RID1_DELAY4_AAA_LAST(ACTIVATE);
-tlink; RID1_DELAY3_AAA_LAST(DEACTIVATE); RID1_DELAY4_AAA_LAST(DEACTIVATE);
 olink; RID1_DELAY1_AAA_LAST(OBJECT_ARTY); RID1_001_7(OBJECT_ARTY);
 olink; RID1_DELAY1_AAA_LAST(OBJECT_ARTY); RID1_002_7(OBJECT_ARTY);
 olink; RID1_DELAY1_AAA_LAST(OBJECT_ARTY); RID1_003_7(OBJECT_ARTY);
@@ -2169,13 +2072,6 @@ olink; RID1_DELAY2_AAA_LAST(OBJECT_ARTY); RID1_007_9(OBJECT_ARTY);
 olink; RID1_DELAY2_AAA_LAST(OBJECT_ARTY); RID1_008_4(OBJECT_ARTY);
 olink; RID1_DELAY3_AAA_LAST(OBJECT_AAA); RID1_011_7_AAA(OBJECT_AAA);
 tlink; RID1_DELAY3_AAA_LAST(TARGET_ATTACK_AREA); RID1_011_7_AAA(TARGET_ATTACK_AREA);
-olink; RID1_DELAY4_AAA_LAST(OBJECT_AAA); RID1_013_10_AAA(OBJECT_AAA);
-tlink; RID1_DELAY4_AAA_LAST(TARGET_ATTACK_AREA); RID1_013_10_AAA(TARGET_ATTACK_AREA);
-olink; RID1_DELAY4_AAA_LAST(OBJECT_ARTY); RID1_014_10(OBJECT_ARTY);
-olink; RID1_DELAY4_AAA_LAST(OBJECT_AAA); RID1_015_4_AAA(OBJECT_AAA);
-tlink; RID1_DELAY4_AAA_LAST(TARGET_ATTACK_AREA); RID1_015_4_AAA(TARGET_ATTACK_AREA);
-olink; RID1_DELAY4_AAA_LAST(OBJECT_AAA); RID1_016_9_AAA(OBJECT_AAA);
-tlink; RID1_DELAY4_AAA_LAST(TARGET_ATTACK_AREA); RID1_016_9_AAA(TARGET_ATTACK_AREA);
 tlink; BTD1_ACTIVATOR(DEACTIVATE); BTD1_DELAY1_AAA_LAST(DEACTIVATE);
 tlink; BTD1_ACTIVATOR(ACTIVATE); BTD1_DELAY1_AAA_LAST(ACTIVATE);
 olink; BTD1_DELAY1_AAA_LAST(OBJECT_AAA); BTD1_001_14_AAA(OBJECT_AAA);
@@ -2202,12 +2098,6 @@ tlink; BTD1_DELAY3_AAA_LAST(TARGET_ATTACK_AREA); BTD1_010_8_AAA(TARGET_ATTACK_AR
 olink; BTD1_DELAY3_AAA_LAST(OBJECT_AAA); BTD1_011_10_AAA(OBJECT_AAA);
 tlink; BTD1_DELAY3_AAA_LAST(TARGET_ATTACK_AREA); BTD1_011_10_AAA(TARGET_ATTACK_AREA);
 olink; BTD1_DELAY3_AAA_LAST(OBJECT_TANKS); BTD1_012_6(OBJECT_TANKS);
-olink; BTD1_DELAY4_AAA_LAST(OBJECT_TANKS); BTD1_013_4(OBJECT_TANKS);
-olink; BTD1_DELAY4_AAA_LAST(OBJECT_TANKS); BTD1_014_9(OBJECT_TANKS);
-olink; BTD1_DELAY4_AAA_LAST(OBJECT_TANKS); BTD1_015_13(OBJECT_TANKS);
-olink; BTD1_DELAY4_AAA_LAST(OBJECT_TANKS); BTD1_016_6(OBJECT_TANKS);
-tlink; BTD1_DELAY3_AAA_LAST(ACTIVATE); BTD1_DELAY4_AAA_LAST(ACTIVATE);
-tlink; BTD1_DELAY3_AAA_LAST(DEACTIVATE); BTD1_DELAY4_AAA_LAST(DEACTIVATE);
 tlink; BAD1_ACTIVATOR(DEACTIVATE); BAD1_DELAY1_AAA_LAST(DEACTIVATE);
 tlink; BAD1_ACTIVATOR(ACTIVATE); BAD1_DELAY1_AAA_LAST(ACTIVATE);
 olink; BAD1_DELAY1_AAA_LAST(OBJECT_ARTY); BAD1_001_10(OBJECT_ARTY);
@@ -2229,14 +2119,6 @@ olink; BAD1_DELAY3_AAA_LAST(OBJECT_ARTY); BAD1_011_12(OBJECT_ARTY);
 olink; BAD1_DELAY3_AAA_LAST(OBJECT_ARTY); BAD1_012_8(OBJECT_ARTY);
 tlink; BAD1_DELAY2_AAA_LAST(ACTIVATE); BAD1_DELAY3_AAA_LAST(ACTIVATE);
 tlink; BAD1_DELAY2_AAA_LAST(DEACTIVATE); BAD1_DELAY3_AAA_LAST(DEACTIVATE);
-olink; BAD1_DELAY4_AAA_LAST(OBJECT_ARTY); BAD1_013_6(OBJECT_ARTY);
-olink; BAD1_DELAY4_AAA_LAST(OBJECT_ARTY); BAD1_014_6(OBJECT_ARTY);
-olink; BAD1_DELAY4_AAA_LAST(OBJECT_AAA); BAD1_015_7_AAA(OBJECT_AAA);
-olink; BAD1_DELAY4_AAA_LAST(OBJECT_ARTY); BAD1_015_7_AAA(OBJECT_ARTY);
-tlink; BAD1_DELAY4_AAA_LAST(TARGET_ATTACK_AREA); BAD1_015_7_AAA(TARGET_ATTACK_AREA);
-olink; BAD1_DELAY4_AAA_LAST(OBJECT_ARTY); BAD1_016_8(OBJECT_ARTY);
-tlink; BAD1_DELAY3_AAA_LAST(ACTIVATE); BAD1_DELAY4_AAA_LAST(ACTIVATE);
-tlink; BAD1_DELAY3_AAA_LAST(DEACTIVATE); BAD1_DELAY4_AAA_LAST(DEACTIVATE);
 tlink; BID1_ACTIVATOR(DEACTIVATE); BID1_DELAY1_AAA_LAST(DEACTIVATE);
 tlink; BID1_ACTIVATOR(ACTIVATE); BID1_DELAY1_AAA_LAST(ACTIVATE);
 olink; BID1_DELAY1_AAA_LAST(OBJECT_AAA); BID1_001_12_AAA(OBJECT_AAA);
@@ -2253,12 +2135,6 @@ olink; BID1_DELAY3_AAA_LAST(OBJECT_AAA); BID1_012_13_AAA(OBJECT_AAA);
 tlink; BID1_DELAY3_AAA_LAST(TARGET_ATTACK_AREA); BID1_012_13_AAA(TARGET_ATTACK_AREA);
 tlink; BID1_DELAY2_AAA_LAST(ACTIVATE); BID1_DELAY3_AAA_LAST(ACTIVATE);
 tlink; BID1_DELAY2_AAA_LAST(DEACTIVATE); BID1_DELAY3_AAA_LAST(DEACTIVATE);
-olink; BID1_DELAY4_AAA_LAST(OBJECT_ARTY); BID1_013_6(OBJECT_ARTY);
-olink; BID1_DELAY4_AAA_LAST(OBJECT_ARTY); BID1_014_8(OBJECT_ARTY);
-olink; BID1_DELAY4_AAA_LAST(OBJECT_ARTY); BID1_015_7(OBJECT_ARTY);
-olink; BID1_DELAY4_AAA_LAST(OBJECT_ARTY); BID1_016_8(OBJECT_ARTY);
-tlink; BID1_DELAY3_AAA_LAST(ACTIVATE); BID1_DELAY4_AAA_LAST(ACTIVATE);
-tlink; BID1_DELAY3_AAA_LAST(DEACTIVATE); BID1_DELAY4_AAA_LAST(DEACTIVATE);
 tlink; BAD1_DELAY1_AAA_LAST(ACTIVATE); BAD1_DELAY2_AAA_LAST(ACTIVATE);
 tlink; BAD1_DELAY1_AAA_LAST(DEACTIVATE); BAD1_DELAY2_AAA_LAST(DEACTIVATE);
 tlink; RED_WH1_SERVER_INPUT(KILLED_EVENT); RED_WH1_01_ICON(KILLED_EVENT);
@@ -2287,16 +2163,64 @@ tlink; BLUE_FRONT_AF_3_KILLED(AF_MCU_OBJECT); BLUE_FRONT_AF3(AF_MCU_OBJECT);
 tlink; RED_FRONT_AF_1_KILLED(AF_MCU_OBJECT); RED_FRONT_AF1(AF_MCU_OBJECT);
 tlink; RED_FRONT_AF_2_KILLED(AF_MCU_OBJECT); RED_FRONT_AF2(AF_MCU_OBJECT);
 tlink; RED_FRONT_AF_3_KILLED(AF_MCU_OBJECT); RED_FRONT_AF3(AF_MCU_OBJECT);
+tlink; RED_SMART_CHECKZONE_1447_2852(ACTIVATE_LARGE_CANNONS); LARGE_CANNON_1448_2853(ACTIVATE_LARGE_CANNONS);
+tlink; RED_SMART_CHECKZONE_1447_2852(DEACTIVATE_LARGE_CANNONS); LARGE_CANNON_1448_2853(DEACTIVATE_LARGE_CANNONS);
+tlink; RED_SMART_CHECKZONE_1447_2852(ACTIVATE_AUTO_CANNONS); MEDIUM_CANNON_1449_2854(ACTIVATE_AUTO_CANNONS);
+tlink; RED_SMART_CHECKZONE_1447_2852(DEACTIVATE_AUTO_CANNONS); MEDIUM_CANNON_1449_2854(DEACTIVATE_AUTO_CANNONS);
+tlink; RED_SMART_CHECKZONE_1447_2852(ACTIVATE_AUTO_CANNONS); MEDIUM_CANNON2_1450_2855(ACTIVATE_AUTO_CANNONS);
+tlink; RED_SMART_CHECKZONE_1447_2852(DEACTIVATE_AUTO_CANNONS); MEDIUM_CANNON2_1450_2855(DEACTIVATE_AUTO_CANNONS);
+tlink; RED_SMART_CHECKZONE_1447_2852(ACTIVATE_AUTO_CANNONS); MEDIUM_CANNON3_1451_2856(ACTIVATE_AUTO_CANNONS);
+tlink; RED_SMART_CHECKZONE_1447_2852(DEACTIVATE_AUTO_CANNONS); MEDIUM_CANNON3_1451_2856(DEACTIVATE_AUTO_CANNONS);
+tlink; RED_SMART_CHECKZONE_1447_2852(ACTIVATE_AUTO_CANNONS); MEDIUM_CANNON4_1452_2857(ACTIVATE_AUTO_CANNONS);
+tlink; RED_SMART_CHECKZONE_1447_2852(DEACTIVATE_AUTO_CANNONS); MEDIUM_CANNON4_1452_2857(DEACTIVATE_AUTO_CANNONS);
+tlink; RED_SMART_CHECKZONE_1447_2852(ACTIVATE_AUTO_CANNONS); MEDIUM_CANNON5_1453_2858(ACTIVATE_AUTO_CANNONS);
+tlink; RED_SMART_CHECKZONE_1447_2852(DEACTIVATE_AUTO_CANNONS); MEDIUM_CANNON5_1453_2858(DEACTIVATE_AUTO_CANNONS);
+tlink; RED_SMART_CHECKZONE_1447_2852(ACTIVATE_AUTO_CANNONS); MEDIUM_CANNON6_1454_2859(ACTIVATE_AUTO_CANNONS);
+tlink; RED_SMART_CHECKZONE_1447_2852(DEACTIVATE_AUTO_CANNONS); MEDIUM_CANNON6_1454_2859(DEACTIVATE_AUTO_CANNONS);
+tlink; RED_SMART_CHECKZONE_1447_2852(ACTIVATE_MACHINE_GUNS); SMALL_CANNON_1455_2860(ACTIVATE_MACHINE_GUNS);
+tlink; RED_SMART_CHECKZONE_1447_2852(DEACTIVATE_MACHINE_GUNS); SMALL_CANNON_1455_2860(DEACTIVATE_MACHINE_GUNS);
+tlink; RED_SMART_CHECKZONE_1447_2852(ACTIVATE_MACHINE_GUNS); SMALL_CANNON2_1456_2861(ACTIVATE_MACHINE_GUNS);
+tlink; RED_SMART_CHECKZONE_1447_2852(DEACTIVATE_MACHINE_GUNS); SMALL_CANNON2_1456_2861(DEACTIVATE_MACHINE_GUNS);
+tlink; RED_SMART_CHECKZONE_1447_2852(ACTIVATE_AUTO_CANNONS); MEDIUM_CANNON_504_1457_2862(ACTIVATE_AUTO_CANNONS);
+tlink; RED_SMART_CHECKZONE_1447_2852(DEACTIVATE_AUTO_CANNONS); MEDIUM_CANNON_504_1457_2862(DEACTIVATE_AUTO_CANNONS);
+tlink; RED_SMART_CHECKZONE_1447_2852(ACTIVATE_AUTO_CANNONS); MEDIUM_CANNON2_505_1458_2863(ACTIVATE_AUTO_CANNONS);
+tlink; RED_SMART_CHECKZONE_1447_2852(DEACTIVATE_AUTO_CANNONS); MEDIUM_CANNON2_505_1458_2863(DEACTIVATE_AUTO_CANNONS);
+tlink; RED_SMART_CHECKZONE_1447_2852(ACTIVATE_AUTO_CANNONS); MEDIUM_CANNON4_516_1459_2864(ACTIVATE_AUTO_CANNONS);
+tlink; RED_SMART_CHECKZONE_1447_2852(DEACTIVATE_AUTO_CANNONS); MEDIUM_CANNON4_516_1459_2864(DEACTIVATE_AUTO_CANNONS);
+tlink; BLUE_SMART_CHECKZONE_891_1222_2965(ACTIVATE_LARGE_CANNONS); LARGE_CANNON_85_882_1213_2956(ACTIVATE_LARGE_CANNONS);
+tlink; BLUE_SMART_CHECKZONE_891_1222_2965(DEACTIVATE_LARGE_CANNONS); LARGE_CANNON_85_882_1213_2956(DEACTIVATE_LARGE_CANNONS);
+tlink; BLUE_SMART_CHECKZONE_891_1222_2965(ACTIVATE_AUTO_CANNONS); MEDIUM_CANNON_86_883_1214_2957(ACTIVATE_AUTO_CANNONS);
+tlink; BLUE_SMART_CHECKZONE_891_1222_2965(DEACTIVATE_AUTO_CANNONS); MEDIUM_CANNON_86_883_1214_2957(DEACTIVATE_AUTO_CANNONS);
+tlink; BLUE_SMART_CHECKZONE_891_1222_2965(ACTIVATE_AUTO_CANNONS); MEDIUM_CANNON2_87_884_1215_2958(ACTIVATE_AUTO_CANNONS);
+tlink; BLUE_SMART_CHECKZONE_891_1222_2965(DEACTIVATE_AUTO_CANNONS); MEDIUM_CANNON2_87_884_1215_2958(DEACTIVATE_AUTO_CANNONS);
+tlink; BLUE_SMART_CHECKZONE_891_1222_2965(ACTIVATE_AUTO_CANNONS); MEDIUM_CANNON3_88_885_1216_2959(ACTIVATE_AUTO_CANNONS);
+tlink; BLUE_SMART_CHECKZONE_891_1222_2965(DEACTIVATE_AUTO_CANNONS); MEDIUM_CANNON3_88_885_1216_2959(DEACTIVATE_AUTO_CANNONS);
+tlink; BLUE_SMART_CHECKZONE_891_1222_2965(ACTIVATE_AUTO_CANNONS); MEDIUM_CANNON4_89_886_1217_2960(ACTIVATE_AUTO_CANNONS);
+tlink; BLUE_SMART_CHECKZONE_891_1222_2965(DEACTIVATE_AUTO_CANNONS); MEDIUM_CANNON4_89_886_1217_2960(DEACTIVATE_AUTO_CANNONS);
+tlink; BLUE_SMART_CHECKZONE_891_1222_2965(ACTIVATE_AUTO_CANNONS); MEDIUM_CANNON5_90_887_1218_2961(ACTIVATE_AUTO_CANNONS);
+tlink; BLUE_SMART_CHECKZONE_891_1222_2965(DEACTIVATE_AUTO_CANNONS); MEDIUM_CANNON5_90_887_1218_2961(DEACTIVATE_AUTO_CANNONS);
+tlink; BLUE_SMART_CHECKZONE_891_1222_2965(ACTIVATE_AUTO_CANNONS); MEDIUM_CANNON6_91_888_1219_2962(ACTIVATE_AUTO_CANNONS);
+tlink; BLUE_SMART_CHECKZONE_891_1222_2965(DEACTIVATE_AUTO_CANNONS); MEDIUM_CANNON6_91_888_1219_2962(DEACTIVATE_AUTO_CANNONS);
+tlink; BLUE_SMART_CHECKZONE_891_1222_2965(ACTIVATE_MACHINE_GUNS); SMALL_CANNON_92_889_1220_2963(ACTIVATE_MACHINE_GUNS);
+tlink; BLUE_SMART_CHECKZONE_891_1222_2965(DEACTIVATE_MACHINE_GUNS); SMALL_CANNON_92_889_1220_2963(DEACTIVATE_MACHINE_GUNS);
+tlink; BLUE_SMART_CHECKZONE_891_1222_2965(ACTIVATE_MACHINE_GUNS); SMALL_CANNON2_93_890_1221_2964(ACTIVATE_MACHINE_GUNS);
+tlink; BLUE_SMART_CHECKZONE_891_1222_2965(DEACTIVATE_MACHINE_GUNS); SMALL_CANNON2_93_890_1221_2964(DEACTIVATE_MACHINE_GUNS);
+tlink; BLUE_SMART_CHECKZONE_891_1222_2965(ACTIVATE_AUTO_CANNONS); MEDIUM_CANNON_86_883_180_1223_2966(ACTIVATE_AUTO_CANNONS);
+tlink; BLUE_SMART_CHECKZONE_891_1222_2965(DEACTIVATE_AUTO_CANNONS); MEDIUM_CANNON_86_883_180_1223_2966(DEACTIVATE_AUTO_CANNONS);
+tlink; BLUE_SMART_CHECKZONE_891_1222_2965(ACTIVATE_AUTO_CANNONS); MEDIUM_CANNON2_87_884_181_1224_2967(ACTIVATE_AUTO_CANNONS);
+tlink; BLUE_SMART_CHECKZONE_891_1222_2965(DEACTIVATE_AUTO_CANNONS); MEDIUM_CANNON2_87_884_181_1224_2967(DEACTIVATE_AUTO_CANNONS);
+tlink; BLUE_SMART_CHECKZONE_891_1222_2965(ACTIVATE_AUTO_CANNONS); MEDIUM_CANNON6_91_888_192_1225_2968(ACTIVATE_AUTO_CANNONS);
+tlink; BLUE_SMART_CHECKZONE_891_1222_2965(DEACTIVATE_AUTO_CANNONS); MEDIUM_CANNON6_91_888_192_1225_2968(DEACTIVATE_AUTO_CANNONS);
 
 #
 ## conditions
 #
-check; BLUE_REAR_AF_REFERENCE; coalition(e);
-check; BLUE_REAR_AF_REFERENCE; location_type(Airfield,GrassField);
-check; BLUE_REAR_AF_REFERENCE; range(PRIMARY_LINK_PHASE,closest_outof,1000);
-check; RED_REAR_AF_REFERENCE; location_type(Airfield,GrassField);
-check; RED_REAR_AF_REFERENCE; coalition(f);
-check; RED_REAR_AF_REFERENCE; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; BLUE_REAR_AF1_REFERENCE; coalition(e);
+check; BLUE_REAR_AF1_REFERENCE; location_type(Airfield,GrassField);
+check; BLUE_REAR_AF1_REFERENCE; range(PRIMARY_LINK_PHASE,closest_outof,1000);
+check; RED_REAR_AF1_REFERENCE; location_type(Airfield,GrassField);
+check; RED_REAR_AF1_REFERENCE; coalition(f);
+check; RED_REAR_AF1_REFERENCE; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; BTD1; free();
 check; BTD1; location_type(GroundObjective,Tank);
 check; BTD1; coalition(e);
@@ -2369,32 +2293,11 @@ check; BTD1_005_REF; location_type(Decoration,Dogfight);
 check; BTD1_007_REF; location_type(Decoration,Dogfight);
 check; BTD1_008_REF; location_type(Decoration,Dogfight);
 check; BTD1_012_REF; in_radius(PRIMARY_LINK_PHASE,3500);
-check; BTD1_013_REF; in_radius(PRIMARY_LINK_PHASE,3500);
-check; BTD1_014_REF; in_radius(PRIMARY_LINK_PHASE,3500);
-check; BTD1_015_REF; in_radius(PRIMARY_LINK_PHASE,3500);
-check; BTD1_016_REF; in_radius(PRIMARY_LINK_PHASE,3500);
 check; BTD1_012_REF; free();
-check; BTD1_013_REF; free();
-check; BTD1_014_REF; free();
-check; BTD1_015_REF; free();
-check; BTD1_016_REF; free();
 check; BTD1_012_REF; location_type(Decoration,Dogfight);
-check; BTD1_013_REF; location_type(Decoration,Dogfight);
-check; BTD1_014_REF; location_type(Decoration,Dogfight);
-check; BTD1_015_REF; location_type(Decoration,Dogfight);
-check; BTD1_016_REF; location_type(Decoration,Dogfight);
 check; BAD1_012_REF; in_radius(PRIMARY_LINK_PHASE,3500);
 check; BAD1_012_REF; free();
 check; BAD1_012_REF; location_type(Decoration,Dogfight);
-check; BAD1_013_REF; in_radius(PRIMARY_LINK_PHASE,3500);
-check; BAD1_013_REF; free();
-check; BAD1_013_REF; location_type(Decoration,Dogfight);
-check; BAD1_014_REF; in_radius(PRIMARY_LINK_PHASE,3500);
-check; BAD1_014_REF; free();
-check; BAD1_014_REF; location_type(Decoration,Dogfight);
-check; BAD1_016_REF; in_radius(PRIMARY_LINK_PHASE,3500);
-check; BAD1_016_REF; free();
-check; BAD1_016_REF; location_type(Decoration,Dogfight);
 check; BAD1_011_REF; in_radius(PRIMARY_LINK_PHASE,3500);
 check; BAD1_011_REF; free();
 check; BAD1_011_REF; location_type(Decoration,Dogfight);
@@ -2428,23 +2331,11 @@ check; BAD1_AAA4_REF; location_type(Decoration,Dogfight);
 check; BAD1_AAA5_REF; free();
 check; BAD1_AAA5_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; BAD1_AAA5_REF; location_type(Decoration,Dogfight);
-check; BAD1_AAA6_REF; free();
-check; BAD1_AAA6_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; BAD1_AAA6_REF; location_type(Decoration,Dogfight);
 check; BAD1_ORIENTATION; coalition(f);
 check; BAD1_ORIENTATION; range(PRIMARY_LINK_PHASE,closest_outof,4000);
 check; BID1_004_REF; in_radius(PRIMARY_LINK_PHASE,3500);
 check; BID1_004_REF; free();
 check; BID1_004_REF; location_type(Decoration,Dogfight);
-check; BID1_013_REF; in_radius(PRIMARY_LINK_PHASE,3500);
-check; BID1_013_REF; free();
-check; BID1_013_REF; location_type(Decoration,Dogfight);
-check; BID1_014_REF; in_radius(PRIMARY_LINK_PHASE,3500);
-check; BID1_014_REF; free();
-check; BID1_014_REF; location_type(Decoration,Dogfight);
-check; BID1_016_REF; in_radius(PRIMARY_LINK_PHASE,3500);
-check; BID1_016_REF; free();
-check; BID1_016_REF; location_type(Decoration,Dogfight);
 check; BID1_003_REF; in_radius(PRIMARY_LINK_PHASE,3500);
 check; BID1_003_REF; free();
 check; BID1_003_REF; location_type(Decoration,Dogfight);
@@ -2466,9 +2357,6 @@ check; BID1_010_REF; location_type(Decoration,Dogfight);
 check; BID1_002_REF; in_radius(PRIMARY_LINK_PHASE,3500);
 check; BID1_002_REF; free();
 check; BID1_002_REF; location_type(Decoration,Dogfight);
-check; BID1_015_REF; in_radius(PRIMARY_LINK_PHASE,3500);
-check; BID1_015_REF; free();
-check; BID1_015_REF; location_type(Decoration,Dogfight);
 check; BID1_007_REF; in_radius(PRIMARY_LINK_PHASE,3500);
 check; BID1_007_REF; free();
 check; BID1_007_REF; location_type(Decoration,Dogfight);
@@ -2498,9 +2386,6 @@ check; RTD1_AAA4_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; RTD1_AAA5_REF; free();
 check; RTD1_AAA5_REF; location_type(Decoration,Dogfight);
 check; RTD1_AAA5_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; RTD1_AAA6_REF; free();
-check; RTD1_AAA6_REF; location_type(Decoration,Dogfight);
-check; RTD1_AAA6_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; RTD1_004_REF; free();
 check; RTD1_004_REF; in_radius(PRIMARY_LINK_PHASE,3500);
 check; RTD1_004_REF; location_type(Decoration,Dogfight);
@@ -2522,23 +2407,11 @@ check; RTD1_010_REF; location_type(Decoration,Dogfight);
 check; RTD1_011_REF; free();
 check; RTD1_011_REF; in_radius(PRIMARY_LINK_PHASE,3500);
 check; RTD1_011_REF; location_type(Decoration,Dogfight);
-check; RTD1_013_REF; free();
-check; RTD1_013_REF; in_radius(PRIMARY_LINK_PHASE,3500);
-check; RTD1_013_REF; location_type(Decoration,Dogfight);
-check; RTD1_014_REF; free();
-check; RTD1_014_REF; in_radius(PRIMARY_LINK_PHASE,3500);
-check; RTD1_014_REF; location_type(Decoration,Dogfight);
-check; RTD1_015_REF; free();
-check; RTD1_015_REF; in_radius(PRIMARY_LINK_PHASE,3500);
-check; RTD1_015_REF; location_type(Decoration,Dogfight);
 check; RTD1_ORIENTATION; coalition(e);
 check; RTD1_ORIENTATION; range(PRIMARY_LINK_PHASE,closest_outof,4000);
 check; RAD1_AAA5_REF; free();
 check; RAD1_AAA5_REF; location_type(Decoration,Dogfight);
 check; RAD1_AAA5_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; RAD1_AAA7_REF; free();
-check; RAD1_AAA7_REF; location_type(Decoration,Dogfight);
-check; RAD1_AAA7_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; RAD1_009_REF; free();
 check; RAD1_009_REF; in_radius(PRIMARY_LINK_PHASE,3500);
 check; RAD1_009_REF; location_type(Decoration,Dogfight);
@@ -2548,15 +2421,6 @@ check; RAD1_004_REF; location_type(Decoration,Dogfight);
 check; RAD1_011_REF; free();
 check; RAD1_011_REF; in_radius(PRIMARY_LINK_PHASE,3500);
 check; RAD1_011_REF; location_type(Decoration,Dogfight);
-check; RAD1_013_REF; free();
-check; RAD1_013_REF; in_radius(PRIMARY_LINK_PHASE,3500);
-check; RAD1_013_REF; location_type(Decoration,Dogfight);
-check; RAD1_016_REF; free();
-check; RAD1_016_REF; in_radius(PRIMARY_LINK_PHASE,3500);
-check; RAD1_016_REF; location_type(Decoration,Dogfight);
-check; RAD1_015_REF; free();
-check; RAD1_015_REF; in_radius(PRIMARY_LINK_PHASE,3500);
-check; RAD1_015_REF; location_type(Decoration,Dogfight);
 check; RAD1_AAA1_REF; free();
 check; RAD1_AAA1_REF; location_type(Decoration,Dogfight);
 check; RAD1_AAA1_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
@@ -2586,24 +2450,15 @@ check; RAD1_ORIENTATION; range(PRIMARY_LINK_PHASE,closest_outof,4000);
 check; RID1_AAA2_REF; free();
 check; RID1_AAA2_REF; location_type(Decoration,Dogfight);
 check; RID1_AAA2_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
-check; RID1_AAA4_REF; free();
-check; RID1_AAA4_REF; location_type(Decoration,Dogfight);
-check; RID1_AAA4_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; RID1_009_REF; free();
 check; RID1_009_REF; in_radius(PRIMARY_LINK_PHASE,3500);
 check; RID1_009_REF; location_type(Decoration,Dogfight);
 check; RID1_003_REF; free();
 check; RID1_003_REF; in_radius(PRIMARY_LINK_PHASE,3500);
 check; RID1_003_REF; location_type(Decoration,Dogfight);
-check; RID1_014_REF; free();
-check; RID1_014_REF; in_radius(PRIMARY_LINK_PHASE,3500);
-check; RID1_014_REF; location_type(Decoration,Dogfight);
 check; RID1_012_REF; free();
 check; RID1_012_REF; in_radius(PRIMARY_LINK_PHASE,3500);
 check; RID1_012_REF; location_type(Decoration,Dogfight);
-check; RID1_AAA3_REF; free();
-check; RID1_AAA3_REF; location_type(Decoration,Dogfight);
-check; RID1_AAA3_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; RID1_AAA1_REF; free();
 check; RID1_AAA1_REF; location_type(Decoration,Dogfight);
 check; RID1_AAA1_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
@@ -2628,9 +2483,6 @@ check; RID1_007_REF; location_type(Decoration,Dogfight);
 check; RID1_008_REF; free();
 check; RID1_008_REF; in_radius(PRIMARY_LINK_PHASE,3500);
 check; RID1_008_REF; location_type(Decoration,Dogfight);
-check; RID1_AAA5_REF; free();
-check; RID1_AAA5_REF; location_type(Decoration,Dogfight);
-check; RID1_AAA5_REF; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; RID1_ORIENTATION; coalition(e);
 check; RID1_ORIENTATION; range(PRIMARY_LINK_PHASE,closest_outof,4000);
 check; LARGE_CANNON_85_882; location_type(Decoration,AAAPosition);
@@ -3593,6 +3445,110 @@ check; W_STATION_DECOR_2402_2462_2832; free();
 check; W_STATION_DECOR_2402_2462_2836; location_type(GroundObjective,RailwayStation);
 check; W_STATION_DECOR_2402_2462_2836; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; W_STATION_DECOR_2402_2462_2836; free();
+check; RED_REAR_AF1_REFERENCE; free();
+check; RED_REAR_AF2_REFERENCE; location_type(Airfield,GrassField);
+check; RED_REAR_AF2_REFERENCE; coalition(f);
+check; RED_REAR_AF2_REFERENCE; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RED_REAR_AF2_REFERENCE; free();
+check; RED_REAF_AF1_2834; in_radius(PRIMARY_LINK_PHASE,100);
+check; RED_REAF_AF1_2834; location_type(Decoration,Parking);
+check; AF4_DECOR_RED_2835; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; AF4_DECOR_RED_2835; location_type(AirObjective,ReconFlight);
+check; SIREN_RED_4_2836; location_type(Decoration,Siren);
+check; SIREN_RED_4_2836; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; WINDSOCK_4_2837; location_type(Decoration,Windsock);
+check; WINDSOCK_4_2837; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RED_BEACON_2838; location_type(Decoration,NDB);
+check; RED_BEACON_2838; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; RED_BEACON_2838; free();
+check; LARGE_CANNON_1448_2853; location_type(Decoration,AAAPosition);
+check; LARGE_CANNON_1448_2853; free();
+check; LARGE_CANNON_1448_2853; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; MEDIUM_CANNON_1449_2854; location_type(Decoration,AAAPosition);
+check; MEDIUM_CANNON_1449_2854; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; MEDIUM_CANNON_1449_2854; free();
+check; MEDIUM_CANNON2_1450_2855; location_type(Decoration,AAAPosition);
+check; MEDIUM_CANNON2_1450_2855; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; MEDIUM_CANNON2_1450_2855; free();
+check; MEDIUM_CANNON3_1451_2856; location_type(Decoration,AAAPosition);
+check; MEDIUM_CANNON3_1451_2856; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; MEDIUM_CANNON3_1451_2856; free();
+check; MEDIUM_CANNON4_1452_2857; location_type(Decoration,AAAPosition);
+check; MEDIUM_CANNON4_1452_2857; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; MEDIUM_CANNON4_1452_2857; free();
+check; MEDIUM_CANNON5_1453_2858; location_type(Decoration,AAAPosition);
+check; MEDIUM_CANNON5_1453_2858; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; MEDIUM_CANNON5_1453_2858; free();
+check; MEDIUM_CANNON6_1454_2859; location_type(Decoration,AAAPosition);
+check; MEDIUM_CANNON6_1454_2859; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; MEDIUM_CANNON6_1454_2859; free();
+check; SMALL_CANNON_1455_2860; location_type(Decoration,AAAPosition);
+check; SMALL_CANNON_1455_2860; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; SMALL_CANNON_1455_2860; free();
+check; SMALL_CANNON2_1456_2861; location_type(Decoration,AAAPosition);
+check; SMALL_CANNON2_1456_2861; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; SMALL_CANNON2_1456_2861; free();
+check; MEDIUM_CANNON_504_1457_2862; location_type(Decoration,AAAPosition);
+check; MEDIUM_CANNON_504_1457_2862; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; MEDIUM_CANNON_504_1457_2862; free();
+check; MEDIUM_CANNON2_505_1458_2863; location_type(Decoration,AAAPosition);
+check; MEDIUM_CANNON2_505_1458_2863; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; MEDIUM_CANNON2_505_1458_2863; free();
+check; MEDIUM_CANNON4_516_1459_2864; location_type(Decoration,AAAPosition);
+check; MEDIUM_CANNON4_516_1459_2864; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; MEDIUM_CANNON4_516_1459_2864; free();
+check; BLUE_REAR_AF1_REFERENCE; free();
+check; BLUE_REAR_AF2_REFERENCE; coalition(e);
+check; BLUE_REAR_AF2_REFERENCE; location_type(Airfield,GrassField);
+check; BLUE_REAR_AF2_REFERENCE; range(PRIMARY_LINK_PHASE,closest_outof,1000);
+check; BLUE_REAR_AF2_REFERENCE; free();
+check; BLUE_REAR_AF2; in_radius(PRIMARY_LINK_PHASE,100);
+check; BLUE_REAR_AF2; location_type(Decoration,Parking);
+check; AF4_DECOR_BLUE_2939; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; AF4_DECOR_BLUE_2939; location_type(AirObjective,ReconFlight);
+check; SIREN_BLUE_4_2940; location_type(Decoration,Siren);
+check; SIREN_BLUE_4_2940; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; WINDSOCK_8_2941; location_type(Decoration,Windsock);
+check; WINDSOCK_8_2941; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; BLUE_BEACON_2942; location_type(Decoration,NDB);
+check; BLUE_BEACON_2942; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; BLUE_BEACON_2942; free();
+check; LARGE_CANNON_85_882_1213_2956; location_type(Decoration,AAAPosition);
+check; LARGE_CANNON_85_882_1213_2956; free();
+check; LARGE_CANNON_85_882_1213_2956; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; MEDIUM_CANNON_86_883_1214_2957; location_type(Decoration,AAAPosition);
+check; MEDIUM_CANNON_86_883_1214_2957; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; MEDIUM_CANNON_86_883_1214_2957; free();
+check; MEDIUM_CANNON2_87_884_1215_2958; location_type(Decoration,AAAPosition);
+check; MEDIUM_CANNON2_87_884_1215_2958; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; MEDIUM_CANNON2_87_884_1215_2958; free();
+check; MEDIUM_CANNON3_88_885_1216_2959; location_type(Decoration,AAAPosition);
+check; MEDIUM_CANNON3_88_885_1216_2959; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; MEDIUM_CANNON3_88_885_1216_2959; free();
+check; MEDIUM_CANNON4_89_886_1217_2960; location_type(Decoration,AAAPosition);
+check; MEDIUM_CANNON4_89_886_1217_2960; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; MEDIUM_CANNON4_89_886_1217_2960; free();
+check; MEDIUM_CANNON5_90_887_1218_2961; location_type(Decoration,AAAPosition);
+check; MEDIUM_CANNON5_90_887_1218_2961; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; MEDIUM_CANNON5_90_887_1218_2961; free();
+check; MEDIUM_CANNON6_91_888_1219_2962; location_type(Decoration,AAAPosition);
+check; MEDIUM_CANNON6_91_888_1219_2962; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; MEDIUM_CANNON6_91_888_1219_2962; free();
+check; SMALL_CANNON_92_889_1220_2963; location_type(Decoration,AAAPosition);
+check; SMALL_CANNON_92_889_1220_2963; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; SMALL_CANNON_92_889_1220_2963; free();
+check; SMALL_CANNON2_93_890_1221_2964; location_type(Decoration,AAAPosition);
+check; SMALL_CANNON2_93_890_1221_2964; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; SMALL_CANNON2_93_890_1221_2964; free();
+check; MEDIUM_CANNON_86_883_180_1223_2966; location_type(Decoration,AAAPosition);
+check; MEDIUM_CANNON_86_883_180_1223_2966; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; MEDIUM_CANNON_86_883_180_1223_2966; free();
+check; MEDIUM_CANNON2_87_884_181_1224_2967; location_type(Decoration,AAAPosition);
+check; MEDIUM_CANNON2_87_884_181_1224_2967; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; MEDIUM_CANNON2_87_884_181_1224_2967; free();
+check; MEDIUM_CANNON6_91_888_192_1225_2968; location_type(Decoration,AAAPosition);
+check; MEDIUM_CANNON6_91_888_192_1225_2968; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; MEDIUM_CANNON6_91_888_192_1225_2968; free();
 
 #
 ## property actions
@@ -3602,15 +3558,12 @@ action; RTD1_001_16_AAA(AAA_8885mm,AILevel); random_integer(AILevel,1);
 action; RTD1_002_5_AAA(AAA_mg,AILevel); random_integer(AILevel,1);
 action; RTD1_007_8_AAA(AAA_2037mm,AILevel); random_integer(AILevel,1,2);
 action; RTD1_012_12_AAA(AAA_2037mm,AILevel); random_integer(AILevel,1,2);
-action; RTD1_016_7_AAA(AAA_2037mm,AILevel); random_integer(AILevel,1,2);
 action; RAD1_001_6_AAA(AAA_2037mm,AILevel); random_integer(AILevel,1,2);
 action; RAD1_002_7_AAA(AAA_2037mm,AILevel); random_integer(AILevel,1,2);
 action; RAD1_010_8_AAA(AAA_8885mm,AILevel); random_integer(AILevel,1);
 action; RAD1_010_8_AAA(AAA_mg,AILevel); random_integer(AILevel,1);
 action; RAD1_012_4_AAA(AAA_mg,AILevel); random_integer(AILevel,1);
 action; RID1_004_4_AAA(AAA_mg,AILevel); random_integer(AILevel,1);
-action; RID1_013_10_AAA(AAA_2037mm,AILevel); random_integer(AILevel,1,2);
-action; RID1_013_10_AAA(AAA_8885mm,AILevel); random_integer(AILevel,1);
 action; BID1_001_12_AAA(AAA_2037mm,AILevel); random_integer(AILevel,1,2);
 action; BID1_001_12_AAA(AAA_mg,AILevel); random_integer(AILevel,1);
 action; BID1_006_14_AAA(AAA_2037mm,AILevel); random_integer(AILevel,1,2);
@@ -3632,7 +3585,6 @@ action; BAD1_009_15_AAA(AAA_mg,AILevel); random_integer(AILevel,1);
 action; BAD1_010_24_AAA(AAA_8885mm,AILevel); random_integer(AILevel,1);
 action; BAD1_010_24_AAA(AAA_AMG,AILevel); random_integer(AILevel,1,2);
 action; BAD1_010_24_AAA(AAA_mg,AILevel); random_integer(AILevel,1);
-action; BAD1_015_7_AAA(AAA_2037mm,AILevel); random_integer(AILevel,1,2);
 action; BTD1_001_14_AAA(AAA_2037mm,AILevel); random_integer(AILevel,1,2);
 action; BTD1_006_4_AAA(AAA_mg,AILevel); random_integer(AILevel,1);
 action; BTD1_009_2_AAA(AAA_mg,AILevel); random_integer(AILevel,1);
@@ -3644,10 +3596,7 @@ action; RTD1_003_12_AAA(AAA_mg,AILevel); random_integer(AILevel,1);
 action; RAD1_003_13_AAA(AAA_2037mm,AILevel); random_integer(AILevel,1,2);
 action; RAD1_008_4_AAA(AAA_8885mm,AILevel); random_integer(AILevel,1);
 action; RAD1_008_4_AAA(AAA_mg,AILevel); random_integer(AILevel,1);
-action; RAD1_014_4_AAA(AAA_2037mm,AILevel); random_integer(AILevel,1,2);
 action; RID1_011_7_AAA(AAA_2037mm,AILevel); random_integer(AILevel,1,2);
-action; RID1_015_4_AAA(AAA_mg,AILevel); random_integer(AILevel,1);
-action; RID1_016_9_AAA(AAA_2037mm,AILevel); random_integer(AILevel,1,2);
 action; BTD1_004_10_AAA(AAA_2037mm,AILevel); random_integer(AILevel,1,2);
 action; BTD1_004_10_AAA(AAA_mg,AILevel); random_integer(AILevel,1);
 action; LARGE_CANNON_85_882(AAA_BIG_TYPE,Model); set_model(AAA HVY static cannon,random enemy);
@@ -4046,10 +3995,6 @@ action; BAD1_ACTIVATOR(CLOSER,Zone); <empty>();
 action; BAD1_ACTIVATOR(FURTHER,Zone); <empty>();
 action; BID1_ACTIVATOR(CLOSER,Zone); <empty>();
 action; BID1_ACTIVATOR(FURTHER,Zone); <empty>();
-action; BTD1_016_6(,del_below_16); import_rules(delete BTD1 units below 16);
-action; BTD1_015_13(,del_below_15); import_rules(delete BTD1 units below 15);
-action; BTD1_014_9(,del_below_14); import_rules(delete BTD1 units below 14);
-action; BTD1_013_4(,del_below_13); import_rules(delete BTD1 units below 13);
 action; BTD1_012_6(,del_below_12); import_rules(delete BTD1 units below 12);
 action; BTD1_011_10_AAA(,del_below_11); import_rules(delete BTD1 units below 11);
 action; BTD1_010_8_AAA(,del_below_10); import_rules(delete BTD1 units below 10);
@@ -4061,10 +4006,6 @@ action; BTD1_005_7(,del_below_5); import_rules(delete BTD1 units below 5);
 action; BTD1_004_10_AAA(,del_below_4); import_rules(delete BTD1 units below 4);
 action; BTD1_003_10(,del_below_3); import_rules(delete BTD1 units below 3);
 action; BTD1_002_10_AAA(,del_below_2); import_rules(delete BTD1 units below 2);
-action; BAD1_016_8(,del_below_16); import_rules(delete BAD1 units below 16);
-action; BAD1_015_7_AAA(,del_below_15); import_rules(delete BAD1 units below 15);
-action; BAD1_014_6(,del_below_14); import_rules(delete BAD1 units below 14);
-action; BAD1_013_6(,del_below_13); import_rules(delete BAD1 units below 13);
 action; BAD1_012_8(,del_below_12); import_rules(delete BAD1 units below 12);
 action; BAD1_011_12(,del_below_11); import_rules(delete BAD1 units below 11);
 action; BAD1_010_24_AAA(,del_below_10); import_rules(delete BAD1 units below 10);
@@ -4076,10 +4017,6 @@ action; BAD1_005_4_AAA(,del_below_5); import_rules(delete BAD1 units below 5);
 action; BAD1_004_11(,del_below_4); import_rules(delete BAD1 units below 4);
 action; BAD1_003_7(,del_below_3); import_rules(delete BAD1 units below 3);
 action; BAD1_002_9(,del_below_2); import_rules(delete BAD1 units below 2);
-action; BID1_016_8(,del_below_16); import_rules(delete BID1 units below 16);
-action; BID1_015_7(,del_below_15); import_rules(delete BID1 units below 15);
-action; BID1_014_8(,del_below_14); import_rules(delete BID1 units below 14);
-action; BID1_013_6(,del_below_13); import_rules(delete BID1 units below 13);
 action; BID1_010_3(,del_below_12); import_rules(delete BAD1 units below 12);
 action; BID1_002_10(,del_below_11); import_rules(delete BID1 units below 11);
 action; BID1_003_10(,del_below_10); import_rules(delete BID1 units below 10);
@@ -4091,10 +4028,6 @@ action; BID1_007_12(,del_below_5); import_rules(delete BID1 units below 5);
 action; BID1_008_30(,del_below_4); import_rules(delete BID1 units below 4);
 action; BID1_006_14_AAA(,del_below_3); import_rules(delete BID1 units below 3);
 action; BID1_011_9_AAA(,del_below_2); import_rules(delete BID1 units below 2);
-action; RTD1_016_7_AAA(,del_below_16); import_rules(delete RTD1 units below 16);
-action; RTD1_015_4(,del_below_15); import_rules(delete RTD1 units below 15);
-action; RTD1_014_6(,del_below_14); import_rules(delete RTD1 units below 14);
-action; RTD1_013_10(,del_below_13); import_rules(delete RTD1 units below 13);
 action; RTD1_012_12_AAA(,del_below_12); import_rules(delete RTD1 units below 12);
 action; RTD1_011_16(,del_below_11); import_rules(delete RTD1 units below 11);
 action; RTD1_010_6(,del_below_10); import_rules(delete RTD1 units below 10);
@@ -4106,10 +4039,6 @@ action; RTD1_005_6(,del_below_5); import_rules(delete RTD1 units below 5);
 action; RTD1_004_10(,del_below_4); import_rules(delete RTD1 units below 4);
 action; RTD1_003_12_AAA(,del_below_3); import_rules(delete RTD1 units below 3);
 action; RTD1_002_5_AAA(,del_below_2); import_rules(delete RTD1 units below 2);
-action; RAD1_016_5(,del_below_16); import_rules(delete RAD1 units below 16);
-action; RAD1_015_4(,del_below_15); import_rules(delete RAD1 units below 15);
-action; RAD1_014_4_AAA(,del_below_14); import_rules(delete RAD1 units below 14);
-action; RAD1_013_9(,del_below_13); import_rules(delete RAD1 units below 13);
 action; RAD1_012_4_AAA(,del_below_12); import_rules(delete RAD1 units below 12);
 action; RAD1_011_7(,del_below_11); import_rules(delete RAD1 units below 11);
 action; RAD1_010_8_AAA(,del_below_10); import_rules(delete RAD1 units below 10);
@@ -4132,10 +4061,6 @@ action; RID1_009_3(,del_below_9); import_rules(delete RID1 units below 9);
 action; RID1_010_6(,del_below_8); import_rules(delete RID1 units below 8);
 action; RID1_011_7_AAA(,del_below_7); import_rules(delete RID1 units below 7);
 action; RID1_012_13(,del_below_6); import_rules(delete RID1 units below 6);
-action; RID1_014_10(,del_below_5); import_rules(delete RID1 units below 5);
-action; RID1_013_10_AAA(,del_below_4); import_rules(delete RID1 units below 4);
-action; RID1_015_4_AAA(,del_below_3); import_rules(delete RID1 units below 3);
-action; RID1_016_9_AAA(,del_below_2); import_rules(delete RID1 units below 2);
 action; BLUE_WH1_01_0DMG(,del_dmg_not_0); import_rules(delete BWH1 sections dmg 0);
 action; REXPERT_BWH1_74(,del_dmg_not_0); import_rules(delete BWH1 sections dmg 0);
 action; BLUE_WH1_02_0DMG(,del_dmg_not_0); import_rules(delete BWH1 sections dmg 0);
@@ -4357,10 +4282,6 @@ action; RAD1_UNIT9_ICON(,del_below_9); import_rules(delete RAD1 units below 9);
 action; RAD1_UNIT10_ICON(,del_below_10); import_rules(delete RAD1 units below 10);
 action; RAD1_UNIT11_ICON(,del_below_11); import_rules(delete RAD1 units below 11);
 action; RAD1_UNIT12_ICON(,del_below_12); import_rules(delete RAD1 units below 12);
-action; RAD1_UNIT13_ICON(,del_below_13); import_rules(delete RAD1 units below 13);
-action; RAD1_UNIT14_ICON(,del_below_14); import_rules(delete RAD1 units below 14);
-action; RAD1_UNIT15_ICON(,del_below_15); import_rules(delete RAD1 units below 15);
-action; RAD1_UNIT16_ICON(,del_below_16); import_rules(delete RAD1 units below 16);
 action; RTD1_003_ICON(,del_below_3); import_rules(delete RTD1 units below 3);
 action; RTD1_004_ICON(,del_below_4); import_rules(delete RTD1 units below 4);
 action; RTD1_005_ICON(,del_below_5); import_rules(delete RTD1 units below 5);
@@ -4372,10 +4293,6 @@ action; RTD1_009_ICON(,del_below_9); <empty>();
 action; RTD1_010_ICON(,del_below_10); <empty>();
 action; RTD1_011_ICON(,del_below_11); <empty>();
 action; RTD1_012_ICON(,del_below_12); <empty>();
-action; RTD1_013_ICON(,del_below_13); import_rules(delete RTD1 units below 13);
-action; RTD1_014_ICON(,del_below_14); import_rules(delete RTD1 units below 14);
-action; RTD1_015_ICON(,del_below_15); import_rules(delete RTD1 units below 15);
-action; RTD1_016_ICON(,del_below_16); import_rules(delete RTD1 units below 16);
 action; RID1_003_ICON(,del_below_3); import_rules(delete RID1 units below 3);
 action; RID1_004_ICON(,del_below_4); import_rules(delete RID1 units below 4);
 action; RID1_005_ICON(,del_below_5); import_rules(delete RID1 units below 5);
@@ -4387,10 +4304,6 @@ action; RID1_009_ICON(,del_below_9); import_rules(delete RID1 units below 9);
 action; RID1_010_ICON(,del_below_10); import_rules(delete RID1 units below 10);
 action; RID1_011_ICON(,del_below_11); import_rules(delete RID1 units below 11);
 action; RID1_012_ICON(,del_below_12); import_rules(delete RID1 units below 12);
-action; RID1_013_ICON(,del_below_13); import_rules(delete RID1 units below 13);
-action; RID1_014_ICON(,del_below_14); import_rules(delete RID1 units below 14);
-action; RID1_015_ICON(,del_below_15); import_rules(delete RID1 units below 15);
-action; RID1_016_ICON(,del_below_16); import_rules(delete RID1 units below 16);
 action; BTD_002_ICON(,del_below_2); import_rules(delete BTD1 units below 2);
 action; BTD_003_ICON(,del_below_3); import_rules(delete BTD1 units below 3);
 action; BTD_004_ICON(,del_below_4); import_rules(delete BTD1 units below 4);
@@ -4402,10 +4315,6 @@ action; BTD_009_ICON(,del_below_9); import_rules(delete BTD1 units below 9);
 action; BTD_010_ICON(,del_below_10); import_rules(delete BTD1 units below 10);
 action; BTD_011_ICON(,del_below_11); import_rules(delete BTD1 units below 11);
 action; BTD_012_ICON(,del_below_12); import_rules(delete BTD1 units below 12);
-action; BTD_013_ICON(,del_below_13); import_rules(delete BTD1 units below 13);
-action; BTD_014_ICON(,del_below_14); import_rules(delete BTD1 units below 14);
-action; BTD_015_ICON(,del_below_15); import_rules(delete BTD1 units below 15);
-action; BTD_016_ICON(,del_below_16); import_rules(delete BTD1 units below 16);
 action; BAD1_002_ICON(,del_below_2); import_rules(delete BAD1 units below 2);
 action; BAD1_003_ICON(,del_below_3); import_rules(delete BAD1 units below 3);
 action; BAD1_004_ICON(,del_below_4); import_rules(delete BAD1 units below 4);
@@ -4417,10 +4326,6 @@ action; BAD1_009_ICON(,del_below_9); import_rules(delete BAD1 units below 9);
 action; BAD1_010_ICON(,del_below_10); import_rules(delete BAD1 units below 10);
 action; BAD1_011_ICON(,del_below_11); import_rules(delete BAD1 units below 11);
 action; BAD1_012_ICON(,del_below_12); import_rules(delete BAD1 units below 12);
-action; BAD1_013_ICON(,del_below_13); import_rules(delete BAD1 units below 13);
-action; BAD1_014_ICON(,del_below_14); import_rules(delete BAD1 units below 14);
-action; BAD1_015_ICON(,del_below_15); import_rules(delete BAD1 units below 15);
-action; BAD1_016_ICON(,del_below_16); import_rules(delete BAD1 units below 16);
 action; BID1_002_ICON(,del_below_2); import_rules(delete BID1 units below 2);
 action; BID1_003_ICON(,del_below_3); import_rules(delete BID1 units below 3);
 action; BID1_004_ICON(,del_below_4); import_rules(delete BID1 units below 4);
@@ -4432,10 +4337,72 @@ action; BID1_009_ICON(,del_below_9); import_rules(delete BID1 units below 9);
 action; BID1_010_ICON(,del_below_10); import_rules(delete BID1 units below 10);
 action; BID1_011_ICON(,del_below_11); import_rules(delete BID1 units below 11);
 action; BID1_012_ICON(,del_below_12); import_rules(delete BID1 units below 12);
-action; BID1_013_ICON(,del_below_13); import_rules(delete BID1 units below 13);
-action; BID1_014_ICON(,del_below_14); import_rules(delete BID1 units below 14);
-action; BID1_015_ICON(,del_below_15); import_rules(delete BID1 units below 15);
-action; BID1_016_ICON(,del_below_16); import_rules(delete BID1 units below 16);
+action; SIREN_RED_4_2836(Proximity,Distance); set(Distance,6000);
+action; RED_BEACON_2838(BEACON,Country); set_country(friendly);
+action; RED_SMART_CHECKZONE_1447_2852(AUTO_CANNONS,Time); <empty>();
+action; RED_SMART_CHECKZONE_1447_2852(Inner Zone,Zone); set(Zone,8000);
+action; RED_SMART_CHECKZONE_1447_2852(MACHINE_GUNS,Time); <empty>();
+action; RED_SMART_CHECKZONE_1447_2852(Outer Zone,Zone); set(Zone,9000);
+action; LARGE_CANNON_1448_2853(AAA_BIG_TYPE,Model); set_model(AAA HVY static cannon,Allies:AAA HVY static cannon:52K);
+action; LARGE_CANNON_1448_2853(AAA_BIG_TYPE,Country); set_country(friendly);
+action; LARGE_CANNON_1448_2853(AAA_BIG_TYPE,AILevel); set(AILevel,3);
+action; MEDIUM_CANNON_1449_2854(AAA_MED_TYPE,Model); set_model(AAA LT static cannon,random friendly);
+action; MEDIUM_CANNON_1449_2854(AAA_MED_TYPE,Country); set_country(friendly);
+action; MEDIUM_CANNON2_1450_2855(AAA_MED_TYPE,Model); set_model(AAA LT static cannon,random friendly);
+action; MEDIUM_CANNON2_1450_2855(AAA_MED_TYPE,Country); set_country(friendly);
+action; MEDIUM_CANNON3_1451_2856(AAA_MED_TYPE,Model); set_model(AAA LT static cannon,random friendly);
+action; MEDIUM_CANNON3_1451_2856(AAA_MED_TYPE,Country); set_country(friendly);
+action; MEDIUM_CANNON4_1452_2857(AAA_MED_TYPE,Model); set_model(AAA LT static cannon,random friendly);
+action; MEDIUM_CANNON4_1452_2857(AAA_MED_TYPE,Country); set_country(friendly);
+action; MEDIUM_CANNON5_1453_2858(AAA_MED_TYPE,Model); set_model(AAA LT static cannon,random friendly);
+action; MEDIUM_CANNON5_1453_2858(AAA_MED_TYPE,Country); set_country(friendly);
+action; MEDIUM_CANNON6_1454_2859(AAA_MED_TYPE,Model); set_model(AAA LT static cannon,random friendly);
+action; MEDIUM_CANNON6_1454_2859(AAA_MED_TYPE,Country); set_country(friendly);
+action; SMALL_CANNON_1455_2860(AAA_SMALL_TYPE,Model); set_model(AAA machinegun,Allies:AAA machinegun:Maksim4-AA);
+action; SMALL_CANNON_1455_2860(AAA_SMALL_TYPE,Country); set_country(friendly);
+action; SMALL_CANNON_1455_2860(AAA_SMALL_TYPE,AILevel); set(AILevel,3);
+action; SMALL_CANNON2_1456_2861(AAA_SMALL_TYPE,Model); set_model(AAA machinegun,Allies:AAA machinegun:Maksim4-AA);
+action; SMALL_CANNON2_1456_2861(AAA_SMALL_TYPE,Country); set_country(friendly);
+action; SMALL_CANNON2_1456_2861(AAA_SMALL_TYPE,AILevel); set(AILevel,3);
+action; MEDIUM_CANNON_504_1457_2862(AAA_MED_TYPE,Model); set_model(AAA LT static cannon,random friendly);
+action; MEDIUM_CANNON_504_1457_2862(AAA_MED_TYPE,Country); set_country(friendly);
+action; MEDIUM_CANNON2_505_1458_2863(AAA_MED_TYPE,Model); set_model(AAA LT static cannon,random friendly);
+action; MEDIUM_CANNON2_505_1458_2863(AAA_MED_TYPE,Country); set_country(friendly);
+action; MEDIUM_CANNON4_516_1459_2864(AAA_MED_TYPE,Model); set_model(AAA LT static cannon,random friendly);
+action; MEDIUM_CANNON4_516_1459_2864(AAA_MED_TYPE,Country); set_country(friendly);
+action; SIREN_BLUE_4_2940(Proximity,Distance); set(Distance,6000);
+action; BLUE_BEACON_2942(BEACON,Country); set_country(enemy);
+action; LARGE_CANNON_85_882_1213_2956(AAA_BIG_TYPE,Model); set_model(AAA HVY static cannon,random enemy);
+action; LARGE_CANNON_85_882_1213_2956(AAA_BIG_TYPE,Country); set_country(enemy);
+action; LARGE_CANNON_85_882_1213_2956(AAA_BIG_TYPE,AILevel); set(AILevel,3);
+action; MEDIUM_CANNON_86_883_1214_2957(AAA_MED_TYPE,Model); set_model(AAA LT static cannon,random enemy);
+action; MEDIUM_CANNON_86_883_1214_2957(AAA_MED_TYPE,Country); set_country(enemy);
+action; MEDIUM_CANNON2_87_884_1215_2958(AAA_MED_TYPE,Model); set_model(AAA LT static cannon,random enemy);
+action; MEDIUM_CANNON2_87_884_1215_2958(AAA_MED_TYPE,Country); set_country(enemy);
+action; MEDIUM_CANNON3_88_885_1216_2959(AAA_MED_TYPE,Model); set_model(AAA LT static cannon,random enemy);
+action; MEDIUM_CANNON3_88_885_1216_2959(AAA_MED_TYPE,Country); set_country(enemy);
+action; MEDIUM_CANNON4_89_886_1217_2960(AAA_MED_TYPE,Model); set_model(AAA LT static cannon,random enemy);
+action; MEDIUM_CANNON4_89_886_1217_2960(AAA_MED_TYPE,Country); set_country(enemy);
+action; MEDIUM_CANNON5_90_887_1218_2961(AAA_MED_TYPE,Model); set_model(AAA LT static cannon,random enemy);
+action; MEDIUM_CANNON5_90_887_1218_2961(AAA_MED_TYPE,Country); set_country(enemy);
+action; MEDIUM_CANNON6_91_888_1219_2962(AAA_MED_TYPE,Model); set_model(AAA LT static cannon,random enemy);
+action; MEDIUM_CANNON6_91_888_1219_2962(AAA_MED_TYPE,Country); set_country(enemy);
+action; SMALL_CANNON_92_889_1220_2963(AAA_SMALL_TYPE,Model); set_model(AAA machinegun,Axis:AAA machinegun:mg34-aa);
+action; SMALL_CANNON_92_889_1220_2963(AAA_SMALL_TYPE,Country); set_country(enemy);
+action; SMALL_CANNON_92_889_1220_2963(AAA_SMALL_TYPE,AILevel); set(AILevel,3);
+action; SMALL_CANNON2_93_890_1221_2964(AAA_SMALL_TYPE,Model); set_model(AAA machinegun,Axis:AAA machinegun:mg34-aa);
+action; SMALL_CANNON2_93_890_1221_2964(AAA_SMALL_TYPE,Country); set_country(enemy);
+action; SMALL_CANNON2_93_890_1221_2964(AAA_SMALL_TYPE,AILevel); set(AILevel,3);
+action; BLUE_SMART_CHECKZONE_891_1222_2965(AUTO_CANNONS,Time); <empty>();
+action; BLUE_SMART_CHECKZONE_891_1222_2965(Inner Zone,Zone); <empty>();
+action; BLUE_SMART_CHECKZONE_891_1222_2965(MACHINE_GUNS,Time); <empty>();
+action; BLUE_SMART_CHECKZONE_891_1222_2965(Outer Zone,Zone); <empty>();
+action; MEDIUM_CANNON_86_883_180_1223_2966(AAA_MED_TYPE,Model); set_model(AAA LT static cannon,random enemy);
+action; MEDIUM_CANNON_86_883_180_1223_2966(AAA_MED_TYPE,Country); set_country(enemy);
+action; MEDIUM_CANNON2_87_884_181_1224_2967(AAA_MED_TYPE,Model); set_model(AAA LT static cannon,random enemy);
+action; MEDIUM_CANNON2_87_884_181_1224_2967(AAA_MED_TYPE,Country); set_country(enemy);
+action; MEDIUM_CANNON6_91_888_192_1225_2968(AAA_MED_TYPE,Model); set_model(AAA LT static cannon,random enemy);
+action; MEDIUM_CANNON6_91_888_192_1225_2968(AAA_MED_TYPE,Country); set_country(enemy);
 
 #
 ## unlinks
@@ -4445,8 +4412,8 @@ action; BID1_016_ICON(,del_below_16); import_rules(delete BID1 units below 16);
 ## gui helpers
 #
 gui_helper; SERVER_SET; 697; 295;""; ( ); 6;
-gui_helper; BLUE_REAR_AF_REFERENCE; -8781; 406;""; ( ); 4;
-gui_helper; RED_REAR_AF_REFERENCE; 9490; 470;""; ( ); 4;
+gui_helper; BLUE_REAR_AF1_REFERENCE; -8781; 406;""; ( ); 4;
+gui_helper; RED_REAR_AF1_REFERENCE; 9490; 470;""; ( ); 4;
 gui_helper; FL_ICONS; 608; -646;""; ( ); 4;
 gui_helper; BTD1; -4801; 2634;""; ( ); 4;
 gui_helper; BAD1; -7014; 2565;""; ( ); 4;
@@ -4479,10 +4446,6 @@ gui_helper; RTD1_009_7; 3278; 5171;""; ( ); 4;
 gui_helper; RTD1_010_6; 3754; 5166;""; ( ); 4;
 gui_helper; RTD1_011_16; 4265; 5167;""; ( ); 4;
 gui_helper; RTD1_012_12_AAA; 4749; 5167;""; ( ); 4;
-gui_helper; RTD1_013_10; 5471; 5176;""; ( ); 4;
-gui_helper; RTD1_014_6; 5923; 5164;""; ( ); 4;
-gui_helper; RTD1_015_4; 6445; 5165;""; ( ); 4;
-gui_helper; RTD1_016_7_AAA; 6913; 5175;""; ( ); 4;
 gui_helper; RAD1_001_6_AAA; 9208; 3868;""; ( ); 4;
 gui_helper; RAD1_002_7_AAA; 9646; 3862;""; ( ); 4;
 gui_helper; RAD1_004_4; 10587; 3885;""; ( ); 4;
@@ -4493,9 +4456,6 @@ gui_helper; RAD1_009_9; 9263; 5007;""; ( ); 4;
 gui_helper; RAD1_010_8_AAA; 9688; 5003;""; ( ); 4;
 gui_helper; RAD1_011_7; 10147; 5009;""; ( ); 4;
 gui_helper; RAD1_012_4_AAA; 10631; 5043;""; ( ); 4;
-gui_helper; RAD1_013_9; 11549; 5057;""; ( ); 4;
-gui_helper; RAD1_015_4; 12501; 5053;""; ( ); 4;
-gui_helper; RAD1_016_5; 12955; 5021;""; ( ); 4;
 gui_helper; RID1_001_7; 8054; 7724;""; ( ); 4;
 gui_helper; RID1_002_7; 8512; 7724;""; ( ); 4;
 gui_helper; RID1_003_7; 8995; 7730;""; ( ); 4;
@@ -4507,8 +4467,6 @@ gui_helper; RID1_008_4; 11700; 7731;""; ( ); 4;
 gui_helper; RID1_009_3; 8045; 9010;""; ( ); 4;
 gui_helper; RID1_010_6; 8512; 9010;""; ( ); 4;
 gui_helper; RID1_012_13; 9429; 9008;""; ( ); 4;
-gui_helper; RID1_014_10; 10794; 9020;""; ( ); 4;
-gui_helper; RID1_013_10_AAA; 10360; 9019;""; ( ); 4;
 gui_helper; BID1_001_12_AAA; -9308; 7145;""; ( ); 4;
 gui_helper; BID1_002_10; -8843; 7147;""; ( ); 4;
 gui_helper; BID1_003_10; -8379; 7147;""; ( ); 4;
@@ -4521,10 +4479,6 @@ gui_helper; BID1_009_19_AAA; -9318; 8522;""; ( ); 4;
 gui_helper; BID1_010_3; -8851; 8514;""; ( ); 4;
 gui_helper; BID1_011_9_AAA; -8400; 8528;""; ( ); 4;
 gui_helper; BID1_012_13_AAA; -7922; 8530;""; ( ); 4;
-gui_helper; BID1_013_6; -7201; 8543;""; ( ); 4;
-gui_helper; BID1_014_8; -6740; 8538;""; ( ); 4;
-gui_helper; BID1_015_7; -6280; 8552;""; ( ); 4;
-gui_helper; BID1_016_8; -5789; 8550;""; ( ); 4;
 gui_helper; BAD1_001_10; -10604; 3450;""; ( ); 4;
 gui_helper; BAD1_002_9; -10127; 3456;""; ( ); 4;
 gui_helper; BAD1_003_7; -9656; 3458;""; ( ); 4;
@@ -4536,11 +4490,7 @@ gui_helper; BAD1_008_9_AAA; -6977; 3467;""; ( ); 4;
 gui_helper; BAD1_009_15_AAA; -10607; 4838;""; ( ); 4;
 gui_helper; BAD1_010_24_AAA; -10128; 4848;""; ( ); 4;
 gui_helper; BAD1_011_12; -9647; 4840;""; ( ); 4;
-gui_helper; BAD1_013_6; -8468; 4846;""; ( ); 4;
 gui_helper; BAD1_012_8; -9175; 4837;""; ( ); 4;
-gui_helper; BAD1_014_6; -7983; 4842;""; ( ); 4;
-gui_helper; BAD1_015_7_AAA; -7475; 4840;""; ( ); 4;
-gui_helper; BAD1_016_8; -6977; 4845;""; ( ); 4;
 gui_helper; BTD1_001_14_AAA; -4772; 3615;""; ( ); 4;
 gui_helper; BTD1_002_10_AAA; -4292; 3609;""; ( ); 4;
 gui_helper; BTD1_003_10; -3814; 3610;""; ( ); 4;
@@ -4551,9 +4501,6 @@ gui_helper; BTD1_009_2_AAA; -4759; 4867;""; ( ); 4;
 gui_helper; BTD1_010_8_AAA; -4290; 4870;""; ( ); 4;
 gui_helper; BTD1_011_10_AAA; -3810; 4871;""; ( ); 4;
 gui_helper; BTD1_012_6; -3332; 4872;""; ( ); 4;
-gui_helper; BTD1_013_4; -2603; 4893;""; ( ); 4;
-gui_helper; BTD1_015_13; -1689; 4900;""; ( ); 4;
-gui_helper; BTD1_016_6; -1220; 4889;""; ( ); 4;
 gui_helper; BTD1_ORIENTATION; -2981; 2112;""; ( ); 4;
 gui_helper; BTD1_AAA1_REF; -4770; 3258;""; ( ); 4;
 gui_helper; BTD1_AAA2_REF; -4296; 3275;""; ( ); 4;
@@ -4567,14 +4514,7 @@ gui_helper; BTD1_005_REF; -2612; 3278;""; ( ); 4;
 gui_helper; BTD1_007_REF; -1698; 3281;""; ( ); 4;
 gui_helper; BTD1_008_REF; -1226; 3274;""; ( ); 4;
 gui_helper; BTD1_012_REF; -3345; 4541;""; ( ); 4;
-gui_helper; BTD1_013_REF; -2614; 4551;""; ( ); 4;
-gui_helper; BTD1_014_REF; -2140; 4552;""; ( ); 4;
-gui_helper; BTD1_015_REF; -1698; 4553;""; ( ); 4;
-gui_helper; BTD1_016_REF; -1224; 4554;""; ( ); 4;
 gui_helper; BAD1_012_REF; -9180; 4488;""; ( ); 4;
-gui_helper; BAD1_013_REF; -8455; 4502;""; ( ); 4;
-gui_helper; BAD1_014_REF; -7981; 4503;""; ( ); 4;
-gui_helper; BAD1_016_REF; -6982; 4517;""; ( ); 4;
 gui_helper; BAD1_011_REF; -9665; 4492;""; ( ); 4;
 gui_helper; BAD1_004_REF; -9178; 3107;""; ( ); 4;
 gui_helper; BAD1_002_REF; -10128; 3096;""; ( ); 4;
@@ -4586,12 +4526,8 @@ gui_helper; BAD1_AAA2_REF; -7983; 3117;""; ( ); 4;
 gui_helper; BAD1_AAA3_REF; -7005; 3121;""; ( ); 4;
 gui_helper; BAD1_AAA4_REF; -10607; 4491;""; ( ); 4;
 gui_helper; BAD1_AAA5_REF; -10143; 4474;""; ( ); 4;
-gui_helper; BAD1_AAA6_REF; -7481; 4512;""; ( ); 4;
 gui_helper; BAD1_ORIENTATION; -8884; 2138;""; ( ); 4;
 gui_helper; BID1_004_REF; -7926; 6824;""; ( ); 4;
-gui_helper; BID1_013_REF; -7203; 8180;""; ( ); 4;
-gui_helper; BID1_014_REF; -6750; 8186;""; ( ); 4;
-gui_helper; BID1_016_REF; -5793; 8192;""; ( ); 4;
 gui_helper; BID1_003_REF; -8383; 6843;""; ( ); 4;
 gui_helper; BID1_AAA1_REF; -9324; 6816;""; ( ); 4;
 gui_helper; BID1_AAA3_REF; -9326; 8152;""; ( ); 4;
@@ -4599,7 +4535,6 @@ gui_helper; BID1_AAA2_REF; -6739; 6838;""; ( ); 4;
 gui_helper; BID1_005_REF; -7211; 6842;""; ( ); 4;
 gui_helper; BID1_010_REF; -8853; 8154;""; ( ); 4;
 gui_helper; BID1_002_REF; -8845; 6836;""; ( ); 4;
-gui_helper; BID1_015_REF; -6293; 8182;""; ( ); 4;
 gui_helper; BID1_007_REF; -6273; 6840;""; ( ); 4;
 gui_helper; BID1_008_REF; -5794; 6849;""; ( ); 4;
 gui_helper; BID1_AAA4_REF; -8384; 8149;""; ( ); 4;
@@ -4612,25 +4547,17 @@ gui_helper; RTD1_AAA4_REF; 6438; 3527;""; ( ); 4;
 gui_helper; RTD1_AAA5_REF; 4742; 4851;""; ( ); 4;
 gui_helper; RTD1_004_REF; 4716; 3536;""; ( ); 4;
 gui_helper; RTD1_003_12_AAA; 4257; 3885;""; ( ); 4;
-gui_helper; RTD1_AAA6_REF; 6908; 4861;""; ( ); 4;
 gui_helper; RTD1_004_REF_806; 5455; 3538;""; ( ); 4;
 gui_helper; RTD1_005_REF; 5922; 3535;""; ( ); 4;
 gui_helper; RTD1_008_REF; 6888; 3530;""; ( ); 4;
 gui_helper; RTD1_009_REF; 3295; 4849;""; ( ); 4;
 gui_helper; RTD1_010_REF; 3763; 4854;""; ( ); 4;
 gui_helper; RTD1_011_REF; 4253; 4857;""; ( ); 4;
-gui_helper; RTD1_013_REF; 5462; 4864;""; ( ); 4;
-gui_helper; RTD1_014_REF; 5919; 4859;""; ( ); 4;
-gui_helper; RTD1_015_REF; 6445; 4857;""; ( ); 4;
 gui_helper; RTD1_ORIENTATION; 5149; 2173;""; ( ); 4;
 gui_helper; RAD1_AAA5_REF; 9691; 4704;""; ( ); 4;
-gui_helper; RAD1_AAA7_REF; 12022; 4752;""; ( ); 4;
 gui_helper; RAD1_009_REF; 9255; 4708;""; ( ); 4;
 gui_helper; RAD1_004_REF; 10592; 3584;""; ( ); 4;
 gui_helper; RAD1_011_REF; 10152; 4698;""; ( ); 4;
-gui_helper; RAD1_013_REF; 11565; 4753;""; ( ); 4;
-gui_helper; RAD1_016_REF; 12944; 4709;""; ( ); 4;
-gui_helper; RAD1_015_REF; 12507; 4746;""; ( ); 4;
 gui_helper; RAD1_AAA1_REF; 9203; 3560;""; ( ); 4;
 gui_helper; RAD1_AAA2_REF; 9645; 3542;""; ( ); 4;
 gui_helper; RAD1_AAA3_REF; 10112; 3556;""; ( ); 4;
@@ -4641,18 +4568,12 @@ gui_helper; RAD1_006_REF; 11959; 3590;""; ( ); 4;
 gui_helper; RAD1_007_REF; 12447; 3590;""; ( ); 4;
 gui_helper; RAD1_003_13_AAA; 10133; 3874;""; ( ); 4;
 gui_helper; RAD1_008_4_AAA; 12909; 3843;""; ( ); 4;
-gui_helper; RAD1_014_4_AAA; 12025; 5059;""; ( ); 4;
 gui_helper; RAD1_ORIENTATION; 10948; 2255;""; ( ); 4;
 gui_helper; RID1_011_7_AAA; 8991; 9005;""; ( ); 4;
-gui_helper; RID1_015_4_AAA; 11257; 9024;""; ( ); 4;
-gui_helper; RID1_016_9_AAA; 11688; 9032;""; ( ); 4;
 gui_helper; RID1_AAA2_REF; 8977; 8697;""; ( ); 4;
-gui_helper; RID1_AAA4_REF; 11242; 8701;""; ( ); 4;
 gui_helper; RID1_009_REF; 8020; 8694;""; ( ); 4;
 gui_helper; RID1_003_REF; 9006; 7443;""; ( ); 4;
-gui_helper; RID1_014_REF; 10792; 8711;""; ( ); 4;
 gui_helper; RID1_012_REF; 9435; 8689;""; ( ); 4;
-gui_helper; RID1_AAA3_REF; 10356; 8701;""; ( ); 4;
 gui_helper; RID1_AAA1_REF; 9438; 7425;""; ( ); 4;
 gui_helper; RID1_010_REF; 8500; 8686;""; ( ); 4;
 gui_helper; RID1_002_REF; 8515; 7445;""; ( ); 4;
@@ -4661,10 +4582,8 @@ gui_helper; RID1_005_REF; 10329; 7440;""; ( ); 4;
 gui_helper; RID1_006_REF; 10795; 7446;""; ( ); 4;
 gui_helper; RID1_007_REF; 11240; 7434;""; ( ); 4;
 gui_helper; RID1_008_REF; 11690; 7443;""; ( ); 4;
-gui_helper; RID1_AAA5_REF; 11691; 8692;""; ( ); 4;
 gui_helper; RID1_ORIENTATION; 9805; 6349;""; ( ); 4;
 gui_helper; BTD1_007_3; -1686; 3612;""; ( ); 4;
-gui_helper; BTD1_014_9; -2131; 4909;""; ( ); 4;
 gui_helper; BTD1_004_10_AAA; -3348; 3612;""; ( ); 4;
 gui_helper; LARGE_CANNON_85_882; -5854; -3781;""; ( ); 4;
 gui_helper; MEDIUM_CANNON_86_883; -5852; -3366;""; ( ); 4;
@@ -4778,7 +4697,7 @@ gui_helper; RED_FRONT_AF_3_KILLED; 7445; -1196;""; ( ); 4;
 gui_helper; BLUE_FRONT_AF_1_KILLED; -2130; -1369;""; ( ); 4;
 gui_helper; BLUE_FRONT_AF_2_KILLED; -4414; -1343;""; ( ); 4;
 gui_helper; BLUE_FRONT_AF_3_KILLED; -6644; -1283;""; ( ); 4;
-gui_helper; BLUE_REAR_AF1; -8770; 70;""; ( ); 4;
+gui_helper; BLUE_REAR_AF1; -8770; 75;""; ( ); 4;
 gui_helper; RED_REAF_AF1; 9511; 124;""; ( ); 4;
 gui_helper; RED_FRONT_AF1; 3583; -344;""; ( ); 4;
 gui_helper; RED_FRONT_AF2; 5469; -313;""; ( ); 4;
@@ -4862,32 +4781,26 @@ gui_helper; RTD1_ACTIVATOR; 5148; 2607;""; ( ); 4;
 gui_helper; RTD1_DELAY1_AAA_LAST; 3985; 3154;""; ( ); 4;
 gui_helper; RTD1_DELAY2_AAA_LAST; 6112; 3206;""; ( ); 4;
 gui_helper; RTD1_DELAY3_AAA_LAST; 3986; 4513;""; ( ); 4;
-gui_helper; RTD1_DELAY4_AAA_LAST; 6155; 4527;""; ( ); 4;
 gui_helper; RAD1_ACTIVATOR; 10917; 2775;""; ( ); 4;
 gui_helper; RAD1_DELAY2_AAA_LAST; 12235; 3262;""; ( ); 4;
 gui_helper; RAD1_DELAY1_AAA_LAST; 9921; 3214;""; ( ); 4;
 gui_helper; RAD1_DELAY3_AAA_LAST; 9949; 4443;""; ( ); 4;
-gui_helper; RAD1_DELAY4_AAA_LAST; 12285; 4486;""; ( ); 4;
 gui_helper; RID1_ACTIVATOR; 9835; 6896;""; ( ); 4;
 gui_helper; RID1_DELAY1_AAA_LAST; 8799; 7190;""; ( ); 4;
 gui_helper; RID1_DELAY2_AAA_LAST; 11052; 7183;""; ( ); 4;
 gui_helper; RID1_DELAY3_AAA_LAST; 8752; 8415;""; ( ); 4;
-gui_helper; RID1_DELAY4_AAA_LAST; 11011; 8397;""; ( ); 4;
 gui_helper; BTD1_ACTIVATOR; -2972; 2566;""; ( ); 4;
 gui_helper; BTD1_DELAY1_AAA_LAST; -4068; 2971;""; ( ); 4;
 gui_helper; BTD1_DELAY2_AAA_LAST; -1923; 2965;""; ( ); 4;
 gui_helper; BTD1_DELAY3_AAA_LAST; -4036; 4244;""; ( ); 4;
-gui_helper; BTD1_DELAY4_AAA_LAST; -1928; 4234;""; ( ); 4;
 gui_helper; BAD1_ACTIVATOR; -8889; 2518;""; ( ); 4;
 gui_helper; BAD1_DELAY1_AAA_LAST; -9868; 2777;""; ( ); 4;
 gui_helper; BAD1_DELAY2_AAA_LAST; -7737; 2843;""; ( ); 4;
 gui_helper; BAD1_DELAY3_AAA_LAST; -9901; 4188;""; ( ); 4;
-gui_helper; BAD1_DELAY4_AAA_LAST; -7792; 4196;""; ( ); 4;
 gui_helper; BID1_ACTIVATOR; -7536; 6124;""; ( ); 4;
 gui_helper; BID1_DELAY1_AAA_LAST; -8578; 6490;""; ( ); 4;
 gui_helper; BID1_DELAY2_AAA_LAST; -6535; 6484;""; ( ); 4;
 gui_helper; BID1_DELAY3_AAA_LAST; -8628; 7861;""; ( ); 4;
-gui_helper; BID1_DELAY4_AAA_LAST; -6529; 7881;""; ( ); 4;
 gui_helper; REXPERT_RWH1_74; 4307; 8648;""; ( ); 4;
 gui_helper; REXPERT_RWH1_52; 4310; 8852;""; ( ); 4;
 gui_helper; REXPERT_RWH1_60; 4308; 9068;""; ( ); 4;
@@ -5243,10 +5156,6 @@ gui_helper; RAD1_UNIT9_ICON; 9254; 5264;""; ( ); 4;
 gui_helper; RAD1_UNIT10_ICON; 9704; 5262;""; ( ); 4;
 gui_helper; RAD1_UNIT11_ICON; 10151; 5265;""; ( ); 4;
 gui_helper; RAD1_UNIT12_ICON; 10631; 5279;""; ( ); 4;
-gui_helper; RAD1_UNIT13_ICON; 11547; 5267;""; ( ); 4;
-gui_helper; RAD1_UNIT14_ICON; 12030; 5266;""; ( ); 4;
-gui_helper; RAD1_UNIT15_ICON; 12488; 5269;""; ( ); 4;
-gui_helper; RAD1_UNIT16_ICON; 12953; 5257;""; ( ); 4;
 gui_helper; RAD1_UNIT2_ICON; 9656; 4098;""; ( ); 4;
 gui_helper; RAD1_UNIT1_ICON; 9202; 4107;""; ( ); 4;
 gui_helper; RAD1_ORIENTATION2; 12920; 2672;""; ( ); 5;
@@ -5263,10 +5172,6 @@ gui_helper; RTD1_009_ICON; 3293; 5498;""; ( ); 4;
 gui_helper; RTD1_010_ICON; 3731; 5512;""; ( ); 4;
 gui_helper; RTD1_011_ICON; 4253; 5523;""; ( ); 4;
 gui_helper; RTD1_012_ICON; 4733; 5509;""; ( ); 4;
-gui_helper; RTD1_013_ICON; 5466; 5503;""; ( ); 4;
-gui_helper; RTD1_014_ICON; 5930; 5495;""; ( ); 4;
-gui_helper; RTD1_015_ICON; 6459; 5486;""; ( ); 4;
-gui_helper; RTD1_016_ICON; 6921; 5501;""; ( ); 4;
 gui_helper; RID1_ORIENTATION2; 11689; 6841;""; ( ); 5;
 gui_helper; RID1_003_ICON; 9015; 8005;""; ( ); 4;
 gui_helper; RID1_004_ICON; 9464; 8015;""; ( ); 4;
@@ -5280,10 +5185,6 @@ gui_helper; RID1_009_ICON; 8053; 9337;""; ( ); 4;
 gui_helper; RID1_010_ICON; 8503; 9335;""; ( ); 4;
 gui_helper; RID1_011_ICON; 8950; 9338;""; ( ); 4;
 gui_helper; RID1_012_ICON; 9430; 9352;""; ( ); 4;
-gui_helper; RID1_013_ICON; 10346; 9340;""; ( ); 4;
-gui_helper; RID1_014_ICON; 10829; 9339;""; ( ); 4;
-gui_helper; RID1_015_ICON; 11287; 9342;""; ( ); 4;
-gui_helper; RID1_016_ICON; 11703; 9361;""; ( ); 4;
 gui_helper; BTD1_ORIENTATION2; -1237; 2567;""; ( ); 5;
 gui_helper; BTD_001_ICON; -4761; 3902;""; ( ); 4;
 gui_helper; BTD_002_ICON; -4286; 3906;""; ( ); 4;
@@ -5297,10 +5198,6 @@ gui_helper; BTD_009_ICON; -4749; 5190;""; ( ); 4;
 gui_helper; BTD_010_ICON; -4278; 5194;""; ( ); 4;
 gui_helper; BTD_011_ICON; -3829; 5214;""; ( ); 4;
 gui_helper; BTD_012_ICON; -3308; 5224;""; ( ); 4;
-gui_helper; BTD_013_ICON; -2601; 5209;""; ( ); 4;
-gui_helper; BTD_014_ICON; -2136; 5204;""; ( ); 4;
-gui_helper; BTD_015_ICON; -1676; 5209;""; ( ); 4;
-gui_helper; BTD_016_ICON; -1186; 5219;""; ( ); 4;
 gui_helper; BAD1_ORIENTATION2; -10598; 2547;""; ( ); 5;
 gui_helper; BAD1_001_ICON; -10596; 3776;""; ( ); 4;
 gui_helper; BAD1_002_ICON; -10121; 3780;""; ( ); 4;
@@ -5314,10 +5211,6 @@ gui_helper; BAD1_009_ICON; -10570; 5143;""; ( ); 4;
 gui_helper; BAD1_010_ICON; -10099; 5147;""; ( ); 4;
 gui_helper; BAD1_011_ICON; -9650; 5167;""; ( ); 4;
 gui_helper; BAD1_012_ICON; -9129; 5177;""; ( ); 4;
-gui_helper; BAD1_013_ICON; -8422; 5162;""; ( ); 4;
-gui_helper; BAD1_014_ICON; -7957; 5142;""; ( ); 4;
-gui_helper; BAD1_015_ICON; -7497; 5162;""; ( ); 4;
-gui_helper; BAD1_016_ICON; -7007; 5172;""; ( ); 4;
 gui_helper; BID1_ORIENTATION2; -9341; 6245;""; ( ); 5;
 gui_helper; BID1_001_ICON; -9326; 7437;""; ( ); 4;
 gui_helper; BID1_002_ICON; -8851; 7441;""; ( ); 4;
@@ -5331,16 +5224,50 @@ gui_helper; BID1_009_ICON; -9348; 8835;""; ( ); 4;
 gui_helper; BID1_010_ICON; -8877; 8839;""; ( ); 4;
 gui_helper; BID1_011_ICON; -8428; 8859;""; ( ); 4;
 gui_helper; BID1_012_ICON; -7907; 8869;""; ( ); 4;
-gui_helper; BID1_013_ICON; -7200; 8854;""; ( ); 4;
-gui_helper; BID1_014_ICON; -6735; 8849;""; ( ); 4;
-gui_helper; BID1_015_ICON; -6275; 8854;""; ( ); 4;
-gui_helper; BID1_016_ICON; -5785; 8864;""; ( ); 4;
-gui_helper; check; -8542; 474;BLUE_REAR_AF_REFERENCE(coalition)
-gui_helper; check; -8544; 428;BLUE_REAR_AF_REFERENCE(location_type)
-gui_helper; check; -8544; 518;BLUE_REAR_AF_REFERENCE(range)
-gui_helper; check; 9758; 541;RED_REAR_AF_REFERENCE(location_type)
-gui_helper; check; 9761; 492;RED_REAR_AF_REFERENCE(coalition)
-gui_helper; check; 9760; 590;RED_REAR_AF_REFERENCE(range)
+gui_helper; RED_REAR_AF2_REFERENCE; 11870; 642;""; ( ); 4;
+gui_helper; RED_REAF_AF1_2834; 11922; -79;""; ( ); 4;
+gui_helper; AF4_DECOR_RED_2835; 12515; -182;""; ( ); 4;
+gui_helper; SIREN_RED_4_2836; 11422; -374;""; ( ); 4;
+gui_helper; WINDSOCK_4_2837; 11663; -367;""; ( ); 4;
+gui_helper; RED_BEACON_2838; 12278; -536;""; ( ); 4;
+gui_helper; RED_SMART_CHECKZONE_1447_2852; 12198; -1303;""; ( ); 4;
+gui_helper; LARGE_CANNON_1448_2853; 11186; -3567;""; ( ); 4;
+gui_helper; MEDIUM_CANNON_1449_2854; 11188; -3152;""; ( ); 4;
+gui_helper; MEDIUM_CANNON2_1450_2855; 11569; -3561;""; ( ); 4;
+gui_helper; MEDIUM_CANNON3_1451_2856; 11207; -2324;""; ( ); 4;
+gui_helper; MEDIUM_CANNON4_1452_2857; 11201; -1919;""; ( ); 4;
+gui_helper; MEDIUM_CANNON5_1453_2858; 11174; -1466;""; ( ); 4;
+gui_helper; MEDIUM_CANNON6_1454_2859; 11617; -2339;""; ( ); 4;
+gui_helper; SMALL_CANNON_1455_2860; 11618; -1465;""; ( ); 4;
+gui_helper; SMALL_CANNON2_1456_2861; 11613; -1887;""; ( ); 4;
+gui_helper; MEDIUM_CANNON_504_1457_2862; 11185; -2741;""; ( ); 4;
+gui_helper; MEDIUM_CANNON2_505_1458_2863; 11580; -3154;""; ( ); 4;
+gui_helper; MEDIUM_CANNON4_516_1459_2864; 11588; -2732;""; ( ); 4;
+gui_helper; BLUE_REAR_AF2_REFERENCE; -10991; 502;""; ( ); 4;
+gui_helper; BLUE_REAR_AF2; -11024; -144;""; ( ); 4;
+gui_helper; AF4_DECOR_BLUE_2939; -11501; -143;""; ( ); 4;
+gui_helper; SIREN_BLUE_4_2940; -10655; -426;""; ( ); 4;
+gui_helper; WINDSOCK_8_2941; -10420; -425;""; ( ); 4;
+gui_helper; BLUE_BEACON_2942; -11452; -597;""; ( ); 4;
+gui_helper; LARGE_CANNON_85_882_1213_2956; -10449; -3750;""; ( ); 4;
+gui_helper; MEDIUM_CANNON_86_883_1214_2957; -10447; -3335;""; ( ); 4;
+gui_helper; MEDIUM_CANNON2_87_884_1215_2958; -10021; -3713;""; ( ); 4;
+gui_helper; MEDIUM_CANNON3_88_885_1216_2959; -10428; -2507;""; ( ); 4;
+gui_helper; MEDIUM_CANNON4_89_886_1217_2960; -10036; -2902;""; ( ); 4;
+gui_helper; MEDIUM_CANNON5_90_887_1218_2961; -10417; -2080;""; ( ); 4;
+gui_helper; MEDIUM_CANNON6_91_888_1219_2962; -10045; -2454;""; ( ); 4;
+gui_helper; SMALL_CANNON_92_889_1220_2963; -10032; -1610;""; ( ); 4;
+gui_helper; SMALL_CANNON2_93_890_1221_2964; -10042; -2000;""; ( ); 4;
+gui_helper; BLUE_SMART_CHECKZONE_891_1222_2965; -11229; -1516;""; ( ); 4;
+gui_helper; MEDIUM_CANNON_86_883_180_1223_2966; -10456; -2945;""; ( ); 4;
+gui_helper; MEDIUM_CANNON2_87_884_181_1224_2967; -10030; -3323;""; ( ); 4;
+gui_helper; MEDIUM_CANNON6_91_888_192_1225_2968; -10418; -1649;""; ( ); 4;
+gui_helper; check; -8542; 474;BLUE_REAR_AF1_REFERENCE(coalition)
+gui_helper; check; -8544; 428;BLUE_REAR_AF1_REFERENCE(location_type)
+gui_helper; check; -8544; 518;BLUE_REAR_AF1_REFERENCE(range)
+gui_helper; check; 9758; 541;RED_REAR_AF1_REFERENCE(location_type)
+gui_helper; check; 9761; 492;RED_REAR_AF1_REFERENCE(coalition)
+gui_helper; check; 9760; 590;RED_REAR_AF1_REFERENCE(range)
 gui_helper; check; -4773; 2480;BTD1(free)
 gui_helper; check; -4772; 2428;BTD1(location_type)
 gui_helper; check; -4774; 2524;BTD1(coalition)
@@ -5413,32 +5340,11 @@ gui_helper; check; -2512; 3203;BTD1_005_REF(location_type)
 gui_helper; check; -1598; 3206;BTD1_007_REF(location_type)
 gui_helper; check; -1126; 3199;BTD1_008_REF(location_type)
 gui_helper; check; -3323; 4512;BTD1_012_REF(in_radius)
-gui_helper; check; -2592; 4522;BTD1_013_REF(in_radius)
-gui_helper; check; -2118; 4523;BTD1_014_REF(in_radius)
-gui_helper; check; -1676; 4524;BTD1_015_REF(in_radius)
-gui_helper; check; -1202; 4525;BTD1_016_REF(in_radius)
 gui_helper; check; -3323; 4466;BTD1_012_REF(free)
-gui_helper; check; -2592; 4476;BTD1_013_REF(free)
-gui_helper; check; -2118; 4477;BTD1_014_REF(free)
-gui_helper; check; -1676; 4478;BTD1_015_REF(free)
-gui_helper; check; -1202; 4479;BTD1_016_REF(free)
 gui_helper; check; -3245; 4466;BTD1_012_REF(location_type)
-gui_helper; check; -2514; 4476;BTD1_013_REF(location_type)
-gui_helper; check; -2040; 4477;BTD1_014_REF(location_type)
-gui_helper; check; -1598; 4478;BTD1_015_REF(location_type)
-gui_helper; check; -1124; 4479;BTD1_016_REF(location_type)
 gui_helper; check; -9158; 4459;BAD1_012_REF(in_radius)
 gui_helper; check; -9158; 4413;BAD1_012_REF(free)
 gui_helper; check; -9080; 4413;BAD1_012_REF(location_type)
-gui_helper; check; -8433; 4473;BAD1_013_REF(in_radius)
-gui_helper; check; -8433; 4427;BAD1_013_REF(free)
-gui_helper; check; -8355; 4427;BAD1_013_REF(location_type)
-gui_helper; check; -7959; 4474;BAD1_014_REF(in_radius)
-gui_helper; check; -7959; 4428;BAD1_014_REF(free)
-gui_helper; check; -7881; 4428;BAD1_014_REF(location_type)
-gui_helper; check; -6960; 4488;BAD1_016_REF(in_radius)
-gui_helper; check; -6960; 4442;BAD1_016_REF(free)
-gui_helper; check; -6882; 4442;BAD1_016_REF(location_type)
 gui_helper; check; -9643; 4459;BAD1_011_REF(in_radius)
 gui_helper; check; -9643; 4413;BAD1_011_REF(free)
 gui_helper; check; -9565; 4413;BAD1_011_REF(location_type)
@@ -5472,23 +5378,11 @@ gui_helper; check; -10585; 4423;BAD1_AAA4_REF(location_type)
 gui_helper; check; -10119; 4450;BAD1_AAA5_REF(free)
 gui_helper; check; -10122; 4359;BAD1_AAA5_REF(range)
 gui_helper; check; -10121; 4406;BAD1_AAA5_REF(location_type)
-gui_helper; check; -7457; 4488;BAD1_AAA6_REF(free)
-gui_helper; check; -7460; 4397;BAD1_AAA6_REF(range)
-gui_helper; check; -7459; 4444;BAD1_AAA6_REF(location_type)
 gui_helper; check; -8851; 2018;BAD1_ORIENTATION(coalition)
 gui_helper; check; -8850; 2074;BAD1_ORIENTATION(range)
 gui_helper; check; -7904; 6795;BID1_004_REF(in_radius)
 gui_helper; check; -7904; 6749;BID1_004_REF(free)
 gui_helper; check; -7826; 6749;BID1_004_REF(location_type)
-gui_helper; check; -7181; 8151;BID1_013_REF(in_radius)
-gui_helper; check; -7181; 8105;BID1_013_REF(free)
-gui_helper; check; -7103; 8105;BID1_013_REF(location_type)
-gui_helper; check; -6728; 8152;BID1_014_REF(in_radius)
-gui_helper; check; -6728; 8106;BID1_014_REF(free)
-gui_helper; check; -6650; 8106;BID1_014_REF(location_type)
-gui_helper; check; -5771; 8163;BID1_016_REF(in_radius)
-gui_helper; check; -5771; 8117;BID1_016_REF(free)
-gui_helper; check; -5693; 8117;BID1_016_REF(location_type)
 gui_helper; check; -8361; 6810;BID1_003_REF(in_radius)
 gui_helper; check; -8361; 6764;BID1_003_REF(free)
 gui_helper; check; -8283; 6764;BID1_003_REF(location_type)
@@ -5510,9 +5404,6 @@ gui_helper; check; -8753; 8079;BID1_010_REF(location_type)
 gui_helper; check; -8823; 6807;BID1_002_REF(in_radius)
 gui_helper; check; -8823; 6761;BID1_002_REF(free)
 gui_helper; check; -8745; 6761;BID1_002_REF(location_type)
-gui_helper; check; -6271; 8153;BID1_015_REF(in_radius)
-gui_helper; check; -6271; 8107;BID1_015_REF(free)
-gui_helper; check; -6193; 8107;BID1_015_REF(location_type)
 gui_helper; check; -6251; 6811;BID1_007_REF(in_radius)
 gui_helper; check; -6251; 6765;BID1_007_REF(free)
 gui_helper; check; -6173; 6765;BID1_007_REF(location_type)
@@ -5542,9 +5433,6 @@ gui_helper; check; 6465; 3404;RTD1_AAA4_REF(range)
 gui_helper; check; 4777; 4818;RTD1_AAA5_REF(free)
 gui_helper; check; 4773; 4773;RTD1_AAA5_REF(location_type)
 gui_helper; check; 4769; 4728;RTD1_AAA5_REF(range)
-gui_helper; check; 6943; 4828;RTD1_AAA6_REF(free)
-gui_helper; check; 6939; 4783;RTD1_AAA6_REF(location_type)
-gui_helper; check; 6935; 4738;RTD1_AAA6_REF(range)
 gui_helper; check; 4735; 3463;RTD1_004_REF(free)
 gui_helper; check; 4737; 3501;RTD1_004_REF(in_radius)
 gui_helper; check; 4818; 3456;RTD1_004_REF(location_type)
@@ -5566,23 +5454,11 @@ gui_helper; check; 3862; 4774;RTD1_010_REF(location_type)
 gui_helper; check; 4272; 4784;RTD1_011_REF(free)
 gui_helper; check; 4274; 4822;RTD1_011_REF(in_radius)
 gui_helper; check; 4355; 4777;RTD1_011_REF(location_type)
-gui_helper; check; 5481; 4791;RTD1_013_REF(free)
-gui_helper; check; 5483; 4829;RTD1_013_REF(in_radius)
-gui_helper; check; 5564; 4784;RTD1_013_REF(location_type)
-gui_helper; check; 5938; 4786;RTD1_014_REF(free)
-gui_helper; check; 5940; 4824;RTD1_014_REF(in_radius)
-gui_helper; check; 6021; 4779;RTD1_014_REF(location_type)
-gui_helper; check; 6464; 4784;RTD1_015_REF(free)
-gui_helper; check; 6466; 4822;RTD1_015_REF(in_radius)
-gui_helper; check; 6547; 4777;RTD1_015_REF(location_type)
 gui_helper; check; 5180; 2131;RTD1_ORIENTATION(coalition)
 gui_helper; check; 5184; 2090;RTD1_ORIENTATION(range)
 gui_helper; check; 9726; 4671;RAD1_AAA5_REF(free)
 gui_helper; check; 9722; 4626;RAD1_AAA5_REF(location_type)
 gui_helper; check; 9716; 4577;RAD1_AAA5_REF(range)
-gui_helper; check; 12046; 4708;RAD1_AAA7_REF(free)
-gui_helper; check; 12042; 4663;RAD1_AAA7_REF(location_type)
-gui_helper; check; 12038; 4618;RAD1_AAA7_REF(range)
 gui_helper; check; 9274; 4634;RAD1_009_REF(free)
 gui_helper; check; 9276; 4672;RAD1_009_REF(in_radius)
 gui_helper; check; 9357; 4627;RAD1_009_REF(location_type)
@@ -5592,15 +5468,6 @@ gui_helper; check; 10691; 3504;RAD1_004_REF(location_type)
 gui_helper; check; 10171; 4625;RAD1_011_REF(free)
 gui_helper; check; 10173; 4663;RAD1_011_REF(in_radius)
 gui_helper; check; 10254; 4618;RAD1_011_REF(location_type)
-gui_helper; check; 11583; 4680;RAD1_013_REF(free)
-gui_helper; check; 11585; 4718;RAD1_013_REF(in_radius)
-gui_helper; check; 11666; 4673;RAD1_013_REF(location_type)
-gui_helper; check; 12963; 4636;RAD1_016_REF(free)
-gui_helper; check; 12965; 4674;RAD1_016_REF(in_radius)
-gui_helper; check; 13046; 4629;RAD1_016_REF(location_type)
-gui_helper; check; 12526; 4673;RAD1_015_REF(free)
-gui_helper; check; 12528; 4711;RAD1_015_REF(in_radius)
-gui_helper; check; 12609; 4666;RAD1_015_REF(location_type)
 gui_helper; check; 9238; 3527;RAD1_AAA1_REF(free)
 gui_helper; check; 9234; 3482;RAD1_AAA1_REF(location_type)
 gui_helper; check; 9228; 3433;RAD1_AAA1_REF(range)
@@ -5630,24 +5497,15 @@ gui_helper; check; 10980; 2179;RAD1_ORIENTATION(range)
 gui_helper; check; 9012; 8664;RID1_AAA2_REF(free)
 gui_helper; check; 9008; 8619;RID1_AAA2_REF(location_type)
 gui_helper; check; 9002; 8570;RID1_AAA2_REF(range)
-gui_helper; check; 11266; 8657;RID1_AAA4_REF(free)
-gui_helper; check; 11262; 8612;RID1_AAA4_REF(location_type)
-gui_helper; check; 11258; 8567;RID1_AAA4_REF(range)
 gui_helper; check; 8039; 8620;RID1_009_REF(free)
 gui_helper; check; 8041; 8658;RID1_009_REF(in_radius)
 gui_helper; check; 8122; 8613;RID1_009_REF(location_type)
 gui_helper; check; 9025; 7370;RID1_003_REF(free)
 gui_helper; check; 9027; 7408;RID1_003_REF(in_radius)
 gui_helper; check; 9108; 7363;RID1_003_REF(location_type)
-gui_helper; check; 10810; 8638;RID1_014_REF(free)
-gui_helper; check; 10812; 8676;RID1_014_REF(in_radius)
-gui_helper; check; 10893; 8631;RID1_014_REF(location_type)
 gui_helper; check; 9454; 8616;RID1_012_REF(free)
 gui_helper; check; 9456; 8654;RID1_012_REF(in_radius)
 gui_helper; check; 9537; 8609;RID1_012_REF(location_type)
-gui_helper; check; 10391; 8668;RID1_AAA3_REF(free)
-gui_helper; check; 10387; 8623;RID1_AAA3_REF(location_type)
-gui_helper; check; 10381; 8574;RID1_AAA3_REF(range)
 gui_helper; check; 9473; 7392;RID1_AAA1_REF(free)
 gui_helper; check; 9469; 7347;RID1_AAA1_REF(location_type)
 gui_helper; check; 9463; 7298;RID1_AAA1_REF(range)
@@ -5672,9 +5530,6 @@ gui_helper; check; 11342; 7354;RID1_007_REF(location_type)
 gui_helper; check; 11709; 7370;RID1_008_REF(free)
 gui_helper; check; 11711; 7408;RID1_008_REF(in_radius)
 gui_helper; check; 11792; 7363;RID1_008_REF(location_type)
-gui_helper; check; 11715; 8648;RID1_AAA5_REF(free)
-gui_helper; check; 11711; 8603;RID1_AAA5_REF(location_type)
-gui_helper; check; 11707; 8558;RID1_AAA5_REF(range)
 gui_helper; check; 9833; 6318;RID1_ORIENTATION(coalition)
 gui_helper; check; 9837; 6277;RID1_ORIENTATION(range)
 gui_helper; check; -5833; -3607;LARGE_CANNON_85_882(location_type)
@@ -6637,20 +6492,121 @@ gui_helper; check; 3323; -6199;W_STATION_DECOR_2402_2462_2832(free)
 gui_helper; check; 3159; -5961;W_STATION_DECOR_2402_2462_2836(location_type)
 gui_helper; check; 3260; -5958;W_STATION_DECOR_2402_2462_2836(range)
 gui_helper; check; 3323; -5957;W_STATION_DECOR_2402_2462_2836(free)
+gui_helper; check; 9761; 631;RED_REAR_AF1_REFERENCE(free)
+gui_helper; check; 12138; 713;RED_REAR_AF2_REFERENCE(location_type)
+gui_helper; check; 12141; 664;RED_REAR_AF2_REFERENCE(coalition)
+gui_helper; check; 12140; 762;RED_REAR_AF2_REFERENCE(range)
+gui_helper; check; 12141; 803;RED_REAR_AF2_REFERENCE(free)
+gui_helper; check; 12160; -16;RED_REAF_AF1_2834(in_radius)
+gui_helper; check; 12157; -64;RED_REAF_AF1_2834(location_type)
+gui_helper; check; 12569; -226;AF4_DECOR_RED_2835(range)
+gui_helper; check; 12581; 23;AF4_DECOR_RED_2835(location_type)
+gui_helper; check; 11448; -195;SIREN_RED_4_2836(location_type)
+gui_helper; check; 11448; -153;SIREN_RED_4_2836(range)
+gui_helper; check; 11685; -185;WINDSOCK_4_2837(location_type)
+gui_helper; check; 11687; -144;WINDSOCK_4_2837(range)
+gui_helper; check; 12299; -356;RED_BEACON_2838(location_type)
+gui_helper; check; 12293; -318;RED_BEACON_2838(range)
+gui_helper; check; 12290; -280;RED_BEACON_2838(free)
+gui_helper; check; 11207; -3393;LARGE_CANNON_1448_2853(location_type)
+gui_helper; check; 11207; -3344;LARGE_CANNON_1448_2853(free)
+gui_helper; check; 11207; -3307;LARGE_CANNON_1448_2853(range)
+gui_helper; check; 11208; -2976;MEDIUM_CANNON_1449_2854(location_type)
+gui_helper; check; 11209; -2932;MEDIUM_CANNON_1449_2854(range)
+gui_helper; check; 11210; -2897;MEDIUM_CANNON_1449_2854(free)
+gui_helper; check; 11589; -3385;MEDIUM_CANNON2_1450_2855(location_type)
+gui_helper; check; 11588; -3347;MEDIUM_CANNON2_1450_2855(range)
+gui_helper; check; 11589; -3312;MEDIUM_CANNON2_1450_2855(free)
+gui_helper; check; 11227; -2148;MEDIUM_CANNON3_1451_2856(location_type)
+gui_helper; check; 11223; -2106;MEDIUM_CANNON3_1451_2856(range)
+gui_helper; check; 11224; -2071;MEDIUM_CANNON3_1451_2856(free)
+gui_helper; check; 11221; -1743;MEDIUM_CANNON4_1452_2857(location_type)
+gui_helper; check; 11221; -1704;MEDIUM_CANNON4_1452_2857(range)
+gui_helper; check; 11222; -1669;MEDIUM_CANNON4_1452_2857(free)
+gui_helper; check; 11194; -1290;MEDIUM_CANNON5_1453_2858(location_type)
+gui_helper; check; 11194; -1252;MEDIUM_CANNON5_1453_2858(range)
+gui_helper; check; 11195; -1217;MEDIUM_CANNON5_1453_2858(free)
+gui_helper; check; 11637; -2163;MEDIUM_CANNON6_1454_2859(location_type)
+gui_helper; check; 11637; -2128;MEDIUM_CANNON6_1454_2859(range)
+gui_helper; check; 11638; -2093;MEDIUM_CANNON6_1454_2859(free)
+gui_helper; check; 11645; -1294;SMALL_CANNON_1455_2860(location_type)
+gui_helper; check; 11646; -1257;SMALL_CANNON_1455_2860(range)
+gui_helper; check; 11645; -1223;SMALL_CANNON_1455_2860(free)
+gui_helper; check; 11640; -1718;SMALL_CANNON2_1456_2861(location_type)
+gui_helper; check; 11641; -1680;SMALL_CANNON2_1456_2861(range)
+gui_helper; check; 11640; -1646;SMALL_CANNON2_1456_2861(free)
+gui_helper; check; 11205; -2565;MEDIUM_CANNON_504_1457_2862(location_type)
+gui_helper; check; 11206; -2521;MEDIUM_CANNON_504_1457_2862(range)
+gui_helper; check; 11207; -2486;MEDIUM_CANNON_504_1457_2862(free)
+gui_helper; check; 11600; -2978;MEDIUM_CANNON2_505_1458_2863(location_type)
+gui_helper; check; 11599; -2940;MEDIUM_CANNON2_505_1458_2863(range)
+gui_helper; check; 11600; -2905;MEDIUM_CANNON2_505_1458_2863(free)
+gui_helper; check; 11608; -2556;MEDIUM_CANNON4_516_1459_2864(location_type)
+gui_helper; check; 11608; -2517;MEDIUM_CANNON4_516_1459_2864(range)
+gui_helper; check; 11609; -2482;MEDIUM_CANNON4_516_1459_2864(free)
+gui_helper; check; -8538; 561;BLUE_REAR_AF1_REFERENCE(free)
+gui_helper; check; -10752; 570;BLUE_REAR_AF2_REFERENCE(coalition)
+gui_helper; check; -10754; 524;BLUE_REAR_AF2_REFERENCE(location_type)
+gui_helper; check; -10754; 614;BLUE_REAR_AF2_REFERENCE(range)
+gui_helper; check; -10748; 657;BLUE_REAR_AF2_REFERENCE(free)
+gui_helper; check; -10778; -112;BLUE_REAR_AF2(in_radius)
+gui_helper; check; -10780; -149;BLUE_REAR_AF2(location_type)
+gui_helper; check; -11484; -184;AF4_DECOR_BLUE_2939(range)
+gui_helper; check; -11438; 49;AF4_DECOR_BLUE_2939(location_type)
+gui_helper; check; -10627; -240;SIREN_BLUE_4_2940(location_type)
+gui_helper; check; -10627; -204;SIREN_BLUE_4_2940(range)
+gui_helper; check; -10397; -243;WINDSOCK_8_2941(location_type)
+gui_helper; check; -10395; -202;WINDSOCK_8_2941(range)
+gui_helper; check; -11431; -417;BLUE_BEACON_2942(location_type)
+gui_helper; check; -11437; -379;BLUE_BEACON_2942(range)
+gui_helper; check; -11440; -341;BLUE_BEACON_2942(free)
+gui_helper; check; -10428; -3576;LARGE_CANNON_85_882_1213_2956(location_type)
+gui_helper; check; -10431; -3536;LARGE_CANNON_85_882_1213_2956(free)
+gui_helper; check; -10431; -3499;LARGE_CANNON_85_882_1213_2956(range)
+gui_helper; check; -10427; -3159;MEDIUM_CANNON_86_883_1214_2957(location_type)
+gui_helper; check; -10430; -3119;MEDIUM_CANNON_86_883_1214_2957(range)
+gui_helper; check; -10429; -3084;MEDIUM_CANNON_86_883_1214_2957(free)
+gui_helper; check; -10001; -3537;MEDIUM_CANNON2_87_884_1215_2958(location_type)
+gui_helper; check; -10012; -3490;MEDIUM_CANNON2_87_884_1215_2958(range)
+gui_helper; check; -10011; -3455;MEDIUM_CANNON2_87_884_1215_2958(free)
+gui_helper; check; -10408; -2331;MEDIUM_CANNON3_88_885_1216_2959(location_type)
+gui_helper; check; -10412; -2293;MEDIUM_CANNON3_88_885_1216_2959(range)
+gui_helper; check; -10411; -2258;MEDIUM_CANNON3_88_885_1216_2959(free)
+gui_helper; check; -10016; -2726;MEDIUM_CANNON4_89_886_1217_2960(location_type)
+gui_helper; check; -10016; -2683;MEDIUM_CANNON4_89_886_1217_2960(range)
+gui_helper; check; -10015; -2648;MEDIUM_CANNON4_89_886_1217_2960(free)
+gui_helper; check; -10397; -1904;MEDIUM_CANNON5_90_887_1218_2961(location_type)
+gui_helper; check; -10398; -1869;MEDIUM_CANNON5_90_887_1218_2961(range)
+gui_helper; check; -10397; -1834;MEDIUM_CANNON5_90_887_1218_2961(free)
+gui_helper; check; -10025; -2278;MEDIUM_CANNON6_91_888_1219_2962(location_type)
+gui_helper; check; -10032; -2238;MEDIUM_CANNON6_91_888_1219_2962(range)
+gui_helper; check; -10031; -2203;MEDIUM_CANNON6_91_888_1219_2962(free)
+gui_helper; check; -10005; -1439;SMALL_CANNON_92_889_1220_2963(location_type)
+gui_helper; check; -10009; -1403;SMALL_CANNON_92_889_1220_2963(range)
+gui_helper; check; -10010; -1369;SMALL_CANNON_92_889_1220_2963(free)
+gui_helper; check; -10015; -1831;SMALL_CANNON2_93_890_1221_2964(location_type)
+gui_helper; check; -10013; -1790;SMALL_CANNON2_93_890_1221_2964(range)
+gui_helper; check; -10014; -1756;SMALL_CANNON2_93_890_1221_2964(free)
+gui_helper; check; -10436; -2769;MEDIUM_CANNON_86_883_180_1223_2966(location_type)
+gui_helper; check; -10439; -2729;MEDIUM_CANNON_86_883_180_1223_2966(range)
+gui_helper; check; -10438; -2694;MEDIUM_CANNON_86_883_180_1223_2966(free)
+gui_helper; check; -10010; -3147;MEDIUM_CANNON2_87_884_181_1224_2967(location_type)
+gui_helper; check; -10021; -3100;MEDIUM_CANNON2_87_884_181_1224_2967(range)
+gui_helper; check; -10020; -3065;MEDIUM_CANNON2_87_884_181_1224_2967(free)
+gui_helper; check; -10398; -1473;MEDIUM_CANNON6_91_888_192_1225_2968(location_type)
+gui_helper; check; -10405; -1433;MEDIUM_CANNON6_91_888_192_1225_2968(range)
+gui_helper; check; -10404; -1398;MEDIUM_CANNON6_91_888_192_1225_2968(free)
 gui_helper; AILevel; 3336; 3792;RTD1_001_16_AAA; (AAA_2037mm);
 gui_helper; AILevel; 3336; 3832;RTD1_001_16_AAA; (AAA_8885mm);
 gui_helper; AILevel; 3821; 3818;RTD1_002_5_AAA; (AAA_mg);
 gui_helper; AILevel; 6520; 3824;RTD1_007_8_AAA; (AAA_2037mm);
 gui_helper; AILevel; 4810; 5109;RTD1_012_12_AAA; (AAA_2037mm);
-gui_helper; AILevel; 6986; 5119;RTD1_016_7_AAA; (AAA_2037mm);
 gui_helper; AILevel; 9272; 3799;RAD1_001_6_AAA; (AAA_2037mm);
 gui_helper; AILevel; 9708; 3797;RAD1_002_7_AAA; (AAA_2037mm);
 gui_helper; AILevel; 9761; 4913;RAD1_010_8_AAA; (AAA_8885mm);
 gui_helper; AILevel; 9761; 4953;RAD1_010_8_AAA; (AAA_mg);
 gui_helper; AILevel; 10694; 4997;RAD1_012_4_AAA; (AAA_mg);
 gui_helper; AILevel; 9519; 7663;RID1_004_4_AAA; (AAA_mg);
-gui_helper; AILevel; 10439; 8914;RID1_013_10_AAA; (AAA_2037mm);
-gui_helper; AILevel; 10439; 8954;RID1_013_10_AAA; (AAA_8885mm);
 gui_helper; AILevel; -9243; 7036;BID1_001_12_AAA; (AAA_2037mm);
 gui_helper; AILevel; -9243; 7076;BID1_001_12_AAA; (AAA_mg);
 gui_helper; AILevel; -6659; 7056;BID1_006_14_AAA; (AAA_2037mm);
@@ -6672,7 +6628,6 @@ gui_helper; AILevel; -10531; 4774;BAD1_009_15_AAA; (AAA_mg);
 gui_helper; AILevel; -10059; 4727;BAD1_010_24_AAA; (AAA_8885mm);
 gui_helper; AILevel; -10059; 4767;BAD1_010_24_AAA; (AAA_AMG);
 gui_helper; AILevel; -10059; 4807;BAD1_010_24_AAA; (AAA_mg);
-gui_helper; AILevel; -7404; 4778;BAD1_015_7_AAA; (AAA_2037mm);
 gui_helper; AILevel; -4708; 3564;BTD1_001_14_AAA; (AAA_2037mm);
 gui_helper; AILevel; -2080; 3566;BTD1_006_4_AAA; (AAA_mg);
 gui_helper; AILevel; -4695; 4806;BTD1_009_2_AAA; (AAA_mg);
@@ -6684,10 +6639,7 @@ gui_helper; AILevel; 4317; 3827;RTD1_003_12_AAA; (AAA_mg);
 gui_helper; AILevel; 10197; 3804;RAD1_003_13_AAA; (AAA_2037mm);
 gui_helper; AILevel; 12973; 3761;RAD1_008_4_AAA; (AAA_8885mm);
 gui_helper; AILevel; 12973; 3801;RAD1_008_4_AAA; (AAA_mg);
-gui_helper; AILevel; 12090; 4989;RAD1_014_4_AAA; (AAA_2037mm);
 gui_helper; AILevel; 9051; 8950;RID1_011_7_AAA; (AAA_2037mm);
-gui_helper; AILevel; 11319; 8961;RID1_015_4_AAA; (AAA_mg);
-gui_helper; AILevel; 11758; 8963;RID1_016_9_AAA; (AAA_2037mm);
 gui_helper; AILevel; -3280; 3525;BTD1_004_10_AAA; (AAA_2037mm);
 gui_helper; AILevel; -3280; 3565;BTD1_004_10_AAA; (AAA_mg);
 gui_helper; Model; -5776; -3848;LARGE_CANNON_85_882; (AAA_BIG_TYPE);
@@ -7086,10 +7038,6 @@ gui_helper; Zone; -8810; 2413;BAD1_ACTIVATOR; (CLOSER);
 gui_helper; Zone; -8810; 2453;BAD1_ACTIVATOR; (FURTHER);
 gui_helper; Zone; -7457; 6019;BID1_ACTIVATOR; (CLOSER);
 gui_helper; Zone; -7457; 6059;BID1_ACTIVATOR; (FURTHER);
-gui_helper; del_below_16; -1159; 5084;BTD1_016_6; ();
-gui_helper; del_below_15; -1617; 5093;BTD1_015_13; ();
-gui_helper; del_below_14; -2069; 5111;BTD1_014_9; ();
-gui_helper; del_below_13; -2531; 5095;BTD1_013_4; ();
 gui_helper; del_below_12; -3257; 5086;BTD1_012_6; ();
 gui_helper; del_below_11; -3743; 5059;BTD1_011_10_AAA; ();
 gui_helper; del_below_10; -4225; 5060;BTD1_010_8_AAA; ();
@@ -7101,10 +7049,6 @@ gui_helper; del_below_5; -2548; 3800;BTD1_005_7; ();
 gui_helper; del_below_4; -3275; 3800;BTD1_004_10_AAA; ();
 gui_helper; del_below_3; -3762; 3806;BTD1_003_10; ();
 gui_helper; del_below_2; -4219; 3801;BTD1_002_10_AAA; ();
-gui_helper; del_below_16; -6920; 5051;BAD1_016_8; ();
-gui_helper; del_below_15; -7413; 5040;BAD1_015_7_AAA; ();
-gui_helper; del_below_14; -7911; 5027;BAD1_014_6; ();
-gui_helper; del_below_13; -8393; 5034;BAD1_013_6; ();
 gui_helper; del_below_12; -9118; 5030;BAD1_012_8; ();
 gui_helper; del_below_11; -9589; 5032;BAD1_011_12; ();
 gui_helper; del_below_10; -10049; 5039;BAD1_010_24_AAA; ();
@@ -7116,10 +7060,6 @@ gui_helper; del_below_5; -8383; 3657;BAD1_005_4_AAA; ();
 gui_helper; del_below_4; -9104; 3645;BAD1_004_11; ();
 gui_helper; del_below_3; -9586; 3648;BAD1_003_7; ();
 gui_helper; del_below_2; -10057; 3646;BAD1_002_9; ();
-gui_helper; del_below_16; -5718; 8757;BID1_016_8; ();
-gui_helper; del_below_15; -6215; 8743;BID1_015_7; ();
-gui_helper; del_below_14; -6678; 8736;BID1_014_8; ();
-gui_helper; del_below_13; -7133; 8735;BID1_013_6; ();
 gui_helper; del_below_12; -8789; 8707;BID1_010_3; ();
 gui_helper; del_below_11; -8779; 7355;BID1_002_10; ();
 gui_helper; del_below_10; -8312; 7341;BID1_003_10; ();
@@ -7131,10 +7071,6 @@ gui_helper; del_below_5; -6206; 7359;BID1_007_12; ();
 gui_helper; del_below_4; -5714; 7360;BID1_008_30; ();
 gui_helper; del_below_3; -6664; 7373;BID1_006_14_AAA; ();
 gui_helper; del_below_2; -8325; 8732;BID1_011_9_AAA; ();
-gui_helper; del_below_16; 6984; 5365;RTD1_016_7_AAA; ();
-gui_helper; del_below_15; 6518; 5363;RTD1_015_4; ();
-gui_helper; del_below_14; 5977; 5362;RTD1_014_6; ();
-gui_helper; del_below_13; 5537; 5361;RTD1_013_10; ();
 gui_helper; del_below_12; 4819; 5355;RTD1_012_12_AAA; ();
 gui_helper; del_below_11; 4337; 5359;RTD1_011_16; ();
 gui_helper; del_below_10; 3825; 5357;RTD1_010_6; ();
@@ -7146,10 +7082,6 @@ gui_helper; del_below_5; 5526; 4061;RTD1_005_6; ();
 gui_helper; del_below_4; 4801; 4064;RTD1_004_10; ();
 gui_helper; del_below_3; 4327; 4074;RTD1_003_12_AAA; ();
 gui_helper; del_below_2; 3818; 4057;RTD1_002_5_AAA; ();
-gui_helper; del_below_16; 13025; 5204;RAD1_016_5; ();
-gui_helper; del_below_15; 12567; 5234;RAD1_015_4; ();
-gui_helper; del_below_14; 12091; 5243;RAD1_014_4_AAA; ();
-gui_helper; del_below_13; 11608; 5232;RAD1_013_9; ();
 gui_helper; del_below_12; 10694; 5221;RAD1_012_4_AAA; ();
 gui_helper; del_below_11; 10221; 5191;RAD1_011_7; ();
 gui_helper; del_below_10; 9760; 5185;RAD1_010_8_AAA; ();
@@ -7172,10 +7104,6 @@ gui_helper; del_below_9; 8113; 9184;RID1_009_3; ();
 gui_helper; del_below_8; 8576; 9188;RID1_010_6; ();
 gui_helper; del_below_7; 9051; 9183;RID1_011_7_AAA; ();
 gui_helper; del_below_6; 9500; 9185;RID1_012_13; ();
-gui_helper; del_below_5; 10860; 9202;RID1_014_10; ();
-gui_helper; del_below_4; 10435; 9198;RID1_013_10_AAA; ();
-gui_helper; del_below_3; 11311; 9212;RID1_015_4_AAA; ();
-gui_helper; del_below_2; 11767; 9215;RID1_016_9_AAA; ();
 gui_helper; del_dmg_not_0; -1820; 8604;BLUE_WH1_01_0DMG; ();
 gui_helper; del_dmg_not_0; -1591; 8602;REXPERT_BWH1_74; ();
 gui_helper; del_dmg_not_0; -1826; 8817;BLUE_WH1_02_0DMG; ();
@@ -7397,10 +7325,6 @@ gui_helper; del_below_9; 9306; 5465;RAD1_UNIT9_ICON; ();
 gui_helper; del_below_10; 9742; 5452;RAD1_UNIT10_ICON; ();
 gui_helper; del_below_11; 10177; 5460;RAD1_UNIT11_ICON; ();
 gui_helper; del_below_12; 10675; 5473;RAD1_UNIT12_ICON; ();
-gui_helper; del_below_13; 11597; 5446;RAD1_UNIT13_ICON; ();
-gui_helper; del_below_14; 12071; 5446;RAD1_UNIT14_ICON; ();
-gui_helper; del_below_15; 12530; 5454;RAD1_UNIT15_ICON; ();
-gui_helper; del_below_16; 12998; 5428;RAD1_UNIT16_ICON; ();
 gui_helper; del_below_3; 4321; 4355;RTD1_003_ICON; ();
 gui_helper; del_below_4; 4787; 4342;RTD1_004_ICON; ();
 gui_helper; del_below_5; 5503; 4354;RTD1_005_ICON; ();
@@ -7412,10 +7336,6 @@ gui_helper; del_below_9; 3345; 5699;RTD1_009_ICON; ();
 gui_helper; del_below_10; 3769; 5702;RTD1_010_ICON; ();
 gui_helper; del_below_11; 4279; 5718;RTD1_011_ICON; ();
 gui_helper; del_below_12; 4777; 5703;RTD1_012_ICON; ();
-gui_helper; del_below_13; 5516; 5682;RTD1_013_ICON; ();
-gui_helper; del_below_14; 5971; 5675;RTD1_014_ICON; ();
-gui_helper; del_below_15; 6501; 5671;RTD1_015_ICON; ();
-gui_helper; del_below_16; 6966; 5672;RTD1_016_ICON; ();
 gui_helper; del_below_3; 9057; 8198;RID1_003_ICON; ();
 gui_helper; del_below_4; 9507; 8214;RID1_004_ICON; ();
 gui_helper; del_below_5; 10411; 8208;RID1_005_ICON; ();
@@ -7427,10 +7347,6 @@ gui_helper; del_below_9; 8105; 9538;RID1_009_ICON; ();
 gui_helper; del_below_10; 8541; 9525;RID1_010_ICON; ();
 gui_helper; del_below_11; 8976; 9533;RID1_011_ICON; ();
 gui_helper; del_below_12; 9474; 9546;RID1_012_ICON; ();
-gui_helper; del_below_13; 10396; 9519;RID1_013_ICON; ();
-gui_helper; del_below_14; 10870; 9519;RID1_014_ICON; ();
-gui_helper; del_below_15; 11329; 9527;RID1_015_ICON; ();
-gui_helper; del_below_16; 11748; 9532;RID1_016_ICON; ();
 gui_helper; del_below_2; -4240; 4095;BTD_002_ICON; ();
 gui_helper; del_below_3; -3771; 4105;BTD_003_ICON; ();
 gui_helper; del_below_4; -3275; 4115;BTD_004_ICON; ();
@@ -7442,10 +7358,6 @@ gui_helper; del_below_9; -4703; 5388;BTD_009_ICON; ();
 gui_helper; del_below_10; -4232; 5397;BTD_010_ICON; ();
 gui_helper; del_below_11; -3793; 5418;BTD_011_ICON; ();
 gui_helper; del_below_12; -3277; 5413;BTD_012_ICON; ();
-gui_helper; del_below_13; -2560; 5398;BTD_013_ICON; ();
-gui_helper; del_below_14; -2094; 5392;BTD_014_ICON; ();
-gui_helper; del_below_15; -1655; 5392;BTD_015_ICON; ();
-gui_helper; del_below_16; -1125; 5397;BTD_016_ICON; ();
 gui_helper; del_below_2; -10075; 3969;BAD1_002_ICON; ();
 gui_helper; del_below_3; -9606; 3979;BAD1_003_ICON; ();
 gui_helper; del_below_4; -9116; 3989;BAD1_004_ICON; ();
@@ -7457,10 +7369,6 @@ gui_helper; del_below_9; -10524; 5341;BAD1_009_ICON; ();
 gui_helper; del_below_10; -10053; 5350;BAD1_010_ICON; ();
 gui_helper; del_below_11; -9614; 5371;BAD1_011_ICON; ();
 gui_helper; del_below_12; -9098; 5366;BAD1_012_ICON; ();
-gui_helper; del_below_13; -8381; 5351;BAD1_013_ICON; ();
-gui_helper; del_below_14; -7915; 5345;BAD1_014_ICON; ();
-gui_helper; del_below_15; -7476; 5345;BAD1_015_ICON; ();
-gui_helper; del_below_16; -6946; 5350;BAD1_016_ICON; ();
 gui_helper; del_below_2; -8805; 7630;BID1_002_ICON; ();
 gui_helper; del_below_3; -8336; 7640;BID1_003_ICON; ();
 gui_helper; del_below_4; -7840; 7650;BID1_004_ICON; ();
@@ -7472,7 +7380,69 @@ gui_helper; del_below_9; -9302; 9033;BID1_009_ICON; ();
 gui_helper; del_below_10; -8831; 9042;BID1_010_ICON; ();
 gui_helper; del_below_11; -8392; 9063;BID1_011_ICON; ();
 gui_helper; del_below_12; -7876; 9058;BID1_012_ICON; ();
-gui_helper; del_below_13; -7159; 9043;BID1_013_ICON; ();
-gui_helper; del_below_14; -6693; 9037;BID1_014_ICON; ();
-gui_helper; del_below_15; -6254; 9037;BID1_015_ICON; ();
-gui_helper; del_below_16; -5724; 9042;BID1_016_ICON; ();
+gui_helper; Distance; 11494; -407;SIREN_RED_4_2836; (Proximity);
+gui_helper; Country; 12344; -557;RED_BEACON_2838; (BEACON);
+gui_helper; Time; 12273; -1444;RED_SMART_CHECKZONE_1447_2852; (AUTO_CANNONS);
+gui_helper; Zone; 12271; -1372;RED_SMART_CHECKZONE_1447_2852; (Inner Zone);
+gui_helper; Time; 12272; -1409;RED_SMART_CHECKZONE_1447_2852; (MACHINE_GUNS);
+gui_helper; Zone; 12272; -1333;RED_SMART_CHECKZONE_1447_2852; (Outer Zone);
+gui_helper; Model; 11264; -3634;LARGE_CANNON_1448_2853; (AAA_BIG_TYPE);
+gui_helper; Country; 11264; -3594;LARGE_CANNON_1448_2853; (AAA_BIG_TYPE);
+gui_helper; AILevel; 11266; -3674;LARGE_CANNON_1448_2853; (AAA_BIG_TYPE);
+gui_helper; Model; 11266; -3219;MEDIUM_CANNON_1449_2854; (AAA_MED_TYPE);
+gui_helper; Country; 11266; -3179;MEDIUM_CANNON_1449_2854; (AAA_MED_TYPE);
+gui_helper; Model; 11647; -3628;MEDIUM_CANNON2_1450_2855; (AAA_MED_TYPE);
+gui_helper; Country; 11647; -3588;MEDIUM_CANNON2_1450_2855; (AAA_MED_TYPE);
+gui_helper; Model; 11285; -2391;MEDIUM_CANNON3_1451_2856; (AAA_MED_TYPE);
+gui_helper; Country; 11285; -2351;MEDIUM_CANNON3_1451_2856; (AAA_MED_TYPE);
+gui_helper; Model; 11279; -1986;MEDIUM_CANNON4_1452_2857; (AAA_MED_TYPE);
+gui_helper; Country; 11279; -1946;MEDIUM_CANNON4_1452_2857; (AAA_MED_TYPE);
+gui_helper; Model; 11252; -1533;MEDIUM_CANNON5_1453_2858; (AAA_MED_TYPE);
+gui_helper; Country; 11252; -1493;MEDIUM_CANNON5_1453_2858; (AAA_MED_TYPE);
+gui_helper; Model; 11695; -2406;MEDIUM_CANNON6_1454_2859; (AAA_MED_TYPE);
+gui_helper; Country; 11695; -2366;MEDIUM_CANNON6_1454_2859; (AAA_MED_TYPE);
+gui_helper; Model; 11694; -1530;SMALL_CANNON_1455_2860; (AAA_SMALL_TYPE);
+gui_helper; Country; 11694; -1490;SMALL_CANNON_1455_2860; (AAA_SMALL_TYPE);
+gui_helper; AILevel; 11687; -1568;SMALL_CANNON_1455_2860; (AAA_SMALL_TYPE);
+gui_helper; Model; 11689; -1954;SMALL_CANNON2_1456_2861; (AAA_SMALL_TYPE);
+gui_helper; Country; 11689; -1914;SMALL_CANNON2_1456_2861; (AAA_SMALL_TYPE);
+gui_helper; AILevel; 11691; -1991;SMALL_CANNON2_1456_2861; (AAA_SMALL_TYPE);
+gui_helper; Model; 11263; -2808;MEDIUM_CANNON_504_1457_2862; (AAA_MED_TYPE);
+gui_helper; Country; 11263; -2768;MEDIUM_CANNON_504_1457_2862; (AAA_MED_TYPE);
+gui_helper; Model; 11658; -3221;MEDIUM_CANNON2_505_1458_2863; (AAA_MED_TYPE);
+gui_helper; Country; 11658; -3181;MEDIUM_CANNON2_505_1458_2863; (AAA_MED_TYPE);
+gui_helper; Model; 11666; -2799;MEDIUM_CANNON4_516_1459_2864; (AAA_MED_TYPE);
+gui_helper; Country; 11666; -2759;MEDIUM_CANNON4_516_1459_2864; (AAA_MED_TYPE);
+gui_helper; Distance; -10578; -452;SIREN_BLUE_4_2940; (Proximity);
+gui_helper; Country; -11386; -618;BLUE_BEACON_2942; (BEACON);
+gui_helper; Model; -10371; -3817;LARGE_CANNON_85_882_1213_2956; (AAA_BIG_TYPE);
+gui_helper; Country; -10371; -3777;LARGE_CANNON_85_882_1213_2956; (AAA_BIG_TYPE);
+gui_helper; AILevel; -10372; -3855;LARGE_CANNON_85_882_1213_2956; (AAA_BIG_TYPE);
+gui_helper; Model; -10369; -3402;MEDIUM_CANNON_86_883_1214_2957; (AAA_MED_TYPE);
+gui_helper; Country; -10369; -3362;MEDIUM_CANNON_86_883_1214_2957; (AAA_MED_TYPE);
+gui_helper; Model; -9943; -3780;MEDIUM_CANNON2_87_884_1215_2958; (AAA_MED_TYPE);
+gui_helper; Country; -9943; -3740;MEDIUM_CANNON2_87_884_1215_2958; (AAA_MED_TYPE);
+gui_helper; Model; -10350; -2574;MEDIUM_CANNON3_88_885_1216_2959; (AAA_MED_TYPE);
+gui_helper; Country; -10350; -2534;MEDIUM_CANNON3_88_885_1216_2959; (AAA_MED_TYPE);
+gui_helper; Model; -9958; -2969;MEDIUM_CANNON4_89_886_1217_2960; (AAA_MED_TYPE);
+gui_helper; Country; -9958; -2929;MEDIUM_CANNON4_89_886_1217_2960; (AAA_MED_TYPE);
+gui_helper; Model; -10339; -2147;MEDIUM_CANNON5_90_887_1218_2961; (AAA_MED_TYPE);
+gui_helper; Country; -10339; -2107;MEDIUM_CANNON5_90_887_1218_2961; (AAA_MED_TYPE);
+gui_helper; Model; -9967; -2521;MEDIUM_CANNON6_91_888_1219_2962; (AAA_MED_TYPE);
+gui_helper; Country; -9967; -2481;MEDIUM_CANNON6_91_888_1219_2962; (AAA_MED_TYPE);
+gui_helper; Model; -9956; -1675;SMALL_CANNON_92_889_1220_2963; (AAA_SMALL_TYPE);
+gui_helper; Country; -9956; -1635;SMALL_CANNON_92_889_1220_2963; (AAA_SMALL_TYPE);
+gui_helper; AILevel; -9958; -1709;SMALL_CANNON_92_889_1220_2963; (AAA_SMALL_TYPE);
+gui_helper; Model; -9966; -2067;SMALL_CANNON2_93_890_1221_2964; (AAA_SMALL_TYPE);
+gui_helper; Country; -9966; -2027;SMALL_CANNON2_93_890_1221_2964; (AAA_SMALL_TYPE);
+gui_helper; AILevel; -9966; -2104;SMALL_CANNON2_93_890_1221_2964; (AAA_SMALL_TYPE);
+gui_helper; Time; -11112; -1719;BLUE_SMART_CHECKZONE_891_1222_2965; (AUTO_CANNONS);
+gui_helper; Zone; -11112; -1679;BLUE_SMART_CHECKZONE_891_1222_2965; (Inner Zone);
+gui_helper; Time; -11112; -1639;BLUE_SMART_CHECKZONE_891_1222_2965; (MACHINE_GUNS);
+gui_helper; Zone; -11112; -1599;BLUE_SMART_CHECKZONE_891_1222_2965; (Outer Zone);
+gui_helper; Model; -10378; -3012;MEDIUM_CANNON_86_883_180_1223_2966; (AAA_MED_TYPE);
+gui_helper; Country; -10378; -2972;MEDIUM_CANNON_86_883_180_1223_2966; (AAA_MED_TYPE);
+gui_helper; Model; -9952; -3390;MEDIUM_CANNON2_87_884_181_1224_2967; (AAA_MED_TYPE);
+gui_helper; Country; -9952; -3350;MEDIUM_CANNON2_87_884_181_1224_2967; (AAA_MED_TYPE);
+gui_helper; Model; -10340; -1716;MEDIUM_CANNON6_91_888_192_1225_2968; (AAA_MED_TYPE);
+gui_helper; Country; -10340; -1676;MEDIUM_CANNON6_91_888_192_1225_2968; (AAA_MED_TYPE);

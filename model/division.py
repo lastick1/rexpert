@@ -3,14 +3,12 @@ import constants
 import geometry
 
 DIVISIONS = {
-    'BTD1': 16,
-    'BTD2': 16,
-    'RTD1': 16,
-    'RTD2': 16,
-    'BAD1': 16,
-    'RAD1': 16,
-    'BID1': 16,
-    'RID1': 16
+    'BTD1': 12,
+    'RTD1': 12,
+    'BAD1': 12,
+    'RAD1': 12,
+    'BID1': 12,
+    'RID1': 12
 }
 RED_NAMES = tuple(x for x in DIVISIONS if 'R' in x)
 BLUE_NAMES = tuple(x for x in DIVISIONS if 'B' in x)

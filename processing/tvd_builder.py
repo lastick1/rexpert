@@ -194,43 +194,36 @@ class TvdBuilder:
             }
         tvd.influences = areas
 
-    def update(self, tvd, airfields: list, attacked_airfield: geometry.Point = None):
+    def update(self, tvd, airfields: tuple):
         """Обновление групп, баз локаций и файла параметров генерации в папке ТВД (data/scg/x)"""
-        mission_type = constants.CampaignMission.Kinds.REGULAR
-        if attacked_airfield:
-            mission_type = constants.CampaignMission.Kinds.ASSAULT
         logging.info(
-            f'Updating TVD folder ({mission_type}): {tvd.folder} ({tvd.name}) {tvd.date}')
+            f'Updating TVD folder: {tvd.folder} ({tvd.name}) {tvd.date}')
         self.update_icons(tvd)
-        self.update_airfields(attacked_airfield, airfields, tvd)
-        self.update_airfield_groups(tvd)
         self.update_warehouses(tvd)
+        self.update_airfields(list(airfields), tvd)
+        self.update_airfield_groups(tvd)
         self.update_ldb(tvd)
         self.update_defaultparams(tvd)
         logging.info('TVD folder updated')
 
-    def update_airfields(self, attacked_airfield, airfields, tvd):
+    def update_airfields(self, airfields, tvd):
         """Обновить аэродромы в ТВД для генерации"""
-        if attacked_airfield:
-            front_af_source = geometry.remove_too_close(
-                airfields, [attacked_airfield], 30000)
-        else:
-            front_af_source = airfields
         tvd.red_front_airfields.extend(self.airfields_selector.select_front(
-            tvd.confrontation_east, front_af_source))
+            tvd.divisions, tvd.confrontation_east, airfields))
         tvd.blue_front_airfields.extend(self.airfields_selector.select_front(
-            tvd.confrontation_west, front_af_source))
-        tvd.red_rear_airfield = self.airfields_selector.select_rear(
+            tvd.divisions, tvd.confrontation_west, airfields))
+        tvd.red_rear_airfields.extend(self.airfields_selector.select_rear(
             influence=tvd.influences[101][0].polygon,
             front_area=tvd.confrontation_east,
-            airfields=airfields
-        )
-        tvd.blue_rear_airfield = self.airfields_selector.select_rear(
+            airfields=airfields,
+            warehouses=tvd.warehouses
+        ))
+        tvd.blue_rear_airfields.extend(self.airfields_selector.select_rear(
             influence=tvd.influences[201][0].polygon,
             front_area=tvd.confrontation_west,
-            airfields=airfields
-        )
-        tvd.attack_location = attacked_airfield
+            airfields=airfields,
+            warehouses=tvd.warehouses
+        ))
 
     @staticmethod
     def update_icons(tvd: model.Tvd):
@@ -256,11 +249,11 @@ class TvdBuilder:
     def update_airfield_groups(self, tvd: model.Tvd):
         """Генерация групп аэродромов для ТВД"""
         logging.debug('Generating airfields groups...')
-        for airfield in tvd.red_front_airfields + [tvd.red_rear_airfield]:
+        for airfield in tvd.red_front_airfields + tvd.red_rear_airfields:
             data = self._convert_airfield(airfield, 101)
             self.airfields_builder.make_airfield_group(
                 data, airfield.x, airfield.z)
-        for airfield in tvd.blue_front_airfields + [tvd.blue_rear_airfield]:
+        for airfield in tvd.blue_front_airfields + tvd.blue_rear_airfields:
             data = self._convert_airfield(airfield, 201)
             self.airfields_builder.make_airfield_group(
                 data, airfield.x, airfield.z)

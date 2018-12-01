@@ -156,12 +156,12 @@ class Divisions(CollectionWrapper):
         """Загрузить данные дивизии по её имени"""
         return self._convert_from_document(self.collection.find_one(self._make_filter(tvd_name, division_name)))
 
-    def load_by_tvd(self, tvd_name: str) -> list:
+    def load_by_tvd(self, tvd_name: str) -> tuple:
         """Загрузить дивизии указанного ТВД"""
         result = list()
         for document in self.collection.find({constants.TVD_NAME: tvd_name}):
             result.append(self._convert_from_document(document))
-        return result
+        return tuple(result)
 
 
 class Warehouses(CollectionWrapper):

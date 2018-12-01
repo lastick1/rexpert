@@ -124,6 +124,13 @@ class Point:  # pylint: disable=C0103,C0111
             p1x, p1y = p2x, p2y
         return inside
 
+    def get_closest(self, points):
+        closest: Point = points[0]
+        for point in points:
+            if self.distance_to(point.x, point.z) < self.distance_to(closest.x, closest.z):
+                closest = point
+        return closest
+
     def is_in_vertices_of_area(self, points, radius):
         for point in points:
             if self.distance_to(point.x, point.z) < radius:
@@ -157,7 +164,7 @@ def sort_points_clockwise(points, middle_point) -> list:
 
 
 def remove_too_close(src: list, check_points: list, radius: float) -> list:
-    """Убрать из списка точки, которые слишком блико к точкам второго списка"""
+    """Убрать из списка точки, которые слишком близко к точкам второго списка"""
     result = list()
     for point in src:
         close = False
@@ -197,7 +204,7 @@ def jarvis_march(array: list) -> list:
 
 
 def is_pos_correct(pos: dict) -> bool:
-    """Коррекная ли позиция"""
+    """Корректная ли позиция"""
     if not pos or pos == {'x': 0.0, 'y': 0.0, 'z': 0.0}:
         return False
     return True

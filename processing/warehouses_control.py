@@ -125,7 +125,8 @@ class WarehouseController:
             self._sent_inputs.add(server_input_name)
             self.rcon.server_input(server_input_name)
         if warehouse.health < 40:
-            self._ioc.campaign_controller.register_action(model.WarehouseDisable(tik, warehouse.name))
+            self._ioc.campaign_controller.register_action(
+                model.WarehouseDisable(tik, warehouse.country, warehouse.name))
         self.storage.warehouses.update(warehouse)
 
     def get_warehouse(self, warehouse_name: str) -> model.Warehouse:

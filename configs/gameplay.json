@@ -1,4 +1,5 @@
 {
+  "$schema": "../data/schemas/gameplay.json",
   "maps": ["moscow", "stalingrad"],
   "supply_schedule": {
     "moscow": ".\\configs\\supply_moscow.csv",
@@ -24,9 +25,7 @@
   "airfield_radius": 2000,
   "airfield_min_planes": 20,
   "transfer_amount": 20,
-  "front_min_supply": 20,
   "front_max_planes": 150,
-  "rear_max_power": 100,
   "initial_front_supply":{
     "moscow": {
       "bf 109 e-7": 42,

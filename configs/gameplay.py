@@ -14,8 +14,6 @@ class Gameplay:
         self.airfield_radius = src['airfield_radius']
         self.airfield_min_planes = src['airfield_min_planes']
         self.transfer_amount = src['transfer_amount']
-        self.rear_max_power = src['rear_max_power']
-        self.front_min_supply = src['front_min_supply']
         self.front_max_planes = src['front_max_planes']
         self.front_init_planes = {tvd_name: src['initial_front_supply'][tvd_name] for tvd_name in src['maps']}
         self.initial_priority = {tvd_name: src['initial_priority_supply'][tvd_name] for tvd_name in src['maps']}
@@ -27,3 +25,4 @@ class Gameplay:
         self.unlocks_start = src['unlocks_start']
         self.unlocks_min = src['unlocks_min']
         self.unlocks_max = src['unlocks_max']
+        self.rear_max_power = 100

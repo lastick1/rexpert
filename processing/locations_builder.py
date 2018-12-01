@@ -340,15 +340,16 @@ class LocationsBuilder:
                     location.country = country
                 continue
 
-        red_rear_af = Location(
-            name=AIRFIELD, x=tvd.red_rear_airfield.x, z=tvd.red_rear_airfield.z, y=0, oy=0, length=10, width=10)
-        red_rear_af.country = 101
-        red_rear_af.types.add(GRASS_FIELD)
-
-        blue_rear_af = Location(
-            name=AIRFIELD, x=tvd.blue_rear_airfield.x, z=tvd.blue_rear_airfield.z, y=0, oy=0, length=10, width=10)
-        blue_rear_af.country = 201
-        blue_rear_af.types.add(GRASS_FIELD)
+        for airfield in tvd.red_rear_airfields:
+            airfield_loc = Location(name=AIRFIELD, x=airfield.x, z=airfield.z, y=0, oy=0, length=10, width=10)
+            airfield_loc.country = 101
+            airfield_loc.types.add(GRASS_FIELD)
+            self.locations[AIRFIELD].append(airfield_loc)
+        for airfield in tvd.blue_rear_airfields:
+            airfield_loc = Location(name=AIRFIELD, x=airfield.x, z=airfield.z, y=0, oy=0, length=10, width=10)
+            airfield_loc.country = 201
+            airfield_loc.types.add(GRASS_FIELD)
+            self.locations[AIRFIELD].append(airfield_loc)
 
         for division in tvd.divisions:
             location = Location(name=GROUND_OBJECTIVE, x=division.pos['x'], z=division.pos['z'],
@@ -384,5 +385,3 @@ class LocationsBuilder:
             location.types.add(AIRFIELD)
             self.locations[GROUND_OBJECTIVE].append(location)
 
-        self.locations[AIRFIELD].append(red_rear_af)
-        self.locations[AIRFIELD].append(blue_rear_af)

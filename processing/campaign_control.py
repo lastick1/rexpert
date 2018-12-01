@@ -139,32 +139,24 @@ class CampaignController:
     def _generate(self,
                   mission_name: str,
                   date: str,
-                  tvd_name: str,
-                  attacking_country: int,
-                  attacked_airfield_name: str = None):
+                  tvd_name: str):
         """Сгенерировать миссию для указанной даты и ТВД кампании"""
         tvd_builder = self.tvd_builders[tvd_name]
         tvd = tvd_builder.get_tvd(date)
         # Генерация первой миссии
         airfields = self.storage.airfields.load_by_tvd(tvd_name)
-        if attacked_airfield_name:
-            tvd_builder.update(
-                tvd, airfields, self.airfields_controller.get_airfield_by_name(tvd_name, attacked_airfield_name))
-        else:
-            tvd_builder.update(
-                tvd, self.divisions_controller.filter_airfields(tvd_name, airfields))
+        tvd_builder.update(tvd, self.divisions_controller.filter_airfields(tvd_name, airfields))
         self.generator.make_ldb(tvd_name)
         self.generator.make_lgb(tvd_name)
 
-        mission_template = str(self.config.mgen.tvd_folders[tvd_name].joinpath(
-            self.config.mgen.cfg[tvd_name]['mission_templates'][str(attacking_country)]).absolute())
+        mission_template: str = str(self.config.mgen.tvd_folders[tvd_name].joinpath(
+            self.config.mgen.cfg[tvd_name]['mission_templates']['0']).absolute())
 
         self.generator.make_mission(mission_template, mission_name, tvd_name)
 
-    def generate(self, mission_name, tvd_name: str, date: str, attacking_country=0, attacked_airfield_name: str = None):
+    def generate(self, mission_name, tvd_name: str, date: str):
         """Сгенерировать текущую миссию кампании с указанным именем"""
-        self._generate(mission_name, date, tvd_name,
-                       attacking_country, attacked_airfield_name)
+        self._generate(mission_name, date, tvd_name)
 
     def initialize(self):
         """Инициализировать кампанию в БД, обновить файлы в data/scg и сгенерировать первую миссию"""
@@ -232,31 +224,16 @@ class CampaignController:
         self._update_tik(atype.tik)
         self._round_ended = True
         # TODO подвести итог миссии
-        # TODO если сторона переходит в наступление, то увеличить счётчик смертей у склада и "починить" его
         # TODO отправить инпут завершения миссии (победа/ничья)
         # TODO подвести итог кампании, если она закончилась
         # TODO подвести итог ТВД, если он изменился
         # TODO определить имя ТВД для следующей миссии
-        if self._mission.kind == constants.CampaignMission.Kinds.ASSAULT:
-            country = self._mission.assault_country
-            if self.ground_controller.killed_stations(country) < 2 and self.ground_controller.killed_bridges(country) < 3:
-                pos = self._mission.assault_pos
-                logging.info(f'{country} captured airfield at {pos}')
-                self.grid_controller.capture(
-                    self._mission.tvd_name, pos, country)
-                self._campaign_map.register_capture()
-                self.storage.campaign_maps.update(self._campaign_map)
-
-        killed_airfields = self._campaign_map.killed_airfields
-        attack = self._campaign_map.country_attacked()
         # TODO отремонтировать дивизии
         self._generate(
             self.next_name,
             self._campaign_map.date.strftime(
                 constants.DATE_FORMAT) + datetime.timedelta(days=1),
-            self._campaign_map.tvd_name,
-            attack,
-            killed_airfields[attack] if attack else None)
+            self._campaign_map.tvd_name)
         self.storage.campaign_maps.update(self._campaign_map)
 
     @staticmethod

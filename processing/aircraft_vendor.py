@@ -161,8 +161,7 @@ class AircraftVendor:
     def transfer_to_front(self, front_airfields: list, rear_airfields: list):
         """Перевести самолёты с тыловых на фронтовые аэродромы"""
         choice_airfields = list(x for x in front_airfields
-                                if x.supplies > self.gameplay.front_min_supply
-                                and self.gameplay.airfield_min_planes < x.planes_count < self.gameplay.front_max_planes)
+                                if self.gameplay.airfield_min_planes < x.planes_count < self.gameplay.front_max_planes)
         if choice_airfields:
             transfer = self.collect_aircrafts(rear_airfields)
             while transfer:

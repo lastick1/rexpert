@@ -63,20 +63,6 @@
             "cwd": "${workspaceRoot}"
         },
         {
-            "name": "runme.py generate attack",
-            "type": "python",
-            "request": "launch",
-            "program": "${workspaceRoot}/runme.py",
-            "args": [
-                "generate",
-                "attack",
-                "result1",
-                "moscow",
-                "19.10.1941"
-            ],
-            "cwd": "${workspaceRoot}"
-        },
-        {
             "name": "runme.py compile ldf",
             "type": "python",
             "request": "launch",
