@@ -1,7 +1,7 @@
 Block
 {
   Name = "Block";
-  Index = 1257;
+  Index = 949;
   LinkTrId = 0;
   XPos = -310.766;
   YPos = 17.795;
@@ -22,112 +22,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1258;
-  LinkTrId = 0;
-  XPos = -318.103;
-  YPos = 17.795;
-  ZPos = -46.707;
-  XOri = 0.00;
-  YOri = 177.49;
-  ZOri = 0.00;
-  Model = "graphics\blocks\vl_torgryad.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1259;
-  LinkTrId = 0;
-  XPos = -325.445;
-  YPos = 17.795;
-  ZPos = -53.276;
-  XOri = 0.00;
-  YOri = 87.71;
-  ZOri = 0.00;
-  Model = "graphics\blocks\vl_torgryad.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1260;
-  LinkTrId = 0;
-  XPos = -335.699;
-  YPos = 17.795;
-  ZPos = -52.859;
-  XOri = 0.00;
-  YOri = 87.71;
-  ZOri = 0.00;
-  Model = "graphics\blocks\vl_torgryad.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1261;
-  LinkTrId = 0;
-  XPos = -342.435;
-  YPos = 17.795;
-  ZPos = -45.544;
-  XOri = 0.00;
-  YOri = 177.71;
-  ZOri = 0.00;
-  Model = "graphics\blocks\vl_torgryad.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1262;
-  LinkTrId = 0;
-  XPos = -349.206;
-  YPos = 17.795;
-  ZPos = -38.015;
-  XOri = 0.00;
-  YOri = 87.71;
-  ZOri = 0.00;
-  Model = "graphics\blocks\vl_torgryad.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1263;
+  Index = 950;
   LinkTrId = 0;
   XPos = -316.400;
   YPos = 17.795;
@@ -148,49 +43,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1264;
-  LinkTrId = 0;
-  XPos = -343.073;
-  YPos = 17.795;
-  ZPos = -39.570;
-  XOri = 0.00;
-  YOri = 42.71;
-  ZOri = 0.00;
-  Model = "graphics\blocks\dugout.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\dugout.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 25000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1265;
-  LinkTrId = 0;
-  XPos = -355.911;
-  YPos = 17.795;
-  ZPos = -32.724;
-  XOri = 0.00;
-  YOri = 267.49;
-  ZOri = 0.00;
-  Model = "graphics\blocks\arf_tower_2.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\arf_tower_2.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1266;
+  Index = 951;
   LinkTrId = 0;
   XPos = -303.205;
   YPos = 17.795;
@@ -211,181 +64,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1267;
-  LinkTrId = 0;
-  XPos = -320.288;
-  YPos = 17.795;
-  ZPos = -52.116;
-  XOri = 0.00;
-  YOri = 132.71;
-  ZOri = 0.00;
-  Model = "graphics\blocks\dugout.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\dugout.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 25000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1268;
-  LinkTrId = 0;
-  XPos = -340.795;
-  YPos = 17.795;
-  ZPos = -50.460;
-  XOri = 0.00;
-  YOri = 43.06;
-  ZOri = 0.00;
-  Model = "graphics\blocks\dugout.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\dugout.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 25000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1269;
-  LinkTrId = 0;
-  XPos = -328.556;
-  YPos = 17.795;
-  ZPos = -12.285;
-  XOri = 0.00;
-  YOri = 62.75;
-  ZOri = 0.00;
-  Model = "graphics\blocks\arf_ammo_4.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_4.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1270;
-  LinkTrId = 0;
-  XPos = -250.857;
-  YPos = 17.795;
-  ZPos = -67.131;
-  XOri = 0.00;
-  YOri = 107.36;
-  ZOri = 0.00;
-  Model = "graphics\blocks\arf_ammo_4.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_4.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1271;
-  LinkTrId = 0;
-  XPos = -334.267;
-  YPos = 17.795;
-  ZPos = 29.346;
-  XOri = 0.00;
-  YOri = 359.26;
-  ZOri = 0.00;
-  Model = "graphics\blocks\arf_ammo_4.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_4.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-  Damaged
-  {
-    2 = 1;
-    4 = 1;
-    5 = 1;
-    7 = 1;
-    4 = 1;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    4 = 1;
-    6 = 0;
-    8 = 0;
-    3 = 0;
-    2 = 1;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-  }
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1272;
+  Index = 952;
   LinkTrId = 0;
   XPos = -339.512;
   YPos = 17.795;
@@ -407,249 +86,13 @@ Block
     4 = 1;
     5 = 1;
     7 = 1;
-    4 = 1;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    3 = 0;
-    5 = 1;
-    4 = 1;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
   }
 }
 
 Block
 {
   Name = "Block";
-  Index = 1273;
-  LinkTrId = 0;
-  XPos = -314.274;
-  YPos = 17.795;
-  ZPos = 184.071;
-  XOri = 0.00;
-  YOri = 176.71;
-  ZOri = 0.00;
-  Model = "graphics\blocks\arf_ammo_4.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_4.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-  Damaged
-  {
-    4 = 1;
-    6 = 1;
-    8 = 1;
-    3 = 1;
-    2 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    2 = 0;
-    4 = 1;
-    5 = 0;
-    7 = 0;
-    2 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-  }
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1274;
-  LinkTrId = 0;
-  XPos = -343.744;
-  YPos = 17.795;
-  ZPos = 318.562;
-  XOri = 0.00;
-  YOri = 6.70;
-  ZOri = 0.00;
-  Model = "graphics\blocks\arf_ammo_2.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_2.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 25000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-  Damaged
-  {
-    3 = 1;
-    5 = 1;
-    4 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    1 = 0;
-    0 = 0;
-    2 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-  }
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1275;
+  Index = 953;
   LinkTrId = 0;
   XPos = -343.379;
   YPos = 17.795;
@@ -670,95 +113,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1276;
-  LinkTrId = 0;
-  XPos = -338.053;
-  YPos = 17.795;
-  ZPos = 310.076;
-  XOri = 0.00;
-  YOri = 184.36;
-  ZOri = 0.00;
-  Model = "graphics\blocks\arf_ammo_4.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_4.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-  Damaged
-  {
-    2 = 1;
-    4 = 1;
-    5 = 1;
-    7 = 1;
-    2 = 1;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    1 = 0;
-    0 = 0;
-    4 = 1;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-  }
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1277;
+  Index = 954;
   LinkTrId = 0;
   XPos = -336.227;
   YPos = 17.795;
@@ -778,79 +133,13 @@ Block
   {
     1 = 1;
     0 = 1;
-    2 = 0;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    2 = 0;
-    4 = 0;
-    5 = 0;
-    7 = 0;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
   }
 }
 
 Block
 {
   Name = "Block";
-  Index = 1278;
+  Index = 955;
   LinkTrId = 0;
   XPos = -340.200;
   YPos = 17.795;
@@ -871,7 +160,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1279;
+  Index = 956;
   LinkTrId = 0;
   XPos = -315.861;
   YPos = 17.795;
@@ -891,72 +180,13 @@ Block
   {
     1 = 1;
     0 = 1;
-    4 = 0;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
-    0 = 1;
   }
 }
 
 Block
 {
   Name = "Block";
-  Index = 1280;
+  Index = 957;
   LinkTrId = 0;
   XPos = -318.278;
   YPos = 17.795;
@@ -977,7 +207,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1281;
+  Index = 958;
   LinkTrId = 0;
   XPos = -313.552;
   YPos = 17.795;
@@ -998,112 +228,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1282;
-  LinkTrId = 0;
-  XPos = -295.396;
-  YPos = 17.795;
-  ZPos = 417.040;
-  XOri = 0.00;
-  YOri = 84.25;
-  ZOri = 0.00;
-  Model = "graphics\blocks\arf_tower_1.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\arf_tower_1.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1283;
-  LinkTrId = 0;
-  XPos = -331.595;
-  YPos = 17.795;
-  ZPos = 125.814;
-  XOri = 0.00;
-  YOri = 34.67;
-  ZOri = 0.00;
-  Model = "graphics\blocks\arf_tower_1.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\arf_tower_1.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1284;
-  LinkTrId = 0;
-  XPos = -250.055;
-  YPos = 17.795;
-  ZPos = 371.583;
-  XOri = 0.00;
-  YOri = 256.85;
-  ZOri = 0.00;
-  Model = "graphics\blocks\tank_position.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\tank_position.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 10000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1285;
-  LinkTrId = 0;
-  XPos = -256.772;
-  YPos = 17.795;
-  ZPos = 380.591;
-  XOri = 0.00;
-  YOri = 76.44;
-  ZOri = 0.00;
-  Model = "graphics\blocks\tank_position.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\tank_position.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 10000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1286;
-  LinkTrId = 0;
-  XPos = -266.840;
-  YPos = 17.795;
-  ZPos = 375.385;
-  XOri = 0.00;
-  YOri = 256.85;
-  ZOri = 0.00;
-  Model = "graphics\blocks\tank_position.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\tank_position.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 10000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1287;
+  Index = 959;
   LinkTrId = 0;
   XPos = -318.556;
   YPos = 17.795;
@@ -1124,28 +249,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1288;
-  LinkTrId = 0;
-  XPos = -321.293;
-  YPos = 17.795;
-  ZPos = 52.174;
-  XOri = 0.00;
-  YOri = 205.72;
-  ZOri = 0.00;
-  Model = "graphics\blocks\tank_position.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\tank_position.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 10000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1289;
+  Index = 960;
   LinkTrId = 0;
   XPos = -310.896;
   YPos = 17.795;
@@ -1166,49 +270,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1290;
-  LinkTrId = 0;
-  XPos = -297.692;
-  YPos = 17.795;
-  ZPos = 145.376;
-  XOri = 0.00;
-  YOri = 28.10;
-  ZOri = 0.00;
-  Model = "graphics\blocks\arf_ammo_4.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_4.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1291;
-  LinkTrId = 0;
-  XPos = -287.316;
-  YPos = 17.795;
-  ZPos = 322.310;
-  XOri = 0.00;
-  YOri = 253.63;
-  ZOri = 0.00;
-  Model = "graphics\blocks\arf_ammo_3.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_3.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1292;
+  Index = 961;
   LinkTrId = 0;
   XPos = -324.707;
   YPos = 17.795;
@@ -1229,49 +291,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1293;
-  LinkTrId = 0;
-  XPos = -291.665;
-  YPos = 17.795;
-  ZPos = 91.854;
-  XOri = 0.00;
-  YOri = 37.38;
-  ZOri = 0.00;
-  Model = "graphics\blocks\static_zis.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\static_zis.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1294;
-  LinkTrId = 0;
-  XPos = -311.056;
-  YPos = 17.795;
-  ZPos = 119.351;
-  XOri = 0.00;
-  YOri = 0.00;
-  ZOri = 0.00;
-  Model = "graphics\blocks\static_gazaa.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\static_gazaa.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1295;
+  Index = 962;
   LinkTrId = 0;
   XPos = -332.948;
   YPos = 17.795;
@@ -1292,7 +312,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1296;
+  Index = 963;
   LinkTrId = 0;
   XPos = -318.274;
   YPos = 17.795;
@@ -1313,7 +333,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1297;
+  Index = 964;
   LinkTrId = 0;
   XPos = -324.256;
   YPos = 17.795;
@@ -1334,91 +354,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1298;
-  LinkTrId = 0;
-  XPos = -255.850;
-  YPos = 17.795;
-  ZPos = 400.150;
-  XOri = 0.00;
-  YOri = 32.51;
-  ZOri = 0.00;
-  Model = "graphics\blocks\static_zis.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\static_zis.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1299;
-  LinkTrId = 0;
-  XPos = -266.670;
-  YPos = 17.795;
-  ZPos = 377.417;
-  XOri = 0.00;
-  YOri = 275.09;
-  ZOri = 0.00;
-  Model = "graphics\blocks\static_zis.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\static_zis.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1300;
-  LinkTrId = 0;
-  XPos = -275.170;
-  YPos = 17.795;
-  ZPos = 309.413;
-  XOri = 0.00;
-  YOri = 177.07;
-  ZOri = 0.00;
-  Model = "graphics\blocks\static_gazaa.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\static_gazaa.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1301;
-  LinkTrId = 0;
-  XPos = -296.613;
-  YPos = 17.795;
-  ZPos = 315.270;
-  XOri = 0.00;
-  YOri = 24.79;
-  ZOri = 0.00;
-  Model = "graphics\blocks\static_gazaa.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\static_gazaa.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1302;
+  Index = 965;
   LinkTrId = 0;
   XPos = -331.747;
   YPos = 17.795;
@@ -1439,70 +375,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1303;
-  LinkTrId = 0;
-  XPos = -283.378;
-  YPos = 17.795;
-  ZPos = 390.689;
-  XOri = 0.00;
-  YOri = 294.83;
-  ZOri = 0.00;
-  Model = "graphics\blocks\static_zis.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\static_zis.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1304;
-  LinkTrId = 0;
-  XPos = -292.629;
-  YPos = 17.795;
-  ZPos = 384.741;
-  XOri = 0.00;
-  YOri = 301.71;
-  ZOri = 0.00;
-  Model = "graphics\blocks\static_zis.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\static_zis.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1305;
-  LinkTrId = 0;
-  XPos = -268.426;
-  YPos = 17.795;
-  ZPos = 294.568;
-  XOri = 0.00;
-  YOri = 236.68;
-  ZOri = 0.00;
-  Model = "graphics\blocks\static_gazaa.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\static_gazaa.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1306;
+  Index = 966;
   LinkTrId = 0;
   XPos = -288.333;
   YPos = 17.795;
@@ -1523,7 +396,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1307;
+  Index = 967;
   LinkTrId = 0;
   XPos = -306.476;
   YPos = 17.795;
@@ -1544,7 +417,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1308;
+  Index = 968;
   LinkTrId = 0;
   XPos = -309.954;
   YPos = 17.795;
@@ -1565,112 +438,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1309;
-  LinkTrId = 0;
-  XPos = -245.762;
-  YPos = 17.795;
-  ZPos = 296.978;
-  XOri = 0.00;
-  YOri = 236.36;
-  ZOri = 0.00;
-  Model = "graphics\blocks\arf_ammo_4.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_4.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1310;
-  LinkTrId = 0;
-  XPos = -254.038;
-  YPos = 17.795;
-  ZPos = 298.887;
-  XOri = 0.00;
-  YOri = 275.68;
-  ZOri = 0.00;
-  Model = "graphics\blocks\static_zis.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\static_zis.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1311;
-  LinkTrId = 0;
-  XPos = -243.031;
-  YPos = 17.795;
-  ZPos = 290.233;
-  XOri = 0.00;
-  YOri = 175.52;
-  ZOri = 0.00;
-  Model = "graphics\blocks\static_zis.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\static_zis.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1312;
-  LinkTrId = 0;
-  XPos = -245.877;
-  YPos = 17.795;
-  ZPos = -56.445;
-  XOri = 0.00;
-  YOri = 98.30;
-  ZOri = 0.00;
-  Model = "graphics\blocks\static_gazaa.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\static_gazaa.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1313;
-  LinkTrId = 0;
-  XPos = -259.039;
-  YPos = 17.795;
-  ZPos = -61.702;
-  XOri = 0.00;
-  YOri = 80.35;
-  ZOri = 0.00;
-  Model = "graphics\blocks\static_gazaa.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\static_gazaa.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1314;
+  Index = 969;
   LinkTrId = 0;
   XPos = -359.246;
   YPos = 17.795;
@@ -1691,28 +459,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1315;
-  LinkTrId = 0;
-  XPos = -274.653;
-  YPos = 17.795;
-  ZPos = 93.815;
-  XOri = 0.00;
-  YOri = 75.47;
-  ZOri = 0.00;
-  Model = "graphics\blocks\static_gazaa.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\static_gazaa.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-}
-
-Block
-{
-  Name = "Block";
-  Index = 1316;
+  Index = 970;
   LinkTrId = 0;
   XPos = -207.902;
   YPos = 17.795;
@@ -1733,7 +480,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1317;
+  Index = 971;
   LinkTrId = 0;
   XPos = -182.906;
   YPos = 17.795;
@@ -1754,7 +501,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1318;
+  Index = 972;
   LinkTrId = 0;
   XPos = -205.192;
   YPos = 17.795;
@@ -1775,7 +522,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1319;
+  Index = 973;
   LinkTrId = 0;
   XPos = -201.820;
   YPos = 17.795;
@@ -1796,7 +543,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1320;
+  Index = 974;
   LinkTrId = 0;
   XPos = -202.157;
   YPos = 17.795;
@@ -1817,7 +564,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1321;
+  Index = 975;
   LinkTrId = 0;
   XPos = -197.420;
   YPos = 17.795;
@@ -1838,7 +585,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1322;
+  Index = 976;
   LinkTrId = 0;
   XPos = -208.118;
   YPos = 17.795;
@@ -1859,7 +606,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1323;
+  Index = 977;
   LinkTrId = 0;
   XPos = -177.863;
   YPos = 17.795;
@@ -1880,7 +627,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1324;
+  Index = 978;
   LinkTrId = 0;
   XPos = -177.939;
   YPos = 17.795;
@@ -1901,7 +648,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1325;
+  Index = 979;
   LinkTrId = 0;
   XPos = -182.537;
   YPos = 17.795;
@@ -1922,7 +669,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1326;
+  Index = 980;
   LinkTrId = 0;
   XPos = -187.664;
   YPos = 17.795;
@@ -1943,7 +690,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1327;
+  Index = 981;
   LinkTrId = 0;
   XPos = -182.620;
   YPos = 17.795;
@@ -1964,7 +711,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1328;
+  Index = 982;
   LinkTrId = 0;
   XPos = -182.696;
   YPos = 17.795;
@@ -1985,7 +732,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1329;
+  Index = 983;
   LinkTrId = 0;
   XPos = -187.294;
   YPos = 17.795;
@@ -2006,7 +753,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1330;
+  Index = 984;
   LinkTrId = 0;
   XPos = -198.181;
   YPos = 17.795;
@@ -2027,7 +774,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1331;
+  Index = 985;
   LinkTrId = 0;
   XPos = -202.936;
   YPos = 17.795;
@@ -2048,7 +795,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1332;
+  Index = 986;
   LinkTrId = 0;
   XPos = -204.522;
   YPos = 17.795;
@@ -2069,7 +816,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1333;
+  Index = 987;
   LinkTrId = 0;
   XPos = -211.795;
   YPos = 17.795;
@@ -2090,7 +837,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1334;
+  Index = 988;
   LinkTrId = 0;
   XPos = -193.510;
   YPos = 17.795;
@@ -2111,7 +858,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1335;
+  Index = 989;
   LinkTrId = 0;
   XPos = -203.666;
   YPos = 17.795;
@@ -2132,7 +879,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1336;
+  Index = 990;
   LinkTrId = 0;
   XPos = -214.607;
   YPos = 17.795;
@@ -2153,7 +900,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1337;
+  Index = 991;
   LinkTrId = 0;
   XPos = -210.748;
   YPos = 17.795;
@@ -2174,7 +921,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1338;
+  Index = 992;
   LinkTrId = 0;
   XPos = -211.052;
   YPos = 17.795;
@@ -2195,7 +942,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1339;
+  Index = 993;
   LinkTrId = 0;
   XPos = -208.307;
   YPos = 17.795;
@@ -2216,7 +963,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1340;
+  Index = 994;
   LinkTrId = 0;
   XPos = -212.210;
   YPos = 17.795;
@@ -2237,7 +984,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1341;
+  Index = 995;
   LinkTrId = 0;
   XPos = -201.866;
   YPos = 17.795;
@@ -2258,7 +1005,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1342;
+  Index = 996;
   LinkTrId = 0;
   XPos = -193.761;
   YPos = 17.795;
@@ -2279,7 +1026,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1343;
+  Index = 997;
   LinkTrId = 0;
   XPos = -195.002;
   YPos = 17.795;
@@ -2300,7 +1047,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1344;
+  Index = 998;
   LinkTrId = 0;
   XPos = -202.926;
   YPos = 17.795;
@@ -2321,7 +1068,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1345;
+  Index = 999;
   LinkTrId = 0;
   XPos = -206.034;
   YPos = 17.795;
@@ -2342,7 +1089,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1346;
+  Index = 1000;
   LinkTrId = 0;
   XPos = -214.095;
   YPos = 17.795;
@@ -2363,7 +1110,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1347;
+  Index = 1001;
   LinkTrId = 0;
   XPos = -201.221;
   YPos = 17.795;
@@ -2384,7 +1131,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1348;
+  Index = 1002;
   LinkTrId = 0;
   XPos = -197.827;
   YPos = 17.795;
@@ -2405,7 +1152,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1349;
+  Index = 1003;
   LinkTrId = 0;
   XPos = -209.709;
   YPos = 17.795;
@@ -2426,7 +1173,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1350;
+  Index = 1004;
   LinkTrId = 0;
   XPos = -223.990;
   YPos = 17.795;
@@ -2447,7 +1194,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1351;
+  Index = 1005;
   LinkTrId = 0;
   XPos = -233.128;
   YPos = 17.795;
@@ -2468,7 +1215,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1352;
+  Index = 1006;
   LinkTrId = 0;
   XPos = -231.615;
   YPos = 17.795;
@@ -2489,7 +1236,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1353;
+  Index = 1007;
   LinkTrId = 0;
   XPos = -252.257;
   YPos = 17.795;
@@ -2510,7 +1257,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1354;
+  Index = 1008;
   LinkTrId = 0;
   XPos = -343.839;
   YPos = 17.795;
@@ -2531,7 +1278,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1355;
+  Index = 1009;
   LinkTrId = 0;
   XPos = -293.811;
   YPos = 17.795;
@@ -2552,7 +1299,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1356;
+  Index = 1010;
   LinkTrId = 0;
   XPos = -286.388;
   YPos = 17.795;
@@ -2573,7 +1320,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1357;
+  Index = 1011;
   LinkTrId = 0;
   XPos = -290.531;
   YPos = 17.795;
@@ -2594,7 +1341,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1358;
+  Index = 1012;
   LinkTrId = 0;
   XPos = -210.752;
   YPos = 17.795;
@@ -2615,7 +1362,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1359;
+  Index = 1013;
   LinkTrId = 0;
   XPos = -205.709;
   YPos = 17.795;
@@ -2636,7 +1383,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1360;
+  Index = 1014;
   LinkTrId = 0;
   XPos = -205.785;
   YPos = 17.795;
@@ -2657,7 +1404,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1361;
+  Index = 1015;
   LinkTrId = 0;
   XPos = -209.659;
   YPos = 17.795;
@@ -2678,7 +1425,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1362;
+  Index = 1016;
   LinkTrId = 0;
   XPos = -220.240;
   YPos = 17.795;
@@ -2699,7 +1446,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1363;
+  Index = 1017;
   LinkTrId = 0;
   XPos = -217.584;
   YPos = 17.795;
@@ -2720,7 +1467,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1364;
+  Index = 1018;
   LinkTrId = 0;
   XPos = -217.866;
   YPos = 17.795;
@@ -2741,7 +1488,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1365;
+  Index = 1019;
   LinkTrId = 0;
   XPos = -221.575;
   YPos = 17.795;
@@ -2762,7 +1509,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1366;
+  Index = 1020;
   LinkTrId = 0;
   XPos = -204.277;
   YPos = 17.795;
@@ -2783,7 +1530,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1367;
+  Index = 1021;
   LinkTrId = 0;
   XPos = -204.353;
   YPos = 17.795;
@@ -2804,7 +1551,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1368;
+  Index = 1022;
   LinkTrId = 0;
   XPos = -208.951;
   YPos = 17.795;
@@ -2825,7 +1572,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1369;
+  Index = 1023;
   LinkTrId = 0;
   XPos = -301.140;
   YPos = 17.795;
@@ -2846,7 +1593,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1370;
+  Index = 1024;
   LinkTrId = 0;
   XPos = -296.953;
   YPos = 17.795;
@@ -2867,7 +1614,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1371;
+  Index = 1025;
   LinkTrId = 0;
   XPos = -214.310;
   YPos = 17.795;
@@ -2888,7 +1635,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1372;
+  Index = 1026;
   LinkTrId = 0;
   XPos = -214.597;
   YPos = 17.795;
@@ -2909,7 +1656,7 @@ Block
 Block
 {
   Name = "Block";
-  Index = 1373;
+  Index = 1027;
   LinkTrId = 0;
   XPos = -209.539;
   YPos = 17.795;
@@ -2927,100 +1674,9 @@ Block
   DeleteAfterDeath = 1;
 }
 
-Block
-{
-  Name = "Block";
-  Index = 1374;
-  LinkTrId = 0;
-  XPos = -284.586;
-  YPos = 17.795;
-  ZPos = 286.435;
-  XOri = 0.00;
-  YOri = 64.56;
-  ZOri = 0.00;
-  Model = "graphics\blocks\arf_ammo_4.mgm";
-  Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_4.txt";
-  Country = 101;
-  Desc = "";
-  Durability = 5000;
-  DamageReport = 50;
-  DamageThreshold = 1;
-  DeleteAfterDeath = 1;
-  Damaged
-  {
-    2 = 1;
-    4 = 1;
-    5 = 1;
-    7 = 1;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-    0 = 0;
-  }
-}
-
 MCU_H_ReferencePoint
 {
-  Index = 1375;
+  Index = 1028;
   Name = "Helper Reference Point";
   Desc = "";
   Targets = [];
@@ -3040,8 +1696,8 @@ MCU_H_ReferencePoint
 Vehicle
 {
   Name = "Vehicle";
-  Index = 1376;
-  LinkTrId = 1377;
+  Index = 1029;
+  LinkTrId = 1030;
   XPos = -179.785;
   YPos = 17.795;
   ZPos = 276.305;
@@ -3064,11 +1720,23 @@ Vehicle
   Spotter = -1;
   BeaconChannel = 0;
   Callsign = 0;
+  PayloadId = 0;
+  WMMask = 1;
+  Fuel = 1;
+  Callnum = 0;
+  Skin = "";
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 10;
 }
 
 MCU_TR_Entity
 {
-  Index = 1377;
+  Index = 1030;
   Name = "Vehicle entity";
   Desc = "";
   Targets = [];
@@ -3080,13 +1748,13 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 1376;
+  MisObjID = 1029;
   OnEvents
   {
     OnEvent
     {
       Type = 13;
-      TarId = 1379;
+      TarId = 1032;
     }
   }
 }
@@ -3094,8 +1762,8 @@ MCU_TR_Entity
 Vehicle
 {
   Name = "Vehicle";
-  Index = 1380;
-  LinkTrId = 1381;
+  Index = 1033;
+  LinkTrId = 1034;
   XPos = -196.370;
   YPos = 17.795;
   ZPos = 322.656;
@@ -3118,11 +1786,23 @@ Vehicle
   Spotter = -1;
   BeaconChannel = 0;
   Callsign = 0;
+  PayloadId = 0;
+  WMMask = 1;
+  Fuel = 1;
+  Callnum = 0;
+  Skin = "";
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 10;
 }
 
 MCU_TR_Entity
 {
-  Index = 1381;
+  Index = 1034;
   Name = "Vehicle entity";
   Desc = "";
   Targets = [];
@@ -3134,13 +1814,13 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 1380;
+  MisObjID = 1033;
   OnEvents
   {
     OnEvent
     {
       Type = 13;
-      TarId = 1383;
+      TarId = 1036;
     }
   }
 }
@@ -3148,13 +1828,13 @@ MCU_TR_Entity
 Vehicle
 {
   Name = "Vehicle";
-  Index = 1384;
-  LinkTrId = 1385;
+  Index = 1037;
+  LinkTrId = 1038;
   XPos = -205.902;
   YPos = 17.795;
   ZPos = 349.774;
   XOri = 0.00;
-  YOri = 360.00;
+  YOri = 0.00;
   ZOri = 0.00;
   Script = "LuaScripts\WorldObjects\vehicles\53k.txt";
   Model = "graphics\artillery\53k\53k.mgm";
@@ -3172,11 +1852,23 @@ Vehicle
   Spotter = -1;
   BeaconChannel = 0;
   Callsign = 0;
+  PayloadId = 0;
+  WMMask = 1;
+  Fuel = 1;
+  Callnum = 0;
+  Skin = "";
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 10;
 }
 
 MCU_TR_Entity
 {
-  Index = 1385;
+  Index = 1038;
   Name = "Vehicle entity";
   Desc = "";
   Targets = [];
@@ -3188,13 +1880,13 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 1384;
+  MisObjID = 1037;
   OnEvents
   {
     OnEvent
     {
       Type = 13;
-      TarId = 1387;
+      TarId = 1040;
     }
   }
 }
@@ -3202,8 +1894,8 @@ MCU_TR_Entity
 Vehicle
 {
   Name = "";
-  Index = 1388;
-  LinkTrId = 1389;
+  Index = 1041;
+  LinkTrId = 1042;
   XPos = -290.453;
   YPos = 17.795;
   ZPos = -18.552;
@@ -3226,11 +1918,23 @@ Vehicle
   Spotter = -1;
   BeaconChannel = 0;
   Callsign = 0;
+  PayloadId = 0;
+  WMMask = 1;
+  Fuel = 1;
+  Callnum = 0;
+  Skin = "";
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 10;
 }
 
 MCU_TR_Entity
 {
-  Index = 1389;
+  Index = 1042;
   Name = "Vehicle entity";
   Desc = "";
   Targets = [];
@@ -3242,20 +1946,20 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 1388;
+  MisObjID = 1041;
   OnEvents
   {
     OnEvent
     {
       Type = 13;
-      TarId = 1391;
+      TarId = 1044;
     }
   }
 }
 
 MCU_Icon
 {
-  Index = 1392;
+  Index = 1045;
   Targets = [];
   Objects = [];
   XPos = -246.993;
@@ -3265,8 +1969,8 @@ MCU_Icon
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 1;
-  LCName = 18;
-  LCDesc = 19;
+  LCName = 3;
+  LCDesc = 4;
   IconId = 505;
   RColor = 255;
   GColor = 255;
@@ -3277,10 +1981,10 @@ MCU_Icon
 
 MCU_Counter
 {
-  Index = 1391;
+  Index = 1044;
   Name = "x1";
   Desc = "";
-  Targets = [1394];
+  Targets = [1047];
   Objects = [];
   XPos = -298.132;
   YPos = 17.795;
@@ -3294,10 +1998,10 @@ MCU_Counter
 
 MCU_Counter
 {
-  Index = 1383;
+  Index = 1036;
   Name = "x1";
   Desc = "";
-  Targets = [1394];
+  Targets = [1047];
   Objects = [];
   XPos = -203.363;
   YPos = 17.795;
@@ -3311,10 +2015,10 @@ MCU_Counter
 
 MCU_Counter
 {
-  Index = 1379;
+  Index = 1032;
   Name = "x1";
   Desc = "";
-  Targets = [1394];
+  Targets = [1047];
   Objects = [];
   XPos = -192.292;
   YPos = 17.795;
@@ -3328,10 +2032,10 @@ MCU_Counter
 
 MCU_Counter
 {
-  Index = 1397;
+  Index = 1050;
   Name = "x1";
   Desc = "";
-  Targets = [1394];
+  Targets = [1047];
   Objects = [];
   XPos = -192.354;
   YPos = 17.795;
@@ -3345,10 +2049,10 @@ MCU_Counter
 
 MCU_Counter
 {
-  Index = 1387;
+  Index = 1040;
   Name = "x1";
   Desc = "";
-  Targets = [1394];
+  Targets = [1047];
   Objects = [];
   XPos = -214.879;
   YPos = 17.795;
@@ -3362,10 +2066,10 @@ MCU_Counter
 
 MCU_Counter
 {
-  Index = 1399;
+  Index = 1052;
   Name = "x1";
   Desc = "";
-  Targets = [1394];
+  Targets = [1047];
   Objects = [];
   XPos = -218.202;
   YPos = 17.795;
@@ -3379,10 +2083,10 @@ MCU_Counter
 
 MCU_Counter
 {
-  Index = 1400;
-  Name = "x2";
+  Index = 1053;
+  Name = "x1";
   Desc = "";
-  Targets = [1401,1402,1403,1404];
+  Targets = [1054,1055,1056,1057];
   Objects = [];
   XPos = -281.898;
   YPos = 17.795;
@@ -3390,16 +2094,16 @@ MCU_Counter
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;
-  Counter = 2;
+  Counter = 1;
   Dropcount = 0;
 }
 
 MCU_Timer
 {
-  Index = 1401;
+  Index = 1054;
   Name = "t3s";
   Desc = "";
-  Targets = [1406,1407];
+  Targets = [1059,1060];
   Objects = [];
   XPos = -301.956;
   YPos = 17.795;
@@ -3413,7 +2117,7 @@ MCU_Timer
 
 MCU_H_Output
 {
-  Index = 1406;
+  Index = 1059;
   Name = "KILLED_ARTY";
   Desc = "";
   Targets = [];
@@ -3428,10 +2132,10 @@ MCU_H_Output
 
 MCU_Deactivate
 {
-  Index = 1409;
+  Index = 1062;
   Name = "Trigger Deactivate";
   Desc = "";
-  Targets = [1392];
+  Targets = [1045];
   Objects = [];
   XPos = -290.822;
   YPos = 17.795;
@@ -3443,10 +2147,10 @@ MCU_Deactivate
 
 MCU_Timer
 {
-  Index = 1402;
+  Index = 1055;
   Name = "t1s";
   Desc = "";
-  Targets = [1409];
+  Targets = [1062];
   Objects = [];
   XPos = -285.037;
   YPos = 17.795;
@@ -3460,14 +2164,14 @@ MCU_Timer
 
 MCU_Activate
 {
-  Index = 1411;
+  Index = 1064;
   Name = "Trigger Activate";
   Desc = "";
   Targets = [];
-  Objects = [1412,1377,1381,1413,1414,1415,1385,1416,1389,1417,1418,1419,1420];
-  XPos = -228.106;
+  Objects = [1065,1030,1034,1066,1067,1068,1038,1069,1042,1070,1071,1072,1073];
+  XPos = -6.899;
   YPos = 17.795;
-  ZPos = 193.604;
+  ZPos = 182.491;
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;
@@ -3475,14 +2179,14 @@ MCU_Activate
 
 MCU_Deactivate
 {
-  Index = 1421;
+  Index = 1074;
   Name = "Trigger Deactivate";
   Desc = "";
   Targets = [];
-  Objects = [1412,1389,1417,1418,1419,1415,1414,1413,1420,1377,1381,1385,1416];
-  XPos = -285.053;
+  Objects = [1065,1042,1070,1071,1072,1068,1067,1066,1073,1030,1034,1038,1069];
+  XPos = -5.587;
   YPos = 17.795;
-  ZPos = 161.160;
+  ZPos = 200.364;
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;
@@ -3491,8 +2195,8 @@ MCU_Deactivate
 Vehicle
 {
   Name = "Vehicle";
-  Index = 1422;
-  LinkTrId = 1412;
+  Index = 1075;
+  LinkTrId = 1065;
   XPos = -207.839;
   YPos = 17.795;
   ZPos = 184.069;
@@ -3515,11 +2219,23 @@ Vehicle
   Spotter = -1;
   BeaconChannel = 0;
   Callsign = 0;
+  PayloadId = 0;
+  WMMask = 1;
+  Fuel = 1;
+  Callnum = 0;
+  Skin = "";
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 10;
 }
 
 MCU_TR_Entity
 {
-  Index = 1412;
+  Index = 1065;
   Name = "Vehicle entity";
   Desc = "";
   Targets = [];
@@ -3531,24 +2247,24 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 1422;
+  MisObjID = 1075;
   OnEvents
   {
     OnEvent
     {
       Type = 13;
-      TarId = 1424;
+      TarId = 1077;
     }
   }
 }
 
 MCU_CMD_Flare
 {
-  Index = 1425;
+  Index = 1078;
   Name = "Flare red";
   Desc = "";
   Targets = [];
-  Objects = [1412];
+  Objects = [1065];
   XPos = -221.878;
   YPos = 17.795;
   ZPos = 178.187;
@@ -3560,10 +2276,10 @@ MCU_CMD_Flare
 
 MCU_Timer
 {
-  Index = 1426;
+  Index = 1079;
   Name = "t1s";
   Desc = "";
-  Targets = [1411,1427];
+  Targets = [1064,1080];
   Objects = [];
   XPos = -251.997;
   YPos = 17.795;
@@ -3577,10 +2293,10 @@ MCU_Timer
 
 MCU_Timer
 {
-  Index = 1428;
+  Index = 1081;
   Name = "t1s";
   Desc = "";
-  Targets = [1429,1430,1431];
+  Targets = [1082,1083,1084];
   Objects = [];
   XPos = -270.527;
   YPos = 17.795;
@@ -3594,10 +2310,10 @@ MCU_Timer
 
 MCU_Timer
 {
-  Index = 1427;
+  Index = 1080;
   Name = "t5s";
   Desc = "";
-  Targets = [1425,1433,1434,1435,1436,1437,1438,1439,1440,1441,1442];
+  Targets = [1078,1086,1087,1088];
   Objects = [];
   XPos = -231.230;
   YPos = 17.795;
@@ -3611,11 +2327,11 @@ MCU_Timer
 
 MCU_CMD_Flare
 {
-  Index = 1431;
+  Index = 1084;
   Name = "Flare green";
   Desc = "";
   Targets = [];
-  Objects = [1412];
+  Objects = [1065];
   XPos = -221.603;
   YPos = 17.795;
   ZPos = 173.960;
@@ -3627,11 +2343,11 @@ MCU_CMD_Flare
 
 MCU_CMD_AttackArea
 {
-  Index = 1433;
+  Index = 1086;
   Name = "AAA AttackArea";
   Desc = "";
   Targets = [];
-  Objects = [1419,1417];
+  Objects = [1072,1070];
   XPos = -213.361;
   YPos = 1000.000;
   ZPos = 156.995;
@@ -3648,10 +2364,10 @@ MCU_CMD_AttackArea
 
 MCU_TR_MissionBegin
 {
-  Index = 1445;
+  Index = 1098;
   Name = "Translator Mission Begin";
   Desc = "";
-  Targets = [1446];
+  Targets = [1099];
   Objects = [];
   XPos = -261.956;
   YPos = 17.795;
@@ -3664,10 +2380,10 @@ MCU_TR_MissionBegin
 
 MCU_Timer
 {
-  Index = 1446;
+  Index = 1099;
   Name = "t5s";
   Desc = "";
-  Targets = [1448,1449];
+  Targets = [1101,1102];
   Objects = [];
   XPos = -261.903;
   YPos = 17.795;
@@ -3681,10 +2397,10 @@ MCU_Timer
 
 MCU_Timer
 {
-  Index = 1430;
+  Index = 1083;
   Name = "t4s";
   Desc = "";
-  Targets = [1421];
+  Targets = [1074];
   Objects = [];
   XPos = -284.977;
   YPos = 17.795;
@@ -3698,26 +2414,27 @@ MCU_Timer
 
 MCU_CMD_ForceComplete
 {
-  Index = 1429;
+  Index = 1082;
   Name = "command Force Complete";
   Desc = "";
   Targets = [];
-  Objects = [1389,1417,1418,1419,1415,1414,1413,1420,1412,1377,1381,1385,1416];
-  XPos = -270.841;
+  Objects = [1042,1070,1071,1072,1068,1067,1066,1073,1065,1030,1034,1038,1069];
+  XPos = -4.300;
   YPos = 17.795;
-  ZPos = 154.474;
+  ZPos = 164.532;
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;
   Priority = 2;
+  EmergencyOrdnanceDrop = 0;
 }
 
 MCU_Counter
 {
-  Index = 1424;
+  Index = 1077;
   Name = "x1";
   Desc = "";
-  Targets = [1394];
+  Targets = [1047];
   Objects = [];
   XPos = -214.833;
   YPos = 17.795;
@@ -3731,10 +2448,10 @@ MCU_Counter
 
 MCU_Activate
 {
-  Index = 1453;
+  Index = 1106;
   Name = "Trigger Activate";
   Desc = "";
-  Targets = [1454];
+  Targets = [1107];
   Objects = [];
   XPos = -261.911;
   YPos = 17.795;
@@ -3746,10 +2463,10 @@ MCU_Activate
 
 MCU_Deactivate
 {
-  Index = 1449;
+  Index = 1102;
   Name = "Trigger Deactivate";
   Desc = "";
-  Targets = [1456];
+  Targets = [1109];
   Objects = [];
   XPos = -264.106;
   YPos = 17.795;
@@ -3761,10 +2478,10 @@ MCU_Deactivate
 
 MCU_Timer
 {
-  Index = 1448;
+  Index = 1101;
   Name = "t1s";
   Desc = "";
-  Targets = [1454];
+  Targets = [1107];
   Objects = [];
   XPos = -261.886;
   YPos = 17.795;
@@ -3778,10 +2495,10 @@ MCU_Timer
 
 MCU_Deactivate
 {
-  Index = 1458;
+  Index = 1111;
   Name = "Trigger Deactivate";
   Desc = "";
-  Targets = [1454];
+  Targets = [1107];
   Objects = [];
   XPos = -259.719;
   YPos = 17.795;
@@ -3793,10 +2510,10 @@ MCU_Deactivate
 
 MCU_Activate
 {
-  Index = 1459;
+  Index = 1112;
   Name = "Trigger Activate";
   Desc = "";
-  Targets = [1456];
+  Targets = [1109];
   Objects = [];
   XPos = -261.958;
   YPos = 17.795;
@@ -3808,10 +2525,10 @@ MCU_Activate
 
 MCU_Timer
 {
-  Index = 1460;
+  Index = 1113;
   Name = "t1s";
   Desc = "";
-  Targets = [1456];
+  Targets = [1109];
   Objects = [];
   XPos = -261.900;
   YPos = 17.795;
@@ -3825,10 +2542,10 @@ MCU_Timer
 
 MCU_CheckZone
 {
-  Index = 1454;
+  Index = 1107;
   Name = "Closer 5000";
   Desc = "";
-  Targets = [1458,1459,1460,1426];
+  Targets = [1111,1112,1113,1079];
   Objects = [];
   XPos = -260.954;
   YPos = 17.795;
@@ -3844,10 +2561,10 @@ MCU_CheckZone
 
 MCU_CheckZone
 {
-  Index = 1456;
+  Index = 1109;
   Name = "Further 6000";
   Desc = "";
-  Targets = [1449,1453,1448,1428];
+  Targets = [1102,1106,1101,1081];
   Objects = [];
   XPos = -262.956;
   YPos = 17.795;
@@ -3863,21 +2580,21 @@ MCU_CheckZone
 
 MCU_CMD_AttackArea
 {
-  Index = 1434;
+  Index = 1087;
   Name = "command AttackArea";
   Desc = "";
   Targets = [];
-  Objects = [1420];
-  XPos = 981.936;
+  Objects = [1073,1068,1067,1066,1065,1030,1034,1038,1069];
+  XPos = 747.496;
   YPos = 17.795;
-  ZPos = 146.918;
+  ZPos = 168.726;
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;
   AttackGround = 1;
   AttackAir = 0;
   AttackGTargets = 0;
-  AttackArea = 50;
+  AttackArea = 250;
   Time = 59940;
   Priority = 1;
 }
@@ -3885,8 +2602,8 @@ MCU_CMD_AttackArea
 Vehicle
 {
   Name = "";
-  Index = 1464;
-  LinkTrId = 1417;
+  Index = 1117;
+  LinkTrId = 1070;
   XPos = -343.854;
   YPos = 17.795;
   ZPos = 265.975;
@@ -3909,11 +2626,23 @@ Vehicle
   Spotter = -1;
   BeaconChannel = 0;
   Callsign = 0;
+  PayloadId = 0;
+  WMMask = 1;
+  Fuel = 1;
+  Callnum = 0;
+  Skin = "";
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 10;
 }
 
 MCU_TR_Entity
 {
-  Index = 1417;
+  Index = 1070;
   Name = "Vehicle entity";
   Desc = "";
   Targets = [];
@@ -3925,13 +2654,13 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 1464;
+  MisObjID = 1117;
   OnEvents
   {
     OnEvent
     {
       Type = 13;
-      TarId = 1466;
+      TarId = 1119;
     }
   }
 }
@@ -3939,8 +2668,8 @@ MCU_TR_Entity
 Vehicle
 {
   Name = "";
-  Index = 1467;
-  LinkTrId = 1418;
+  Index = 1120;
+  LinkTrId = 1071;
   XPos = -286.236;
   YPos = 17.795;
   ZPos = -7.621;
@@ -3963,11 +2692,23 @@ Vehicle
   Spotter = -1;
   BeaconChannel = 0;
   Callsign = 0;
+  PayloadId = 0;
+  WMMask = 1;
+  Fuel = 1;
+  Callnum = 0;
+  Skin = "";
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 10;
 }
 
 MCU_TR_Entity
 {
-  Index = 1418;
+  Index = 1071;
   Name = "Vehicle entity";
   Desc = "";
   Targets = [];
@@ -3979,13 +2720,13 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 1467;
+  MisObjID = 1120;
   OnEvents
   {
     OnEvent
     {
       Type = 13;
-      TarId = 1469;
+      TarId = 1122;
     }
   }
 }
@@ -3993,8 +2734,8 @@ MCU_TR_Entity
 Vehicle
 {
   Name = "Vehicle";
-  Index = 1470;
-  LinkTrId = 1413;
+  Index = 1123;
+  LinkTrId = 1066;
   XPos = -206.482;
   YPos = 17.795;
   ZPos = 39.061;
@@ -4017,11 +2758,23 @@ Vehicle
   Spotter = -1;
   BeaconChannel = 0;
   Callsign = 0;
+  PayloadId = 0;
+  WMMask = 1;
+  Fuel = 1;
+  Callnum = 0;
+  Skin = "";
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 10;
 }
 
 MCU_TR_Entity
 {
-  Index = 1413;
+  Index = 1066;
   Name = "Vehicle entity";
   Desc = "";
   Targets = [];
@@ -4033,23 +2786,23 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 1470;
+  MisObjID = 1123;
   OnEvents
   {
     OnEvent
     {
       Type = 13;
-      TarId = 1472;
+      TarId = 1125;
     }
   }
 }
 
 MCU_Counter
 {
-  Index = 1472;
+  Index = 1125;
   Name = "x1";
   Desc = "";
-  Targets = [1394];
+  Targets = [1047];
   Objects = [];
   XPos = -213.454;
   YPos = 17.795;
@@ -4063,10 +2816,10 @@ MCU_Counter
 
 MCU_Counter
 {
-  Index = 1466;
+  Index = 1119;
   Name = "x1";
   Desc = "";
-  Targets = [1394];
+  Targets = [1047];
   Objects = [];
   XPos = -351.164;
   YPos = 17.795;
@@ -4080,10 +2833,10 @@ MCU_Counter
 
 MCU_Counter
 {
-  Index = 1469;
+  Index = 1122;
   Name = "x1";
   Desc = "";
-  Targets = [1394];
+  Targets = [1047];
   Objects = [];
   XPos = -290.453;
   YPos = 17.795;
@@ -4098,13 +2851,13 @@ MCU_Counter
 Vehicle
 {
   Name = "Vehicle";
-  Index = 1476;
-  LinkTrId = 1414;
+  Index = 1129;
+  LinkTrId = 1067;
   XPos = -202.649;
   YPos = 17.795;
   ZPos = 4.896;
   XOri = 0.00;
-  YOri = 360.00;
+  YOri = 0.00;
   ZOri = 0.00;
   Script = "LuaScripts\WorldObjects\vehicles\53k.txt";
   Model = "graphics\artillery\53k\53k.mgm";
@@ -4122,11 +2875,23 @@ Vehicle
   Spotter = -1;
   BeaconChannel = 0;
   Callsign = 0;
+  PayloadId = 0;
+  WMMask = 1;
+  Fuel = 1;
+  Callnum = 0;
+  Skin = "";
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 10;
 }
 
 MCU_TR_Entity
 {
-  Index = 1414;
+  Index = 1067;
   Name = "Vehicle entity";
   Desc = "";
   Targets = [];
@@ -4138,23 +2903,23 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 1476;
+  MisObjID = 1129;
   OnEvents
   {
     OnEvent
     {
       Type = 13;
-      TarId = 1478;
+      TarId = 1131;
     }
   }
 }
 
 MCU_Counter
 {
-  Index = 1478;
+  Index = 1131;
   Name = "x1";
   Desc = "";
-  Targets = [1394];
+  Targets = [1047];
   Objects = [];
   XPos = -216.129;
   YPos = 17.795;
@@ -4169,8 +2934,8 @@ MCU_Counter
 Vehicle
 {
   Name = "Vehicle";
-  Index = 1480;
-  LinkTrId = 1416;
+  Index = 1133;
+  LinkTrId = 1069;
   XPos = -199.675;
   YPos = 17.795;
   ZPos = 391.229;
@@ -4193,11 +2958,23 @@ Vehicle
   Spotter = -1;
   BeaconChannel = 0;
   Callsign = 0;
+  PayloadId = 0;
+  WMMask = 1;
+  Fuel = 1;
+  Callnum = 0;
+  Skin = "";
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 10;
 }
 
 MCU_TR_Entity
 {
-  Index = 1416;
+  Index = 1069;
   Name = "Vehicle entity";
   Desc = "";
   Targets = [];
@@ -4209,13 +2986,13 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 1480;
+  MisObjID = 1133;
   OnEvents
   {
     OnEvent
     {
       Type = 13;
-      TarId = 1482;
+      TarId = 1135;
     }
   }
 }
@@ -4223,8 +3000,8 @@ MCU_TR_Entity
 Vehicle
 {
   Name = "Vehicle";
-  Index = 1483;
-  LinkTrId = 1415;
+  Index = 1136;
+  LinkTrId = 1068;
   XPos = -201.445;
   YPos = 17.795;
   ZPos = -43.477;
@@ -4247,11 +3024,23 @@ Vehicle
   Spotter = -1;
   BeaconChannel = 0;
   Callsign = 0;
+  PayloadId = 0;
+  WMMask = 1;
+  Fuel = 1;
+  Callnum = 0;
+  Skin = "";
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 10;
 }
 
 MCU_TR_Entity
 {
-  Index = 1415;
+  Index = 1068;
   Name = "Vehicle entity";
   Desc = "";
   Targets = [];
@@ -4263,23 +3052,23 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 1483;
+  MisObjID = 1136;
   OnEvents
   {
     OnEvent
     {
       Type = 13;
-      TarId = 1485;
+      TarId = 1138;
     }
   }
 }
 
 MCU_Counter
 {
-  Index = 1482;
+  Index = 1135;
   Name = "x1";
   Desc = "";
-  Targets = [1394];
+  Targets = [1047];
   Objects = [];
   XPos = -213.854;
   YPos = 17.795;
@@ -4293,10 +3082,10 @@ MCU_Counter
 
 MCU_Counter
 {
-  Index = 1485;
+  Index = 1138;
   Name = "x1";
   Desc = "";
-  Targets = [1394];
+  Targets = [1047];
   Objects = [];
   XPos = -214.024;
   YPos = 17.795;
@@ -4310,7 +3099,7 @@ MCU_Counter
 
 MCU_TR_Subtitle
 {
-  Index = 1407;
+  Index = 1060;
   Name = "Translator Subtitle";
   Desc = "";
   Targets = [];
@@ -4331,7 +3120,7 @@ MCU_TR_Subtitle
     RColor = 191;
     GColor = 0;
     BColor = 0;
-    LCText = 20;
+    LCText = 5;
   }
   
   Coalitions = [0, 1, 2];
@@ -4339,10 +3128,10 @@ MCU_TR_Subtitle
 
 MCU_H_Input
 {
-  Index = 1489;
-  Name = "COUNTER";
+  Index = 1142;
+  Name = "CAPTURE";
   Desc = "";
-  Targets = [1490];
+  Targets = [1143];
   Objects = [];
   XPos = -391.278;
   YPos = 17.795;
@@ -4354,10 +3143,10 @@ MCU_H_Input
 
 MCU_Timer
 {
-  Index = 1490;
+  Index = 1143;
   Name = "1s";
   Desc = "";
-  Targets = [1403,1492];
+  Targets = [1056,1145];
   Objects = [];
   XPos = -238.785;
   YPos = 17.795;
@@ -4371,10 +3160,10 @@ MCU_Timer
 
 MCU_Deactivate
 {
-  Index = 1403;
+  Index = 1056;
   Name = "Trigger Deactivate";
   Desc = "";
-  Targets = [1490,1400];
+  Targets = [1143,1053];
   Objects = [];
   XPos = -262.355;
   YPos = 17.795;
@@ -4386,10 +3175,10 @@ MCU_Deactivate
 
 MCU_Deactivate
 {
-  Index = 1492;
+  Index = 1145;
   Name = "Trigger Deactivate";
   Desc = "";
-  Targets = [1392,1426];
+  Targets = [1045,1079];
   Objects = [];
   XPos = -238.933;
   YPos = 17.795;
@@ -4401,7 +3190,7 @@ MCU_Deactivate
 
 MCU_TR_MissionObjective
 {
-  Index = 1404;
+  Index = 1057;
   Targets = [];
   Objects = [];
   XPos = -271.893;
@@ -4411,8 +3200,8 @@ MCU_TR_MissionObjective
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 1;
-  LCName = 21;
-  LCDesc = 22;
+  LCName = 6;
+  LCDesc = 7;
   TaskType = 4;
   Coalition = 2;
   Success = 1;
@@ -4421,10 +3210,10 @@ MCU_TR_MissionObjective
 
 MCU_Counter
 {
-  Index = 1394;
+  Index = 1047;
   Name = "xN";
   Desc = "";
-  Targets = [1400];
+  Targets = [1053];
   Objects = [];
   XPos = -261.627;
   YPos = 17.795;
@@ -4436,44 +3225,12 @@ MCU_Counter
   Dropcount = 0;
 }
 
-MCU_Counter
-{
-  Index = 1497;
-  Name = "x1";
-  Desc = "";
-  Targets = [1400];
-  Objects = [];
-  XPos = -282.135;
-  YPos = 17.795;
-  ZPos = 107.798;
-  XOri = 0.00;
-  YOri = 0.00;
-  ZOri = 0.00;
-  Counter = 1;
-  Dropcount = 0;
-}
-
-MCU_H_Input
-{
-  Index = 1498;
-  Name = "ARTY_INPUT";
-  Desc = "";
-  Targets = [1497];
-  Objects = [];
-  XPos = -282.473;
-  YPos = 17.795;
-  ZPos = 90.927;
-  XOri = 0.00;
-  YOri = 0.00;
-  ZOri = 0.00;
-}
-
 MCU_H_Dynamic
 {
-  Index = 1499;
+  Index = 1152;
   Name = "AAA";
   Desc = "";
-  Targets = [1389,1417,1418,1419];
+  Targets = [1042,1070,1071,1072];
   Objects = [];
   XPos = -392.235;
   YPos = 17.795;
@@ -4486,10 +3243,10 @@ MCU_H_Dynamic
 
 MCU_H_Dynamic
 {
-  Index = 1500;
+  Index = 1153;
   Name = "KILL";
   Desc = "";
-  Targets = [1394];
+  Targets = [1047];
   Objects = [];
   XPos = -391.426;
   YPos = 17.795;
@@ -4503,8 +3260,8 @@ MCU_H_Dynamic
 Vehicle
 {
   Name = "";
-  Index = 1501;
-  LinkTrId = 1419;
+  Index = 1154;
+  LinkTrId = 1072;
   XPos = -207.789;
   YPos = 17.795;
   ZPos = 221.110;
@@ -4527,11 +3284,23 @@ Vehicle
   Spotter = -1;
   BeaconChannel = 0;
   Callsign = 0;
+  PayloadId = 0;
+  WMMask = 1;
+  Fuel = 1;
+  Callnum = 0;
+  Skin = "";
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 10;
 }
 
 MCU_TR_Entity
 {
-  Index = 1419;
+  Index = 1072;
   Name = "Vehicle entity";
   Desc = "";
   Targets = [];
@@ -4543,24 +3312,24 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 1501;
+  MisObjID = 1154;
   OnEvents
   {
     OnEvent
     {
       Type = 13;
-      TarId = 1399;
+      TarId = 1052;
     }
   }
 }
 
 MCU_CMD_AttackArea
 {
-  Index = 1435;
+  Index = 1088;
   Name = "MG AttackArea";
   Desc = "";
   Targets = [];
-  Objects = [1389,1418];
+  Objects = [1042,1071];
   XPos = -278.938;
   YPos = 1000.000;
   ZPos = -13.135;
@@ -4575,158 +3344,11 @@ MCU_CMD_AttackArea
   Priority = 1;
 }
 
-MCU_CMD_AttackArea
-{
-  Index = 1438;
-  Name = "command AttackArea";
-  Desc = "";
-  Targets = [];
-  Objects = [1414];
-  XPos = 989.246;
-  YPos = 17.795;
-  ZPos = 11.385;
-  XOri = 0.00;
-  YOri = 0.00;
-  ZOri = 0.00;
-  AttackGround = 1;
-  AttackAir = 0;
-  AttackGTargets = 0;
-  AttackArea = 50;
-  Time = 59940;
-  Priority = 1;
-}
-
-MCU_CMD_AttackArea
-{
-  Index = 1439;
-  Name = "command AttackArea";
-  Desc = "";
-  Targets = [];
-  Objects = [1413];
-  XPos = 990.559;
-  YPos = 17.795;
-  ZPos = 50.965;
-  XOri = 0.00;
-  YOri = 0.00;
-  ZOri = 0.00;
-  AttackGround = 1;
-  AttackAir = 0;
-  AttackGTargets = 0;
-  AttackArea = 50;
-  Time = 59940;
-  Priority = 1;
-}
-
-MCU_CMD_AttackArea
-{
-  Index = 1440;
-  Name = "command AttackArea";
-  Desc = "";
-  Targets = [];
-  Objects = [1381];
-  XPos = 982.168;
-  YPos = 17.795;
-  ZPos = 302.295;
-  XOri = 0.00;
-  YOri = 0.00;
-  ZOri = 0.00;
-  AttackGround = 1;
-  AttackAir = 0;
-  AttackGTargets = 0;
-  AttackArea = 50;
-  Time = 59940;
-  Priority = 1;
-}
-
-MCU_CMD_AttackArea
-{
-  Index = 1441;
-  Name = "command AttackArea";
-  Desc = "";
-  Targets = [];
-  Objects = [1377];
-  XPos = 979.724;
-  YPos = 17.795;
-  ZPos = 245.291;
-  XOri = 0.00;
-  YOri = 0.00;
-  ZOri = 0.00;
-  AttackGround = 1;
-  AttackAir = 0;
-  AttackGTargets = 0;
-  AttackArea = 50;
-  Time = 59940;
-  Priority = 1;
-}
-
-MCU_CMD_AttackArea
-{
-  Index = 1442;
-  Name = "command AttackArea";
-  Desc = "";
-  Targets = [];
-  Objects = [1385];
-  XPos = 988.134;
-  YPos = 17.795;
-  ZPos = 336.718;
-  XOri = 0.00;
-  YOri = 0.00;
-  ZOri = 0.00;
-  AttackGround = 1;
-  AttackAir = 0;
-  AttackGTargets = 0;
-  AttackArea = 50;
-  Time = 59940;
-  Priority = 1;
-}
-
-MCU_CMD_AttackArea
-{
-  Index = 1436;
-  Name = "command AttackArea";
-  Desc = "";
-  Targets = [];
-  Objects = [1415];
-  XPos = 986.736;
-  YPos = 17.795;
-  ZPos = -49.329;
-  XOri = 0.00;
-  YOri = 0.00;
-  ZOri = 0.00;
-  AttackGround = 1;
-  AttackAir = 0;
-  AttackGTargets = 0;
-  AttackArea = 50;
-  Time = 59940;
-  Priority = 1;
-}
-
-MCU_CMD_AttackArea
-{
-  Index = 1437;
-  Name = "command AttackArea";
-  Desc = "";
-  Targets = [];
-  Objects = [1416];
-  XPos = 986.904;
-  YPos = 17.795;
-  ZPos = 391.943;
-  XOri = 0.00;
-  YOri = 0.00;
-  ZOri = 0.00;
-  AttackGround = 1;
-  AttackAir = 0;
-  AttackGTargets = 0;
-  AttackArea = 50;
-  Time = 59940;
-  Priority = 1;
-}
-
 Vehicle
 {
   Name = "Vehicle";
-  Index = 1511;
-  LinkTrId = 1420;
+  Index = 1164;
+  LinkTrId = 1073;
   XPos = -174.639;
   YPos = 17.795;
   ZPos = 136.242;
@@ -4749,11 +3371,23 @@ Vehicle
   Spotter = -1;
   BeaconChannel = 0;
   Callsign = 0;
+  PayloadId = 0;
+  WMMask = 1;
+  Fuel = 1;
+  Callnum = 0;
+  Skin = "";
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 10;
 }
 
 MCU_TR_Entity
 {
-  Index = 1420;
+  Index = 1073;
   Name = "Vehicle entity";
   Desc = "";
   Targets = [];
@@ -4765,13 +3399,13 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 1511;
+  MisObjID = 1164;
   OnEvents
   {
     OnEvent
     {
       Type = 13;
-      TarId = 1397;
+      TarId = 1050;
     }
   }
 }

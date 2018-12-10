@@ -1,9 +1,11 @@
+"Утилита для обновления прочности по заданным параметрам в csv-файле"
 import csv
 import sys
 import glob
 
 
 def get_models_durability():
+    """Загрузить прочность объектов из csv-файла"""
     models_durability = {}
     with open('durability.csv') as f:
         reader = csv.reader(f, delimiter=';')
@@ -13,12 +15,13 @@ def get_models_durability():
 
 
 def update_durability(group_file):
+    """Обновить прочность объектов в .Group файле"""
     models_durability = get_models_durability()
     lines = []
     next_durability = 0
     wait_durability = False
-    with open(group_file) as f:
-        for line in f.readlines():
+    with open(group_file) as file:
+        for line in file.readlines():
             if line.strip().startswith('Model ='):
                 lines.append(line)
                 for model, durability in models_durability.items():
@@ -34,17 +37,17 @@ def update_durability(group_file):
             else:
                 lines.append(line)
 
-    with open(group_file, 'w') as f:
-        f.writelines(lines)
+    with open(group_file, 'w') as file:
+        file.writelines(lines)
 
 
 if __name__ == '__main__':
     try:
-        files = glob.glob('**', recursive=True)
+        files = glob.glob(str(sys.argv[1]) + '/**', recursive=True)
         for path in files:
             if path.endswith('.Group'):
                 print(path)
                 update_durability(path)
-    except Exception as e:
-        print(e)
+    except Exception as exception:
+        print(exception)
         input('Press enter to close...')
