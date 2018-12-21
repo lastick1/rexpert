@@ -1,4 +1,5 @@
 {
+  "$schema": "../data/schemas/planes.json",
   "planes": [
     "bf 109 e-7",
     "bf 109 f-2",

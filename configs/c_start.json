@@ -1,4 +1,5 @@
 {
+  "$schema": "../data/schemas/c_start.json",
   "current_tvd": "moscow",
   "moscow": {
     "current_date": "01.09.1941",

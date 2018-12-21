@@ -1,4 +1,5 @@
 {
+  "$schema": "../data/schemas/mgen.json",
   "maps": ["moscow", "stalingrad"],
   "sides": ["red", "blue"],
   "objectives": {

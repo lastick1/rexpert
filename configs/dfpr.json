@@ -1,4 +1,5 @@
 {
+  "$schema": "../data/schemas/dfpr.json",
   "settings": ["forests", "guimap", "hmap", "textures", "mapId"],
   "moscow": {
     "seasons": ["wi", "au"],
