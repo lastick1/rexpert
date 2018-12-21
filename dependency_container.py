@@ -107,6 +107,7 @@ class DependencyContainer:  # pylint: disable=R0902
 
     @property
     def aircraft_vendor(self):
+        """Поставщик самолётов на эродромы"""
         if not self._aircraft_vendor:
             self._aircraft_vendor = processing.AircraftVendor(self.config.planes, self.config.gameplay)
         return self._aircraft_vendor
