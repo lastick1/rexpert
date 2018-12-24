@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Точка в игровом пространстве",
+    "type": "object",
+    "properties": {
+        "x": {
+            "type": "number",
+            "title": "Координата по вертикали (широта)"
+        },
+        "z": {
+            "type": "number",
+            "title": "Координата по горизонтали (долгота)"
+        }
+    }
+}

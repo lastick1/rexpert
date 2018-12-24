@@ -2,6 +2,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "Файл настроек генерации миссий",
     "type": "object",
+    "required": ["maps", "objectives"],
     "properties": {
         "maps": {
             "type": "array",
@@ -9,6 +10,26 @@
             "items": {
                 "enum": ["moscow", "stalingrad", "kuban"]
             }
+        },
+        "objectives": {
+            "type": "object",
+            "title": "Привязка \"Код mission objective\" - тип цели"
+        },
+        "moscow": {
+            "title": "Конфигурация карты Москвы",
+            "$ref": "./mgen/tvd.json"
+        },
+        "stalingrad": {
+            "title": "Конфигурация карты Сталинграда",
+            "$ref": "./mgen/tvd.json"
+        },
+        "kuban": {
+            "title": "Конфигурация карты Кубани",
+            "$ref": "./mgen/tvd.json"
+        },
+        "test": {
+            "title": "Конфигурация тестовой карты",
+            "$ref": "./mgen/tvd.json"
         }
     }
 }

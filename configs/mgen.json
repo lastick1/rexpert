@@ -24,11 +24,7 @@
     "tvd": 2,
     "right_top": {"x": 281600.0, "z": 281600.0},
     "tvd_folder": ".\\data\\scg\\2\\",
-    "mission_templates": {
-      "0": "templates\\212\\divisions.mt",
-      "101": "templates\\212\\red_attacking.mt",
-      "201": "templates\\212\\blue_attacking.mt"
-    },
+    "mission_template": "templates\\212\\divisions.mt",
     "graph_file": "moscow.xgml",
     "graph_zoom_point": {"x": 3073.0, "y": 3073.0},
     "ldf_file": "moscow_lf.ldf",
@@ -60,11 +56,7 @@
     "tvd": 1,
     "right_top": {"x": 230400.0, "z": 358400.0},
     "tvd_folder": ".\\data\\scg\\1\\",
-    "mission_templates": {
-      "0": "templates\\212\\divisions.mt",
-      "101": "templates\\212\\red_attacking.mt",
-      "201": "templates\\212\\blue_attacking.mt"
-    },
+    "mission_template": "templates\\212\\divisions.mt",
     "graph_file": "stalingrad.xgml",
     "graph_zoom_point": {"x": 4096.5, "y": 2637.5},
     "ldf_file": "stalingrad_lf.ldf",
@@ -93,13 +85,10 @@
     "end_date": "28.02.1943"
   },
   "kuban": {
+    "tvd": 4,
     "right_top": {"x": 0, "z": 0},
     "tvd_folder": ".\\data\\scg\\4\\",
-    "mission_templates": {
-      "0": "templates\\212\\divisions.mt",
-      "101": "templates\\212\\red_attacking.mt",
-      "201": "templates\\212\\blue_attacking.mt"
-    },
+    "mission_template": "templates\\212\\divisions.mt",
     "graph_file": "",
     "ldf_file": "",
     "ldf_base_file": "",
@@ -120,11 +109,7 @@
     "tvd": 1,
     "right_top": {"x": 230400.0, "z": 358400.0},
     "tvd_folder": ".\\data\\scg\\1\\",
-    "mission_templates": {
-      "0": "templates\\212\\divisions.mt",
-      "101": "templates\\212\\red_attacking.mt",
-      "201": "templates\\212\\blue_attacking.mt"
-    },
+    "mission_template": "templates\\212\\divisions.mt",
     "graph_file": "test_w4f.xgml",
     "graph_zoom_point": {"x": 4096.5, "y": 2637.5},
     "ldf_file": "stalingrad_lf.ldf",
