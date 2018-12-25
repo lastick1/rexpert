@@ -84,21 +84,27 @@
             "title": "Стартовые позиции дивизий",
             "properties": {
                 "BTD1": {
+                    "title": "Первая танковая дивизия Германии",
                     "$ref": "./ingame_point.json"
                 },
                 "BAD1": {
+                    "title": "Первая артиллерийская дивизия Германии",
                     "$ref": "./ingame_point.json"
                 },
                 "BID1": {
+                    "title": "Первая пехотная (общевойсковая) дивизия Германии",
                     "$ref": "./ingame_point.json"
                 },
                 "RTD1": {
+                    "title": "Первая танковая дивизия СССР",
                     "$ref": "./ingame_point.json"
                 },
                 "RAD1": {
+                    "title": "Первая артиллерийская дивизия СССР",
                     "$ref": "./ingame_point.json"
                 },
                 "RID1": {
+                    "title": "Первая пехотная (общевойсковая) дивизия СССР",
                     "$ref": "./ingame_point.json"
                 }
             }
