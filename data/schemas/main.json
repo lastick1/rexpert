@@ -1,10 +1,16 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Главные настройки приложения",
+  "required": ["program", "missiongen", "rcon", "stats", "mongo", "dserver"],
   "properties": {
     "program": {
       "type": "object",
       "title": "Режим запуска сервер-коммандера",
+      "required": [
+        "offline_mode", "test_mode", "debug_mode", "console_cmd_output", "console_chat_output", "minimal_chat_interval", "draw_edges",
+        "draw_nodes", "draw_nodes_text", "game_folder", "server_folder", "graph_files_folder", "maps_archive_folder", "icons_folder",
+        "stats_folder", "planner_folder"
+      ],
       "properties": {
         "offline_mode": {
           "type": "boolean",
@@ -75,6 +81,9 @@
     "missiongen": {
       "type": "object",
       "title": "Режим запуска генератора",
+      "required": [
+        "use_resaver", "generate_missions", "special_influences", "mission_gen_folder", "resaver_folder"
+      ],
       "properties": {
         "use_resaver": {
           "type": "boolean",
@@ -101,6 +110,9 @@
     "rcon": {
       "type": "object",
       "title": "Настройки подключения к RCon (консоль DServer'а)",
+      "required": [
+        "ip", "port", "login", "password"
+      ],
       "properties": {
         "ip": {
           "type": "string",
@@ -123,6 +135,9 @@
     "stats": {
       "type": "object",
       "title": "Настройки подключения к БД статистики",
+      "required": [
+        "user", "database", "host", "port", "password"
+      ],
       "properties": {
         "user": {
           "type": "string",
@@ -149,6 +164,9 @@
     "mongo": {
       "type": "object",
       "title": "Настройки подключения к MongoDB (БД приложения)",
+      "required": [
+        "host", "port", "database"
+      ],
       "properties": {
         "host": {
           "type": "string",
@@ -181,6 +199,9 @@
     "dserver": {
       "type": "object",
       "title": "Папки с логами DServer",
+      "required": [
+        "logs_directory", "arch_directory", "chat_directory"
+      ],
       "properties": {
         "logs_directory": {
           "type": "string",

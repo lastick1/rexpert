@@ -9,6 +9,7 @@ mission_report/__pycache__/
 *spline.json
 *lines.json
 /configs/conf.ini
+/configs/main.json
 sandbox.py
 .venv/
 .vscode/.ropeproject/

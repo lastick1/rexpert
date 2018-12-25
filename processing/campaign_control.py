@@ -150,7 +150,7 @@ class CampaignController:
         self.generator.make_lgb(tvd_name)
 
         mission_template: str = str(self.config.mgen.tvd_folders[tvd_name].joinpath(
-            self.config.mgen.cfg[tvd_name]['mission_templates']['0']).absolute())
+            self.config.mgen.cfg[tvd_name]['mission_template']).absolute())
 
         self.generator.make_mission(mission_template, mission_name, tvd_name)
 
