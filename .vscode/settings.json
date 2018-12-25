@@ -3,8 +3,9 @@
     "python.venvPath": "${workspaceRoot}/.venv",
     "python.unitTest.unittestArgs": [
     ],
-    "python.unitTest.unittestEnabled": false,
+    "python.unitTest.unittestEnabled": true,
     "python.unitTest.nosetestsEnabled": true,
+    "python.unitTest.nosetestPath": "tests.unit",
     "python.linting.pylintArgs": [
         "--rcfile=.rcfile"
     ],
