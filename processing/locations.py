@@ -60,6 +60,13 @@ TEXTURE_INDEX = 'texture_index'
 FILTER_TREES = 'filter_trees'
 FRONT_LINE = 'front_line'
 PLANE_WAYPOINT = 'plane_waypoint'
+TRANSPORT_FLIGHT = 'transport_flight'
+TROOPS_CONCENTRATION = 'troops_concentration'
+FERRY = 'ferry'
+FRONTLINE_STRONGPOINT = 'frontline_strongpoint'
+FRONTLINE_EDGE = 'frontline_edge'
+RAILWAY_JUNCTION = 'railway_junction'
+VEHICLE = 'vehicle'
 
 
 def format_air_objective(location) -> str:
@@ -79,7 +86,8 @@ def format_air_objective(location) -> str:
         1 if FIGHTER_PATROL_FLIGHT in location.types else 0,  # FighterPatrolFlight
         1 if DOGFIGHT in location.types else 0,  # Dogfight
         1 if DUEL_OPPONENT in location.types else 0,  # DuelOpponent
-        1 if BALLOON in location.types else 0  # Balloon
+        1 if BALLOON in location.types else 0,  # Balloon
+        1 if TRANSPORT_FLIGHT in location.types else 0  # TransportFlight
     )
 
 
@@ -122,7 +130,13 @@ def format_ground_objective(location) -> str:
         1 if FACTORY in location.types else 0,  # Factory
         1 if AIRFIELD in location.types else 0,  # Airfield
         1 if PORT in location.types else 0,  # Port
-        1 if RECON_AREA in location.types else 0  # ReconArea
+        1 if RECON_AREA in location.types else 0,  # ReconArea
+        1 if TROOPS_CONCENTRATION in location.types else 0,  # TroopsConcentration
+        1 if FERRY in location.types else 0,  # Ferry
+        1 if FRONTLINE_STRONGPOINT in location.types else 0,  # FrontlineStrongpoint
+        1 if FRONTLINE_EDGE in location.types else 0,  # FrontlineEdge
+        1 if RAILWAY_JUNCTION in location.types else 0,  # RailwayJunction
+        1 if VEHICLE in location.types else 0  # Vehicle
     )
 
 

@@ -207,6 +207,12 @@ ground_objective_format = """GroundObjective
   Airfield = {20};
   Port = {21};
   ReconArea = {22};
+  TroopsConcentration = {23};
+  Ferry = {24};
+  FrontlineStrongpoint = {25};
+  FrontlineEdge = {26};
+  RailwayJunction = {27};
+  Vehicle = {28};
 }}"""
 airfields_format = """Airfield
 {{
@@ -237,6 +243,7 @@ air_objectives_format = """AirObjective
   Dogfight = {12};
   DuelOpponent = {13};
   Balloon = {14};
+  TransportFlight = {15};
 }}"""
 substrate_format = """Substrate
 {{
