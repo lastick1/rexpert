@@ -865,9 +865,6 @@ blocks_set; blocks_BLUE_TANKS_1_SUB; main(scg\2\blocks_quickmission\subtitle\tan
 blocks_set; blocks_BLUE_TANKS_2; main(scg\2\blocks_quickmission\ground\tanks\tanks_x8.group);
 blocks_set; blocks_BLUE_TANKS_2_TARGET; main(scg\2\blocks_quickmission\ground\tanks\target_location.group);
 blocks_set; blocks_BLUE_TANKS_2_SUB; main(scg\2\blocks_quickmission\subtitle\tanks_sub.group);
-blocks_set; blocks_BLUE_TANKS_3; main(scg\2\blocks_quickmission\ground\tanks\tanks_x8.group);
-blocks_set; blocks_BLUE_TANKS_3_TARGET; main(scg\2\blocks_quickmission\ground\tanks\target_location.group);
-blocks_set; blocks_BLUE_TANKS_3_SUB; main(scg\2\blocks_quickmission\subtitle\tanks_sub.group);
 blocks_set; blocks_RED_TANKS_1; main(scg\2\blocks_quickmission\ground\tanks\tanks_x8.group);
 blocks_set; blocks_RED_TANKS_START; main(scg\2\blocks_quickmission\ground\tanks\tanks_start.group);
 blocks_set; blocks_RED_TANKS_1_TARGET; main(scg\2\blocks_quickmission\ground\tanks\target_location.group);
@@ -875,9 +872,6 @@ blocks_set; blocks_RED_TANKS_1_SUB; main(scg\2\blocks_quickmission\subtitle\tank
 blocks_set; blocks_RED_TANKS_2; main(scg\2\blocks_quickmission\ground\tanks\tanks_x8.group);
 blocks_set; blocks_RED_TANKS_2_TARGET; main(scg\2\blocks_quickmission\ground\tanks\target_location.group);
 blocks_set; blocks_RED_TANKS_2_SUB; main(scg\2\blocks_quickmission\subtitle\tanks_sub.group);
-blocks_set; blocks_RED_TANKS_3; main(scg\2\blocks_quickmission\ground\tanks\tanks_x8.group);
-blocks_set; blocks_RED_TANKS_3_TARGET; main(scg\2\blocks_quickmission\ground\tanks\target_location.group);
-blocks_set; blocks_RED_TANKS_3_SUB; main(scg\2\blocks_quickmission\subtitle\tanks_sub.group);
 
 #
 ## geo params
@@ -1744,9 +1738,6 @@ phase; BLUE_TANKS_1_SUB; at(BLUE_TANKS_1); blocks_BLUE_TANKS_1_SUB; clone_locati
 phase; BLUE_TANKS_2; random(RAD1); blocks_BLUE_TANKS_2; clone_location;;
 phase; BLUE_TANKS_2_TARGET; at(RAD1); blocks_BLUE_TANKS_2_TARGET; clone_location;;
 phase; BLUE_TANKS_2_SUB; at(BLUE_TANKS_2); blocks_BLUE_TANKS_2_SUB; clone_location;;
-phase; BLUE_TANKS_3; random(RTD1); blocks_BLUE_TANKS_3; clone_location;;
-phase; BLUE_TANKS_3_TARGET; at(RTD1); blocks_BLUE_TANKS_3_TARGET; clone_location;;
-phase; BLUE_TANKS_3_SUB; at(BLUE_TANKS_3); blocks_BLUE_TANKS_3_SUB; clone_location;;
 phase; RED_TANKS_1; random(BID1); blocks_RED_TANKS_1; clone_location;;
 phase; RED_TANKS_START; at(RED_TANKS_1); blocks_RED_TANKS_START; clone_location;;
 phase; RED_TANKS_1_TARGET; at(BID1); blocks_RED_TANKS_1_TARGET; clone_location;;
@@ -1754,9 +1745,6 @@ phase; RED_TANKS_1_SUB; at(RED_TANKS_1); blocks_RED_TANKS_1_SUB; clone_location;
 phase; RED_TANKS_2; random(BAD1); blocks_RED_TANKS_2; clone_location;;
 phase; RED_TANKS_2_TARGET; at(BAD1); blocks_RED_TANKS_2_TARGET; clone_location;;
 phase; RED_TANKS_2_SUB; at(RED_TANKS_2); blocks_RED_TANKS_2_SUB; clone_location;;
-phase; RED_TANKS_3; random(BTD1); blocks_RED_TANKS_3; clone_location;;
-phase; RED_TANKS_3_TARGET; at(BTD1); blocks_RED_TANKS_3_TARGET; clone_location;;
-phase; RED_TANKS_3_SUB; at(RED_TANKS_3); blocks_RED_TANKS_3_SUB; clone_location;;
 
 #
 ## cases & switches
@@ -2266,10 +2254,6 @@ tlink; BLUE_TANKS_1(TANK_KILLSUB_BLUE); BLUE_TANKS_1_SUB(TANK_KILLSUB_BLUE);
 tlink; BLUE_TANKS_2(TARGET_TO_WP); BLUE_TANKS_2_TARGET(TARGET_TO_WP);
 tlink; BLUE_TANKS_2(TANK_KILLSUB_BLUE); BLUE_TANKS_2_SUB(TANK_KILLSUB_BLUE);
 olink; BLUE_TANKS_2_TARGET(OBJECT_WP_TO_VEHICLE); BLUE_TANKS_2(OBJECT_WP_TO_VEHICLE);
-tlink; BLUE_TANKS_3(TARGET_TO_WP); BLUE_TANKS_3_TARGET(TARGET_TO_WP);
-tlink; BLUE_TANKS_3(TANK_KILLSUB_BLUE); BLUE_TANKS_3_SUB(TANK_KILLSUB_BLUE);
-olink; BLUE_TANKS_3_TARGET(OBJECT_WP_TO_VEHICLE); BLUE_TANKS_3(OBJECT_WP_TO_VEHICLE);
-tlink; BLUE_TANKS_2(START); BLUE_TANKS_3(START);
 tlink; BLUE_TANKS_1(START); BLUE_TANKS_2(START);
 olink; RED_TANKS_1_TARGET(OBJECT_WP_TO_VEHICLE); RED_TANKS_1(OBJECT_WP_TO_VEHICLE);
 tlink; RED_TANKS_1(TARGET_TO_WP); RED_TANKS_1_TARGET(TARGET_TO_WP);
@@ -2278,10 +2262,6 @@ tlink; RED_TANKS_1(TANK_KILLSUB_RED); RED_TANKS_1_SUB(TANK_KILLSUB_RED);
 tlink; RED_TANKS_2(TARGET_TO_WP); RED_TANKS_2_TARGET(TARGET_TO_WP);
 tlink; RED_TANKS_2(TANK_KILLSUB_RED); RED_TANKS_2_SUB(TANK_KILLSUB_RED);
 olink; RED_TANKS_2_TARGET(OBJECT_WP_TO_VEHICLE); RED_TANKS_2(OBJECT_WP_TO_VEHICLE);
-tlink; RED_TANKS_3(TARGET_TO_WP); RED_TANKS_3_TARGET(TARGET_TO_WP);
-tlink; RED_TANKS_3(TANK_KILLSUB_RED); RED_TANKS_3_SUB(TANK_KILLSUB_RED);
-olink; RED_TANKS_3_TARGET(OBJECT_WP_TO_VEHICLE); RED_TANKS_3(OBJECT_WP_TO_VEHICLE);
-tlink; RED_TANKS_2(START); RED_TANKS_3(START);
 tlink; RED_TANKS_1(START); RED_TANKS_2(START);
 
 #
@@ -3647,10 +3627,6 @@ check; BLUE_TANKS_2; free();
 check; BLUE_TANKS_2; location_type(Decoration,Transport);
 check; BLUE_TANKS_2; coalition(e);
 check; BLUE_TANKS_2; range(PRIMARY_LINK_PHASE,closest_outof,4000);
-check; BLUE_TANKS_3; free();
-check; BLUE_TANKS_3; location_type(Decoration,Transport);
-check; BLUE_TANKS_3; coalition(e);
-check; BLUE_TANKS_3; range(PRIMARY_LINK_PHASE,closest_outof,4000);
 check; RED_TANKS_1; free();
 check; RED_TANKS_1; location_type(Decoration,Transport);
 check; RED_TANKS_1; coalition(f);
@@ -3659,10 +3635,6 @@ check; RED_TANKS_2; free();
 check; RED_TANKS_2; location_type(Decoration,Transport);
 check; RED_TANKS_2; coalition(f);
 check; RED_TANKS_2; range(PRIMARY_LINK_PHASE,closest_outof,4000);
-check; RED_TANKS_3; free();
-check; RED_TANKS_3; location_type(Decoration,Transport);
-check; RED_TANKS_3; coalition(f);
-check; RED_TANKS_3; range(PRIMARY_LINK_PHASE,closest_outof,4000);
 
 #
 ## property actions
@@ -4528,7 +4500,7 @@ action; BLUE_ARTY2(AAA,AILevel); <empty>();
 action; BLUE_ARTY2(KILL,Counter); <empty>();
 action; BLUE_ARTY3(KILL,Counter); <empty>();
 action; BLUE_TANKS_1(DELAY_NEXT,Time); set(Time,60);
-action; BLUE_TANKS_1(KILL,Counter); set(Counter,1);
+action; BLUE_TANKS_1(KILL,Counter); set(Counter,8);
 action; BLUE_TANKS_1(OBJECTIVE,Coalition); set(Coalition,2);
 action; BLUE_TANKS_1(STOP,Counter); set(Counter,4);
 action; BLUE_TANKS_1(VEHICLE_1,Model); set_model(Heavy tank,Axis:Heavy tank:PzIV-F1);
@@ -4553,7 +4525,7 @@ action; BLUE_TANKS_1(VEHICLE_9,Model); set_model(Heavy tank,Axis:Heavy tank:PzIV
 action; BLUE_TANKS_1(VEHICLE_9,Country); set_country(enemy);
 action; BLUE_TANKS_START(DELAY,Time); set(Time,60);
 action; BLUE_TANKS_2(DELAY_NEXT,Time); set(Time,60);
-action; BLUE_TANKS_2(KILL,Counter); set(Counter,1);
+action; BLUE_TANKS_2(KILL,Counter); set(Counter,8);
 action; BLUE_TANKS_2(OBJECTIVE,Coalition); set(Coalition,2);
 action; BLUE_TANKS_2(STOP,Counter); set(Counter,4);
 action; BLUE_TANKS_2(VEHICLE_1,Model); set_model(Heavy tank,Axis:Heavy tank:PzIV-F1);
@@ -4576,30 +4548,6 @@ action; BLUE_TANKS_2(VEHICLE_8,Model); set_model(Heavy tank,Axis:Heavy tank:PzIV
 action; BLUE_TANKS_2(VEHICLE_8,Country); set_country(enemy);
 action; BLUE_TANKS_2(VEHICLE_9,Model); set_model(Heavy tank,Axis:Heavy tank:PzIV-F1);
 action; BLUE_TANKS_2(VEHICLE_9,Country); set_country(enemy);
-action; BLUE_TANKS_3(DELAY_NEXT,Time); set(Time,60);
-action; BLUE_TANKS_3(KILL,Counter); set(Counter,1);
-action; BLUE_TANKS_3(OBJECTIVE,Coalition); set(Coalition,2);
-action; BLUE_TANKS_3(STOP,Counter); set(Counter,4);
-action; BLUE_TANKS_3(VEHICLE_1,Model); set_model(Heavy tank,Axis:Heavy tank:PzIV-F1);
-action; BLUE_TANKS_3(VEHICLE_1,Country); set_country(enemy);
-action; BLUE_TANKS_3(VEHICLE_10,Model); set_model(Heavy tank,Axis:Heavy tank:PzIV-F1);
-action; BLUE_TANKS_3(VEHICLE_10,Country); set_country(enemy);
-action; BLUE_TANKS_3(VEHICLE_2,Model); set_model(Heavy tank,Axis:Heavy tank:PzIV-F1);
-action; BLUE_TANKS_3(VEHICLE_2,Country); set_country(enemy);
-action; BLUE_TANKS_3(VEHICLE_3,Model); set_model(Heavy tank,Axis:Heavy tank:PzIV-F1);
-action; BLUE_TANKS_3(VEHICLE_3,Country); set_country(enemy);
-action; BLUE_TANKS_3(VEHICLE_4,Model); set_model(Heavy tank,Axis:Heavy tank:PzIV-F1);
-action; BLUE_TANKS_3(VEHICLE_4,Country); set_country(enemy);
-action; BLUE_TANKS_3(VEHICLE_5,Model); set_model(Heavy tank,Axis:Heavy tank:PzIV-F1);
-action; BLUE_TANKS_3(VEHICLE_5,Country); set_country(enemy);
-action; BLUE_TANKS_3(VEHICLE_6,Model); set_model(Heavy tank,Axis:Heavy tank:PzIV-F1);
-action; BLUE_TANKS_3(VEHICLE_6,Country); set_country(enemy);
-action; BLUE_TANKS_3(VEHICLE_7,Model); set_model(Heavy tank,Axis:Heavy tank:PzIV-F1);
-action; BLUE_TANKS_3(VEHICLE_7,Country); set_country(enemy);
-action; BLUE_TANKS_3(VEHICLE_8,Model); set_model(Heavy tank,Axis:Heavy tank:PzIV-F1);
-action; BLUE_TANKS_3(VEHICLE_8,Country); set_country(enemy);
-action; BLUE_TANKS_3(VEHICLE_9,Model); set_model(Heavy tank,Axis:Heavy tank:PzIV-F1);
-action; BLUE_TANKS_3(VEHICLE_9,Country); set_country(enemy);
 action; RED_TANKS_1(DELAY_NEXT,Time); set(Time,60);
 action; RED_TANKS_1(KILL,Counter); set(Counter,8);
 action; RED_TANKS_1(OBJECTIVE,Coalition); set(Coalition,1);
@@ -4649,30 +4597,6 @@ action; RED_TANKS_2(VEHICLE_8,Model); set_model(Medium tank,Allies:Medium tank:T
 action; RED_TANKS_2(VEHICLE_8,Country); set_country(friendly);
 action; RED_TANKS_2(VEHICLE_9,Model); set_model(Medium tank,Allies:Medium tank:T34-76STZ-41);
 action; RED_TANKS_2(VEHICLE_9,Country); set_country(friendly);
-action; RED_TANKS_3(DELAY_NEXT,Time); set(Time,60);
-action; RED_TANKS_3(KILL,Counter); set(Counter,8);
-action; RED_TANKS_3(OBJECTIVE,Coalition); set(Coalition,1);
-action; RED_TANKS_3(STOP,Counter); set(Counter,4);
-action; RED_TANKS_3(VEHICLE_1,Model); set_model(Medium tank,Allies:Medium tank:T34-76STZ-41);
-action; RED_TANKS_3(VEHICLE_1,Country); set_country(friendly);
-action; RED_TANKS_3(VEHICLE_10,Model); set_model(Medium tank,Allies:Medium tank:T34-76STZ-41);
-action; RED_TANKS_3(VEHICLE_10,Country); set_country(friendly);
-action; RED_TANKS_3(VEHICLE_2,Model); set_model(Medium tank,Allies:Medium tank:T34-76STZ-41);
-action; RED_TANKS_3(VEHICLE_2,Country); set_country(friendly);
-action; RED_TANKS_3(VEHICLE_3,Model); set_model(Medium tank,Allies:Medium tank:T34-76STZ-41);
-action; RED_TANKS_3(VEHICLE_3,Country); set_country(friendly);
-action; RED_TANKS_3(VEHICLE_4,Model); set_model(Medium tank,Allies:Medium tank:T34-76STZ-41);
-action; RED_TANKS_3(VEHICLE_4,Country); set_country(friendly);
-action; RED_TANKS_3(VEHICLE_5,Model); set_model(Medium tank,Allies:Medium tank:T34-76STZ-41);
-action; RED_TANKS_3(VEHICLE_5,Country); set_country(friendly);
-action; RED_TANKS_3(VEHICLE_6,Model); set_model(Medium tank,Allies:Medium tank:T34-76STZ-41);
-action; RED_TANKS_3(VEHICLE_6,Country); set_country(friendly);
-action; RED_TANKS_3(VEHICLE_7,Model); set_model(Medium tank,Allies:Medium tank:T34-76STZ-41);
-action; RED_TANKS_3(VEHICLE_7,Country); set_country(friendly);
-action; RED_TANKS_3(VEHICLE_8,Model); set_model(Medium tank,Allies:Medium tank:T34-76STZ-41);
-action; RED_TANKS_3(VEHICLE_8,Country); set_country(friendly);
-action; RED_TANKS_3(VEHICLE_9,Model); set_model(Medium tank,Allies:Medium tank:T34-76STZ-41);
-action; RED_TANKS_3(VEHICLE_9,Country); set_country(friendly);
 
 #
 ## unlinks
@@ -5543,9 +5467,6 @@ gui_helper; BLUE_TANKS_1_SUB; 7733; 6008;""; ( ); 4;
 gui_helper; BLUE_TANKS_2; 8510; 1460;""; ( ); 4;
 gui_helper; BLUE_TANKS_2_TARGET; 8522; 2119;""; ( ); 6;
 gui_helper; BLUE_TANKS_2_SUB; 8926; 1270;""; ( ); 6;
-gui_helper; BLUE_TANKS_3; 7477; 1426;""; ( ); 5;
-gui_helper; BLUE_TANKS_3_TARGET; 7489; 2085;""; ( ); 6;
-gui_helper; BLUE_TANKS_3_SUB; 7893; 1236;""; ( ); 6;
 gui_helper; RED_TANKS_1; -5626; 5399;""; ( ); 5;
 gui_helper; RED_TANKS_START; -5095; 5716;""; ( ); 4;
 gui_helper; RED_TANKS_1_TARGET; -5618; 5821;""; ( ); 4;
@@ -5553,9 +5474,6 @@ gui_helper; RED_TANKS_1_SUB; -5250; 5173;""; ( ); 4;
 gui_helper; RED_TANKS_2; -6612; 1404;""; ( ); 6;
 gui_helper; RED_TANKS_2_TARGET; -6604; 1826;""; ( ); 6;
 gui_helper; RED_TANKS_2_SUB; -6236; 1178;""; ( ); 4;
-gui_helper; RED_TANKS_3; -5512; 1400;""; ( ); 6;
-gui_helper; RED_TANKS_3_TARGET; -5504; 1822;""; ( ); 6;
-gui_helper; RED_TANKS_3_SUB; -5136; 1174;""; ( ); 4;
 gui_helper; check; -8542; 474;BLUE_REAR_AF1_REFERENCE(coalition)
 gui_helper; check; -8544; 428;BLUE_REAR_AF1_REFERENCE(location_type)
 gui_helper; check; -8544; 518;BLUE_REAR_AF1_REFERENCE(range)
@@ -6916,10 +6834,6 @@ gui_helper; check; 8577; 1631;BLUE_TANKS_2(free)
 gui_helper; check; 8577; 1664;BLUE_TANKS_2(location_type)
 gui_helper; check; 8577; 1697;BLUE_TANKS_2(coalition)
 gui_helper; check; 8577; 1730;BLUE_TANKS_2(range)
-gui_helper; check; 7544; 1597;BLUE_TANKS_3(free)
-gui_helper; check; 7544; 1630;BLUE_TANKS_3(location_type)
-gui_helper; check; 7544; 1663;BLUE_TANKS_3(coalition)
-gui_helper; check; 7544; 1696;BLUE_TANKS_3(range)
 gui_helper; check; -5560; 5571;RED_TANKS_1(free)
 gui_helper; check; -5560; 5604;RED_TANKS_1(location_type)
 gui_helper; check; -5560; 5637;RED_TANKS_1(coalition)
@@ -6928,10 +6842,6 @@ gui_helper; check; -6546; 1576;RED_TANKS_2(free)
 gui_helper; check; -6546; 1609;RED_TANKS_2(location_type)
 gui_helper; check; -6546; 1642;RED_TANKS_2(coalition)
 gui_helper; check; -6546; 1675;RED_TANKS_2(range)
-gui_helper; check; -5446; 1572;RED_TANKS_3(free)
-gui_helper; check; -5446; 1605;RED_TANKS_3(location_type)
-gui_helper; check; -5446; 1638;RED_TANKS_3(coalition)
-gui_helper; check; -5446; 1671;RED_TANKS_3(range)
 gui_helper; AILevel; 3336; 3792;RTD1_001_16_AAA; (AAA_2037mm);
 gui_helper; AILevel; 3336; 3832;RTD1_001_16_AAA; (AAA_8885mm);
 gui_helper; AILevel; 3821; 3818;RTD1_002_5_AAA; (AAA_mg);
@@ -7841,30 +7751,6 @@ gui_helper; Model; 8577; 777;BLUE_TANKS_2; (VEHICLE_8);
 gui_helper; Country; 8577; 744;BLUE_TANKS_2; (VEHICLE_8);
 gui_helper; Model; 8577; 713;BLUE_TANKS_2; (VEHICLE_9);
 gui_helper; Country; 8577; 678;BLUE_TANKS_2; (VEHICLE_9);
-gui_helper; Time; 7544; 1403;BLUE_TANKS_3; (DELAY_NEXT);
-gui_helper; Counter; 7544; 1370;BLUE_TANKS_3; (KILL);
-gui_helper; Coalition; 7544; 1337;BLUE_TANKS_3; (OBJECTIVE);
-gui_helper; Counter; 7544; 1304;BLUE_TANKS_3; (STOP);
-gui_helper; Model; 7544; 1271;BLUE_TANKS_3; (VEHICLE_1);
-gui_helper; Country; 7544; 1238;BLUE_TANKS_3; (VEHICLE_1);
-gui_helper; Model; 7544; 1205;BLUE_TANKS_3; (VEHICLE_10);
-gui_helper; Country; 7544; 1172;BLUE_TANKS_3; (VEHICLE_10);
-gui_helper; Model; 7544; 1139;BLUE_TANKS_3; (VEHICLE_2);
-gui_helper; Country; 7544; 1106;BLUE_TANKS_3; (VEHICLE_2);
-gui_helper; Model; 7544; 1073;BLUE_TANKS_3; (VEHICLE_3);
-gui_helper; Country; 7544; 1040;BLUE_TANKS_3; (VEHICLE_3);
-gui_helper; Model; 7544; 1007;BLUE_TANKS_3; (VEHICLE_4);
-gui_helper; Country; 7544; 974;BLUE_TANKS_3; (VEHICLE_4);
-gui_helper; Model; 7544; 941;BLUE_TANKS_3; (VEHICLE_5);
-gui_helper; Country; 7544; 908;BLUE_TANKS_3; (VEHICLE_5);
-gui_helper; Model; 7544; 875;BLUE_TANKS_3; (VEHICLE_6);
-gui_helper; Country; 7544; 842;BLUE_TANKS_3; (VEHICLE_6);
-gui_helper; Model; 7544; 809;BLUE_TANKS_3; (VEHICLE_7);
-gui_helper; Country; 7544; 776;BLUE_TANKS_3; (VEHICLE_7);
-gui_helper; Model; 7544; 743;BLUE_TANKS_3; (VEHICLE_8);
-gui_helper; Country; 7544; 710;BLUE_TANKS_3; (VEHICLE_8);
-gui_helper; Model; 7544; 679;BLUE_TANKS_3; (VEHICLE_9);
-gui_helper; Country; 7544; 644;BLUE_TANKS_3; (VEHICLE_9);
 gui_helper; Time; -5560; 5377;RED_TANKS_1; (DELAY_NEXT);
 gui_helper; Counter; -5560; 5344;RED_TANKS_1; (KILL);
 gui_helper; Coalition; -5560; 5311;RED_TANKS_1; (OBJECTIVE);
@@ -7914,27 +7800,3 @@ gui_helper; Model; -6546; 722;RED_TANKS_2; (VEHICLE_8);
 gui_helper; Country; -6546; 689;RED_TANKS_2; (VEHICLE_8);
 gui_helper; Model; -6546; 656;RED_TANKS_2; (VEHICLE_9);
 gui_helper; Country; -6546; 623;RED_TANKS_2; (VEHICLE_9);
-gui_helper; Time; -5446; 1378;RED_TANKS_3; (DELAY_NEXT);
-gui_helper; Counter; -5446; 1345;RED_TANKS_3; (KILL);
-gui_helper; Coalition; -5446; 1312;RED_TANKS_3; (OBJECTIVE);
-gui_helper; Counter; -5446; 1279;RED_TANKS_3; (STOP);
-gui_helper; Model; -5446; 1246;RED_TANKS_3; (VEHICLE_1);
-gui_helper; Country; -5446; 1213;RED_TANKS_3; (VEHICLE_1);
-gui_helper; Model; -5446; 1180;RED_TANKS_3; (VEHICLE_10);
-gui_helper; Country; -5446; 1147;RED_TANKS_3; (VEHICLE_10);
-gui_helper; Model; -5446; 1114;RED_TANKS_3; (VEHICLE_2);
-gui_helper; Country; -5446; 1081;RED_TANKS_3; (VEHICLE_2);
-gui_helper; Model; -5446; 1048;RED_TANKS_3; (VEHICLE_3);
-gui_helper; Country; -5446; 1015;RED_TANKS_3; (VEHICLE_3);
-gui_helper; Model; -5446; 982;RED_TANKS_3; (VEHICLE_4);
-gui_helper; Country; -5446; 949;RED_TANKS_3; (VEHICLE_4);
-gui_helper; Model; -5446; 916;RED_TANKS_3; (VEHICLE_5);
-gui_helper; Country; -5446; 883;RED_TANKS_3; (VEHICLE_5);
-gui_helper; Model; -5446; 850;RED_TANKS_3; (VEHICLE_6);
-gui_helper; Country; -5446; 817;RED_TANKS_3; (VEHICLE_6);
-gui_helper; Model; -5446; 784;RED_TANKS_3; (VEHICLE_7);
-gui_helper; Country; -5446; 751;RED_TANKS_3; (VEHICLE_7);
-gui_helper; Model; -5446; 718;RED_TANKS_3; (VEHICLE_8);
-gui_helper; Country; -5446; 685;RED_TANKS_3; (VEHICLE_8);
-gui_helper; Model; -5446; 652;RED_TANKS_3; (VEHICLE_9);
-gui_helper; Country; -5446; 619;RED_TANKS_3; (VEHICLE_9);
