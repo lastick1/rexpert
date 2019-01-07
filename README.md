@@ -60,6 +60,7 @@
 * Ей для запуска надо указать папку для хранения базы данных
 * Стандартный порт: 27017
 * [Настройка на запуск как Windows Service](https://stackoverflow.com/questions/2438055/how-to-run-mongodb-as-windows-service)
+> D:\mongodb\bin>mongod --dbpath=D:\mongodb --logpath=D:\mongodb\log.txt --install
 * Для удобства (GUI) можно использовать [Robo 3T](https://robomongo.org)
 * В этой базе данные хранятся в коллекциях json-объектов (коллекции документов)
 * Чтобы найти конкретный документ в коллекции, надо в find указать объект-запрос вида: {"Имя_свойства": "Значение_свойства"}
