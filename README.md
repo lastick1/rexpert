@@ -2,7 +2,7 @@
 
 ## Версия 'Divisions'
 
-Планы и прогресс можно посмотреть на доске trello, связанной с репозиторием
+Планы и прогресс можно посмотреть по issues в текущем GitHub репозитории
 
 ### Базовая логика игрового процесса
 
@@ -34,10 +34,6 @@
 * Не важно, как игрок покинул с сервера - у его бота должен быть атайп деинициализации
 * В конце раунда (Max time for round, tdmRoundTime в SDS) в лог выдаётся атайп 19
 
-## Описание концепции сервера
-
-[Google Документ](https://docs.google.com/document/d/19wJ2J6eMQ3f0qdcpgRliBeUqO_iSqaKN_KV1izEkhKU/edit#)
-
 ## Спецификация
 
 ### Конфиги (configs)
@@ -46,7 +42,7 @@
 
 В папке **configs** хранится конфигурация коммандера в ini, txt, xgml, json и csv файлах
 
-* conf.ini - основной файл настроек коммандера
+* main.json - основной файл настроек коммандера
 * ban_list_permanent.txt - список навсегда забаненных пользователей
 * mgen.json - настройки генерации ТВД и генерации миссий
 * gameplay.json - настройки игровых параметров на сервере
@@ -60,7 +56,7 @@
 
 ### MongoDB
 
-* На ветке divisions используется [MongoDB](https://www.mongodb.com/download-center?jmp=nav#community)
+* В версии divisions используется [MongoDB](https://www.mongodb.com/download-center?jmp=nav#community)
 * Ей для запуска надо указать папку для хранения базы данных
 * Стандартный порт: 27017
 * [Настройка на запуск как Windows Service](https://stackoverflow.com/questions/2438055/how-to-run-mongodb-as-windows-service)
