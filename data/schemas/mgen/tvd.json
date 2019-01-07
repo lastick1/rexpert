@@ -1,122 +1,130 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "required": ["tvd", "right_top", "tvd_folder", "mission_template"],
-    "properties": {
-        "tvd": {
-            "type": "number",
-            "title": "id ТВД"
-        },
-        "right_top": {
-            "title": "Координаты правого верхнего угла игровой карты",
-            "$ref": "./ingame_point.json"
-        },
-        "tvd_folder": {
-            "type": "string",
-            "title": "Путь к папке ТВД относительно корневой папки игры"
-        },
-        "mission_template": {
-            "type": "string",
-            "title": "Путь к файлу шаблона миссии относительно папки ТВД"
-        },
-        "graph_file": {
-            "type": "string",
-            "title": "Имя файла графа карты"
-        },
-        "graph_zoom_point": {
-            "title": "Точка масштабирования графа (правая-нижняя в координатах yEd-редактора)",
-            "$ref": "./xgml_point.json"
-        },
-        "ldf_file": {
-            "type": "string",
-            "title": "Имя файла базы локаций для сборки миссии, прописываемое файл параметров генерации"
-        },
-        "ldf_base_file": {
-            "type": "string",
-            "title": "Имя файла заготовки базы локаций для создания файла под генерацию миссии"
-        },
-        "lgb_file": {
-            "type": "string",
-            "title": "Имя файла с декорациями городов, мостов и ж/д станций"
-        },
-        "icons_group_file": {
-            "type": "string",
-            "title": "Путь к генерируемому .Group файлу иконок линии фронта. Относительно папки ТВД"
-        },
-        "default_params_source": {
-            "type": "string",
-            "title": "Путь к файлу в папке ТВД - шаблону параметров генерации. Можно использовать для добавления своих константных параметров генерации."
-        },
-        "default_params_dest": {
-            "type": "string",
-            "title": "Файл параметров генерации в папке ТВД, передаваемый в аргументах для MissionGen.exe"
-        },
-        "daytime_csv": {
-            "type": "string",
-            "title": "Имя файла в папке <репозиторий>/data/ с графиком восходов и закатов"
-        },
-        "airfields_csv": {
-            "type": "string",
-            "title": "Имя файла в папке <репозиторий>/data/ с координатами аэродромов"
-        },
-        "warehouses_csv": {
-            "type": "string",
-            "title": "Имя файла в папке <репозиторий>/data/ с координатами складов"
-        },
-        "af_groups_folders": {
-            "type": "object",
-            "properties": {
-                "red": {
-                    "type": "string",
-                    "title": "Путь к папке с генерируемыми группами аэродромов для СССР"
-                },
-                "blue": {
-                    "type": "string",
-                    "title": "Путь к папке с генерируемыми группами аэродромов для Германии"
-                }
-            }
-        },
-        "division_unit_radius": {
-            "type": "integer",
-            "title": "Радиус одного подразделения дивизии"
-        },
-        "division_start_locations": {
-            "type": "object",
-            "title": "Стартовые позиции дивизий",
-            "properties": {
-                "BTD1": {
-                    "title": "Первая танковая дивизия Германии",
-                    "$ref": "./ingame_point.json"
-                },
-                "BAD1": {
-                    "title": "Первая артиллерийская дивизия Германии",
-                    "$ref": "./ingame_point.json"
-                },
-                "BID1": {
-                    "title": "Первая пехотная (общевойсковая) дивизия Германии",
-                    "$ref": "./ingame_point.json"
-                },
-                "RTD1": {
-                    "title": "Первая танковая дивизия СССР",
-                    "$ref": "./ingame_point.json"
-                },
-                "RAD1": {
-                    "title": "Первая артиллерийская дивизия СССР",
-                    "$ref": "./ingame_point.json"
-                },
-                "RID1": {
-                    "title": "Первая пехотная (общевойсковая) дивизия СССР",
-                    "$ref": "./ingame_point.json"
-                }
-            }
-        },
-        "start_date": {
-            "type": "string",
-            "title": "Дата начала карты"
-        },
-        
-        "end_date": {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "required": [
+    "tvd", "right_top", "tvd_folder", "mission_template", "graph_file", "graph_zoom_point", "ldf_file",
+    "ldf_base_files", "lgb_file", "icons_group_file", "default_params_source", "default_params_dest", "daytime_csv",
+    "airfields_csv", "warehouses_csv", "af_groups_folders", "division_unit_radius", "division_start_locations",
+    "start_date", "end_date"
+  ],
+  "properties": {
+    "tvd": {
+      "type": "number",
+      "title": "id ТВД"
+    },
+    "right_top": {
+      "title": "Координаты правого верхнего угла игровой карты",
+      "$ref": "./ingame_point.json"
+    },
+    "tvd_folder": {
+      "type": "string",
+      "title": "Путь к папке ТВД относительно корневой папки игры"
+    },
+    "mission_template": {
+      "type": "string",
+      "title": "Путь к файлу шаблона миссии относительно папки ТВД"
+    },
+    "graph_file": {
+      "type": "string",
+      "title": "Имя файла графа карты"
+    },
+    "graph_zoom_point": {
+      "title": "Точка масштабирования графа (правая-нижняя в координатах yEd-редактора)",
+      "$ref": "./xgml_point.json"
+    },
+    "ldf_file": {
+      "type": "string",
+      "title": "Имя файла базы локаций для сборки миссии, прописываемое файл параметров генерации"
+    },
+    "ldf_base_files": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "title": "Файлы заготовки базы локаций для создания файла под генерацию миссии (собираются в один файл базы локаций)"
+    },
+    "lgb_file": {
+      "type": "string",
+      "title": "Имя файла с декорациями городов, мостов и ж/д станций"
+    },
+    "icons_group_file": {
+      "type": "string",
+      "title": "Путь к генерируемому .Group файлу иконок линии фронта. Относительно папки ТВД"
+    },
+    "default_params_source": {
+      "type": "string",
+      "title": "Путь к файлу в папке ТВД - шаблону параметров генерации. Можно использовать для добавления своих константных параметров генерации."
+    },
+    "default_params_dest": {
+      "type": "string",
+      "title": "Файл параметров генерации в папке ТВД, передаваемый в аргументах для MissionGen.exe"
+    },
+    "daytime_csv": {
+      "type": "string",
+      "title": "Имя файла в папке <репозиторий>/data/ с графиком восходов и закатов"
+    },
+    "airfields_csv": {
+      "type": "string",
+      "title": "Имя файла в папке <репозиторий>/data/ с координатами аэродромов"
+    },
+    "warehouses_csv": {
+      "type": "string",
+      "title": "Имя файла в папке <репозиторий>/data/ с координатами складов"
+    },
+    "af_groups_folders": {
+      "type": "object",
+      "properties": {
+        "red": {
           "type": "string",
-          "title": "Дата завершения карты"
+          "title": "Путь к папке с генерируемыми группами аэродромов для СССР"
+        },
+        "blue": {
+          "type": "string",
+          "title": "Путь к папке с генерируемыми группами аэродромов для Германии"
+        }
       }
+    },
+    "division_unit_radius": {
+      "type": "integer",
+      "title": "Радиус одного подразделения дивизии"
+    },
+    "division_start_locations": {
+      "type": "object",
+      "title": "Стартовые позиции дивизий",
+      "properties": {
+        "BTD1": {
+          "title": "Первая танковая дивизия Германии",
+          "$ref": "./ingame_point.json"
+        },
+        "BAD1": {
+          "title": "Первая артиллерийская дивизия Германии",
+          "$ref": "./ingame_point.json"
+        },
+        "BID1": {
+          "title": "Первая пехотная (общевойсковая) дивизия Германии",
+          "$ref": "./ingame_point.json"
+        },
+        "RTD1": {
+          "title": "Первая танковая дивизия СССР",
+          "$ref": "./ingame_point.json"
+        },
+        "RAD1": {
+          "title": "Первая артиллерийская дивизия СССР",
+          "$ref": "./ingame_point.json"
+        },
+        "RID1": {
+          "title": "Первая пехотная (общевойсковая) дивизия СССР",
+          "$ref": "./ingame_point.json"
+        }
+      }
+    },
+    "start_date": {
+      "type": "string",
+      "title": "Дата начала карты"
+    },
+
+    "end_date": {
+      "type": "string",
+      "title": "Дата завершения карты"
     }
+  }
 }

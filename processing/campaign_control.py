@@ -17,6 +17,7 @@ from .warehouses_control import WarehouseController
 from .grid_control import GridController
 from .source_parser import SourceParser
 from .airfields_control import AirfieldsController
+from .tvd_builder import TvdBuilder
 
 START_DATE = 'start_date'
 END_DATE = 'end_date'
@@ -141,7 +142,7 @@ class CampaignController:
                   date: str,
                   tvd_name: str):
         """Сгенерировать миссию для указанной даты и ТВД кампании"""
-        tvd_builder = self.tvd_builders[tvd_name]
+        tvd_builder: TvdBuilder = self.tvd_builders[tvd_name]
         tvd = tvd_builder.get_tvd(date)
         # Генерация первой миссии
         airfields = self.storage.airfields.load_by_tvd(tvd_name)

@@ -50,7 +50,7 @@
             "cwd": "${workspaceRoot}"
         },
         {
-            "name": "runme.py generate",
+            "name": "runme.py generate moscow",
             "type": "python",
             "request": "launch",
             "program": "${workspaceRoot}/runme.py",
@@ -59,6 +59,19 @@
                 "result1",
                 "moscow",
                 "01.09.1941"
+            ],
+            "cwd": "${workspaceRoot}"
+        },
+        {
+            "name": "runme.py generate stalingrad",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceRoot}/runme.py",
+            "args": [
+                "generate",
+                "result1",
+                "stalingrad",
+                "01.07.1942"
             ],
             "cwd": "${workspaceRoot}"
         },

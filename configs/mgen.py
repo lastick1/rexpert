@@ -5,6 +5,7 @@ import json
 
 class Mgen:
     """Класс конфига генератора"""
+
     def __init__(self, game_folder: pathlib.Path):
         with open('./configs/mgen.json') as stream:
             src = json.load(stream)
@@ -20,7 +21,7 @@ class Mgen:
                           for x in self.maps}
         self.lgb_bin_files = {x: self.tvd_folders[x].joinpath(src[x]['lgb_file']+'.lgb').absolute()
                               for x in self.maps}
-        self.ldf_templates = {x: self.tvd_folders[x].joinpath(src[x]['ldf_base_file']).absolute()
+        self.ldf_templates = {x: list(self.tvd_folders[x].joinpath(z).absolute() for z in src[x]['ldf_base_files'])
                               for x in self.maps}
         self.daytime_files = {x: pathlib.Path(pathlib.Path('./data/').joinpath(src[x]['daytime_csv'])).absolute()
                               for x in self.maps}
