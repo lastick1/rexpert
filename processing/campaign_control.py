@@ -6,9 +6,8 @@ import pathlib
 
 import atypes
 import configs
-import constants
+from constants import DATE_FORMAT
 import model
-import processing
 import storage
 
 from .ground_control import GroundController
@@ -18,6 +17,8 @@ from .grid_control import GridController
 from .source_parser import SourceParser
 from .airfields_control import AirfieldsController
 from .tvd_builder import TvdBuilder
+from .gen import Generator
+from .players_control import PlayersController
 
 START_DATE = 'start_date'
 END_DATE = 'end_date'
@@ -36,8 +37,8 @@ class CampaignController:
         self._campaign_map: model.CampaignMap = None
         self._current_tvd: model.Tvd = None
         self._round_ended: bool = False
-        self.tvd_builders = {x: processing.TvdBuilder(
-            x, ioc) for x in ioc.config.mgen.maps}
+        self.tvd_builders = {x: TvdBuilder(x, ioc)
+                             for x in ioc.config.mgen.maps}
 
     @property
     def config(self) -> configs.Config:
@@ -55,7 +56,7 @@ class CampaignController:
         return self._ioc.warehouses_controller
 
     @property
-    def players_controller(self) -> processing.PlayersController:
+    def players_controller(self) -> PlayersController:
         """Контроллер игроков"""
         return self._ioc.players_controller
 
@@ -85,7 +86,7 @@ class CampaignController:
         return self._ioc.storage
 
     @property
-    def generator(self) -> processing.Generator:
+    def generator(self) -> Generator:
         """Генератор миссий (управляет missiongen.exe)"""
         return self._ioc.generator
 
@@ -124,7 +125,7 @@ class CampaignController:
         campaign_map = model.CampaignMap(
             order=order, date=start, mission_date=start, tvd_name=tvd_name, months=list(), actions=list())
         tvd = self.tvd_builders[campaign_map.tvd_name].get_tvd(
-            campaign_map.date.strftime(constants.DATE_FORMAT))
+            campaign_map.date.strftime(DATE_FORMAT))
         self.airfields_controller.initialize_tvd(tvd, campaign_map)
         self.storage.campaign_maps.update(campaign_map)
         self.divisions_controller.initialize_divisions(tvd_name)
@@ -146,7 +147,8 @@ class CampaignController:
         tvd = tvd_builder.get_tvd(date)
         # Генерация первой миссии
         airfields = self.storage.airfields.load_by_tvd(tvd_name)
-        tvd_builder.update(tvd, self.divisions_controller.filter_airfields(tvd_name, airfields))
+        tvd_builder.update(
+            tvd, self.divisions_controller.filter_airfields(tvd_name, airfields))
         self.generator.make_ldb(tvd_name)
         self.generator.make_lgb(tvd_name)
 
@@ -161,16 +163,17 @@ class CampaignController:
 
     def initialize(self):
         """Инициализировать кампанию в БД, обновить файлы в data/scg и сгенерировать первую миссию"""
-        scg_path = pathlib.Path(self.config.main.game_folder.joinpath('data/scg'))
+        scg_path = pathlib.Path(
+            self.config.main.game_folder.joinpath('data/scg'))
         if not scg_path.exists():
             logging.info('Copy data/scg to game/data/scg.')
             shutil.copytree(r'./data/scg', str(scg_path.absolute()))
         for tvd_name in self.config.mgen.maps:
             self.initialize_map(tvd_name)
 
-        self._campaign_map = self.storage.campaign_maps.load_by_order(1)
+        self._campaign_map = self.storage.campaign_maps.load_by_order(2)
         self.generate('result1', self._campaign_map.tvd_name,
-                      self._campaign_map.date.strftime(constants.DATE_FORMAT))
+                      self._campaign_map.date.strftime(DATE_FORMAT))
         self.players_controller.reset()
 
     def start_mission(self, atype: atypes.Atype0):
@@ -185,7 +188,7 @@ class CampaignController:
         self._campaign_map.mission = self._mission
         self._campaign_map.date = self._mission.date
         self._current_tvd = self._get_tvd(
-            self._campaign_map.tvd_name, self._campaign_map.date.strftime(constants.DATE_FORMAT))
+            self._campaign_map.tvd_name, self._campaign_map.date.strftime(DATE_FORMAT))
         self.storage.campaign_maps.update(self._campaign_map)
         logging.info(
             f'mission started {self._campaign_map.mission.date}, {self._campaign_map.mission.file}')
@@ -233,7 +236,7 @@ class CampaignController:
         self._generate(
             self.next_name,
             self._campaign_map.date.strftime(
-                constants.DATE_FORMAT) + datetime.timedelta(days=1),
+                DATE_FORMAT) + datetime.timedelta(days=1),
             self._campaign_map.tvd_name)
         self.storage.campaign_maps.update(self._campaign_map)
 
@@ -242,7 +245,7 @@ class CampaignController:
         return model.CampaignMission(
             kind=source_mission.kind,
             file=source_mission.name,
-            date=source_mission.date.strftime(constants.DATE_FORMAT),
+            date=source_mission.date.strftime(DATE_FORMAT),
             tvd_name=source_mission.guimap,
             additional={
                 'date': atype.date,

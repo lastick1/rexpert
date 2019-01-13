@@ -357,12 +357,12 @@ class LocationsBuilder:
                 continue
 
         for airfield in tvd.red_rear_airfields:
-            airfield_loc = Location(name=AIRFIELD, x=airfield.x, z=airfield.z, y=0, oy=0, length=10, width=10)
+            airfield_loc = Location(name=AIRFIELD, x=airfield.x+20, z=airfield.z+20, y=0, oy=0, length=10, width=10)
             airfield_loc.country = 101
             airfield_loc.types.add(GRASS_FIELD)
             self.locations[AIRFIELD].append(airfield_loc)
         for airfield in tvd.blue_rear_airfields:
-            airfield_loc = Location(name=AIRFIELD, x=airfield.x, z=airfield.z, y=0, oy=0, length=10, width=10)
+            airfield_loc = Location(name=AIRFIELD, x=airfield.x+20, z=airfield.z+20, y=0, oy=0, length=10, width=10)
             airfield_loc.country = 201
             airfield_loc.types.add(GRASS_FIELD)
             self.locations[AIRFIELD].append(airfield_loc)
@@ -400,4 +400,3 @@ class LocationsBuilder:
                                 y=0, oy=0, length=10, width=10)
             location.types.add(AIRFIELD)
             self.locations[GROUND_OBJECTIVE].append(location)
-

@@ -1,31 +1,9 @@
-MCU_Icon
-{
-  Index = 19;
-  Targets = [];
-  Objects = [];
-  XPos = -1150.000;
-  YPos = 17.795;
-  ZPos = 80.000;
-  XOri = 0.00;
-  YOri = 0.00;
-  ZOri = 0.00;
-  Enabled = 1;
-  LCName = 5;
-  LCDesc = 6;
-  IconId = 507;
-  RColor = 255;
-  GColor = 255;
-  BColor = 255;
-  LineType = 0;
-  Coalitions = [1, 2];
-}
-
 MCU_Deactivate
 {
-  Index = 20;
+  Index = 2;
   Name = "Trigger Deactivate";
   Desc = "";
-  Targets = [16,19];
+  Targets = [3,4,5,6,7];
   Objects = [];
   XPos = -1150.000;
   YPos = 17.795;
@@ -37,10 +15,10 @@ MCU_Deactivate
 
 MCU_Timer
 {
-  Index = 16;
+  Index = 3;
   Name = "t1s";
   Desc = "";
-  Targets = [20];
+  Targets = [2];
   Objects = [];
   XPos = -1140.000;
   YPos = 17.795;
@@ -54,10 +32,10 @@ MCU_Timer
 
 MCU_H_Input
 {
-  Index = 22;
+  Index = 9;
   Name = "KILLED_EVENT";
   Desc = "";
-  Targets = [16];
+  Targets = [3];
   Objects = [];
   XPos = -1130.000;
   YPos = 17.795;
@@ -65,5 +43,112 @@ MCU_H_Input
   XOri = 0.00;
   YOri = 0.00;
   ZOri = 0.00;
+}
+
+MCU_Icon
+{
+  Index = 4;
+  Targets = [5];
+  Objects = [];
+  XPos = -900.000;
+  YPos = 74.125;
+  ZPos = 280.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  LCName = 3;
+  LCDesc = 4;
+  IconId = 0;
+  RColor = 192;
+  GColor = 10;
+  BColor = 10;
+  LineType = 20;
+  Coalitions = [1, 2];
+}
+
+MCU_Icon
+{
+  Index = 7;
+  Targets = [4];
+  Objects = [];
+  XPos = -900.000;
+  YPos = 74.125;
+  ZPos = -120.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  LCName = 5;
+  LCDesc = 6;
+  IconId = 0;
+  RColor = 192;
+  GColor = 10;
+  BColor = 10;
+  LineType = 20;
+  Coalitions = [1, 2];
+}
+
+MCU_Icon
+{
+  Index = 6;
+  Targets = [7];
+  Objects = [];
+  XPos = -1400.000;
+  YPos = 74.125;
+  ZPos = -120.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  LCName = 7;
+  LCDesc = 8;
+  IconId = 0;
+  RColor = 192;
+  GColor = 10;
+  BColor = 10;
+  LineType = 20;
+  Coalitions = [1, 2];
+}
+
+MCU_Icon
+{
+  Index = 5;
+  Targets = [6];
+  Objects = [];
+  XPos = -1400.000;
+  YPos = 74.125;
+  ZPos = 280.000;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Enabled = 1;
+  LCName = 9;
+  LCDesc = 10;
+  IconId = 0;
+  RColor = 192;
+  GColor = 10;
+  BColor = 10;
+  LineType = 20;
+  Coalitions = [1, 2];
+}
+
+MCU_H_ReferencePoint
+{
+  Index = 14;
+  Name = "Helper Reference Point";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -1150.000;
+  YPos = 17.795;
+  ZPos = 90.008;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Forward = 250;
+  Backward = 250;
+  Left = 210;
+  Right = 190;
 }
 

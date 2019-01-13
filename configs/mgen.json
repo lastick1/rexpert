@@ -67,19 +67,19 @@
     "default_params_dest": "defaultparams.dat",
     "daytime_csv": "daytime.csv",
     "airfields_csv": "stalin_fields.csv",
-    "warehouses_csv": "moscow_warehouses.csv",
+    "warehouses_csv": "stalin_warehouses.csv",
     "af_groups_folders": {
       "red": ".\\blocks_quickmission\\airfields_red",
       "blue": ".\\blocks_quickmission\\airfields_blue"
     },
     "division_unit_radius": 300,
     "division_start_locations": {
-      "BTD1": {"x": 0, "z": 0},
-      "BAD1": {"x": 0, "z": 0},
-      "BID1": {"x": 0, "z": 0},
-      "RTD1": {"x": 0, "z": 0},
-      "RAD1": {"x": 0, "z": 0},
-      "RID1": {"x": 0, "z": 0}
+      "BTD1": {"x": 120768.73, "z": 199056.49},
+      "BAD1": {"x": 34753.28, "z": 185278.05},
+      "BID1": {"x": 181583.84, "z": 228516.35},
+      "RTD1": {"x": 110225.96, "z": 230247.13},
+      "RAD1": {"x": 195853.6, "z": 247881.64},
+      "RID1": {"x": 54996.67, "z": 219766.17}
     },
     "start_date": "01.07.1942",
     "end_date": "28.02.1943"

@@ -50,7 +50,7 @@
 - Building - референс первого склада
 - Ship
 - Train
-- RailwayStation - жд станции (координатные группы)
+- RailwayStation - ж/д станции (координатные группы)
 - SupplyDump - референс второго склада
 - Factory - секции складов
 - Airfield - референс атакуемого аэродрома (миссии захвата)
@@ -63,6 +63,7 @@
 - FrontLine - точка привязки ЛФ (техническая, в базе не существует). В версии Divisions группа иконок ставится в server set pos
 
 ## Не используется в текущей версии TemplateEditor
+
 - ReferenceLocation
 - Substrate
 - TerrainLeveler

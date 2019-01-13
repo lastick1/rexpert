@@ -1,8 +1,8 @@
 Vehicle
 {
   Name = "";
-  Index = 89;
-  LinkTrId = 90;
+  Index = 8;
+  LinkTrId = 9;
   XPos = -3388.926;
   YPos = 17.795;
   ZPos = 3330.906;
@@ -25,11 +25,23 @@ Vehicle
   Spotter = -1;
   BeaconChannel = 0;
   Callsign = 0;
+  PayloadId = 0;
+  WMMask = 1;
+  Fuel = 1;
+  Callnum = 0;
+  Skin = "";
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 10;
 }
 
 MCU_TR_Entity
 {
-  Index = 90;
+  Index = 9;
   Name = "Vehicle entity";
   Desc = "";
   Targets = [];
@@ -41,13 +53,13 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 89;
+  MisObjID = 8;
   OnEvents
   {
     OnEvent
     {
       Type = 13;
-      TarId = 92;
+      TarId = 11;
     }
   }
 }
@@ -55,8 +67,8 @@ MCU_TR_Entity
 Vehicle
 {
   Name = "";
-  Index = 93;
-  LinkTrId = 94;
+  Index = 12;
+  LinkTrId = 13;
   XPos = -3428.108;
   YPos = 17.795;
   ZPos = 3316.061;
@@ -79,14 +91,26 @@ Vehicle
   Spotter = -1;
   BeaconChannel = 0;
   Callsign = 0;
+  PayloadId = 0;
+  WMMask = 1;
+  Fuel = 1;
+  Callnum = 0;
+  Skin = "";
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 10;
 }
 
 MCU_TR_Entity
 {
-  Index = 94;
+  Index = 13;
   Name = "Vehicle entity";
   Desc = "";
-  Targets = [90];
+  Targets = [9];
   Objects = [];
   XPos = -3428.108;
   YPos = 17.995;
@@ -95,13 +119,13 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 93;
+  MisObjID = 12;
   OnEvents
   {
     OnEvent
     {
       Type = 13;
-      TarId = 96;
+      TarId = 15;
     }
   }
 }
@@ -109,8 +133,8 @@ MCU_TR_Entity
 Vehicle
 {
   Name = "";
-  Index = 97;
-  LinkTrId = 98;
+  Index = 16;
+  LinkTrId = 17;
   XPos = -3477.283;
   YPos = 17.795;
   ZPos = 3336.371;
@@ -133,14 +157,26 @@ Vehicle
   Spotter = -1;
   BeaconChannel = 0;
   Callsign = 0;
+  PayloadId = 0;
+  WMMask = 1;
+  Fuel = 1;
+  Callnum = 0;
+  Skin = "";
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 10;
 }
 
 MCU_TR_Entity
 {
-  Index = 98;
+  Index = 17;
   Name = "Vehicle entity";
   Desc = "";
-  Targets = [90];
+  Targets = [9];
   Objects = [];
   XPos = -3477.283;
   YPos = 17.995;
@@ -149,13 +185,13 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 97;
+  MisObjID = 16;
   OnEvents
   {
     OnEvent
     {
       Type = 13;
-      TarId = 100;
+      TarId = 19;
     }
   }
 }
@@ -163,8 +199,8 @@ MCU_TR_Entity
 Vehicle
 {
   Name = "";
-  Index = 101;
-  LinkTrId = 102;
+  Index = 20;
+  LinkTrId = 21;
   XPos = -3522.091;
   YPos = 17.795;
   ZPos = 3312.071;
@@ -187,14 +223,26 @@ Vehicle
   Spotter = -1;
   BeaconChannel = 0;
   Callsign = 0;
+  PayloadId = 0;
+  WMMask = 1;
+  Fuel = 1;
+  Callnum = 0;
+  Skin = "";
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 10;
 }
 
 MCU_TR_Entity
 {
-  Index = 102;
+  Index = 21;
   Name = "Vehicle entity";
   Desc = "";
-  Targets = [90];
+  Targets = [9];
   Objects = [];
   XPos = -3522.091;
   YPos = 17.995;
@@ -203,13 +251,13 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 101;
+  MisObjID = 20;
   OnEvents
   {
     OnEvent
     {
       Type = 13;
-      TarId = 104;
+      TarId = 23;
     }
   }
 }
@@ -217,8 +265,8 @@ MCU_TR_Entity
 Vehicle
 {
   Name = "";
-  Index = 105;
-  LinkTrId = 106;
+  Index = 24;
+  LinkTrId = 25;
   XPos = -3564.777;
   YPos = 17.795;
   ZPos = 3334.886;
@@ -241,14 +289,26 @@ Vehicle
   Spotter = -1;
   BeaconChannel = 0;
   Callsign = 0;
+  PayloadId = 0;
+  WMMask = 1;
+  Fuel = 1;
+  Callnum = 0;
+  Skin = "";
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 10;
 }
 
 MCU_TR_Entity
 {
-  Index = 106;
+  Index = 25;
   Name = "Vehicle entity";
   Desc = "";
-  Targets = [90];
+  Targets = [9];
   Objects = [];
   XPos = -3564.777;
   YPos = 17.995;
@@ -257,24 +317,24 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 105;
+  MisObjID = 24;
   OnEvents
   {
     OnEvent
     {
       Type = 13;
-      TarId = 108;
+      TarId = 27;
     }
   }
 }
 
 MCU_Activate
 {
-  Index = 109;
+  Index = 28;
   Name = "Trigger Activate";
   Desc = "";
   Targets = [];
-  Objects = [90];
+  Objects = [9];
   XPos = -3266.487;
   YPos = 78.233;
   ZPos = 3164.968;
@@ -285,10 +345,10 @@ MCU_Activate
 
 MCU_Timer
 {
-  Index = 110;
+  Index = 29;
   Name = "t5s";
   Desc = "";
-  Targets = [111];
+  Targets = [30];
   Objects = [];
   XPos = -3242.376;
   YPos = 78.590;
@@ -302,11 +362,11 @@ MCU_Timer
 
 MCU_CMD_Formation
 {
-  Index = 111;
+  Index = 30;
   Name = "Command Formation";
   Desc = "";
   Targets = [];
-  Objects = [90];
+  Objects = [9];
   XPos = -3248.377;
   YPos = 78.810;
   ZPos = 3097.075;
@@ -320,8 +380,8 @@ FormationDensity = 0;
 Vehicle
 {
   Name = "";
-  Index = 113;
-  LinkTrId = 114;
+  Index = 32;
+  LinkTrId = 33;
   XPos = -3620.598;
   YPos = 17.795;
   ZPos = 3320.775;
@@ -344,14 +404,26 @@ Vehicle
   Spotter = -1;
   BeaconChannel = 0;
   Callsign = 0;
+  PayloadId = 0;
+  WMMask = 1;
+  Fuel = 1;
+  Callnum = 0;
+  Skin = "";
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 10;
 }
 
 MCU_TR_Entity
 {
-  Index = 114;
+  Index = 33;
   Name = "Vehicle entity";
   Desc = "";
-  Targets = [90];
+  Targets = [9];
   Objects = [];
   XPos = -3620.598;
   YPos = 17.995;
@@ -360,13 +432,13 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 113;
+  MisObjID = 32;
   OnEvents
   {
     OnEvent
     {
       Type = 13;
-      TarId = 116;
+      TarId = 35;
     }
   }
 }
@@ -374,8 +446,8 @@ MCU_TR_Entity
 Vehicle
 {
   Name = "";
-  Index = 117;
-  LinkTrId = 118;
+  Index = 36;
+  LinkTrId = 37;
   XPos = -3671.868;
   YPos = 17.795;
   ZPos = 3338.297;
@@ -398,14 +470,26 @@ Vehicle
   Spotter = -1;
   BeaconChannel = 0;
   Callsign = 0;
+  PayloadId = 0;
+  WMMask = 1;
+  Fuel = 1;
+  Callnum = 0;
+  Skin = "";
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 10;
 }
 
 MCU_TR_Entity
 {
-  Index = 118;
+  Index = 37;
   Name = "Vehicle entity";
   Desc = "";
-  Targets = [90];
+  Targets = [9];
   Objects = [];
   XPos = -3671.868;
   YPos = 17.995;
@@ -414,13 +498,13 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 117;
+  MisObjID = 36;
   OnEvents
   {
     OnEvent
     {
       Type = 13;
-      TarId = 120;
+      TarId = 39;
     }
   }
 }
@@ -428,8 +512,8 @@ MCU_TR_Entity
 Vehicle
 {
   Name = "";
-  Index = 121;
-  LinkTrId = 122;
+  Index = 40;
+  LinkTrId = 41;
   XPos = -3711.968;
   YPos = 17.795;
   ZPos = 3321.396;
@@ -452,14 +536,26 @@ Vehicle
   Spotter = -1;
   BeaconChannel = 0;
   Callsign = 0;
+  PayloadId = 0;
+  WMMask = 1;
+  Fuel = 1;
+  Callnum = 0;
+  Skin = "";
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 10;
 }
 
 MCU_TR_Entity
 {
-  Index = 122;
+  Index = 41;
   Name = "Vehicle entity";
   Desc = "";
-  Targets = [90];
+  Targets = [9];
   Objects = [];
   XPos = -3711.968;
   YPos = 17.995;
@@ -468,24 +564,24 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 121;
+  MisObjID = 40;
   OnEvents
   {
     OnEvent
     {
       Type = 13;
-      TarId = 124;
+      TarId = 43;
     }
   }
 }
 
 MCU_H_Input
 {
-  Index = 125;
+  Index = 44;
   Name = "OBJECT_WP_TO_VEHICLE";
   Desc = "";
   Targets = [];
-  Objects = [90];
+  Objects = [9];
   XPos = -3264.954;
   YPos = 0.000;
   ZPos = 3031.468;
@@ -496,7 +592,7 @@ MCU_H_Input
 
 MCU_H_Output
 {
-  Index = 126;
+  Index = 45;
   Name = "TARGET_TO_WP";
   Desc = "";
   Targets = [];
@@ -511,7 +607,7 @@ MCU_H_Output
 
 MCU_H_ReferencePoint
 {
-  Index = 127;
+  Index = 46;
   Name = "Helper Reference Point";
   Desc = "";
   Targets = [];
@@ -530,10 +626,10 @@ MCU_H_ReferencePoint
 
 MCU_H_Dynamic
 {
-  Index = 128;
+  Index = 47;
   Name = "VEHICLE_1";
   Desc = "";
-  Targets = [90];
+  Targets = [9];
   Objects = [];
   XPos = -3388.783;
   YPos = 17.795;
@@ -548,10 +644,10 @@ MCU_H_Dynamic
 
 MCU_H_Dynamic
 {
-  Index = 129;
+  Index = 48;
   Name = "VEHICLE_2";
   Desc = "";
-  Targets = [94];
+  Targets = [13];
   Objects = [];
   XPos = -3428.499;
   YPos = 17.795;
@@ -566,10 +662,10 @@ MCU_H_Dynamic
 
 MCU_H_Dynamic
 {
-  Index = 130;
+  Index = 49;
   Name = "VEHICLE_3";
   Desc = "";
-  Targets = [98];
+  Targets = [17];
   Objects = [];
   XPos = -3476.302;
   YPos = 17.795;
@@ -584,10 +680,10 @@ MCU_H_Dynamic
 
 MCU_H_Dynamic
 {
-  Index = 131;
+  Index = 50;
   Name = "VEHICLE_4";
   Desc = "";
-  Targets = [102];
+  Targets = [21];
   Objects = [];
   XPos = -3518.365;
   YPos = 17.795;
@@ -602,10 +698,10 @@ MCU_H_Dynamic
 
 MCU_H_Dynamic
 {
-  Index = 132;
+  Index = 51;
   Name = "VEHICLE_5";
   Desc = "";
-  Targets = [106];
+  Targets = [25];
   Objects = [];
   XPos = -3562.460;
   YPos = 17.795;
@@ -620,10 +716,10 @@ MCU_H_Dynamic
 
 MCU_H_Dynamic
 {
-  Index = 133;
+  Index = 52;
   Name = "VEHICLE_6";
   Desc = "";
-  Targets = [114];
+  Targets = [33];
   Objects = [];
   XPos = -3618.713;
   YPos = 17.795;
@@ -638,10 +734,10 @@ MCU_H_Dynamic
 
 MCU_H_Dynamic
 {
-  Index = 134;
+  Index = 53;
   Name = "VEHICLE_7";
   Desc = "";
-  Targets = [118];
+  Targets = [37];
   Objects = [];
   XPos = -3671.906;
   YPos = 17.795;
@@ -656,10 +752,10 @@ MCU_H_Dynamic
 
 MCU_H_Dynamic
 {
-  Index = 135;
+  Index = 54;
   Name = "VEHICLE_8";
   Desc = "";
-  Targets = [122];
+  Targets = [41];
   Objects = [];
   XPos = -3710.957;
   YPos = 17.795;
@@ -674,10 +770,10 @@ MCU_H_Dynamic
 
 MCU_Counter
 {
-  Index = 136;
+  Index = 55;
   Name = "x3";
   Desc = "";
-  Targets = [137];
+  Targets = [56,99];
   Objects = [];
   XPos = -3448.461;
   YPos = 17.795;
@@ -691,10 +787,10 @@ MCU_Counter
 
 MCU_Counter
 {
-  Index = 92;
+  Index = 11;
   Name = "x1";
   Desc = "";
-  Targets = [136,139];
+  Targets = [55,58];
   Objects = [];
   XPos = -3384.176;
   YPos = 17.795;
@@ -708,10 +804,10 @@ MCU_Counter
 
 MCU_Counter
 {
-  Index = 96;
+  Index = 15;
   Name = "x1";
   Desc = "";
-  Targets = [136,139];
+  Targets = [55,58];
   Objects = [];
   XPos = -3423.681;
   YPos = 17.795;
@@ -725,10 +821,10 @@ MCU_Counter
 
 MCU_Counter
 {
-  Index = 100;
+  Index = 19;
   Name = "x1";
   Desc = "";
-  Targets = [136,139];
+  Targets = [55,58];
   Objects = [];
   XPos = -3475.423;
   YPos = 17.795;
@@ -742,10 +838,10 @@ MCU_Counter
 
 MCU_Counter
 {
-  Index = 104;
+  Index = 23;
   Name = "x1";
   Desc = "";
-  Targets = [136,139];
+  Targets = [55,58];
   Objects = [];
   XPos = -3514.099;
   YPos = 17.795;
@@ -759,10 +855,10 @@ MCU_Counter
 
 MCU_Counter
 {
-  Index = 108;
+  Index = 27;
   Name = "x1";
   Desc = "";
-  Targets = [136,139];
+  Targets = [55,58];
   Objects = [];
   XPos = -3560.093;
   YPos = 17.795;
@@ -776,10 +872,10 @@ MCU_Counter
 
 MCU_Counter
 {
-  Index = 116;
+  Index = 35;
   Name = "x1";
   Desc = "";
-  Targets = [136,139];
+  Targets = [55,58];
   Objects = [];
   XPos = -3616.893;
   YPos = 17.795;
@@ -793,10 +889,10 @@ MCU_Counter
 
 MCU_Counter
 {
-  Index = 120;
+  Index = 39;
   Name = "x1";
   Desc = "";
-  Targets = [136,139];
+  Targets = [55,58];
   Objects = [];
   XPos = -3663.931;
   YPos = 17.795;
@@ -810,10 +906,10 @@ MCU_Counter
 
 MCU_Counter
 {
-  Index = 124;
+  Index = 43;
   Name = "x1";
   Desc = "";
-  Targets = [136,139];
+  Targets = [55,58];
   Objects = [];
   XPos = -3705.743;
   YPos = 17.795;
@@ -827,11 +923,11 @@ MCU_Counter
 
 MCU_CMD_Formation
 {
-  Index = 137;
+  Index = 56;
   Name = "Command Formation";
   Desc = "";
   Targets = [];
-  Objects = [90];
+  Objects = [9];
   XPos = -3409.387;
   YPos = 17.795;
   ZPos = 3172.155;
@@ -844,10 +940,10 @@ FormationDensity = 0;
 
 MCU_Counter
 {
-  Index = 139;
+  Index = 58;
   Name = "x8";
   Desc = "";
-  Targets = [149,150,151,152,176];
+  Targets = [68,69,70,71,72];
   Objects = [];
   XPos = -3575.733;
   YPos = 17.795;
@@ -861,7 +957,7 @@ MCU_Counter
 
 MCU_H_Output
 {
-  Index = 149;
+  Index = 68;
   Name = "KILLED_TANKS";
   Desc = "";
   Targets = [];
@@ -876,10 +972,10 @@ MCU_H_Output
 
 MCU_H_Input
 {
-  Index = 154;
+  Index = 74;
   Name = "START";
   Desc = "";
-  Targets = [109,110,155];
+  Targets = [28,29,75];
   Objects = [];
   XPos = -3215.345;
   YPos = 17.795;
@@ -891,10 +987,10 @@ MCU_H_Input
 
 MCU_Timer
 {
-  Index = 155;
+  Index = 75;
   Name = "t1s";
   Desc = "";
-  Targets = [126];
+  Targets = [45];
   Objects = [];
   XPos = -3218.808;
   YPos = 78.590;
@@ -908,7 +1004,7 @@ MCU_Timer
 
 MCU_H_Output
 {
-  Index = 150;
+  Index = 69;
   Name = "TANK_KILLSUB_RED";
   Desc = "";
   Targets = [];
@@ -923,7 +1019,7 @@ MCU_H_Output
 
 MCU_H_Output
 {
-  Index = 151;
+  Index = 70;
   Name = "TANK_KILLSUB_BLUE";
   Desc = "";
   Targets = [];
@@ -939,8 +1035,8 @@ MCU_H_Output
 Vehicle
 {
   Name = "";
-  Index = 159;
-  LinkTrId = 160;
+  Index = 79;
+  LinkTrId = 80;
   XPos = -3750.172;
   YPos = 17.795;
   ZPos = 3345.376;
@@ -963,14 +1059,26 @@ Vehicle
   Spotter = -1;
   BeaconChannel = 0;
   Callsign = 0;
+  PayloadId = 0;
+  WMMask = 1;
+  Fuel = 1;
+  Callnum = 0;
+  Skin = "";
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 10;
 }
 
 MCU_TR_Entity
 {
-  Index = 160;
+  Index = 80;
   Name = "Vehicle entity";
   Desc = "";
-  Targets = [90];
+  Targets = [9];
   Objects = [];
   XPos = -3750.172;
   YPos = 17.995;
@@ -979,23 +1087,23 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 159;
+  MisObjID = 79;
   OnEvents
   {
     OnEvent
     {
       Type = 13;
-      TarId = 162;
+      TarId = 82;
     }
   }
 }
 
 MCU_H_Dynamic
 {
-  Index = 163;
+  Index = 83;
   Name = "VEHICLE_9";
   Desc = "";
-  Targets = [160];
+  Targets = [80];
   Objects = [];
   XPos = -3750.029;
   YPos = 17.795;
@@ -1010,10 +1118,10 @@ MCU_H_Dynamic
 
 MCU_Counter
 {
-  Index = 162;
+  Index = 82;
   Name = "x1";
   Desc = "";
-  Targets = [139,136];
+  Targets = [58,55];
   Objects = [];
   XPos = -3745.422;
   YPos = 17.795;
@@ -1028,8 +1136,8 @@ MCU_Counter
 Vehicle
 {
   Name = "";
-  Index = 165;
-  LinkTrId = 166;
+  Index = 85;
+  LinkTrId = 86;
   XPos = -3791.645;
   YPos = 17.795;
   ZPos = 3327.367;
@@ -1052,14 +1160,26 @@ Vehicle
   Spotter = -1;
   BeaconChannel = 0;
   Callsign = 0;
+  PayloadId = 0;
+  WMMask = 1;
+  Fuel = 1;
+  Callnum = 0;
+  Skin = "";
+  RepairFriendlies = 0;
+  RearmFriendlies = 0;
+  RefuelFriendlies = 0;
+  RepairTime = 0;
+  RearmTime = 0;
+  RefuelTime = 0;
+  MaintenanceRadius = 10;
 }
 
 MCU_TR_Entity
 {
-  Index = 166;
+  Index = 86;
   Name = "Vehicle entity";
   Desc = "";
-  Targets = [90];
+  Targets = [9];
   Objects = [];
   XPos = -3791.645;
   YPos = 17.995;
@@ -1068,23 +1188,23 @@ MCU_TR_Entity
   YOri = 0.00;
   ZOri = 0.00;
   Enabled = 0;
-  MisObjID = 165;
+  MisObjID = 85;
   OnEvents
   {
     OnEvent
     {
       Type = 13;
-      TarId = 168;
+      TarId = 88;
     }
   }
 }
 
 MCU_H_Dynamic
 {
-  Index = 169;
+  Index = 89;
   Name = "VEHICLE_10";
   Desc = "";
-  Targets = [166];
+  Targets = [86];
   Objects = [];
   XPos = -3791.502;
   YPos = 17.795;
@@ -1099,10 +1219,10 @@ MCU_H_Dynamic
 
 MCU_Counter
 {
-  Index = 168;
+  Index = 88;
   Name = "x1";
   Desc = "";
-  Targets = [139,136];
+  Targets = [58,55];
   Objects = [];
   XPos = -3786.895;
   YPos = 17.795;
@@ -1116,10 +1236,10 @@ MCU_Counter
 
 MCU_H_Dynamic
 {
-  Index = 171;
+  Index = 91;
   Name = "KILL";
   Desc = "";
-  Targets = [139];
+  Targets = [58];
   Objects = [];
   XPos = -3643.831;
   YPos = 17.795;
@@ -1132,10 +1252,10 @@ MCU_H_Dynamic
 
 MCU_H_Dynamic
 {
-  Index = 172;
+  Index = 92;
   Name = "STOP";
   Desc = "";
-  Targets = [136];
+  Targets = [55];
   Objects = [];
   XPos = -3423.172;
   YPos = 17.795;
@@ -1148,10 +1268,10 @@ MCU_H_Dynamic
 
 MCU_Timer
 {
-  Index = 152;
+  Index = 71;
   Name = "1m";
   Desc = "";
-  Targets = [174];
+  Targets = [94];
   Objects = [];
   XPos = -3613.397;
   YPos = 17.795;
@@ -1165,11 +1285,11 @@ MCU_Timer
 
 MCU_CMD_Damage
 {
-  Index = 174;
+  Index = 94;
   Name = "command Damage";
   Desc = "";
   Targets = [];
-  Objects = [90];
+  Objects = [9];
   XPos = -3652.372;
   YPos = 17.795;
   ZPos = 3171.758;
@@ -1182,7 +1302,7 @@ MCU_CMD_Damage
 
 MCU_TR_MissionObjective
 {
-  Index = 176;
+  Index = 72;
   Targets = [];
   Objects = [];
   XPos = -3500.285;
@@ -1202,10 +1322,10 @@ MCU_TR_MissionObjective
 
 MCU_H_Dynamic
 {
-  Index = 177;
+  Index = 97;
   Name = "OBJECTIVE";
   Desc = "";
-  Targets = [176];
+  Targets = [72];
   Objects = [];
   XPos = -3467.500;
   YPos = 17.795;
@@ -1214,5 +1334,53 @@ MCU_H_Dynamic
   YOri = 0.00;
   ZOri = 0.00;
   Property = "Coalition";
+}
+
+MCU_H_Output
+{
+  Index = 98;
+  Name = "START";
+  Desc = "";
+  Targets = [];
+  Objects = [];
+  XPos = -3349.894;
+  YPos = 17.795;
+  ZPos = 3074.395;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+}
+
+MCU_Timer
+{
+  Index = 99;
+  Name = "t15s";
+  Desc = "";
+  Targets = [98];
+  Objects = [];
+  XPos = -3382.380;
+  YPos = 78.590;
+  ZPos = 3144.055;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Time = 15;
+  Random = 100;
+}
+
+MCU_H_Dynamic
+{
+  Index = 101;
+  Name = "DELAY_NEXT";
+  Desc = "";
+  Targets = [99];
+  Objects = [];
+  XPos = -3344.870;
+  YPos = 17.795;
+  ZPos = 3143.386;
+  XOri = 0.00;
+  YOri = 0.00;
+  ZOri = 0.00;
+  Property = "Time";
 }
 

@@ -58,6 +58,7 @@ class Generator:
         default_params = tvd_folder.joinpath(self.mgen.cfg[tvd_name]['default_params_dest']).absolute()
         logging.info(f'Generating new mission: [{file_name}]...')
         now = str(datetime.datetime.now()).replace(":", "-").replace(" ", "_")
+        logging.info(f'template: [{mission_template}]')
         with open(str(self.main.mission_gen_folder) + r"\missiongen_log_" + now + ".txt", "w") as missiongen_log:
             args = [
                 str(self.main.mission_gen_folder) + r"\MissionGen.exe",
