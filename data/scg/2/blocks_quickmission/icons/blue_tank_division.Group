@@ -12,7 +12,7 @@ MCU_Icon
   Enabled = 1;
   LCName = 13;
   LCDesc = 14;
-  IconId = 553;
+  IconId = 561;
   RColor = 255;
   GColor = 255;
   BColor = 255;
