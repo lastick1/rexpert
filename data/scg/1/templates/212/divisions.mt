@@ -2361,7 +2361,6 @@ tlink; RED_WH1_SERVER_INPUT(KILLED_EVENT); RED_WH1_01_ICON(KILLED_EVENT);
 #
 check; BLUE_REAR_AF1_REFERENCE; coalition(e);
 check; BLUE_REAR_AF1_REFERENCE; location_type(Airfield,GrassField);
-check; BLUE_REAR_AF1_REFERENCE; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; RED_REAR_AF1_REFERENCE; location_type(Airfield,GrassField);
 check; RED_REAR_AF1_REFERENCE; coalition(f);
 check; RED_REAR_AF1_REFERENCE; range(PRIMARY_LINK_PHASE,closest_outof,1);
@@ -2656,7 +2655,7 @@ check; MEDIUM_CANNON2_505_1458; free();
 check; MEDIUM_CANNON4_516_1459; location_type(Decoration,AAAPosition);
 check; MEDIUM_CANNON4_516_1459; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; MEDIUM_CANNON4_516_1459; free();
-check; RED_REAF_AF1; in_radius(PRIMARY_LINK_PHASE,100);
+check; RED_REAF_AF1; in_radius(PRIMARY_LINK_PHASE,1000);
 check; RED_REAF_AF1; location_type(Decoration,Parking);
 check; RED_FRONT_AF3; free();
 check; RED_FRONT_AF3; range(PRIMARY_LINK_PHASE,closest_outof,1000);
@@ -3440,11 +3439,10 @@ check; W_BRIDGES_DECOR_2499_2596_3065; free();
 check; W_BRIDGES_DECOR_2503_2597_3066; location_type(Decoration,Bridge);
 check; W_BRIDGES_DECOR_2503_2597_3066; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; W_BRIDGES_DECOR_2503_2597_3066; free();
-check; BLUE_REAR_AF1; in_radius(PRIMARY_LINK_PHASE,100);
-check; BLUE_REAR_AF1; location_type(Airfield,GrassField);
+check; BLUE_REAR_AF1; in_radius(PRIMARY_LINK_PHASE,1000);
+check; BLUE_REAR_AF1; location_type(Decoration,Parking);
 check; BLUE_REAR_AF2_REFERENCE; coalition(e);
 check; BLUE_REAR_AF2_REFERENCE; location_type(Airfield,GrassField);
-check; BLUE_REAR_AF2_REFERENCE; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; LARGE_CANNON_85_882_1213_2289; location_type(Decoration,AAAPosition);
 check; LARGE_CANNON_85_882_1213_2289; free();
 check; LARGE_CANNON_85_882_1213_2289; range(PRIMARY_LINK_PHASE,closest_outof,1);
@@ -3490,8 +3488,8 @@ check; WINDSOCK_8_2304; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; BLUE_BEACON_2305; location_type(Decoration,NDB);
 check; BLUE_BEACON_2305; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; BLUE_BEACON_2305; free();
-check; BLUE_REAR_AF2; in_radius(PRIMARY_LINK_PHASE,100);
-check; BLUE_REAR_AF2; location_type(Airfield,GrassField);
+check; BLUE_REAR_AF2; in_radius(PRIMARY_LINK_PHASE,1000);
+check; BLUE_REAR_AF2; location_type(Decoration,Parking);
 check; RED_REAR_AF2_REFERENCE; location_type(Airfield,GrassField);
 check; RED_REAR_AF2_REFERENCE; coalition(f);
 check; RED_REAR_AF2_REFERENCE; range(PRIMARY_LINK_PHASE,closest_outof,1);
@@ -3531,7 +3529,7 @@ check; MEDIUM_CANNON2_505_1458_2403; free();
 check; MEDIUM_CANNON4_516_1459_2404; location_type(Decoration,AAAPosition);
 check; MEDIUM_CANNON4_516_1459_2404; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; MEDIUM_CANNON4_516_1459_2404; free();
-check; RED_REAF_AF2; in_radius(PRIMARY_LINK_PHASE,100);
+check; RED_REAF_AF2; in_radius(PRIMARY_LINK_PHASE,1000);
 check; RED_REAF_AF2; location_type(Decoration,Parking);
 check; AF5_DECOR_RED; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; AF5_DECOR_RED; location_type(AirObjective,ReconFlight);
@@ -3861,6 +3859,8 @@ check; RED_WH1_04_0DMG; location_type(GroundObjective,Factory);
 check; RED_WH1_05_0DMG; free();
 check; RED_WH1_05_0DMG; range(PRIMARY_LINK_PHASE,closest_outof,1);
 check; RED_WH1_05_0DMG; location_type(GroundObjective,Factory);
+check; BLUE_REAR_AF1_REFERENCE; range(PRIMARY_LINK_PHASE,closest_outof,1);
+check; BLUE_REAR_AF2_REFERENCE; range(PRIMARY_LINK_PHASE,closest_outof,1);
 
 #
 ## property actions
@@ -4832,7 +4832,7 @@ action; REXPERT_RWH1_8(,del_dmg_not_80); import_rules(delete RWH1 sections dmg 8
 ## gui helpers
 #
 gui_helper; SERVER_SET; 697; 295;""; ( ); 6;
-gui_helper; BLUE_REAR_AF1_REFERENCE; -8781; 406;""; ( ); 4;
+gui_helper; BLUE_REAR_AF1_REFERENCE; -8781; 401;""; ( ); 4;
 gui_helper; RED_REAR_AF1_REFERENCE; 9490; 470;""; ( ); 4;
 gui_helper; FL_ICONS; 608; -646;""; ( ); 4;
 gui_helper; LARGE_CANNON_85_882; -5854; -3781;""; ( ); 4;
@@ -5748,7 +5748,6 @@ gui_helper; RED_WH1_04_ICON; 3500; 14828;""; ( ); 4;
 gui_helper; RED_WH1_05_ICON; 3902; 14823;""; ( ); 4;
 gui_helper; check; -8542; 474;BLUE_REAR_AF1_REFERENCE(coalition)
 gui_helper; check; -8544; 428;BLUE_REAR_AF1_REFERENCE(location_type)
-gui_helper; check; -8544; 517;BLUE_REAR_AF1_REFERENCE(range)
 gui_helper; check; 9758; 541;RED_REAR_AF1_REFERENCE(location_type)
 gui_helper; check; 9761; 492;RED_REAR_AF1_REFERENCE(coalition)
 gui_helper; check; 9760; 590;RED_REAR_AF1_REFERENCE(range)
@@ -6831,7 +6830,6 @@ gui_helper; check; -8683; 113;BLUE_REAR_AF1(in_radius)
 gui_helper; check; -8683; 146;BLUE_REAR_AF1(location_type)
 gui_helper; check; -11160; 730;BLUE_REAR_AF2_REFERENCE(coalition)
 gui_helper; check; -11162; 684;BLUE_REAR_AF2_REFERENCE(location_type)
-gui_helper; check; -11162; 774;BLUE_REAR_AF2_REFERENCE(range)
 gui_helper; check; -11034; -3279;LARGE_CANNON_85_882_1213_2289(location_type)
 gui_helper; check; -11037; -3239;LARGE_CANNON_85_882_1213_2289(free)
 gui_helper; check; -11037; -3202;LARGE_CANNON_85_882_1213_2289(range)
@@ -6877,7 +6875,7 @@ gui_helper; check; -10759; 268;WINDSOCK_8_2304(range)
 gui_helper; check; -11795; 53;BLUE_BEACON_2305(location_type)
 gui_helper; check; -11801; 91;BLUE_BEACON_2305(range)
 gui_helper; check; -11804; 129;BLUE_BEACON_2305(free)
-gui_helper; check; -11301; 369;BLUE_REAR_AF2(in_radius)
+gui_helper; check; -11301; 368;BLUE_REAR_AF2(in_radius)
 gui_helper; check; -11301; 402;BLUE_REAR_AF2(location_type)
 gui_helper; check; 12135; 460;RED_REAR_AF2_REFERENCE(location_type)
 gui_helper; check; 12138; 411;RED_REAR_AF2_REFERENCE(coalition)
@@ -7248,6 +7246,8 @@ gui_helper; check; 4269; 16000;RED_WH1_04_0DMG(location_type)
 gui_helper; check; 4275; 16214;RED_WH1_05_0DMG(free)
 gui_helper; check; 4275; 16247;RED_WH1_05_0DMG(range)
 gui_helper; check; 4275; 16182;RED_WH1_05_0DMG(location_type)
+gui_helper; check; -8545; 525;BLUE_REAR_AF1_REFERENCE(range)
+gui_helper; check; -11160; 776;BLUE_REAR_AF2_REFERENCE(range)
 gui_helper; Model; -5776; -3848;LARGE_CANNON_85_882; (AAA_BIG_TYPE);
 gui_helper; Country; -5776; -3808;LARGE_CANNON_85_882; (AAA_BIG_TYPE);
 gui_helper; AILevel; -5777; -3886;LARGE_CANNON_85_882; (AAA_BIG_TYPE);
@@ -7386,7 +7386,7 @@ gui_helper; Country; 6887; -3731;MEDIUM_CANNON2; (AAA_MED_TYPE);
 gui_helper; Model; 6525; -2534;MEDIUM_CANNON3; (AAA_MED_TYPE);
 gui_helper; Country; 6525; -2494;MEDIUM_CANNON3; (AAA_MED_TYPE);
 gui_helper; Model; 6519; -2129;MEDIUM_CANNON4; (AAA_MED_TYPE);
-gui_helper; Country; 6519; -2089;MEDIUM_CANNON4; (AAA_MED_TYPE);
+gui_helper; Country; 6519; -2090;MEDIUM_CANNON4; (AAA_MED_TYPE);
 gui_helper; Model; 6492; -1676;MEDIUM_CANNON5; (AAA_MED_TYPE);
 gui_helper; Country; 6492; -1636;MEDIUM_CANNON5; (AAA_MED_TYPE);
 gui_helper; Model; 6935; -2549;MEDIUM_CANNON6; (AAA_MED_TYPE);
@@ -7479,7 +7479,7 @@ gui_helper; Country; 8980; -3697;MEDIUM_CANNON2_1450; (AAA_MED_TYPE);
 gui_helper; Model; 8618; -2500;MEDIUM_CANNON3_1451; (AAA_MED_TYPE);
 gui_helper; Country; 8618; -2460;MEDIUM_CANNON3_1451; (AAA_MED_TYPE);
 gui_helper; Model; 8612; -2095;MEDIUM_CANNON4_1452; (AAA_MED_TYPE);
-gui_helper; Country; 8612; -2055;MEDIUM_CANNON4_1452; (AAA_MED_TYPE);
+gui_helper; Country; 8612; -2051;MEDIUM_CANNON4_1452; (AAA_MED_TYPE);
 gui_helper; Model; 8585; -1642;MEDIUM_CANNON5_1453; (AAA_MED_TYPE);
 gui_helper; Country; 8585; -1602;MEDIUM_CANNON5_1453; (AAA_MED_TYPE);
 gui_helper; Model; 9028; -2515;MEDIUM_CANNON6_1454; (AAA_MED_TYPE);
@@ -7855,7 +7855,7 @@ gui_helper; Country; 10973; -2958;MEDIUM_CANNON_504_1457_2402; (AAA_MED_TYPE);
 gui_helper; Model; 11368; -3411;MEDIUM_CANNON2_505_1458_2403; (AAA_MED_TYPE);
 gui_helper; Country; 11368; -3371;MEDIUM_CANNON2_505_1458_2403; (AAA_MED_TYPE);
 gui_helper; Model; 11376; -2989;MEDIUM_CANNON4_516_1459_2404; (AAA_MED_TYPE);
-gui_helper; Country; 11376; -2949;MEDIUM_CANNON4_516_1459_2404; (AAA_MED_TYPE);
+gui_helper; Country; 11376; -2951;MEDIUM_CANNON4_516_1459_2404; (AAA_MED_TYPE);
 gui_helper; Distance; 11460; -285;SIREN_RED_4_2407; (Proximity);
 gui_helper; Country; 12310; -435;RED_BEACON_2409; (BEACON);
 gui_helper; AILevel; 1431; 558;RED_ARTY1; (AAA);
