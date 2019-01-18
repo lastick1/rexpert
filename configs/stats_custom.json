@@ -1,4 +1,5 @@
 {
+  "$schema": "../data/schemas/stats_custom.json",
   "image_files": {
     "map_main_page": ".\\img\\t.png",
     "map_full_size": ".\\img\\g.png"

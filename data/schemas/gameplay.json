@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "maps": {
+      "type": "array",
+      "title": "Список поддерживаемых карт (Supported maps list)",
+      "items": {
+        "enum": ["moscow", "stalingrad", "kuban"]
+      }
+    },
+    "supply_schedule": {
+      "type": "object",
+      "title": "Файлы настроек пополнения самолётов (CSV-files with supply amounts for aircrafts)",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unlocks_start": {
+      "type": "integer",
+      "title": "Количество анлоков при первом входе игрока на сервер (Number of unlocks at the player first entrance)"
+    },
+    "unlocks_min": {
+      "type": "integer",
+      "title": "Минимальное количество анлоков"
+    },
+    "unlocks_max": {
+      "type": "integer",
+      "title": "Максимальное количество анлоков"
+    },
+    "division_death": {
+      "type": "integer",
+      "title": "Остаток подразделений дивизии, при котором она считается убитой (Number of units of division when it dies)"
+    },
+    "division_repair": {
+      "type": "integer",
+      "title": "Процент восполнения прочности дивизии между миссиями (Percent of restored health for each division between missions)"
+    },
+    "division_margin": {
+      "type": "integer",
+      "title": "Минимальное расстояние от дивизий до аэродромов (Minimal distance from a division to airfield)"
+    },
+    "division_unit_radius": {
+      "type": "object",
+      "title": "Радиус одного подразделения дивизии, в котором уничтоженные объекты считаются частью подразделения (Single unit radius where ground kills counts as damage to unit)"
+    },
+    "warehouse_unit_radius": {
+      "type": "object",
+      "title": "Радиус одной секции склада, в которой уничтоженные объекты считаются частью секции (Single warehouse section where ground kills counts as damage to section)"
+    },
+    "airfield_radius": {
+      "type": "integer",
+      "title": "Радиус аэродрома, в котором считается посадка"
+    },
+    "airfield_min_planes": {
+      "type": "integer",
+      "title": "Минимальное количество самолётов на эродроме, при котором он считается рабочим"
+    },
+    "transfer_amount": {
+      "type": "integer",
+      "title": "Количество самолётов, переводимых с тылового аэродрома на фронтовые в конце миссии"
+    },
+    "front_max_planes": {
+      "type": "integer",
+      "title": "Максимум самолётов на фронтовом аэродроме"
+    },
+    "initial_front_supply": {
+      "type": "object",
+      "title": "Начальная поставка самолётов на фронтовые аэродромы"
+    }
+  }
+}

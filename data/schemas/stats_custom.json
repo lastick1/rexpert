@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Конфигурация интеграции со статистикой от =FB=vaal",
+  "properties": {
+    "image_files": {
+      "type": "object",
+      "title": "Файлы изображения карты с текущим состоянием линии фронта",
+      "properties": {
+        "map_main_page": {
+          "type": "string",
+          "title": "Уменьшенное изображение для главной страницы"
+        },
+        "map_full_size": {
+          "type": "string",
+          "title": "Полное изображение"
+        }
+      }
+    },
+    "json_files": {
+      "type": "object",
+      "title": "Имена JSON-файлов с данныими о состоянии кампании, которые сохраняются в папку static в статистике (отдаются web-сервером)",
+      "properties": {
+        "online_players": {
+          "type": "string",
+          "title": "Имя файла с данными игроков онлайн"
+        },
+        "elapsed_time": {
+          "type": "string",
+          "title": "Имя файла с данными об оставшемся времени кампании"
+        },
+        "planes_data": {
+          "type": "string",
+          "title": "Имя файла с данными о текущих доступных самолётах"
+        },
+        "payloads": {
+          "type": "string",
+          "title": "Имя файла с данными о доступном вооружении для самолётов"
+        },
+        "current_airfields": {
+          "type": "string",
+          "title": "Имя файла с данными об аэродромах на карте"
+        }
+      }
+    },
+    "il2missionplanner": {
+      "type": "object",
+      "title": "Настройки интеграции с планнером миссий от CuriousGamblerr",
+      "properties": {
+        "json": {
+          "type": "string",
+          "title": "Имя файла с данными для планнера (положение ЛФ, аэродромов, целей)"
+        },
+        "moscow": {
+          "type": "object",
+          "title": "Параметры конфигурации для московской карты",
+          "properties": {
+            "right_top": {
+              "type": "array",
+              "title": "Координаты дальнего угла карты от нуля координат для смены системы координат"
+            }
+          }
+        },
+        "stalingrad": {
+          "type": "object",
+          "title": "Параметры конфигурации для сталинградской карты",
+          "properties": {
+            "right_top": {
+              "type": "array",
+              "title": "Координаты дальнего угла карты от нуля координат для смены системы координат"
+            }
+          }
+        },
+        "icons_types_mapping": {
+          "type": "object",
+          "title": "Соответствие типов целей типам иконок в планнере"
+        },
+        "icon_names_mapping": {
+          "type": "object",
+          "title": "Соответствие типов целей именам целей в планнере"
+        },
+        "icon_notes_mapping": {
+          "type": "object",
+          "title": "Соответствие типов целей всплывающим подсказам в планнере"
+        }
+      }
+    },
+    "mission_info": {
+      "type": "object",
+      "title": "Информация о миссиях, сохраняемая в файл в папке static статы",
+      "properties": {
+        "json": {
+          "type": "string",
+          "title": "Имя файла в папке static"
+        },
+        "available_planes_by_period_id": {
+          "type": "object",
+          "title": "Доступные типы самолётов по периодам (obsolete)"
+        },
+        "plane_images_files": {
+          "type": "object",
+          "title": "Пути к файлам изображений самолётов в папке static статы"
+        }
+      }
+    }
+  }
+}

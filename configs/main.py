@@ -1,55 +1,55 @@
 """Парсер главного конфига"""
 from pathlib import Path
-import configparser
+import json
 
 
 class Main:  # pylint: disable=R0903,R0902,C0301
     """Класс конфига"""
     def __init__(self, path: Path):
-        src = configparser.ConfigParser()
-        src.read(str(path.absolute()))
-        self.game_folder = Path(src['PROGRAM']['game_folder']).absolute()
-        self.server_folder = Path(src['PROGRAM']['server_folder']).absolute()
+        with open(str(path.absolute())) as stream:
+            src = json.load(stream)
+        self.cfg = src
+        self.game_folder = Path(src['program']['game_folder']).absolute()
+        self.server_folder = Path(src['program']['server_folder']).absolute()
         self.dogfight_folder = self.server_folder.joinpath('./data/Multiplayer/Dogfight').absolute()
-        self.mission_gen_folder = Path(src['MISSIONGEN']['mission_gen_folder']).absolute()
-        self.stats_folder = Path(src['PROGRAM']['stats_folder'])
+        self.mission_gen_folder = Path(src['missiongen']['mission_gen_folder']).absolute()
+        self.stats_folder = Path(src['program']['stats_folder'])
         self.stats_static = Path(self.stats_folder.joinpath('./static')).absolute()
-        self.maps_archive_folder = Path(src['PROGRAM']['maps_archive_folder'])
+        self.maps_archive_folder = Path(src['program']['maps_archive_folder'])
         self.graph_folder = Path('./configs/').absolute()
         self.current_grid_folder = Path(Path('./current/').absolute())
-        self.resaver_folder = Path(src['MISSIONGEN']['resaver_folder'])
-        self.generate_missions = True if "true" in src['MISSIONGEN']['generate_missions'].lower() else False
-        self.special_influences = True if "true" in src['MISSIONGEN']['special_influences'].lower() else False
-        self.use_resaver = True if "true" in src['MISSIONGEN']['use_resaver'].lower() else False
-        self.test_mode = True if "true" in src['PROGRAM']['test_mode'].lower() else False
-        self.offline_mode = True if "true" in src['PROGRAM']['offline_mode'].lower() else False
-        self.debug_mode = True if "true" in src['PROGRAM']['debug_mode'].lower() else False
-        self.console_cmd_output = True if "true" in src['PROGRAM']['console_cmd_output'].lower() else False
-        self.console_chat_output = True if "true" in src['PROGRAM']['console_chat_output'].lower() else False
-        self.minimal_chat_interval = int(src['PROGRAM']['minimal_chat_interval'])
-        self.rcon_ip = src['RCON']['rcon_ip']
-        self.rcon_port = int(src['RCON']['rcon_port'])
-        self.rcon_login = src['RCON']['rcon_login']
-        self.rcon_password = src['RCON']['rcon_password']
-        self.logs_directory = src['DSERVER']['logs_directory']
-        self.arch_directory = src['DSERVER']['arch_directory']
-        self.chat_directory = src['DSERVER']['chat_directory']
-        self.msrc_directory = Path(src['NEW_STATS']['msrc_directory'])
+        self.resaver_folder = Path(src['missiongen']['resaver_folder'])
+        self.generate_missions = src['missiongen']['generate_missions']
+        self.special_influences = src['missiongen']['special_influences']
+        self.use_resaver = src['missiongen']['use_resaver']
+        self.test_mode = src['program']['test_mode']
+        self.offline_mode = src['program']['offline_mode']
+        self.debug_mode = src['program']['debug_mode']
+        self.console_cmd_output = src['program']['console_cmd_output']
+        self.console_chat_output = src['program']['console_chat_output']
+        self.minimal_chat_interval = int(src['program']['minimal_chat_interval'])
+        self.rcon_ip = src['rcon']['ip']
+        self.rcon_port = int(src['rcon']['port'])
+        self.rcon_login = src['rcon']['login']
+        self.rcon_password = src['rcon']['password']
+        self.logs_directory = src['dserver']['logs_directory']
+        self.arch_directory = src['dserver']['arch_directory']
+        self.chat_directory = src['dserver']['chat_directory']
         self.connection_string = 'dbname={} host={} port={} user={} password={}'.format(
-            src['STATS']['database'],
-            src['STATS']['host'],
-            src['STATS']['port'],
-            src['STATS']['user'],
-            src['STATS']['password']
+            src['stats']['database'],
+            src['stats']['host'],
+            src['stats']['port'],
+            src['stats']['user'],
+            src['stats']['password']
         )
-        self.database = src['STATS']['database']
-        self.host = src['STATS']['host']
-        self.port = src['STATS']['port']
-        self.user = src['STATS']['user']
-        self.password = src['STATS']['password']
-        self.mongo_host = src['MONGO']['host']
-        self.mongo_port = int(src['MONGO']['port'])
-        self.mongo_database = src['MONGO']['database']
+        self.database = src['stats']['database']
+        self.host = src['stats']['host']
+        self.port = src['stats']['port']
+        self.user = src['stats']['user']
+        self.password = src['stats']['password']
+        self.mongo_host = src['mongo']['host']
+        self.mongo_port = int(src['mongo']['port'])
+        self.mongo_database = src['mongo']['database']
 
     @property
     def instances(self):

@@ -1,0 +1,221 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Главные настройки приложения",
+  "required": ["program", "missiongen", "rcon", "stats", "mongo", "dserver"],
+  "properties": {
+    "program": {
+      "type": "object",
+      "title": "Режим запуска сервер-коммандера",
+      "required": [
+        "offline_mode", "test_mode", "debug_mode", "console_cmd_output", "console_chat_output", "minimal_chat_interval", "draw_edges",
+        "draw_nodes", "draw_nodes_text", "game_folder", "server_folder", "graph_files_folder", "maps_archive_folder", "icons_folder",
+        "stats_folder", "planner_folder"
+      ],
+      "properties": {
+        "offline_mode": {
+          "type": "boolean",
+          "title": "Допускается ли соединение с консолью сервера"
+        },
+        "test_mode": {
+          "type": "boolean",
+          "title": "Тестовый режим (отключаются функции, усложняющие тестирование)"
+        },
+        "debug_mode": {
+          "type": "boolean",
+          "title": "Режим отладки"
+        },
+        "console_cmd_output": {
+          "type": "boolean",
+          "title": "Выводить в консоль команды, отправляемые серверу"
+        },
+        "console_chat_output": {
+          "type": "boolean",
+          "title": "Выводить в консоль сообщения чата, передаваемые через консоль"
+        },
+        "minimal_chat_interval": {
+          "type": "integer",
+          "title": "Минимальная задержка между отправками сообщений в чат"
+        },
+        "draw_edges": {
+          "type": "boolean",
+          "title": "Рисовать рёбра графа на карте (obsolete)"
+        },
+        "draw_nodes": {
+          "type": "boolean",
+          "title": "Рисовать узлы графа на карте (obsolete)"
+        },
+        "draw_nodes_text": {
+          "type": "boolean",
+          "title": "Выводить текст вершин графа на карте (obsolete)"
+        },
+        "game_folder": {
+          "type": "string",
+          "title": "Папка с игрой"
+        },
+        "server_folder": {
+          "type": "string",
+          "title": "Папка сервера"
+        },
+        "graph_files_folder": {
+          "type": "string",
+          "title": "Папка файлов графа"
+        },
+        "maps_archive_folder": {
+          "type": "string",
+          "title": "Папка для сохранения изображений с состоянием линии фронта для сборки gif в дальнейшем"
+        },
+        "icons_folder": {
+          "type": "string",
+          "title": "Папка с иконками целей и объектов"
+        },
+        "stats_folder": {
+          "type": "string",
+          "title": "Папка статистики =FB=vaal"
+        },
+        "planner_folder": {
+          "type": "string",
+          "title": "Папка для сохранения файла для il2missionplanner"
+        }
+      }
+    },
+    "missiongen": {
+      "type": "object",
+      "title": "Режим запуска генератора",
+      "required": [
+        "use_resaver", "generate_missions", "special_influences", "mission_gen_folder", "resaver_folder"
+      ],
+      "properties": {
+        "use_resaver": {
+          "type": "boolean",
+          "title": "использовать Resaver для пересборки бинарных файлов миссий из исходников"
+        },
+        "generate_missions": {
+          "type": "boolean",
+          "title": "генерировать миссии"
+        },
+        "special_influences": {
+          "type": "boolean",
+          "title": "добавлять в миссию специальные Influence Area (obsolete)"
+        },
+        "mission_gen_folder": {
+          "type": "string",
+          "title": "Папка с генератором миссий"
+        },
+        "resaver_folder": {
+          "type": "string",
+          "title": "Папка с resaver'ом"
+        }
+      }
+    },
+    "rcon": {
+      "type": "object",
+      "title": "Настройки подключения к RCon (консоль DServer'а)",
+      "required": [
+        "ip", "port", "login", "password"
+      ],
+      "properties": {
+        "ip": {
+          "type": "string",
+          "title": "ip-адрес для подлючения к консоли сервера"
+        },
+        "port": {
+          "type": "string",
+          "title": "порт, на котором запущена консоль сервера"
+        },
+        "login": {
+          "type": "string",
+          "title": "логин для авторизации в консоли сервера"
+        },
+        "password": {
+          "type": "string",
+          "title": "пароль для авторизации в консоли сервера"
+        }
+      }
+    },
+    "stats": {
+      "type": "object",
+      "title": "Настройки подключения к БД статистики",
+      "required": [
+        "user", "database", "host", "port", "password"
+      ],
+      "properties": {
+        "user": {
+          "type": "string",
+          "title": "имя пользователя"
+        },
+        "database": {
+          "type": "string",
+          "title": "база данных"
+        },
+        "host": {
+          "type": "string",
+          "title": "адрес СУБД"
+        },
+        "port": {
+          "type": "string",
+          "title": "порт СУБД"
+        },
+        "password": {
+          "type": "string",
+          "title": "пароль пользователя"
+        }
+      }
+    },
+    "mongo": {
+      "type": "object",
+      "title": "Настройки подключения к MongoDB (БД приложения)",
+      "required": [
+        "host", "port", "database"
+      ],
+      "properties": {
+        "host": {
+          "type": "string",
+          "title": "адрес СУБД"
+        },
+        "port": {
+          "type": "string",
+          "title": "порт СУБД"
+        },
+        "database": {
+          "type": "string",
+          "title": "имя БД"
+        }
+      }
+    },
+    "http": {
+      "type": "object",
+      "title": "Настройки http для rest-сервисов",
+      "properties": {
+        "host": {
+          "type": "string",
+          "title": ""
+        },
+        "port": {
+          "type": "string",
+          "title": ""
+        }
+      }
+    },
+    "dserver": {
+      "type": "object",
+      "title": "Папки с логами DServer",
+      "required": [
+        "logs_directory", "arch_directory", "chat_directory"
+      ],
+      "properties": {
+        "logs_directory": {
+          "type": "string",
+          "title": "Папка логов, прописываемая в startup.cfg, куда пишет логи DServer.exe"
+        },
+        "arch_directory": {
+          "type": "string",
+          "title": "Папка логов, прописываемая в startup.cfg, откуда их забирает статистика il2_stats (логи перемещаются сюда коммандером после чтения)"
+        },
+        "chat_directory": {
+          "type": "string",
+          "title": "Папка логов чата, прописываемая в startup.cfg"
+        }
+      }
+    }
+  }
+}

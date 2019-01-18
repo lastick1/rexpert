@@ -32,7 +32,7 @@ class DependencyContainer:  # pylint: disable=R0902
     def config(self) -> configs.Config:
         """Конфигурация приложения"""
         if not self._config:
-            self._config = configs.Config(pathlib.Path('./configs/conf.ini'))
+            self._config = configs.Config(pathlib.Path('./configs/main.json'))
         return self._config
 
     @property
@@ -65,7 +65,7 @@ class DependencyContainer:  # pylint: disable=R0902
 
     @property
     def ground_controller(self) -> processing.GroundController:
-        """Контроллер наземки"""
+        """Контроллер наземных целей"""
         if not self._ground_controller:
             self._ground_controller = processing.GroundController(self)
         return self._ground_controller
@@ -107,7 +107,7 @@ class DependencyContainer:  # pylint: disable=R0902
 
     @property
     def aircraft_vendor(self):
-        """Поставщик самолётов на эродромы"""
+        """Поставщик самолётов на аэродромы"""
         if not self._aircraft_vendor:
             self._aircraft_vendor = processing.AircraftVendor(self.config.planes, self.config.gameplay)
         return self._aircraft_vendor

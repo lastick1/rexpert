@@ -114,12 +114,11 @@ def initialize_campaign():
     controller.initialize()
 
 
-def generate(name: str, tvd_name: str, date: str, attacking_country=0, attacked_airfield_name: str = None):
+def generate(name: str, tvd_name: str, date: str):
     """Сгенерировать миссию"""
     controller = processing.CampaignController(
         dependency_container.DependencyContainer())
-    controller.generate(name, tvd_name, date,
-                        attacking_country, attacked_airfield_name)
+    controller.generate(name, tvd_name, date)
 
 
 def _generate(args: list):
@@ -127,12 +126,7 @@ def _generate(args: list):
     _args_count = len(args)
     if _args_count > 0:
         _type = args[0].lower()
-        if _type == 'attack' and _args_count == 5:
-            generate(*args)
-        elif _args_count == 3:
-            generate(*args)
-        else:
-            show_help('generate')
+        generate(*args)
     else:
         show_help('generate')
 

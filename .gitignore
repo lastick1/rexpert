@@ -9,6 +9,7 @@ mission_report/__pycache__/
 *spline.json
 *lines.json
 /configs/conf.ini
+/configs/main.json
 sandbox.py
 .venv/
 .vscode/.ropeproject/
@@ -17,10 +18,12 @@ sandbox.py
 /tiles/
 /tmp/
 /movie.gif
-/data/ldf/*_base.ldf
 data/scg/2/blocks_quickmission/airfields_red
 data/scg/2/blocks_quickmission/airfields_blue
 *.ldb
 *.lgb
-data/scg/*/*.ldf
+data/scg/1/stalingrad_lf.ldf
+data/scg/2/arty.ldf
+data/scg/2/moscow-base_v2.ldf
+data/scg/2/moscow_lf.ldf
 data/scg/*/*.dat

@@ -11,7 +11,7 @@ from model.campaign_mission import CampaignMission
 
 
 DIVISION_INPUT_RE = re.compile(
-    '^(?P<side>[BR])(?P<type>[TAI])D(?P<number>\d)$'
+    r'^(?P<side>[BR])(?P<type>[TAI])D(?P<number>\d)$'
 )
 
 

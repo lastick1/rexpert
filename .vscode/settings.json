@@ -3,12 +3,13 @@
     "python.venvPath": "${workspaceRoot}/.venv",
     "python.unitTest.unittestArgs": [
     ],
-    "python.unitTest.unittestEnabled": false,
+    "python.unitTest.unittestEnabled": true,
     "python.unitTest.nosetestsEnabled": true,
+    "python.unitTest.nosetestPath": "tests.unit",
     "python.linting.pylintArgs": [
         "--rcfile=.rcfile"
     ],
-    "python.jediEnabled": false,
+    "python.jediEnabled": true,
     "python.linting.pylintEnabled": true,
     "spellright.language": [
         "en",

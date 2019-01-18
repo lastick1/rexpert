@@ -5,16 +5,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "runme.py",
-            "type": "python",
-            "request": "launch",
-            "program": "${workspaceRoot}/runme.py",
-            "console": "integratedTerminal",
-            "args": [
-            ],
-            "cwd": "${workspaceRoot}"
-        },
-        {
             "name": "runme.py initialize",
             "type": "python",
             "request": "launch",
@@ -42,15 +32,12 @@
             "request": "launch",
             "program": "${workspaceRoot}/runme.py",
             "args": [
-                "reset",
-                // "generate",
-                // "attack",
-                // "moscow"
+                "reset"
             ],
             "cwd": "${workspaceRoot}"
         },
         {
-            "name": "runme.py generate",
+            "name": "runme.py generate moscow",
             "type": "python",
             "request": "launch",
             "program": "${workspaceRoot}/runme.py",
@@ -63,16 +50,15 @@
             "cwd": "${workspaceRoot}"
         },
         {
-            "name": "runme.py generate attack",
+            "name": "runme.py generate stalingrad",
             "type": "python",
             "request": "launch",
             "program": "${workspaceRoot}/runme.py",
             "args": [
                 "generate",
-                "attack",
                 "result1",
-                "moscow",
-                "19.10.1941"
+                "stalingrad",
+                "01.07.1942"
             ],
             "cwd": "${workspaceRoot}"
         },
@@ -86,6 +72,16 @@
                 "ldf"
             ],
             "cwd": "${workspaceRoot}"
+        },
+        {
+            "name": "tool upd_durability",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceRoot}/tools/upd_durability.py",
+            "args": [
+                "/D/Steam/steamapps/common/IL-2 Sturmovik Battle of Stalingrad/data/scg/2/blocks_quickmission/ground/arty"
+            ],
+            "cwd": "${workspaceRoot}/tools"
         }
     ]
 }

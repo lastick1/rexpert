@@ -1,15 +1,16 @@
 """Сборка папок ТВД (scg/1, scg/2, scg/3 и т.д.)"""
+
 import logging
 import random
-import pathlib
+from pathlib import Path
 import datetime
 
-import configs
-import constants
-import geometry
-import model
-import processing
-import storage
+from configs import Config
+from constants import DATE_FORMAT
+from model import Tvd, ManagedAirfield, Boundary
+from processing import AirfieldsBuilder, AirfieldsSelector, BoundaryBuilder, GridController, WarehouseController
+from processing import FrontLineGroup, LocationsBuilder, Airfield, Plane, WeatherPreset, presets
+from storage import Storage
 
 
 class Season:
@@ -67,20 +68,20 @@ class TvdBuilder:
     def __init__(self, name: str, ioc):
         self.name = name
         self._ioc = ioc
-        self._airfields_builder: processing.AirfieldsBuilder = None
-        self._airfields_selector: processing.AirfieldsSelector = None
-        self._boundary_builder: processing.BoundaryBuilder = None
+        self._airfields_builder: AirfieldsBuilder = None
+        self._airfields_selector: AirfieldsSelector = None
+        self._boundary_builder: BoundaryBuilder = None
 
     @property
-    def config(self) -> configs.Config:
+    def config(self) -> Config:
         """Конфиг приложения"""
         return self._ioc.config
 
     @property
-    def airfields_builder(self) -> processing.AirfieldsBuilder:
+    def airfields_builder(self) -> AirfieldsBuilder:
         """Сборщик групп аэродромов"""
         if not self._airfields_builder:
-            self._airfields_builder = processing.AirfieldsBuilder(
+            self._airfields_builder = AirfieldsBuilder(
                 self.config.mgen.af_groups_folders[self.name],
                 self.config.mgen.subtitle_groups_folder,
                 self.config.planes
@@ -88,15 +89,15 @@ class TvdBuilder:
         return self._airfields_builder
 
     @property
-    def airfields_selector(self) -> processing.AirfieldsSelector:
+    def airfields_selector(self) -> AirfieldsSelector:
         """Выборщик аэродромов"""
         if not self._airfields_selector:
-            self._airfields_selector = processing.AirfieldsSelector(
+            self._airfields_selector = AirfieldsSelector(
                 main=self.config.main)
         return self._airfields_selector
 
     @property
-    def boundary_builder(self) -> processing.BoundaryBuilder:
+    def boundary_builder(self) -> BoundaryBuilder:
         """Сборщик многоугольников для Influence Area"""
         if not self._boundary_builder:
             offset = 10000
@@ -104,29 +105,29 @@ class TvdBuilder:
             east = self.config.mgen.cfg[self.name]['right_top']['z'] + offset
             south = 0 - offset
             west = 0 - offset
-            self._boundary_builder = processing.BoundaryBuilder(
+            self._boundary_builder = BoundaryBuilder(
                 north=north, east=east, south=south, west=west)
         return self._boundary_builder
 
     @property
-    def grid_controller(self) -> processing.GridController:
+    def grid_controller(self) -> GridController:
         """Контроллер графа"""
         return self._ioc.grid_controller
 
     @property
-    def warehouses_controller(self) -> processing.WarehouseController:
+    def warehouses_controller(self) -> WarehouseController:
         """Контроллер складов"""
         return self._ioc.warehouses_controller
 
     @property
-    def storage(self) -> storage.Storage:
+    def storage(self) -> Storage:
         """Работа с БД"""
         return self._ioc.storage
 
     @property
-    def default_params_file(self) -> pathlib.Path:
+    def default_params_file(self) -> Path:
         """Файл параметров для missiongen.exe"""
-        tvd_folder = pathlib.Path('.').joinpath(
+        tvd_folder = self.config.main.game_folder.joinpath(
             self.config.mgen.cfg[self.name]['tvd_folder'])
         return tvd_folder.joinpath(self.config.mgen.cfg[self.name]['default_params_dest']).absolute()
 
@@ -146,7 +147,7 @@ class TvdBuilder:
 
     def get_tvd(self, date):
         """Построить объект настроек ТВД"""
-        tvd = model.Tvd(
+        tvd = Tvd(
             self.name,
             self.config.mgen.cfg[self.name]['tvd_folder'],
             date,
@@ -166,22 +167,22 @@ class TvdBuilder:
         tvd.confrontation_west = self.boundary_builder.confrontation_west(
             tvd.grid)
 
-        influence_east = self.boundary_builder.influence_east(tvd.border)
-        influence_west = self.boundary_builder.influence_west(tvd.border)
-        east_boundary = model.Boundary(
+        influence_east: list = self.boundary_builder.influence_east(tvd.border)
+        influence_west: list = self.boundary_builder.influence_west(tvd.border)
+        east_boundary = Boundary(
             influence_east[0].x, influence_east[0].z, influence_east)
-        west_boundary = model.Boundary(
+        west_boundary = Boundary(
             influence_west[0].x, influence_west[0].z, influence_west)
-        east_influences = list(model.Boundary(node.x, node.z, node.neighbors_sorted)
+        east_influences = list(Boundary(node.x, node.z, node.neighbors_sorted)
                                for node in tvd.nodes_list if node.country == 101)
-        west_influences = list(model.Boundary(node.x, node.z, node.neighbors_sorted)
+        west_influences = list(Boundary(node.x, node.z, node.neighbors_sorted)
                                for node in tvd.nodes_list if node.country == 201)
         east_influences.append(east_boundary)
         west_influences.append(west_boundary)
         east_influences.append(
-            model.Boundary(tvd.confrontation_east[0].x, tvd.confrontation_east[0].z, tvd.confrontation_east))
+            Boundary(tvd.confrontation_east[0].x, tvd.confrontation_east[0].z, tvd.confrontation_east))
         west_influences.append(
-            model.Boundary(tvd.confrontation_west[0].x, tvd.confrontation_west[0].z, tvd.confrontation_west))
+            Boundary(tvd.confrontation_west[0].x, tvd.confrontation_west[0].z, tvd.confrontation_west))
         if self.config.main.special_influences:
             areas = {
                 101: east_influences,
@@ -194,97 +195,92 @@ class TvdBuilder:
             }
         tvd.influences = areas
 
-    def update(self, tvd, airfields: list, attacked_airfield: geometry.Point = None):
+    def update(self, tvd, airfields: tuple):
         """Обновление групп, баз локаций и файла параметров генерации в папке ТВД (data/scg/x)"""
-        mission_type = constants.CampaignMission.Kinds.REGULAR
-        if attacked_airfield:
-            mission_type = constants.CampaignMission.Kinds.ASSAULT
         logging.info(
-            f'Updating TVD folder ({mission_type}): {tvd.folder} ({tvd.name}) {tvd.date}')
+            f'Updating TVD folder: {tvd.folder} ({tvd.name}) {tvd.date}')
         self.update_icons(tvd)
-        self.update_airfields(attacked_airfield, airfields, tvd)
-        self.update_airfield_groups(tvd)
         self.update_warehouses(tvd)
+        self.update_airfields(list(airfields), tvd)
+        self.update_airfield_groups(tvd)
         self.update_ldb(tvd)
         self.update_defaultparams(tvd)
         logging.info('TVD folder updated')
 
-    def update_airfields(self, attacked_airfield, airfields, tvd):
+    def update_airfields(self, airfields, tvd):
         """Обновить аэродромы в ТВД для генерации"""
-        if attacked_airfield:
-            front_af_source = geometry.remove_too_close(
-                airfields, [attacked_airfield], 30000)
-        else:
-            front_af_source = airfields
         tvd.red_front_airfields.extend(self.airfields_selector.select_front(
-            tvd.confrontation_east, front_af_source))
+            tvd.divisions, tvd.confrontation_east, airfields))
         tvd.blue_front_airfields.extend(self.airfields_selector.select_front(
-            tvd.confrontation_west, front_af_source))
-        tvd.red_rear_airfield = self.airfields_selector.select_rear(
+            tvd.divisions, tvd.confrontation_west, airfields))
+        tvd.red_rear_airfields.extend(self.airfields_selector.select_rear(
             influence=tvd.influences[101][0].polygon,
             front_area=tvd.confrontation_east,
-            airfields=airfields
-        )
-        tvd.blue_rear_airfield = self.airfields_selector.select_rear(
+            airfields=airfields,
+            warehouses=tvd.warehouses
+        ))
+        tvd.blue_rear_airfields.extend(self.airfields_selector.select_rear(
             influence=tvd.influences[201][0].polygon,
             front_area=tvd.confrontation_west,
-            airfields=airfields
-        )
-        tvd.attack_location = attacked_airfield
+            airfields=airfields,
+            warehouses=tvd.warehouses
+        ))
 
     @staticmethod
-    def update_icons(tvd: model.Tvd):
+    def update_icons(tvd: Tvd):
         """Обновление группы иконок в соответствии с положением ЛФ"""
         logging.debug('Generating icons group...')
-        flg = processing.FrontLineGroup(
+        front_line_group = FrontLineGroup(
             tvd.border, tvd.influences, tvd.icons_group_file, tvd.right_top)
-        flg.make()
+        front_line_group.make()
         logging.debug('... icons done')
 
-    def update_ldb(self, tvd: model.Tvd):
+    def update_ldb(self, tvd: Tvd):
         """Обновление базы локаций до актуального состояния"""
         logging.debug('Generating Locations Data Base (LDB)...')
-        with self.config.mgen.ldf_templates[self.name].open() as stream:
-            ldf = stream.read()
-        builder = processing.LocationsBuilder(ldf_base=ldf)
+        ldf = ''
+        for path in self.config.mgen.ldf_templates[self.name]:
+            with path.open() as stream:
+                ldf += '\n\n' + stream.read()
+        builder = LocationsBuilder(ldf_base=ldf)
         builder.apply_tvd_setup(tvd)
         ldf_text = builder.make_text()
-        with pathlib.Path(self.config.mgen.ldf_files[self.name]).open(mode='w') as stream:
+        with Path(self.config.mgen.ldf_files[self.name]).open(mode='w') as stream:
             stream.write(ldf_text)
         logging.debug('... LDB done')
 
-    def update_airfield_groups(self, tvd: model.Tvd):
+    def update_airfield_groups(self, tvd: Tvd):
         """Генерация групп аэродромов для ТВД"""
         logging.debug('Generating airfields groups...')
-        for airfield in tvd.red_front_airfields + [tvd.red_rear_airfield]:
+        for airfield in tvd.red_front_airfields + tvd.red_rear_airfields:
             data = self._convert_airfield(airfield, 101)
             self.airfields_builder.make_airfield_group(
                 data, airfield.x, airfield.z)
-        for airfield in tvd.blue_front_airfields + [tvd.blue_rear_airfield]:
+        for airfield in tvd.blue_front_airfields + tvd.blue_rear_airfields:
             data = self._convert_airfield(airfield, 201)
             self.airfields_builder.make_airfield_group(
                 data, airfield.x, airfield.z)
         logging.debug('... airfields groups done')
 
-    def update_warehouses(self, tvd: model.Tvd):
+    def update_warehouses(self, tvd: Tvd):
         """Выбор расположения складов"""
         tvd.warehouses.extend(self.warehouses_controller.next_warehouses(tvd))
 
-    def _convert_airfield(self, airfield: model.ManagedAirfield, country: int) -> processing.Airfield:
+    def _convert_airfield(self, airfield: ManagedAirfield, country: int) -> Airfield:
         """Конвертировать тип управляемого аэродрома в тип генерируемого аэродрома"""
 
-        def find_plane_in_config(config: dict, key_name: str, number: int) -> processing.Plane:
+        def find_plane_in_config(config: dict, key_name: str, number: int) -> Plane:
             """Найти соответствующий самолёт в конфиге для генерации аэродрома"""
             for name in config['uncommon']:
                 if self.config.planes.name_to_key(name) == key_name:
-                    return processing.Plane(number, config['common'], config['uncommon'][name])
+                    return Plane(number, config['common'], config['uncommon'][name])
             raise NameError(f'Plane {key_name} not found in config')
 
         planes = list()
         for key in airfield.planes:
             planes.append(find_plane_in_config(
                 self.config.planes.cfg, key, airfield.planes[key]))
-        return processing.Airfield(airfield.name, country, self.config.gameplay.airfield_radius, planes)
+        return Airfield(airfield.name, country, self.config.gameplay.airfield_radius, planes)
 
     def date_day_duration(self, date) -> tuple:
         """Рассвет и закат для указанной даты"""
@@ -311,7 +307,7 @@ class TvdBuilder:
         """Случайный момент времени между указанными значениями"""
         return start + datetime.timedelta(seconds=random.randint(0, int((end - start).total_seconds())))
 
-    def update_defaultparams(self, tvd: model.Tvd):
+    def update_defaultparams(self, tvd: Tvd):
         """Задать случайные параметры погоды, времени года и суток"""
         params_config = self.config.generator.cfg[self.name]
         date = self.random_datetime(*self.date_day_duration(tvd.date))
@@ -321,7 +317,7 @@ class TvdBuilder:
         # настройки погоды
         weather_type = random.randint(
             *params_config[season.prefix]['wtype_diapason'])
-        w_preset = processing.WeatherPreset(processing.presets[weather_type])
+        w_preset = WeatherPreset(presets[weather_type])
         # случайное направление и сила ветра по высотам
         wind_direction0000 = random.randint(0, 360)
         wind_power0000 = random.randint(0, 2)
@@ -343,7 +339,7 @@ class TvdBuilder:
             '$yorientation = 0\n',
             '$missionId = \n',
             f'$seasonprefix = {prefix}\n',
-            f'$date = {date.strftime(constants.DATE_FORMAT)}\n',
+            f'$date = {date.strftime(DATE_FORMAT)}\n',
             f'$time = {date.strftime("%H:%M:%S")}\n',
             f'$sunrise = {season.sunrise}\n',
             f'$sunset = {season.sunset}\n',
@@ -361,7 +357,7 @@ class TvdBuilder:
             f'$zposition = {params_config["zposition"]}\n',
             f'$xtargetposition = {params_config["xtargetposition"]}\n',
             f'$ztargetposition = {params_config["ztargetposition"]}\n',
-            f'$loc_filename = {pathlib.Path(self.config.mgen.ldf_files[self.name]).name}\n',
+            f'$loc_filename = {Path(self.config.mgen.ldf_files[self.name]).name}\n',
             f'$forests = {params_config[season.prefix]["forests"]}\n',
             f'$guimap = {params_config[season.prefix]["guimap"]}\n',
             f'$hmap = {params_config[season.prefix]["hmap"]}\n',

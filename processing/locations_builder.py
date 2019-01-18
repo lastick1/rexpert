@@ -12,6 +12,8 @@ from .locations import RAILWAY_STATION, SUPPLY_DUMP, FACTORY, PORT, RECON_AREA, 
 from .locations import ARTILLERY, AAA_POSITION, SHIP, BALLOON, WINDSOCK, CITY_FIRE, SPOTTER, BRIDGE, AT_ART_POSITION
 from .locations import FIRING_POINT, SIREN, PARKING, HW_ARTILLERY, AT_ARTILLERY, RL_FIRING_POINT, RL_FRONT_LINE
 from .locations import NDB, AIRFIELD_DECORATION, STATIC_AIRPLANE, STATIC_VECHICLE, SEARCHLIGHT, LANDING_LIGHT
+from .locations import TRANSPORT_FLIGHT, TROOPS_CONCENTRATION, FERRY, FRONTLINE_STRONGPOINT, FRONTLINE_EDGE
+from .locations import RAILWAY_JUNCTION, VEHICLE
 
 
 def _parse_location(name: str, _list: list) -> Location:
@@ -29,18 +31,20 @@ def parse_air_objective(text: str) -> Location:
     """Считать AirObjective локацию из текста"""
     tmp = str(text).split(';')
     result = _parse_location(name=AIR_OBJECTIVE, _list=tmp)
-    if int(tmp[-7].partition('= ')[-1]):
+    if int(tmp[-8].partition('= ')[-1]):
         result.types.add(RECON_FLIGHT)
-    if int(tmp[-6].partition('= ')[-1]):
+    if int(tmp[-7].partition('= ')[-1]):
         result.types.add(BOMBER_FLIGHT)
-    if int(tmp[-5].partition('= ')[-1]):
+    if int(tmp[-6].partition('= ')[-1]):
         result.types.add(FIGHTER_PATROL_FLIGHT)
-    if int(tmp[-4].partition('= ')[-1]):
+    if int(tmp[-5].partition('= ')[-1]):
         result.types.add(DOGFIGHT)
-    if int(tmp[-3].partition('= ')[-1]):
+    if int(tmp[-4].partition('= ')[-1]):
         result.types.add(DUEL_OPPONENT)
-    if int(tmp[-2].partition('= ')[-1]):
+    if int(tmp[-3].partition('= ')[-1]):
         result.types.add(BALLOON)
+    if int(tmp[-2].partition('= ')[-1]):
+        result.types.add(TRANSPORT_FLIGHT)
     return result
 
 
@@ -59,34 +63,46 @@ def parse_ground_objective(text: str) -> Location:
     """Считать GroundObjective локацию из текста"""
     tmp = str(text).split(';')
     result = _parse_location(name=GROUND_OBJECTIVE, _list=tmp)
-    if int(tmp[-15].partition('= ')[-1]):
+    if int(tmp[-21].partition('= ')[-1]):
         result.types.add(TRANSPORT)
-    if int(tmp[-14].partition('= ')[-1]):
+    if int(tmp[-20].partition('= ')[-1]):
         result.types.add(ARMOURED)
-    if int(tmp[-13].partition('= ')[-1]):
+    if int(tmp[-19].partition('= ')[-1]):
         result.types.add(TANK)
-    if int(tmp[-12].partition('= ')[-1]):
+    if int(tmp[-18].partition('= ')[-1]):
         result.types.add(AAA_POSITION)
-    if int(tmp[-11].partition('= ')[-1]):
+    if int(tmp[-17].partition('= ')[-1]):
         result.types.add(ARTILLERY)
-    if int(tmp[-10].partition('= ')[-1]):
+    if int(tmp[-16].partition('= ')[-1]):
         result.types.add(BUILDING)
-    if int(tmp[-9].partition('= ')[-1]):
+    if int(tmp[-15].partition('= ')[-1]):
         result.types.add(SHIP)
-    if int(tmp[-8].partition('= ')[-1]):
+    if int(tmp[-14].partition('= ')[-1]):
         result.types.add(TRAIN)
-    if int(tmp[-7].partition('= ')[-1]):
+    if int(tmp[-13].partition('= ')[-1]):
         result.types.add(RAILWAY_STATION)
-    if int(tmp[-6].partition('= ')[-1]):
+    if int(tmp[-12].partition('= ')[-1]):
         result.types.add(SUPPLY_DUMP)
-    if int(tmp[-5].partition('= ')[-1]):
+    if int(tmp[-11].partition('= ')[-1]):
         result.types.add(FACTORY)
-    if int(tmp[-4].partition('= ')[-1]):
+    if int(tmp[-10].partition('= ')[-1]):
         result.types.add(AIRFIELD)
-    if int(tmp[-3].partition('= ')[-1]):
+    if int(tmp[-9].partition('= ')[-1]):
         result.types.add(PORT)
-    if int(tmp[-2].partition('= ')[-1]):
+    if int(tmp[-8].partition('= ')[-1]):
         result.types.add(RECON_AREA)
+    if int(tmp[-7].partition('= ')[-1]):
+        result.types.add(TROOPS_CONCENTRATION)
+    if int(tmp[-6].partition('= ')[-1]):
+        result.types.add(FERRY)
+    if int(tmp[-5].partition('= ')[-1]):
+        result.types.add(FRONTLINE_STRONGPOINT)
+    if int(tmp[-4].partition('= ')[-1]):
+        result.types.add(FRONTLINE_EDGE)
+    if int(tmp[-3].partition('= ')[-1]):
+        result.types.add(RAILWAY_JUNCTION)
+    if int(tmp[-2].partition('= ')[-1]):
+        result.types.add(VEHICLE)
     return result
 
 
@@ -280,7 +296,7 @@ class LocationsBuilder:
         front_airfields = {101: tvd.red_front_airfields, 201: tvd.blue_front_airfields}
         confrontations = {101: tvd.confrontation_east, 201: tvd.confrontation_west}
         for location in self.locations[DECORATION]:
-            if AAA_POSITION in location.types:
+            if {TRANSPORT, AAA_POSITION}.intersection(location.types):
                 location.country = tvd.get_country(location)
                 continue
             if PARKING in location.types:
@@ -295,7 +311,7 @@ class LocationsBuilder:
                         location.country = country
                         break
                 continue
-            if {TRANSPORT, FACTORY}.intersection(location.types):
+            if FACTORY in location.types:
                 for country in confrontations:
                     if tvd.is_rear(location, country):
                         location.country = country
@@ -340,15 +356,16 @@ class LocationsBuilder:
                     location.country = country
                 continue
 
-        red_rear_af = Location(
-            name=AIRFIELD, x=tvd.red_rear_airfield.x, z=tvd.red_rear_airfield.z, y=0, oy=0, length=10, width=10)
-        red_rear_af.country = 101
-        red_rear_af.types.add(GRASS_FIELD)
-
-        blue_rear_af = Location(
-            name=AIRFIELD, x=tvd.blue_rear_airfield.x, z=tvd.blue_rear_airfield.z, y=0, oy=0, length=10, width=10)
-        blue_rear_af.country = 201
-        blue_rear_af.types.add(GRASS_FIELD)
+        for airfield in tvd.red_rear_airfields:
+            airfield_loc = Location(name=AIRFIELD, x=airfield.x+20, z=airfield.z+20, y=0, oy=0, length=10, width=10)
+            airfield_loc.country = 101
+            airfield_loc.types.add(GRASS_FIELD)
+            self.locations[AIRFIELD].append(airfield_loc)
+        for airfield in tvd.blue_rear_airfields:
+            airfield_loc = Location(name=AIRFIELD, x=airfield.x+20, z=airfield.z+20, y=0, oy=0, length=10, width=10)
+            airfield_loc.country = 201
+            airfield_loc.types.add(GRASS_FIELD)
+            self.locations[AIRFIELD].append(airfield_loc)
 
         for division in tvd.divisions:
             location = Location(name=GROUND_OBJECTIVE, x=division.pos['x'], z=division.pos['z'],
@@ -383,6 +400,3 @@ class LocationsBuilder:
                                 y=0, oy=0, length=10, width=10)
             location.types.add(AIRFIELD)
             self.locations[GROUND_OBJECTIVE].append(location)
-
-        self.locations[AIRFIELD].append(red_rear_af)
-        self.locations[AIRFIELD].append(blue_rear_af)

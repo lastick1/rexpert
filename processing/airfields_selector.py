@@ -23,6 +23,7 @@ def _compare(left: float, right: float) -> int:
 
 class AirfieldsSelector:
     """Класс, отвечающий за выбор аэродромов в зависимости от их состояния"""
+
     def __init__(self, main: configs.Main):
         self._main = main
 
@@ -36,24 +37,39 @@ class AirfieldsSelector:
         """Сравнение фронтовых аэродромов при выборе"""
         return _compare(airfield1.power, airfield2.power)
 
-    def select_rear(self, influence: list, front_area: list, airfields: list) -> model.ManagedAirfield:
+    def select_rear(self, influence: list, front_area: list, airfields: list, warehouses: list) -> list:
         """Выбрать тыловой аэродром"""
-        result = list()
+        country_warehouses = list()
+        for warehouse in warehouses:
+            if warehouse.is_in_area(influence):
+                country_warehouses.append(warehouse)
+        rear_airfields = list()
         added = False
         for airfield in airfields:
-            if airfield.is_in_area(influence) and not airfield.is_in_area(front_area):
-                result.append(airfield)
+            if airfield.is_in_area(influence) \
+                    and not airfield.is_in_area(front_area) \
+                    and not airfield.is_in_vertices_of_area(front_area, 1000):
+                rear_airfields.append(airfield)
                 added = True
         if added:
-            result.sort(key=utils.cmp_to_key(self._rear_airfields_comparator))
-            result = result[-3:]
-            random.shuffle(result)
-            return result.pop()
+            warehouse_airfields = dict()
+            for airfield in rear_airfields:
+                key = airfield.get_closest(country_warehouses).name
+                if key not in warehouse_airfields:
+                    warehouse_airfields[key] = list()
+                warehouse_airfields[key].append(airfield)
+            result = list()
+            for key in warehouse_airfields:
+                warehouse_airfields[key].sort(
+                    key=utils.cmp_to_key(self._rear_airfields_comparator))
+                result.append(warehouse_airfields[key].pop())
+            return result
         else:
             raise NameError('Невозможно выбрать тыловой аэродром')
 
-    def select_front(self, front_area: list, airfields: list) -> list:
+    def select_front(self, divisions: list, front_area: list, airfields: list) -> list:
         """Выбрать фронтовые аэродромы"""
+        # TODO придумать, как сделать выбор аэродромов в зависимости от дивизий
         if airfields:
             front = list()
             for airfield in airfields:
@@ -62,12 +78,14 @@ class AirfieldsSelector:
             # d = {x.name: x.to_dict() for x in front}
             if front:
                 result = list()
-                front.sort(key=utils.cmp_to_key(self._front_airfields_comparator))
+                front.sort(key=utils.cmp_to_key(
+                    self._front_airfields_comparator))
                 result.append(front.pop())
                 front = geometry.remove_too_close(front, result, 15000)
                 front.reverse()
                 result.append(front.pop())
-                distance = 1000000000 / result[0].distance_to(result[1].x, result[1].z) + 10000
+                distance = 1000000000 / \
+                    result[0].distance_to(result[1].x, result[1].z) + 10000
                 front = geometry.remove_too_close(front, result, distance)
                 result.append(random.choice(front))
                 return result

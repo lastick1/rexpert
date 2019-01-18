@@ -1,4 +1,5 @@
 {
+  "$schema": "../data/schemas/mgen.json",
   "maps": ["moscow", "stalingrad"],
   "sides": ["red", "blue"],
   "objectives": {
@@ -23,15 +24,11 @@
     "tvd": 2,
     "right_top": {"x": 281600.0, "z": 281600.0},
     "tvd_folder": ".\\data\\scg\\2\\",
-    "mission_templates": {
-      "0": "templates\\212\\divisions.mt",
-      "101": "templates\\212\\red_attacking.mt",
-      "201": "templates\\212\\blue_attacking.mt"
-    },
+    "mission_template": "templates\\212\\divisions.mt",
     "graph_file": "moscow.xgml",
     "graph_zoom_point": {"x": 3073.0, "y": 3073.0},
     "ldf_file": "moscow_lf.ldf",
-    "ldf_base_file": "moscow_base.ldf",
+    "ldf_base_files": ["moscow_base.ldf"],
     "lgb_file": "moscow-base-scene.Group",
     "icons_group_file": "blocks_quickmission\\icons\\FL_icon.Group",
     "default_params_source": "defaultparams_template.dat",
@@ -46,11 +43,9 @@
     "division_unit_radius": 300,
     "division_start_locations": {
       "BTD1": {"x": 152654.1, "z": 137494.93},
-      "BTD2": {"x": 234669.84, "z": 118605.01},
       "BAD1": {"x": 57501.51, "z": 97649.41},
       "BID1": {"x": 118000.0, "z": 144000.0},
       "RTD1": {"x": 57505.99, "z": 149993.34},
-      "RTD2": {"x": 259072.27, "z": 144831.89},
       "RAD1": {"x": 161485.69, "z": 162036.51},
       "RID1": {"x": 107000.0, "z": 173000.0}
     },
@@ -61,51 +56,42 @@
     "tvd": 1,
     "right_top": {"x": 230400.0, "z": 358400.0},
     "tvd_folder": ".\\data\\scg\\1\\",
-    "mission_templates": {
-      "0": "templates\\212\\divisions.mt",
-      "101": "templates\\212\\red_attacking.mt",
-      "201": "templates\\212\\blue_attacking.mt"
-    },
+    "mission_template": "templates\\212\\divisions.mt",
     "graph_file": "stalingrad.xgml",
     "graph_zoom_point": {"x": 4096.5, "y": 2637.5},
     "ldf_file": "stalingrad_lf.ldf",
-    "ldf_base_file": "stalin-base.ldf",
+    "ldf_base_files": ["stalin-base_v3_division.ldf", "stalin-base_v3_NOdivision.ldf"],
     "lgb_file": "stalingrad-base-scene.Group",
     "icons_group_file": "blocks_quickmission\\icons\\FL_icon.Group",
     "default_params_source": "defaultparams_template.dat",
     "default_params_dest": "defaultparams.dat",
     "daytime_csv": "daytime.csv",
     "airfields_csv": "stalin_fields.csv",
-    "warehouses_csv": "moscow_warehouses.csv",
+    "warehouses_csv": "stalin_warehouses.csv",
     "af_groups_folders": {
       "red": ".\\blocks_quickmission\\airfields_red",
       "blue": ".\\blocks_quickmission\\airfields_blue"
     },
     "division_unit_radius": 300,
     "division_start_locations": {
-      "BTD1": {"x": 0, "z": 0},
-      "BTD2": {"x": 0, "z": 0},
-      "BAD1": {"x": 0, "z": 0},
-      "BID1": {"x": 0, "z": 0},
-      "RTD1": {"x": 0, "z": 0},
-      "RTD2": {"x": 0, "z": 0},
-      "RAD1": {"x": 0, "z": 0},
-      "RID1": {"x": 0, "z": 0}
+      "BTD1": {"x": 120768.73, "z": 199056.49},
+      "BAD1": {"x": 34753.28, "z": 185278.05},
+      "BID1": {"x": 181583.84, "z": 228516.35},
+      "RTD1": {"x": 110225.96, "z": 230247.13},
+      "RAD1": {"x": 195853.6, "z": 247881.64},
+      "RID1": {"x": 54996.67, "z": 219766.17}
     },
     "start_date": "01.07.1942",
     "end_date": "28.02.1943"
   },
   "kuban": {
+    "tvd": 4,
     "right_top": {"x": 0, "z": 0},
     "tvd_folder": ".\\data\\scg\\4\\",
-    "mission_templates": {
-      "0": "templates\\212\\divisions.mt",
-      "101": "templates\\212\\red_attacking.mt",
-      "201": "templates\\212\\blue_attacking.mt"
-    },
+    "mission_template": "templates\\212\\divisions.mt",
     "graph_file": "",
     "ldf_file": "",
-    "ldf_base_file": "",
+    "ldf_base_files": [""],
     "lgb_file": "",
     "icons_group_file": "",
     "default_params_source": "",
@@ -123,15 +109,11 @@
     "tvd": 1,
     "right_top": {"x": 230400.0, "z": 358400.0},
     "tvd_folder": ".\\data\\scg\\1\\",
-    "mission_templates": {
-      "0": "templates\\212\\divisions.mt",
-      "101": "templates\\212\\red_attacking.mt",
-      "201": "templates\\212\\blue_attacking.mt"
-    },
+    "mission_template": "templates\\212\\divisions.mt",
     "graph_file": "test_w4f.xgml",
     "graph_zoom_point": {"x": 4096.5, "y": 2637.5},
     "ldf_file": "stalingrad_lf.ldf",
-    "ldf_base_file": "stalin-base.ldf",
+    "ldf_base_file": ["stalin-base.ldf"],
     "icons_group_file": "blocks_quickmission\\icons\\FL_icon.Group",
     "default_params_source": "defaultparams_template.dat",
     "default_params_dest": "defaultparams.dat",

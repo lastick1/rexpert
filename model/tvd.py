@@ -38,9 +38,9 @@ class Tvd:
         self.confrontation_west = list()  # западная прифронтовая зона
         self.influences = dict()  # инфлюэнцы СССР и Германии
         self.red_front_airfields = list()  # советские аэродромы в миссии
-        self.red_rear_airfield = None  # советский тыловой аэродром в миссии
+        self.red_rear_airfields = list()  # советский тыловой аэродром в миссии
         self.blue_front_airfields = list()  # немецкие аэродромы в миссии
-        self.blue_rear_airfield = None  # немецкий тыловой аэродром в миссии
+        self.blue_rear_airfields = list()  # немецкий тыловой аэродром в миссии
         self._border: list = None
         self._nodes_list: list = None
         self.attack_location: geometry.Point = None  # точка атакуемого аэродрома
@@ -62,10 +62,10 @@ class Tvd:
 
     @property
     def airfields(self) -> dict:
-        """Аэродромы сторон"""
+        """Фронтовые аэродромы сторон"""
         return {
-            101: self.red_front_airfields + [self.red_rear_airfield],
-            201: self.blue_front_airfields + [self.blue_rear_airfield]
+            101: self.red_front_airfields,
+            201: self.blue_front_airfields
         }
 
     def get_country(self, point: geometry.Point) -> int:
