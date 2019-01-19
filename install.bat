@@ -18,4 +18,6 @@ python -m pip install -U rope
 python -m pip install -U pillow
 
 python -m pip install -U imageio
+
+python -m pip install -U rx
 pause

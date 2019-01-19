@@ -7,11 +7,16 @@
       "type": "object",
       "title": "Режим запуска сервер-коммандера",
       "required": [
-        "offline_mode", "test_mode", "debug_mode", "console_cmd_output", "console_chat_output", "minimal_chat_interval", "draw_edges",
-        "draw_nodes", "draw_nodes_text", "game_folder", "server_folder", "graph_files_folder", "maps_archive_folder", "icons_folder",
-        "stats_folder", "planner_folder"
+        "logs_read_interval", "offline_mode", "test_mode", "debug_mode", "console_cmd_output", "console_chat_output",
+        "minimal_chat_interval", "game_folder", "server_folder", "graph_files_folder", "maps_archive_folder",
+        "icons_folder", "stats_folder", "planner_folder"
       ],
       "properties": {
+        "logs_read_interval": {
+          "type": "integer",
+          "title": "Интервал чтения логов (сек)",
+          "minimum": 1
+        },
         "offline_mode": {
           "type": "boolean",
           "title": "Допускается ли соединение с консолью сервера"

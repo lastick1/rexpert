@@ -5,7 +5,7 @@ import atypes
 import configs
 import log_objects
 import rcon
-import core
+from objects_control import ObjectsController
 import storage
 import model
 
@@ -29,7 +29,7 @@ class PlayersController:
         return self._ioc.config
     
     @property
-    def objects_controller(self) -> core.ObjectsController:
+    def objects_controller(self) -> ObjectsController:
         """Контроллер объектов в логах миссий"""
         return self._ioc.objects_controller
     

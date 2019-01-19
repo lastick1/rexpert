@@ -6,13 +6,15 @@ import processing
 import storage
 import rcon
 
+from objects_control import ObjectsController
+
 
 class DependencyContainer:  # pylint: disable=R0902
     """Тривиальная реализация, но вроде работает"""
     def __init__(self):
         self._config: configs.Config = None
         self._objects: configs.Objects = None
-        self._objects_controller: core.ObjectsController = None
+        self._objects_controller: ObjectsController = None
         self._events_controller: core.EventsController = None
         self._players_controller: processing.PlayersController = None
         self._ground_controller: processing.GroundController = None
@@ -43,10 +45,10 @@ class DependencyContainer:  # pylint: disable=R0902
         return self._objects
 
     @property
-    def objects_controller(self) -> core.ObjectsController:
+    def objects_controller(self) -> ObjectsController:
         """Контроллер объектов в логах"""
         if not self._objects_controller:
-            self._objects_controller = core.ObjectsController(self)
+            self._objects_controller = ObjectsController(self)
         return self._objects_controller
 
     @property

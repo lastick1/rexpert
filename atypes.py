@@ -163,7 +163,8 @@ class Atype9(Atype):
         return geometry.Point(x=self.pos['x'], z=self.pos['z'])
 
     def __str__(self):
-        return f'T:{self.tik} AType:9 AID:{self.airfield_id} COUNTRY:{self.country_id} POS({self.pos}) IDS()'
+        pos_str = '{0:.4f}, 100.1111, {1:.4f}'.format(self.pos['x'], self.pos['z'])
+        return f'T:{self.tik} AType:9 AID:{self.airfield_id} COUNTRY:{self.country_id} POS({pos_str}) IDS()'
 
 # T:10 AType:9 AID:13312 COUNTRY:501 POS(30178.900, 66.126, 25254.000) IDS()
 # T:10 AType:9 AID:150527 COUNTRY:201 POS(144322.453, 82.669, 259528.047) IDS(-1,-1,-1)

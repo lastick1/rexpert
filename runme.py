@@ -3,9 +3,10 @@ import sys
 import logging
 
 import utils
-import core
 import processing
-import dependency_container
+
+from dependency_container import DependencyContainer
+from reader2 import LogsReaderRx
 
 
 MAIN_HELP = """
@@ -40,6 +41,10 @@ where task is one of: gif, ldf, log
     ldf: program compiles separate location database files into one large
     log: program compiles game text log file from ./tmp directory into one large"""
 
+FIX_LOG_HELP = """
+fix-log usage: runme.py fix-log <folder>
+"""
+
 RESET_HELP = """
 reset usage: runme.py reset
     program resets campaign and players progress to initial values"""
@@ -55,6 +60,8 @@ def show_help(command: str):
         print(RUN_HELP)
     elif command == 'compile':
         print(COMPILE_HELP)
+    elif command == 'fix-log':
+        print(FIX_LOG_HELP)
     elif command == 'reset':
         print(RESET_HELP)
     elif command == 'initialize':
@@ -99,25 +106,26 @@ def _compile(args: list):
     else:
         print(COMPILE_HELP)
 
+def fix_log(folder: str):
+    """Обработка команды исправления лога в папке"""
+    utils.fix_log(folder)
+
 
 def reset():
     """Сбросить состояние кампании"""
-    controller = processing.CampaignController(
-        dependency_container.DependencyContainer())
+    controller = processing.CampaignController(DependencyContainer())
     controller.reset()
 
 
 def initialize_campaign():
     """Инициализация кампании"""
-    controller = processing.CampaignController(
-        dependency_container.DependencyContainer())
+    controller = processing.CampaignController(DependencyContainer())
     controller.initialize()
 
 
 def generate(name: str, tvd_name: str, date: str):
     """Сгенерировать миссию"""
-    controller = processing.CampaignController(
-        dependency_container.DependencyContainer())
+    controller = processing.CampaignController(DependencyContainer())
     controller.generate(name, tvd_name, date)
 
 
@@ -133,7 +141,13 @@ def _generate(args: list):
 
 def run():
     """Запуск"""
-    core.LogsReader(dependency_container.DependencyContainer()).start()
+    reader = LogsReaderRx(DependencyContainer())
+    reader.start()
+    try:
+        input()
+    except KeyboardInterrupt:
+        pass
+    reader.stop()
 
 
 def main(args: list):
@@ -146,7 +160,9 @@ def main(args: list):
         logging.info("Program Start.")
         _command = args[1].lower()
         if _command == 'run':
+            print('Enter something to stop')
             run()
+            logging.info("Program Stopped.")
         elif _command == '':
             initialize_campaign()
         elif _command == 'reset':
@@ -158,6 +174,8 @@ def main(args: list):
                 _generate(args[2:])
             elif _command == 'compile':
                 _compile(args[2:])
+            elif _command == 'fix-log':
+                fix_log(args[2])
             elif _command == 'help':
                 if _args_count > 2:
                     show_help(args[2])
