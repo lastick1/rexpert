@@ -2,6 +2,8 @@
 
 import pathlib
 import os
+import re
+import time
 import imageio
 
 
@@ -10,6 +12,7 @@ def cmp_to_key(mycmp):
 
     class Convert:  # pylint: disable=R0903
         """Конвертер функции сравнения в функцию ключа"""
+
         def __init__(self, obj, *args):  # pylint: disable=W0613
             self.obj = obj
 
@@ -56,6 +59,16 @@ def compile_gif(folder: str):
         for filename in files:
             image = imageio.imread(filename)
             writer.append_data(image)
+
+
+def fix_log(folder: str):
+    """Упорядочить даты создания лог файлов"""
+    regex = re.compile(r'^.*\[(?P<index>\d+)\].*$')
+    folder = pathlib.Path(folder)
+    files = list(str(x) for x in folder.glob('*.txt'))
+    for file in sorted(files, key=lambda x: int(regex.match(x).groupdict()['index'])):
+        pathlib.Path(file).touch()
+        time.sleep(0.01)
 
 
 def compile_ldf(folder: str, dest: str):

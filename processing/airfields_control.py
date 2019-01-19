@@ -6,7 +6,8 @@ import atypes
 import configs
 import log_objects
 import storage
-import model
+
+from model import ManagedAirfield, Tvd, CampaignMap
 
 from .aircraft_vendor import AircraftVendor
 
@@ -42,7 +43,7 @@ class AirfieldsController:
     def initialize_managed_airfields(airfields_data: list) -> list:
         """Инициализировать список управляемых аэродромов из данных конфигурации"""
         return list(
-            model.ManagedAirfield(
+            ManagedAirfield(
                 name=data['name'],
                 tvd_name=data['tvd_name'],
                 x=data['x'],
@@ -50,13 +51,14 @@ class AirfieldsController:
                 planes=dict())
             for data in airfields_data)
 
-    def get_airfield_in_radius(self, tvd_name: str, x: float, z: float, radius: int) -> model.ManagedAirfield:
+    def get_airfield_in_radius(self, tvd_name: str, x: float, z: float, radius: int) -> ManagedAirfield:
         """Получить аэродром по его координатам с заданным отклонением"""
         for airfield in self.storage.airfields.load_by_tvd(tvd_name=tvd_name):
             if airfield.distance_to(x=x, z=z) < radius:
                 return airfield
+        return None
 
-    def get_airfield_by_name(self, tvd_name: str, airfield_name) -> model.ManagedAirfield:
+    def get_airfield_by_name(self, tvd_name: str, airfield_name) -> ManagedAirfield:
         """Получить аэродром по имени"""
         return self.storage.airfields.load_by_name(tvd_name, airfield_name)
 
@@ -130,7 +132,7 @@ class AirfieldsController:
                 front[country], rear[country])
         self.storage.airfields.update_airfields(self.current_airfields)
 
-    def initialize_tvd(self, tvd: model.Tvd, campaign_map: model.CampaignMap):
+    def initialize_tvd(self, tvd: Tvd, campaign_map: CampaignMap):
         """Инициализировать аэродромы указанного ТВД"""
         airfields = self.initialize_managed_airfields(
             self.config.mgen.airfields_data[campaign_map.tvd_name])
@@ -152,3 +154,15 @@ class AirfieldsController:
         else:
             NameError(
                 f'Аэродром не найден:{tvd_name}{{"x":{atype.point.x}, "z":{atype.point.z}}}')
+
+    @property
+    def inactive_airfield_by_countries(self) -> dict:
+        "Список неактивных аэродромов по странам"
+        tvd: Tvd = self.campaign_controller.current_tvd
+        current_names = set({x.name for x in self.current_airfields})
+        inactive = list([x for x in self.storage.airfields.load_by_tvd(
+            tvd_name=tvd.name) if x.name not in current_names])
+        result = {101: list(), 201: list()}
+        for airfield in inactive:
+            result[tvd.get_country(airfield)].append(airfield)
+        return result

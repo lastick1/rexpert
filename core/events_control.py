@@ -6,7 +6,7 @@ import atypes
 import processing
 
 
-from .objects_control import ObjectsController
+from objects_control import ObjectsController
 from .parse_mission_log_line import parse, UnexpectedATypeWarning
 
 
@@ -50,8 +50,6 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
 
         except UnexpectedATypeWarning:
             logging.warning(f'unexpected atype: [{line}]')
-        except Exception as exception:
-            logging.exception(f'Error {exception} on line: {line}')
 
     @property
     def objects_controller(self) -> ObjectsController:

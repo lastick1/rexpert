@@ -20,5 +20,14 @@
         "latex",
         "plaintext",
         "python"
-    ]
+    ],
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        ".venv/**": true,
+        "**/__pycache__": true
+    }
 }

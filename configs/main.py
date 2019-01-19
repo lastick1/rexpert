@@ -9,6 +9,7 @@ class Main:  # pylint: disable=R0903,R0902,C0301
         with open(str(path.absolute())) as stream:
             src = json.load(stream)
         self.cfg = src
+        self.logs_read_interval: int = src['program']['logs_read_interval']
         self.game_folder = Path(src['program']['game_folder']).absolute()
         self.server_folder = Path(src['program']['server_folder']).absolute()
         self.dogfight_folder = self.server_folder.joinpath('./data/Multiplayer/Dogfight').absolute()

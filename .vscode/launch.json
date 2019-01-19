@@ -74,6 +74,17 @@
             "cwd": "${workspaceRoot}"
         },
         {
+            "name": "runme.py fix-log",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceRoot}/runme.py",
+            "args": [
+                "fix-log",
+                "\\\\il2\\server\\data\\logs\\txt"
+            ],
+            "cwd": "${workspaceRoot}"
+        },
+        {
             "name": "tool upd_durability",
             "type": "python",
             "request": "launch",
