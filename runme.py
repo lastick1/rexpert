@@ -13,7 +13,7 @@ MAIN_HELP = """
 Usage: runme.py <command>
 
 where <command> is one of:
-    run, initialize, reset, generate, compile
+    run, initialize, reset, generate, compile, fix-log
 
 runme.py help <command>"""
 
@@ -108,7 +108,11 @@ def _compile(args: list):
 
 def fix_log(folder: str):
     """Обработка команды исправления лога в папке"""
-    utils.fix_log(folder)
+    if not folder:
+        show_help('fix-log')
+    else:
+        utils.fix_log(folder)
+        logging.info(f'Fixed mission log in "{folder}" folder.')
 
 
 def reset():

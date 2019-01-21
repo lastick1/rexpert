@@ -3,10 +3,10 @@ import logging
 
 import configs
 import atypes
-import log_objects
+from log_objects import Object, Airfield, Aircraft, BotPilot, Ground, GROUND_CLASSES
 
 
-def _to_aircraft(obj) -> log_objects.Aircraft:
+def _to_aircraft(obj) -> Aircraft:
     return obj
 
 
@@ -30,50 +30,61 @@ class ObjectsController:
         """Словарь объектов логах"""
         return self._ioc.objects
 
-    def create_object(self, atype: atypes.Atype12) -> log_objects.Object:
-        obj = self.objects[atype.object_name]
+    def create_object(self, atype: atypes.Atype12) -> Object:
         """Создать объект соответствующего типа"""
-        if 'BotPilot' in obj.log_name and 'aircraft' in obj.cls:
-            self._objects[atype.object_id] = log_objects.BotPilot(
+        obj = self.objects[atype.object_name]
+
+        if 'BotPilot' in obj.log_name or 'BotGunner' in obj.log_name and 'aircraft' in obj.cls:
+            self._objects[atype.object_id] = BotPilot(
                 atype.object_id, obj, self._objects[atype.parent_id], atype.country_id, atype.coal_id, atype.name)
             self._bots.add(self._objects[atype.object_id])
+            return self._objects[atype.object_id]
+
         if obj.playable and 'aircraft' in obj.cls and 'pilot' not in obj.cls:
-            self._objects[atype.object_id] = log_objects.Aircraft(
+            self._objects[atype.object_id] = Aircraft(
                 atype.object_id, obj, atype.country_id, atype.coal_id, atype.name)
             self._aircrafts.add(self._objects[atype.object_id])
+            return self._objects[atype.object_id]
+
         if 'airfield' in obj.cls:
-            self._objects[atype.object_id] = log_objects.Airfield(
+            self._objects[atype.object_id] = Airfield(
                 atype.object_id, atype.country_id, atype.coal_id, dict())
             self._airfields.add(self._objects[atype.object_id])
-        if obj.cls in log_objects.GROUND_CLASSES:
-            self._objects[atype.object_id] = log_objects.Ground(
-                atype.object_id, obj, atype.country_id, atype.coal_id, atype.name)
-        if atype.object_id not in self._objects:
-            self._objects[atype.object_id] = log_objects.Object(
-                atype.object_id, atype.country_id, atype.coal_id, atype.name)
-        return self._objects[atype.object_id]
+            return self._objects[atype.object_id]
 
-    def get_object(self, object_id) -> log_objects.Object:
+        if obj.cls in GROUND_CLASSES:
+            self._objects[atype.object_id] = Ground(
+                atype.object_id, obj, atype.country_id, atype.coal_id, atype.name)
+            return self._objects[atype.object_id]
+
+        if atype.object_id not in self._objects:
+            self._objects[atype.object_id] = Object(
+                atype.object_id, atype.country_id, atype.coal_id, atype.name)
+            return self._objects[atype.object_id]
+
+        raise NameError('Unknown object')
+
+    def get_object(self, object_id) -> Object:
         """Получить объект"""
         if object_id in self._objects:
             return self._objects[object_id]
 
-    def get_ground(self, ground_id) -> log_objects.Ground:
+    def get_ground(self, ground_id) -> Ground:
         """Получить наземный объект"""
         if ground_id in self._objects:
             return self._objects[ground_id]
 
-    def get_bot(self, bot_id) -> log_objects.BotPilot:
+    def get_bot(self, bot_id) -> BotPilot:
         """Получить бота"""
         if bot_id in self._objects:
             return self._objects[bot_id]
 
-    def get_aircraft(self, aircraft_id) -> log_objects.Aircraft:
+    def get_aircraft(self, aircraft_id) -> Aircraft:
         """Получить самолёт"""
         if aircraft_id in self._objects:
             return self._objects[aircraft_id]
 
-    def get_airfield(self, airfield_id) -> log_objects.Airfield:
+    def get_airfield(self, airfield_id) -> Airfield:
         """Получить аэродром"""
         if airfield_id in self._objects:
             return self._objects[airfield_id]
@@ -88,7 +99,7 @@ class ObjectsController:
         if atype.attacker_id:
             attacker = self.get_object(atype.attacker_id)
             attacker.update_pos(atype.pos)
-            if isinstance(attacker, log_objects.Aircraft):
+            if isinstance(attacker, Aircraft):
                 _to_aircraft(attacker).add_damage(target, atype.damage)
 
     def kill(self, atype: atypes.Atype3) -> None:
@@ -98,7 +109,7 @@ class ObjectsController:
         if atype.attacker_id:
             attacker = self.get_object(atype.attacker_id)
             attacker.update_pos(atype.pos)
-            if isinstance(attacker, log_objects.Aircraft):
+            if isinstance(attacker, Aircraft):
                 _to_aircraft(attacker).add_kill(target)
 
     def takeoff(self, atype: atypes.Atype5) -> None:
@@ -109,7 +120,8 @@ class ObjectsController:
     def land(self, atype: atypes.Atype6) -> None:
         """Посадить самолёт"""
         aircraft = self.get_aircraft(atype.aircraft_id)
-        aircraft.land(atype.pos, list(self._airfields), self.config.gameplay.airfield_radius)
+        aircraft.land(atype.pos, list(self._airfields),
+                      self.config.gameplay.airfield_radius)
 
     def end_mission(self) -> None:
         """Завершить миссию"""
@@ -127,7 +139,8 @@ class ObjectsController:
             airfield = self.get_airfield(atype.airfield_id)
             airfield.update(atype.country_id, atype.coal_id)
         else:
-            airfield = log_objects.Airfield(atype.airfield_id, atype.country_id, atype.coal_id, atype.pos)
+            airfield = Airfield(atype.airfield_id,
+                                atype.country_id, atype.coal_id, atype.pos)
             self._objects[atype.airfield_id] = airfield
             self._airfields.add(airfield)
 

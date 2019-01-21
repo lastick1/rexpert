@@ -91,11 +91,13 @@ class LogsReaderRx(Observer):
     def __init__(self, _ioc: DependencyContainer):
         self._ioc = _ioc
         self.subscription: AnonymousDisposable = None
+        self.is_reading: bool = False
 
     def start(self):
         "Запустить чтение логов"
         self.subscription = Observable.interval(
             self._ioc.config.main.logs_read_interval * 1000).subscribe(self)
+        self.read()
 
     def stop(self):
         "Остановить чтение логов"
@@ -103,20 +105,29 @@ class LogsReaderRx(Observer):
 
     def on_next(self, value):
         "Обработка очередного значения потока"
-        logging.info("next")
+        if not self.is_reading:
+            self.read()
+
+    def read(self):
+        "Выполнить чтение логов"
+        self.is_reading = True
         missions = sorted(self._read_mission_names().values())
         for item in missions:
             mission: MissionLogs = item
             log = mission.read_mission_log()
             for line in log:
-                try:
+                if self._ioc.config.main.debug_mode:
                     self._ioc.events_controller.process_line(line)
-                except Exception as exception:
-                    logging.exception(f'Error {exception} on line: {line}')
+                else:
+                    try:
+                        self._ioc.events_controller.process_line(line)
+                    except (AttributeError, Exception) as exception:
+                        logging.exception(f'Error {exception} on line: {line}')
             if mission.has_first_log_file:
                 mission.write_airfields(
                     self._ioc.airfields_controller.inactive_airfield_by_countries)
             mission.move_files()
+        self.is_reading = False
 
     def on_completed(self):
         "Завершение потока"

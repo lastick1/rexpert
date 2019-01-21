@@ -13,7 +13,23 @@
     },
     "objectives": {
       "type": "object",
-      "title": "Привязка \"Код mission objective\" - тип цели"
+      "title": "\"Код mission objective\" - описание цели",
+      "patternProperties": {
+        "^\\d+$": {
+          "title": "Объект описания цели",
+          "required": ["name", "capture_points"],
+          "properties": {
+            "name": {
+              "type": "string",
+              "title": "Название цели"
+            },
+            "capture_points": {
+              "type": "integer",
+              "title": "Получаемое количество очков захвата за уничтожение цели"
+            }
+          }
+        }
+      }
     },
     "moscow": {
       "title": "Конфигурация карты Москвы",

@@ -132,7 +132,7 @@ class Atype8(Atype):
     """Mission Objective"""
 
     def __init__(self, tik: int, object_id: int, coal_id: int, task_type_id: int,
-                 success: int, icon_type_id: int, pos: dict):
+                 success: bool, icon_type_id: int, pos: dict):
         super().__init__(tik)
         self.object_id = object_id
         self.coal_id = coal_id

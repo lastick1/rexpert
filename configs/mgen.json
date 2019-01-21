@@ -7,9 +7,15 @@
     "1": "airfield",
     "2": "hqs",
     "3": "fort",
-    "4": "arts",
+    "4": {
+      "name": "Artillery",
+      "capture_points": 1
+    },
     "5": "trucks",
-    "6": "tanks",
+    "6": {
+      "name": "Cover tanks",
+      "capture_points": -1
+    },
     "7": "warehouses",
     "8": "train",
     "9": "troops",

@@ -150,7 +150,7 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         self.objects_controller.end_mission()
 
     def event_mission_result(self, tik: int, object_id: int, coal_id: int, task_type_id: int,
-                             success: int, icon_type_id: int, pos: dict) -> None:
+                             success: bool, icon_type_id: int, pos: dict) -> None:
         """AType 8 handler"""
         atype = atypes.Atype8(tik, object_id, coal_id,
                               task_type_id, success, icon_type_id, pos)
@@ -212,11 +212,12 @@ class EventsController:  # pylint: disable=R0902,R0904,R0913
         atype = atypes.Atype15(tik, version)
         self.objects_controller.version(atype)
         self.warehouses_controller.notify()
+        self.campaign_controller.notify()
 
     def event_bot_deinitialization(self, tik: int, bot_id: int, pos: dict) -> None:
         """AType 16 handler"""
         atype = atypes.Atype16(tik, bot_id, pos)
-        bot = self._ioc.objects_controller.get_bot(atype.bot_id)
+        bot = self.objects_controller.get_bot(atype.bot_id)
         if not bot:
             raise NameError(f'Bot not found: {atype.bot_id}')
         tvd = self.campaign_controller.current_tvd

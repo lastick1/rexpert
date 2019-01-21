@@ -4,12 +4,14 @@ import logging
 import shutil
 import pathlib
 
-import atypes
 import configs
-from constants import DATE_FORMAT
-import model
 import storage
 
+from rcon import DServerRcon
+from atypes import Atype0, Atype7, Atype8, Atype19
+from constants import DATE_FORMAT
+from model import CampaignMission, CampaignMap, Tvd, GameplayAction, SourceMission
+from model import TanksCoverFail, ArtilleryKill, DivisionKill, WarehouseDisable, AirfieldKill
 from .ground_control import GroundController
 from .divisions_control import DivisionsController
 from .warehouses_control import WarehouseController
@@ -33,10 +35,11 @@ class CampaignController:
         if CampaignController.instances > 1:
             raise NameError(f'Campaign controller instances 2')
         self._ioc = ioc
-        self._mission: model.CampaignMission = None
-        self._campaign_map: model.CampaignMap = None
-        self._current_tvd: model.Tvd = None
+        self._mission: CampaignMission = None
+        self._campaign_map: CampaignMap = None
+        self._current_tvd: Tvd = None
         self._round_ended: bool = False
+        self.won_country: int = 0
         self.tvd_builders = {x: TvdBuilder(x, ioc)
                              for x in ioc.config.mgen.maps}
 
@@ -86,12 +89,17 @@ class CampaignController:
         return self._ioc.storage
 
     @property
+    def rcon(self) -> DServerRcon:
+        """Консоль выделенного сервера"""
+        return self._ioc.rcon
+
+    @property
     def generator(self) -> Generator:
         """Генератор миссий (управляет missiongen.exe)"""
         return self._ioc.generator
 
     @property
-    def campaign_map(self) -> model.CampaignMap:
+    def campaign_map(self) -> CampaignMap:
         """Текущая карта кампании"""
         return self._campaign_map
 
@@ -101,12 +109,12 @@ class CampaignController:
         return 'result1' if self._mission.file == 'result2' else 'result2'
 
     @property
-    def current_tvd(self) -> model.Tvd:
+    def current_tvd(self) -> Tvd:
         """Текущий ТВД"""
         return self._current_tvd
 
     @property
-    def mission(self) -> model.CampaignMission:
+    def mission(self) -> CampaignMission:
         """Текущая миссия кампании"""
         return self._mission
 
@@ -122,8 +130,8 @@ class CampaignController:
         self.warehouses_controller.initialize_warehouses(tvd_name)
         start = self.config.mgen.cfg[tvd_name][START_DATE]
         order = list(self.config.mgen.maps).index(tvd_name) + 1
-        campaign_map = model.CampaignMap(
-            order=order, date=start, mission_date=start, tvd_name=tvd_name, months=list(), actions=list())
+        campaign_map = CampaignMap(
+            order=order, date=start, mission_date=start, tvd_name=tvd_name, months=list())
         tvd = self.tvd_builders[campaign_map.tvd_name].get_tvd(
             campaign_map.date.strftime(DATE_FORMAT))
         self.airfields_controller.initialize_tvd(tvd, campaign_map)
@@ -145,7 +153,6 @@ class CampaignController:
         """Сгенерировать миссию для указанной даты и ТВД кампании"""
         tvd_builder: TvdBuilder = self.tvd_builders[tvd_name]
         tvd = tvd_builder.get_tvd(date)
-        # Генерация первой миссии
         airfields = self.storage.airfields.load_by_tvd(tvd_name)
         tvd_builder.update(
             tvd, self.divisions_controller.filter_airfields(tvd_name, airfields))
@@ -176,7 +183,7 @@ class CampaignController:
                       self._campaign_map.date.strftime(DATE_FORMAT))
         self.players_controller.reset()
 
-    def start_mission(self, atype: atypes.Atype0):
+    def start_mission(self, atype: Atype0):
         """Обработать начало миссии"""
         self._round_ended = False
         source_mission = self.source_parser.parse_in_dogfight(
@@ -191,28 +198,29 @@ class CampaignController:
             self._campaign_map.tvd_name, self._campaign_map.date.strftime(DATE_FORMAT))
         self.storage.campaign_maps.update(self._campaign_map)
         logging.info(
-            f'mission started {self._campaign_map.mission.date}, {self._campaign_map.mission.file}')
-        # TODO сохранить миссию в базу (в документ model.CampaignMap и в коллекцию model.CampaignMissions)
+            f'mission started {self._campaign_map.mission.date.strftime(DATE_FORMAT)}, ' +
+            f'{self._mission.tvd_name}, {self._campaign_map.mission.file}')
+        # TODO сохранить миссию в базу (в документ CampaignMap и в коллекцию CampaignMissions)
         # TODO удалить файлы предыдущей миссии
 
-    def register_action(self, action: model.GameplayAction) -> None:
+    def register_action(self, action: GameplayAction) -> None:
         """Зарегистрировать игровое событие"""
         action.date = self._mission.date
         if not self._round_ended:
-            self._campaign_map.register_action(action)
+            self._mission.register_action(action)
             self.storage.campaign_maps.update(self._campaign_map)
         else:
             logging.warning(
                 f'{action.__class__.__name__} after round end {action.object_name}')
 
-    def _get_tvd(self, tvd_name: str, date: str) -> model.Tvd:
+    def _get_tvd(self, tvd_name: str, date: str) -> Tvd:
         """Получить ТВД (создаётся заново)"""
         result = self.tvd_builders[tvd_name].get_tvd(date)
         if not result:
             logging.critical(f'tvd not built')
         return result
 
-    def end_mission(self, atype: atypes.Atype7):
+    def end_mission(self, atype: Atype7):
         """Обработать завершение миссии"""
         logging.info('mission ended')
         self._current_tvd = None
@@ -222,7 +230,7 @@ class CampaignController:
         # TODO "приземлить" всех
 
     # этот метод должен вызываться последним среди всех контроллеров
-    def end_round(self, atype: atypes.Atype19):
+    def end_round(self, atype: Atype19):
         """Обработать завершение раунда (4-минутный отсчёт до конца миссии)"""
         logging.info('round ended')
         self._update_tik(atype.tik)
@@ -233,6 +241,14 @@ class CampaignController:
         # TODO подвести итог ТВД, если он изменился
         # TODO определить имя ТВД для следующей миссии
         # TODO отремонтировать дивизии
+        invert = {101: 201, 201: 101}
+        if self.won_country:
+            lost = self.airfields_controller.get_weakest_airfield(
+                invert[self.won_country])
+            self.grid_controller.capture(
+                self._campaign_map.tvd_name,
+                {'x': lost.x, 'z': lost.z},
+                self.won_country)
         self._generate(
             self.next_name,
             self._campaign_map.date.strftime(
@@ -241,8 +257,8 @@ class CampaignController:
         self.storage.campaign_maps.update(self._campaign_map)
 
     @staticmethod
-    def _make_campaign_mission(atype: atypes.Atype0, source_mission: model.SourceMission) -> model.CampaignMission:
-        return model.CampaignMission(
+    def _make_campaign_mission(atype: Atype0, source_mission: SourceMission) -> CampaignMission:
+        return CampaignMission(
             kind=source_mission.kind,
             file=source_mission.name,
             date=source_mission.date.strftime(DATE_FORMAT),
@@ -257,9 +273,56 @@ class CampaignController:
             server_inputs=source_mission.server_inputs,
             objectives=source_mission.objectives,
             airfields=source_mission.airfields,
-            units=source_mission.units
+            units=source_mission.units,
+            actions=list()
         )
 
-    def mission_result(self, atype: atypes.Atype8) -> None:
+    def notify(self) -> None:
+        "Оповестить о состоянии очков захвата"
+        result = self._calculate_result()
+        message = f'Capture points: {result[101]} red team, {result[201]} blue team'
+        self.rcon.info_message(message)
+
+    def _calculate_result(self) -> dict:
+        "Посчитать текущий результат сторон"
+        rewards = {
+            AirfieldKill.__name__: 1,
+            ArtilleryKill.__name__: 2,
+            DivisionKill.__name__: 3,
+            WarehouseDisable.__name__: 4,
+            TanksCoverFail.__name__: -1,
+        }
+        invert = {101: 201, 201: 101}
+        result = {101: 0, 201: 0}
+        if self._mission:
+            for action in self._mission.actions:
+                result[action.country] += rewards[action.__class__.__name__]
+                if result[action.country] >= 13 and not self.won_country:
+                    self.won_country = action.country
+        if self.won_country:
+            result[self.won_country] = 13
+            result[invert[self.won_country]] = 0
+        return result
+
+    def mission_result(self, atype: Atype8) -> None:
         """Обработать mission objective из логов"""
-        pass
+        invert = {101: 201, 201: 101}
+        config = self.config.mgen.cfg['objectives'][str(atype.task_type_id)]
+        coals = {1: 'Allies', 2: 'Axis'}
+        results = {True: 'completed', False: 'failed'}
+        sign = {True: '+', False: ''}
+        result = results[atype.success]
+        name: str = config['name']
+        country: int = atype.coal_id * 100 + 1
+        coal: str = coals[atype.coal_id]
+        capture_points: int = '{0}{1}'.format(
+            sign[atype.success], config['capture_points'])
+        logging.info(
+            f'Mission Objective {result}: {name} by {coal}. {capture_points} capture points')
+        action: GameplayAction = None
+        if atype.task_type_id == 6:
+            action = TanksCoverFail(atype.tik, invert[country])
+        elif atype.task_type_id == 4:
+            action = ArtilleryKill(atype.tik, country)
+        if action:
+            self.register_action(action)

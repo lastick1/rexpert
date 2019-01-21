@@ -166,3 +166,16 @@ class AirfieldsController:
         for airfield in inactive:
             result[tvd.get_country(airfield)].append(airfield)
         return result
+
+    def get_weakest_airfield(self, country: int) -> ManagedAirfield:
+        "Самый слабый аэродром"
+        tvd: Tvd = self.campaign_controller.current_tvd
+        result: ManagedAirfield = None
+        for managed_airfield in self.current_airfields:
+            if country == tvd.get_country(managed_airfield):
+                if not result:
+                    result = managed_airfield
+                if result.planes_count > managed_airfield.planes_count:
+                    result = managed_airfield
+        return result
+        
