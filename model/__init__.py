@@ -4,7 +4,7 @@ from .grid import Grid
 from .division import Division, DIVISIONS
 from .warehouse import Warehouse, WAREHOUSES
 from .airfield import ManagedAirfield
-from .gameplay_actions import GameplayAction, AirfieldKill, DivisionKill, WarehouseDisable
+from .gameplay_actions import GameplayAction, AirfieldKill, DivisionKill, WarehouseDisable, TanksCoverFail, ArtilleryKill
 from .campaign_map import CampaignMap, CampaignMission
 from .tvd import Tvd, Boundary
 from .player import Player

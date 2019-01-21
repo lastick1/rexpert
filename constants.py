@@ -46,7 +46,6 @@ class CampaignMap:
     MISSION_DATE = 'mission_date'
     MONTHS = 'months'
     MISSION = 'mission'
-    ACTIONS = 'actions'
 
 
 class TvdNames:
@@ -78,11 +77,7 @@ class CampaignMission:
     OBJECTIVES = 'objectives'
     AIRFIELDS = 'airfields'
     DIVISION_UNITS = 'division_units'
-
-    class Kinds:
-        """Типы миссий"""
-        ASSAULT = 'assault'
-        REGULAR = 'regular'
+    ACTIONS = 'actions'
 
 
 class Division:

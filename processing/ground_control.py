@@ -1,5 +1,4 @@
 """Обработка событий с наземными объектами (дамаг, килы), расчёт уничтожения целей (артпозиций, складов и т.п.)"""
-import logging
 import re
 
 import configs
@@ -159,7 +158,6 @@ class GroundController:
         """Консоль сервера"""
         return self._ioc.rcon
 
-    # TODO подумать над тем, чтобы дёргать этот обработчик на атайп15, а не на каждый кил
     def _check_targets(self, tik: int):
         """Проверить состояние целей и отправить инпуты в консоль при необходимости"""
         for target in self.targets:
@@ -226,6 +224,7 @@ class GroundController:
                 continue
             if RW_STATION_RE.match(server_input['name']):
                 self.targets.append(RailwayStationTarget(server_input['name'], server_input['pos']))
+        self._check_targets(0)
 
     def kill(self, atype: atypes.Atype3) -> None:
         """Обработать уничтожение наземного объекта"""

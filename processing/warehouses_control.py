@@ -3,10 +3,9 @@ import logging
 import re
 
 import configs
-import model
 import rcon
 import storage
-from model import CampaignMission
+from model import CampaignMission, Tvd, Warehouse, WarehouseDisable
 from processing.ground_control import WarehouseUnit
 from .warehouses_selector import WarehousesSelector
 
@@ -16,7 +15,7 @@ WAREHOUSE_INPUT_RE = re.compile(
 )
 
 
-def _warehouse_compare(left: model.Warehouse, right: model.Warehouse) -> int:
+def _warehouse_compare(left: Warehouse, right: Warehouse) -> int:
     if left.deaths < right.deaths:
         return -1
     if left.deaths > right.deaths:
@@ -28,7 +27,7 @@ def _to_campaign_mission(mission) -> CampaignMission:
     return mission
 
 
-def _to_warehouse(warehouse) -> model.Warehouse:
+def _to_warehouse(warehouse) -> Warehouse:
     return warehouse
 
 
@@ -62,7 +61,7 @@ class WarehouseController:
         """Инициализировать склады в кампании для указанного ТВД"""
         for data in self.config.mgen.warehouses_data[tvd_name]:
             self.storage.warehouses.update(
-                model.Warehouse(
+                Warehouse(
                     tvd_name=tvd_name,
                     name=data['name'],
                     health=100.0,
@@ -99,10 +98,8 @@ class WarehouseController:
         warehouses = list()
         if self._notify_counter % 4 == 3:
             warehouses.extend(x for x in self._current_mission_warehouses if x.country == 101)
-            logging.info(f'{self._notify_counter},{len(warehouses)} notify warehouses state for 101')
         if self._notify_counter % 4 == 2:
             warehouses.extend(x for x in self._current_mission_warehouses if x.country == 201)
-            logging.info(f'{self._notify_counter},{len(warehouses)} notify warehouses state for 201')
         if self._notify_counter % 4 == 0:
             self._notify_counter = 0
         for warehouse in warehouses:
@@ -111,6 +108,7 @@ class WarehouseController:
                     self.rcon.connect()
                     self.rcon.auth(self.config.main.rcon_login, self.config.main.rcon_password)
                 self.rcon.info_message(f'{warehouse.name} warehouse state is {warehouse.health}/100')
+                logging.info(f'{self._notify_counter},{len(warehouses)} notify warehouses state')
 
     def damage_warehouse(self, tik: int, unit: WarehouseUnit):
         """Зачесть уничтожение секции склада"""
@@ -126,21 +124,21 @@ class WarehouseController:
             self.rcon.server_input(server_input_name)
         if warehouse.health < 40:
             self._ioc.campaign_controller.register_action(
-                model.WarehouseDisable(tik, warehouse.country, warehouse.name))
+                WarehouseDisable(tik, warehouse.country, warehouse.name))
         self.storage.warehouses.update(warehouse)
 
-    def get_warehouse(self, warehouse_name: str) -> model.Warehouse:
+    def get_warehouse(self, warehouse_name: str) -> Warehouse:
         """Получить склад по имени для текущего ТВД"""
         return self._current_tvd_warehouses[warehouse_name]
 
-    def get_warehouse_by_coordinates(self, pos: dict) -> model.Warehouse:
+    def get_warehouse_by_coordinates(self, pos: dict) -> Warehouse:
         """Получить склад по координатам"""
         for name in self._current_tvd_warehouses:
             warehouse = _to_warehouse(self._current_tvd_warehouses[name])
             if warehouse.distance_to(pos['x'], pos['z']) < 10:
                 return warehouse
 
-    def next_warehouses(self, tvd: model.Tvd) -> list:
+    def next_warehouses(self, tvd: Tvd) -> list:
         """Склады для следующей миссии"""
         selector = WarehousesSelector(self.storage.warehouses.load_by_tvd(tvd.name), self._current_mission_warehouses)
         return selector.select(tvd)

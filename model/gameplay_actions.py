@@ -26,6 +26,7 @@ class GameplayAction:
 
 class AirfieldKill(GameplayAction):
     """Уничтожение аэродрома"""
+
     def __init__(self, tik: int, country: int, airfield_name: str):
         super().__init__(tik, country, self.__class__.__name__, airfield_name)
 
@@ -47,6 +48,13 @@ class DivisionKill(GameplayAction):
         return self.object_name
 
 
+class ArtilleryKill(GameplayAction):
+    """Уничтожение артиллерии"""
+
+    def __init__(self, tik: int, country: int, name: str = 'artillery'):
+        super().__init__(tik, country, self.__class__.__name__, name)
+
+
 class WarehouseDisable(GameplayAction):
     """Подавление склада (<40%)"""
 
@@ -57,3 +65,9 @@ class WarehouseDisable(GameplayAction):
     def warehouse_name(self):
         """Подавленный склад"""
         return self.object_name
+
+class TanksCoverFail(GameplayAction):
+    """Уничтожены наступающие танки"""
+
+    def __init__(self, tik: int, country: int, name: str = 'tanks'):
+        super().__init__(tik, country, self.__class__.__name__, name)

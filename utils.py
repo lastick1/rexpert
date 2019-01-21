@@ -68,7 +68,7 @@ def fix_log(folder: str):
     files = list(str(x) for x in folder.glob('*.txt'))
     for file in sorted(files, key=lambda x: int(regex.match(x).groupdict()['index'])):
         pathlib.Path(file).touch()
-        time.sleep(0.01)
+        time.sleep(0.002)
 
 
 def compile_ldf(folder: str, dest: str):

@@ -21,7 +21,8 @@ def _find_date(text: str) -> str:
 def _find_server_inputs(mission: model.SourceMission, text: str):
     """Найти MCU сервер инпутов в миссии"""
     for match in SERVER_INPUT_RE.findall(text):
-        mission.server_inputs.append({'name': match[0], 'pos': {'x': float(match[1]), 'z': float(match[2])}})
+        mission.server_inputs.append(
+            {'name': match[0], 'pos': {'x': float(match[1]), 'z': float(match[2])}})
 
 
 def _find_mission_objectives(mission: model.SourceMission, text: str):
@@ -53,25 +54,28 @@ def _find_airfields(mission: model.SourceMission, text: str):
 def _find_division_units_and_kind(mission: model.SourceMission, text: str):
     """Найти все юниты дивизий в исходнике миссий по триггерам (таймерам-меткам)"""
     for match in TRIGGER_TIMER_RE.findall(text):
-        timer = {'name': match[0], 'pos': {'x': float(match[1]), 'z': float(match[2])}}
+        timer = {'name': match[0], 'pos': {
+            'x': float(match[1]), 'z': float(match[2])}}
         if 'REXPERT' in timer['name']:
             if 'REGULAR' in timer['name']:
-                mission.kind = constants.CampaignMission.Kinds.REGULAR
+                # осталось от старой идеи с 2мя типами миссий
+                # TODO из миссий убрать лишний таймер, обозначающий тип миссии
                 continue
             if 'ASSAULT' in timer['name']:
-                mission.kind = constants.CampaignMission.Kinds.ASSAULT
                 continue
             mission.units.append(timer)
 
 
 class SourceParser:
     """Извлекает данные из исходников миссий"""
+
     def __init__(self, config: configs.Config):
         self._config = config
 
     def parse_in_dogfight(self, name: str) -> model.SourceMission:
         """Считать миссию из исходника в папке dogfight"""
-        source = self._config.main.dogfight_folder.joinpath('{}_src.Mission'.format(name))
+        source = self._config.main.dogfight_folder.joinpath(
+            '{}_src.Mission'.format(name))
         if source.exists():
             return self.parse(name, source)
 

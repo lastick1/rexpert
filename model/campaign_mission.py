@@ -2,9 +2,12 @@
 import datetime
 import constants
 
+from .gameplay_actions import GameplayAction, AirfieldKill, DivisionKill, WarehouseDisable
+
 
 class CampaignMission:
     """Класс текущей миссии кампании"""
+
     def __init__(
             self,
             kind: str,
@@ -15,20 +18,25 @@ class CampaignMission:
             server_inputs: list,
             objectives: list,
             airfields: list,
-            units: list
+            units: list,
+            actions: list
     ):
         self.kind = kind  # тип миссии - противостояние или захват
         self.file = file  # имя файла миссии - result1 или result2
-        self.date = datetime.datetime.strptime(date, constants.DATE_FORMAT)  # игровая дата в миссии
+        self.date = datetime.datetime.strptime(
+            date, constants.DATE_FORMAT)  # игровая дата в миссии
         self.tvd_name = tvd_name  # имя карты из логов
         self.additional = additional  # дополнительная информация о миссии из логов
-        self.is_correctly_completed = False  # признак корректного завершения миссии (есть atype7)
-        self.is_round_ended = False  # признак завершённости раунда (есть atype19)
+        # признак корректного завершения миссии (есть atype7)
+        self.is_correctly_completed = False
+        # признак завершённости раунда (есть atype19)
+        self.is_round_ended = False
         self.tik_last = 0  # последний тик в миссии
         self.server_inputs = server_inputs  # сервер инпуты в исходнике миссии
-        self.objectives = objectives  # все обжективы в исходнике миссии
+        self.objectives = objectives  # все Translator:Mission Objective в исходнике миссии
         self.airfields = airfields  # все аэродромы в исходнике миссии
         self.units = units  # все юниты дивизий и складов в исходнике миссии
+        self.actions = actions  # игровые действия на карте
 
     def to_dict(self) -> dict:
         """Сериализация в словарь для MongoDB"""
@@ -44,7 +52,9 @@ class CampaignMission:
             constants.CampaignMission.SERVER_INPUTS: self.server_inputs,
             constants.CampaignMission.OBJECTIVES: self.objectives,
             constants.CampaignMission.AIRFIELDS: self.airfields,
-            constants.CampaignMission.DIVISION_UNITS: self.units
+            constants.CampaignMission.DIVISION_UNITS: self.units,
+            constants.CampaignMission.ACTIONS: list(
+                x.to_dict() for x in self.actions)
         }
 
     @property
@@ -108,3 +118,7 @@ class CampaignMission:
             result.update({'name': airfield['name']})
             icons[coal]['airfields'].append(result)
         return icons
+
+    def register_action(self, action: GameplayAction):
+        """Зарегистрировать игровое событие"""
+        self.actions.append(action)
