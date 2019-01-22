@@ -137,6 +137,7 @@ class CampaignController:
         self.airfields_controller.initialize_tvd(tvd, campaign_map)
         self.storage.campaign_maps.update(campaign_map)
         self.divisions_controller.initialize_divisions(tvd_name)
+        logging.info(f'{tvd_name} initialized')
 
     def reset(self):
         """Сбросить состояние кампании"""
@@ -145,6 +146,7 @@ class CampaignController:
         self.storage.campaign_missions.collection.drop()
         self.storage.divisions.collection.drop()
         self.storage.warehouses.collection.drop()
+        logging.info('Database cleaned.')
 
     def _generate(self,
                   mission_name: str,
@@ -242,6 +244,7 @@ class CampaignController:
         # TODO определить имя ТВД для следующей миссии
         # TODO отремонтировать дивизии
         invert = {101: 201, 201: 101}
+        self._calculate_result()
         if self.won_country:
             lost = self.airfields_controller.get_weakest_airfield(
                 invert[self.won_country])

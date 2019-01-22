@@ -70,7 +70,7 @@ class WarehouseController:
                     pos={'x': data['x'], 'z': data['z']}
                 )
             )
-        logging.info(f'{tvd_name} warehouses initialized')
+        logging.debug(f'{tvd_name} warehouses initialized')
 
     def start_mission(self):
         """Обработать начало миссии - обновить положение складов из исходников"""
