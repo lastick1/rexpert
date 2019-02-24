@@ -254,8 +254,7 @@ class CampaignController:
                 self.won_country)
         self._generate(
             self.next_name,
-            self._campaign_map.date.strftime(
-                DATE_FORMAT) + datetime.timedelta(days=1),
+            (self._campaign_map.date + datetime.timedelta(days=1)).strftime(DATE_FORMAT),
             self._campaign_map.tvd_name)
         self.storage.campaign_maps.update(self._campaign_map)
 
@@ -284,6 +283,9 @@ class CampaignController:
         "Оповестить о состоянии очков захвата"
         result = self._calculate_result()
         message = f'Capture points: {result[101]} red team, {result[201]} blue team'
+        if not self.rcon.connected:
+            self.rcon.connect()
+            self.rcon.auth(self.config.main.rcon_login, self.config.main.rcon_password)
         self.rcon.info_message(message)
 
     def _calculate_result(self) -> dict:

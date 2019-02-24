@@ -135,7 +135,7 @@ class WarehouseUnit(GroundTargetUnit):
     @property
     def killed(self):
         """Убита ли цель"""
-        return len(self._kills) >= int(self._durability * 0.80)
+        return len(self._kills) >= int(self._durability * 0.60)
 
 
 class GroundController:
