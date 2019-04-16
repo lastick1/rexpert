@@ -72,7 +72,7 @@ class Tvd:
         """Определить страну, на территории которой находится точка"""
         for country in self.influences:
             for boundary in self.influences[country]:
-                if point.is_in_area(boundary.polygon):
+                if point.is_related_to_area(boundary.polygon):
                     return country
         return 0
 
@@ -94,7 +94,7 @@ class Tvd:
             country = self.get_country(point)
             if country not in result:
                 result[country] = list()
-            if not point.is_in_area(front_areas[country]):
+            if not point.is_related_to_area(front_areas[country]):
                 result[country].append(point)
         return result
 
@@ -106,7 +106,7 @@ class Tvd:
             country = self.get_country(point)
             if country not in result:
                 result[country] = list()
-            if point.is_in_area(front_areas[country]):
+            if point.is_related_to_area(front_areas[country]):
                 result[country].append(point)
         return result
 

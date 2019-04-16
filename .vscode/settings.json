@@ -9,7 +9,7 @@
     "python.linting.pylintArgs": [
         "--rcfile=.rcfile"
     ],
-    "python.jediEnabled": true,
+    "python.jediEnabled": false,
     "python.linting.pylintEnabled": true,
     "spellright.language": [
         "en",
