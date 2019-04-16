@@ -304,6 +304,14 @@ class LocationsBuilder:
                     for airfield in front_airfields[country]:
                         if location.distance_to(airfield.x, airfield.z) < 10:
                             location.country = country
+                for airfield in tvd.red_rear_airfields:
+                    if location.distance_to(airfield.x, airfield.z) < 10:
+                        location.country = 101 
+                        break
+                for airfield in tvd.blue_rear_airfields:
+                    if location.distance_to(airfield.x, airfield.z) < 10:
+                        location.country = 201
+                        break
                 continue
             if {ARTILLERY}.intersection(location.types):
                 for country in confrontations:
@@ -355,17 +363,6 @@ class LocationsBuilder:
                 if not close:
                     location.country = country
                 continue
-
-        for airfield in tvd.red_rear_airfields:
-            airfield_loc = Location(name=AIRFIELD, x=airfield.x+20, z=airfield.z+20, y=0, oy=0, length=10, width=10)
-            airfield_loc.country = 101
-            airfield_loc.types.add(GRASS_FIELD)
-            self.locations[AIRFIELD].append(airfield_loc)
-        for airfield in tvd.blue_rear_airfields:
-            airfield_loc = Location(name=AIRFIELD, x=airfield.x+20, z=airfield.z+20, y=0, oy=0, length=10, width=10)
-            airfield_loc.country = 201
-            airfield_loc.types.add(GRASS_FIELD)
-            self.locations[AIRFIELD].append(airfield_loc)
 
         for division in tvd.divisions:
             location = Location(name=GROUND_OBJECTIVE, x=division.pos['x'], z=division.pos['z'],

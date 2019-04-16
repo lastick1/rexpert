@@ -137,6 +137,9 @@ class Point:  # pylint: disable=C0103,C0111
                 return True
         return False
 
+    def is_related_to_area(self, polygon):
+        return self.is_in_area(polygon) or self.is_in_vertices_of_area(polygon, 1000)
+
     def distance_to(self, x: float, z: float):
         return ((self.x - x) ** 2 + (self.z - z) ** 2) ** .5
 

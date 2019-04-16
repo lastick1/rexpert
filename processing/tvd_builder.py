@@ -210,9 +210,17 @@ class TvdBuilder:
     def update_airfields(self, airfields, tvd):
         """Обновить аэродромы в ТВД для генерации"""
         tvd.red_front_airfields.extend(self.airfields_selector.select_front(
-            tvd.divisions, tvd.confrontation_east, airfields))
+            divisions=tvd.divisions,
+            influence=tvd.influences[101][0].polygon,
+            front_area=tvd.confrontation_east,
+            airfields=airfields
+        ))
         tvd.blue_front_airfields.extend(self.airfields_selector.select_front(
-            tvd.divisions, tvd.confrontation_west, airfields))
+            divisions=tvd.divisions,
+            influence=tvd.influences[201][0].polygon,
+            front_area=tvd.confrontation_west,
+            airfields=airfields
+        ))
         tvd.red_rear_airfields.extend(self.airfields_selector.select_rear(
             influence=tvd.influences[101][0].polygon,
             front_area=tvd.confrontation_east,

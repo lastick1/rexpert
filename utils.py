@@ -37,6 +37,15 @@ def cmp_to_key(mycmp):
     return Convert
 
 
+def compare_float(left: float, right: float) -> int:
+    """Функция сравнения float"""
+    if left < right:
+        return -1
+    if left > right:
+        return 1
+    return 0
+
+
 def compile_log(folder: str, report: str, dest: str):
     """ Собрать лог по порядку из папки в один файл
     :param folder: Папка

@@ -23,31 +23,21 @@
     "kuban": 320
   },
   "airfield_radius": 2000,
-  "airfield_min_planes": 20,
-  "transfer_amount": 20,
-  "front_max_planes": 150,
+  "airfield_min_planes": 4,
+  "transfer_amount": 10,
+  "front_max_planes": 30,
   "initial_front_supply":{
     "moscow": {
-      "bf 109 e-7": 42,
-      "bf 110 e-2": 18,
-      "ju 87 d-3": 20,
-      "i-16 type 24": 46,
-      "il-2 mod.1941": 30,
-      "pe-2 ser.35": 4
+      "bf 109 e-7": 30,
+      "i-16 type 24": 30
     },
     "stalingrad": {
-      "bf 109 f-2": 6,
-      "bf 109 f-4": 20,
-      "bf 109 g-2": 28,
-      "bf 110 e-2": 8,
-      "hs 129 b-2": 18,
-      "ju 87 d-3": 20,
-      "i-16 type 24": 8,
-      "il-2 mod.1941": 6,
-      "il-2 mod.1942": 30,
-      "lagg-3 ser.29": 30,
-      "pe-2 ser.87": 6,
-      "yak-1 ser.69": 20
+      "bf 109 f-2": 4,
+      "bf 109 f-4": 12,
+      "bf 109 g-2": 12,
+      "i-16 type 24": 4,
+      "lagg-3 ser.29": 12,
+      "yak-1 ser.69": 12
     }
   },
   "initial_priority_supply": {
