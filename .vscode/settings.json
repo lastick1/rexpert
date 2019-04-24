@@ -1,25 +1,25 @@
 {
     "python.pythonPath": ".venv\\Scripts\\python.exe",
     "python.venvPath": "${workspaceRoot}/.venv",
-    "python.unitTest.unittestArgs": [
+    "python.testing.unittestArgs": [
     ],
-    "python.unitTest.unittestEnabled": true,
-    "python.unitTest.nosetestsEnabled": true,
-    "python.unitTest.nosetestPath": "tests.unit",
+    "python.testing.unittestEnabled": true,
+    "python.testing.nosetestsEnabled": true,
+    "python.testing.nosetestPath": "tests.unit",
     "python.linting.pylintArgs": [
         "--rcfile=.rcfile"
     ],
     "python.jediEnabled": false,
     "python.linting.pylintEnabled": true,
     "spellright.language": [
-        "en",
-        "ru"
+        "Russian-English Bilingual"
     ],
     "spellright.documentTypes": [
         "markdown",
         "latex",
         "plaintext",
-        "python"
+        "python",
+        "jsonc"
     ],
     "files.exclude": {
         "**/.git": true,
