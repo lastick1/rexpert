@@ -1,4 +1,5 @@
 """Работа с БД"""
+from __future__ import annotations
 import datetime
 
 import pymongo
@@ -110,7 +111,6 @@ class CampaignMissions(CollectionWrapper):
         """Конвертировать документ из БД в объект класса миссии"""
         if document:
             return model.CampaignMission(
-                kind=document[constants.CampaignMission.KIND],
                 file=document[constants.CampaignMission.FILE],
                 date=document['date'],
                 tvd_name=document[constants.TVD_NAME],

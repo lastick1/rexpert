@@ -1,4 +1,5 @@
 """Классы атайпов логов"""
+from __future__ import annotations
 import datetime
 
 import geometry
@@ -175,8 +176,8 @@ class Atype10(Atype):
 
     def __init__(self, tik: int, aircraft_id: int, bot_id: int, account_id: str,
                  profile_id: str, name: str, pos: dict, aircraft_name: str, country_id: int,
-                 coal_id: int, airfield_id: int, airstart: bool, parent_id: int,
-                 payload_id: int, fuel: float, skin: str, weapon_mods_id: list,
+                 coal_id: int, airfield_id: int, airstart: bool, parent_id: int, is_player: bool,
+                 is_tracking_stat: bool, payload_id: int, fuel: float, skin: str, weapon_mods_id: list,
                  cartridges: int, shells: int, bombs: int, rockets: int, form: str):
         super().__init__(tik)
         self.aircraft_id = aircraft_id
@@ -191,6 +192,8 @@ class Atype10(Atype):
         self.airfield_id = airfield_id
         self.airstart = airstart
         self.parent_id = parent_id
+        self.is_player = is_player
+        self.is_tracking_stat = is_tracking_stat
         self.payload_id = payload_id
         self.fuel = fuel
         self.skin = skin
@@ -203,6 +206,7 @@ class Atype10(Atype):
 
     @property
     def point(self) -> geometry.Point:
+        "Координаты появления"
         return geometry.Point(x=self.pos['x'], z=self.pos['z'])
 
     def __str__(self):

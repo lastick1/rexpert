@@ -1,4 +1,5 @@
 """Сборка групп аэродромов"""
+from __future__ import annotations
 import pathlib
 import configs
 from .mcu import Airfield

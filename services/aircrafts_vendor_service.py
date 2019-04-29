@@ -1,7 +1,8 @@
 """Распределение самолётов по аэродромам"""
+from __future__ import annotations
 import random
 
-import configs
+from configs import Config
 from model.campaign_map import CampaignMap
 
 
@@ -69,27 +70,27 @@ def collect_aircraft(managed_airfield, aircraft_key: str, amount: int) -> int:
     return amount
 
 
-class AircraftVendor:
+class AircraftVendorService:
     """Класс, распределяющий самолёты по аэродромам"""
-    def __init__(self, config: configs.Planes, gameplay: configs.Gameplay):
-        self.config = config
-        self.gameplay = gameplay
-        uncommon = config.cfg['uncommon']
+    def __init__(self, config: Config):
+        self._config = config.planes
+        self._gameplay = config.gameplay
+        uncommon = self._config.cfg['uncommon']
         # словарь размеров эскадрилий передаваемых на филды по типу самолёта
         self.squadron_sizes_names = {name: uncommon[name]['_squadron_size'] for name in uncommon}
         # словарь размеров эскадрилий передаваемых на филды по ключу из типа самолёта
-        self.squadron_sizes_keys = {self.config.name_to_key(name): uncommon[name]['_squadron_size']
+        self.squadron_sizes_keys = {self._config.name_to_key(name): uncommon[name]['_squadron_size']
                                     for name in uncommon}
 
     def get_month_supply(self, month: str, campaign_map: CampaignMap):
         """Сформировать месячную поставку"""
-        map_supply_csv = self.gameplay.supply_csv[campaign_map.tvd_name]
+        map_supply_csv = self._gameplay.supply_csv[campaign_map.tvd_name]
         with map_supply_csv.open() as stream:
             return MonthSupply(month, stream.readlines())
 
     def deliver_squadron(self, aircraft_name, amount, month_supply, managed_airfield):
         """Переместить эскадрилью самолётов из поставки на аэродром"""
-        aircraft_key = self.config.name_to_key(aircraft_name)
+        aircraft_key = self._config.name_to_key(aircraft_name)
         if aircraft_key not in managed_airfield.planes:
             managed_airfield.planes[aircraft_key] = 0
         managed_airfield.planes[aircraft_key] += month_supply.take_aircrafts(aircraft_name, amount)
@@ -99,9 +100,9 @@ class AircraftVendor:
         while supply.has_aircrafts:
             aircrafts = supply.remain_aircrafts
             aircraft_name = random.choice(aircrafts)
-            country = self.config.cfg['uncommon'][aircraft_name]['country']
+            country = self._config.cfg['uncommon'][aircraft_name]['country']
             managed_airfield = random.choice(list(x for x in managed_airfields[country]
-                                                  if x.planes_count < self.gameplay.rear_max_power))
+                                                  if x.planes_count < self._gameplay.rear_max_power))
             self.deliver_squadron(aircraft_name, self.squadron_sizes_names[aircraft_name], supply, managed_airfield)
 
     def _deliver_first_month_supply(self, supply: MonthSupply, major_airfields: dict, minor_airfields: dict):
@@ -110,9 +111,9 @@ class AircraftVendor:
             aircrafts = supply.remain_aircrafts
             aircraft_name = random.choice(aircrafts)
             squadron_size = self.squadron_sizes_names[aircraft_name]
-            country = self.config.cfg['uncommon'][aircraft_name]['country']
+            country = self._config.cfg['uncommon'][aircraft_name]['country']
             managed_airfield = random.choice(major_airfields[country])
-            if managed_airfield.planes_count >= self.gameplay.rear_max_power * 2:
+            if managed_airfield.planes_count >= self._gameplay.rear_max_power * 2:
                 managed_airfield = random.choice(minor_airfields[country])
             self.deliver_squadron(aircraft_name, squadron_size, supply, managed_airfield)
 
@@ -130,7 +131,7 @@ class AircraftVendor:
                     if country not in minor_airfields:
                         minor_airfields[country] = list()
                     for managed_airfield in managed_airfields[country]:
-                        if managed_airfield.name in self.gameplay.initial_priority[campaign_map.tvd_name]:
+                        if managed_airfield.name in self._gameplay.initial_priority[campaign_map.tvd_name]:
                             major_airfields[country].append(managed_airfield)
                         else:
                             minor_airfields[country].append(managed_airfield)
@@ -145,13 +146,13 @@ class AircraftVendor:
         transfer = dict()
         for managed_airfield in rear_airfields:
             collected = 0
-            while collected < self.gameplay.transfer_amount:
+            while collected < self._gameplay.transfer_amount:
                 key = random.choice(managed_airfield.remain_planes)
 
                 if key not in transfer:
                     transfer[key] = 0
                 aircrafts = collect_aircraft(managed_airfield, key, self.squadron_sizes_keys[key])
-                if managed_airfield.planes_count < self.gameplay.airfield_min_planes:
+                if managed_airfield.planes_count < self._gameplay.airfield_min_planes:
                     managed_airfield.planes[key] += aircrafts
                 else:
                     transfer[key] += aircrafts
@@ -161,7 +162,7 @@ class AircraftVendor:
     def transfer_to_front(self, front_airfields: list, rear_airfields: list):
         """Перевести самолёты с тыловых на фронтовые аэродромы"""
         choice_airfields = list(x for x in front_airfields
-                                if self.gameplay.airfield_min_planes < x.planes_count < self.gameplay.front_max_planes)
+                                if self._gameplay.airfield_min_planes < x.planes_count < self._gameplay.front_max_planes)
         if choice_airfields:
             transfer = self.collect_aircrafts(rear_airfields)
             while transfer:
@@ -179,9 +180,9 @@ class AircraftVendor:
 
     def initial_front_supply(self, campaign_map: CampaignMap, airfields: dict):
         """Выполнить начальную поставку на фронтовой аэродром"""
-        initial_supply = self.gameplay.front_init_planes[campaign_map.tvd_name]
+        initial_supply = self._gameplay.front_init_planes[campaign_map.tvd_name]
         for country in airfields:
             for managed_airfield in airfields[country]:
                 for aircraft_name in initial_supply:
-                    if self.config.cfg['uncommon'][aircraft_name]['country'] == country:
-                        managed_airfield.planes[self.config.name_to_key(aircraft_name)] = initial_supply[aircraft_name]
+                    if self._config.cfg['uncommon'][aircraft_name]['country'] == country:
+                        managed_airfield.planes[self._config.name_to_key(aircraft_name)] = initial_supply[aircraft_name]

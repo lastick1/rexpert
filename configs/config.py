@@ -1,4 +1,5 @@
 """Конфигурация приложения"""
+from __future__ import annotations
 import pathlib
 
 from .main import Main
@@ -11,8 +12,8 @@ from .draw import Draw
 
 class Config:
     """Контейнер конфигурации"""
-    def __init__(self, conf_ini: pathlib.Path):
-        self.main = Main(conf_ini)  # основной конфиг приложения
+    def __init__(self, main_json: pathlib.Path):
+        self.main = Main(main_json)  # основной конфиг приложения
         self.mgen = Mgen(self.main.game_folder)  # настройки генерации миссий
         self.planes = Planes()  # конфигурация самолётов
         self.gameplay = Gameplay()  # настройки игрового процесса

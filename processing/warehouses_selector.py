@@ -2,6 +2,7 @@
 
 В миссии у сторон по 2 склада
 """
+from __future__ import annotations
 import logging
 import random
 

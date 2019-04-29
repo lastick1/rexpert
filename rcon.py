@@ -1,4 +1,5 @@
 """Модуль взаимодействия с консолью DServer"""
+from __future__ import annotations
 from socket import socket, AF_INET, SOCK_STREAM
 
 

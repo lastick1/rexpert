@@ -1,4 +1,5 @@
 """Классы объектов в логах"""
+from __future__ import annotations
 import configs
 import geometry
 

@@ -1,4 +1,5 @@
 """Сборка папок ТВД (scg/1, scg/2, scg/3 и т.д.)"""
+from __future__ import annotations
 
 import logging
 import random
@@ -8,9 +9,19 @@ import datetime
 from configs import Config
 from constants import DATE_FORMAT
 from model import Tvd, ManagedAirfield, Boundary
-from processing import AirfieldsBuilder, AirfieldsSelector, BoundaryBuilder, GridController, WarehouseController
-from processing import FrontLineGroup, LocationsBuilder, Airfield, Plane, WeatherPreset, presets
+from processing import AirfieldsBuilder, \
+    AirfieldsSelector, \
+    BoundaryBuilder, \
+    FrontLineGroup, \
+    LocationsBuilder, \
+    Airfield, \
+    Plane, \
+    WeatherPreset, \
+    presets
 from storage import Storage
+
+from .graph_service import GraphService
+from .warehouses_service import WarehouseService
 
 
 class Season:
@@ -62,29 +73,34 @@ class Season:
             minute=int(self.sunset_minute))
 
 
-class TvdBuilder:
+class TvdService:
     """Класс подготовки папки ТВД, в которой лежат ресурсы для генерации миссии"""
 
-    def __init__(self, name: str, ioc):
+    def __init__(
+            self,
+            name: str,
+            config: Config,
+            storage: Storage,
+            graph_service: GraphService,
+            warehouses_service: WarehouseService,
+    ):
         self.name = name
-        self._ioc = ioc
+        self._config: Config = config
+        self._storage: Storage = storage
+        self._graph_service: GraphService = graph_service
+        self._warehouses_service: WarehouseService = warehouses_service
         self._airfields_builder: AirfieldsBuilder = None
         self._airfields_selector: AirfieldsSelector = None
         self._boundary_builder: BoundaryBuilder = None
-
-    @property
-    def config(self) -> Config:
-        """Конфиг приложения"""
-        return self._ioc.config
 
     @property
     def airfields_builder(self) -> AirfieldsBuilder:
         """Сборщик групп аэродромов"""
         if not self._airfields_builder:
             self._airfields_builder = AirfieldsBuilder(
-                self.config.mgen.af_groups_folders[self.name],
-                self.config.mgen.subtitle_groups_folder,
-                self.config.planes
+                self._config.mgen.af_groups_folders[self.name],
+                self._config.mgen.subtitle_groups_folder,
+                self._config.planes
             )
         return self._airfields_builder
 
@@ -93,7 +109,7 @@ class TvdBuilder:
         """Выборщик аэродромов"""
         if not self._airfields_selector:
             self._airfields_selector = AirfieldsSelector(
-                main=self.config.main)
+                main=self._config.main)
         return self._airfields_selector
 
     @property
@@ -101,8 +117,8 @@ class TvdBuilder:
         """Сборщик многоугольников для Influence Area"""
         if not self._boundary_builder:
             offset = 10000
-            north = self.config.mgen.cfg[self.name]['right_top']['x'] + offset
-            east = self.config.mgen.cfg[self.name]['right_top']['z'] + offset
+            north = self._config.mgen.cfg[self.name]['right_top']['x'] + offset
+            east = self._config.mgen.cfg[self.name]['right_top']['z'] + offset
             south = 0 - offset
             west = 0 - offset
             self._boundary_builder = BoundaryBuilder(
@@ -110,36 +126,21 @@ class TvdBuilder:
         return self._boundary_builder
 
     @property
-    def grid_controller(self) -> GridController:
-        """Контроллер графа"""
-        return self._ioc.grid_controller
-
-    @property
-    def warehouses_controller(self) -> WarehouseController:
-        """Контроллер складов"""
-        return self._ioc.warehouses_controller
-
-    @property
-    def storage(self) -> Storage:
-        """Работа с БД"""
-        return self._ioc.storage
-
-    @property
     def default_params_file(self) -> Path:
         """Файл параметров для missiongen.exe"""
-        tvd_folder = self.config.main.game_folder.joinpath(
-            self.config.mgen.cfg[self.name]['tvd_folder'])
-        return tvd_folder.joinpath(self.config.mgen.cfg[self.name]['default_params_dest']).absolute()
+        tvd_folder = self._config.main.game_folder.joinpath(
+            self._config.mgen.cfg[self.name]['tvd_folder'])
+        return tvd_folder.joinpath(self._config.mgen.cfg[self.name]['default_params_dest']).absolute()
 
     @property
     def default_params_template_file(self):
         """Шаблонный файл параметров для missiongen.exe"""
-        return self.config.mgen.data_folder.joinpath(self.config.mgen.cfg[self.name]['default_params_source'])
+        return self._config.mgen.data_folder.joinpath(self._config.mgen.cfg[self.name]['default_params_source'])
 
     @property
     def seasons(self) -> tuple:
         """данные по сезонам из daytime.csv"""
-        with self.config.mgen.daytime_files[self.name].open() as stream:
+        with self._config.mgen.daytime_files[self.name].open() as stream:
             return tuple(
                 (lambda z: Season(z))(x.split(sep=';'))
                 for x in stream.readlines()
@@ -149,13 +150,13 @@ class TvdBuilder:
         """Построить объект настроек ТВД"""
         tvd = Tvd(
             self.name,
-            self.config.mgen.cfg[self.name]['tvd_folder'],
+            self._config.mgen.cfg[self.name]['tvd_folder'],
             date,
-            self.config.mgen.cfg[self.name]['right_top'],
+            self._config.mgen.cfg[self.name]['right_top'],
             # TODO заменить на получение через divisions_controller
-            self.storage.divisions.load_by_tvd(self.name),
-            self.grid_controller.get_grid(self.name),
-            self.config.mgen.icons_group_files[self.name]
+            self._storage.divisions.load_by_tvd(self.name),
+            self._graph_service.get_grid(self.name),
+            self._config.mgen.icons_group_files[self.name]
         )
         self._make_influences(tvd)
         return tvd
@@ -183,7 +184,7 @@ class TvdBuilder:
             Boundary(tvd.confrontation_east[0].x, tvd.confrontation_east[0].z, tvd.confrontation_east))
         west_influences.append(
             Boundary(tvd.confrontation_west[0].x, tvd.confrontation_west[0].z, tvd.confrontation_west))
-        if self.config.main.special_influences:
+        if self._config.main.special_influences:
             areas = {
                 101: east_influences,
                 201: west_influences
@@ -247,13 +248,13 @@ class TvdBuilder:
         """Обновление базы локаций до актуального состояния"""
         logging.debug('Generating Locations Data Base (LDB)...')
         ldf = ''
-        for path in self.config.mgen.ldf_templates[self.name]:
+        for path in self._config.mgen.ldf_templates[self.name]:
             with path.open() as stream:
                 ldf += '\n\n' + stream.read()
         builder = LocationsBuilder(ldf_base=ldf)
         builder.apply_tvd_setup(tvd)
         ldf_text = builder.make_text()
-        with Path(self.config.mgen.ldf_files[self.name]).open(mode='w') as stream:
+        with Path(self._config.mgen.ldf_files[self.name]).open(mode='w') as stream:
             stream.write(ldf_text)
         logging.debug('... LDB done')
 
@@ -272,7 +273,7 @@ class TvdBuilder:
 
     def update_warehouses(self, tvd: Tvd):
         """Выбор расположения складов"""
-        tvd.warehouses.extend(self.warehouses_controller.next_warehouses(tvd))
+        tvd.warehouses.extend(self._warehouses_service.next_warehouses(tvd))
 
     def _convert_airfield(self, airfield: ManagedAirfield, country: int) -> Airfield:
         """Конвертировать тип управляемого аэродрома в тип генерируемого аэродрома"""
@@ -280,15 +281,15 @@ class TvdBuilder:
         def find_plane_in_config(config: dict, key_name: str, number: int) -> Plane:
             """Найти соответствующий самолёт в конфиге для генерации аэродрома"""
             for name in config['uncommon']:
-                if self.config.planes.name_to_key(name) == key_name:
+                if self._config.planes.name_to_key(name) == key_name:
                     return Plane(number, config['common'], config['uncommon'][name])
             raise NameError(f'Plane {key_name} not found in config')
 
         planes = list()
         for key in airfield.planes:
             planes.append(find_plane_in_config(
-                self.config.planes.cfg, key, airfield.planes[key]))
-        return Airfield(airfield.name, country, self.config.gameplay.airfield_radius, planes)
+                self._config.planes.cfg, key, airfield.planes[key]))
+        return Airfield(airfield.name, country, self._config.gameplay.airfield_radius, planes)
 
     def date_day_duration(self, date) -> tuple:
         """Рассвет и закат для указанной даты"""
@@ -317,7 +318,7 @@ class TvdBuilder:
 
     def update_defaultparams(self, tvd: Tvd):
         """Задать случайные параметры погоды, времени года и суток"""
-        params_config = self.config.generator.cfg[self.name]
+        params_config = self._config.generator.cfg[self.name]
         date = self.random_datetime(*self.date_day_duration(tvd.date))
         logging.debug(f'Updating defaultparams: DATE[{tvd.date}->{date}]')
         season = self.date_season_data(date)
@@ -365,7 +366,7 @@ class TvdBuilder:
             f'$zposition = {params_config["zposition"]}\n',
             f'$xtargetposition = {params_config["xtargetposition"]}\n',
             f'$ztargetposition = {params_config["ztargetposition"]}\n',
-            f'$loc_filename = {Path(self.config.mgen.ldf_files[self.name]).name}\n',
+            f'$loc_filename = {Path(self._config.mgen.ldf_files[self.name]).name}\n',
             f'$forests = {params_config[season.prefix]["forests"]}\n',
             f'$guimap = {params_config[season.prefix]["guimap"]}\n',
             f'$hmap = {params_config[season.prefix]["hmap"]}\n',

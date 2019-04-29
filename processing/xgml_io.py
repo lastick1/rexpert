@@ -1,4 +1,5 @@
 """Чтение-запись графа из/в xmgl-файлы"""
+from __future__ import annotations
 import codecs
 import xml.etree.ElementTree as Et
 import configs

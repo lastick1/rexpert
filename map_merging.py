@@ -1,4 +1,5 @@
 """Функции создания изображений карт из кусочков"""
+from __future__ import annotations
 import os
 import re
 from PIL import Image

@@ -19,5 +19,5 @@ python -m pip install -U pillow
 
 python -m pip install -U imageio
 
-python -m pip install -U rx
+python -m pip install -U rx --pre
 pause

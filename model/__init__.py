@@ -1,4 +1,5 @@
 """Модуль модели данных"""
+from __future__ import annotations
 from .node import Node
 from .grid import Grid
 from .division import Division, DIVISIONS

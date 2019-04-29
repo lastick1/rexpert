@@ -1,21 +1,25 @@
 """Обработка событий с наземными объектами (дамаг, килы), расчёт уничтожения целей (артпозиций, складов и т.п.)"""
+from __future__ import annotations
 import re
 
-import configs
+from core import EventsEmitter, Atype0, Atype3, Atype8
+from configs import Config
+from rcon import DServerRcon
 import log_objects
-import atypes
 import geometry
-import rcon
 
 from model.campaign_mission import CampaignMission
 
+from .base_event_service import BaseEventService
+from .objects_service import ObjectsService
+
 
 DIVISION_RE = re.compile(
-    '^REXPERT_(?P<side>[BR])(?P<type>[TAI])D(?P<number>\d)_(?P<durability>\d+).*$'
+    r'^REXPERT_(?P<side>[BR])(?P<type>[TAI])D(?P<number>\d)_(?P<durability>\d+).*$'
 )
 
 WAREHOUSE_RE = re.compile(
-    '^REXPERT_(?P<side>[BR])WH(?P<number>\d)_(?P<durability>\d+).*$'
+    r'^REXPERT_(?P<side>[BR])WH(?P<number>\d)_(?P<durability>\d+).*$'
 )
 
 
@@ -120,8 +124,10 @@ class DivisionUnit(GroundTargetUnit):
     def __init__(self, name: str, pos: dict, radius: float, tvd_name: str):
         data = DIVISION_RE.match(name).groupdict()
         self.type = data['type']  # тип цели в виде буквы
-        self.division_name = f'{data["side"]}{data["type"]}D{data["number"]}'  # имя дивизии, к которой принадлежит цель
-        super().__init__(name, pos, data['side'], self.division_name, int(data['durability']), radius, tvd_name)
+        # имя дивизии, к которой принадлежит цель
+        self.division_name = f'{data["side"]}{data["type"]}D{data["number"]}'
+        super().__init__(name, pos, data['side'], self.division_name, int(
+            data['durability']), radius, tvd_name)
 
 
 class WarehouseUnit(GroundTargetUnit):
@@ -130,7 +136,8 @@ class WarehouseUnit(GroundTargetUnit):
     def __init__(self, name: str, pos: dict, radius: float, tvd_name: str):
         data = WAREHOUSE_RE.match(name).groupdict()
         self.warehouse_name = f'{data["side"]}WH{data["number"]}'
-        super().__init__(name, pos, data["side"], self.warehouse_name, int(data['durability']), radius, tvd_name)
+        super().__init__(name, pos, data["side"], self.warehouse_name, int(
+            data['durability']), radius, tvd_name)
 
     @property
     def killed(self):
@@ -138,25 +145,38 @@ class WarehouseUnit(GroundTargetUnit):
         return len(self._kills) >= int(self._durability * 0.60)
 
 
-class GroundController:
+class GroundTargetsService(BaseEventService):
     """Контроллер обработки событий с наземными целями"""
 
-    def __init__(self, ioc):
+    def __init__(
+            self,
+            emitter: EventsEmitter,
+            config: Config,
+            rcon: DServerRcon,
+            objects_service: ObjectsService
+    ):
+        super().__init__(emitter)
+        self._config: Config = config
+        self._rcon: DServerRcon = rcon
+        self._objects_service: ObjectsService = objects_service
+        self._campaign_mission: CampaignMission = None
         self.ground_kills = list()
         self.targets = list()
         self._server_inputs = set()
         self._killed_units = set()
-        self._ioc = ioc
 
-    @property
-    def config(self) -> configs.Config:
-        """Конфигурация приложения"""
-        return self._ioc.config
+    def init(self) -> None:
+        self.register_subscriptions([
+            self.emitter.campaign_mission.subscribe_(
+                self._update_campaign_mission),
+            self.emitter.events_mission_start.subscribe_(self._mission_start),
+            self.emitter.events_kill.subscribe_(self._kill),
+            self.emitter.events_mission_result.subscribe_(
+                self._mission_result),
+        ])
 
-    @property
-    def rcon(self) -> rcon.DServerRcon:
-        """Консоль сервера"""
-        return self._ioc.rcon
+    def _update_campaign_mission(self, campaign_mission: CampaignMission) -> None:
+        self._campaign_mission = campaign_mission
 
     def _check_targets(self, tik: int):
         """Проверить состояние целей и отправить инпуты в консоль при необходимости"""
@@ -172,9 +192,10 @@ class GroundController:
         if unit.killed and unit not in self._killed_units:
             self._killed_units.add(unit)
             if isinstance(unit, DivisionUnit):
-                self._ioc.divisions_controller.damage_division(tik, unit.tvd_name, unit.name)
+                self.emitter.gameplay_division_damage.on_next(
+                    *(tik, unit.tvd_name, unit.name))
             if isinstance(unit, WarehouseUnit):
-                self._ioc.warehouses_controller.damage_warehouse(tik, unit)
+                self.emitter.gameplay_warehouse_damage.on_next(*(tik, unit))
 
     def _check_target(self, target: GroundTarget):
         """Проверить цель"""
@@ -184,51 +205,54 @@ class GroundController:
     def _send_input(self, server_input: str):
         """Отправить инпут на сервер, если он не был отправлен"""
         if server_input not in self._server_inputs:
-            if not self.config.main.offline_mode:
-                if not self.rcon.connected:
-                    self.rcon.connect()
-                    self.rcon.auth(self.config.main.rcon_login, self.config.main.rcon_password)
+            if not self._config.main.offline_mode:
+                if not self._rcon.connected:
+                    self._rcon.connect()
+                    self._rcon.auth(self._config.main.rcon_login,
+                                    self._config.main.rcon_password)
                 self._server_inputs.add(server_input)
-                self.rcon.server_input(server_input)
+                self._rcon.server_input(server_input)
 
     def _get_unit_radius(self, tvd_name: str) -> int:
         """Получить радиус юнита дивизии из конфига"""
-        return self.config.mgen.cfg[tvd_name]['division_unit_radius']
+        return self._config.mgen.cfg[tvd_name]['division_unit_radius']
 
-    def start_mission(self, mission: CampaignMission):
+    def _mission_start(self, atype: Atype0):
         """Обработать начало миссии"""
         self._killed_units.clear()
         self.ground_kills.clear()
         self.targets.clear()
 
-        for unit in mission.units:
+        for unit in self._campaign_mission.units:
             if WAREHOUSE_RE.match(unit['name']):
                 self.targets.append(WarehouseUnit(
                     unit['name'],
                     unit['pos'],
-                    self.config.gameplay.warehouse_unit_radius[mission.tvd_name],
-                    mission.tvd_name
+                    self._config.gameplay.warehouse_unit_radius[self._campaign_mission.tvd_name],
+                    self._campaign_mission.tvd_name
                 ))
                 continue
             if DIVISION_RE.match(unit['name']):
                 self.targets.append(DivisionUnit(
                     unit['name'],
                     unit['pos'],
-                    self.config.gameplay.division_unit_radius[mission.tvd_name],
-                    mission.tvd_name
+                    self._config.gameplay.division_unit_radius[self._campaign_mission.tvd_name],
+                    self._campaign_mission.tvd_name
                 ))
                 continue
-        for server_input in mission.server_inputs:
+        for server_input in self._campaign_mission.server_inputs:
             if BRIDGE_RE.match(server_input['name']):
-                self.targets.append(BridgeTarget(server_input['name'], server_input['pos']))
+                self.targets.append(BridgeTarget(
+                    server_input['name'], server_input['pos']))
                 continue
             if RW_STATION_RE.match(server_input['name']):
-                self.targets.append(RailwayStationTarget(server_input['name'], server_input['pos']))
+                self.targets.append(RailwayStationTarget(
+                    server_input['name'], server_input['pos']))
         self._check_targets(0)
 
-    def kill(self, atype: atypes.Atype3) -> None:
+    def _kill(self, atype: Atype3) -> None:
         """Обработать уничтожение наземного объекта"""
-        target = self._ioc.objects_controller.get_object(atype.target_id)
+        target = self._objects_service.get_object(atype.target_id)
         if isinstance(target, log_objects.Ground):
             kill = geometry.Point(x=atype.pos['x'], z=atype.pos['z'])
             self.ground_kills.append(kill)
@@ -242,9 +266,8 @@ class GroundController:
             if changed:
                 self._check_targets(atype.tik)
 
-    def mission_result(self, atype: atypes.Atype8) -> None:
+    def _mission_result(self, atype: Atype8) -> None:
         """Обработать mission objective в логах"""
-        pass
 
     def killed_bridges(self, country: int) -> int:
         """Количество убитых мостов указанной стороны"""

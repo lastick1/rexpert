@@ -1,25 +1,20 @@
 {
     "python.pythonPath": ".venv\\Scripts\\python.exe",
     "python.venvPath": "${workspaceRoot}/.venv",
-    "python.testing.unittestArgs": [
-    ],
-    "python.testing.unittestEnabled": true,
-    "python.testing.nosetestsEnabled": true,
-    "python.testing.nosetestPath": "tests.unit",
     "python.linting.pylintArgs": [
         "--rcfile=.rcfile"
     ],
     "python.jediEnabled": false,
     "python.linting.pylintEnabled": true,
     "spellright.language": [
-        "Russian-English Bilingual"
+        "en",
+        "ru"
     ],
     "spellright.documentTypes": [
         "markdown",
         "latex",
         "plaintext",
         "python",
-        "jsonc"
     ],
     "files.exclude": {
         "**/.git": true,
@@ -29,5 +24,18 @@
         "**/.DS_Store": true,
         ".venv/**": true,
         "**/__pycache__": true
-    }
+    },
+    "python.testing.unittestEnabled": true,
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        "./tests/unit",
+        "-p",
+        "test_ob*.py"
+    ],
+    "python.testing.pyTestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.nosetestArgs": [
+        "test"
+    ]
 }

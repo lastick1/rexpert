@@ -1,4 +1,5 @@
 """Сборка бинарных файлов в scg и генерация миссий"""
+from __future__ import annotations
 import datetime
 import pathlib
 import subprocess
@@ -6,14 +7,14 @@ import logging
 import time
 import shutil
 
-import configs
+from configs import Config
 
 from .mission_files import MissionFiles
 
 
 class Generator:
     """Класс управления сборкой миссий"""
-    def __init__(self, config: configs.Config):
+    def __init__(self, config: Config):
         self.mgen = config.mgen
         self.main = config.main
 

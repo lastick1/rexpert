@@ -2,7 +2,7 @@
 import datetime
 import constants
 
-from .gameplay_actions import GameplayAction, AirfieldKill, DivisionKill, WarehouseDisable
+from .gameplay_actions import GameplayAction
 
 
 class CampaignMission:
@@ -10,7 +10,6 @@ class CampaignMission:
 
     def __init__(
             self,
-            kind: str,
             file: str,
             date: str,
             tvd_name: str,
@@ -21,7 +20,6 @@ class CampaignMission:
             units: list,
             actions: list
     ):
-        self.kind = kind  # тип миссии - противостояние или захват
         self.file = file  # имя файла миссии - result1 или result2
         self.date = datetime.datetime.strptime(
             date, constants.DATE_FORMAT)  # игровая дата в миссии
@@ -43,7 +41,6 @@ class CampaignMission:
         return {
             constants.CampaignMission.DATE: self.date.strftime(constants.DATE_FORMAT),
             constants.CampaignMission.FILE: self.file,
-            constants.CampaignMission.KIND: self.kind,
             constants.TVD_NAME: self.tvd_name,
             constants.CampaignMission.ADDITIONAL: self.additional,
             constants.CampaignMission.COMPLETED: self.is_correctly_completed,

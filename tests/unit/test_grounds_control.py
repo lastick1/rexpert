@@ -1,4 +1,5 @@
 """Тестирование обработки наземных целей"""
+from __future__ import annotations
 import logging
 import pathlib
 import unittest
@@ -34,7 +35,6 @@ TEST_TARGET_POS_BTD1_UNITS = [
 ]
 
 TEST_MISSION = model.CampaignMission(
-    kind='regular',
     file='result1',
     date=TEST_DATE,
     tvd_name='moscow',
@@ -55,7 +55,8 @@ TEST_MISSION = model.CampaignMission(
         {'name': 'REXPERT_BTD1_8', 'pos': TEST_TARGET_POS_BTD1_UNITS[7]},
         {'name': 'REXPERT_BTD1_20', 'pos': TEST_TARGET_POS_BTD1_UNITS[8]},
         {'name': 'REXPERT_BTD1_20', 'pos': TEST_TARGET_POS_BTD1_UNITS[9]}
-    ]
+    ],
+    actions=list()
 )
 
 
@@ -129,7 +130,7 @@ class TestGroundControl(unittest.TestCase):
         controller = processing.GroundController(IOC)
         IOC.campaign_controller._mission = TEST_MISSION
         IOC.campaign_controller._campaign_map = model.CampaignMap(
-            1, TEST_DATE, TEST_DATE, TEST_MISSION.tvd_name, list(), list(), TEST_MISSION)
+            1, TEST_DATE, TEST_DATE, TEST_MISSION.tvd_name, list(), TEST_MISSION)
         target_name = 'static_il2'
         aircraft_name = 'I-16 type 24'
         attacker = IOC.objects_controller.create_object(

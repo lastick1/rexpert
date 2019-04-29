@@ -1,19 +1,24 @@
 """Управление графом
 Текущее состояние хранится в папке из конфига (по-умолчанию в папке проекта папка current)
 Состояние графа версионируется по изменению принадлежности его вершин"""
+from __future__ import annotations
 import os
 import pathlib
 import shutil
 
-import configs
-
-from .xgml_io import Xgml
+from configs import Config
 from model.grid import Grid
 
+from processing import Xgml
 
-class GridController:
+
+class GraphService:
     """Класс, выполняющий управление графами в кампании"""
-    def __init__(self, config: configs.Config):
+
+    def __init__(
+            self,
+            config: Config
+    ):
         self._config = config
         self.xgml_folders = {tvd_name: pathlib.Path(self._config.main.current_grid_folder.joinpath(tvd_name))
                              for tvd_name in config.mgen.maps}
