@@ -1,5 +1,6 @@
 "RX-based logs parser"
 # pylint:disable=E1101
+from __future__ import annotations
 
 import re
 import os
@@ -9,11 +10,13 @@ import datetime
 import shutil
 
 from pathlib import Path
-from rx import Observable, Observer
-from rx.disposables import AnonymousDisposable
-from atypes import Atype9
+from rx import interval
+from rx.core.abc.observer import Observer
+from rx.core.abc.disposable import Disposable
 from model import ManagedAirfield
-from dependency_container import DependencyContainer
+from configs import Config
+from core import EventsEmitter, Atype9
+from services import AirfieldsService
 
 
 LOG_FILE_INDEX_RE = re.compile(r'^.*\[(?P<index>\d+)\].*$')
@@ -79,6 +82,7 @@ class MissionLogs:
             else:
                 Path(file).touch()
             time.sleep(0.01)
+
     @property
     def _log_files(self):
         """Отсортированный по дате создания список имён файлов лога миссии"""
@@ -88,15 +92,22 @@ class MissionLogs:
 class LogsReaderRx(Observer):
     "Класс чтения логов миссий"
 
-    def __init__(self, _ioc: DependencyContainer):
-        self._ioc = _ioc
-        self.subscription: AnonymousDisposable = None
+    def __init__(
+            self,
+            config: Config,
+            emitter: EventsEmitter,
+            airfields_service: AirfieldsService,
+    ):
+        self._config: Config = config
+        self._emitter: EventsEmitter = emitter
+        self._airfields_service: AirfieldsService = airfields_service
+        self.subscription: Disposable = None
         self.is_reading: bool = False
 
     def start(self):
         "Запустить чтение логов"
-        self.subscription = Observable.interval(
-            self._ioc.config.main.logs_read_interval * 1000).subscribe(self)
+        self.subscription = interval(
+            self._config.main.logs_read_interval).subscribe(self)
         self.read()
 
     def stop(self):
@@ -111,21 +122,22 @@ class LogsReaderRx(Observer):
     def read(self):
         "Выполнить чтение логов"
         self.is_reading = True
-        missions = sorted(self._read_mission_names().values())
-        for item in missions:
-            mission: MissionLogs = item
+        missions = self._read_mission_names()
+        mission_names = sorted(missions.keys())
+        for item in mission_names:
+            mission: MissionLogs = missions[item]
             log = mission.read_mission_log()
             for line in log:
-                if self._ioc.config.main.debug_mode:
-                    self._ioc.events_controller.process_line(line)
+                if self._config.main.debug_mode:
+                    self._emitter.process_line(line)
                 else:
                     try:
-                        self._ioc.events_controller.process_line(line)
+                        self._emitter.process_line(line)
                     except (AttributeError, Exception) as exception:
                         logging.exception(f'Error {exception} on line: {line}')
             if mission.has_first_log_file:
-                mission.write_airfields(
-                    self._ioc.airfields_controller.inactive_airfield_by_countries)
+                airfields = self._airfields_service.inactive_airfield_by_countries
+                mission.write_airfields(airfields)
             mission.move_files()
         self.is_reading = False
 
@@ -141,15 +153,15 @@ class LogsReaderRx(Observer):
         """Прочитать имена миссий в папке логов"""
         result = dict()
         files = [x for x in os.listdir(
-            self._ioc.config.main.logs_directory) if MISSION_LOG_FILE_RE.match(x)]
+            self._config.main.logs_directory) if MISSION_LOG_FILE_RE.match(x)]
         for file in files:
             mission_name = MISSION_NAME.match(
                 file).groupdict()['mission_name']
             if mission_name not in result:
                 result[mission_name] = MissionLogs(
                     name=mission_name,
-                    arch_directory=self._ioc.config.main.arch_directory
+                    arch_directory=self._config.main.arch_directory
                 )
             result[mission_name].files.append(
-                str(Path(self._ioc.config.main.logs_directory).joinpath(file)))
+                str(Path(self._config.main.logs_directory).joinpath(file)))
         return result

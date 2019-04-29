@@ -1,12 +1,12 @@
 """Основной файл для запуска"""
+from __future__ import annotations
 import sys
 import logging
+from pathlib import Path
 
 import utils
-import processing
 
-from dependency_container import DependencyContainer
-from reader2 import LogsReaderRx
+from app import App
 
 
 MAIN_HELP = """
@@ -117,20 +117,20 @@ def fix_log(folder: str):
 
 def reset():
     """Сбросить состояние кампании"""
-    controller = processing.CampaignController(DependencyContainer())
-    controller.reset()
+    app = App(Path('./configs/main.json'))
+    app.campaign_service.reset()
 
 
 def initialize_campaign():
     """Инициализация кампании"""
-    controller = processing.CampaignController(DependencyContainer())
-    controller.initialize()
+    app = App(Path('./configs/main.json'))
+    app.campaign_service.initialize()
 
 
 def generate(name: str, tvd_name: str, date: str):
     """Сгенерировать миссию"""
-    controller = processing.CampaignController(DependencyContainer())
-    controller.generate(name, tvd_name, date)
+    app = App(Path('./configs/main.json'))
+    app.campaign_service.generate(name, tvd_name, date)
 
 
 def _generate(args: list):
@@ -145,13 +145,13 @@ def _generate(args: list):
 
 def run():
     """Запуск"""
-    reader = LogsReaderRx(DependencyContainer())
-    reader.start()
+    app = App(Path('./configs/main.json'))
+    app.reader.start()
     try:
         input()
     except KeyboardInterrupt:
         pass
-    reader.stop()
+    app.reader.stop()
 
 
 def main(args: list):

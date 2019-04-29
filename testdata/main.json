@@ -1,0 +1,50 @@
+{
+    "$schema": "../data/schemas/main.json",
+    "program": {
+      "offline_mode": false,
+      "test_mode": false,
+      "debug_mode": false,
+      "console_cmd_output": true,
+      "console_chat_output": true,
+      "minimal_chat_interval": 120,
+      "logs_read_interval": 30,
+      "game_folder": ".\\tmp",
+      "server_folder": ".\\tmp",
+      "graph_files_folder": ".\\tmp",
+      "maps_archive_folder": ".\\tmp",
+      "icons_folder": ".\\tmp",
+      "stats_folder": ".\\tmp",
+      "planner_folder": ".\\tmp"
+    },
+    "missiongen": {
+      "use_resaver": false,
+      "generate_missions": true,
+      "special_influences": false,
+      "mission_gen_folder": ".\\tmp",
+      "resaver_folder": ".\\tmp"
+    },
+    "dserver": {
+      "logs_directory": ".\\tmp",
+      "arch_directory": ".\\tmp",
+      "chat_directory": ".\\tmp"
+    },
+    "mongo": {
+      "host": "il2",
+      "port": "27017",
+      "database": "rexpert"
+    },
+    "rcon": {
+      "ip": "localhost",
+      "port": "8991",
+      "login": "myemail@mailprovider.domen",
+      "password": "mypassword"
+    },
+    "stats": {
+      "user": "il2_stats",
+      "database": "il2_stats",
+      "host": "127.0.0.1",
+      "port": "5555",
+      "password": "il2_stats"
+    }
+  }
+  

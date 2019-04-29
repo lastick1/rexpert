@@ -74,6 +74,17 @@
             "cwd": "${workspaceRoot}"
         },
         {
+            "name": "runme.py compile log",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceRoot}/runme.py",
+            "args": [
+                "compile",
+                "log"
+            ],
+            "cwd": "${workspaceRoot}"
+        },
+        {
             "name": "runme.py fix-log",
             "type": "python",
             "request": "launch",

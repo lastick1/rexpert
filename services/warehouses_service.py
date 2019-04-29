@@ -1,17 +1,20 @@
-"""Контроль складов"""
+"""Сервис контроля складов"""
+from __future__ import annotations
 import logging
 import re
 
-import configs
-import rcon
-import storage
+from core import EventsEmitter
+from configs import Config
+from rcon import DServerRcon
+from storage import Storage
 from model import CampaignMission, Tvd, Warehouse, WarehouseDisable
-from processing.ground_control import WarehouseUnit
-from .warehouses_selector import WarehousesSelector
+from processing.warehouses_selector import WarehousesSelector
 
+from .ground_targets_service import WarehouseUnit
+from .base_event_service import BaseEventService
 
 WAREHOUSE_INPUT_RE = re.compile(
-    '^(?P<side>[BR])WH(?P<number>\d)$'
+    r'^(?P<side>[BR])WH(?P<number>\d)$'
 )
 
 
@@ -31,10 +34,21 @@ def _to_warehouse(warehouse) -> Warehouse:
     return warehouse
 
 
-class WarehouseController:
-    """Контроллер складов"""
-    def __init__(self, ioc):
-        self._ioc = ioc
+class WarehouseService(BaseEventService):
+    """Сервис контроля складов"""
+
+    def __init__(
+            self,
+            emitter: EventsEmitter,
+            config: Config,
+            rcon: DServerRcon,
+            storage: Storage,
+    ):
+        super().__init__(emitter)
+        self._config: Config = config
+        self._rcon: DServerRcon = rcon
+        self._storage: Storage = storage
+        self._campaign_mission: CampaignMission = None
         self._current_tvd_warehouses = dict()
         self._current_mission_warehouses = list()
         self._warehouses_by_inputs = dict()
@@ -42,25 +56,21 @@ class WarehouseController:
         self._round_ended: bool = False
         self._notify_counter = 0
 
-    @property
-    def config(self) -> configs.Config:
-        """Конфигурация приложения"""
-        return self._ioc.config
+    def init(self) -> None:
+        self.register_subscriptions([
+            self.emitter.campaign_mission.subscribe_(
+                self._update_campaign_mission),
+            self.emitter.gameplay_warehouse_damage.subscribe_(
+                self.damage_warehouse),
+        ])
 
-    @property
-    def storage(self) -> storage.Storage:
-        """Объект для работы с БД"""
-        return self._ioc.storage
-
-    @property
-    def rcon(self) -> rcon.DServerRcon:
-        """Консоль сервера"""
-        return self._ioc.rcon
+    def _update_campaign_mission(self, campaign_mission: CampaignMission) -> None:
+        self._campaign_mission = campaign_mission
 
     def initialize_warehouses(self, tvd_name: str):
         """Инициализировать склады в кампании для указанного ТВД"""
-        for data in self.config.mgen.warehouses_data[tvd_name]:
-            self.storage.warehouses.update(
+        for data in self._config.mgen.warehouses_data[tvd_name]:
+            self._storage.warehouses.update(
                 Warehouse(
                     tvd_name=tvd_name,
                     name=data['name'],
@@ -78,13 +88,15 @@ class WarehouseController:
         self._current_tvd_warehouses.clear()
         self._current_mission_warehouses.clear()
         self._sent_inputs.clear()
-        campaign_mission = _to_campaign_mission(self._ioc.campaign_controller.mission)
-        warehouses = self.storage.warehouses.load_by_tvd(campaign_mission.tvd_name)
+        warehouses = self._storage.warehouses.load_by_tvd(
+            self._campaign_mission.tvd_name)
         for warehouse in warehouses:
-            self._current_tvd_warehouses[_to_warehouse(warehouse).name] = warehouse
-        for server_input in campaign_mission.server_inputs:
+            self._current_tvd_warehouses[_to_warehouse(
+                warehouse).name] = warehouse
+        for server_input in self._campaign_mission.server_inputs:
             if WAREHOUSE_INPUT_RE.match(server_input['name']):
-                warehouse = self.get_warehouse_by_coordinates(server_input['pos'])
+                warehouse = self.get_warehouse_by_coordinates(
+                    server_input['pos'])
                 self._current_mission_warehouses.append(warehouse)
                 self._warehouses_by_inputs[server_input['name']] = warehouse
 
@@ -97,35 +109,41 @@ class WarehouseController:
         self._notify_counter += 1
         warehouses = list()
         if self._notify_counter % 4 == 3:
-            warehouses.extend(x for x in self._current_mission_warehouses if x.country == 101)
+            warehouses.extend(
+                x for x in self._current_mission_warehouses if x.country == 101)
         if self._notify_counter % 4 == 2:
-            warehouses.extend(x for x in self._current_mission_warehouses if x.country == 201)
+            warehouses.extend(
+                x for x in self._current_mission_warehouses if x.country == 201)
         if self._notify_counter % 4 == 0:
             self._notify_counter = 0
         for warehouse in warehouses:
-            if not self.config.main.offline_mode:
-                if not self.rcon.connected:
-                    self.rcon.connect()
-                    self.rcon.auth(self.config.main.rcon_login, self.config.main.rcon_password)
-                self.rcon.info_message(f'{warehouse.name} warehouse state is {warehouse.health}/100')
-                logging.info(f'{self._notify_counter},{len(warehouses)} notify warehouses state')
+            if not self._config.main.offline_mode:
+                if not self._rcon.connected:
+                    self._rcon.connect()
+                    self._rcon.auth(self._config.main.rcon_login,
+                                    self._config.main.rcon_password)
+                self._rcon.info_message(
+                    f'{warehouse.name} warehouse state is {warehouse.health}/100')
+                logging.info(
+                    f'{self._notify_counter},{len(warehouses)} notify warehouses state')
 
     def damage_warehouse(self, tik: int, unit: WarehouseUnit):
         """Зачесть уничтожение секции склада"""
         server_input_name = unit.name.split(sep='_')[1]
         warehouse = self._warehouses_by_inputs[server_input_name]
         if self._round_ended:
-            logging.info(f'{warehouse.name} section {unit.name} {unit.pos} destroyed after round end')
+            logging.info(
+                f'{warehouse.name} section {unit.name} {unit.pos} destroyed after round end')
             return
         warehouse.health -= warehouse.next_damage
         logging.info(f'{warehouse.name} section destroyed: {warehouse.health}')
         if warehouse.health < 20 and server_input_name not in self._sent_inputs:
             self._sent_inputs.add(server_input_name)
-            self.rcon.server_input(server_input_name)
+            self._rcon.server_input(server_input_name)
         if warehouse.health < 40:
-            self._ioc.campaign_controller.register_action(
+            self.emitter.gameplay_warehouse_disable.on_next(
                 WarehouseDisable(tik, warehouse.country, warehouse.name))
-        self.storage.warehouses.update(warehouse)
+        self._storage.warehouses.update(warehouse)
 
     def get_warehouse(self, warehouse_name: str) -> Warehouse:
         """Получить склад по имени для текущего ТВД"""
@@ -140,5 +158,6 @@ class WarehouseController:
 
     def next_warehouses(self, tvd: Tvd) -> list:
         """Склады для следующей миссии"""
-        selector = WarehousesSelector(self.storage.warehouses.load_by_tvd(tvd.name), self._current_mission_warehouses)
+        selector = WarehousesSelector(self._storage.warehouses.load_by_tvd(
+            tvd.name), self._current_mission_warehouses)
         return selector.select(tvd)

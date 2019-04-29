@@ -1,5 +1,6 @@
 """Тестирование геометрических формул и расчётов"""
 # pylint: disable=missing-docstring,invalid-name
+from __future__ import annotations
 import unittest
 
 import geometry
@@ -37,7 +38,10 @@ class TestPoint(unittest.TestCase):
     def test_is_in_area_must_be_true_for_1_1_and_square_size_of_2(self):
         point = geometry.Point(1, 1)
         area = [
-            geometry.Point(0, 0), geometry.Point(0, 2), geometry.Point(2, 2), geometry.Point(2, 2)
+            geometry.Point(0, 0),
+            geometry.Point(0, 2),
+            geometry.Point(2, 2),
+            geometry.Point(2, 2)
         ]
         self.assertEqual(True, point.is_in_area(area))
         area.reverse()
@@ -64,3 +68,7 @@ class TestFuncs(unittest.TestCase):
         result = geometry.sort_points_clockwise(data, point)
         # assert
         self.assertSequenceEqual(expected, result)
+
+
+if __name__ == '__main__':
+    unittest.main()

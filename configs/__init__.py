@@ -1,4 +1,5 @@
 """ Модуль работы с конфигами """
+from __future__ import annotations
 from .main import Main
 from .mgen import Mgen, GeneratorParamsConfig
 from .gameplay import Gameplay

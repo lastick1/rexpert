@@ -213,6 +213,8 @@ params_handlers = {
     'pos': pos_handler,
     'settings': lambda s: tuple(map(int, s)),
     'success': lambda s: s == '1',
+    'is_player': lambda s: s == '1',
+    'is_tracking_stat': lambda s: s == '1',
     'object_name': object_name_handler,
 }
 
@@ -225,6 +227,8 @@ def parse(line):
     line = unicodedata.normalize('NFKD', line)
     atype_id = int(line.partition('AType:')[2][:2])
     if 0 <= atype_id <= 22:
+        if not atype_handlers[atype_id].match(line.strip()):
+            raise UnexpectedATypeWarning
         data = atype_handlers[atype_id].match(line.strip()).groupdict()
         data['atype_id'] = atype_id
         for key, value in list(data.items()):

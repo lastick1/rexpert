@@ -13,6 +13,14 @@ COLOR_WHITE = '#FFFFFF'
 COLOR_RED = '#FF0000'
 COLOR_BLUE = '#00CCFF'
 
+TEST_LOG1 = './testdata/logs/spawn_takeoff_landing_despawn_missionReport(2017-09-17_09-05-09)[0].txt'
+TEST_LOG2 = './testdata/logs/target_bombing_crashlanded_on_af_missionReport(2017-09-23_19-31-30)[0].txt'
+TEST_LOG3 = './testdata/logs/multiple_spawns_missionReport(2017-09-24_14-46-12)[0].txt'
+TEST_LOG4 = './testdata/logs/gkills_with_disconnect_missionReport(2017-09-26_20-37-23)[0].txt'
+TEST_LOG5 = './testdata/logs/gkill_with_altf4_disco_missionReport(2017-09-26_21-10-48)[0].txt'
+TEST_LOG6 = './testdata/logs/mission_rotation_atype19.txt'
+TEST_LOG7 = './tests/data/logs/short_mission_full_log.txt'
+
 
 class MainMock(configs.Main):
     """Заглушка конфига"""

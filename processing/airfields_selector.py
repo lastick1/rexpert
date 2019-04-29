@@ -10,6 +10,7 @@
 * Все аэродромы фильтруются по нахождению вне прифронтовой зоны
 * Список делится на 2 по дистанции до ближайшего склада
 * Из списка аэродромов каждого склада выбираются: наиболее заполненный и случайный"""
+from __future__ import annotations
 
 from random import choice, shuffle
 from geometry import remove_too_close

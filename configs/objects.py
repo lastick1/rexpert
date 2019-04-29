@@ -1,4 +1,5 @@
 """Объекты, встречаемые в логах"""
+from __future__ import annotations
 import codecs
 
 
