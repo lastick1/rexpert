@@ -9,3 +9,4 @@ from .graph_service import GraphService
 from .players_service import PlayersService
 from .divisions_service import DivisionsService
 from .tvd_service import TvdService
+from .ground_targets_service import GroundTargetsService

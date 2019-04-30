@@ -31,7 +31,7 @@
         "-s",
         "./tests/unit",
         "-p",
-        "test_ob*.py"
+        "test_*.py"
     ],
     "python.testing.pyTestEnabled": false,
     "python.testing.nosetestsEnabled": false,

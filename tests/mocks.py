@@ -1,13 +1,15 @@
 """Заглушки, фальшивки и т.п. для тестирования"""
 # pylint: disable=all
-import pathlib
+from pathlib import Path
 
-import atypes
-import configs
-import dependency_container
-import model
-import processing
-import rcon
+from configs import Config, Main, Mgen, Planes
+from core import Atype12
+from model import Tvd, Node, Grid
+from processing import Generator, MapPainter
+from storage import Storage
+from rcon import DServerRcon
+
+from services import AirfieldsService, DivisionsService
 
 COLOR_WHITE = '#FFFFFF'
 COLOR_RED = '#FF0000'
@@ -22,49 +24,49 @@ TEST_LOG6 = './testdata/logs/mission_rotation_atype19.txt'
 TEST_LOG7 = './tests/data/logs/short_mission_full_log.txt'
 
 
-class MainMock(configs.Main):
+class MainMock(Main):
     """Заглушка конфига"""
-    def __init__(self, path: pathlib.Path):
+    def __init__(self, path: Path):
         super().__init__(path=path)
-        self.current_grid_folder = pathlib.Path('./tmp/current/')
+        self.current_grid_folder = Path('./tmp/current/')
 
 
-class MgenMock(configs.Mgen):
+class MgenMock(Mgen):
     """Заглушка конфига генерации миссий"""
 
-    def __init__(self, game_folder: pathlib.Path):
+    def __init__(self, game_folder: Path):
         super().__init__(game_folder)
         self.xgml = {
-            'stalingrad': pathlib.Path('./testdata/stalingrad.xgml').absolute(),
-            'moscow': pathlib.Path('./testdata/moscow.xgml').absolute(),
-            'kuban': pathlib.Path('./testdata/kuban.xgml').absolute(),
-            'test': pathlib.Path('./testdata/test_w4f.xgml').absolute()
+            'stalingrad': Path('./tests/data/xgml/stalingrad.xgml').absolute(),
+            'moscow': Path('./tests/data/xgml/moscow.xgml').absolute(),
+            'kuban': Path('./tests/data/xgml/kuban.xgml').absolute(),
+            'test': Path('./tests/data/xgml/test_w4f.xgml').absolute()
         }
-        folders = {'red': pathlib.Path('./tmp/red/'), 'blue': pathlib.Path('./tmp/blue/')}
+        folders = {'red': Path('./tmp/red/'), 'blue': Path('./tmp/blue/')}
         self.af_groups_folders = {
             'moscow': folders,
             'stalingrad': folders
         }
 
 
-class PlanesMock(configs.Planes):
+class PlanesMock(Planes):
     """Заглушка конфига самолётов"""
     def __init__(self):
-        super().__init__(path='.\\testdata\\planes.json')
+        super().__init__(path='./tests/data/config/planes.json')
 
 
-class TvdMock(model.Tvd):
+class TvdMock(Tvd):
     def __init__(self, name: str):
         super().__init__(
-            name, '', '10.11.1941', {'x': 281600, 'z': 281600}, dict(), model.Grid(name, dict(), list(), 0),
-            pathlib.Path())
+            name, '', '10.11.1941', {'x': 281600, 'z': 281600}, dict(), Grid(name, dict(), list(), 0),
+            Path())
         self.country = 201
 
     def get_country(self, point):
         return self.country
 
 
-class ConsoleMock(rcon.DServerRcon):
+class ConsoleMock(DServerRcon):
     """Заглушка коммандера"""
 
     def __init__(self):
@@ -87,10 +89,10 @@ class ConsoleMock(rcon.DServerRcon):
         self.received_server_inputs.append(server_input)
 
 
-class GeneratorMock(processing.Generator):
+class GeneratorMock(Generator):
     """Заглушка генератора миссий"""
 
-    def __init__(self, config: configs.Config):
+    def __init__(self, config: Config):
         super().__init__(config)
         self.generations = []
 
@@ -103,54 +105,54 @@ class GeneratorMock(processing.Generator):
 
 TEST = 'test'
 TEST_NODES_LIST = [
-    model.Node(key='1',  text='L', pos={'x': 3, 'z': 5}, color=COLOR_WHITE),
-    model.Node(key='2',  text='L', pos={'x': 10, 'z': 1}, color=COLOR_WHITE),
-    model.Node(key='3',  text='L', pos={'x': 16, 'z': 1}, color=COLOR_WHITE),
-    model.Node(key='4',  text='L', pos={'x': 23, 'z': 1}, color=COLOR_WHITE),
-    model.Node(key='5',  text='L', pos={'x': 25, 'z': 13}, color=COLOR_WHITE),
-    model.Node(key='6',  text='L', pos={'x': 22, 'z': 18}, color=COLOR_WHITE),
-    model.Node(key='7',  text='L', pos={'x': 24, 'z': 29}, color=COLOR_WHITE),
-    model.Node(key='8',  text='L', pos={'x': 21, 'z': 32}, color=COLOR_WHITE),
-    model.Node(key='9',  text='L', pos={'x': 11, 'z': 33}, color=COLOR_WHITE),
-    model.Node(key='10', text='L', pos={'x': 0, 'z': 28}, color=COLOR_WHITE),
-    model.Node(key='11', text='L', pos={'x': 2, 'z': 16}, color=COLOR_WHITE),
-    model.Node(key='12', text='28', pos={'x': 7, 'z': 5}, color=COLOR_BLUE),
-    model.Node(key='13', text='44', pos={'x': 14, 'z': 3}, color=COLOR_BLUE),
-    model.Node(key='14', text='43', pos={'x': 20, 'z': 2}, color=COLOR_BLUE),
-    model.Node(key='15', text='42', pos={'x': 22, 'z': 4}, color=COLOR_BLUE),
-    model.Node(key='16', text='46', pos={'x': 21, 'z': 14}, color=COLOR_BLUE),
-    model.Node(key='17', text='55', pos={'x': 19, 'z': 20}, color=COLOR_BLUE),
-    model.Node(key='18', text='L', pos={'x': 20, 'z': 23}, color=COLOR_WHITE),
-    model.Node(key='19', text='66', pos={'x': 21, 'z': 25}, color=COLOR_RED),
-    model.Node(key='20', text='69', pos={'x': 21, 'z': 30}, color=COLOR_RED),
-    model.Node(key='21', text='68', pos={'x': 17, 'z': 30}, color=COLOR_RED),
-    model.Node(key='22', text='L', pos={'x': 5, 'z': 27}, color=COLOR_WHITE),
-    model.Node(key='23', text='50', pos={'x': 4, 'z': 28}, color=COLOR_RED),
-    model.Node(key='24', text='27', pos={'x': 5, 'z': 11}, color=COLOR_RED),
-    model.Node(key='25', text='L', pos={'x': 8, 'z': 9}, color=COLOR_WHITE),
-    model.Node(key='26', text='L', pos={'x': 12, 'z': 7}, color=COLOR_WHITE),
-    model.Node(key='27', text='L', pos={'x': 18, 'z': 5}, color=COLOR_WHITE),
-    model.Node(key='28', text='L', pos={'x': 17, 'z': 8}, color=COLOR_WHITE),
-    model.Node(key='29', text='L', pos={'x': 17, 'z': 12}, color=COLOR_WHITE),
-    model.Node(key='30', text='47', pos={'x': 16, 'z': 16}, color=COLOR_BLUE),
-    model.Node(key='31', text='L', pos={'x': 17, 'z': 18}, color=COLOR_WHITE),
-    model.Node(key='32', text='L', pos={'x': 18, 'z': 22}, color=COLOR_WHITE),
-    model.Node(key='33', text='67', pos={'x': 19, 'z': 25}, color=COLOR_RED),
-    model.Node(key='34', text='L', pos={'x': 20, 'z': 27}, color=COLOR_WHITE),
-    model.Node(key='35', text='L', pos={'x': 19, 'z': 29}, color=COLOR_WHITE),
-    model.Node(key='36', text='L', pos={'x': 17, 'z': 25}, color=COLOR_WHITE),
-    model.Node(key='37', text='L', pos={'x': 12, 'z': 26}, color=COLOR_WHITE),
-    model.Node(key='38', text='53', pos={'x': 13, 'z': 24}, color=COLOR_RED),
-    model.Node(key='39', text='L', pos={'x': 10, 'z': 23}, color=COLOR_WHITE),
-    model.Node(key='40', text='48', pos={'x': 12, 'z': 19}, color=COLOR_RED),
-    model.Node(key='41', text='L', pos={'x': 10, 'z': 14}, color=COLOR_WHITE),
-    model.Node(key='42', text='45', pos={'x': 14, 'z': 11}, color=COLOR_BLUE),
-    model.Node(key='43', text='L', pos={'x': 13, 'z': 15}, color=COLOR_WHITE),
-    model.Node(key='44', text='L', pos={'x': 15, 'z': 18}, color=COLOR_WHITE),
-    model.Node(key='45', text='L', pos={'x': 14, 'z': 22}, color=COLOR_WHITE),
-    model.Node(key='46', text='L', pos={'x': 16, 'z': 23}, color=COLOR_WHITE),
-    model.Node(key='47', text='54', pos={'x': 16, 'z': 21}, color=COLOR_RED),
-    model.Node(key='48', text='49', pos={'x': 7, 'z': 25}, color=COLOR_RED),
+    Node(key='1',  text='L', pos={'x': 3, 'z': 5}, color=COLOR_WHITE),
+    Node(key='2',  text='L', pos={'x': 10, 'z': 1}, color=COLOR_WHITE),
+    Node(key='3',  text='L', pos={'x': 16, 'z': 1}, color=COLOR_WHITE),
+    Node(key='4',  text='L', pos={'x': 23, 'z': 1}, color=COLOR_WHITE),
+    Node(key='5',  text='L', pos={'x': 25, 'z': 13}, color=COLOR_WHITE),
+    Node(key='6',  text='L', pos={'x': 22, 'z': 18}, color=COLOR_WHITE),
+    Node(key='7',  text='L', pos={'x': 24, 'z': 29}, color=COLOR_WHITE),
+    Node(key='8',  text='L', pos={'x': 21, 'z': 32}, color=COLOR_WHITE),
+    Node(key='9',  text='L', pos={'x': 11, 'z': 33}, color=COLOR_WHITE),
+    Node(key='10', text='L', pos={'x': 0, 'z': 28}, color=COLOR_WHITE),
+    Node(key='11', text='L', pos={'x': 2, 'z': 16}, color=COLOR_WHITE),
+    Node(key='12', text='28', pos={'x': 7, 'z': 5}, color=COLOR_BLUE),
+    Node(key='13', text='44', pos={'x': 14, 'z': 3}, color=COLOR_BLUE),
+    Node(key='14', text='43', pos={'x': 20, 'z': 2}, color=COLOR_BLUE),
+    Node(key='15', text='42', pos={'x': 22, 'z': 4}, color=COLOR_BLUE),
+    Node(key='16', text='46', pos={'x': 21, 'z': 14}, color=COLOR_BLUE),
+    Node(key='17', text='55', pos={'x': 19, 'z': 20}, color=COLOR_BLUE),
+    Node(key='18', text='L', pos={'x': 20, 'z': 23}, color=COLOR_WHITE),
+    Node(key='19', text='66', pos={'x': 21, 'z': 25}, color=COLOR_RED),
+    Node(key='20', text='69', pos={'x': 21, 'z': 30}, color=COLOR_RED),
+    Node(key='21', text='68', pos={'x': 17, 'z': 30}, color=COLOR_RED),
+    Node(key='22', text='L', pos={'x': 5, 'z': 27}, color=COLOR_WHITE),
+    Node(key='23', text='50', pos={'x': 4, 'z': 28}, color=COLOR_RED),
+    Node(key='24', text='27', pos={'x': 5, 'z': 11}, color=COLOR_RED),
+    Node(key='25', text='L', pos={'x': 8, 'z': 9}, color=COLOR_WHITE),
+    Node(key='26', text='L', pos={'x': 12, 'z': 7}, color=COLOR_WHITE),
+    Node(key='27', text='L', pos={'x': 18, 'z': 5}, color=COLOR_WHITE),
+    Node(key='28', text='L', pos={'x': 17, 'z': 8}, color=COLOR_WHITE),
+    Node(key='29', text='L', pos={'x': 17, 'z': 12}, color=COLOR_WHITE),
+    Node(key='30', text='47', pos={'x': 16, 'z': 16}, color=COLOR_BLUE),
+    Node(key='31', text='L', pos={'x': 17, 'z': 18}, color=COLOR_WHITE),
+    Node(key='32', text='L', pos={'x': 18, 'z': 22}, color=COLOR_WHITE),
+    Node(key='33', text='67', pos={'x': 19, 'z': 25}, color=COLOR_RED),
+    Node(key='34', text='L', pos={'x': 20, 'z': 27}, color=COLOR_WHITE),
+    Node(key='35', text='L', pos={'x': 19, 'z': 29}, color=COLOR_WHITE),
+    Node(key='36', text='L', pos={'x': 17, 'z': 25}, color=COLOR_WHITE),
+    Node(key='37', text='L', pos={'x': 12, 'z': 26}, color=COLOR_WHITE),
+    Node(key='38', text='53', pos={'x': 13, 'z': 24}, color=COLOR_RED),
+    Node(key='39', text='L', pos={'x': 10, 'z': 23}, color=COLOR_WHITE),
+    Node(key='40', text='48', pos={'x': 12, 'z': 19}, color=COLOR_RED),
+    Node(key='41', text='L', pos={'x': 10, 'z': 14}, color=COLOR_WHITE),
+    Node(key='42', text='45', pos={'x': 14, 'z': 11}, color=COLOR_BLUE),
+    Node(key='43', text='L', pos={'x': 13, 'z': 15}, color=COLOR_WHITE),
+    Node(key='44', text='L', pos={'x': 15, 'z': 18}, color=COLOR_WHITE),
+    Node(key='45', text='L', pos={'x': 14, 'z': 22}, color=COLOR_WHITE),
+    Node(key='46', text='L', pos={'x': 16, 'z': 23}, color=COLOR_WHITE),
+    Node(key='47', text='54', pos={'x': 16, 'z': 21}, color=COLOR_RED),
+    Node(key='48', text='49', pos={'x': 7, 'z': 25}, color=COLOR_RED),
 ]
 TEST_EDGES_LIST = [
     ('1', '2'), ('2', '3'), ('3', '4'), ('4', '5'), ('5', '6'), ('6', '7'), ('7', '8'), ('8', '9'), ('9', '10'),
@@ -174,7 +176,7 @@ TEST_EDGES_LIST = [
 ]
 
 
-def get_test_grid(mgen: MgenMock) -> model.Grid:
+def get_test_grid(mgen: MgenMock) -> Grid:
     """Тестовый граф"""
     nodes = {x.key: x for x in TEST_NODES_LIST}
     for edge in TEST_EDGES_LIST:
@@ -182,12 +184,12 @@ def get_test_grid(mgen: MgenMock) -> model.Grid:
         target_id = edge[1]
         nodes[source_id].neighbors.add(nodes[target_id])
         nodes[target_id].neighbors.add(nodes[source_id])
-    return model.Grid(name=TEST, nodes=nodes, edges=TEST_EDGES_LIST, tvd=mgen.cfg[TEST]['tvd'])
+    return Grid(name=TEST, nodes=nodes, edges=TEST_EDGES_LIST, tvd=mgen.cfg[TEST]['tvd'])
 
 
-class AirfieldsControllerMock(processing.AirfieldsController):
+class AirfieldsServiceMock(AirfieldsService):
     # noinspection PyTypeChecker
-    def __init__(self, config: configs.Config):
+    def __init__(self, config: Config):
         super().__init__(config)
 
     def spawn(self, tvd, aircraft_name: str, xpos: float, zpos: float):
@@ -197,34 +199,31 @@ class AirfieldsControllerMock(processing.AirfieldsController):
         pass
 
 
-class DivisionsControllerMock(processing.DivisionsController):
-    def __init__(self, ioc):
-        super().__init__(ioc)
+class DivisionsServiceMock(DivisionsService):
+    def __init__(self, emitter, config, rcon, storage):
+        super().__init__(emitter, config, rcon, storage)
         self.damaged_divisions = set()
 
     def damage_division(self, tik: int, tvd_name: str, unit_name: str):
         self.damaged_divisions.add(unit_name.split(sep='_')[1])
 
 
-class DependencyContainerMock(dependency_container.DependencyContainer):
-    def __init__(self, path: pathlib.Path):
-        super().__init__()
-        self._config = configs.Config(path)
-        self._generator = GeneratorMock(self._config)
-        self.generator_mock = self._generator
-        self._rcon = ConsoleMock()
-        self.console_mock = self._rcon
-        self._map_painter = PainterMock()
-
-
-def atype_12_stub(object_id: int, object_name: str, country: int, name: str, parent_id: int) -> atypes.Atype12:
+def atype_12_stub(object_id: int, object_name: str, country: int, name: str, parent_id: int) -> Atype12:
     """Заглушка события инициализации объекта"""
-    return atypes.Atype12(120, object_id, object_name, country, int(country/100), name, parent_id)
+    return Atype12(120, object_id, object_name, country, int(country/100), name, parent_id)
 
 
-class PainterMock(processing.MapPainter):
+class PainterMock(MapPainter):
     def __init__(self):
         super().__init__(None)
 
     def update_map(self):
         pass
+
+class ConfigMock(Config):
+    def __init__(self):
+        path = Path('./tests/data/config/main.json')
+        super().__init__(path)
+        self.main = MainMock(path)
+        self.mgen = MgenMock(self.main.game_folder)
+        self.planes = PlanesMock()

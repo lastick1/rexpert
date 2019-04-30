@@ -1,5 +1,5 @@
 {
-    "$schema": "../data/schemas/main.json",
+    "$schema": "../../../data/schemas/main.json",
     "program": {
       "offline_mode": false,
       "test_mode": false,

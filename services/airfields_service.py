@@ -34,6 +34,7 @@ class AirfieldsService(BaseEventService):
     def init(self) -> None:
         self.register_subscriptions([
             self.emitter.current_tvd.subscribe_(self._update_current_tvd),
+            self.emitter.events_mission_start.subscribe_(self.start_mission),
             self.emitter.events_bot_deinitialization.subscribe_(self._finish),
         ])
 
@@ -63,7 +64,7 @@ class AirfieldsService(BaseEventService):
         """Получить аэродром по имени"""
         return self._storage.airfields.load_by_name(tvd_name, airfield_name)
 
-    def start_mission(self):
+    def start_mission(self, atype: Atype0):
         """Обработать начало миссии"""
         mission_airfields = list()
         for airfield in self._storage.airfields.load_by_tvd(tvd_name=self._current_tvd.name):

@@ -23,7 +23,7 @@ class TestObjectsService(unittest.TestCase):
     def test_creates_objects(self):
         "Создаются объекты, обнаруженные в логах до завершения раунда"
         service = ObjectsService(self.emitter, Config(
-            pathlib.Path('./testdata/main.json')), Objects())
+            pathlib.Path('./tests/data/config/main.json')), Objects())
         # Act
         service.init()
         with open(mocks.TEST_LOG7) as stream:
@@ -36,7 +36,7 @@ class TestObjectsService(unittest.TestCase):
     def test_cleans_objects_after_mission_end(self):
         "Удаляются объекты, созданные до завершения раунда"
         service = ObjectsService(self.emitter, Config(
-            pathlib.Path('./testdata/main.json')), Objects())
+            pathlib.Path('./tests/data/config/main.json')), Objects())
         # Act
         service.init()
         with open(mocks.TEST_LOG7) as stream:
