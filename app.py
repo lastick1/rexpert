@@ -38,7 +38,6 @@ class App:
             self.config,
             self.objects,
         )
-        self.objects_service.init()
         self.players_service: PlayersService = PlayersService(
             self.events_emitter,
             self.config,
@@ -46,7 +45,6 @@ class App:
             self.storage,
             self.objects_service
         )
-        self.players_service.init()
         self.graph_service: GraphService = GraphService(self.config)
         self.warehouse_service: WarehouseService = WarehouseService(
             self.events_emitter,
@@ -54,7 +52,6 @@ class App:
             self.rcon,
             self.storage,
         )
-        self.warehouse_service.init()
         self.aircrafts_vendor_service: AircraftVendorService = AircraftVendorService(
             self.config,
         )
@@ -65,14 +62,12 @@ class App:
             self.objects_service,
             self.aircrafts_vendor_service,
         )
-        self.airfields_service.init()
         self.divisions_service: DivisionsService = DivisionsService(
             self.events_emitter,
             self.config,
             self.rcon,
             self.storage
         )
-        self.divisions_service.init()
         self.tvd_services: Dict[str, TvdService] = {tvd_name: TvdService(tvd_name,
                                                                          self.config,
                                                                          self.storage,
@@ -95,9 +90,14 @@ class App:
             self.source_parser,
             self.generator
         )
-        self.campaign_service.init()
         self.reader: LogsReaderRx = LogsReaderRx(
             self.config,
             self.events_emitter,
             self.airfields_service
         )
+        self.objects_service.init()
+        self.campaign_service.init()
+        self.airfields_service.init()
+        self.players_service.init()
+        self.divisions_service.init()
+        self.warehouse_service.init()

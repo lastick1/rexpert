@@ -4,7 +4,7 @@ from typing import Any, List, Dict, Set
 
 import logging
 
-from core import EventsEmitter, Atype1, Atype2, Atype3, Atype5, Atype6, Atype7, Atype9, \
+from core import EventsEmitter, Atype0, Atype1, Atype2, Atype3, Atype5, Atype6, Atype7, Atype9, \
     Atype10, Atype11, Atype12, Atype16, Atype17, Atype18
 from configs import Config, Objects
 from log_objects import Object, Airfield, Aircraft, BotPilot, Ground, GROUND_CLASSES
@@ -36,6 +36,8 @@ class ObjectsService(BaseEventService):
 
     def init(self) -> None:
         self.register_subscriptions([
+            self.emitter.events_mission_start.subscribe_(
+                self._start_mission, self._on_error),
             self.emitter.events_hit.subscribe_(self._hit, self._on_error),
             self.emitter.events_damage.subscribe_(
                 self._damage, self._on_error),
@@ -61,7 +63,7 @@ class ObjectsService(BaseEventService):
         ])
 
     def _on_error(self, error: Any) -> None:
-        print(error)
+        logging.error(error)
 
     def _create_object(self, atype: Atype12) -> Object:
         """Создать объект соответствующего типа"""
@@ -132,15 +134,18 @@ class ObjectsService(BaseEventService):
         aircraft.land(atype.pos, list(self._airfields),
                       self._config.gameplay.airfield_radius)
 
+    def _start_mission(self, atype: Atype0) -> None:
+        """Начать миссию"""
+        self._objects.clear()
+        self._bots.clear()
+        self._airfields.clear()
+        self._aircrafts.clear()
+
     def _end_mission(self, atype: Atype7) -> None:
         """Завершить миссию"""
         for aircraft in self._aircrafts:
             aircraft.landed = True
             aircraft.is_safe = True
-        self._objects.clear()
-        self._bots.clear()
-        self._airfields.clear()
-        self._aircrafts.clear()
 
     def _airfield(self, atype: Atype9) -> None:
         """Создать/обновить аэродром"""

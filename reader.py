@@ -138,7 +138,8 @@ class LogsReaderRx(Observer):
             if mission.has_first_log_file:
                 airfields = self._airfields_service.inactive_airfield_by_countries
                 mission.write_airfields(airfields)
-            mission.move_files()
+            if not self._config.main.debug_mode:
+                mission.move_files()
         self.is_reading = False
 
     def on_completed(self):

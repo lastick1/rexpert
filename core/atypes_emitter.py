@@ -31,9 +31,6 @@ class AtypesEmitter(Disposable):
             if 'AType' not in line:
                 raise NameError(f'ignored bad string: [{line}]')
 
-            if r'T:0 AType:0 GDate:1942.7.1 GTime:17:52:45 MFile' in line:
-                print('AType:0')
-
             atype = parse(line)
             atype_id = atype.pop('atype_id')
             if atype_id == 0:
@@ -46,4 +43,4 @@ class AtypesEmitter(Disposable):
         except UnexpectedATypeWarning:
             logging.warning(f'unexpected atype: [{line}]')
         except Exception as exception:
-            print(exception)
+            logging.exception(exception)

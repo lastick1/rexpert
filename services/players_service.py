@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import Dict
 
 import datetime
+import logging
 
 from core import EventsEmitter, Atype0, Atype4, Atype5, Atype10, Atype13, Atype14, Atype20, Atype21, Finish
 from configs import Config
@@ -29,9 +30,9 @@ class PlayersService(BaseEventService):
         self._rcon: DServerRcon = rcon
         self._storage: Storage = storage
         self._objects_service: ObjectsService = objects_service
-        self.player_by_bot_id: Dict[int, Player]
-        self.bot_id_by_aircraft_id: Dict[int, int]
-        self.unlocks_taken: Dict[str, int]
+        self.player_by_bot_id: Dict[int, Player] = dict()
+        self.bot_id_by_aircraft_id: Dict[int, int] = dict()
+        self.unlocks_taken: Dict[str, int] = dict()
 
     def init(self) -> None:
         self.register_subscriptions([
@@ -56,9 +57,9 @@ class PlayersService(BaseEventService):
 
     def _start_mission(self, atype: Atype0):
         """Обработать начало миссии"""
-        self.player_by_bot_id = dict()
-        self.bot_id_by_aircraft_id = dict()
-        self.unlocks_taken = dict()
+        self.player_by_bot_id.clear()
+        self.bot_id_by_aircraft_id.clear()
+        self.unlocks_taken.clear()
 
     def _takeoff(self, atype: Atype5):
         """Обработка взлёта"""
@@ -111,8 +112,11 @@ class PlayersService(BaseEventService):
 
         if not friendly_fire and bot.aircraft.landed and has_kills or has_damage and finish.on_airfield:
             changed = True
-            player = self._get_player(bot)
-            player.unlocks += 1
+            try:
+                player = self._get_player(bot)
+                player.unlocks += 1
+            except Exception as exception:
+                logging.exception(exception)
 
         if player and changed:
             self._storage.players.update(player)
