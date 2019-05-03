@@ -222,7 +222,7 @@ class TestAircraftVendor(unittest.TestCase):
         # Assert
         for country in airfields:
             for managed_airfield in airfields[country]:
-                self.assertEqual(managed_airfield.planes_count, 80)
+                self.assertEqual(managed_airfield.planes_count, 30)
 
 
 if __name__ == '__main__':

@@ -77,9 +77,9 @@ class AircraftVendorService:
         self._gameplay = config.gameplay
         uncommon = self._config.cfg['uncommon']
         # словарь размеров эскадрилий передаваемых на филды по типу самолёта
-        self.squadron_sizes_names = {name: uncommon[name]['_squadron_size'] for name in uncommon}
+        self.squadron_sizes_names = {name: uncommon[name]['_rexpert']['squadron_size'] for name in uncommon}
         # словарь размеров эскадрилий передаваемых на филды по ключу из типа самолёта
-        self.squadron_sizes_keys = {self._config.name_to_key(name): uncommon[name]['_squadron_size']
+        self.squadron_sizes_keys = {self._config.name_to_key(name): uncommon[name]['_rexpert']['squadron_size']
                                     for name in uncommon}
 
     def get_month_supply(self, month: str, campaign_map: CampaignMap):
