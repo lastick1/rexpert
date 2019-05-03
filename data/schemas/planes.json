@@ -1,4 +1,75 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Параметры самолётов, прописываемые в MCU аэродромов и настройки самолётов для игрового процесса"
+  "title": "Параметры самолётов, прописываемые в MCU аэродромов и настройки самолётов для игрового процесса",
+  "properties": {
+    "planes": {
+      "type": "array",
+      "title": "Используемые самолёты",
+      "items": {
+        "type": "string"
+      }
+    },
+    "common": {
+      "type": "object",
+      "title": "Общие настройки самолётов",
+      "required": ["SetIndex", "Number", "AILevel", "StartInAir", "Engageable", "Vulnerable", "LimitAmmo", "AIRTBDecision", "Renewable", "PayloadId", "WMMask", "Fuel", "RouteTime", "RenewTime", "Altitude", "Spotter", "Skin", "Callsign", "Callnum"]
+    },
+    "uncommon": {
+      "type": "object",
+      "title": "Настройки конкретных самолётов",
+      "patternProperties": {
+        "^.*$": {
+          "title": "Настройки самолёта",
+          "type": "object",
+          "required": ["Name", "Model", "Script", "AvMods", "AvSkins", "AvPayloads", "country", "_rexpert"],
+          "additionalProperties": false,
+          "properties": {
+            "Name": {
+              "type": "string",
+              "title": "Название карточки самолёта в выборе на аэродроме"
+            },
+            "Model": {
+              "type": "string",
+              "title": "файл модели самолёта (системная настройка в игре)"
+            },
+            "Script": {
+              "type": "string",
+              "title": "файл скрипта самолёта (системная настройка в игре)"
+            },
+            "AvMods": {
+              "type": "string",
+              "title": "Список доступных модификаций при включенной блокировке модификаций в SDS файле конфигурации DServer"
+            },
+            "AvSkins": {
+              "type": "string",
+              "title": "Список доступных скинов при включенной блокировке скинов в SDS файле конфигурации DServer"
+            },
+            "AvPayloads": {
+              "type": "string",
+              "title": "Список доступных раскладок оружия при включенной блокировке раскладок оружия в SDS файле конфигурации DServer"
+            },
+            "country": {
+              "type": "integer",
+              "title": "Страна самолёта"
+            },
+            "_rexpert": {
+              "type": "object",
+              "title": "Настройки самолёта для игрового процесса на сервере",
+              "required": ["squadron_size", "default_number"],
+              "properties": {
+                "squadron_size": {
+                  "type": "integer",
+                  "title": "Размер эскадрильи, автоматически переводимой с тыловых аэродромов на фронтовые (самолёты перебазируются пачками такого размера)"
+                },
+                "default_number": {
+                  "type": "integer",
+                  "title": "Количество самолётов такого типа на аэродроме по-умолчанию"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
