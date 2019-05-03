@@ -99,7 +99,7 @@ class TestAirfieldsService(unittest.TestCase):
         atype = Atype10(
             tik=150, aircraft_id=2, bot_id=3, account_id='123', profile_id='123', name='nickname',
             pos={'x': TEST_AIRFIELD_X, 'z': TEST_AIRFIELD_Z}, aircraft_name=aircraft_name, country_id=101, coal_id=1,
-            airfield_id=4, airstart=False, parent_id=5, is_player=True, is_tracking_stat=False, fuel=1, skin='',
+            airfield_id=4, airstart=False, parent_id=5, is_player=True, is_tracking_stat=True, fuel=1, skin='',
             weapon_mods_id=[1], cartridges=1, shells=1, bombs=0, rockets=0, form='', payload_id=1
         )
         # Act

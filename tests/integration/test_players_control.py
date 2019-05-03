@@ -43,7 +43,7 @@ def _atype_10_stub(aircraft_id: int, bot_id: int, pos: dict, aircraft_name: str,
     """Заглушка события появления игрока"""
     return Atype10(
         123, aircraft_id, bot_id, TEST_ACCOUNT_ID, TEST_PROFILE_ID, nickname, pos, aircraft_name, country,
-        int(country/100), 1234, False, parent_id, True, False, 0, 1, '', [1, 5], 200, 100, 4, 8, '')
+        int(country/100), 1234, False, parent_id, True, True, 0, 1, '', [1, 5], 200, 100, 4, 8, '')
 
 
 class TestPlayersController(unittest.TestCase):
