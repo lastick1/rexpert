@@ -104,23 +104,24 @@ class ObjectsService(BaseEventService):
 
     def _damage(self, atype: Atype2) -> None:
         """Обработать событие урона"""
-        if atype.target_id in self._objects:
-            target = self._objects[atype.target_id]
-            target.update_pos(atype.pos)
-            if atype.attacker_id:
-                attacker = self.get_object(atype.attacker_id)
-                attacker.update_pos(atype.pos)
-                if isinstance(attacker, Aircraft):
-                    _to_aircraft(attacker).add_damage(target, atype.damage)
+        target = self.get_object(atype.target_id)
+        if target:
+            target.damage(atype.damage, atype.pos)
+        if atype.attacker_id:
+            attacker = self.get_object(atype.attacker_id)
+            attacker.update_pos(atype.pos)
+            if target and isinstance(attacker, Aircraft):
+                _to_aircraft(attacker).add_damage(target, atype.damage)
 
     def _kill(self, atype: Atype3) -> None:
         """Обработать событие убийства"""
         target = self.get_object(atype.target_id)
-        target.kill(pos=atype.pos)
+        if target:
+            target.kill(atype.pos)
         if atype.attacker_id:
             attacker = self.get_object(atype.attacker_id)
             attacker.update_pos(atype.pos)
-            if isinstance(attacker, Aircraft):
+            if target and isinstance(attacker, Aircraft):
                 _to_aircraft(attacker).add_kill(target)
 
     def _takeoff(self, atype: Atype5) -> None:

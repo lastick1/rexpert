@@ -15,6 +15,7 @@ from services import ObjectsService, \
     AirfieldsService, \
     DivisionsService, \
     TvdService, \
+    DServerService, \
     CampaignService
 from processing import SourceParser, \
     Generator
@@ -86,6 +87,10 @@ class App:
             self.source_parser,
             self.generator
         )
+        self.dserver_service: DServerService = DServerService(
+            self.events_emitter,
+            self.config
+        )
         self.reader: LogsReaderRx = LogsReaderRx(
             self.config,
             self.events_emitter,
@@ -97,3 +102,4 @@ class App:
         self.players_service.init()
         self.divisions_service.init()
         self.warehouse_service.init()
+        self.dserver_service.init()

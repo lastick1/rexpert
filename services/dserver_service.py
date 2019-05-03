@@ -23,10 +23,13 @@ from .base_event_service import BaseEventService
 class DServerService(BaseEventService):
     "Сервис управления DServer через Rcon"
 
-    def __init__(self, emitter: EventsEmitter, config: Config, rcon: DServerRcon):
+    def __init__(self, emitter: EventsEmitter, config: Config):
         super().__init__(emitter)
         self._config: Config = config
-        self._rcon: DServerRcon = rcon
+        self._rcon: DServerRcon = DServerRcon(
+            self._config.main.rcon_ip,
+            self._config.main.rcon_port
+        )
         self._bindings: Dict[str, Any] = {
             str(CommandType.MessageAll): self.message_all,
             str(CommandType.MessageAllies): self.message_allies,
@@ -45,6 +48,11 @@ class DServerService(BaseEventService):
     def on_command(self, command: Command) -> None:
         "Обработать команду в RCon"
         if not self._config.main.offline_mode:
+            if not self._rcon.connected:
+                self._rcon.connect()
+            if not self._rcon.authed:
+                self._rcon.auth(self._config.main.rcon_login,
+                                self._config.main.rcon_password)
             self._bindings[str(command.type)](command)
 
     def message_all(self, command: MessageAll) -> None:

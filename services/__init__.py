@@ -10,3 +10,4 @@ from .players_service import PlayersService
 from .divisions_service import DivisionsService
 from .tvd_service import TvdService
 from .ground_targets_service import GroundTargetsService
+from .dserver_service import DServerService
