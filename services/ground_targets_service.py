@@ -2,13 +2,18 @@
 from __future__ import annotations
 import re
 
-from core import EventsEmitter, Atype0, Atype3, Atype8
+from core import EventsEmitter, \
+    Atype0, \
+    Atype3, \
+    Atype8, \
+    DivisionDamage, \
+    WarehouseDamage
 from configs import Config
-from rcon import DServerRcon
 import log_objects
 import geometry
 
-from model.campaign_mission import CampaignMission
+from model import CampaignMission, \
+    ServerInput
 
 from .base_event_service import BaseEventService
 from .objects_service import ObjectsService
@@ -152,12 +157,10 @@ class GroundTargetsService(BaseEventService):
             self,
             emitter: EventsEmitter,
             config: Config,
-            rcon: DServerRcon,
             objects_service: ObjectsService
     ):
         super().__init__(emitter)
         self._config: Config = config
-        self._rcon: DServerRcon = rcon
         self._objects_service: ObjectsService = objects_service
         self._campaign_mission: CampaignMission = None
         self.ground_kills = list()
@@ -193,9 +196,10 @@ class GroundTargetsService(BaseEventService):
             self._killed_units.add(unit)
             if isinstance(unit, DivisionUnit):
                 self.emitter.gameplay_division_damage.on_next(
-                    *(tik, unit.tvd_name, unit.name))
+                    DivisionDamage(tik, unit.tvd_name, unit.name))
             if isinstance(unit, WarehouseUnit):
-                self.emitter.gameplay_warehouse_damage.on_next(*(tik, unit))
+                self.emitter.gameplay_warehouse_damage.on_next(
+                    WarehouseDamage(tik, unit))
 
     def _check_target(self, target: GroundTarget):
         """Проверить цель"""
@@ -205,13 +209,8 @@ class GroundTargetsService(BaseEventService):
     def _send_input(self, server_input: str):
         """Отправить инпут на сервер, если он не был отправлен"""
         if server_input not in self._server_inputs:
-            if not self._config.main.offline_mode:
-                if not self._rcon.connected:
-                    self._rcon.connect()
-                    self._rcon.auth(self._config.main.rcon_login,
-                                    self._config.main.rcon_password)
-                self._server_inputs.add(server_input)
-                self._rcon.server_input(server_input)
+            self._server_inputs.add(server_input)
+            self.emitter.commands_rcon.on_next(ServerInput(server_input))
 
     def _get_unit_radius(self, tvd_name: str) -> int:
         """Получить радиус юнита дивизии из конфига"""

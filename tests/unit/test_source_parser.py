@@ -75,15 +75,6 @@ class TestSourceParser(unittest.TestCase):
         # Assert
         self.assertSequenceEqual(result.units, expected)
 
-    def test_parse_mission_kind(self):
-        """Определяется вид миссии - противостояние или захват"""
-        parser = SourceParser(CONFIG)
-        # Act
-        result = parser.parse(TEST_TVD_NAME, pathlib.Path(
-            './tests/data/mission_source/{}.Mission'.format(TEST_TVD_NAME)))
-        # Assert
-        self.assertSequenceEqual(result.kind, 'assault')
-
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

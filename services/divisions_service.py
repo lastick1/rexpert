@@ -5,9 +5,12 @@ import re
 
 from core import EventsEmitter
 from configs import Config
-from rcon import DServerRcon
 from storage import Storage
-from model import Division, DIVISIONS, DivisionKill, CampaignMission
+from model import Division, \
+    DIVISIONS, \
+    DivisionKill, \
+    CampaignMission, \
+    ServerInput
 
 from .base_event_service import BaseEventService
 
@@ -31,12 +34,10 @@ class DivisionsService(BaseEventService):
             self,
             emitter: EventsEmitter,
             config: Config,
-            rcon: DServerRcon,
             storage: Storage
     ):
         super().__init__(emitter)
         self._config: Config = config
-        self._rcon: DServerRcon = rcon
         self._storage: Storage = storage
         self._campaign_mission: CampaignMission = None
         self._current_divisions = dict()
@@ -45,8 +46,10 @@ class DivisionsService(BaseEventService):
 
     def init(self) -> None:
         self.register_subscriptions([
-            self.emitter.campaign_mission.subscribe_(self._update_campaign_mission),
-            self.emitter.gameplay_division_damage.subscribe_(self.damage_division),
+            self.emitter.campaign_mission.subscribe_(
+                self._update_campaign_mission),
+            self.emitter.gameplay_division_damage.subscribe_(
+                self.damage_division),
         ])
 
     def _update_campaign_mission(self, campaign_mission: CampaignMission) -> None:
@@ -116,14 +119,10 @@ class DivisionsService(BaseEventService):
         if division.units < 0:
             division.units = 0
         if division.units <= self._config.gameplay.division_death and division.name not in self._sent_inputs:
-            self.emitter.gameplay_division_kill.on_next(DivisionKill(tik, division.country, division.name))
+            self.emitter.gameplay_division_kill.on_next(
+                DivisionKill(tik, division.country, division.name))
             self._sent_inputs.add(division.name)
-            if not self._config.main.offline_mode:
-                if not self._rcon.connected:
-                    self._rcon.connect()
-                    self._rcon.auth(self._config.main.rcon_login,
-                                    self._config.main.rcon_password)
-                self._rcon.server_input(division.name)
+            self.emitter.commands_rcon.on_next(ServerInput(division.name))
         logging.info(
             f'{division.tvd_name} division {division.name} lost unit:{unit_name}')
         self._storage.divisions.update(division)

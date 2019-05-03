@@ -41,7 +41,6 @@ class App:
         self.players_service: PlayersService = PlayersService(
             self.events_emitter,
             self.config,
-            self.rcon,
             self.storage,
             self.objects_service
         )
@@ -49,7 +48,6 @@ class App:
         self.warehouse_service: WarehouseService = WarehouseService(
             self.events_emitter,
             self.config,
-            self.rcon,
             self.storage,
         )
         self.aircrafts_vendor_service: AircraftVendorService = AircraftVendorService(
@@ -65,7 +63,6 @@ class App:
         self.divisions_service: DivisionsService = DivisionsService(
             self.events_emitter,
             self.config,
-            self.rcon,
             self.storage
         )
         self.tvd_services: Dict[str, TvdService] = {tvd_name: TvdService(tvd_name,
@@ -79,7 +76,6 @@ class App:
         self.campaign_service: CampaignService = CampaignService(
             self.events_emitter,
             self.config,
-            self.rcon,
             self.storage,
             self.players_service,
             self.graph_service,

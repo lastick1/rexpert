@@ -5,9 +5,13 @@ import re
 
 from core import EventsEmitter
 from configs import Config
-from rcon import DServerRcon
 from storage import Storage
-from model import CampaignMission, Tvd, Warehouse, WarehouseDisable
+from model import CampaignMission, \
+    Tvd, \
+    Warehouse, \
+    WarehouseDisable, \
+    MessageAll, \
+    ServerInput
 from processing.warehouses_selector import WarehousesSelector
 
 from .ground_targets_service import WarehouseUnit
@@ -41,12 +45,10 @@ class WarehouseService(BaseEventService):
             self,
             emitter: EventsEmitter,
             config: Config,
-            rcon: DServerRcon,
             storage: Storage,
     ):
         super().__init__(emitter)
         self._config: Config = config
-        self._rcon: DServerRcon = rcon
         self._storage: Storage = storage
         self._campaign_mission: CampaignMission = None
         self._current_tvd_warehouses = dict()
@@ -117,15 +119,10 @@ class WarehouseService(BaseEventService):
         if self._notify_counter % 4 == 0:
             self._notify_counter = 0
         for warehouse in warehouses:
-            if not self._config.main.offline_mode:
-                if not self._rcon.connected:
-                    self._rcon.connect()
-                    self._rcon.auth(self._config.main.rcon_login,
-                                    self._config.main.rcon_password)
-                self._rcon.info_message(
-                    f'{warehouse.name} warehouse state is {warehouse.health}/100')
-                logging.info(
-                    f'{self._notify_counter},{len(warehouses)} notify warehouses state')
+            self.emitter.commands_rcon.on_next(MessageAll(
+                f'{warehouse.name} warehouse state is {warehouse.health}/100'))
+            logging.info(
+                f'{self._notify_counter},{len(warehouses)} notify warehouses state')
 
     def damage_warehouse(self, tik: int, unit: WarehouseUnit):
         """Зачесть уничтожение секции склада"""
@@ -139,7 +136,7 @@ class WarehouseService(BaseEventService):
         logging.info(f'{warehouse.name} section destroyed: {warehouse.health}')
         if warehouse.health < 20 and server_input_name not in self._sent_inputs:
             self._sent_inputs.add(server_input_name)
-            self._rcon.server_input(server_input_name)
+            self.emitter.commands_rcon.on_next(ServerInput(server_input_name))
         if warehouse.health < 40:
             self.emitter.gameplay_warehouse_disable.on_next(
                 WarehouseDisable(tik, warehouse.country, warehouse.name))

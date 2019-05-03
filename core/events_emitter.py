@@ -4,10 +4,10 @@ from __future__ import annotations
 from rx.subjects.behaviorsubject import BehaviorSubject
 from rx.subjects.subject import Subject
 
-from .atypes_emitter_decorator import AtypesEmitterDecorator
+from .commands_emitter import CommandsEmitter
 
 
-class EventsEmitter(AtypesEmitterDecorator):
+class EventsEmitter(CommandsEmitter):
     "Шина событий приложения"
 
     def __init__(self, *args, **kwargs):

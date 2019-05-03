@@ -10,6 +10,7 @@ from storage import Storage
 from rcon import DServerRcon
 
 from services import AirfieldsService, DivisionsService
+from services.base_event_service import BaseEventService
 
 COLOR_WHITE = '#FFFFFF'
 COLOR_RED = '#FF0000'
@@ -66,15 +67,19 @@ class TvdMock(Tvd):
         return self.country
 
 
-class ConsoleMock(DServerRcon):
-    """Заглушка коммандера"""
+class EventsInterceptor(BaseEventService):
+    """Перехватчик сообщений в шине"""
 
-    def __init__(self):
-        super().__init__('127.0.0.1', '8991')
-        self.received_private_messages = []
-        self.banned = []
-        self.kicks = []
-        self.received_server_inputs = []
+    def __init__(self, emitter):
+        super().__init__(emitter)
+        self.division_damages = []
+        self.division_kills = []
+    
+    def init(self) -> None:
+        self.register_subscriptions([
+            self.emitter.gameplay_division_damage.subscribe_(self.division_damages.append),
+            self.emitter.gameplay_division_kill.subscribe_(self.division_kills.append),
+        ])
 
     def private_message(self, account_id: str, message: str):
         self.received_private_messages.append((account_id, message))
@@ -200,8 +205,8 @@ class AirfieldsServiceMock(AirfieldsService):
 
 
 class DivisionsServiceMock(DivisionsService):
-    def __init__(self, emitter, config, rcon, storage):
-        super().__init__(emitter, config, rcon, storage)
+    def __init__(self, emitter, config):
+        super().__init__(emitter, config, None)
         self.damaged_divisions = set()
 
     def damage_division(self, tik: int, tvd_name: str, unit_name: str):

@@ -34,15 +34,19 @@ class TestObjectsService(unittest.TestCase):
         self.assertEqual(len(service.get_all()), 29)
 
     def test_cleans_objects_after_mission_end(self):
-        "Удаляются объекты, созданные до завершения раунда"
+        "Удаляются объекты при начале очередного раунда (миссии)"
         service = ObjectsService(self.emitter, Config(
             pathlib.Path('./tests/data/config/main.json')), Objects())
         # Act
         service.init()
+        atype0_line = 'empty'
         with open(mocks.TEST_LOG7) as stream:
             lines = stream.readlines()
             for line in lines:
+                if 'AType:0' in line:
+                    atype0_line = line
                 self.emitter.process_line(line)
+        self.emitter.process_line(atype0_line)
         self.assertEqual(len(service.get_all()), 0)
 
 

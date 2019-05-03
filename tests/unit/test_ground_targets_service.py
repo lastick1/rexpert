@@ -9,7 +9,9 @@ from geometry import Point
 from services import GroundTargetsService, ObjectsService
 from model import CampaignMission
 
-from tests.mocks import ConfigMock, DivisionsServiceMock, ConsoleMock, atype_12_stub
+from tests.mocks import EventsInterceptor, \
+    ConfigMock, \
+    atype_12_stub
 
 CONFIG = ConfigMock()
 
@@ -67,20 +69,20 @@ class TestGroundControl(unittest.TestCase):
     def setUp(self):
         """Настройка перед тестами"""
         self._events_emitter = EventsEmitter()
-        self._rcon = ConsoleMock()
+        self._interceptor = EventsInterceptor(self._events_emitter)
+        self._interceptor.init()
         self._objects_service = ObjectsService(
             self._events_emitter, CONFIG, Objects())
-        self._divisions_service = DivisionsServiceMock(
-            self._events_emitter, CONFIG, self._rcon, None)
-        self._rcon.received_server_inputs.clear()
 
     def tearDown(self):
         """Очистка после тестов"""
+        self._interceptor.dispose()
 
     def test_kill(self):
         """Учитываются уничтоженные наземные цели"""
-        service = GroundTargetsService(
-            self._events_emitter, CONFIG, self._rcon, self._objects_service)
+        service = GroundTargetsService(self._events_emitter,
+                                       CONFIG,
+                                       self._objects_service)
         target_name = 'static_il2'
         aircraft_name = 'I-16 type 24'
         pos_target = {'x': 300.0, 'y': 100.0, 'z': 100.0}
@@ -100,8 +102,9 @@ class TestGroundControl(unittest.TestCase):
 
     def test_kill_aircraft(self):
         """Учитываются только уничтоженные наземные цели"""
-        service = GroundTargetsService(
-            self._events_emitter, CONFIG, self._rcon, self._objects_service)
+        service = GroundTargetsService(self._events_emitter,
+                                       CONFIG,
+                                       self._objects_service)
         aircraft_name = 'I-16 type 24'
         aircraft = self._objects_service._create_object(
             atype_12_stub(2, aircraft_name, 101, 'Test aircraft', -1))
@@ -113,8 +116,11 @@ class TestGroundControl(unittest.TestCase):
 
     def test_division_unit_kill(self):
         """Обрабатывается уничтожение подразделения дивизии"""
-        service = GroundTargetsService(
-            self._events_emitter, CONFIG, self._rcon, self._objects_service)
+        service = GroundTargetsService(self._events_emitter,
+                                       CONFIG,
+                                       self._objects_service)
+        service.init()
+        self._events_emitter.campaign_mission.on_next(TEST_MISSION)
         target_name = 'static_il2'
         aircraft_name = 'I-16 type 24'
         attacker = self._objects_service._create_object(
@@ -136,13 +142,16 @@ class TestGroundControl(unittest.TestCase):
         service._kill(Atype3(123, -1, target.obj_id,
                              TEST_TARGET_POS_BTD1_UNITS[0]))
         # Assert
-        self.assertSequenceEqual([], self._rcon.received_server_inputs)
-        self.assertIn('BTD1', self._divisions_service.damaged_divisions)
+        self.assertTrue(self._interceptor.division_damages)
 
+    @unittest.skip('Перенести тест в сервис управления дивизиями')
     def test_division_kill(self):
         """Обрабатывается уничтожение дивизии"""
-        service = GroundTargetsService(
-            self._events_emitter, CONFIG, self._rcon, self._objects_service)
+        service = GroundTargetsService(self._events_emitter,
+                                       CONFIG,
+                                       self._objects_service)
+        service.init()
+        self._events_emitter.campaign_mission.on_next(TEST_MISSION)
         target_name = 'static_il2'
         aircraft_name = 'I-16 type 24'
         attacker = self._objects_service._create_object(
@@ -157,7 +166,7 @@ class TestGroundControl(unittest.TestCase):
                     Atype3(4444, attacker.obj_id, target.obj_id, pos))
                 service._kill(Atype3(123, -1, target.obj_id, pos))
         # Assert
-        self.assertSequenceEqual(['BTD1'], self._rcon.received_server_inputs)
+        self.assertTrue(self._interceptor.division_kills)
 
 
 if __name__ == '__main__':

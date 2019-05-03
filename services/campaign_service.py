@@ -10,12 +10,20 @@ import datetime
 from constants import DATE_FORMAT
 from core import EventsEmitter, Atype0, Atype7, Atype8, Atype15, Atype19
 from configs import Config
-from rcon import DServerRcon
 from storage import Storage
 from processing import Generator, SourceParser
 
-from model import CampaignMission, CampaignMap, Tvd, GameplayAction, SourceMission, \
-    TanksCoverFail, ArtilleryKill, DivisionKill, WarehouseDisable, AirfieldKill
+from model import CampaignMission, \
+    CampaignMap, \
+    Tvd, \
+    GameplayAction, \
+    SourceMission, \
+    TanksCoverFail, \
+    ArtilleryKill, \
+    DivisionKill, \
+    WarehouseDisable, \
+    AirfieldKill, \
+    MessageAll
 
 
 from .base_event_service import BaseEventService
@@ -36,7 +44,6 @@ class CampaignService(BaseEventService):
             self,
             emitter: EventsEmitter,
             config: Config,
-            rcon: DServerRcon,
             storage: Storage,
             players_service: PlayersService,
             graph_service: GraphService,
@@ -49,7 +56,6 @@ class CampaignService(BaseEventService):
     ):
         super().__init__(emitter)
         self._config: Config = config
-        self._rcon: DServerRcon = rcon
         self._storage: Storage = storage
         self._players_service: PlayersService = players_service
         self._graph_service: GraphService = graph_service
@@ -264,11 +270,7 @@ class CampaignService(BaseEventService):
         "Оповестить о состоянии очков захвата"
         result = self._calculate_result()
         message = f'Capture points: {result[101]} red team, {result[201]} blue team'
-        if not self._rcon.connected:
-            self._rcon.connect()
-            self._rcon.auth(self._config.main.rcon_login,
-                            self._config.main.rcon_password)
-        self._rcon.info_message(message)
+        self.emitter.commands_rcon.on_next(MessageAll(message))
 
     def _calculate_result(self) -> dict:
         "Посчитать текущий результат сторон"

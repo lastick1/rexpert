@@ -5,12 +5,23 @@ from typing import Dict
 import datetime
 import logging
 
-from core import EventsEmitter, Atype0, Atype4, Atype5, Atype10, Atype13, Atype14, Atype20, Atype21, Finish
+from core import EventsEmitter, \
+    Atype0, \
+    Atype4, \
+    Atype5, \
+    Atype10, \
+    Atype13, \
+    Atype14, \
+    Atype20, \
+    Atype21, \
+    Finish
 from configs import Config
-from rcon import DServerRcon
 from storage import Storage
 from log_objects import BotPilot
-from model import Player
+from model import Player, \
+    MessagePrivate, \
+    PlayerKick, \
+    PlayerBanP15M
 
 from .base_event_service import BaseEventService
 from .objects_service import ObjectsService
@@ -22,12 +33,10 @@ class PlayersService(BaseEventService):
     def __init__(self,
                  emitter: EventsEmitter,
                  config: Config,
-                 rcon: DServerRcon,
                  storage: Storage,
                  objects_service: ObjectsService):
         super().__init__(emitter)
         self._config: Config = config
-        self._rcon: DServerRcon = rcon
         self._storage: Storage = storage
         self._objects_service: ObjectsService = objects_service
         self.player_by_bot_id: Dict[int, Player] = dict()
@@ -41,7 +50,8 @@ class PlayersService(BaseEventService):
             self.emitter.events_takeoff.subscribe_(self._takeoff),
             self.emitter.events_player_spawn.subscribe_(self._spawn),
             self.emitter.events_player_connected.subscribe_(self._connect),
-            self.emitter.events_player_disconnected.subscribe_(self._disconnect),
+            self.emitter.events_player_disconnected.subscribe_(
+                self._disconnect),
 
             self.emitter.player_finish.subscribe_(self._finish),
         ])
@@ -65,13 +75,8 @@ class PlayersService(BaseEventService):
         """Обработка взлёта"""
         player = self._get_player(self._objects_service.get_bot(
             self.bot_id_by_aircraft_id[atype.aircraft_id]))
-        if not self._config.main.offline_mode:
-            if not self._rcon.connected:
-                self._rcon.connect()
-                self._rcon.auth(self._config.main.rcon_login,
-                                self._config.main.rcon_password)
-            if not self._config.main.test_mode and self.unlocks_taken[player.account_id] > player.unlocks:
-                self._rcon.kick(player.account_id)
+        if self.unlocks_taken[player.account_id] > player.unlocks:
+            self.emitter.commands_rcon.on_next(PlayerKick(player.account_id))
 
     def _end_mission(self):
         """Обработать конец миссии"""
@@ -85,16 +90,13 @@ class PlayersService(BaseEventService):
         self.unlocks_taken[player.account_id] = len(atype.weapon_mods_id)
         self.bot_id_by_aircraft_id[atype.aircraft_id] = atype.bot_id
 
-        if not self._config.main.offline_mode:
-            if not self._rcon.connected:
-                self._rcon.connect()
-                self._rcon.auth(self._config.main.rcon_login,
-                                self._config.main.rcon_password)
-            if self.unlocks_taken[player.account_id] > player.unlocks:
-                message = f'{player.nickname} TAKEOFF is FORBIDDEN FOR YOU on this aircraft. Available unlocks {player.unlocks}'
-            else:
-                message = f'{player.nickname} takeoff granted! Available unlocks {player.unlocks}'
-            self._rcon.private_message(player.account_id, message)
+        if self.unlocks_taken[player.account_id] > player.unlocks:
+            message = f'{player.nickname} TAKEOFF is FORBIDDEN FOR YOU on this aircraft. ' + \
+                f'Available modifications {player.unlocks}'
+        else:
+            message = f'{player.nickname} takeoff granted! Available modifications {player.unlocks}'
+        self.emitter.commands_rcon.on_next(
+            MessagePrivate(message, player.account_id))
 
         self._storage.players.update(player)
 
@@ -130,16 +132,12 @@ class PlayersService(BaseEventService):
             self._storage.players.update(player)
 
         player = self._storage.players.find(atype.account_id)
-        if not self._config.main.offline_mode:
-            if not self._rcon.connected:
-                self._rcon.connect()
-                self._rcon.auth(self._config.main.rcon_login,
-                                self._config.main.rcon_password)
-            if player.ban_expire_date and player.ban_expire_date > datetime.datetime.now():
-                self._rcon.banuser(player.account_id)
-            else:
-                self._rcon.private_message(
-                    player.account_id, f'Hello {player.nickname}!')
+        if player.ban_expire_date and player.ban_expire_date > datetime.datetime.now():
+            self.emitter.commands_rcon.on_next(
+                PlayerBanP15M(player.account_id))
+        else:
+            self.emitter.commands_rcon.on_next(MessagePrivate(
+                f'Hello {player.nickname}!', player.account_id))
 
     def _disconnect(self, atype: Atype21) -> None:
         """AType 21"""
