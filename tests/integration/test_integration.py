@@ -1,13 +1,31 @@
 """Тестирование обработки событий"""
-import pathlib
+from __future__ import annotations
+from typing import Dict
+from pathlib import Path
 import logging
 import shutil
 import unittest
 
-import configs
-import core
-import model
-import tests
+from configs import Objects
+from storage import Storage
+from services import ObjectsService, \
+    GraphService, \
+    CampaignService, \
+    PlayersService, \
+    WarehouseService, \
+    AirfieldsService, \
+    AircraftVendorService, \
+    DivisionsService, \
+    TvdService, \
+    GroundTargetsService
+from core import EventsEmitter
+from processing import SourceParser
+from model import SourceMission, CampaignMap
+from tests.utils import clean_directory
+from tests.mocks import ConfigMock, GeneratorMock
+
+CONFIG = ConfigMock()
+OBJECTS = Objects()
 
 logging.basicConfig(
     format=u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s] %(message)s', level=logging.DEBUG)
@@ -20,44 +38,76 @@ TEST_LOG5 = './testdata/logs/gkill_with_altf4_disco_missionReport(2017-09-26_21-
 TEST_LOG6 = './testdata/logs/mission_rotation_atype19.txt'
 DB_NAME = 'test_rexpert'
 
-IOC = tests.mocks.DependencyContainerMock(pathlib.Path('./testdata/conf.ini'))
-PLANES = configs.Planes()
-GAMEPLAY = configs.Gameplay()
-OBJECTS = configs.Objects()
-
 
 TEST_TVD_NAME = 'moscow'
 TEST_TVD_DATE = '01.01.1941'
-TEST_FIELDS = pathlib.Path('./data/moscow_fields.csv')
+TEST_FIELDS = Path('./data/moscow_fields.csv')
 
 
 def _get_xgml_file_mock(tvd_name: str) -> str:
     """Подделка метода получения файла графа"""
-    return str(IOC.config.mgen.xgml[tvd_name])
+    return str(CONFIG.mgen.xgml[tvd_name])
 
 
 def _load_all_campaign_maps():
     """Фальшивый метод загрузки карт кампании"""
-    return [model.CampaignMap(1, TEST_TVD_DATE, TEST_TVD_DATE, TEST_TVD_NAME, list(), list())]
+    return [CampaignMap(1, TEST_TVD_DATE, TEST_TVD_DATE, TEST_TVD_NAME, list(), list())]
 
 
-def _parse_mock(name: str) -> model.SourceMission:
+def _parse_mock(name: str) -> SourceMission:
     """Фальшивый метод парсинга исходников"""
-    return model.SourceMission(name=name, file=pathlib.Path(), date=TEST_TVD_DATE, guimap=TEST_TVD_NAME)
+    return SourceMission(name=name, file=Path(), date=TEST_TVD_DATE, guimap=TEST_TVD_NAME)
 
 
 def _make_dirs(dirs: list):
     for directory in dirs:
-        path = pathlib.Path(directory)
+        path = Path(directory)
         if not path.exists():
             path.mkdir(parents=True)
 
 
 class TestIntegration(unittest.TestCase):
     """Интеграционные тесты"""
+
     def setUp(self):
         """Настройка базы перед тестом"""
-        self.directory = pathlib.Path(r'./tmp/').absolute()
+        self._storage: Storage = Storage(CONFIG)
+        self._graph_service: GraphService = GraphService(CONFIG)
+        self._generator: GeneratorMock = GeneratorMock(CONFIG)
+        self._source_parser: SourceParser = SourceParser(CONFIG)
+        self._emitter: EventsEmitter = EventsEmitter()
+        self._objects_service: ObjectsService = ObjectsService(
+            self._emitter, CONFIG, Objects())
+        self._players_service: PlayersService = PlayersService(
+            self._emitter, CONFIG, self._storage, self._objects_service)
+        self._warehouse_service: WarehouseService = WarehouseService(
+            self._emitter, CONFIG, self._storage)
+        self._airfields_service: AirfieldsService = AirfieldsService(
+            self._emitter, CONFIG, self._storage, self._objects_service, AircraftVendorService(CONFIG))
+        self._divisions_service: DivisionsService = DivisionsService(
+            self._emitter, CONFIG, self._storage)
+        self._tvd_services: Dict[str, TvdService] = {tvd_name: TvdService(tvd_name,
+                                                                          CONFIG,
+                                                                          self._storage,
+                                                                          self._graph_service,
+                                                                          self._warehouse_service)
+                                                     for tvd_name in CONFIG.mgen.maps}
+        self._campaign_service: CampaignService = CampaignService(
+            self._emitter,
+            CONFIG,
+            self._storage,
+            self._players_service,
+            self._graph_service,
+            self._warehouse_service,
+            self._airfields_service,
+            self._divisions_service,
+            self._tvd_services,
+            self._source_parser,
+            self._generator
+        )
+        self._ground_targets_service: GroundTargetsService = GroundTargetsService(
+            self._emitter, CONFIG, self._objects_service)
+        self.directory = Path(r'./tmp/').absolute()
         if not self.directory.exists():
             self.directory.mkdir(parents=True)
         _make_dirs([
@@ -70,52 +120,51 @@ class TestIntegration(unittest.TestCase):
             './tmp/red/',
             './tmp/blue/'
         ])
-        IOC.generator_mock.generations.clear()
+        self._generator.generations.clear()
 
     def tearDown(self):
         """Удаление базы после теста"""
-        tests.utils.clean_directory(str(self.directory))
-        IOC.storage.drop_database()
+        clean_directory(str(self.directory))
+        self._storage.drop_database()
 
     def test_processing_with_atype_7(self):
         """Завершается корректно миссия с AType:7 в логе"""
-        controller = core.EventsController(IOC)
-        for tvd_name in IOC.config.mgen.maps:
-            IOC.grid_controller.get_file = _get_xgml_file_mock
-            IOC.campaign_controller.initialize_map(tvd_name)
+        for tvd_name in CONFIG.mgen.maps:
+            self._graph_service.get_file = _get_xgml_file_mock
+            self._campaign_service.initialize_map(tvd_name)
         # Act
-        for line in pathlib.Path(TEST_LOG1).read_text().split('\n'):
-            controller.process_line(line)
+        for line in Path(TEST_LOG1).read_text().split('\n'):
+            self._emitter.process_line(line)
         # Assert
-        self.assertEqual(True, IOC.campaign_controller.mission.is_correctly_completed)
+        self.assertEqual(
+            True, self._campaign_service.mission.is_correctly_completed)
 
     def test_bombing(self):
         """Учитываются наземные цели"""
-        IOC.source_parser.parse_in_dogfight = _parse_mock
-        controller = core.EventsController(IOC)
-        for tvd_name in IOC.config.mgen.maps:
-            IOC.grid_controller.get_file = _get_xgml_file_mock
-            IOC.campaign_controller.initialize_map(tvd_name)
+        self._source_parser.parse_in_dogfight = _parse_mock
+        for tvd_name in CONFIG.mgen.maps:
+            self._graph_service.get_file = _get_xgml_file_mock
+            self._campaign_service.initialize_map(tvd_name)
         # Act
-        for line in pathlib.Path(TEST_LOG2).read_text().split('\n'):
-            controller.process_line(line)
+        for line in Path(TEST_LOG2).read_text().split('\n'):
+            self._emitter.process_line(line)
         # Assert
-        self.assertGreater(len(IOC.ground_controller.ground_kills), 1)
+        self.assertGreater(len(self._ground_targets_service.ground_kills), 1)
 
     def test_end_round(self):
         """Перераспределяются самолёты по аэродромам в конце миссии"""
         shutil.copy('./data/scg/1/stalin-base.ldf', './tmp/data/scg/1/')
         shutil.copy('./data/scg/2/moscow_base.ldf', './tmp/data/scg/2/')
-        IOC.source_parser.parse_in_dogfight = _parse_mock
-        controller = core.EventsController(IOC)
-        for tvd_name in IOC.config.mgen.maps:
-            IOC.grid_controller.get_file = _get_xgml_file_mock
-            IOC.campaign_controller.initialize_map(tvd_name)
+        self._source_parser.parse_in_dogfight = _parse_mock
+        for tvd_name in CONFIG.mgen.maps:
+            self._graph_service.get_file = _get_xgml_file_mock
+            self._campaign_service.initialize_map(tvd_name)
         # Act
-        for line in pathlib.Path(TEST_LOG6).read_text().split('\n'):
-            controller.process_line(line)
+        for line in Path(TEST_LOG6).read_text().split('\n'):
+            self._emitter.process_line(line)
         # Assert
-        airfield = controller.airfields_controller.get_airfield_in_radius(TEST_TVD_NAME, 21649, 108703, 50)
+        airfield = self._airfields_service.get_airfield_in_radius(
+            TEST_TVD_NAME, 21649, 108703, 50)
         self.assertGreater(airfield.planes_count, 100)
 
 

@@ -74,11 +74,13 @@ class EventsInterceptor(BaseEventService):
         super().__init__(emitter)
         self.division_damages = []
         self.division_kills = []
+        self.commands = []
     
     def init(self) -> None:
         self.register_subscriptions([
             self.emitter.gameplay_division_damage.subscribe_(self.division_damages.append),
             self.emitter.gameplay_division_kill.subscribe_(self.division_kills.append),
+            self.emitter.commands_rcon.subscribe_(self.commands.append),
         ])
 
     def private_message(self, account_id: str, message: str):
