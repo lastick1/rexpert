@@ -3,15 +3,13 @@ from __future__ import annotations
 from typing import Dict
 
 import logging
-import pathlib
-import shutil
 import datetime
 
 from constants import DATE_FORMAT
-from core import EventsEmitter, Atype0, Atype7, Atype8, Atype15, Atype19
+from core import EventsEmitter, Generation, Atype0, Atype7, Atype8, Atype15, Atype19
 from configs import Config
 from storage import Storage
-from processing import Generator, SourceParser
+from processing import SourceParser
 
 from model import CampaignMission, \
     CampaignMap, \
@@ -27,11 +25,8 @@ from model import CampaignMission, \
 
 
 from .base_event_service import BaseEventService
-from .players_service import PlayersService
 from .graph_service import GraphService
-from .warehouses_service import WarehouseService
 from .airfields_service import AirfieldsService
-from .divisions_service import DivisionsService
 from .tvd_service import TvdService
 START_DATE = 'start_date'
 END_DATE = 'end_date'
@@ -45,26 +40,18 @@ class CampaignService(BaseEventService):
             emitter: EventsEmitter,
             config: Config,
             storage: Storage,
-            players_service: PlayersService,
             graph_service: GraphService,
-            warehouse_service: WarehouseService,
             airfields_service: AirfieldsService,
-            divisions_service: DivisionsService,
             tvd_services: Dict[str, TvdService],
             source_parser: SourceParser,
-            generator: Generator
     ):
         super().__init__(emitter)
         self._config: Config = config
         self._storage: Storage = storage
-        self._players_service: PlayersService = players_service
         self._graph_service: GraphService = graph_service
-        self._warehouse_service: WarehouseService = warehouse_service
         self._airfields_service: AirfieldsService = airfields_service
-        self._divisions_service: DivisionsService = divisions_service
         self._tvd_services: Dict[str, TvdService] = tvd_services
         self._source_parser: SourceParser = source_parser
-        self._generator: Generator = generator
         self._mission: CampaignMission = None
         self._campaign_map: CampaignMap = None
         self._current_tvd: Tvd = None
@@ -110,67 +97,6 @@ class CampaignService(BaseEventService):
         if self._mission.tik_last > tik:
             raise NameError('некорректный порядок лога')
         self._mission.tik_last = tik
-
-    def initialize_map(self, tvd_name: str):
-        """Инициализировать карту кампании"""
-        self._graph_service.initialize(tvd_name)
-        self._warehouse_service.initialize_warehouses(tvd_name)
-        start = self._config.mgen.cfg[tvd_name][START_DATE]
-        order = list(self._config.mgen.maps).index(tvd_name) + 1
-        campaign_map = CampaignMap(
-            order=order, date=start, mission_date=start, tvd_name=tvd_name, months=list())
-        tvd = self._tvd_services[campaign_map.tvd_name].get_tvd(
-            campaign_map.date.strftime(DATE_FORMAT))
-        self._airfields_service.initialize_tvd(tvd, campaign_map)
-        self._storage.campaign_maps.update(campaign_map)
-        self._divisions_service.initialize_divisions(tvd_name)
-        logging.info(f'{tvd_name} initialized')
-
-    def reset(self):
-        """Сбросить состояние кампании"""
-        self._storage.airfields.collection.drop()
-        self._storage.campaign_maps.collection.drop()
-        self._storage.campaign_missions.collection.drop()
-        self._storage.divisions.collection.drop()
-        self._storage.warehouses.collection.drop()
-        logging.info('Database cleaned.')
-
-    def _generate(self,
-                  mission_name: str,
-                  date: str,
-                  tvd_name: str):
-        """Сгенерировать миссию для указанной даты и ТВД кампании"""
-        tvd_builder: TvdService = self._tvd_services[tvd_name]
-        tvd = tvd_builder.get_tvd(date)
-        airfields = self._storage.airfields.load_by_tvd(tvd_name)
-        tvd_builder.update(
-            tvd, self._divisions_service.filter_airfields(tvd_name, airfields))
-        self._generator.make_ldb(tvd_name)
-        self._generator.make_lgb(tvd_name)
-
-        mission_template: str = str(self._config.mgen.tvd_folders[tvd_name].joinpath(
-            self._config.mgen.cfg[tvd_name]['mission_template']).absolute())
-
-        self._generator.make_mission(mission_template, mission_name, tvd_name)
-
-    def generate(self, mission_name, tvd_name: str, date: str):
-        """Сгенерировать текущую миссию кампании с указанным именем"""
-        self._generate(mission_name, date, tvd_name)
-
-    def initialize(self):
-        """Инициализировать кампанию в БД, обновить файлы в data/scg и сгенерировать первую миссию"""
-        scg_path = pathlib.Path(
-            self._config.main.game_folder.joinpath('data/scg'))
-        if not scg_path.exists():
-            logging.info('Copy data/scg to game/data/scg.')
-            shutil.copytree(r'./data/scg', str(scg_path.absolute()))
-        for tvd_name in self._config.mgen.maps:
-            self.initialize_map(tvd_name)
-
-        self._campaign_map = self._storage.campaign_maps.load_by_order(2)
-        self.generate('result1', self._campaign_map.tvd_name,
-                      self._campaign_map.date.strftime(DATE_FORMAT))
-        self._players_service.reset()
 
     def _start_mission(self, atype: Atype0):
         """Обработать начало миссии"""
@@ -240,10 +166,12 @@ class CampaignService(BaseEventService):
                 self._campaign_map.tvd_name,
                 {'x': lost.x, 'z': lost.z},
                 self.won_country)
-        self._generate(
+        self.emitter.generations.on_next(Generation(
             self.next_name,
             (self._campaign_map.date + datetime.timedelta(days=1)).strftime(DATE_FORMAT),
-            self._campaign_map.tvd_name)
+            self._campaign_map.tvd_name,
+            atype
+        ))
         self._storage.campaign_maps.update(self._campaign_map)
 
     @staticmethod

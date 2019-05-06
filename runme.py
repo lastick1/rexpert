@@ -118,19 +118,19 @@ def fix_log(folder: str):
 def reset():
     """Сбросить состояние кампании"""
     app = App(Path('./configs/main.json'))
-    app.campaign_service.reset()
+    app.reset()
 
 
 def initialize_campaign():
     """Инициализация кампании"""
     app = App(Path('./configs/main.json'))
-    app.campaign_service.initialize()
+    app.initialize_campaign()
 
 
 def generate(name: str, tvd_name: str, date: str):
     """Сгенерировать миссию"""
     app = App(Path('./configs/main.json'))
-    app.campaign_service.generate(name, tvd_name, date)
+    app.generate(name, tvd_name, date)
 
 
 def _generate(args: list):

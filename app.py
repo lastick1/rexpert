@@ -1,105 +1,59 @@
-"""Контейнер зависимостей"""
+"Приложение"
 from __future__ import annotations
-from typing import Dict
 
+import logging
+import shutil
 from pathlib import Path
-from core import EventsEmitter
-from configs import Config, Objects
-from rcon import DServerRcon
-from storage import Storage
-from services import ObjectsService, \
-    PlayersService, \
-    GraphService, \
-    WarehouseService, \
-    AircraftVendorService, \
-    AirfieldsService, \
-    DivisionsService, \
-    TvdService, \
-    DServerService, \
-    CampaignService
-from processing import SourceParser, \
-    Generator
-from reader import LogsReaderRx
+from app_base import AppBase
+from model import CampaignMap
+from constants import DATE_FORMAT
 
 
-class App:
-    "Все составные компоненты приложения"
+START_DATE = 'start_date'
 
-    def __init__(self, main_json: Path):
-        self.config: Config = Config(main_json)
-        self.objects: Objects = Objects()
-        self.events_emitter: EventsEmitter = EventsEmitter()
-        self.rcon: DServerRcon = DServerRcon(
-            self.config.main.rcon_ip,
-            self.config.main.rcon_port,
-        )
-        self.storage: Storage = Storage(self.config.main)
-        self.objects_service: ObjectsService = ObjectsService(
-            self.events_emitter,
-            self.config,
-            self.objects,
-        )
-        self.players_service: PlayersService = PlayersService(
-            self.events_emitter,
-            self.config,
-            self.storage,
-            self.objects_service
-        )
-        self.graph_service: GraphService = GraphService(self.config)
-        self.warehouse_service: WarehouseService = WarehouseService(
-            self.events_emitter,
-            self.config,
-            self.storage,
-        )
-        self.aircrafts_vendor_service: AircraftVendorService = AircraftVendorService(
-            self.config,
-        )
-        self.airfields_service: AirfieldsService = AirfieldsService(
-            self.events_emitter,
-            self.config,
-            self.storage,
-            self.objects_service,
-            self.aircrafts_vendor_service,
-        )
-        self.divisions_service: DivisionsService = DivisionsService(
-            self.events_emitter,
-            self.config,
-            self.storage
-        )
-        self.tvd_services: Dict[str, TvdService] = {tvd_name: TvdService(tvd_name,
-                                                                         self.config,
-                                                                         self.storage,
-                                                                         self.graph_service,
-                                                                         self.warehouse_service)
-                                                    for tvd_name in self.config.mgen.maps}
-        self.source_parser: SourceParser = SourceParser(self.config)
-        self.generator: Generator = Generator(self.config)
-        self.campaign_service: CampaignService = CampaignService(
-            self.events_emitter,
-            self.config,
-            self.storage,
-            self.players_service,
-            self.graph_service,
-            self.warehouse_service,
-            self.airfields_service,
-            self.divisions_service,
-            self.tvd_services,
-            self.source_parser,
-            self.generator
-        )
-        self.dserver_service: DServerService = DServerService(
-            self.events_emitter,
-            self.config
-        )
-        self.reader: LogsReaderRx = LogsReaderRx(
-            self.config,
-            self.events_emitter,
-            self.airfields_service
-        )
-        self.objects_service.init()
-        self.campaign_service.init()
-        self.airfields_service.init()
-        self.players_service.init()
-        self.divisions_service.init()
-        self.warehouse_service.init()
-        self.dserver_service.init()
+
+class App(AppBase):
+    "Основной класс приложения"
+
+    def generate(self, mission_name: str, date: str, tvd_name: str):
+        "Сгенерировать миссию"
+        self.generator_service.generate(mission_name, date, tvd_name)
+
+    def initialize_map(self, tvd_name: str):
+        """Инициализировать карту кампании"""
+        self.graph_service.initialize(tvd_name)
+        self.warehouse_service.initialize_warehouses(tvd_name)
+        start = self.config.mgen.cfg[tvd_name][START_DATE]
+        order = list(self.config.mgen.maps).index(tvd_name) + 1
+        campaign_map = CampaignMap(
+            order=order, date=start, mission_date=start, tvd_name=tvd_name, months=list())
+        tvd = self.tvd_services[campaign_map.tvd_name].get_tvd(
+            campaign_map.date.strftime(DATE_FORMAT))
+        self.airfields_service.initialize_tvd(tvd, campaign_map)
+        self.storage.campaign_maps.update(campaign_map)
+        self.divisions_service.initialize_divisions(tvd_name)
+        logging.info(f'{tvd_name} initialized')
+
+    def initialize_campaign(self) -> None:
+        """Инициализировать кампанию в БД, обновить файлы в data/scg и сгенерировать первую миссию"""
+        scg_path = Path(
+            self.config.main.game_folder.joinpath('data/scg'))
+        if not scg_path.exists():
+            logging.info('Copy data/scg to game/data/scg.')
+            shutil.copytree(r'./data/scg', str(scg_path.absolute()))
+        for tvd_name in self.config.mgen.maps:
+            self.initialize_map(tvd_name)
+
+        campaign_map = self.storage.campaign_maps.load_by_order(2)
+        self.generate('result1', campaign_map.tvd_name,
+                      campaign_map.date.strftime(DATE_FORMAT))
+        self.players_service.reset()
+
+    def reset(self):
+        """Сбросить состояние кампании"""
+        self.storage.airfields.collection.drop()
+        self.storage.campaign_maps.collection.drop()
+        self.storage.campaign_missions.collection.drop()
+        self.storage.divisions.collection.drop()
+        self.storage.warehouses.collection.drop()
+        logging.info('Database cleaned.')

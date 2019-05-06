@@ -1,5 +1,14 @@
 "События на основе Atype из логов"
-from .atypes import Atype10, Atype16
+from .atypes import Atype10, Atype16, Atype19
+
+
+class Generation:
+    "Генерация новой миссии"
+    def __init__(self, mission_name: str, mission_date: str, tvd_name: str, atype: Atype19):
+        self.mission_name = mission_name
+        self.mission_date = mission_date
+        self.tvd_name = tvd_name
+        self.atype = atype
 
 
 class Spawn:

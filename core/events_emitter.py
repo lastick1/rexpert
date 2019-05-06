@@ -19,6 +19,7 @@ class EventsEmitter(CommandsEmitter):
         self._gameplay_warehouse_damage: Subject = Subject()
         self._gameplay_warehouse_disable: Subject = Subject()
         self._player_finish: Subject = Subject()
+        self._generations: Subject = Subject()
 
     @property
     def campaign_mission(self) -> BehaviorSubject:
@@ -54,3 +55,8 @@ class EventsEmitter(CommandsEmitter):
     def player_finish(self) -> Subject:
         "Поток событий завершений самолётовылетов"
         return self._player_finish
+
+    @property
+    def generations(self) -> Subject:
+        "Поток запусков генерации миссий"
+        return self._generations
