@@ -6,7 +6,14 @@ import logging
 import datetime
 
 from constants import DATE_FORMAT
-from core import EventsEmitter, Generation, Atype0, Atype7, Atype8, Atype15, Atype19
+from core import EventsEmitter, \
+    Capture, \
+    Generation, \
+    Atype0, \
+    Atype7, \
+    Atype8, \
+    Atype15, \
+    Atype19
 from configs import Config
 from storage import Storage
 from processing import SourceParser
@@ -25,7 +32,6 @@ from model import CampaignMission, \
 
 
 from .base_event_service import BaseEventService
-from .graph_service import GraphService
 from .airfields_service import AirfieldsService
 from .tvd_service import TvdService
 START_DATE = 'start_date'
@@ -40,7 +46,6 @@ class CampaignService(BaseEventService):
             emitter: EventsEmitter,
             config: Config,
             storage: Storage,
-            graph_service: GraphService,
             airfields_service: AirfieldsService,
             tvd_services: Dict[str, TvdService],
             source_parser: SourceParser,
@@ -48,7 +53,6 @@ class CampaignService(BaseEventService):
         super().__init__(emitter)
         self._config: Config = config
         self._storage: Storage = storage
-        self._graph_service: GraphService = graph_service
         self._airfields_service: AirfieldsService = airfields_service
         self._tvd_services: Dict[str, TvdService] = tvd_services
         self._source_parser: SourceParser = source_parser
@@ -162,10 +166,11 @@ class CampaignService(BaseEventService):
         if self.won_country:
             lost = self._airfields_service.get_weakest_airfield(
                 invert[self.won_country])
-            self._graph_service.capture(
+            self.emitter.gameplay_capture.on_next(Capture(
                 self._campaign_map.tvd_name,
                 {'x': lost.x, 'z': lost.z},
-                self.won_country)
+                self.won_country
+            ))
         self.emitter.generations.on_next(Generation(
             self.next_name,
             (self._campaign_map.date + datetime.timedelta(days=1)).strftime(DATE_FORMAT),

@@ -3,6 +3,7 @@ from __future__ import annotations
 import pathlib
 import unittest
 
+from core import EventsEmitter
 from services import GraphService
 from tests.mocks import ConfigMock
 from tests.utils import clean_directory
@@ -16,6 +17,7 @@ class TestGridControl(unittest.TestCase):
 
     def setUp(self):
         """Настройка перед тестом"""
+        self.emitter: EventsEmitter = EventsEmitter()
         self.directory = pathlib.Path('./tmp/').absolute()
         if not self.directory.exists():
             self.directory.mkdir(parents=True)
@@ -27,7 +29,8 @@ class TestGridControl(unittest.TestCase):
 
     def test_initialize(self):
         """Выполняется инициализация графа кампании"""
-        service = GraphService(CONFIG)
+        service = GraphService(self.emitter, CONFIG)
+        service.init()
         # Act
         service.initialize(TEST_TVD_NAME)
         # Assert
@@ -36,7 +39,8 @@ class TestGridControl(unittest.TestCase):
 
     def test_reset(self):
         """Выполняется сброс графа кампании"""
-        service = GraphService(CONFIG)
+        service = GraphService(self.emitter, CONFIG)
+        service.init()
         service.initialize(TEST_TVD_NAME)
         # Act
         service.reset(TEST_TVD_NAME)
@@ -48,7 +52,8 @@ class TestGridControl(unittest.TestCase):
     def test_capture(self):
         """Выполняется сохранение обновлённой версии графа после захвата"""
         pos = {'x': 144485, 'z': 136915}
-        service = GraphService(CONFIG)
+        service = GraphService(self.emitter, CONFIG)
+        service.init()
         service.initialize(TEST_TVD_NAME)
         # Act
         service.capture(TEST_TVD_NAME, pos, 101)

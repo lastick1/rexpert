@@ -18,6 +18,7 @@ class EventsEmitter(CommandsEmitter):
         self._gameplay_division_kill: Subject = Subject()
         self._gameplay_warehouse_damage: Subject = Subject()
         self._gameplay_warehouse_disable: Subject = Subject()
+        self._gameplay_capture: Subject = Subject()
         self._player_finish: Subject = Subject()
         self._generations: Subject = Subject()
 
@@ -50,6 +51,11 @@ class EventsEmitter(CommandsEmitter):
     def gameplay_warehouse_disable(self) -> Subject:
         "Поток игровых событий уничтожений складов"
         return self._gameplay_warehouse_disable
+
+    @property
+    def gameplay_capture(self) -> Subject:
+        "Поток игровых событий захвата территории"
+        return self._gameplay_capture
 
     @property
     def player_finish(self) -> Subject:

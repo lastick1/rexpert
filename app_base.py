@@ -46,7 +46,10 @@ class AppBase:
             self.storage,
             self.objects_service
         )
-        self.graph_service: GraphService = GraphService(self.config)
+        self.graph_service: GraphService = GraphService(
+            self.events_emitter,
+            self.config,
+        )
         self.warehouse_service: WarehouseService = WarehouseService(
             self.events_emitter,
             self.config,
@@ -79,7 +82,6 @@ class AppBase:
             self.events_emitter,
             self.config,
             self.storage,
-            self.graph_service,
             self.airfields_service,
             self.tvd_services,
             self.source_parser
@@ -108,4 +110,5 @@ class AppBase:
         self.divisions_service.init()
         self.warehouse_service.init()
         self.dserver_service.init()
+        self.graph_service.init()
         self.generator_service.init()

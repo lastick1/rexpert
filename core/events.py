@@ -2,13 +2,21 @@
 from .atypes import Atype10, Atype16, Atype19
 
 
+class Capture:
+    "Захват территории"
+    def __init__(self, tvd_name: str, pos: dict, country: int):
+        self.tvd_name: str = tvd_name
+        self.pos: dict = pos
+        self.country: int = country
+
+
 class Generation:
     "Генерация новой миссии"
     def __init__(self, mission_name: str, mission_date: str, tvd_name: str, atype: Atype19):
-        self.mission_name = mission_name
-        self.mission_date = mission_date
-        self.tvd_name = tvd_name
-        self.atype = atype
+        self.mission_name: str = mission_name
+        self.mission_date: str = mission_date
+        self.tvd_name: str = tvd_name
+        self.atype: Atype19 = atype
 
 
 class Spawn:

@@ -6,22 +6,36 @@ import os
 import pathlib
 import shutil
 
+from core import EventsEmitter, Capture
 from configs import Config
 from model.grid import Grid
 
 from processing import Xgml
 
+from .base_event_service import BaseEventService
 
-class GraphService:
+
+class GraphService(BaseEventService):
     """Класс, выполняющий управление графами в кампании"""
 
     def __init__(
             self,
+            emitter: EventsEmitter,
             config: Config
     ):
+        super().__init__(emitter)
         self._config = config
         self.xgml_folders = {tvd_name: pathlib.Path(self._config.main.current_grid_folder.joinpath(tvd_name))
                              for tvd_name in config.mgen.maps}
+
+    def init(self) -> None:
+        self.register_subscription(
+            self.emitter.gameplay_capture.subscribe_(self._capture)
+        )
+
+    def _capture(self, capture: Capture) -> None:
+        "Обработать событие захвата территории"
+        self.capture(capture.tvd_name, capture.pos, capture.country)
 
     def initialize(self, tvd_name: str):
         """Инициализировать граф указанного ТВД в кампании"""

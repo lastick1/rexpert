@@ -28,4 +28,5 @@ from .atypes import Atype0, \
 from .events import Finish, \
     DivisionDamage, \
     WarehouseDamage, \
-    Generation
+    Generation, \
+    Capture
