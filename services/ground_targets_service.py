@@ -7,7 +7,8 @@ from core import EventsEmitter, \
     Atype3, \
     Atype8, \
     DivisionDamage, \
-    WarehouseDamage
+    WarehouseDamage, \
+    PointsGain
 from configs import Config
 import log_objects
 import geometry
@@ -172,6 +173,8 @@ class GroundTargetsService(BaseEventService):
         self.register_subscriptions([
             self.emitter.campaign_mission.subscribe_(
                 self._update_campaign_mission),
+            self.emitter.events_mission_result.subscribe_(
+                self._mission_result),
             self.emitter.events_mission_start.subscribe_(self._mission_start),
             self.emitter.events_kill.subscribe_(self._kill),
             self.emitter.events_mission_result.subscribe_(
@@ -267,6 +270,11 @@ class GroundTargetsService(BaseEventService):
 
     def _mission_result(self, atype: Atype8) -> None:
         """Обработать mission objective в логах"""
+        self.emitter.gameplay_points_gain.on_next(PointsGain(
+            atype.coal_id * 100 + 1,
+            self._config.mgen.mission_objectives[atype.task_type_id].capture_points,
+            atype
+        ))
 
     def killed_bridges(self, country: int) -> int:
         """Количество убитых мостов указанной стороны"""

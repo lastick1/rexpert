@@ -4,7 +4,10 @@ import logging
 import unittest
 
 from configs import Objects
-from core import EventsEmitter, Atype3
+from core import EventsEmitter, \
+    Atype3, \
+    Atype8, \
+    PointsGain
 from geometry import Point
 from services import GroundTargetsService, ObjectsService
 from model import CampaignMission
@@ -13,7 +16,6 @@ from tests.mocks import EventsInterceptor, \
     ConfigMock, \
     atype_12_stub
 
-CONFIG = ConfigMock()
 
 logging.basicConfig(
     format=u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s] %(message)s', level=logging.DEBUG)
@@ -68,11 +70,12 @@ class TestGroundControl(unittest.TestCase):
 
     def setUp(self):
         """Настройка перед тестами"""
-        self._events_emitter = EventsEmitter()
-        self._interceptor = EventsInterceptor(self._events_emitter)
+        self.config = ConfigMock()
+        self.emitter = EventsEmitter()
+        self._interceptor = EventsInterceptor(self.emitter)
         self._interceptor.init()
         self._objects_service = ObjectsService(
-            self._events_emitter, CONFIG, Objects())
+            self.emitter, self.config, Objects())
 
     def tearDown(self):
         """Очистка после тестов"""
@@ -80,8 +83,8 @@ class TestGroundControl(unittest.TestCase):
 
     def test_kill(self):
         """Учитываются уничтоженные наземные цели"""
-        service = GroundTargetsService(self._events_emitter,
-                                       CONFIG,
+        service = GroundTargetsService(self.emitter,
+                                       self.config,
                                        self._objects_service)
         target_name = 'static_il2'
         aircraft_name = 'I-16 type 24'
@@ -102,8 +105,8 @@ class TestGroundControl(unittest.TestCase):
 
     def test_kill_aircraft(self):
         """Учитываются только уничтоженные наземные цели"""
-        service = GroundTargetsService(self._events_emitter,
-                                       CONFIG,
+        service = GroundTargetsService(self.emitter,
+                                       self.config,
                                        self._objects_service)
         aircraft_name = 'I-16 type 24'
         aircraft = self._objects_service._create_object(
@@ -116,11 +119,11 @@ class TestGroundControl(unittest.TestCase):
 
     def test_division_unit_kill(self):
         """Обрабатывается уничтожение подразделения дивизии"""
-        service = GroundTargetsService(self._events_emitter,
-                                       CONFIG,
+        service = GroundTargetsService(self.emitter,
+                                       self.config,
                                        self._objects_service)
         service.init()
-        self._events_emitter.campaign_mission.on_next(TEST_MISSION)
+        self.emitter.campaign_mission.on_next(TEST_MISSION)
         target_name = 'static_il2'
         aircraft_name = 'I-16 type 24'
         attacker = self._objects_service._create_object(
@@ -144,29 +147,37 @@ class TestGroundControl(unittest.TestCase):
         # Assert
         self.assertTrue(self._interceptor.division_damages)
 
-    @unittest.skip('Перенести тест в сервис управления дивизиями')
-    def test_division_kill(self):
-        """Обрабатывается уничтожение дивизии"""
-        service = GroundTargetsService(self._events_emitter,
-                                       CONFIG,
+    def test_artillery_kill(self):
+        """Обрабатывается уничтожение артиллерийской батареи"""
+        coal_id = 1
+        pos = {'x': 10.1, 'z': 11.1}
+        service = GroundTargetsService(self.emitter,
+                                       self.config,
                                        self._objects_service)
         service.init()
-        self._events_emitter.campaign_mission.on_next(TEST_MISSION)
-        target_name = 'static_il2'
-        aircraft_name = 'I-16 type 24'
-        attacker = self._objects_service._create_object(
-            atype_12_stub(2, aircraft_name, 201, 'Test attacker', -1))
-        target = self._objects_service._create_object(
-            atype_12_stub(3, target_name, 101, 'Test ground target', -1))
-        service._mission_start(None)
         # Act
-        for pos in TEST_TARGET_POS_BTD1_UNITS:
-            for i in range(20):
-                self._objects_service._kill(
-                    Atype3(4444, attacker.obj_id, target.obj_id, pos))
-                service._kill(Atype3(123, -1, target.obj_id, pos))
+        self.emitter.events_mission_result.on_next(Atype8(
+            20, 1, coal_id, 4, True, 1, pos
+        ))
         # Assert
-        self.assertTrue(self._interceptor.division_kills)
+        self.assertTrue(self._interceptor.points_gains)
+        self.assertEqual(2, self._interceptor.points_gains[0].capture_points)
+
+    def test_tanks_cover_fail(self):
+        """Обрабатывается уничтожение танкового наступления"""
+        coal_id = 1
+        pos = {'x': 10.1, 'z': 11.1}
+        service = GroundTargetsService(self.emitter,
+                                       self.config,
+                                       self._objects_service)
+        service.init()
+        # Act
+        self.emitter.events_mission_result.on_next(Atype8(
+            20, 1, coal_id, 6, True, 1, pos
+        ))
+        # Assert
+        self.assertTrue(self._interceptor.points_gains)
+        self.assertEqual(-1, self._interceptor.points_gains[0].capture_points)
 
 
 if __name__ == '__main__':

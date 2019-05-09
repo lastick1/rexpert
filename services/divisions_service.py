@@ -1,9 +1,10 @@
 """Управление дивизиями"""
 from __future__ import annotations
+from typing import List, Dict, Set
 import logging
 import re
 
-from core import EventsEmitter
+from core import EventsEmitter, DivisionDamage, PointsGain
 from configs import Config
 from storage import Storage
 from model import Division, \
@@ -16,6 +17,10 @@ from .base_event_service import BaseEventService
 
 DIVISION_INPUT_RE = re.compile(
     r'^(?P<side>[BR])(?P<type>[TAI])D(?P<number>\d)$'
+)
+
+DIVISION_UNIT_RE = re.compile(
+    r'^REXPERT_(?P<division_name>[BR][TAI]D\d)_(?P<durability>\d+)$'
 )
 
 
@@ -40,20 +45,17 @@ class DivisionsService(BaseEventService):
         self._config: Config = config
         self._storage: Storage = storage
         self._campaign_mission: CampaignMission = None
-        self._current_divisions = dict()
-        self._sent_inputs = set()
+        self._current_divisions: Dict[str, Division] = dict()
+        self._sent_inputs: Set[str] = set()
         self._round_ended: bool = False
 
     def init(self) -> None:
         self.register_subscriptions([
             self.emitter.campaign_mission.subscribe_(
-                self._update_campaign_mission),
+                self.start_mission),
             self.emitter.gameplay_division_damage.subscribe_(
                 self.damage_division),
         ])
-
-    def _update_campaign_mission(self, campaign_mission: CampaignMission) -> None:
-        self._campaign_mission = campaign_mission
 
     def filter_airfields(self, tvd_name: str, airfields: list) -> list:
         """Отбросить аэродромы, расположенные близко к дивизиям"""
@@ -83,8 +85,9 @@ class DivisionsService(BaseEventService):
             )
         logging.debug(f'{tvd_name} divisions initialized')
 
-    def start_mission(self):
+    def start_mission(self, campaign_mission: CampaignMission):
         """Обработать начало миссии - обновить положение дивизий из исходников"""
+        self._campaign_mission = campaign_mission
         self._round_ended = False
         self._current_divisions.clear()
         self._sent_inputs.clear()
@@ -94,10 +97,23 @@ class DivisionsService(BaseEventService):
                     self._campaign_mission.tvd_name, server_input['name'])
                 division.pos = server_input['pos']
                 self._storage.divisions.update(division)
-        divisions = self._storage.divisions.load_by_tvd(
-            self._campaign_mission.tvd_name)
+        divisions = self.parse_divisions(self._campaign_mission.units, self._campaign_mission.tvd_name)
         for division in divisions:
             self._current_divisions[_to_division(division).name] = division
+            self._check_division(0, division)
+
+    def parse_divisions(self, units: List[Dict], tvd_name: str) -> List[Division]:
+        "Считать дивизии из обнаруженных юнитов в исходнике миссии"
+        data: Dict[str, Dict] = dict()
+        for unit in units:
+            groupdict = DIVISION_UNIT_RE.match(unit['name']).groupdict()
+            if groupdict['division_name'] not in data:
+                data[groupdict['division_name']] = {
+                    'units': list()
+                }
+            data[groupdict['division_name']]['units'].append({**groupdict, **unit})
+
+        return [Division(tvd_name, x, len(data[x]['units']), data[x]['units'][0]['pos']) for x in data]
 
     def end_round(self):
         """Обработать завершение раунда"""
@@ -106,26 +122,36 @@ class DivisionsService(BaseEventService):
             self.repair_division(
                 self._current_divisions[division_name].tvd_name, division_name, 0)
 
-    def damage_division(self, tik: int, tvd_name: str, unit_name: str):
+    def damage_division(self, damage: DivisionDamage):
         """Зачесть уничтожение подразделения дивизии"""
-        division_name = unit_name.split(sep='_')[1]
+        division_name = damage.unit_name.split(sep='_')[1]
         division = self._storage.divisions.load_by_name(
-            tvd_name, division_name)
+            damage.tvd_name, division_name)
         if self._round_ended:
             logging.warning(
-                f'{division.name} unit {unit_name} destroyed after round end')
+                f'{division.name} unit {damage.unit_name} destroyed after round end')
             return
         division.units -= 1
         if division.units < 0:
             division.units = 0
-        if division.units <= self._config.gameplay.division_death and division.name not in self._sent_inputs:
-            self.emitter.gameplay_division_kill.on_next(
-                DivisionKill(tik, division.country, division.name))
+        self._check_division(damage.tik, division)
+        logging.info(
+            f'{division.tvd_name} division {division.name} lost unit:{damage.unit_name}')
+        self._storage.divisions.update(division)
+
+    def _check_division_health(self, division: Division) -> bool:
+        "Проверить порог уничтожения дивизии"
+        return division.units <= self._config.gameplay.division_death
+
+    def _check_division(self, tik: int, division: Division) -> None:
+        "Проверить дивизию и отправить отреагировать на уничтожение при необходимости"
+        if self._check_division_health(division) and division.name not in self._sent_inputs:
+            self.emitter.gameplay_points_gain.on_next(PointsGain(
+                division.country,
+                3,
+                DivisionKill(tik, division.country, division.name)))
             self._sent_inputs.add(division.name)
             self.emitter.commands_rcon.on_next(ServerInput(division.name))
-        logging.info(
-            f'{division.tvd_name} division {division.name} lost unit:{unit_name}')
-        self._storage.divisions.update(division)
 
     def repair_rate(self, penalties: int):
         """Получить множитель восстановления с учётом уничтоженных складов"""

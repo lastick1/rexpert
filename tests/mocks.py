@@ -1,9 +1,11 @@
 """Заглушки, фальшивки и т.п. для тестирования"""
 # pylint: disable=all
+from __future__ import annotations
+from typing import List
 from pathlib import Path
 
 from configs import Config, Main, Mgen, Planes
-from core import Atype12
+from core import Atype12, PointsGain
 from model import Tvd, Node, Grid
 from processing import Generator, MapPainter
 from storage import Storage
@@ -23,6 +25,13 @@ TEST_LOG4 = './testdata/logs/gkills_with_disconnect_missionReport(2017-09-26_20-
 TEST_LOG5 = './testdata/logs/gkill_with_altf4_disco_missionReport(2017-09-26_21-10-48)[0].txt'
 TEST_LOG6 = './testdata/logs/mission_rotation_atype19.txt'
 TEST_LOG7 = './tests/data/logs/short_mission_full_log.txt'
+
+
+
+# pylint: disable=unused-argument
+def pass_(*args, **kwargs):
+    pass
+
 
 
 class MainMock(Main):
@@ -73,13 +82,13 @@ class EventsInterceptor(BaseEventService):
     def __init__(self, emitter):
         super().__init__(emitter)
         self.division_damages = []
-        self.division_kills = []
         self.commands = []
+        self.points_gains: List[PointsGain] = []
     
     def init(self) -> None:
         self.register_subscriptions([
             self.emitter.gameplay_division_damage.subscribe_(self.division_damages.append),
-            self.emitter.gameplay_division_kill.subscribe_(self.division_kills.append),
+            self.emitter.gameplay_points_gain.subscribe_(self.points_gains.append),
             self.emitter.commands_rcon.subscribe_(self.commands.append),
         ])
 

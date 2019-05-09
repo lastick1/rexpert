@@ -5,15 +5,15 @@ from typing import Dict
 import logging
 import datetime
 
-from constants import DATE_FORMAT
+from constants import DATE_FORMAT, VICTORY
 from core import EventsEmitter, \
     Capture, \
     Generation, \
     Atype0, \
     Atype7, \
-    Atype8, \
     Atype15, \
-    Atype19
+    Atype19, \
+    PointsGain
 from configs import Config
 from storage import Storage
 from processing import SourceParser
@@ -23,12 +23,8 @@ from model import CampaignMission, \
     Tvd, \
     GameplayAction, \
     SourceMission, \
-    TanksCoverFail, \
-    ArtilleryKill, \
-    DivisionKill, \
-    WarehouseDisable, \
-    AirfieldKill, \
-    MessageAll
+    MessageAll, \
+    ServerInput
 
 
 from .base_event_service import BaseEventService
@@ -36,6 +32,7 @@ from .airfields_service import AirfieldsService
 from .tvd_service import TvdService
 START_DATE = 'start_date'
 END_DATE = 'end_date'
+
 
 
 class CampaignService(BaseEventService):
@@ -60,20 +57,16 @@ class CampaignService(BaseEventService):
         self._campaign_map: CampaignMap = None
         self._current_tvd: Tvd = None
         self._round_ended: bool = False
-        self.won_country: int = 0
+        self._countries_result: Dict[int, int]
+        self.won_country: int
 
     def init(self) -> None:
         self.register_subscriptions([
+            self.emitter.gameplay_points_gain.subscribe_(self._points_gain),
             self.emitter.events_mission_start.subscribe_(self._start_mission),
             self.emitter.events_mission_end.subscribe_(self._end_mission),
-            self.emitter.events_mission_result.subscribe_(
-                self._mission_result),
             self.emitter.events_log_version.subscribe_(self._notify),
             self.emitter.events_round_end.subscribe_(self._end_round),
-            self.emitter.gameplay_division_kill.subscribe_(
-                self.register_action),
-            self.emitter.gameplay_warehouse_disable.subscribe_(
-                self.register_action),
         ])
 
     @property
@@ -104,6 +97,8 @@ class CampaignService(BaseEventService):
 
     def _start_mission(self, atype: Atype0):
         """Обработать начало миссии"""
+        self._countries_result = {101: 0, 201: 0}
+        self.won_country = 0
         self._round_ended = False
         source_mission = self._source_parser.parse_in_dogfight(
             atype.file_path.replace('Multiplayer/Dogfight', '').replace('\\', '').replace('.msnbin', ''))
@@ -122,6 +117,13 @@ class CampaignService(BaseEventService):
             f'{self._mission.tvd_name}, {self._campaign_map.mission.file}')
         # TODO сохранить миссию в базу (в документ CampaignMap и в коллекцию CampaignMissions)
         # TODO удалить файлы предыдущей миссии
+
+    def _points_gain(self, gain: PointsGain) -> None:
+        "Учесть получение очков захвата"
+        if not self.won_country:
+            self._countries_result[gain.country] += gain.capture_points
+            if self._countries_result[gain.country] >= 13:
+                self.won_country = gain.country
 
     def register_action(self, action: GameplayAction) -> None:
         """Зарегистрировать игровое событие"""
@@ -155,14 +157,11 @@ class CampaignService(BaseEventService):
         logging.info('round ended')
         self._update_tik(atype.tik)
         self._round_ended = True
-        # TODO подвести итог миссии
-        # TODO отправить инпут завершения миссии (победа/ничья)
         # TODO подвести итог кампании, если она закончилась
         # TODO подвести итог ТВД, если он изменился
         # TODO определить имя ТВД для следующей миссии
         # TODO отремонтировать дивизии
         invert = {101: 201, 201: 101}
-        self._calculate_result()
         if self.won_country:
             lost = self._airfields_service.get_weakest_airfield(
                 invert[self.won_country])
@@ -171,6 +170,7 @@ class CampaignService(BaseEventService):
                 {'x': lost.x, 'z': lost.z},
                 self.won_country
             ))
+            self.emitter.commands_rcon.on_next(ServerInput(VICTORY[self.won_country]))
         self.emitter.generations.on_next(Generation(
             self.next_name,
             (self._campaign_map.date + datetime.timedelta(days=1)).strftime(DATE_FORMAT),
@@ -201,50 +201,5 @@ class CampaignService(BaseEventService):
 
     def _notify(self, atype: Atype15) -> None:
         "Оповестить о состоянии очков захвата"
-        result = self._calculate_result()
-        message = f'Capture points: {result[101]} red team, {result[201]} blue team'
+        message = f'Capture points: {self._countries_result[101]} red team, {self._countries_result[201]} blue team'
         self.emitter.commands_rcon.on_next(MessageAll(message))
-
-    def _calculate_result(self) -> dict:
-        "Посчитать текущий результат сторон"
-        rewards = {
-            AirfieldKill.__name__: 1,
-            ArtilleryKill.__name__: 2,
-            DivisionKill.__name__: 3,
-            WarehouseDisable.__name__: 4,
-            TanksCoverFail.__name__: -1,
-        }
-        invert = {101: 201, 201: 101}
-        result = {101: 0, 201: 0}
-        if self._mission:
-            for action in self._mission.actions:
-                result[action.country] += rewards[action.__class__.__name__]
-                if result[action.country] >= 13 and not self.won_country:
-                    self.won_country = action.country
-        if self.won_country:
-            result[self.won_country] = 13
-            result[invert[self.won_country]] = 0
-        return result
-
-    def _mission_result(self, atype: Atype8) -> None:
-        """Обработать mission objective из логов"""
-        invert = {101: 201, 201: 101}
-        config = self._config.mgen.cfg['objectives'][str(atype.task_type_id)]
-        coals = {1: 'Allies', 2: 'Axis'}
-        results = {True: 'completed', False: 'failed'}
-        sign = {True: '+', False: ''}
-        result = results[atype.success]
-        name: str = config['name']
-        country: int = atype.coal_id * 100 + 1
-        coal: str = coals[atype.coal_id]
-        capture_points: int = '{0}{1}'.format(
-            sign[atype.success], config['capture_points'])
-        logging.info(
-            f'Mission Objective {result}: {name} by {coal}. {capture_points} capture points')
-        action: GameplayAction = None
-        if atype.task_type_id == 6:
-            action = TanksCoverFail(atype.tik, invert[country])
-        elif atype.task_type_id == 4:
-            action = ArtilleryKill(atype.tik, country)
-        if action:
-            self.register_action(action)

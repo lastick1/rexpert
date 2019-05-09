@@ -29,4 +29,5 @@ from .events import Finish, \
     DivisionDamage, \
     WarehouseDamage, \
     Generation, \
+    PointsGain, \
     Capture

@@ -3,28 +3,18 @@
   "maps": ["moscow", "stalingrad"],
   "sides": ["red", "blue"],
   "objectives": {
-    "0": "primary",
-    "1": "airfield",
-    "2": "hqs",
-    "3": "fort",
+    "0": {
+      "name": "primary",
+      "capture_points": 0
+    },
     "4": {
       "name": "Artillery",
-      "capture_points": 1
+      "capture_points": 2
     },
-    "5": "trucks",
     "6": {
       "name": "Cover tanks",
       "capture_points": -1
-    },
-    "7": "warehouses",
-    "8": "train",
-    "9": "troops",
-    "10": false,
-    "11": false,
-    "12": false,
-    "13": "boost",
-    "14": "capture",
-    "15": "pause"
+    }
   },
   "moscow": {
     "tvd": 2,

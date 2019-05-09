@@ -8,6 +8,7 @@ POS = 'pos'
 DATE_FORMAT = '%d.%m.%Y'
 NAME = 'name'
 COUNTRY = 'country'
+VICTORY = {101: 'VICTORY_RED', 201: 'VICTORY_BLUD'}
 
 
 class Mongo:

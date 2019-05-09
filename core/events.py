@@ -1,4 +1,5 @@
 "События на основе Atype из логов"
+from typing import Any
 from .atypes import Atype10, Atype16, Atype19
 
 
@@ -8,6 +9,14 @@ class Capture:
         self.tvd_name: str = tvd_name
         self.pos: dict = pos
         self.country: int = country
+
+
+class PointsGain:
+    "Набор очков какой либо из сторон"
+    def __init__(self, country: int, capture_points: int, reason: Any = None):
+        self.country: int = country
+        self.capture_points: int = capture_points
+        self.reason: Any = reason
 
 
 class Generation:
@@ -37,10 +46,10 @@ class Finish:
 class DivisionDamage:
     "Повреждение дивизии"
 
-    def __init__(self, tik: int, tvd_name: str, name: str):
+    def __init__(self, tik: int, tvd_name: str, unit_name: str):
         self.tik: int = tik
         self.tvd_name: str = tvd_name
-        self.name: str = name
+        self.unit_name: str = unit_name
 
 
 class WarehouseDamage:
