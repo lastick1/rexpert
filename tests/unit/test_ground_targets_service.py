@@ -73,7 +73,6 @@ class TestGroundControl(unittest.TestCase):
         self.config = ConfigMock()
         self.emitter = EventsEmitter()
         self._interceptor = EventsInterceptor(self.emitter)
-        self._interceptor.init()
         self._objects_service = ObjectsService(
             self.emitter, self.config, Objects())
 

@@ -1,10 +1,106 @@
 "Тестирование сервиса складов"
+from __future__ import annotations
+from typing import List
 import unittest
+
+
+from core import EventsEmitter, WarehouseDamage
+from storage import Storage
+from model import CampaignMission, Warehouse
+
+from tests.mocks import ConfigMock, EventsInterceptor, pass_
+
+from services import WarehouseService
+TEST_TVD_NAME = 'moscow'
+TEST_DATE = '01.09.1941'
+TEST_TARGET_RWH1_SERVER_INPUT = 'RWH1'
+TEST_TARGET_POS_RWH1 = {'x': 156060.64, 'z': 132392.5}
+TEST_TARGET_POS_RWH1_UNITS = [
+    {'x': 155453.86, 'z': 130798.2},
+    {'x': 156461.58, 'z': 131861.16},
+    {'x': 155169.17, 'z': 133163.56},
+    {'x': 155055.39, 'z': 132101.14},
+    {'x': 155604.38, 'z': 131692.38},
+    {'x': 156010.75, 'z': 131154.91},
+    {'x': 156484.95, 'z': 133269.22},
+    {'x': 156907.78, 'z': 133390.91},
+    {'x': 157196.23, 'z': 134433.89},
+    {'x': 157767.08, 'z': 132920.91}
+]
+TEST_MISSION = CampaignMission(
+    file='result1',
+    date=TEST_DATE,
+    tvd_name=TEST_TVD_NAME,
+    additional=dict(),
+    server_inputs=[
+        {'name': TEST_TARGET_RWH1_SERVER_INPUT, 'pos': TEST_TARGET_POS_RWH1}
+    ],
+    objectives=[],
+    airfields=[],
+    units=[
+        {'name': 'REXPERT_RWH1_3', 'pos': TEST_TARGET_POS_RWH1_UNITS[0]},
+        {'name': 'REXPERT_RWH1_15', 'pos': TEST_TARGET_POS_RWH1_UNITS[1]},
+        {'name': 'REXPERT_RWH1_2', 'pos': TEST_TARGET_POS_RWH1_UNITS[2]},
+        {'name': 'REXPERT_RWH1_10', 'pos': TEST_TARGET_POS_RWH1_UNITS[3]},
+        {'name': 'REXPERT_RWH1_17', 'pos': TEST_TARGET_POS_RWH1_UNITS[4]},
+    ],
+    actions=list()
+)
 
 
 class TestWarehousesService(unittest.TestCase):
     "Тесты"
 
+    def setUp(self):
+        "Настройка перед тестом"
+        self.emitter = EventsEmitter()
+        self.config = ConfigMock()
+        self.storage = Storage(self.config.main)
+        self.storage.warehouses.load_by_tvd = self._load_warehouses_by_tvd_mock
+        self.storage.warehouses.update = pass_
+        self.interceptor = EventsInterceptor(self.emitter)
+        self._test_warehouse_health = 100
+
+    def _load_warehouses_by_tvd_mock(self, tvd_name: str) -> List[Warehouse]:
+        return [Warehouse(
+            TEST_TARGET_RWH1_SERVER_INPUT,
+            tvd_name,
+            self._test_warehouse_health,
+            0,
+            101,
+            TEST_TARGET_POS_RWH1
+        )]
+
+    def test_warehouse_disable(self):
+        "Учитывается выведение склада из строя"
+        self._test_warehouse_health = 75
+        service = WarehouseService(self.emitter, self.config, self.storage)
+        service.init()
+        # Act
+        self.emitter.campaign_mission.on_next(TEST_MISSION)
+        for unit in TEST_MISSION.units:
+            self.emitter.gameplay_warehouse_damage.on_next(WarehouseDamage(123, unit['name'], unit['pos']))
+        # Assert
+        self.assertTrue(self.interceptor.points_gains)
+
+    def test_warehouse_no_disable(self):
+        "Не выводится из строя целый склад"
+        self._test_warehouse_health = 100
+        service = WarehouseService(self.emitter, self.config, self.storage)
+        service.init()
+        # Act
+        self.emitter.campaign_mission.on_next(TEST_MISSION)
+        for unit in TEST_MISSION.units:
+            self.emitter.gameplay_warehouse_damage.on_next(WarehouseDamage(123, unit['name'], unit['pos']))
+        # Assert
+        self.assertFalse(self.interceptor.points_gains)
+
     def test_disable_on_mission_start(self):
         "Отправляется сообщение об выведенных из строя складах в начале миссии"
-        self.fail("not implemented")
+        self._test_warehouse_health = 39
+        service = WarehouseService(self.emitter, self.config, self.storage)
+        service.init()
+        # Act
+        self.emitter.campaign_mission.on_next(TEST_MISSION)
+        # Assert
+        self.assertTrue(self.interceptor.points_gains)

@@ -58,7 +58,6 @@ class TestCampaignService(unittest.TestCase):
         "Настройка перед тестами"
         self.emitter: EventsEmitter = EventsEmitter()
         self.interceptor: EventsInterceptor = EventsInterceptor(self.emitter)
-        self.interceptor.init()
         self.config: ConfigMock = ConfigMock()
         self.storage: Storage = Storage(self.config.main)
         self.storage.divisions.load_by_tvd = _load_divisions_by_tvd_mock

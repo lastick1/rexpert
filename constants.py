@@ -9,6 +9,7 @@ DATE_FORMAT = '%d.%m.%Y'
 NAME = 'name'
 COUNTRY = 'country'
 VICTORY = {101: 'VICTORY_RED', 201: 'VICTORY_BLUD'}
+INVERT = {101: 201, 201: 101}
 
 
 class Mongo:

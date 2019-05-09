@@ -84,6 +84,7 @@ class EventsInterceptor(BaseEventService):
         self.division_damages = []
         self.commands = []
         self.points_gains: List[PointsGain] = []
+        self.init()
     
     def init(self) -> None:
         self.register_subscriptions([

@@ -54,6 +54,7 @@ class DivisionDamage:
 
 class WarehouseDamage:
     "Повреждение склада"
-    def __init__(self, tik: str, unit):
+    def __init__(self, tik: str, unit_name: str, pos: dict):
         self.tik: int = tik
-        self.unit = unit
+        self.unit_name: str = unit_name
+        self.pos: dict = pos

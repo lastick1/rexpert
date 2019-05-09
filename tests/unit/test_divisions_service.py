@@ -72,7 +72,6 @@ class TestDivisionsService(unittest.TestCase):
         self.storage.divisions.update = pass_
         self.emitter = EventsEmitter()
         self._interceptor = EventsInterceptor(self.emitter)
-        self._interceptor.init()
         TEST_MISSION.units.clear()
 
     def test_division_kill(self):
@@ -87,7 +86,7 @@ class TestDivisionsService(unittest.TestCase):
             {'name': 'REXPERT_BTD1_8', 'pos': TEST_TARGET_POS_BTD1_UNITS[6]},
             {'name': 'REXPERT_BTD1_8', 'pos': TEST_TARGET_POS_BTD1_UNITS[7]},
             {'name': 'REXPERT_BTD1_20', 'pos': TEST_TARGET_POS_BTD1_UNITS[8]},
-            {'name': 'REXPERT_BTD1_20', 'pos': TEST_TARGET_POS_BTD1_UNITS[9]}
+            {'name': 'REXPERT_BTD1_20', 'pos': TEST_TARGET_POS_BTD1_UNITS[9]},
         ])
         service = DivisionsService(self.emitter,
                                    self.config,

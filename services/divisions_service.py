@@ -4,6 +4,7 @@ from typing import List, Dict, Set
 import logging
 import re
 
+from constants import INVERT
 from core import EventsEmitter, DivisionDamage, PointsGain
 from configs import Config
 from storage import Storage
@@ -97,12 +98,13 @@ class DivisionsService(BaseEventService):
                     self._campaign_mission.tvd_name, server_input['name'])
                 division.pos = server_input['pos']
                 self._storage.divisions.update(division)
-        divisions = self.parse_divisions(self._campaign_mission.units, self._campaign_mission.tvd_name)
+        divisions = self.parse_divisions(
+            self._campaign_mission.tvd_name, self._campaign_mission.units, self._campaign_mission.server_inputs)
         for division in divisions:
             self._current_divisions[_to_division(division).name] = division
             self._check_division(0, division)
 
-    def parse_divisions(self, units: List[Dict], tvd_name: str) -> List[Division]:
+    def parse_divisions(self, tvd_name: str, units: List[Dict], server_inputs: List[Dict]) -> List[Division]:
         "Считать дивизии из обнаруженных юнитов в исходнике миссии"
         data: Dict[str, Dict] = dict()
         for unit in units:
@@ -111,9 +113,16 @@ class DivisionsService(BaseEventService):
                 data[groupdict['division_name']] = {
                     'units': list()
                 }
-            data[groupdict['division_name']]['units'].append({**groupdict, **unit})
+            data[groupdict['division_name']]['units'].append(
+                {**groupdict, **unit})
 
-        return [Division(tvd_name, x, len(data[x]['units']), data[x]['units'][0]['pos']) for x in data]
+        return [Division(tvd_name, x, len(data[x]['units']), self._get_division_pos(server_inputs, x)) for x in data]
+
+    def _get_division_pos(self, server_inputs: List[Dict], division_name: str) -> Dict[str, float]:
+        "Получить позицию дивизии по координатам её Translator: ServerInput"
+        for server_input in server_inputs:
+            if server_input['name'] == division_name:
+                return server_input['pos']
 
     def end_round(self):
         """Обработать завершение раунда"""
@@ -147,7 +156,7 @@ class DivisionsService(BaseEventService):
         "Проверить дивизию и отправить отреагировать на уничтожение при необходимости"
         if self._check_division_health(division) and division.name not in self._sent_inputs:
             self.emitter.gameplay_points_gain.on_next(PointsGain(
-                division.country,
+                INVERT[division.country],
                 3,
                 DivisionKill(tik, division.country, division.name)))
             self._sent_inputs.add(division.name)
