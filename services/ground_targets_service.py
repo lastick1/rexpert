@@ -202,7 +202,7 @@ class GroundTargetsService(BaseEventService):
                     DivisionDamage(tik, unit.tvd_name, unit.name))
             if isinstance(unit, WarehouseUnit):
                 self.emitter.gameplay_warehouse_damage.on_next(
-                    WarehouseDamage(tik, unit))
+                    WarehouseDamage(tik, unit.name, unit.pos))
 
     def _check_target(self, target: GroundTarget):
         """Проверить цель"""

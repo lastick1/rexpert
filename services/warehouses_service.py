@@ -46,7 +46,7 @@ class WarehouseService(BaseEventService):
         self._campaign_mission: CampaignMission = None
         self._current_tvd_warehouses: Dict[str, Warehouse] = dict()
         self._current_mission_warehouses = list()
-        self._warehouses_by_inputs = dict()
+        self._warehouses_by_inputs: Dict[str, Warehouse] = dict()
         self._sent_inputs = set()
         self._round_ended: bool = False
         self._notify_counter = 0
