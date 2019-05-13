@@ -45,8 +45,9 @@ class App(AppBase):
             self.initialize_map(tvd_name)
 
         campaign_map = self.storage.campaign_maps.load_by_order(2)
-        self.generate('result1', campaign_map.tvd_name,
-                      campaign_map.date.strftime(DATE_FORMAT))
+        self.generate('result1',
+                      campaign_map.date.strftime(DATE_FORMAT),
+                      campaign_map.tvd_name)
         self.players_service.reset()
 
     def reset(self):
