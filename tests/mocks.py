@@ -244,3 +244,13 @@ class ConfigMock(Config):
         self.main = MainMock(path)
         self.mgen = MgenMock(self.main.game_folder)
         self.planes = PlanesMock()
+
+class RConMock(DServerRcon):
+    def __init__(self, config: Config, buffer_size=1024):
+        super().__init__(config.main.rcon_ip, config.main.rcon_port, buffer_size=buffer_size)
+        self.private_messages = []
+        self.connect = pass_
+        self.auth = pass_
+
+    def private_message(self, account_id, message):
+        self.private_messages.append((account_id, message))

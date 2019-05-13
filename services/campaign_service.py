@@ -57,7 +57,7 @@ class CampaignService(BaseEventService):
         self._campaign_map: CampaignMap = None
         self._current_tvd: Tvd = None
         self._round_ended: bool = False
-        self._countries_result: Dict[int, int]
+        self._countries_result: Dict[int, int] = {101: 0, 201: 0}
         self.won_country: int
 
     def init(self) -> None:

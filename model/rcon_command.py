@@ -24,7 +24,7 @@ class Command:
 class MessageCommandBase(Command):
     "Базовый класс сообщения в чат"
     def __init__(self, message: str, _type: CommandType):
-        super().__init__(CommandType.MessageAll)
+        super().__init__(_type)
         self.message: str = message
 
 
