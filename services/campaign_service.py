@@ -111,6 +111,7 @@ class CampaignService(BaseEventService):
         self._current_tvd = self._get_tvd(
             self._campaign_map.tvd_name, self._campaign_map.date.strftime(DATE_FORMAT))
         self.emitter.current_tvd.on_next(self._current_tvd)
+        self.emitter.campaign_mission.on_next(self._mission)
         self._storage.campaign_maps.update(self._campaign_map)
         logging.info(
             f'mission started {self._campaign_map.mission.date.strftime(DATE_FORMAT)}, ' +
