@@ -87,7 +87,7 @@ class AppBase:
             self.tvd_services,
             self.source_parser
         )
-        self.ground_targets_service: GroundTargetsService(
+        self.ground_targets_service: GroundTargetsService = GroundTargetsService(
             self.events_emitter,
             self.config,
             self.objects_service,
