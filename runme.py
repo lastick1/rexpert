@@ -130,7 +130,7 @@ def initialize_campaign():
 def generate(name: str, tvd_name: str, date: str):
     """Сгенерировать миссию"""
     app = App(Path('./configs/main.json'))
-    app.generate(name, tvd_name, date)
+    app.generate(name, date, tvd_name)
 
 
 def _generate(args: list):
