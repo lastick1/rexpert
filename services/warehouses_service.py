@@ -4,6 +4,8 @@ from typing import List, Dict
 import logging
 import re
 
+from rx import interval
+
 from constants import INVERT
 from core import EventsEmitter, WarehouseDamage, PointsGain, Atype19
 from configs import Config
@@ -45,17 +47,18 @@ class WarehouseService(BaseEventService):
         self._storage: Storage = storage
         self._campaign_mission: CampaignMission = None
         self._current_tvd_warehouses: Dict[str, Warehouse] = dict()
-        self._current_mission_warehouses = list()
+        self._current_mission_warehouses: List[Warehouse] = list()
         self._warehouses_by_inputs: Dict[str, Warehouse] = dict()
         self._sent_inputs = set()
         self._round_ended: bool = False
-        self._notify_counter = 0
+        self.event_notify = interval(self._config.main.chat.warehouse_notification_interval)
 
     def init(self) -> None:
         self.register_subscriptions([
             self.emitter.campaign_mission.subscribe_(self.start_mission),
             self.emitter.gameplay_warehouse_damage.subscribe_(self.damage_warehouse),
             self.emitter.events_round_end.subscribe_(self.end_round),
+            self.event_notify.subscribe_(self.notify),
         ])
 
     def initialize_warehouses(self, tvd_name: str):
@@ -95,23 +98,11 @@ class WarehouseService(BaseEventService):
         """Завершить раунд"""
         self._round_ended = True
 
-    def notify(self):
+    def notify(self, *args):
         """Отправить состояние складов в чат"""
-        self._notify_counter += 1
-        warehouses = list()
-        if self._notify_counter % 4 == 3:
-            warehouses.extend(
-                x for x in self._current_mission_warehouses if x.country == 101)
-        if self._notify_counter % 4 == 2:
-            warehouses.extend(
-                x for x in self._current_mission_warehouses if x.country == 201)
-        if self._notify_counter % 4 == 0:
-            self._notify_counter = 0
-        for warehouse in warehouses:
+        for warehouse in self._current_mission_warehouses:
             self.emitter.commands_rcon.on_next(MessageAll(
                 f'{warehouse.name} warehouse state is {warehouse.health}/100'))
-            logging.info(
-                f'{self._notify_counter},{len(warehouses)} notify warehouses state')
 
     def damage_warehouse(self, damage: WarehouseDamage):
         """Зачесть уничтожение секции склада"""

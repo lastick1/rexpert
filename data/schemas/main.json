@@ -1,14 +1,14 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Главные настройки приложения",
-  "required": ["program", "missiongen", "rcon", "stats", "mongo", "dserver"],
+  "required": ["program", "missiongen", "rcon", "stats", "mongo", "dserver", "chat"],
   "properties": {
     "program": {
       "type": "object",
       "title": "Режим запуска сервер-коммандера",
       "required": [
         "logs_read_interval", "offline_mode", "test_mode", "debug_mode", "console_cmd_output", "console_chat_output",
-        "minimal_chat_interval", "game_folder", "server_folder", "graph_files_folder", "maps_archive_folder",
+        "game_folder", "server_folder", "graph_files_folder", "maps_archive_folder",
         "icons_folder", "stats_folder", "planner_folder"
       ],
       "properties": {
@@ -36,10 +36,6 @@
         "console_chat_output": {
           "type": "boolean",
           "title": "Выводить в консоль сообщения чата, передаваемые через консоль"
-        },
-        "minimal_chat_interval": {
-          "type": "integer",
-          "title": "Минимальная задержка между отправками сообщений в чат"
         },
         "draw_edges": {
           "type": "boolean",
@@ -92,11 +88,13 @@
       "properties": {
         "use_resaver": {
           "type": "boolean",
-          "title": "использовать Resaver для пересборки бинарных файлов миссий из исходников"
+          "title": "использовать Resaver для пересборки бинарных файлов миссий из исходников",
+          "default": false
         },
         "generate_missions": {
           "type": "boolean",
-          "title": "генерировать миссии"
+          "title": "генерировать миссии",
+          "default": true
         },
         "special_influences": {
           "type": "boolean",
@@ -179,7 +177,8 @@
         },
         "port": {
           "type": "string",
-          "title": "порт СУБД"
+          "title": "порт СУБД",
+          "default": "27017"
         },
         "database": {
           "type": "string",
@@ -219,6 +218,25 @@
         "chat_directory": {
           "type": "string",
           "title": "Папка логов чата, прописываемая в startup.cfg"
+        }
+      }
+    },
+    "chat": {
+      "type": "object",
+      "title": "Настройки работы с чатом сервера",
+      "required": ["warehouse_notification_interval"],
+      "properties": {
+        "warehouse_notification_interval": {
+          "type": "integer",
+          "title": "Интервал оповещения о состоянии складов (сек)",
+          "minimum": 1,
+          "default": 180
+        },
+        "points_notification_interval": {
+          "type": "integer",
+          "title": "Интервал оповещения об очках захвата (сек)",
+          "minimum": 1,
+          "default": 180
         }
       }
     }

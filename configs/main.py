@@ -3,6 +3,8 @@ from __future__ import annotations
 from pathlib import Path
 import json
 
+from configs.types import Chat
+
 
 class Main:  # pylint: disable=R0903,R0902,C0301
     """Класс конфига"""
@@ -52,6 +54,7 @@ class Main:  # pylint: disable=R0903,R0902,C0301
         self.mongo_host = src['mongo']['host']
         self.mongo_port = int(src['mongo']['port'])
         self.mongo_database = src['mongo']['database']
+        self.chat = Chat(self.cfg['chat'])
 
     @property
     def instances(self):

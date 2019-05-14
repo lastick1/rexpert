@@ -2,3 +2,4 @@
 
 
 from .mission_objective import MissionObjective
+from .chat import Chat

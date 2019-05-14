@@ -30,11 +30,13 @@ from .objects_service import ObjectsService
 class PlayersService(BaseEventService):
     "Сервис обработки действий игроков из логов"
 
-    def __init__(self,
-                 emitter: EventsEmitter,
-                 config: Config,
-                 storage: Storage,
-                 objects_service: ObjectsService):
+    def __init__(
+            self,
+            emitter: EventsEmitter,
+            config: Config,
+            storage: Storage,
+            objects_service: ObjectsService
+    ):
         super().__init__(emitter)
         self._config: Config = config
         self._storage: Storage = storage
