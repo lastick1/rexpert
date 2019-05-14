@@ -108,13 +108,15 @@ class DivisionsService(BaseEventService):
         "Считать дивизии из обнаруженных юнитов в исходнике миссии"
         data: Dict[str, Dict] = dict()
         for unit in units:
-            groupdict = DIVISION_UNIT_RE.match(unit['name']).groupdict()
-            if groupdict['division_name'] not in data:
-                data[groupdict['division_name']] = {
-                    'units': list()
-                }
-            data[groupdict['division_name']]['units'].append(
-                {**groupdict, **unit})
+            match = DIVISION_UNIT_RE.match(unit['name'])
+            if match:
+                groupdict = match.groupdict()
+                if groupdict['division_name'] not in data:
+                    data[groupdict['division_name']] = {
+                        'units': list()
+                    }
+                data[groupdict['division_name']]['units'].append(
+                    {**groupdict, **unit})
 
         return [Division(tvd_name, x, len(data[x]['units']), self._get_division_pos(server_inputs, x)) for x in data]
 
