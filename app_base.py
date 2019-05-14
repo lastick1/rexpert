@@ -9,6 +9,7 @@ from rcon import DServerRcon
 from storage import Storage
 from services import ObjectsService, \
     PlayersService, \
+    GroundTargetsService, \
     GraphService, \
     WarehouseService, \
     AircraftVendorService, \
@@ -86,6 +87,11 @@ class AppBase:
             self.tvd_services,
             self.source_parser
         )
+        self.ground_targets_service: GroundTargetsService(
+            self.events_emitter,
+            self.config,
+            self.objects_service,
+        )
         self.dserver_service: DServerService = DServerService(
             self.events_emitter,
             self.config
@@ -106,6 +112,7 @@ class AppBase:
         self.objects_service.init()
         self.campaign_service.init()
         self.airfields_service.init()
+        self.ground_targets_service.init()
         self.players_service.init()
         self.divisions_service.init()
         self.warehouse_service.init()
