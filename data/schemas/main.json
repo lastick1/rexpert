@@ -224,7 +224,7 @@
     "chat": {
       "type": "object",
       "title": "Настройки работы с чатом сервера",
-      "required": ["warehouse_notification_interval"],
+      "required": ["warehouse_notification_interval", "points_notification_interval"],
       "properties": {
         "warehouse_notification_interval": {
           "type": "integer",
