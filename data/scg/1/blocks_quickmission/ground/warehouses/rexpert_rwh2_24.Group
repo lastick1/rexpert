@@ -20,7 +20,7 @@ MCU_H_ReferencePoint
 MCU_Timer
 {
   Index = 857;
-  Name = "REXPERT_RWH2_24";
+  Name = "REXPERT_RWH2_16";
   Desc = "";
   Targets = [];
   Objects = [];
