@@ -13,6 +13,7 @@ from tests.mocks import ConfigMock, EventsInterceptor, pass_
 from services import WarehouseService
 TEST_TVD_NAME = 'moscow'
 TEST_DATE = '01.09.1941'
+TEST_RWH1_NAME = 'test_warehouse'
 TEST_TARGET_RWH1_SERVER_INPUT = 'RWH1'
 TEST_TARGET_POS_RWH1 = {'x': 156060.64, 'z': 132392.5}
 TEST_TARGET_POS_RWH1_UNITS = [
@@ -58,12 +59,12 @@ class TestWarehousesService(unittest.TestCase):
         self.storage = Storage(self.config.main)
         self.storage.warehouses.load_by_tvd = self._load_warehouses_by_tvd_mock
         self.storage.warehouses.update = pass_
-        self.interceptor = EventsInterceptor(self.emitter)
+        self.interceptor: EventsInterceptor = EventsInterceptor(self.emitter)
         self._test_warehouse_health = 100
 
     def _load_warehouses_by_tvd_mock(self, tvd_name: str) -> List[Warehouse]:
         return [Warehouse(
-            TEST_TARGET_RWH1_SERVER_INPUT,
+            TEST_RWH1_NAME,
             tvd_name,
             self._test_warehouse_health,
             0,
@@ -104,3 +105,18 @@ class TestWarehousesService(unittest.TestCase):
         self.emitter.campaign_mission.on_next(TEST_MISSION)
         # Assert
         self.assertTrue(self.interceptor.points_gains)
+
+    def test_damage_notification(self):
+        "Отправляется в чат оповещение об уничтожении секции склада"
+        service = WarehouseService(self.emitter, self.config, self.storage)
+        service.init()
+        self.emitter.campaign_mission.on_next(TEST_MISSION)
+        # Act
+        for unit in TEST_MISSION.units:
+            self.emitter.gameplay_warehouse_damage.on_next(WarehouseDamage(123, unit['name'], unit['pos']))
+        # Assert
+        self.assertTrue(self.interceptor.commands)
+        self.assertEqual(len(self.interceptor.commands), 5)
+        warehouse = self._load_warehouses_by_tvd_mock(TEST_MISSION.tvd_name)[0]
+        for command in self.interceptor.commands:
+            self.assertIn(warehouse.name, command.message)

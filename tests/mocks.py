@@ -6,7 +6,17 @@ from pathlib import Path
 
 from configs import Config, Main, Mgen, Planes
 from core import Atype12, PointsGain
-from model import Tvd, Node, Grid
+from model import Tvd, \
+    Node, \
+    Grid, \
+    MessageAll, \
+    MessageAllies, \
+    MessageAxis, \
+    MessagePrivate, \
+    PlayerKick, \
+    PlayerBanP7D, \
+    PlayerBanP15M, \
+    ServerInput
 from processing import Generator, MapPainter
 from storage import Storage
 from rcon import DServerRcon
@@ -27,15 +37,14 @@ TEST_LOG6 = './testdata/logs/mission_rotation_atype19.txt'
 TEST_LOG7 = './tests/data/logs/short_mission_full_log.txt'
 
 
-
 # pylint: disable=unused-argument
 def pass_(*args, **kwargs):
     pass
 
 
-
 class MainMock(Main):
     """Заглушка конфига"""
+
     def __init__(self, path: Path):
         super().__init__(path=path)
         self.current_grid_folder = Path('./tmp/current/')
@@ -61,6 +70,7 @@ class MgenMock(Mgen):
 
 class PlanesMock(Planes):
     """Заглушка конфига самолётов"""
+
     def __init__(self):
         super().__init__(path='./tests/data/config/planes.json')
 
@@ -82,10 +92,11 @@ class EventsInterceptor(BaseEventService):
     def __init__(self, emitter):
         super().__init__(emitter)
         self.division_damages = []
-        self.commands = []
+        self.commands: List[MessageAll, MessageAllies, MessageAxis, MessagePrivate,
+                            PlayerKick, PlayerBanP15M, PlayerBanP7D, ServerInput] = []
         self.points_gains: List[PointsGain] = []
         self.init()
-    
+
     def init(self) -> None:
         self.register_subscriptions([
             self.emitter.gameplay_division_damage.subscribe_(self.division_damages.append),
@@ -237,6 +248,7 @@ class PainterMock(MapPainter):
     def update_map(self):
         pass
 
+
 class ConfigMock(Config):
     def __init__(self):
         path = Path('./tests/data/config/main.json')
@@ -244,6 +256,7 @@ class ConfigMock(Config):
         self.main = MainMock(path)
         self.mgen = MgenMock(self.main.game_folder)
         self.planes = PlanesMock()
+
 
 class RConMock(DServerRcon):
     def __init__(self, config: Config, buffer_size=1024):

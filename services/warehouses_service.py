@@ -112,7 +112,9 @@ class WarehouseService(BaseEventService):
             logging.info(
                 f'{warehouse.name} section {damage.unit_name} {damage.pos} destroyed after round end')
             return
-        warehouse.health -= warehouse.next_damage
+        damage_step = warehouse.next_damage
+        warehouse.health -= damage_step
+        self.emitter.commands_rcon.on_next(MessageAll(f'{warehouse.name} damaged by {damage_step}%'))
         logging.info(f'{warehouse.name} section destroyed: {warehouse.health}')
         self._check_warehouse(damage.tik, warehouse)
         self._storage.warehouses.update(warehouse)

@@ -45,6 +45,10 @@
       "host": "127.0.0.1",
       "port": "5555",
       "password": "il2_stats"
+    },
+    "chat": {
+      "points_notification_interval": 180,
+      "warehouse_notification_interval": 180
     }
   }
   
