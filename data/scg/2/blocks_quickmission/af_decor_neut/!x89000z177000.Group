@@ -52,7 +52,7 @@ Block
   Model = "graphics\blocks\arf_caponiers_9_h_3.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_9_h_3.txt";
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -212,7 +212,7 @@ Block
   Model = "graphics\blocks\arf_caponiers_9_h_3.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_9_h_3.txt";
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -232,7 +232,7 @@ Block
   Model = "graphics\blocks\arf_caponiers_10_h_3.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_10_h_3.txt";
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -252,7 +252,7 @@ Block
   Model = "graphics\blocks\arf_caponiers_10_h_3.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_10_h_3.txt";
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;

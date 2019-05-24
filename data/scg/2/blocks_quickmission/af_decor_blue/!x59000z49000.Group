@@ -34,7 +34,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_9_h_3.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -76,7 +76,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_9_h_3.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -97,7 +97,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_9_h_3.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -160,7 +160,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_hangarbox.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -181,7 +181,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_hangarbox.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -202,7 +202,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_4_r_6.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -223,7 +223,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_5_r_7.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -265,7 +265,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_9_h_3.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -578,7 +578,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_dugouts_2.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -599,7 +599,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_sklad.txt";
   Country = 201;
   Desc = "";
-  Durability = 50000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -620,7 +620,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_sklad.txt";
   Country = 201;
   Desc = "";
-  Durability = 50000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -641,7 +641,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_sklad.txt";
   Country = 201;
   Desc = "";
-  Durability = 50000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -662,7 +662,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_dugouts_1.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;

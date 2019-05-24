@@ -53,7 +53,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\dugout.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -74,7 +74,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_pz_iiih.txt";
   Country = 201;
   Desc = "";
-  Durability = 15000;
+  Durability = 10000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -116,7 +116,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_stug37l24.txt";
   Country = 201;
   Desc = "";
-  Durability = 15000;
+  Durability = 10000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -200,7 +200,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\dugout.txt";
   Country = 0;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -221,7 +221,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_stug37l24.txt";
   Country = 201;
   Desc = "";
-  Durability = 15000;
+  Durability = 10000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -548,7 +548,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\dugout.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;

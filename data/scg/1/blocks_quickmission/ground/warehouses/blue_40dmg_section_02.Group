@@ -32,7 +32,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\industrial_200x140_01.txt";
   Country = 201;
   Desc = "";
-  Durability = 50000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -62,7 +62,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\industrial_200x140_02.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -97,7 +97,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\industrial_cornerl_01.txt";
   Country = 201;
   Desc = "";
-  Durability = 50000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -125,7 +125,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\industrial_cornerl_02.txt";
   Country = 201;
   Desc = "";
-  Durability = 50000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;

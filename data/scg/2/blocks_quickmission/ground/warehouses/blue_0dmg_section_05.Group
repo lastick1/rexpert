@@ -32,7 +32,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\industrial_block_smallwarehouse2_150x100.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -53,7 +53,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\industrial_block_smallwarehouse2_300x100.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -74,7 +74,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\industrial_block_smallwarehouse_300x100.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;

@@ -32,7 +32,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\industrial_block_fuel35m_300x100.txt";
   Country = 201;
   Desc = "";
-  Durability = 15000;
+  Durability = 10000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -53,7 +53,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\industrial_block_fuel25m_300x100.txt";
   Country = 201;
   Desc = "";
-  Durability = 15000;
+  Durability = 10000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -74,7 +74,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\industrial_block_fuel_300x100.txt";
   Country = 201;
   Desc = "";
-  Durability = 15000;
+  Durability = 10000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -127,7 +127,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\industrial_object_oil.txt";
   Country = 201;
   Desc = "";
-  Durability = 15000;
+  Durability = 10000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;

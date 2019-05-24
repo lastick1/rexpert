@@ -37,7 +37,7 @@ Group
     Script = "LuaScripts\WorldObjects\Bridges\br_rw_start_up_lft.txt";
     Country = 0;
     Desc = "";
-    Durability = 50000;
+    Durability = 12000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -59,7 +59,7 @@ Group
     Script = "LuaScripts\WorldObjects\Bridges\br_rw_rampmed_up.txt";
     Country = 0;
     Desc = "";
-    Durability = 50000;
+    Durability = 12000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -81,7 +81,7 @@ Group
     Script = "LuaScripts\WorldObjects\Bridges\br_rw_trpz.txt";
     Country = 0;
     Desc = "";
-    Durability = 50000;
+    Durability = 12000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -103,7 +103,7 @@ Group
     Script = "LuaScripts\WorldObjects\Bridges\br_rw_start_up_rgt.txt";
     Country = 0;
     Desc = "";
-    Durability = 50000;
+    Durability = 12000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -125,7 +125,7 @@ Group
     Script = "LuaScripts\WorldObjects\Bridges\br_rw_rampmed_up.txt";
     Country = 0;
     Desc = "";
-    Durability = 50000;
+    Durability = 12000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -147,7 +147,7 @@ Group
     Script = "LuaScripts\WorldObjects\Bridges\br_rw_trpz.txt";
     Country = 0;
     Desc = "";
-    Durability = 50000;
+    Durability = 12000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;

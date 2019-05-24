@@ -32,7 +32,7 @@ Bridge
   Script = "LuaScripts\WorldObjects\Bridges\bridge_railroad_200.txt";
   Country = 0;
   Desc = "";
-  Durability = 50000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;

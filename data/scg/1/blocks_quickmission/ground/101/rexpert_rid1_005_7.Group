@@ -32,7 +32,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_dugouts_1.txt";
   Country = 101;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -53,7 +53,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_6_h_4.txt";
   Country = 0;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;

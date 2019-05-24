@@ -32,7 +32,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\churchred.txt";
   Country = 0;
   Desc = "";
-  Durability = 15000;
+  Durability = 10000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
