@@ -101,9 +101,10 @@
             "request": "launch",
             "program": "${workspaceRoot}/tools/upd_durability.py",
             "args": [
-                "/D/Steam/steamapps/common/IL-2 Sturmovik Battle of Stalingrad/data/scg/2/blocks_quickmission/ground/arty"
+                "./data/scg",
+                "./data/durability.csv"
             ],
-            "cwd": "${workspaceRoot}/tools"
+            "cwd": "${workspaceRoot}"
         }
     ]
 }
