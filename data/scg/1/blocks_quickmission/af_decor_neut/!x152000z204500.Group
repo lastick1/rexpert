@@ -13,7 +13,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_tower_1.txt";
   Country = 0;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -34,7 +34,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_gsm_2.txt";
   Country = 0;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -55,7 +55,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_gsm_1.txt";
   Country = 0;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -76,7 +76,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_1.txt";
   Country = 0;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -97,7 +97,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_10_h_3.txt";
   Country = 0;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -118,7 +118,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_4_r_6.txt";
   Country = 0;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -139,7 +139,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_dugouts_1.txt";
   Country = 0;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -160,7 +160,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_2_v_5.txt";
   Country = 0;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;

@@ -76,7 +76,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\rwstation_b.txt";
   Country = 0;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;

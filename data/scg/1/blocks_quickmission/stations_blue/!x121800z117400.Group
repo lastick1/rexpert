@@ -158,7 +158,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel_fuel.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -179,7 +179,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -205,7 +205,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_tanknb.txt";
     Country = 201;
     Desc = "";
-    Durability = 15000;
+    Durability = 10000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -227,7 +227,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_tanknb.txt";
     Country = 201;
     Desc = "";
-    Durability = 15000;
+    Durability = 10000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -249,7 +249,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_tanknb.txt";
     Country = 201;
     Desc = "";
-    Durability = 15000;
+    Durability = 10000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -271,7 +271,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_tanknb.txt";
     Country = 201;
     Desc = "";
-    Durability = 15000;
+    Durability = 10000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -293,7 +293,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_tanknb.txt";
     Country = 201;
     Desc = "";
-    Durability = 15000;
+    Durability = 10000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -315,7 +315,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_tanknb.txt";
     Country = 201;
     Desc = "";
-    Durability = 15000;
+    Durability = 10000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -337,7 +337,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_platformnb.txt";
     Country = 201;
     Desc = "";
-    Durability = 15000;
+    Durability = 10000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -359,7 +359,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_platformnb.txt";
     Country = 201;
     Desc = "";
-    Durability = 15000;
+    Durability = 10000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -381,7 +381,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_platformnb.txt";
     Country = 201;
     Desc = "";
-    Durability = 15000;
+    Durability = 10000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -403,7 +403,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_platformnb.txt";
     Country = 201;
     Desc = "";
-    Durability = 15000;
+    Durability = 10000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -425,7 +425,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_tanknb.txt";
     Country = 201;
     Desc = "";
-    Durability = 15000;
+    Durability = 10000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -447,7 +447,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_tanknb.txt";
     Country = 201;
     Desc = "";
-    Durability = 15000;
+    Durability = 10000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -469,7 +469,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_platformnb.txt";
     Country = 201;
     Desc = "";
-    Durability = 15000;
+    Durability = 10000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -491,7 +491,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_platformnb.txt";
     Country = 201;
     Desc = "";
-    Durability = 15000;
+    Durability = 10000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -513,7 +513,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_platformnb.txt";
     Country = 201;
     Desc = "";
-    Durability = 15000;
+    Durability = 10000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -535,7 +535,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_platformemptynb.txt";
     Country = 201;
     Desc = "";
-    Durability = 15000;
+    Durability = 10000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -557,7 +557,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_g8.txt";
     Country = 201;
     Desc = "";
-    Durability = 15000;
+    Durability = 10000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -579,7 +579,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_g8t.txt";
     Country = 201;
     Desc = "";
-    Durability = 15000;
+    Durability = 10000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -603,7 +603,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel_fuel.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -624,7 +624,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel_fuel.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -645,7 +645,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel_fuel.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -666,7 +666,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel_fuel.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -687,7 +687,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -708,7 +708,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -729,7 +729,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -750,7 +750,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -771,7 +771,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\industrial_block_fuel35m_300x100.txt";
   Country = 201;
   Desc = "";
-  Durability = 15000;
+  Durability = 10000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -792,7 +792,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\industrial_block_bigwarehouse_300x100.txt";
   Country = 201;
   Desc = "";
-  Durability = 50000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;

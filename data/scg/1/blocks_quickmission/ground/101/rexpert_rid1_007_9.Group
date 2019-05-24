@@ -32,7 +32,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_dugouts_1.txt";
   Country = 101;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -290,7 +290,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_zis_fuel.txt";
   Country = 0;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -399,7 +399,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_tower_1.txt";
   Country = 101;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -491,7 +491,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_gaz-m.txt";
   Country = 101;
   Desc = "";
-  Durability = 2000;
+  Durability = 500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -838,7 +838,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\art_position_amb1.txt";
   Country = 0;
   Desc = "";
-  Durability = 2000;
+  Durability = 500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -859,7 +859,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\art_position_amb1.txt";
   Country = 0;
   Desc = "";
-  Durability = 2000;
+  Durability = 500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -880,7 +880,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\art_position_amb1.txt";
   Country = 0;
   Desc = "";
-  Durability = 2000;
+  Durability = 500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -901,7 +901,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\art_position_amb1.txt";
   Country = 0;
   Desc = "";
-  Durability = 2000;
+  Durability = 500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -922,7 +922,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\art_position_amb1.txt";
   Country = 0;
   Desc = "";
-  Durability = 2000;
+  Durability = 500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;

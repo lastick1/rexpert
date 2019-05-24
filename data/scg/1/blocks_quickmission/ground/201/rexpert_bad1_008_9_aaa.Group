@@ -168,7 +168,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -189,7 +189,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -210,7 +210,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -231,7 +231,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -252,7 +252,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_t34-76.txt";
   Country = 0;
   Desc = "";
-  Durability = 15000;
+  Durability = 10000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -338,7 +338,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -445,7 +445,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_ford-g917.txt";
   Country = 201;
   Desc = "";
-  Durability = 7000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -466,7 +466,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_ford-g917.txt";
   Country = 201;
   Desc = "";
-  Durability = 7000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -487,7 +487,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_t34-76.txt";
   Country = 0;
   Desc = "";
-  Durability = 15000;
+  Durability = 10000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;

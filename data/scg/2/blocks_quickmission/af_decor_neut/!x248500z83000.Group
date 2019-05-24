@@ -12,7 +12,7 @@ Block
   Model = "graphics\blocks\arf_caponiers_10_h_3.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_10_h_3.txt";
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -32,7 +32,7 @@ Block
   Model = "graphics\blocks\arf_caponiers_10_h_3.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_10_h_3.txt";
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -52,7 +52,7 @@ Block
   Model = "graphics\blocks\arf_tower_2.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_tower_2.txt";
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -72,7 +72,7 @@ Block
   Model = "graphics\blocks\arf_gsm_1.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_gsm_1.txt";
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -92,7 +92,7 @@ Block
   Model = "graphics\blocks\arf_gsm_2.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_gsm_2.txt";
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -112,7 +112,7 @@ Block
   Model = "graphics\blocks\arf_caponiers_9_h_3.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_9_h_3.txt";
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -132,7 +132,7 @@ Block
   Model = "graphics\blocks\arf_caponiers_9_h_3.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_caponiers_9_h_3.txt";
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -152,7 +152,7 @@ Block
   Model = "graphics\blocks\arf_sklad.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_sklad.txt";
   Desc = "";
-  Durability = 50000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -172,7 +172,7 @@ Block
   Model = "graphics\blocks\arf_saray.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_saray.txt";
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -192,7 +192,7 @@ Block
   Model = "graphics\blocks\arf_hangararc.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_hangararc.txt";
   Desc = "";
-  Durability = 50000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -212,7 +212,7 @@ Block
   Model = "graphics\blocks\arf_tower.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_tower.txt";
   Desc = "";
-  Durability = 15000;
+  Durability = 10000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -232,7 +232,7 @@ Block
   Model = "graphics\blocks\arf_hangarbox.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_hangarbox.txt";
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -252,7 +252,7 @@ Block
   Model = "graphics\blocks\arf_hangarbox.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_hangarbox.txt";
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -272,7 +272,7 @@ Block
   Model = "graphics\blocks\arf_hangarbox.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_hangarbox.txt";
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -292,7 +292,7 @@ Block
   Model = "graphics\blocks\arf_saray.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_saray.txt";
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -312,7 +312,7 @@ Block
   Model = "graphics\blocks\arf_saray.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_saray.txt";
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -332,7 +332,7 @@ Block
   Model = "graphics\blocks\art_position_amb1.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\art_position_amb1.txt";
   Desc = "";
-  Durability = 2000;
+  Durability = 500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -352,7 +352,7 @@ Block
   Model = "graphics\blocks\art_position_amb2.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\art_position_amb2.txt";
   Desc = "";
-  Durability = 2000;
+  Durability = 500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -372,7 +372,7 @@ Block
   Model = "graphics\blocks\art_position_amb2.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\art_position_amb2.txt";
   Desc = "";
-  Durability = 2000;
+  Durability = 500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -392,7 +392,7 @@ Block
   Model = "graphics\blocks\arf_gsm_2.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_gsm_2.txt";
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -412,7 +412,7 @@ Block
   Model = "graphics\blocks\arf_ammo_4.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_4.txt";
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -432,7 +432,7 @@ Block
   Model = "graphics\blocks\arf_ammo_3.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_3.txt";
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -452,7 +452,7 @@ Block
   Model = "graphics\blocks\arf_saray.mgm";
   Script = "LuaScripts\WorldObjects\Blocks\arf_saray.txt";
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;

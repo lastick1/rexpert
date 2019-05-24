@@ -322,7 +322,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_zis.txt";
   Country = 0;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -503,7 +503,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel.txt";
   Country = 0;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -524,7 +524,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel.txt";
   Country = 0;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;

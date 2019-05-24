@@ -13,7 +13,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel_fuel.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -34,7 +34,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel_fuel.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -55,7 +55,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel_fuel.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -76,7 +76,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel_fuel.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -97,7 +97,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel_fuel.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -118,7 +118,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -139,7 +139,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -160,7 +160,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -181,7 +181,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -202,7 +202,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -223,7 +223,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_3.txt";
   Country = 201;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -244,7 +244,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_dugouts_2.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -265,7 +265,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_hangars_3.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -286,7 +286,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_saray.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -307,7 +307,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_saray.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -328,7 +328,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_gsm_1.txt";
   Country = 201;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -349,7 +349,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_sklad.txt";
   Country = 201;
   Desc = "";
-  Durability = 50000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -370,7 +370,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_sklad.txt";
   Country = 201;
   Desc = "";
-  Durability = 50000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -391,7 +391,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_sklad.txt";
   Country = 201;
   Desc = "";
-  Durability = 50000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -454,7 +454,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_dugouts_1.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -475,7 +475,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_bf109e7.txt";
   Country = 201;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -496,7 +496,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_bf109e7.txt";
   Country = 201;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -517,7 +517,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_ju88_net.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -538,7 +538,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_ju88_net.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -559,7 +559,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_bf109.txt";
   Country = 201;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -580,7 +580,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_bf109e7.txt";
   Country = 201;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -601,7 +601,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_bf109e7.txt";
   Country = 201;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -622,7 +622,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_bf109e7.txt";
   Country = 201;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -643,7 +643,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_bf109e7.txt";
   Country = 201;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -664,7 +664,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_bf109e7.txt";
   Country = 201;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -685,7 +685,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_bf109.txt";
   Country = 201;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -706,7 +706,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_bf109.txt";
   Country = 201;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -727,7 +727,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_ju52.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -748,7 +748,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_ju52.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -769,7 +769,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_bf109.txt";
   Country = 201;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -790,7 +790,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_nets_3_3.txt";
   Country = 201;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -811,7 +811,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_nets_2_5.txt";
   Country = 201;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -832,7 +832,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_nets_1_4.txt";
   Country = 201;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -853,7 +853,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_gsm_1.txt";
   Country = 201;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -874,7 +874,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_1.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -895,7 +895,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_2.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -916,7 +916,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_4.txt";
   Country = 201;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -937,7 +937,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_nets_2_5.txt";
   Country = 201;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -958,7 +958,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_saray.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -979,7 +979,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_saray.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -1021,7 +1021,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_gsm_2.txt";
   Country = 201;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -1042,7 +1042,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_gsm_2.txt";
   Country = 201;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -1063,7 +1063,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_dugouts_3.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -1084,7 +1084,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_ford-g917.txt";
   Country = 201;
   Desc = "";
-  Durability = 7000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -1105,7 +1105,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_ford-g917.txt";
   Country = 201;
   Desc = "";
-  Durability = 7000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -1126,7 +1126,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_ford-g917.txt";
   Country = 201;
   Desc = "";
-  Durability = 7000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -1147,7 +1147,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_ford-g917.txt";
   Country = 201;
   Desc = "";
-  Durability = 7000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -1168,7 +1168,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_ford-g917.txt";
   Country = 201;
   Desc = "";
-  Durability = 7000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -1189,7 +1189,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_3.txt";
   Country = 201;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -1210,7 +1210,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_tower_2.txt";
   Country = 201;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -1231,7 +1231,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_ammo_4.txt";
   Country = 201;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -1252,7 +1252,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_gsm_1.txt";
   Country = 201;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -1273,7 +1273,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\arf_dugouts_1.txt";
   Country = 201;
   Desc = "";
-  Durability = 25000;
+  Durability = 12000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
