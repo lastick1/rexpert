@@ -29453,7 +29453,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -29475,7 +29475,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -29497,7 +29497,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -29783,7 +29783,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -29805,7 +29805,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -29827,7 +29827,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -29981,7 +29981,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -30003,7 +30003,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -30025,7 +30025,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -30113,7 +30113,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -30135,7 +30135,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -30157,7 +30157,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -30399,7 +30399,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -30421,7 +30421,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -30443,7 +30443,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -30531,7 +30531,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -30553,7 +30553,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -30575,7 +30575,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -30685,7 +30685,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -30707,7 +30707,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -30729,7 +30729,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -30817,7 +30817,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -30839,7 +30839,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -30861,7 +30861,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -30927,7 +30927,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -30949,7 +30949,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -30971,7 +30971,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -31059,7 +31059,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -31081,7 +31081,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -31103,7 +31103,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -31169,7 +31169,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -31213,7 +31213,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -31235,7 +31235,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -31279,7 +31279,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -31301,7 +31301,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -31345,7 +31345,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -31367,7 +31367,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -31499,7 +31499,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -31521,7 +31521,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -75114,7 +75114,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -75229,7 +75229,7 @@ Group
       Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
       Country = 0;
       Desc = "";
-      Durability = 5000;
+      Durability = 1000;
       DamageReport = 50;
       DamageThreshold = 1;
       DeleteAfterDeath = 1;
@@ -77514,7 +77514,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -77536,7 +77536,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -80621,7 +80621,7 @@ Group
       Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
       Country = 0;
       Desc = "";
-      Durability = 5000;
+      Durability = 1000;
       DamageReport = 50;
       DamageThreshold = 1;
       DeleteAfterDeath = 1;
@@ -83616,7 +83616,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -83638,7 +83638,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -83660,7 +83660,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -89754,7 +89754,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -89776,7 +89776,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -89798,7 +89798,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -89842,7 +89842,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -133405,7 +133405,7 @@ Group
       Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
       Country = 0;
       Desc = "";
-      Durability = 5000;
+      Durability = 1000;
       DamageReport = 50;
       DamageThreshold = 1;
       DeleteAfterDeath = 1;
@@ -133496,7 +133496,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -133518,7 +133518,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -145299,7 +145299,7 @@ Group
       Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
       Country = 0;
       Desc = "";
-      Durability = 5000;
+      Durability = 1000;
       DamageReport = 50;
       DamageThreshold = 1;
       DeleteAfterDeath = 1;
@@ -145390,7 +145390,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -145412,7 +145412,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\vl_torgryad.txt";
     Country = 0;
     Desc = "";
-    Durability = 5000;
+    Durability = 1000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;

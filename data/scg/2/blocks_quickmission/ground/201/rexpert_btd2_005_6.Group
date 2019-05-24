@@ -53,7 +53,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_horch830.txt";
   Country = 201;
   Desc = "";
-  Durability = 2000;
+  Durability = 500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -74,7 +74,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_opel.txt";
   Country = 201;
   Desc = "";
-  Durability = 9000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;

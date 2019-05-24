@@ -216,7 +216,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_il2.txt";
   Country = 0;
   Desc = "";
-  Durability = 7000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;

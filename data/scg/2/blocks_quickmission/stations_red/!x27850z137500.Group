@@ -189,7 +189,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_zis_fuel.txt";
   Country = 101;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -210,7 +210,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_gazaa.txt";
   Country = 101;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -634,7 +634,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_zis_fuel.txt";
   Country = 101;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -655,7 +655,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_zis_fuel.txt";
   Country = 101;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -676,7 +676,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_zis_fuel.txt";
   Country = 101;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -697,7 +697,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_zis_fuel.txt";
   Country = 101;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -718,7 +718,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_gazaa.txt";
   Country = 101;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -739,7 +739,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_gazaa.txt";
   Country = 101;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -760,7 +760,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_gazaa.txt";
   Country = 101;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -781,7 +781,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_gazaa.txt";
   Country = 101;
   Desc = "";
-  Durability = 5000;
+  Durability = 1000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
