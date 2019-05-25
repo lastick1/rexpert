@@ -1,6 +1,6 @@
 """Настройки самолётов на аэродромах"""
 from __future__ import annotations
-import json
+from json import load
 
 
 def _clean_aircraft_name(name: str) -> str:
@@ -9,9 +9,10 @@ def _clean_aircraft_name(name: str) -> str:
 
 
 class Planes:
-    def __init__(self, path='.\\configs\\planes.json'):
+    """Настройки самолётов на аэродромах"""
+    def __init__(self, path='./configs/planes.json'):
         with open(path, encoding='utf-8') as stream:
-            src = json.load(stream)
+            src = load(stream)
         self.cfg = src
 
     @staticmethod

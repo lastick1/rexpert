@@ -1,14 +1,14 @@
 """Конфиг работы со статистикой"""
 from __future__ import annotations
-import json
-import pathlib
+from json import load
+from pathlib import Path
 
 
 class Stats:
     """Конфиг"""
-    def __init__(self, stats_static: pathlib.Path):
-        with open('.\\configs\\stats_custom.json') as stream:
-            src = json.load(stream)
+    def __init__(self, stats_static: Path):
+        with open('./configs/stats_custom.json') as stream:
+            src = load(stream)
         self.cfg = src
         self.map_main_page = str(stats_static.joinpath(src['image_files']['map_main_page']).absolute())
         self.map_full_size = str(stats_static.joinpath(src['image_files']['map_full_size']).absolute())

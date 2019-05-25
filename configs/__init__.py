@@ -8,3 +8,4 @@ from .stat import Stats
 from .objects import Objects, Object
 from .planes import Planes
 from .config import Config
+from .weather import WeatherPreset, Weather

@@ -1,7 +1,6 @@
 """ Обработка событий """
 from __future__ import annotations
 from .gen import Generator
-from .weather import *
 from .xgml_io import Xgml
 from .influences import BoundaryBuilder
 from .locations import LOCATION_TYPES, Location

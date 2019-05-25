@@ -8,6 +8,7 @@ from .planes import Planes
 from .gameplay import Gameplay
 from .stat import Stats
 from .draw import Draw
+from .weather import Weather
 
 
 class Config:
@@ -20,3 +21,4 @@ class Config:
         self.stat = Stats(self.main.stats_static)  # конфиг интеграции со статистикой
         self.generator = GeneratorParamsConfig()  # конфигурация создания defaultparams
         self.draw = Draw(self.mgen)
+        self.weather = Weather()

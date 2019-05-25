@@ -6,7 +6,7 @@ import random
 from pathlib import Path
 import datetime
 
-from configs import Config
+from configs import Config, WeatherPreset
 from constants import DATE_FORMAT
 from model import Tvd, ManagedAirfield, Boundary
 from processing import AirfieldsBuilder, \
@@ -15,9 +15,7 @@ from processing import AirfieldsBuilder, \
     FrontLineGroup, \
     LocationsBuilder, \
     Airfield, \
-    Plane, \
-    WeatherPreset, \
-    presets
+    Plane
 from storage import Storage
 
 from .graph_service import GraphService
@@ -324,9 +322,10 @@ class TvdService:
         season = self.date_season_data(date)
 
         # настройки погоды
-        weather_type = random.randint(
-            *params_config[season.prefix]['wtype_diapason'])
-        w_preset = WeatherPreset(presets[weather_type])
+        weather_presets = self._config.weather.map_seasons[tvd.name][season.prefix]
+        wtype = random.randint(0, len(weather_presets) - 1)
+        w_preset = weather_presets[wtype]
+
         # случайное направление и сила ветра по высотам
         wind_direction0000 = random.randint(0, 360)
         wind_power0000 = random.randint(0, 2)
@@ -358,8 +357,8 @@ class TvdService:
             f'$cloudlevel = {w_preset.cloudlevel}\n',
             f'$cloudheight = {w_preset.cloudheight}\n',
             f'$temperature = {temperature}\n',
-            f'$wtype = {weather_type}\n',
-            f'$prevwtype = {weather_type}\n',
+            f'$wtype = {wtype}\n',
+            f'$prevwtype = {wtype}\n',
             f'$tvd = {params_config["tvd"]}\n',
             f'$overlay = {params_config["overlay"]}\n',
             f'$xposition = {params_config["xposition"]}\n',

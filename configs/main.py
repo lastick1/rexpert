@@ -31,7 +31,6 @@ class Main:  # pylint: disable=R0903,R0902,C0301
         self.debug_mode = src['program']['debug_mode']
         self.console_cmd_output = src['program']['console_cmd_output']
         self.console_chat_output = src['program']['console_chat_output']
-        self.minimal_chat_interval = int(src['program']['minimal_chat_interval'])
         self.rcon_ip = src['rcon']['ip']
         self.rcon_port = int(src['rcon']['port'])
         self.rcon_login = src['rcon']['login']
