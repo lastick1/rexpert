@@ -224,19 +224,26 @@
     "chat": {
       "type": "object",
       "title": "Настройки работы с чатом сервера",
-      "required": ["warehouse_notification_interval", "points_notification_interval"],
+      "additionalProperties": false,
+      "required": ["warehouse_notification_interval", "points_notification_interval", "division_notification_interval"],
       "properties": {
         "warehouse_notification_interval": {
           "type": "integer",
           "title": "Интервал оповещения о состоянии складов (сек)",
           "minimum": 1,
-          "default": 180
+          "default": 190
         },
         "points_notification_interval": {
           "type": "integer",
           "title": "Интервал оповещения об очках захвата (сек)",
           "minimum": 1,
           "default": 180
+        },
+        "division_notification_interval": {
+          "type": "integer",
+          "title": "Интервал оповещения о состоянии укрепрайонов (сек)",
+          "minimum": 1,
+          "default": 170
         }
       }
     }

@@ -4,6 +4,8 @@ from typing import List, Dict, Set
 import logging
 import re
 
+from rx import interval
+
 from constants import INVERT
 from core import EventsEmitter, DivisionDamage, PointsGain
 from configs import Config
@@ -12,6 +14,7 @@ from model import Division, \
     DIVISIONS, \
     DivisionKill, \
     CampaignMission, \
+    MessageAll, \
     ServerInput
 
 from .base_event_service import BaseEventService
@@ -33,6 +36,21 @@ def _to_division(division) -> Division:
     return division
 
 
+COUNTRY_NAMES = {101: 'USSR', 201: 'Germany'}
+
+
+def _make_notify_message(division: Division) -> str:
+    "Сделать информационное сообщение о статусе укрепрайона"
+    return f'{COUNTRY_NAMES[division.country]} fortified area ({division.type_of_army}) has ' + \
+        f'{division.units}/{DIVISIONS[division.name]} sections'
+
+
+def _make_damage_message(division: Division) -> str:
+    "Сообщение повреждении дивизии"
+    return f'{COUNTRY_NAMES[division.country]} fortified area ({division.type_of_army}) section destroyed. ' + \
+        f'{division.units} sections left'
+
+
 class DivisionsService(BaseEventService):
     """Управление созданием, уроном, состоянием дивизий"""
 
@@ -49,6 +67,7 @@ class DivisionsService(BaseEventService):
         self._current_divisions: Dict[str, Division] = dict()
         self._sent_inputs: Set[str] = set()
         self._round_ended: bool = False
+        self.event_notify = interval(self._config.main.chat.division_notification_interval)
 
     def init(self) -> None:
         self.register_subscriptions([
@@ -56,7 +75,13 @@ class DivisionsService(BaseEventService):
                 self.start_mission),
             self.emitter.gameplay_division_damage.subscribe_(
                 self.damage_division),
+            self.event_notify.subscribe_(self.notify)
         ])
+
+    def notify(self, *args) -> None:
+        "Отправить состояние укрепрайонов в чат"
+        for division_name in self._current_divisions:
+            self.emitter.commands_rcon.on_next(MessageAll(_make_notify_message(self._current_divisions[division_name])))
 
     def filter_airfields(self, tvd_name: str, airfields: list) -> list:
         """Отбросить аэродромы, расположенные близко к дивизиям"""
@@ -142,10 +167,10 @@ class DivisionsService(BaseEventService):
             logging.warning(
                 f'{division.name} unit {damage.unit_name} destroyed after round end')
             return
-        division.units -= 1
-        if division.units < 0:
-            division.units = 0
+        if division.units > 0:
+            division.units -= 1
         self._check_division(damage.tik, division)
+        self.emitter.commands_rcon.on_next(MessageAll(_make_damage_message(division)))
         logging.info(
             f'{division.tvd_name} division {division.name} lost unit:{damage.unit_name}')
         self._storage.divisions.update(division)

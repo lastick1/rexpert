@@ -46,13 +46,13 @@ class Division:
         """Тип дивизии - танковая, артиллерийская, общая"""
         for name in TANK_NAMES:
             if name in self.name:
-                return 'tank'
+                return 'tanks'
         for name in ARTY_NAMES:
             if name in self.name:
                 return 'artillery'
         for name in INF_NAMES:
             if name in self.name:
-                return 'infantry'
+                return 'vehicles'
         raise NameError('Некорректное имя дивизии')
 
     def to_dict(self) -> dict:

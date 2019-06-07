@@ -47,8 +47,9 @@
       "password": "il2_stats"
     },
     "chat": {
+      "warehouse_notification_interval": 190,
       "points_notification_interval": 180,
-      "warehouse_notification_interval": 180
+      "division_notification_interval": 170
     }
   }
   

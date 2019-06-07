@@ -114,3 +114,28 @@ class TestDivisionsService(unittest.TestCase):
         self.emitter.campaign_mission.on_next(TEST_MISSION)
         # Assert
         self.assertTrue(self._interceptor.points_gains)
+
+    def test_damage_notification(self):
+        "Отправляется в чат оповещение об уничтожении секции укрепрайона"
+        TEST_MISSION.units.extend([
+            {'name': 'REXPERT_BTD1_3', 'pos': TEST_TARGET_POS_BTD1_UNITS[0]},
+            {'name': 'REXPERT_BTD1_15', 'pos': TEST_TARGET_POS_BTD1_UNITS[1]},
+            {'name': 'REXPERT_BTD1_2', 'pos': TEST_TARGET_POS_BTD1_UNITS[2]},
+            {'name': 'REXPERT_BTD1_10', 'pos': TEST_TARGET_POS_BTD1_UNITS[3]},
+            {'name': 'REXPERT_BTD1_17', 'pos': TEST_TARGET_POS_BTD1_UNITS[4]},
+            {'name': 'REXPERT_BTD1_9', 'pos': TEST_TARGET_POS_BTD1_UNITS[5]},
+            {'name': 'REXPERT_BTD1_8', 'pos': TEST_TARGET_POS_BTD1_UNITS[6]},
+            {'name': 'REXPERT_BTD1_8', 'pos': TEST_TARGET_POS_BTD1_UNITS[7]},
+            {'name': 'REXPERT_BTD1_20', 'pos': TEST_TARGET_POS_BTD1_UNITS[8]},
+            {'name': 'REXPERT_BTD1_20', 'pos': TEST_TARGET_POS_BTD1_UNITS[9]},
+        ])
+        service = DivisionsService(self.emitter,
+                                   self.config,
+                                   self.storage)
+        service.init()
+        # Act
+        self.emitter.gameplay_division_damage.on_next(DivisionDamage(
+            123, TEST_MISSION.tvd_name, TEST_MISSION.units[0]['name']
+        ))
+        # Assert
+        self.assertTrue(self._interceptor.commands)

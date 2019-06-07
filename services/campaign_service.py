@@ -5,13 +5,14 @@ from typing import Dict
 import logging
 import datetime
 
+from rx import interval
+
 from constants import DATE_FORMAT, VICTORY
 from core import EventsEmitter, \
     Capture, \
     Generation, \
     Atype0, \
     Atype7, \
-    Atype15, \
     Atype19, \
     PointsGain
 from configs import Config
@@ -59,13 +60,14 @@ class CampaignService(BaseEventService):
         self._round_ended: bool = False
         self._countries_result: Dict[int, int] = {101: 0, 201: 0}
         self.won_country: int
+        self.event_notify = interval(self._config.main.chat.points_notification_interval)
 
     def init(self) -> None:
         self.register_subscriptions([
             self.emitter.gameplay_points_gain.subscribe_(self._points_gain),
             self.emitter.events_mission_start.subscribe_(self._start_mission),
             self.emitter.events_mission_end.subscribe_(self._end_mission),
-            self.emitter.events_log_version.subscribe_(self._notify),
+            self.event_notify.subscribe_(self._notify),
             self.emitter.events_round_end.subscribe_(self._end_round),
         ])
 
@@ -200,7 +202,7 @@ class CampaignService(BaseEventService):
             actions=list()
         )
 
-    def _notify(self, atype: Atype15) -> None:
+    def _notify(self, *args) -> None:
         "Оповестить о состоянии очков захвата"
         message = f'Capture points: {self._countries_result[101]} red team, {self._countries_result[201]} blue team'
         self.emitter.commands_rcon.on_next(MessageAll(message))

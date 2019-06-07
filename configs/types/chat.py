@@ -6,3 +6,4 @@ class Chat:
     def __init__(self, cfg: dict):
         self.warehouse_notification_interval = cfg['warehouse_notification_interval']
         self.points_notification_interval = cfg['points_notification_interval']
+        self.division_notification_interval = cfg['division_notification_interval']
