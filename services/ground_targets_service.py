@@ -173,8 +173,6 @@ class GroundTargetsService(BaseEventService):
         self.register_subscriptions([
             self.emitter.campaign_mission.subscribe_(
                 self._update_campaign_mission),
-            self.emitter.events_mission_result.subscribe_(
-                self._mission_result),
             self.emitter.events_mission_start.subscribe_(self._mission_start),
             self.emitter.events_kill.subscribe_(self._kill),
             self.emitter.events_mission_result.subscribe_(

@@ -160,6 +160,7 @@ class TestGroundControl(unittest.TestCase):
         ))
         # Assert
         self.assertTrue(self._interceptor.points_gains)
+        self.assertEqual(1, len(self._interceptor.points_gains))
         self.assertEqual(2, self._interceptor.points_gains[0].capture_points)
 
     def test_tanks_cover_fail(self):
