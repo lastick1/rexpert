@@ -236,7 +236,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_tanknb.txt";
     Country = 201;
     Desc = "";
-    Durability = 10000;
+    Durability = 2000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -258,7 +258,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_tanknb.txt";
     Country = 201;
     Desc = "";
-    Durability = 10000;
+    Durability = 2000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -280,7 +280,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_tanknb.txt";
     Country = 201;
     Desc = "";
-    Durability = 10000;
+    Durability = 2000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -302,7 +302,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_tanknb.txt";
     Country = 201;
     Desc = "";
-    Durability = 10000;
+    Durability = 2000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -324,7 +324,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_tanknb.txt";
     Country = 201;
     Desc = "";
-    Durability = 10000;
+    Durability = 2000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -346,7 +346,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_tanknb.txt";
     Country = 201;
     Desc = "";
-    Durability = 10000;
+    Durability = 2000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -368,7 +368,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_platformnb.txt";
     Country = 201;
     Desc = "";
-    Durability = 10000;
+    Durability = 2000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -390,7 +390,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_platformnb.txt";
     Country = 201;
     Desc = "";
-    Durability = 10000;
+    Durability = 2000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -412,7 +412,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_platformnb.txt";
     Country = 201;
     Desc = "";
-    Durability = 10000;
+    Durability = 2000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -434,7 +434,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_platformnb.txt";
     Country = 201;
     Desc = "";
-    Durability = 10000;
+    Durability = 2000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -456,7 +456,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_tanknb.txt";
     Country = 201;
     Desc = "";
-    Durability = 10000;
+    Durability = 2000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -478,7 +478,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_tanknb.txt";
     Country = 201;
     Desc = "";
-    Durability = 10000;
+    Durability = 2000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -500,7 +500,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_platformnb.txt";
     Country = 201;
     Desc = "";
-    Durability = 10000;
+    Durability = 2000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -522,7 +522,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_platformnb.txt";
     Country = 201;
     Desc = "";
-    Durability = 10000;
+    Durability = 2000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -544,7 +544,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_platformnb.txt";
     Country = 201;
     Desc = "";
-    Durability = 10000;
+    Durability = 2000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -566,7 +566,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_platformemptynb.txt";
     Country = 201;
     Desc = "";
-    Durability = 10000;
+    Durability = 2000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -588,7 +588,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_g8.txt";
     Country = 201;
     Desc = "";
-    Durability = 10000;
+    Durability = 2000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;
@@ -610,7 +610,7 @@ Group
     Script = "LuaScripts\WorldObjects\Blocks\static_g8t.txt";
     Country = 201;
     Desc = "";
-    Durability = 10000;
+    Durability = 2000;
     DamageReport = 50;
     DamageThreshold = 1;
     DeleteAfterDeath = 1;

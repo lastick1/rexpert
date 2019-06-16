@@ -102,7 +102,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_sdkfz251-1c.txt";
   Country = 201;
   Desc = "";
-  Durability = 10000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -207,7 +207,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_t34-76.txt";
   Country = 0;
   Desc = "";
-  Durability = 10000;
+  Durability = 3000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -293,7 +293,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_t34-76.txt";
   Country = 0;
   Desc = "";
-  Durability = 10000;
+  Durability = 3000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -381,7 +381,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_t34-76.txt";
   Country = 0;
   Desc = "";
-  Durability = 10000;
+  Durability = 3000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -464,7 +464,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_t34-76.txt";
   Country = 0;
   Desc = "";
-  Durability = 10000;
+  Durability = 3000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -552,7 +552,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_sdkfz251-1c.txt";
   Country = 201;
   Desc = "";
-  Durability = 10000;
+  Durability = 1500;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
@@ -632,7 +632,7 @@ Block
   Script = "LuaScripts\WorldObjects\Blocks\static_pz_ivf1.txt";
   Country = 201;
   Desc = "";
-  Durability = 10000;
+  Durability = 3000;
   DamageReport = 50;
   DamageThreshold = 1;
   DeleteAfterDeath = 1;
