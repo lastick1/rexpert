@@ -1,6 +1,7 @@
 {
   "$schema": "../data/schemas/weather.json",
   "maps": ["moscow", "stalingrad"],
+  "weibull_parameter": 2.4,
   "moscow": {
     "au": {
       "0": {

@@ -53,6 +53,7 @@ class Weather:
         with path.open() as stream:
             src = load(stream)
         self.cfg = src
+        self.weibull_parameter = src['weibull_parameter']
         self.map_seasons: Dict[str, Dict[str, Dict[int, WeatherPreset]]] = {_name: {
             _season: {
                 int(_id): WeatherPreset(src[_name][_season][_id]) for _id in src[_name][_season]

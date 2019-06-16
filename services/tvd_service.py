@@ -5,6 +5,7 @@ import logging
 import random
 from pathlib import Path
 import datetime
+import numpy
 
 from configs import Config, WeatherPreset
 from constants import DATE_FORMAT
@@ -294,7 +295,7 @@ class TvdService:
         season = self.season(date)
         sunrise = season.sunrise_for_date(date)
         sunset = season.sunset_for_date(date)
-        return sunrise, sunset - datetime.timedelta(hours=1, minutes=30)
+        return sunrise, sunset - datetime.timedelta(**self._config.main.mission_duration)
 
     def season(self, date: datetime.datetime) -> Season:
         """Информация по сезону на указанную дату (из daytime.csv)"""
@@ -323,7 +324,9 @@ class TvdService:
 
         # настройки погоды
         weather_presets = self._config.weather.map_seasons[tvd.name][season.prefix]
-        wtype = random.randint(0, len(weather_presets) - 1)
+        parameter = self._config.weather.weibull_parameter
+        wtype_diversity = len(weather_presets)
+        wtype = round(numpy.random.weibull(parameter) * wtype_diversity / parameter)
         w_preset = weather_presets[wtype]
 
         # случайное направление и сила ветра по высотам

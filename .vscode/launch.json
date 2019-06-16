@@ -105,6 +105,13 @@
                 "./data/durability.csv"
             ],
             "cwd": "${workspaceRoot}"
-        }
+        },
+        {
+            "name":"Python: Текущий файл",
+            "type":"python",
+            "request":"launch",
+            "program":"${file}",
+            "console":"integratedTerminal"
+        },
     ]
 }

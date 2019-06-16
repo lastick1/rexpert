@@ -85,6 +85,7 @@
       "required": [
         "use_resaver", "generate_missions", "special_influences", "mission_gen_folder", "resaver_folder"
       ],
+      "additionalProperties": false,
       "properties": {
         "use_resaver": {
           "type": "boolean",
@@ -107,6 +108,10 @@
         "resaver_folder": {
           "type": "string",
           "title": "Папка с resaver'ом"
+        },
+        "mission_duration": {
+          "type": "string",
+          "title": "Длительность миссии"
         }
       }
     },

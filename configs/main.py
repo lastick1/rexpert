@@ -1,9 +1,20 @@
 """Парсер главного конфига"""
 from __future__ import annotations
 from pathlib import Path
+import re
 import json
 
 from configs.types import Chat
+
+MISSION_DURATION_RE = re.compile(r'(?P<hours>\d+):(?P<minutes>\d+):(?P<seconds>\d+)')
+
+def _get_duration_dict(string: str) -> dict:
+    if not MISSION_DURATION_RE.match(string):
+        raise NameError(f'{string} does not match mission duration format "HH:MM:SS"')
+    result = dict()
+    for key, value in list(MISSION_DURATION_RE.match(string).groupdict().items()):
+        result[key] = int(value)
+    return result
 
 
 class Main:  # pylint: disable=R0903,R0902,C0301
@@ -26,6 +37,7 @@ class Main:  # pylint: disable=R0903,R0902,C0301
         self.generate_missions = src['missiongen']['generate_missions']
         self.special_influences = src['missiongen']['special_influences']
         self.use_resaver = src['missiongen']['use_resaver']
+        self.mission_duration = _get_duration_dict(src['missiongen']['mission_duration'])
         self.test_mode = src['program']['test_mode']
         self.offline_mode = src['program']['offline_mode']
         self.debug_mode = src['program']['debug_mode']
