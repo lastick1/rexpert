@@ -83,7 +83,7 @@
       "type": "object",
       "title": "Режим запуска генератора",
       "required": [
-        "use_resaver", "generate_missions", "special_influences", "mission_gen_folder", "resaver_folder"
+        "use_resaver", "generate_missions", "special_influences", "mission_gen_folder", "resaver_folder", "mission_duration", "test_airfields"
       ],
       "additionalProperties": false,
       "properties": {
@@ -112,6 +112,11 @@
         "mission_duration": {
           "type": "string",
           "title": "Длительность миссии"
+        },
+        "test_airfields": {
+          "type": "boolean",
+          "title": "Генерировать тестовые аэродромы",
+          "default": false
         }
       }
     },

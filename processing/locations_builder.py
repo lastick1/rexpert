@@ -368,13 +368,13 @@ class LocationsBuilder:
         for division in tvd.divisions:
             location = Location(name=GROUND_OBJECTIVE, x=division.pos['x'], z=division.pos['z'],
                                 y=0, oy=0, length=10, width=10, country=division.country)
-            if division.type_of_army == 'tank' and '1' in division.name:
+            if division.type_of_army == 'tanks' and '1' in division.name:
                 location.types = {TRANSPORT}
-            if division.type_of_army == 'tank' and '2' in division.name:
+            if division.type_of_army == 'tanks' and '2' in division.name:
                 location.types = {ARMOURED}
             if division.type_of_army == 'artillery':
                 location.types = {ARTILLERY}
-            if division.type_of_army == 'infantry':
+            if division.type_of_army == 'vehicles':
                 location.types = {AAA_POSITION}
             distance = 7000
             location.x += random.random() * distance - random.random() * distance

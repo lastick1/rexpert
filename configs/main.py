@@ -38,6 +38,7 @@ class Main:  # pylint: disable=R0903,R0902,C0301
         self.special_influences = src['missiongen']['special_influences']
         self.use_resaver = src['missiongen']['use_resaver']
         self.mission_duration = _get_duration_dict(src['missiongen']['mission_duration'])
+        self.test_airfields = src['missiongen']['test_airfields']
         self.test_mode = src['program']['test_mode']
         self.offline_mode = src['program']['offline_mode']
         self.debug_mode = src['program']['debug_mode']

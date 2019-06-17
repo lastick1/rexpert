@@ -373,7 +373,8 @@ class TvdService:
             f'$guimap = {params_config[season.prefix]["guimap"]}\n',
             f'$hmap = {params_config[season.prefix]["hmap"]}\n',
             f'$textures = {params_config[season.prefix]["textures"]}\n',
-            f'$mapId = {params_config[season.prefix]["mapId"]}\n'
+            f'$mapId = {params_config[season.prefix]["mapId"]}\n',
+            f'$test = {"1" if self._config.main.test_airfields else "0"}\n'
         ]
 
         for division in tvd.divisions:

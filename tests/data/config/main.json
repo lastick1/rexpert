@@ -21,7 +21,9 @@
       "generate_missions": true,
       "special_influences": false,
       "mission_gen_folder": ".\\tmp",
-      "resaver_folder": ".\\tmp"
+      "resaver_folder": ".\\tmp",
+      "mission_duration": "03:00:00",
+      "test_airfields": false
     },
     "dserver": {
       "logs_directory": ".\\tmp",

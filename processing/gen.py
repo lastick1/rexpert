@@ -78,6 +78,7 @@ class Generator:
                 self.main.game_folder,
                 self.main.resaver_folder)
             if self.main.use_resaver:
+                logging.info('Resaving...')
                 mission_files.resave()
             mission_files.move_to_dogfight(file_name, self.main.server_folder)
             mission_files.detach_src()

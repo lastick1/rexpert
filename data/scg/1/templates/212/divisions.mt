@@ -932,6 +932,16 @@ blocks_set; blocks_AF5_DECOR_RED_3701; main(scg\1\blocks_quickmission\af_decor_r
 blocks_set; blocks_SIREN_RED_4_2407_3702; main(scg\1\blocks_quickmission\ground\effects\siren_rus.group);
 blocks_set; blocks_WINDSOCK_4_2408_3703; main(scg\1\blocks_quickmission\windsock.group);
 blocks_set; blocks_RED_BEACON_2409_3704; main(scg\1\blocks_quickmission\ground\effects\beacon.group);
+blocks_set; blocks_RED_WH1_TEST_AF; main(scg\1\blocks_quickmission\airfields\blue_test.group);
+blocks_set; blocks_RED_WH2_TEST_AF; main(scg\1\blocks_quickmission\airfields\blue_test.group);
+blocks_set; blocks_BLUE_WH2_TEST_AF; main(scg\1\blocks_quickmission\airfields\red_test.group);
+blocks_set; blocks_BLUE_WH1_TEST_AF; main(scg\1\blocks_quickmission\airfields\red_test.group);
+blocks_set; blocks_RID1_TEST_AF; main(scg\1\blocks_quickmission\airfields\blue_test.group);
+blocks_set; blocks_RAD1_TEST_AF; main(scg\1\blocks_quickmission\airfields\blue_test.group);
+blocks_set; blocks_RTD1_TEST_AF; main(scg\1\blocks_quickmission\airfields\blue_test.group);
+blocks_set; blocks_BID1_TEST_AF; main(scg\1\blocks_quickmission\airfields\red_test.group);
+blocks_set; blocks_BTD1_TEST_AF; main(scg\1\blocks_quickmission\airfields\red_test.group);
+blocks_set; blocks_BAD1_TEST_AF; main(scg\1\blocks_quickmission\airfields\red_test.group);
 
 #
 ## geo params
@@ -1865,6 +1875,16 @@ phase; AF5_DECOR_RED_3701; random(RED_REAF_AF2_3700); blocks_AF5_DECOR_RED_3701;
 phase; SIREN_RED_4_2407_3702; random(RED_REAF_AF2_3700); blocks_SIREN_RED_4_2407_3702; clone_location;;
 phase; WINDSOCK_4_2408_3703; random(RED_REAF_AF2_3700); blocks_WINDSOCK_4_2408_3703; clone_location;;
 phase; RED_BEACON_2409_3704; random(RED_REAF_AF2_3700); blocks_RED_BEACON_2409_3704; clone_location;;
+phase; RED_WH1_TEST_AF; at(RED_WH1_REF); blocks_RED_WH1_TEST_AF; clone_location;;
+phase; RED_WH2_TEST_AF; at(RED_WH2_REF); blocks_RED_WH2_TEST_AF; clone_location;;
+phase; BLUE_WH2_TEST_AF; at(BLUE_WH2_REF); blocks_BLUE_WH2_TEST_AF; clone_location;;
+phase; BLUE_WH1_TEST_AF; at(BLUE_WH1_REF); blocks_BLUE_WH1_TEST_AF; clone_location;;
+phase; RID1_TEST_AF; at(RID1_REF); blocks_RID1_TEST_AF; clone_location;;
+phase; RAD1_TEST_AF; at(RAD1_REF); blocks_RAD1_TEST_AF; clone_location;;
+phase; RTD1_TEST_AF; at(RTD1_REF); blocks_RTD1_TEST_AF; clone_location;;
+phase; BID1_TEST_AF; at(BID1_REF); blocks_BID1_TEST_AF; clone_location;;
+phase; BTD1_TEST_AF; at(BTD1_REF); blocks_BTD1_TEST_AF; clone_location;;
+phase; BAD1_TEST_AF; at(BAD1_REF); blocks_BAD1_TEST_AF; clone_location;;
 
 #
 ## cases & switches
@@ -4893,6 +4913,16 @@ action; MEDIUM_CANNON4_516_1459_2404_3699(AAA_MED_TYPE,Model); set_model(AAA LT 
 action; MEDIUM_CANNON4_516_1459_2404_3699(AAA_MED_TYPE,Country); set_country(friendly);
 action; SIREN_RED_4_2407_3702(Proximity,Distance); set(Distance,6000);
 action; RED_BEACON_2409_3704(BEACON,Country); set_country(friendly);
+action; RED_WH1_TEST_AF(,del); import_rules(test airfield delete);
+action; RED_WH2_TEST_AF(,del); import_rules(test airfield delete);
+action; BLUE_WH2_TEST_AF(,del); import_rules(test airfield delete);
+action; BLUE_WH1_TEST_AF(,del); import_rules(test airfield delete);
+action; RID1_TEST_AF(,del); import_rules(test airfield delete);
+action; RAD1_TEST_AF(,del); import_rules(test airfield delete);
+action; RTD1_TEST_AF(,del); import_rules(test airfield delete);
+action; BID1_TEST_AF(,del); import_rules(test airfield delete);
+action; BTD1_TEST_AF(,del); import_rules(test airfield delete);
+action; BAD1_TEST_AF(,del); import_rules(test airfield delete);
 
 #
 ## unlinks
@@ -5830,6 +5860,16 @@ gui_helper; AF5_DECOR_RED_3701; 16653; -71;""; ( ); 4;
 gui_helper; SIREN_RED_4_2407_3702; 15560; -263;""; ( ); 4;
 gui_helper; WINDSOCK_4_2408_3703; 15801; -256;""; ( ); 4;
 gui_helper; RED_BEACON_2409_3704; 16416; -425;""; ( ); 4;
+gui_helper; RED_WH1_TEST_AF; 4656; 16058;""; ( ); 5;
+gui_helper; RED_WH2_TEST_AF; 4737; 18640;""; ( ); 6;
+gui_helper; BLUE_WH2_TEST_AF; -3145; 18699;""; ( ); 5;
+gui_helper; BLUE_WH1_TEST_AF; -2980; 15970;""; ( ); 6;
+gui_helper; RID1_TEST_AF; 8988; 9198;""; ( ); 5;
+gui_helper; RAD1_TEST_AF; 10092; 4887;""; ( ); 5;
+gui_helper; RTD1_TEST_AF; 8565; 4659;""; ( ); 5;
+gui_helper; BID1_TEST_AF; -7555; 8720;""; ( ); 6;
+gui_helper; BTD1_TEST_AF; -7455; 4642;""; ( ); 6;
+gui_helper; BAD1_TEST_AF; -8908; 4657;""; ( ); 6;
 gui_helper; check; -5717; -3132;LARGE_CANNON_31(location_type)
 gui_helper; check; -5720; -3092;LARGE_CANNON_31(free)
 gui_helper; check; -5720; -3055;LARGE_CANNON_31(range)
@@ -8344,3 +8384,13 @@ gui_helper; Model; 15548; -3000;MEDIUM_CANNON4_516_1459_2404_3699; (AAA_MED_TYPE
 gui_helper; Country; 15548; -2962;MEDIUM_CANNON4_516_1459_2404_3699; (AAA_MED_TYPE);
 gui_helper; Distance; 15632; -296;SIREN_RED_4_2407_3702; (Proximity);
 gui_helper; Country; 16482; -446;RED_BEACON_2409_3704; (BEACON);
+gui_helper; del; 4798; 16009;RED_WH1_TEST_AF; ();
+gui_helper; del; 4843; 18595;RED_WH2_TEST_AF; ();
+gui_helper; del; -3051; 18653;BLUE_WH2_TEST_AF; ();
+gui_helper; del; -2903; 15934;BLUE_WH1_TEST_AF; ();
+gui_helper; del; 9124; 9147;RID1_TEST_AF; ();
+gui_helper; del; 10228; 4836;RAD1_TEST_AF; ();
+gui_helper; del; 8704; 4608;RTD1_TEST_AF; ();
+gui_helper; del; -7478; 8684;BID1_TEST_AF; ();
+gui_helper; del; -7378; 4606;BTD1_TEST_AF; ();
+gui_helper; del; -8831; 4621;BAD1_TEST_AF; ();
