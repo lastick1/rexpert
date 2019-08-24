@@ -1,3 +1,4 @@
+"""Классы для работы с БД"""
 import pymongo
 from configs import Main
 from .airfields import Airfields
@@ -8,25 +9,78 @@ from .players import Players
 from .warehouses import Warehouses
 
 
-class Storage:
-    """Класс работы с БД"""
+class StorageBase:
+    """Базовый класс для работы с БД"""
 
     def __init__(self, main: Main):
-        if not main:
-            print('main: {}'.format(main))
-        self._main = main
-        self._mongo = pymongo.MongoClient(
-            self._main.mongo_host, self._main.mongo_port)
-        self._database = self._mongo[main.mongo_database]
-        self.airfields = Airfields(self._database[Airfields.__name__])
-        self.players = Players(self._database[Players.__name__])
-        self.campaign_maps = CampaignMaps(
-            self._database[CampaignMaps.__name__])
-        self.campaign_missions = CampaignMissions(
-            self._database[CampaignMissions.__name__])
-        self.divisions = Divisions(self._database[Divisions.__name__])
-        self.warehouses = Warehouses(self._database[Warehouses.__name__])
+        self._database_name = main.mongo_database
+        self._host = main.mongo_host
+        self._port = main.mongo_port
+        self._mongo = pymongo.MongoClient(self._host, self._port)
+        self._database = None
+
+    @property
+    def database(self):
+        """Объектная модель БД"""
+        if not self._database:
+            self._database = self._mongo[self._database_name]
+        return self._database
 
     def drop_database(self):
         """Удалить базу данных (использовать только в тестах)"""
-        self._mongo.drop_database(self._main.mongo_database)
+        self._mongo.drop_database(self._database_name)
+
+
+class Storage(StorageBase):
+    """Класс работы с БД"""
+
+    def __init__(self, main: Main):
+        super().__init__(main)
+        self._airfields: Airfields = None
+        self._players: Players = None
+        self._campaign_maps: CampaignMaps = None
+        self._campaign_missions: CampaignMissions = None
+        self._divisions: Divisions = None
+        self._warehouses: Warehouses = None
+
+    @property
+    def airfields(self):
+        """Коллекция аэродромов"""
+        if not self._airfields:
+            self._airfields = Airfields(self.database[Airfields.__name__])
+        return self._airfields
+
+    @property
+    def players(self):
+        """Коллекция игроков"""
+        if not self._players:
+            self._players = Players(self.database[Players.__name__])
+        return self._players
+
+    @property
+    def campaign_maps(self):
+        """Коллекция карт кампании"""
+        if not self._campaign_maps:
+            self._campaign_maps = CampaignMaps(self.database[CampaignMaps.__name__])
+        return self._campaign_maps
+
+    @property
+    def campaign_missions(self):
+        """Коллекция миссий кампании"""
+        if not self._campaign_missions:
+            self._campaign_missions = CampaignMissions(self.database[CampaignMissions.__name__])
+        return self._campaign_missions
+
+    @property
+    def divisions(self):
+        """Коллекция дивизий"""
+        if not self._divisions:
+            self._divisions = Divisions(self.database[Divisions.__name__])
+        return self._divisions
+
+    @property
+    def warehouses(self):
+        """Коллекция складов"""
+        if not self._warehouses:
+            self._warehouses = Warehouses(self.database[Warehouses.__name__])
+        return self._warehouses

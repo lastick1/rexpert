@@ -1,5 +1,5 @@
 """Заглушки и функции получения заглушек"""
-from core import Atype12
+from core import Atype10, Atype12
 from model import Node, \
     Grid
 from .configs import MgenMock
@@ -13,10 +13,21 @@ TEST_LOG5 = './testdata/logs/gkill_with_altf4_disco_missionReport(2017-09-26_21-
 TEST_LOG6 = './testdata/logs/mission_rotation_atype19.txt'
 TEST_LOG7 = './tests/data/logs/short_mission_full_log.txt'
 
+TEST_NICKNAME = '_test_nickname'
+TEST_ACCOUNT_ID = '_test_id1'
+TEST_PROFILE_ID = '_test_profile_id1'
 
 # pylint: disable=unused-argument
 def pass_(*args, **kwargs):
     "Заглушка функции"
+
+
+def atype_10_stub(aircraft_id: int, bot_id: int, pos: dict, aircraft_name: str,
+                  country: int, parent_id: int, nickname=TEST_NICKNAME) -> Atype10:
+    """Заглушка события появления игрока"""
+    return Atype10(
+        123, aircraft_id, bot_id, TEST_ACCOUNT_ID, TEST_PROFILE_ID, nickname, pos, aircraft_name, country,
+        int(country/100), 1234, False, parent_id, True, True, 0, 1, '', [1, 5], 200, 100, 4, 8, '')
 
 
 def atype_12_stub(object_id: int, object_name: str, country: int, name: str, parent_id: int) -> Atype12:
