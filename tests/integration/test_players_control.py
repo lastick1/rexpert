@@ -2,7 +2,6 @@
 # pylint:disable=R0914,R0913
 import datetime
 import logging
-from pathlib import Path
 import unittest
 
 from core import EventsEmitter, \
@@ -33,11 +32,6 @@ TEST_PLAYER = Player.initialize(TEST_ACCOUNT_ID)
 FILTER = {constants.ID: TEST_ACCOUNT_ID}
 
 
-def _create(storage: Storage, _filter: dict, _player: dict):
-    storage.players.collection.update_one(
-        _filter, {'$set': _player}, upsert=True)
-
-
 def _atype_10_stub(aircraft_id: int, bot_id: int, pos: dict, aircraft_name: str,
                    country: int, parent_id: int, nickname=TEST_NICKNAME) -> Atype10:
     """Заглушка события появления игрока"""
@@ -50,7 +44,7 @@ class TestPlayersController(unittest.TestCase):
     """Тесты событий с обработкой данных игроков"""
 
     def setUp(self):
-        self._storage: Storage = Storage(CONFIG)
+        self._storage: Storage = Storage(CONFIG.main)
         self._emitter: EventsEmitter = EventsEmitter()
         self._objects_service: ObjectsService = ObjectsService(
             self._emitter, CONFIG, OBJECTS)
@@ -78,7 +72,6 @@ class TestPlayersController(unittest.TestCase):
 
     def test_connect_player_check_ban(self):
         """Отправляется команда бана заблокированного пользователя через консоль"""
-        _create(self._storage, FILTER, TEST_PLAYER)
         controller = PlayersService(
             self._emitter,
             CONFIG,
@@ -97,7 +90,6 @@ class TestPlayersController(unittest.TestCase):
 
     def test_player_initialization(self):
         """Обновляется ник игрока на появлении"""
-        _create(self._storage, FILTER, TEST_PLAYER)
         controller = PlayersService(
             self._emitter,
             CONFIG,
@@ -125,7 +117,6 @@ class TestPlayersController(unittest.TestCase):
     def test_connect_player(self):
         """Отправляется приветственное сообщение игроку на подключении"""
         TEST_PLAYER[constants.Player.NICKNAME] = TEST_NICKNAME
-        _create(self._storage, FILTER, TEST_PLAYER)
         controller = PlayersService(
             self._emitter,
             CONFIG,
@@ -155,7 +146,6 @@ class TestPlayersController(unittest.TestCase):
 
     def test_multiple_spawn_nickname(self):
         """Не добавляется лишний известный ник при неоднократном появлении"""
-        _create(self._storage, FILTER, TEST_PLAYER)
         controller = PlayersService(
             self._emitter,
             CONFIG,
@@ -183,7 +173,6 @@ class TestPlayersController(unittest.TestCase):
 
     def test_multiple_spawn_new_nick(self):
         """Пополняются известные ники при появлении с новым ником"""
-        _create(self._storage, FILTER, TEST_PLAYER)
         controller = PlayersService(
             self._emitter,
             CONFIG,
@@ -213,7 +202,6 @@ class TestPlayersController(unittest.TestCase):
 
     def test_disconnect_player(self):
         """Ставится статус offline при выходе игрока с сервера"""
-        _create(self._storage, FILTER, TEST_PLAYER)
         controller = PlayersService(
             self._emitter,
             CONFIG,
@@ -228,7 +216,6 @@ class TestPlayersController(unittest.TestCase):
 
     def test_give_unlock_for_damage(self):
         """Даётся модификация за вылет с уроном"""
-        _create(self._storage, FILTER, TEST_PLAYER)
         controller = PlayersService(
             self._emitter,
             CONFIG,
@@ -265,7 +252,6 @@ class TestPlayersController(unittest.TestCase):
 
     def test_give_unlock_for_kill(self):
         """Даётся модификация за вылет с килом"""
-        _create(self._storage, FILTER, TEST_PLAYER)
         controller = PlayersService(
             self._emitter,
             CONFIG,
@@ -301,7 +287,6 @@ class TestPlayersController(unittest.TestCase):
 
     def test_do_not_give_for_disco(self):
         """Не даётся модификация за вылет с килом и диско"""
-        _create(self._storage, FILTER, TEST_PLAYER)
         controller = PlayersService(
             self._emitter,
             CONFIG,
@@ -338,7 +323,6 @@ class TestPlayersController(unittest.TestCase):
 
     def test_do_not_give_for_friendly(self):
         """Не даётся модификация за вылет со стрельбой по своим"""
-        _create(self._storage, FILTER, TEST_PLAYER)
         controller = PlayersService(
             self._emitter,
             CONFIG,
@@ -375,7 +359,6 @@ class TestPlayersController(unittest.TestCase):
 
     def test_do_not_give_for_dead_end(self):
         """Не даётся модификация за вылет с убийством и смертью"""
-        _create(self._storage, FILTER, TEST_PLAYER)
         controller = PlayersService(
             self._emitter,
             CONFIG,
@@ -421,7 +404,6 @@ class TestPlayersController(unittest.TestCase):
     def test_msg_restricted_takeoff(self):
         """Отправляется предупреждение о запрете взлёта"""
         TEST_PLAYER[constants.Player.UNLOCKS] = 0
-        _create(self._storage, FILTER, TEST_PLAYER)
         controller = PlayersService(
             self._emitter,
             CONFIG,
@@ -452,7 +434,6 @@ class TestPlayersController(unittest.TestCase):
     def test_kick_restricted_takeoff(self):
         """Отправляется команда кика при запрещённом взлёте"""
         TEST_PLAYER[constants.Player.UNLOCKS] = 0
-        _create(self._storage, FILTER, TEST_PLAYER)
         controller = PlayersService(
             self._emitter,
             CONFIG,
@@ -488,7 +469,6 @@ class TestPlayersController(unittest.TestCase):
     def test_reset(self):
         """Сбрасывается состояние игроков в кампании"""
         TEST_PLAYER[constants.Player.UNLOCKS] = 4
-        _create(self._storage, FILTER, TEST_PLAYER)
         controller = PlayersService(
             self._emitter,
             CONFIG,

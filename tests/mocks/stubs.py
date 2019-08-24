@@ -1,32 +1,9 @@
-"""Заглушки, фальшивки и т.п. для тестирования"""
-# pylint: disable=all
-from __future__ import annotations
-from typing import List
-from pathlib import Path
+"""Заглушки и функции получения заглушек"""
+from core import Atype12
+from model import Node, \
+    Grid
+from .configs import MgenMock
 
-from configs import Config, Main, Mgen, Planes
-from core import Atype12, PointsGain
-from model import Tvd, \
-    Node, \
-    Grid, \
-    MessageAll, \
-    MessageAllies, \
-    MessageAxis, \
-    MessagePrivate, \
-    PlayerKick, \
-    PlayerBanP7D, \
-    PlayerBanP15M, \
-    ServerInput
-from processing import Generator, MapPainter
-from storage import Storage
-from rcon import DServerRcon
-
-from services import AirfieldsService, DivisionsService
-from services.base_event_service import BaseEventService
-
-COLOR_WHITE = '#FFFFFF'
-COLOR_RED = '#FF0000'
-COLOR_BLUE = '#00CCFF'
 
 TEST_LOG1 = './testdata/logs/spawn_takeoff_landing_despawn_missionReport(2017-09-17_09-05-09)[0].txt'
 TEST_LOG2 = './testdata/logs/target_bombing_crashlanded_on_af_missionReport(2017-09-23_19-31-30)[0].txt'
@@ -39,97 +16,17 @@ TEST_LOG7 = './tests/data/logs/short_mission_full_log.txt'
 
 # pylint: disable=unused-argument
 def pass_(*args, **kwargs):
-    pass
+    "Заглушка функции"
 
 
-class MainMock(Main):
-    """Заглушка конфига"""
-
-    def __init__(self, path: Path):
-        super().__init__(path=path)
-        self.current_grid_folder = Path('./tmp/current/')
+def atype_12_stub(object_id: int, object_name: str, country: int, name: str, parent_id: int) -> Atype12:
+    """Заглушка события инициализации объекта"""
+    return Atype12(120, object_id, object_name, country, int(country/100), name, parent_id)
 
 
-class MgenMock(Mgen):
-    """Заглушка конфига генерации миссий"""
-
-    def __init__(self, game_folder: Path):
-        super().__init__(game_folder)
-        self.xgml = {
-            'stalingrad': Path('./tests/data/xgml/stalingrad.xgml').absolute(),
-            'moscow': Path('./tests/data/xgml/moscow.xgml').absolute(),
-            'kuban': Path('./tests/data/xgml/kuban.xgml').absolute(),
-            'test': Path('./tests/data/xgml/test_w4f.xgml').absolute()
-        }
-        folders = {'red': Path('./tmp/red/'), 'blue': Path('./tmp/blue/')}
-        self.af_groups_folders = {
-            'moscow': folders,
-            'stalingrad': folders
-        }
-
-
-class PlanesMock(Planes):
-    """Заглушка конфига самолётов"""
-
-    def __init__(self):
-        super().__init__(path='./tests/data/config/planes.json')
-
-
-class TvdMock(Tvd):
-    def __init__(self, name: str):
-        super().__init__(
-            name, '', '10.11.1941', {'x': 281600, 'z': 281600}, dict(), Grid(name, dict(), list(), 0),
-            Path())
-        self.country = 201
-
-    def get_country(self, point):
-        return self.country
-
-
-class EventsInterceptor(BaseEventService):
-    """Перехватчик сообщений в шине"""
-
-    def __init__(self, emitter):
-        super().__init__(emitter)
-        self.division_damages = []
-        self.commands: List[MessageAll, MessageAllies, MessageAxis, MessagePrivate,
-                            PlayerKick, PlayerBanP15M, PlayerBanP7D, ServerInput] = []
-        self.points_gains: List[PointsGain] = []
-        self.init()
-
-    def init(self) -> None:
-        self.register_subscriptions([
-            self.emitter.gameplay_division_damage.subscribe_(self.division_damages.append),
-            self.emitter.gameplay_points_gain.subscribe_(self.points_gains.append),
-            self.emitter.commands_rcon.subscribe_(self.commands.append),
-        ])
-
-    def private_message(self, account_id: str, message: str):
-        self.received_private_messages.append((account_id, message))
-
-    def banuser(self, name):
-        self.banned.append(name)
-
-    def kick(self, name):
-        self.kicks.append(name)
-
-    def server_input(self, server_input):
-        self.received_server_inputs.append(server_input)
-
-
-class GeneratorMock(Generator):
-    """Заглушка генератора миссий"""
-
-    def __init__(self, config: Config):
-        super().__init__(config)
-        self.generations = []
-
-    def make_mission(self, mission_template: str, file_name: str, tvd_name: str):
-        self.generations.append((file_name, tvd_name))
-
-    def make_ldb(self, tvd_name: str):
-        pass
-
+COLOR_WHITE = '#FFFFFF'
+COLOR_RED = '#FF0000'
+COLOR_BLUE = '#00CCFF'
 
 TEST = 'test'
 TEST_NODES_LIST = [
@@ -213,57 +110,3 @@ def get_test_grid(mgen: MgenMock) -> Grid:
         nodes[source_id].neighbors.add(nodes[target_id])
         nodes[target_id].neighbors.add(nodes[source_id])
     return Grid(name=TEST, nodes=nodes, edges=TEST_EDGES_LIST, tvd=mgen.cfg[TEST]['tvd'])
-
-
-class AirfieldsServiceMock(AirfieldsService):
-    # noinspection PyTypeChecker
-    def __init__(self, config: Config):
-        super().__init__(config)
-
-    def spawn(self, tvd, aircraft_name: str, xpos: float, zpos: float):
-        pass
-
-    def finish(self, tvd_name: str, airfield_country: int, bot):
-        pass
-
-
-class DivisionsServiceMock(DivisionsService):
-    def __init__(self, emitter, config):
-        super().__init__(emitter, config, None)
-        self.damaged_divisions = set()
-
-    def damage_division(self, tik: int, tvd_name: str, unit_name: str):
-        self.damaged_divisions.add(unit_name.split(sep='_')[1])
-
-
-def atype_12_stub(object_id: int, object_name: str, country: int, name: str, parent_id: int) -> Atype12:
-    """Заглушка события инициализации объекта"""
-    return Atype12(120, object_id, object_name, country, int(country/100), name, parent_id)
-
-
-class PainterMock(MapPainter):
-    def __init__(self):
-        super().__init__(None)
-
-    def update_map(self):
-        pass
-
-
-class ConfigMock(Config):
-    def __init__(self):
-        path = Path('./tests/data/config/main.json')
-        super().__init__(path)
-        self.main = MainMock(path)
-        self.mgen = MgenMock(self.main.game_folder)
-        self.planes = PlanesMock()
-
-
-class RConMock(DServerRcon):
-    def __init__(self, config: Config, buffer_size=1024):
-        super().__init__(config.main.rcon_ip, config.main.rcon_port, buffer_size=buffer_size)
-        self.private_messages = []
-        self.connect = pass_
-        self.auth = pass_
-
-    def private_message(self, account_id, message):
-        self.private_messages.append((account_id, message))
