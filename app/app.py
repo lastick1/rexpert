@@ -4,12 +4,9 @@ from __future__ import annotations
 import logging
 import shutil
 from pathlib import Path
-from app_base import AppBase
+from constants import DATE_FORMAT, START_DATE
 from model import CampaignMap
-from constants import DATE_FORMAT
-
-
-START_DATE = 'start_date'
+from .app_base import AppBase
 
 
 class App(AppBase):
