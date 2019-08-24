@@ -4,7 +4,7 @@ import constants
 from model import ManagedAirfield
 
 
-from .collection_wrapper import CollectionWrapper, _update_request_body
+from .collection_wrapper import CollectionWrapper
 
 
 class Airfields(CollectionWrapper):
@@ -12,7 +12,7 @@ class Airfields(CollectionWrapper):
 
     def update_airfield(self, managed_airfield: ManagedAirfield):
         """Обновить аэродром"""
-        update = _update_request_body(managed_airfield.to_dict())
+        update = CollectionWrapper.update_request_body(managed_airfield.to_dict())
         self.update_one({constants.ID: managed_airfield.id}, update)
 
     def update_airfields(self, managed_airfields: List[ManagedAirfield]):

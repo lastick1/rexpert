@@ -1,7 +1,7 @@
 from __future__ import annotations
 import constants
 from model import Player
-from .collection_wrapper import CollectionWrapper, _update_request_body
+from .collection_wrapper import CollectionWrapper
 
 
 class Players(CollectionWrapper):
@@ -18,7 +18,7 @@ class Players(CollectionWrapper):
 
     def update(self, player: Player):
         """Обновить/создать игрока в БД"""
-        document = _update_request_body(player.to_dict())
+        document = CollectionWrapper.update_request_body(player.to_dict())
         self.collection.update_one(
             {constants.ID: player.account_id}, document, upsert=True)
 

@@ -2,7 +2,7 @@ from __future__ import annotations
 from typing import List
 import constants
 from model import Warehouse
-from .collection_wrapper import CollectionWrapper, _update_request_body
+from .collection_wrapper import CollectionWrapper
 
 
 class Warehouses(CollectionWrapper):
@@ -28,7 +28,7 @@ class Warehouses(CollectionWrapper):
     def update(self, warehouse: Warehouse) -> None:
         """Обновить/создать документ в БД"""
         self.update_one(
-            self._make_filter(warehouse.tvd_name, warehouse.name), _update_request_body(warehouse.to_dict()))
+            self._make_filter(warehouse.tvd_name, warehouse.name), CollectionWrapper.update_request_body(warehouse.to_dict()))
 
     def load_by_name(self, tvd_name: str, name: str) -> Warehouse:
         """Загрузить данные склада по его имени"""

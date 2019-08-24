@@ -2,7 +2,7 @@ from __future__ import annotations
 from typing import Tuple
 import constants
 from model import Division
-from .collection_wrapper import CollectionWrapper, _update_request_body
+from .collection_wrapper import CollectionWrapper
 
 
 class Divisions(CollectionWrapper):
@@ -26,7 +26,7 @@ class Divisions(CollectionWrapper):
     def update(self, division: Division):
         """Обновить/создать документ в БД"""
         self.update_one(self._make_filter(
-            division.tvd_name, division.name), _update_request_body(division.to_dict()))
+            division.tvd_name, division.name), CollectionWrapper.update_request_body(division.to_dict()))
 
     def load_by_name(self, tvd_name: str, division_name: str) -> Division:
         """Загрузить данные дивизии по её имени"""

@@ -2,7 +2,7 @@ from __future__ import annotations
 import pymongo
 import constants
 from model import CampaignMap
-from .collection_wrapper import CollectionWrapper, _update_request_body
+from .collection_wrapper import CollectionWrapper
 from .campaign_missions import CampaignMissions
 
 
@@ -25,7 +25,7 @@ class CampaignMaps(CollectionWrapper):
 
     def update(self, campaign_map: CampaignMap):
         """Обновить/создать документ в БД"""
-        _b = _update_request_body(campaign_map.to_dict())
+        _b = CollectionWrapper.update_request_body(campaign_map.to_dict())
         self.collection.update_one(
             {constants.TVD_NAME: campaign_map.tvd_name}, _b, upsert=True)
 

@@ -8,7 +8,7 @@ from model import CampaignMission, \
     AirfieldKill, \
     TanksCoverFail
 
-from .collection_wrapper import CollectionWrapper, _update_request_body
+from .collection_wrapper import CollectionWrapper
 
 class CampaignMissions(CollectionWrapper):
     """Работа с документами миссий в БД"""
@@ -76,7 +76,7 @@ class CampaignMissions(CollectionWrapper):
     def update(self, mission: CampaignMission):
         """Обновить/создать документ в БД"""
         self.update_one({'date': mission.date.strftime(
-            constants.DATE_FORMAT)}, _update_request_body(mission.to_dict()))
+            constants.DATE_FORMAT)}, CollectionWrapper.update_request_body(mission.to_dict()))
 
     def load_by_date(self, date: str) -> CampaignMission:
         """Загрузить миссию по её игровой дате"""
