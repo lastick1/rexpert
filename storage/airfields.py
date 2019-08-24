@@ -1,3 +1,4 @@
+"""Работа с документами аэродромов в БД"""
 from __future__ import annotations
 from typing import List
 import constants

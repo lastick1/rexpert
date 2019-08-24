@@ -6,3 +6,4 @@ from .generator_mock import GeneratorMock
 from .painter_mock import PainterMock
 from .rcon_mock import RConMock
 from .tvd_mock import TvdMock
+from .storage_mock import StorageMock
