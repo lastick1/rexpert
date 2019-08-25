@@ -84,7 +84,6 @@ class PlayersService(BaseEventService):
 
     def _spawn(self, atype: Atype10) -> None:
         """Обработка появления игрока"""
-
         player = self._storage.players.find(atype.account_id)
         player.nickname = atype.name
         self.player_by_bot_id[atype.bot_id] = player
@@ -96,8 +95,10 @@ class PlayersService(BaseEventService):
                 f'Available modifications {player.unlocks}'
         else:
             message = f'{player.nickname} takeoff granted! Available modifications {player.unlocks}'
-        self.emitter.commands_rcon.on_next(
-            MessagePrivate(message, player.account_id))
+
+        bot = self._objects_service.get_bot(atype.bot_id)
+        if bot and bot.__class__ == BotPilot:
+            self.emitter.commands_rcon.on_next(MessagePrivate(message, player.account_id))
 
         self._storage.players.update(player)
 

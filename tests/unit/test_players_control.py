@@ -306,6 +306,30 @@ class TestPlayersController(unittest.TestCase):
         self.assertTrue(self.update_calls)
         self.assertEqual(expect, self.update_calls[0].unlocks)
 
+    def test_gunner_does_not_receive_message(self):
+        """Стрелкам не выдаётся сообщение о разрешении/запрете взлёта"""
+        controller = PlayersService(
+            self._emitter,
+            CONFIG,
+            self._storage,
+            self._objects_service
+        )
+        controller.init()
+        aircraft_name = 'Pe-2 ser.35'
+        bot_pilot_name = 'BotPilot'
+        bot_gunner_name = 'BotGunner'
+        atype12_aircraft = atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
+        atype12_pilot_bot = atype_12_stub(2, bot_pilot_name, 201, 'test_bot_pilot', 1)
+        atype12_gunner_bot = atype_12_stub(3, bot_gunner_name, 201, 'test_bot_gunner', 1)
+        atype10 = atype_10_stub(1, 3, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
+        # Act
+        self._emitter.events_game_object.on_next(atype12_aircraft)
+        self._emitter.events_game_object.on_next(atype12_pilot_bot)
+        self._emitter.events_game_object.on_next(atype12_gunner_bot)
+        self._emitter.events_player_spawn.on_next(atype10)
+        # Assert
+        self.assertFalse(self._interceptor.commands)
+
     def test_msg_restricted_takeoff(self):
         """Отправляется предупреждение о запрете взлёта"""
         self._player_dict[constants.Player.UNLOCKS] = 0
