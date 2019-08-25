@@ -36,30 +36,20 @@ class ObjectsService(BaseEventService):
 
     def init(self) -> None:
         self.register_subscriptions([
-            self.emitter.events_mission_start.subscribe_(
-                self._start_mission, self._on_error),
+            self.emitter.events_mission_start.subscribe_(self._start_mission, self._on_error),
             self.emitter.events_hit.subscribe_(self._hit, self._on_error),
-            self.emitter.events_damage.subscribe_(
-                self._damage, self._on_error),
+            self.emitter.events_damage.subscribe_(self._damage, self._on_error),
             self.emitter.events_kill.subscribe_(self._kill, self._on_error),
-            self.emitter.events_takeoff.subscribe_(
-                self._takeoff, self._on_error),
+            self.emitter.events_takeoff.subscribe_(self._takeoff, self._on_error),
             self.emitter.events_landing.subscribe_(self._land, self._on_error),
-            self.emitter.events_mission_end.subscribe_(
-                self._end_mission, self._on_error),
-            self.emitter.events_airfield.subscribe_(
-                self._airfield, self._on_error),
-            self.emitter.events_player_spawn.subscribe_(
-                self._spawn, self._on_error),
+            self.emitter.events_mission_end.subscribe_(self._end_mission, self._on_error),
+            self.emitter.events_airfield.subscribe_(self._airfield, self._on_error),
+            self.emitter.events_player_spawn.subscribe_(self._spawn, self._on_error),
             self.emitter.events_group.subscribe_(self._group, self._on_error),
-            self.emitter.events_game_object.subscribe_(
-                self._create_object, self._on_error),
-            self.emitter.events_bot_deinitialization.subscribe_(
-                self._deinitialize, self._on_error),
-            self.emitter.events_pos_changed.subscribe_(
-                self._change_pos, self._on_error),
-            self.emitter.events_bot_eject_leave.subscribe_(
-                self._eject_leave, self._on_error),
+            self.emitter.events_game_object.subscribe_(self._create_object, self._on_error),
+            self.emitter.events_bot_deinitialization.subscribe_(self._deinitialize, self._on_error),
+            self.emitter.events_pos_changed.subscribe_(self._change_pos, self._on_error),
+            self.emitter.events_bot_eject_leave.subscribe_(self._eject_leave, self._on_error),
         ])
 
     def _on_error(self, error: Any) -> None:

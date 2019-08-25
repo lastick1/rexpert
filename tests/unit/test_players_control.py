@@ -10,9 +10,10 @@ from core import EventsEmitter, \
     Atype5, \
     Atype6, \
     Atype16, \
-    Atype20
+    Atype20, \
+    Atype21, \
+    Finish
 from configs import Objects
-from storage import Storage
 from services import ObjectsService, \
     PlayersService
 import constants
@@ -40,15 +41,17 @@ class TestPlayersController(unittest.TestCase):
     def setUp(self):
         self._storage: StorageMock = StorageMock(CONFIG.main)
         self._emitter: EventsEmitter = EventsEmitter()
-        self._objects_service: ObjectsService = ObjectsService(
-            self._emitter, CONFIG, OBJECTS)
+        self._objects_service: ObjectsService = ObjectsService(self._emitter, CONFIG, OBJECTS)
+        self._objects_service.init()
         self._interceptor: EventsInterceptor = EventsInterceptor(self._emitter)
         self._player_dict = Player.initialize(TEST_ACCOUNT_ID)
         self._player = Player(TEST_ACCOUNT_ID, self._player_dict)
 
         self.update_calls = []
+        self.reset_mods_for_all_calls = []
         self.players_mock.update = self._update
         self.players_mock.find = self._find
+        self.players_mock.reset_mods_for_all = self._reset_mods_for_all
 
     @property
     def players_mock(self) -> PlayersMock:
@@ -63,6 +66,9 @@ class TestPlayersController(unittest.TestCase):
 
     def _find(self, account_id) -> Player:
         return Player(account_id, self._player_dict)
+
+    def _reset_mods_for_all(self, unlocks: int) -> None:
+        self.reset_mods_for_all_calls.append(unlocks)
 
     def test_connect_player(self):
         """Отправляется приветственное сообщение игроку на подключении"""
@@ -115,88 +121,6 @@ class TestPlayersController(unittest.TestCase):
         # Assert
         self.assertNotEqual(len(self.update_calls), 0)
 
-    def test_player_initialization(self):
-        """Обновляется ник игрока на появлении"""
-        controller = PlayersService(
-            self._emitter,
-            CONFIG,
-            self._storage,
-            self._objects_service
-        )
-        aircraft_name = 'I-16 type 24'
-        bot_name = 'BotPilot'
-        atype12_aircraft = atype_12_stub(
-            1, aircraft_name, 201, 'test_aircraft', -1)
-        atype12_bot = atype_12_stub(
-            2, bot_name, 201, 'test_bot', 1)
-        atype10 = atype_10_stub(
-            1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
-        self._objects_service._create_object(atype12_aircraft)
-        self._objects_service._create_object(atype12_bot)
-        self._objects_service._spawn(atype10)
-        # Act
-        controller._start_mission(None)
-        controller._spawn(atype10)
-        # Assert
-        player = self._storage.players.collection.find_one(FILTER)
-        self.assertEqual(TEST_NICKNAME, player[constants.Player.NICKNAME])
-
-    def test_multiple_spawn_nickname(self):
-        """Не добавляется лишний известный ник при неоднократном появлении"""
-        controller = PlayersService(
-            self._emitter,
-            CONFIG,
-            self._storage,
-            self._objects_service
-        )
-        aircraft_name = 'I-16 type 24'
-        bot_name = 'BotPilot'
-        atype12_aircraft = atype_12_stub(
-            1, aircraft_name, 201, 'test_aircraft', -1)
-        atype12_bot = atype_12_stub(
-            2, bot_name, 201, 'test_bot', 1)
-        atype10 = atype_10_stub(
-            1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
-        self._objects_service._create_object(atype12_aircraft)
-        self._objects_service._create_object(atype12_bot)
-        self._objects_service._spawn(atype10)
-        # Act
-        controller._start_mission(None)
-        controller._spawn(atype10)
-        controller._spawn(atype10)
-        # Assert
-        document = self._storage.players.collection.find_one(FILTER)
-        self.assertEqual([], document[constants.Player.KNOWN_NICKNAMES])
-
-    def test_multiple_spawn_new_nick(self):
-        """Пополняются известные ники при появлении с новым ником"""
-        controller = PlayersService(
-            self._emitter,
-            CONFIG,
-            self._storage,
-            self._objects_service
-        )
-        aircraft_name = 'I-16 type 24'
-        bot_name = 'BotPilot'
-        atype12_aircraft = atype_12_stub(
-            1, aircraft_name, 201, 'test_aircraft', -1)
-        atype12_bot = atype_12_stub(
-            2, bot_name, 201, 'test_bot', 1)
-        atype10 = atype_10_stub(
-            1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
-        self._objects_service._create_object(atype12_aircraft)
-        self._objects_service._create_object(atype12_bot)
-        self._objects_service._spawn(atype10)
-        # Act
-        controller._start_mission(None)
-        controller._spawn(atype10)
-        atype10.name = 'new_nickname'
-        controller._spawn(atype10)
-        # Assert
-        document = self._storage.players.collection.find_one(FILTER)
-        self.assertEqual(
-            [TEST_NICKNAME], document[constants.Player.KNOWN_NICKNAMES])
-
     def test_disconnect_player(self):
         """Ставится статус offline при выходе игрока с сервера"""
         controller = PlayersService(
@@ -205,82 +129,12 @@ class TestPlayersController(unittest.TestCase):
             self._storage,
             self._objects_service
         )
+        controller.init()
         # Act
-        controller._disconnect(TEST_ACCOUNT_ID)
+        self._emitter.events_player_disconnected.on_next(Atype21(1500, TEST_ACCOUNT_ID, TEST_PROFILE_ID))
         # Assert
-        document = self._storage.players.collection.find_one(FILTER)
-        self.assertEqual(False, document[constants.Player.ONLINE])
-
-    def test_give_unlock_for_damage(self):
-        """Даётся модификация за вылет с уроном"""
-        controller = PlayersService(
-            self._emitter,
-            CONFIG,
-            self._storage,
-            self._objects_service
-        )
-        aircraft_name = 'I-16 type 24'
-        bot_name = 'BotPilot'
-        target_name = 'static_il2'
-        atype12_aircraft = atype_12_stub(
-            1, aircraft_name, 201, 'test_aircraft', -1)
-        atype12_bot = atype_12_stub(
-            2, bot_name, 201, 'test_bot', 1)
-        atype12_static = atype_12_stub(
-            3, target_name, 101, 'test_target', -1)
-        atype10 = atype_10_stub(
-            1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
-        aircraft = self._objects_service._create_object(atype12_aircraft)
-        bot = self._objects_service._create_object(atype12_bot)
-        target = self._objects_service._create_object(atype12_static)
-        self._objects_service._spawn(atype10)
-        pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
-        damage = 80.0
-        expect = TEST_PLAYER[constants.Player.UNLOCKS] + 1
-        # Act
-        controller._start_mission(None)
-        controller._spawn(atype10)
-        self._objects_service._damage(
-            Atype2(8999, damage, aircraft.obj_id, target.obj_id, pos))
-        controller._finish(Atype16(9222, bot.obj_id, pos))
-        # Assert
-        document = self._storage.players.collection.find_one(FILTER)
-        self.assertEqual(expect, document[constants.Player.UNLOCKS])
-
-    def test_give_unlock_for_kill(self):
-        """Даётся модификация за вылет с килом"""
-        controller = PlayersService(
-            self._emitter,
-            CONFIG,
-            self._storage,
-            self._objects_service
-        )
-        aircraft_name = 'I-16 type 24'
-        bot_name = 'BotPilot'
-        target_name = 'static_il2'
-        atype12_aircraft = atype_12_stub(
-            1, aircraft_name, 201, 'test_aircraft', -1)
-        atype12_bot = atype_12_stub(
-            2, bot_name, 201, 'test_bot', 1)
-        atype12_static = atype_12_stub(
-            3, target_name, 101, 'test_target', -1)
-        atype10 = atype_10_stub(
-            1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
-        aircraft = self._objects_service._create_object(atype12_aircraft)
-        bot = self._objects_service._create_object(atype12_bot)
-        target = self._objects_service._create_object(atype12_static)
-        self._objects_service._spawn(atype10)
-        pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
-        expect = TEST_PLAYER[constants.Player.UNLOCKS] + 1
-        # Act
-        controller._start_mission(None)
-        controller._spawn(atype10)
-        self._objects_service._kill(
-            Atype3(7888, aircraft.obj_id, target.obj_id, pos))
-        controller._finish(Atype16(9222, bot.obj_id, pos))
-        # Assert
-        document = self._storage.players.collection.find_one(FILTER)
-        self.assertEqual(expect, document[constants.Player.UNLOCKS])
+        self.assertTrue(self.update_calls)
+        self.assertEqual(False, self.update_calls[0].online)
 
     def test_do_not_give_for_disco(self):
         """Не даётся модификация за вылет с килом и диско"""
@@ -290,33 +144,30 @@ class TestPlayersController(unittest.TestCase):
             self._storage,
             self._objects_service
         )
+        controller.init()
         aircraft_name = 'I-16 type 24'
         bot_name = 'BotPilot'
         target_name = 'static_il2'
-        atype12_aircraft = atype_12_stub(
-            1, aircraft_name, 201, 'test_aircraft', -1)
-        atype12_bot = atype_12_stub(
-            2, bot_name, 201, 'test_bot', 1)
-        atype12_static = atype_12_stub(
-            3, target_name, 101, 'test_target', -1)
-        atype10 = atype_10_stub(
-            1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
-        aircraft = self._objects_service._create_object(atype12_aircraft)
-        bot = self._objects_service._create_object(atype12_bot)
-        target = self._objects_service._create_object(atype12_static)
-        self._objects_service._spawn(atype10)
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
-        expect = TEST_PLAYER[constants.Player.UNLOCKS]
+        atype12_aircraft = atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
+        atype12_bot = atype_12_stub(2, bot_name, 201, 'test_bot', 1)
+        atype12_static = atype_12_stub(3, target_name, 101, 'test_target', -1)
+        atype10 = atype_10_stub(1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
+        atype16 = Atype16(9222, atype12_bot.object_id, pos)
+        expect = self._player_dict[constants.Player.UNLOCKS]
         # Act
-        controller._start_mission(None)
-        controller._spawn(atype10)
-        self._objects_service._takeoff(Atype5(3333, aircraft.obj_id, pos))
-        self._objects_service._kill(
-            Atype3(7888, aircraft.obj_id, target.obj_id, pos))
-        controller._finish(Atype16(9222, bot.obj_id, pos))
+        self._emitter.events_game_object.on_next(atype12_aircraft)
+        self._emitter.events_game_object.on_next(atype12_bot)
+        self._emitter.events_player_spawn.on_next(atype10)
+        self._emitter.events_game_object.on_next(atype12_static)
+        self._emitter.events_takeoff.on_next(Atype5(3333, atype12_aircraft.object_id, pos))
+        self._emitter.events_kill.on_next(Atype3(7888, atype12_aircraft.object_id, atype12_static.object_id, pos))
+        self._emitter.events_bot_deinitialization.on_next(atype16)
+        self._emitter.player_finish.on_next(Finish(False, atype16))
+        self._emitter.events_player_disconnected.on_next(Atype21(9999, TEST_ACCOUNT_ID, TEST_PROFILE_ID))
         # Assert
-        document = self._storage.players.collection.find_one(FILTER)
-        self.assertEqual(expect, document[constants.Player.UNLOCKS])
+        self.assertTrue(self.update_calls)
+        self.assertEqual(self.update_calls[0].unlocks, expect)
 
     def test_do_not_give_for_friendly(self):
         """Не даётся модификация за вылет со стрельбой по своим"""
@@ -326,33 +177,27 @@ class TestPlayersController(unittest.TestCase):
             self._storage,
             self._objects_service
         )
+        controller.init()
         aircraft_name = 'I-16 type 24'
         bot_name = 'BotPilot'
         target_name = 'static_il2'
-        atype12_aircraft = atype_12_stub(
-            1, aircraft_name, 201, 'test_aircraft', -1)
-        atype12_bot = atype_12_stub(
-            2, bot_name, 201, 'test_bot', 1)
-        atype12_static = atype_12_stub(
-            3, target_name, 201, 'test_target', -1)
-        atype10 = atype_10_stub(
-            1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
-        aircraft = self._objects_service._create_object(atype12_aircraft)
-        bot = self._objects_service._create_object(atype12_bot)
-        target = self._objects_service._create_object(atype12_static)
-        self._objects_service._spawn(atype10)
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
-        expect = TEST_PLAYER[constants.Player.UNLOCKS]
+        atype12_aircraft = atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
+        atype12_bot = atype_12_stub(2, bot_name, 201, 'test_bot', 1)
+        atype12_static = atype_12_stub(3, target_name, 201, 'test_target', -1)
+        atype10 = atype_10_stub(1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
+        atype16 = Atype16(9222, atype12_bot.object_id, pos)
+        expect = self._player_dict[constants.Player.UNLOCKS]
         # Act
-        controller._start_mission(None)
-        controller._spawn(atype10)
-        self._objects_service._kill(
-            Atype3(7888, aircraft.obj_id, target.obj_id, pos))
-        controller._finish(Atype16(9222, bot.obj_id, pos))
-        controller._disconnect(TEST_ACCOUNT_ID)
+        self._emitter.events_game_object.on_next(atype12_aircraft)
+        self._emitter.events_game_object.on_next(atype12_bot)
+        self._emitter.events_player_spawn.on_next(atype10)
+        self._emitter.events_game_object.on_next(atype12_static)
+        self._emitter.events_kill.on_next(Atype3(7888, atype12_aircraft.object_id, atype12_static.object_id, pos))
+        self._emitter.player_finish.on_next(Finish(True, atype16))
         # Assert
-        document = self._storage.players.collection.find_one(FILTER)
-        self.assertEqual(expect, document[constants.Player.UNLOCKS])
+        self.assertTrue(self.update_calls)
+        self.assertEqual(self.update_calls[0].unlocks, expect)
 
     def test_do_not_give_for_dead_end(self):
         """Не даётся модификация за вылет с убийством и смертью"""
@@ -362,99 +207,154 @@ class TestPlayersController(unittest.TestCase):
             self._storage,
             self._objects_service
         )
+        controller.init()
         aircraft_name = 'I-16 type 24'
         bot_name = 'BotPilot'
         target_name = 'static_il2'
-        atype12_aircraft = atype_12_stub(
-            1, aircraft_name, 201, 'test_aircraft', -1)
-        atype12_bot = atype_12_stub(
-            2, bot_name, 201, 'test_bot', 1)
-        atype12_static = atype_12_stub(
-            3, target_name, 101, 'test_target', -1)
-        atype10 = atype_10_stub(
-            1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
-        aircraft = self._objects_service._create_object(atype12_aircraft)
-        bot = self._objects_service._create_object(atype12_bot)
-        target = self._objects_service._create_object(atype12_static)
-        self._objects_service._spawn(atype10)
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
-        expect = TEST_PLAYER[constants.Player.UNLOCKS]
+        atype12_aircraft = atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
+        atype12_bot = atype_12_stub(2, bot_name, 201, 'test_bot', 1)
+        atype12_static = atype_12_stub(3, target_name, 101, 'test_target', -1)
+        atype10 = atype_10_stub(1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
+        atype16 = Atype16(9222, atype12_bot.object_id, pos)
+        atype5 = Atype5(3333, atype12_aircraft.object_id, pos)
+        atype_kill_target_by_player = Atype3(7888, atype12_aircraft.object_id, atype12_static.object_id, pos)
+        atype_kill_player = Atype3(8777, atype12_aircraft.object_id, atype12_bot.object_id, pos)
+        atype6 = Atype6(9911, atype12_aircraft.object_id, pos)
+        expect = self._player_dict[constants.Player.UNLOCKS]
         # Act
-        controller._start_mission(None)
-        controller._spawn(atype10)
-        self._objects_service._takeoff(Atype5(3333, aircraft.obj_id, pos))
-        self._objects_service._kill(
-            Atype3(7888, aircraft.obj_id, target.obj_id, pos))
-        self._objects_service._kill(
-            Atype3(8777, aircraft.obj_id, bot.obj_id, pos))
-        self._objects_service._land(Atype6(9911, aircraft.obj_id, pos))
-        controller._finish(Atype16(9222, bot.obj_id, pos))
+        self._emitter.events_game_object.on_next(atype12_aircraft)
+        self._emitter.events_game_object.on_next(atype12_bot)
+        self._emitter.events_player_spawn.on_next(atype10)
+        self._emitter.events_takeoff.on_next(atype5)
+        self._emitter.events_kill.on_next(atype_kill_target_by_player)
+        self._emitter.events_kill.on_next(atype_kill_player)
+        self._emitter.events_landing.on_next(atype6)
+        self._emitter.player_finish.on_next(Finish(False, atype16))
         # Assert
-        document = self._storage.players.collection.find_one(FILTER)
-        self.assertEqual(expect, document[constants.Player.UNLOCKS])
+        self.assertTrue(self.update_calls)
+        self.assertEqual(self.update_calls[0].unlocks, expect)
 
     @unittest.skip('not implemented')
     def test_do_not_give_for_bailout(self):
         """Не даётся модификация за вылет с убийством и прыжком"""
         self.fail('not implemented')
 
-    def test_msg_restricted_takeoff(self):
-        """Отправляется предупреждение о запрете взлёта"""
-        TEST_PLAYER[constants.Player.UNLOCKS] = 0
+    def test_give_unlock_for_damage(self):
+        """Даётся модификация за вылет с уроном"""
         controller = PlayersService(
             self._emitter,
             CONFIG,
             self._storage,
             self._objects_service
         )
+        controller.init()
+        aircraft_name = 'I-16 type 24'
+        bot_name = 'BotPilot'
+        target_name = 'static_il2'
+        atype12_aircraft = atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
+        atype12_bot = atype_12_stub(2, bot_name, 201, 'test_bot', 1)
+        atype12_static = atype_12_stub(3, target_name, 101, 'test_target', -1)
+        atype10 = atype_10_stub(1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
+        pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
+        damage = 80.0
+        expect = self._player_dict[constants.Player.UNLOCKS] + 1
+        atype16 = Atype16(9222, atype12_bot.object_id, pos)
+        # Act
+        self._emitter.events_game_object.on_next(atype12_aircraft)
+        self._emitter.events_game_object.on_next(atype12_bot)
+        self._emitter.events_player_spawn.on_next(atype10)
+        self._emitter.events_game_object.on_next(atype12_static)
+        self._emitter.events_damage.on_next(
+            Atype2(8999, damage, atype12_aircraft.object_id, atype12_static.object_id, pos))
+        self._emitter.events_bot_deinitialization.on_next(atype16)
+        self._emitter.player_finish.on_next(Finish(True, atype16))
+        # Assert
+        self.assertTrue(self.update_calls)
+        self.assertEqual(expect, self.update_calls[0].unlocks)
+
+    def test_give_unlock_for_kill(self):
+        """Даётся модификация за вылет с килом"""
+        controller = PlayersService(
+            self._emitter,
+            CONFIG,
+            self._storage,
+            self._objects_service
+        )
+        controller.init()
+        aircraft_name = 'I-16 type 24'
+        bot_name = 'BotPilot'
+        target_name = 'static_il2'
+        pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
+        atype12_aircraft = atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
+        atype12_bot = atype_12_stub(2, bot_name, 201, 'test_bot', 1)
+        atype12_static = atype_12_stub(3, target_name, 101, 'test_target', -1)
+        atype10 = atype_10_stub(1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
+        atype12_aircraft = atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
+        atype12_bot = atype_12_stub(2, bot_name, 201, 'test_bot', 1)
+        atype12_static = atype_12_stub(3, target_name, 101, 'test_target', -1)
+        atype16 = Atype16(9222, atype12_bot.object_id, pos)
+        expect = self._player_dict[constants.Player.UNLOCKS] + 1
+        # Act
+        self._emitter.events_game_object.on_next(atype12_aircraft)
+        self._emitter.events_game_object.on_next(atype12_bot)
+        self._emitter.events_player_spawn.on_next(atype10)
+        self._emitter.events_game_object.on_next(atype12_static)
+        self._emitter.events_kill.on_next(Atype3(7888, atype12_aircraft.object_id, atype12_static.object_id, pos))
+        self._emitter.player_finish.on_next(Finish(True, atype16))
+        # Assert
+        self.assertTrue(self.update_calls)
+        self.assertEqual(expect, self.update_calls[0].unlocks)
+
+    def test_msg_restricted_takeoff(self):
+        """Отправляется предупреждение о запрете взлёта"""
+        self._player_dict[constants.Player.UNLOCKS] = 0
+        self._player_dict[constants.Player.NICKNAME] = TEST_NICKNAME
+        controller = PlayersService(
+            self._emitter,
+            CONFIG,
+            self._storage,
+            self._objects_service
+        )
+        controller.init()
         aircraft_name = 'I-16 type 24'
         bot_name = 'BotPilot'
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
-        atype12_aircraft = atype_12_stub(
-            1, aircraft_name, 201, 'test_aircraft', -1)
-        atype12_bot = atype_12_stub(
-            2, bot_name, 201, 'test_bot', 1)
-        atype10 = atype_10_stub(
-            1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
-        aircraft = self._objects_service._create_object(atype12_aircraft)
-        self._objects_service._create_object(atype12_bot)
-        atype5 = Atype5(2132, aircraft.obj_id, pos)
+        atype12_aircraft = atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
+        atype12_bot = atype_12_stub(2, bot_name, 201, 'test_bot', 1)
+        atype10 = atype_10_stub(1, 2, pos, aircraft_name, 201, 3)
         # Act
-        controller._start_mission(None)
-        self._objects_service._spawn(atype10)
-        controller._spawn(atype10)
-        self._objects_service._takeoff(atype5)
-        controller._takeoff(atype5)
+        self._emitter.events_game_object.on_next(atype12_aircraft)
+        self._emitter.events_game_object.on_next(atype12_bot)
+        self._emitter.events_player_spawn.on_next(atype10)
         # Assert
         self.assertTrue(self._interceptor.commands)
+        self.assertEqual(
+            self._interceptor.commands[0].message,
+            f'{TEST_NICKNAME} TAKEOFF is FORBIDDEN FOR YOU on this aircraft. Available modifications 0')
 
     def test_kick_restricted_takeoff(self):
         """Отправляется команда кика при запрещённом взлёте"""
-        TEST_PLAYER[constants.Player.UNLOCKS] = 0
+        self._player_dict[constants.Player.UNLOCKS] = 0
         controller = PlayersService(
             self._emitter,
             CONFIG,
             self._storage,
             self._objects_service
         )
+        controller.init()
         aircraft_name = 'I-16 type 24'
         bot_name = 'BotPilot'
         pos = {'x': 100.0, 'y': 100.0, 'z': 100.0}
-        atype12_aircraft = atype_12_stub(
-            1, aircraft_name, 201, 'test_aircraft', -1)
-        atype12_bot = atype_12_stub(
-            2, bot_name, 201, 'test_bot', 1)
-        atype10 = atype_10_stub(
-            1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
-        aircraft = self._objects_service._create_object(atype12_aircraft)
-        self._objects_service._create_object(atype12_bot)
-        atype5 = Atype5(2132, aircraft.obj_id, pos)
+        atype12_aircraft = atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
+        atype12_bot = atype_12_stub(2, bot_name, 201, 'test_bot', 1)
+        atype10 = atype_10_stub(1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
+        atype5 = Atype5(2132, atype12_aircraft.object_id, pos)
         # Act
-        controller._start_mission(None)
-        self._objects_service._spawn(atype10)
-        controller._spawn(atype10)
-        self._objects_service._takeoff(atype5)
-        controller._takeoff(atype5)
+        self._emitter.events_game_object.on_next(atype12_aircraft)
+        self._emitter.events_game_object.on_next(atype12_bot)
+        self._emitter.events_player_spawn.on_next(atype10)
+        self._emitter.events_takeoff.on_next(atype5)
         # Assert
         # приветствие + предупреждение
         self.assertTrue(self._interceptor.commands)
@@ -463,20 +363,88 @@ class TestPlayersController(unittest.TestCase):
         self.assertEqual(TEST_ACCOUNT_ID, welcome.account_id)
         self.assertEqual(TEST_ACCOUNT_ID, warning.account_id)
 
-    def test_reset(self):
-        """Сбрасывается состояние игроков в кампании"""
-        TEST_PLAYER[constants.Player.UNLOCKS] = 4
+    def test_multiple_spawn_new_nick(self):
+        """Пополняются известные ники при появлении с новым ником"""
+        new_nickname = 'new_nickname'
+        self._player_dict[constants.Player.NICKNAME] = TEST_NICKNAME
         controller = PlayersService(
             self._emitter,
             CONFIG,
             self._storage,
             self._objects_service
         )
+        controller.init()
+        aircraft_name = 'I-16 type 24'
+        bot_name = 'BotPilot'
+        atype12_aircraft = atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
+        atype12_bot = atype_12_stub(2, bot_name, 201, 'test_bot', 1)
+        atype10 = atype_10_stub(1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
+        atype10.name = new_nickname
+        # Act
+        self._emitter.events_game_object.on_next(atype12_aircraft)
+        self._emitter.events_game_object.on_next(atype12_bot)
+        self._emitter.events_player_spawn.on_next(atype10)
+        # Assert
+        self.assertListEqual(self.update_calls[0].previous_nicknames, [TEST_NICKNAME])
+
+    def test_multiple_spawn_nickname(self):
+        """Не добавляется лишний известный ник при неоднократном появлении"""
+        self._player_dict[constants.Player.NICKNAME] = TEST_NICKNAME
+        controller = PlayersService(
+            self._emitter,
+            CONFIG,
+            self._storage,
+            self._objects_service
+        )
+        controller.init()
+        aircraft_name = 'I-16 type 24'
+        bot_name = 'BotPilot'
+        atype12_aircraft = atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
+        atype12_bot = atype_12_stub(2, bot_name, 201, 'test_bot', 1)
+        atype10 = atype_10_stub(1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
+        # Act
+        self._emitter.events_game_object.on_next(atype12_aircraft)
+        self._emitter.events_game_object.on_next(atype12_bot)
+        self._emitter.events_player_spawn.on_next(atype10)
+        # Assert
+        self.assertTrue(self.update_calls)
+        self.assertFalse(self.update_calls[0].previous_nicknames)
+
+    def test_player_initialization(self):
+        """Обновляется ник игрока на появлении"""
+        controller = PlayersService(
+            self._emitter,
+            CONFIG,
+            self._storage,
+            self._objects_service
+        )
+        controller.init()
+        aircraft_name = 'I-16 type 24'
+        bot_name = 'BotPilot'
+        atype12_aircraft = atype_12_stub(1, aircraft_name, 201, 'test_aircraft', -1)
+        atype12_bot = atype_12_stub(2, bot_name, 201, 'test_bot', 1)
+        atype10 = atype_10_stub(1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
+        # Act
+        self._emitter.events_game_object.on_next(atype12_aircraft)
+        self._emitter.events_game_object.on_next(atype12_bot)
+        self._emitter.events_player_spawn.on_next(atype10)
+        # Assert
+        self.assertTrue(self.update_calls)
+
+    def test_reset(self):
+        """Сбрасывается состояние игроков в кампании"""
+        self._player_dict[constants.Player.UNLOCKS] = 4
+        controller = PlayersService(
+            self._emitter,
+            CONFIG,
+            self._storage,
+            self._objects_service
+        )
+        controller.init()
         # Act
         controller.reset()
         # Assert
-        self.assertEqual(self._storage.players.find(
-            TEST_ACCOUNT_ID).unlocks, CONFIG.gameplay.unlocks_start)
+        self.assertTrue(self.reset_mods_for_all_calls)
 
 
 if __name__ == '__main__':

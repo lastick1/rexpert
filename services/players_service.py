@@ -52,8 +52,7 @@ class PlayersService(BaseEventService):
             self.emitter.events_takeoff.subscribe_(self._takeoff),
             self.emitter.events_player_spawn.subscribe_(self._spawn),
             self.emitter.events_player_connected.subscribe_(self._connect),
-            self.emitter.events_player_disconnected.subscribe_(
-                self._disconnect),
+            self.emitter.events_player_disconnected.subscribe_(self._disconnect),
 
             self.emitter.player_finish.subscribe_(self._finish),
         ])
