@@ -9,15 +9,23 @@ from core import EventsEmitter, \
     Atype3, \
     Atype5, \
     Atype6, \
-    Atype10, \
-    Atype16
+    Atype16, \
+    Atype20
 from configs import Objects
 from storage import Storage
 from services import ObjectsService, \
     PlayersService
 import constants
 from model import Player, PlayerBanP15M, MessagePrivate
-from tests.mocks import ConfigMock, EventsInterceptor, atype_12_stub
+from tests.mocks import ConfigMock, \
+    EventsInterceptor, \
+    StorageMock, \
+    PlayersMock, \
+    atype_10_stub, \
+    atype_12_stub, \
+    TEST_NICKNAME, \
+    TEST_ACCOUNT_ID, \
+    TEST_PROFILE_ID
 
 CONFIG = ConfigMock()
 OBJECTS = Objects()
@@ -25,50 +33,54 @@ OBJECTS = Objects()
 logging.basicConfig(
     format=u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s] %(message)s', level=logging.DEBUG)
 
-TEST_NICKNAME = '_test_nickname'
-TEST_ACCOUNT_ID = '_test_id1'
-TEST_PROFILE_ID = '_test_profile_id1'
-TEST_PLAYER = Player.initialize(TEST_ACCOUNT_ID)
-FILTER = {constants.ID: TEST_ACCOUNT_ID}
-
-
-def _atype_10_stub(aircraft_id: int, bot_id: int, pos: dict, aircraft_name: str,
-                   country: int, parent_id: int, nickname=TEST_NICKNAME) -> Atype10:
-    """Заглушка события появления игрока"""
-    return Atype10(
-        123, aircraft_id, bot_id, TEST_ACCOUNT_ID, TEST_PROFILE_ID, nickname, pos, aircraft_name, country,
-        int(country/100), 1234, False, parent_id, True, True, 0, 1, '', [1, 5], 200, 100, 4, 8, '')
-
 
 class TestPlayersController(unittest.TestCase):
     """Тесты событий с обработкой данных игроков"""
 
     def setUp(self):
-        self._storage: Storage = Storage(CONFIG.main)
+        self._storage: StorageMock = StorageMock(CONFIG.main)
         self._emitter: EventsEmitter = EventsEmitter()
         self._objects_service: ObjectsService = ObjectsService(
             self._emitter, CONFIG, OBJECTS)
         self._interceptor: EventsInterceptor = EventsInterceptor(self._emitter)
-        TEST_PLAYER[constants.Player.UNLOCKS] = 1
-        if constants.Player.NICKNAME in TEST_PLAYER:
-            del TEST_PLAYER[constants.Player.NICKNAME]
+        self._player_dict = Player.initialize(TEST_ACCOUNT_ID)
+        self._player = Player(TEST_ACCOUNT_ID, self._player_dict)
 
-    def tearDown(self):
-        self._storage.drop_database()
+        self.update_calls = []
+        self.players_mock.update = self._update
+        self.players_mock.find = self._find
 
-    def test_connect_player_init(self):
-        """Инициализируется игрок на первом входе на сервер"""
+    @property
+    def players_mock(self) -> PlayersMock:
+        "Мок коллекции игроков"
+        return self._storage.players
+
+    def _count_zero(self, account_id) -> 0:
+        return 0
+
+    def _update(self, player: Player) -> None:
+        self.update_calls.append(player)
+
+    def _find(self, account_id) -> Player:
+        return Player(account_id, self._player_dict)
+
+    def test_connect_player(self):
+        """Отправляется приветственное сообщение игроку на подключении"""
+        self._player_dict[constants.Player.NICKNAME] = TEST_NICKNAME
         controller = PlayersService(
             self._emitter,
             CONFIG,
             self._storage,
             self._objects_service
         )
+        controller.init()
         # Act
-        controller._connect(TEST_ACCOUNT_ID)
-        document = self._storage.players.collection.find_one(FILTER)
+        self._emitter.events_player_connected.on_next(Atype20(150, TEST_ACCOUNT_ID, TEST_PROFILE_ID))
         # Assert
-        self.assertNotEqual(None, document)
+        self.assertTrue(self._interceptor.commands)
+        command: MessagePrivate = self._interceptor.commands[0]
+        self.assertTupleEqual((TEST_ACCOUNT_ID, 'Hello {}!'.format(TEST_NICKNAME)),
+                              (command.account_id, command.message))
 
     def test_connect_player_check_ban(self):
         """Отправляется команда бана заблокированного пользователя через консоль"""
@@ -78,15 +90,30 @@ class TestPlayersController(unittest.TestCase):
             self._storage,
             self._objects_service
         )
+        controller.init()
         date = datetime.datetime.now() + datetime.timedelta(days=1)
-        self._storage.players.collection.update_one(
-            FILTER, update={'$set': {constants.Player.BAN_DATE: date}})
+        self._player_dict[constants.Player.BAN_DATE] = date
         # Act
-        controller._connect(TEST_ACCOUNT_ID)
+        self._emitter.events_player_connected.on_next(Atype20(150, TEST_ACCOUNT_ID, TEST_PROFILE_ID))
         # Assert
         self.assertTrue(self._interceptor.commands)
         command: PlayerBanP15M = self._interceptor.commands[0]
         self.assertEqual(TEST_ACCOUNT_ID, command.account_id)
+
+    def test_connect_player_init(self):
+        """Инициализируется игрок на первом входе на сервер"""
+        self.players_mock.count = self._count_zero
+        controller = PlayersService(
+            self._emitter,
+            CONFIG,
+            self._storage,
+            self._objects_service
+        )
+        controller.init()
+        # Act
+        self._emitter.events_player_connected.on_next(Atype20(150, TEST_ACCOUNT_ID, TEST_PROFILE_ID))
+        # Assert
+        self.assertNotEqual(len(self.update_calls), 0)
 
     def test_player_initialization(self):
         """Обновляется ник игрока на появлении"""
@@ -102,7 +129,7 @@ class TestPlayersController(unittest.TestCase):
             1, aircraft_name, 201, 'test_aircraft', -1)
         atype12_bot = atype_12_stub(
             2, bot_name, 201, 'test_bot', 1)
-        atype10 = _atype_10_stub(
+        atype10 = atype_10_stub(
             1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
         self._objects_service._create_object(atype12_aircraft)
         self._objects_service._create_object(atype12_bot)
@@ -113,36 +140,6 @@ class TestPlayersController(unittest.TestCase):
         # Assert
         player = self._storage.players.collection.find_one(FILTER)
         self.assertEqual(TEST_NICKNAME, player[constants.Player.NICKNAME])
-
-    def test_connect_player(self):
-        """Отправляется приветственное сообщение игроку на подключении"""
-        TEST_PLAYER[constants.Player.NICKNAME] = TEST_NICKNAME
-        controller = PlayersService(
-            self._emitter,
-            CONFIG,
-            self._storage,
-            self._objects_service
-        )
-        aircraft_name = 'I-16 type 24'
-        bot_name = 'BotPilot'
-        atype12_aircraft = atype_12_stub(
-            1, aircraft_name, 201, 'test_aircraft', -1)
-        atype12_bot = atype_12_stub(
-            2, bot_name, 201, 'test_bot', 1)
-        atype10 = _atype_10_stub(
-            1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
-        self._objects_service._create_object(atype12_aircraft)
-        self._objects_service._create_object(atype12_bot)
-        self._objects_service._spawn(atype10)
-        # Act
-        controller._start_mission(None)
-        controller._connect(TEST_ACCOUNT_ID)
-        # Assert
-        self.assertTrue(self._interceptor.commands)
-        command: MessagePrivate = self._interceptor.commands[0]
-        self.assertIn(
-            (TEST_ACCOUNT_ID, 'Hello {}!'.format(TEST_NICKNAME)),
-            (command.account_id, command.message))
 
     def test_multiple_spawn_nickname(self):
         """Не добавляется лишний известный ник при неоднократном появлении"""
@@ -158,7 +155,7 @@ class TestPlayersController(unittest.TestCase):
             1, aircraft_name, 201, 'test_aircraft', -1)
         atype12_bot = atype_12_stub(
             2, bot_name, 201, 'test_bot', 1)
-        atype10 = _atype_10_stub(
+        atype10 = atype_10_stub(
             1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
         self._objects_service._create_object(atype12_aircraft)
         self._objects_service._create_object(atype12_bot)
@@ -185,7 +182,7 @@ class TestPlayersController(unittest.TestCase):
             1, aircraft_name, 201, 'test_aircraft', -1)
         atype12_bot = atype_12_stub(
             2, bot_name, 201, 'test_bot', 1)
-        atype10 = _atype_10_stub(
+        atype10 = atype_10_stub(
             1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
         self._objects_service._create_object(atype12_aircraft)
         self._objects_service._create_object(atype12_bot)
@@ -231,7 +228,7 @@ class TestPlayersController(unittest.TestCase):
             2, bot_name, 201, 'test_bot', 1)
         atype12_static = atype_12_stub(
             3, target_name, 101, 'test_target', -1)
-        atype10 = _atype_10_stub(
+        atype10 = atype_10_stub(
             1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
         aircraft = self._objects_service._create_object(atype12_aircraft)
         bot = self._objects_service._create_object(atype12_bot)
@@ -267,7 +264,7 @@ class TestPlayersController(unittest.TestCase):
             2, bot_name, 201, 'test_bot', 1)
         atype12_static = atype_12_stub(
             3, target_name, 101, 'test_target', -1)
-        atype10 = _atype_10_stub(
+        atype10 = atype_10_stub(
             1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
         aircraft = self._objects_service._create_object(atype12_aircraft)
         bot = self._objects_service._create_object(atype12_bot)
@@ -302,7 +299,7 @@ class TestPlayersController(unittest.TestCase):
             2, bot_name, 201, 'test_bot', 1)
         atype12_static = atype_12_stub(
             3, target_name, 101, 'test_target', -1)
-        atype10 = _atype_10_stub(
+        atype10 = atype_10_stub(
             1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
         aircraft = self._objects_service._create_object(atype12_aircraft)
         bot = self._objects_service._create_object(atype12_bot)
@@ -338,7 +335,7 @@ class TestPlayersController(unittest.TestCase):
             2, bot_name, 201, 'test_bot', 1)
         atype12_static = atype_12_stub(
             3, target_name, 201, 'test_target', -1)
-        atype10 = _atype_10_stub(
+        atype10 = atype_10_stub(
             1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
         aircraft = self._objects_service._create_object(atype12_aircraft)
         bot = self._objects_service._create_object(atype12_bot)
@@ -374,7 +371,7 @@ class TestPlayersController(unittest.TestCase):
             2, bot_name, 201, 'test_bot', 1)
         atype12_static = atype_12_stub(
             3, target_name, 101, 'test_target', -1)
-        atype10 = _atype_10_stub(
+        atype10 = atype_10_stub(
             1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
         aircraft = self._objects_service._create_object(atype12_aircraft)
         bot = self._objects_service._create_object(atype12_bot)
@@ -417,7 +414,7 @@ class TestPlayersController(unittest.TestCase):
             1, aircraft_name, 201, 'test_aircraft', -1)
         atype12_bot = atype_12_stub(
             2, bot_name, 201, 'test_bot', 1)
-        atype10 = _atype_10_stub(
+        atype10 = atype_10_stub(
             1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
         aircraft = self._objects_service._create_object(atype12_aircraft)
         self._objects_service._create_object(atype12_bot)
@@ -447,7 +444,7 @@ class TestPlayersController(unittest.TestCase):
             1, aircraft_name, 201, 'test_aircraft', -1)
         atype12_bot = atype_12_stub(
             2, bot_name, 201, 'test_bot', 1)
-        atype10 = _atype_10_stub(
+        atype10 = atype_10_stub(
             1, 2, {'x': 100, 'z': 100}, aircraft_name, 201, 3)
         aircraft = self._objects_service._create_object(atype12_aircraft)
         self._objects_service._create_object(atype12_bot)

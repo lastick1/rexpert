@@ -8,7 +8,7 @@ class PlayersMock(Players):
     """Мок коллекции игроков в БД"""
 
     def __init__(self):
-        super().__init__()
+        super().__init__(None)
         self.count = pass_
         self.find = pass_
         self.reset_mods_for_all = pass_

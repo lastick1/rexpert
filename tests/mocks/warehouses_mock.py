@@ -8,7 +8,7 @@ class WarehousesMock(Warehouses):
     """Мок коллекции складов в БД"""
 
     def __init__(self):
-        super().__init__()
+        super().__init__(None)
         self.load_by_name = pass_
         self.load_by_tvd = pass_
         self.update = pass_
