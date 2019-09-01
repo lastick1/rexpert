@@ -4,17 +4,16 @@ from __future__ import annotations
 from rx.subjects.behaviorsubject import BehaviorSubject
 from rx.subjects.subject import Subject
 
-from .gameplay_emitter import GameplayEmitter
+from .sortie_emitter import SortieEmitter
 
 
-class EventsEmitter(GameplayEmitter):
+class EventsEmitter(SortieEmitter):
     "Шина событий приложения"
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._campaign_mission: Subject = Subject()
         self._current_tvd: BehaviorSubject = BehaviorSubject(None)
-        self._player_finish: Subject = Subject()
         self._generations: Subject = Subject()
 
     @property
@@ -26,11 +25,6 @@ class EventsEmitter(GameplayEmitter):
     def current_tvd(self) -> BehaviorSubject:
         "Текущий ТВД"
         return self._current_tvd
-
-    @property
-    def player_finish(self) -> Subject:
-        "Поток событий завершений самолётовылетов"
-        return self._player_finish
 
     @property
     def generations(self) -> Subject:

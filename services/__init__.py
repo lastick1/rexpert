@@ -12,3 +12,4 @@ from .tvd_service import TvdService
 from .ground_targets_service import GroundTargetsService
 from .dserver_service import DServerService
 from .generator_service import GeneratorService
+from .sorties_service import SortiesService

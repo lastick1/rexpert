@@ -13,3 +13,4 @@ from .divisions_mock import DivisionsMock
 from .players_mock import PlayersMock
 from .warehouses_mock import WarehousesMock
 from .storage_mock import StorageMock
+from .airfields_service_mock import AirfieldsServiceMock
