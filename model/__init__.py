@@ -14,6 +14,7 @@ from .gameplay_actions import GameplayAction, \
 from .campaign_map import CampaignMap, CampaignMission
 from .tvd import Tvd, Boundary
 from .player import Player
+from .sortie import Sortie
 from .source_mission import SourceMission
 from .rcon_command import Command, \
     CommandType, \

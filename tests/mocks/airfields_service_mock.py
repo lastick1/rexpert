@@ -2,10 +2,19 @@
 from configs import Config
 from services import AirfieldsService
 
+
 class AirfieldsServiceMock(AirfieldsService):
     """Заглушка сервиса аэродромов"""
+
     def __init__(self, config: Config):
-        super().__init__(config)
+        super().__init__(
+            None,
+            config,
+            None,
+            None,
+            None,
+        )
+
 
     def spawn(self, tvd, aircraft_name: str, xpos: float, zpos: float):
         pass

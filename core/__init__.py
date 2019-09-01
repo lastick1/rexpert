@@ -30,4 +30,6 @@ from .events import Finish, \
     WarehouseDamage, \
     Generation, \
     PointsGain, \
-    Capture
+    Capture, \
+    Spawn, \
+    Takeoff

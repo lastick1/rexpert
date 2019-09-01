@@ -60,6 +60,13 @@ class AirfieldsService(BaseEventService):
                 return airfield
         return None
 
+    def is_on_airfield(self, x: float, z: float, country: int) -> bool:
+        """Находится ли точка на аэродроме страны"""
+        airfield = self.get_airfield_in_radius(self._current_tvd.name, x, z, self._config.gameplay.airfield_radius)
+        if airfield:
+            return self._current_tvd.get_country(airfield) == country
+        return False
+
     def get_airfield_by_name(self, tvd_name: str, airfield_name) -> ManagedAirfield:
         """Получить аэродром по имени"""
         return self._storage.airfields.load_by_name(tvd_name, airfield_name)

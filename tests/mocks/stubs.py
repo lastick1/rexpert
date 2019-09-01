@@ -16,10 +16,26 @@ TEST_LOG7 = './tests/data/logs/short_mission_full_log.txt'
 TEST_NICKNAME = '_test_nickname'
 TEST_ACCOUNT_ID = '_test_id1'
 TEST_PROFILE_ID = '_test_profile_id1'
-
 # pylint: disable=unused-argument
+
+
 def pass_(*args, **kwargs):
-    "Заглушка функции"
+    """Заглушка функции, не выполняющая действий"""
+
+
+def return_true(*args, **kwargs):
+    """Заглушка, всегда возвращающая True"""
+    return True
+
+
+def return_false(*args, **kwargs):
+    """Заглушка, всегда возвращающая False"""
+    return False
+
+
+def return_zero(*args, **kwargs):
+    """Заглушка, всегда возвращающая 0"""
+    return 0
 
 
 def atype_10_stub(aircraft_id: int, bot_id: int, pos: dict, aircraft_name: str,
