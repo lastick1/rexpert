@@ -1,32 +1,31 @@
 """Контроль состояния аэродромов (доступные самолёты, повреждения)"""
 from __future__ import annotations
+from typing import List
 import logging
 import json
 
-from core import EventsEmitter, Atype0, Atype9, Atype10, Atype16, Finish
+from core import EventsEmitter, Atype0, Atype9, Spawn, Finish
 from configs import Config
-from log_objects import BotPilot
 from storage import Storage
 from model import ManagedAirfield, Tvd, CampaignMap
 
 from .base_event_service import BaseEventService
 from .aircrafts_vendor_service import AircraftVendorService
-from .objects_service import ObjectsService
 
 
 class AirfieldsService(BaseEventService):
     """Контроллер аэродромов"""
 
-    def __init__(self,
-                 emitter: EventsEmitter,
-                 config: Config,
-                 storage: Storage,
-                 objects_service: ObjectsService,
-                 aircrafts_vendor_service: AircraftVendorService):
+    def __init__(
+            self,
+            emitter: EventsEmitter,
+            config: Config,
+            storage: Storage,
+            aircrafts_vendor_service: AircraftVendorService
+    ):
         super().__init__(emitter)
         self._config: Config = config
         self._storage: Storage = storage
-        self._objects_service: ObjectsService = objects_service
         self._aircrafts_vendor_service: AircraftVendorService = aircrafts_vendor_service
         self._current_tvd: Tvd = None
         self.current_airfields = list()
@@ -35,14 +34,15 @@ class AirfieldsService(BaseEventService):
         self.register_subscriptions([
             self.emitter.current_tvd.subscribe_(self._update_current_tvd),
             self.emitter.events_mission_start.subscribe_(self.start_mission),
-            self.emitter.events_bot_deinitialization.subscribe_(self._finish),
+            self.emitter.events_airfield.subscribe_(self.spawn_airfield),
+            self.emitter.sortie_spawn.subscribe_(self.spawn_aircraft),
+            self.emitter.sortie_deinitialize.subscribe_(self._finish),
         ])
 
     def _update_current_tvd(self, tvd: Tvd) -> None:
         self._current_tvd = tvd
 
-    @staticmethod
-    def initialize_managed_airfields(airfields_data: list) -> list:
+    def initialize_managed_airfields(self, tvd_name: str) -> List[ManagedAirfield]:
         """Инициализировать список управляемых аэродромов из данных конфигурации"""
         return list(
             ManagedAirfield(
@@ -51,7 +51,7 @@ class AirfieldsService(BaseEventService):
                 x=data['x'],
                 z=data['z'],
                 planes=dict())
-            for data in airfields_data)
+            for data in self._config.mgen.airfields_data[tvd_name])
 
     def get_airfield_in_radius(self, tvd_name: str, x: float, z: float, radius: int) -> ManagedAirfield:
         """Получить аэродром по его координатам с заданным отклонением"""
@@ -85,33 +85,46 @@ class AirfieldsService(BaseEventService):
             stream.write(json.dumps(mission_airfields))
         self.current_airfields.clear()
 
-    def spawn_aircraft(self, tvd_name: str, airfield_country: int, atype: Atype10):
+    def spawn_aircraft(self, spawn: Spawn):
         """Обработать появление самолёта на аэродроме"""
         managed_airfield = self.get_airfield_in_radius(
-            tvd_name, atype.pos['x'], atype.pos['z'], self._config.gameplay.airfield_radius)
+            self._current_tvd.name,
+            spawn.point.x,
+            spawn.point.z,
+            self._config.gameplay.airfield_radius
+        )
         if not managed_airfield:
-            logging.warning(f'airfield not found: {atype}')
+            logging.warning(f'airfield not found: {spawn}')
         else:
-            self.add_aircraft(tvd_name, airfield_country,
-                              managed_airfield.name, atype.aircraft_name, -1)
+            self.add_aircraft(
+                self._current_tvd.name,
+                self._current_tvd.get_country(managed_airfield),
+                managed_airfield.name,
+                spawn.aircraft_name,
+                -1
+            )
 
-    def _finish(self, atype: Atype16) -> None:
+    def _finish(self, finish: Finish) -> None:
         """Обработать деспаун самолёта на аэродроме"""
-        bot: BotPilot = self._objects_service.get_bot(atype.bot_id)
         managed_airfield = self.get_airfield_in_radius(
-            self._current_tvd.name, atype.point.x, atype.point.z, self._config.gameplay.airfield_radius)
+            self._current_tvd.name,
+            finish.point.x,
+            finish.point.z,
+            self._config.gameplay.airfield_radius
+        )
         if managed_airfield:
-            self.add_aircraft(self._current_tvd.name, self._current_tvd.get_country(atype.point),
-                              managed_airfield.name, bot.aircraft.log_name, 1)
-            self.emitter.player_finish.on_next(Finish(True, atype))
-        else:
-            self.emitter.player_finish.on_next(Finish(False, atype))
+            self.add_aircraft(
+                self._current_tvd.name,
+                self._current_tvd.get_country(finish.point),
+                managed_airfield.name,
+                finish.aircraft_name,
+                1
+            )
 
     def _add_aircraft(self, airfield, airfield_country: int, aircraft_name: str, aircraft_count: int):
         """Добавить самолёт на аэродром без сохранения в БД"""
         aircraft_key = self._config.planes.name_to_key(aircraft_name)
-        aircraft_country = self._config.planes.cfg['uncommon'][aircraft_name.lower(
-        )]['country']
+        aircraft_country = self._config.planes.cfg['uncommon'][aircraft_name.lower()]['country']
         if aircraft_country == airfield_country:
             if aircraft_key not in airfield.planes:
                 airfield.planes[aircraft_key] = 0
@@ -137,8 +150,7 @@ class AirfieldsService(BaseEventService):
 
     def initialize_tvd(self, tvd: Tvd, campaign_map: CampaignMap):
         """Инициализировать аэродромы указанного ТВД"""
-        airfields = self.initialize_managed_airfields(
-            self._config.mgen.airfields_data[campaign_map.tvd_name])
+        airfields = self.initialize_managed_airfields(campaign_map.tvd_name)
         supply = self._aircrafts_vendor_service.get_month_supply(
             campaign_map.current_month, campaign_map)
         self._aircrafts_vendor_service.deliver_month_supply(
@@ -154,8 +166,7 @@ class AirfieldsService(BaseEventService):
         if airfield:
             self.current_airfields.append(airfield)
         else:
-            NameError(
-                f'Аэродром не найден:{self._current_tvd.name}{{"x":{atype.point.x}, "z":{atype.point.z}}}')
+            raise NameError(f'Аэродром не найден:{self._current_tvd.name}{{"x":{atype.point.x}, "z":{atype.point.z}}}')
 
     @property
     def inactive_airfield_by_countries(self) -> dict:

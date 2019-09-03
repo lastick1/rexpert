@@ -77,7 +77,9 @@ class SortiesService(BaseEventService):
                 return
             self._aircraft_ids[atype.bot_id] = sortie.aircraft_id
             self._sorties[atype.aircraft_id] = sortie
-            self.emitter.sortie_spawn.on_next(Spawn(sortie.account_id, atype.name, sortie.unlocks))
+            self.emitter.sortie_spawn.on_next(
+                Spawn(sortie.account_id, atype.name, sortie.unlocks, bot.aircraft.name, atype.point)
+            )
 
     def _takeoff(self, atype: Atype5) -> None:
         """Обработка взлёта"""
@@ -117,4 +119,6 @@ class SortiesService(BaseEventService):
             not friendly_fire and bot.aircraft.landed and (has_kills or has_damage),
             mission_ended
         )
-        self.emitter.sortie_deinitialize.on_next(Finish(sortie.aircraft_id, sortie.on_airfield, sortie.success))
+        self.emitter.sortie_deinitialize.on_next(
+            Finish(sortie.aircraft_id, sortie.on_airfield, sortie.success, bot.aircraft.name, atype.point)
+        )

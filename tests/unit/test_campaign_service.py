@@ -73,7 +73,6 @@ class TestCampaignService(unittest.TestCase):
             self.emitter,
             self.config,
             self.storage,
-            self.objects_service,
             self.vendor,
         )
         self.airfields_service.get_weakest_airfield = _get_weakest_airfield_mock

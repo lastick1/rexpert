@@ -12,7 +12,6 @@ class AirfieldsServiceMock(AirfieldsService):
             config,
             None,
             None,
-            None,
         )
 
 

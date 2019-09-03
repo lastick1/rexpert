@@ -51,7 +51,6 @@ class TestAirfieldsSelector(unittest.TestCase):
             self._emitter,
             CONFIG,
             self._storage,
-            self._objects_service,
             self._vendor
         )
         self._graph_service: GraphService = GraphService(CONFIG)

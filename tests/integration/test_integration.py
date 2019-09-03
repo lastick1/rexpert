@@ -83,7 +83,7 @@ class TestIntegration(unittest.TestCase):
         self._warehouse_service: WarehouseService = WarehouseService(
             self._emitter, CONFIG, self._storage)
         self._airfields_service: AirfieldsService = AirfieldsService(
-            self._emitter, CONFIG, self._storage, self._objects_service, AircraftVendorService(CONFIG))
+            self._emitter, CONFIG, self._storage, AircraftVendorService(CONFIG))
         self._divisions_service: DivisionsService = DivisionsService(
             self._emitter, CONFIG, self._storage)
         self._tvd_services: Dict[str, TvdService] = {tvd_name: TvdService(tvd_name,

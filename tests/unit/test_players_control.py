@@ -118,7 +118,7 @@ class TestPlayersController(unittest.TestCase):
         """Не даётся модификация за провальный вылет"""
         self._init_new_service_instance()
         # Act
-        self._emitter.sortie_deinitialize.on_next(Finish(1, True, False))
+        self._emitter.sortie_deinitialize.on_next(Finish(1, True, False, None, None))
         # Assert
         self.assertFalse(self.update_calls)
 
@@ -128,7 +128,7 @@ class TestPlayersController(unittest.TestCase):
         self._player_dict[constants.Player.NICKNAME] = TEST_NICKNAME
         self._init_new_service_instance()
         # Act
-        self._emitter.sortie_spawn.on_next(Spawn(TEST_ACCOUNT_ID, TEST_NICKNAME, 1))
+        self._emitter.sortie_spawn.on_next(Spawn(TEST_ACCOUNT_ID, TEST_NICKNAME, 1, None, None))
         # Assert
         self.assertTrue(self._interceptor.commands)
         self.assertEqual(
@@ -140,7 +140,7 @@ class TestPlayersController(unittest.TestCase):
         self._player_dict[constants.Player.UNLOCKS] = 0
         self._init_new_service_instance()
         # Act
-        self._emitter.sortie_spawn.on_next(Spawn(TEST_ACCOUNT_ID, TEST_NICKNAME, 1))
+        self._emitter.sortie_spawn.on_next(Spawn(TEST_ACCOUNT_ID, TEST_NICKNAME, 1, None, None))
         self._emitter.sortie_takeoff.on_next(Takeoff(TEST_ACCOUNT_ID, 1))
         # Assert
         # приветствие + предупреждение
@@ -156,7 +156,7 @@ class TestPlayersController(unittest.TestCase):
         self._player_dict[constants.Player.NICKNAME] = TEST_NICKNAME
         self._init_new_service_instance()
         # Act
-        self._emitter.sortie_spawn.on_next(Spawn(TEST_ACCOUNT_ID, new_nickname, 0))
+        self._emitter.sortie_spawn.on_next(Spawn(TEST_ACCOUNT_ID, new_nickname, 0, None, None))
         # Assert
         self.assertListEqual(self.update_calls[0].previous_nicknames, [TEST_NICKNAME])
 
@@ -165,7 +165,7 @@ class TestPlayersController(unittest.TestCase):
         self._player_dict[constants.Player.NICKNAME] = TEST_NICKNAME
         self._init_new_service_instance()
         # Act
-        self._emitter.sortie_spawn.on_next(Spawn(TEST_ACCOUNT_ID, TEST_NICKNAME, 0))
+        self._emitter.sortie_spawn.on_next(Spawn(TEST_ACCOUNT_ID, TEST_NICKNAME, 0, None, None))
         # Assert
         self.assertTrue(self.update_calls)
         self.assertFalse(self.update_calls[0].previous_nicknames)
@@ -174,7 +174,7 @@ class TestPlayersController(unittest.TestCase):
         """Обновляется ник игрока на появлении"""
         self._init_new_service_instance()
         # Act
-        self._emitter.sortie_spawn.on_next(Spawn(TEST_ACCOUNT_ID, TEST_NICKNAME, 0))
+        self._emitter.sortie_spawn.on_next(Spawn(TEST_ACCOUNT_ID, TEST_NICKNAME, 0, None, None))
         # Assert
         self.assertTrue(self.update_calls)
 

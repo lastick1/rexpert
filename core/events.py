@@ -1,6 +1,7 @@
 "События на основе Atype из логов"
 from typing import Any
 from dataclasses import dataclass
+from geometry import Point
 from .atypes import Atype19
 
 
@@ -38,6 +39,8 @@ class Spawn:
     account_id: str
     name: str
     unlocks: int
+    aircraft_name: str
+    point: Point
 
 
 @dataclass
@@ -53,6 +56,8 @@ class Finish:
     aircraft_id: str
     on_airfield: bool
     gain_unlocks: bool
+    aircraft_name: str
+    point: Point
 
 
 class DivisionDamage:

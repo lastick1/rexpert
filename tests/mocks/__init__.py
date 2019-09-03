@@ -2,6 +2,7 @@
 from .stubs import *
 from .configs import ConfigMock, MainMock, MgenMock, PlanesMock
 from .events_interceptor import EventsInterceptor
+from .objects_service_mock import ObjectsServiceMock
 from .generator_mock import GeneratorMock
 from .painter_mock import PainterMock
 from .rcon_mock import RConMock

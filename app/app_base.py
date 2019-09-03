@@ -63,7 +63,6 @@ class AppBase:
             self.events_emitter,
             self.config,
             self.storage,
-            self.objects_service,
             self.aircrafts_vendor_service,
         )
         self.divisions_service: DivisionsService = DivisionsService(
