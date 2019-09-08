@@ -1,3 +1,4 @@
+"""Работа с документами дивизий в БД"""
 from __future__ import annotations
 from typing import Tuple
 import constants
