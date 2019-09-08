@@ -20,7 +20,7 @@ from services import CampaignService, \
     GraphService, \
     WarehouseService, \
     TvdService
-from model import ServerInput, SourceMission, CampaignMap, Division
+from model import SourceMission, CampaignMap, Division
 from storage import Storage
 from processing import SourceParser
 
@@ -96,6 +96,18 @@ class TestCampaignService(unittest.TestCase):
         self.source_parser: SourceParser = SourceParser(self.config)
         self.source_parser.parse_in_dogfight = _parse_mock
 
+    def _init_new_service_instance(self) -> CampaignService:
+        service = CampaignService(
+            self.emitter,
+            self.config,
+            self.storage,
+            self.airfields_service,
+            self.tvd_services,
+            self.source_parser,
+        )
+        service.init()
+        return service
+
     def test_sends_victory_input(self):
         "Отправляется server input на победу в конце миссии при наборе 13 очков"
         coal_id = 1
@@ -111,15 +123,7 @@ class TestCampaignService(unittest.TestCase):
             preset_id=0
         )
         atype8 = Atype8(20, 1, coal_id, 4, True, 1, pos)
-        service = CampaignService(
-            self.emitter,
-            self.config,
-            self.storage,
-            self.airfields_service,
-            self.tvd_services,
-            self.source_parser,
-        )
-        service.init()
+        self._init_new_service_instance()
         # Act
         self.emitter.events_mission_start.on_next(atype0)
         self.emitter.gameplay_points_gain.on_next(
