@@ -20,7 +20,7 @@ from services import CampaignService, \
     GraphService, \
     WarehouseService, \
     TvdService
-from model import SourceMission, CampaignMap, Division
+from model import SourceMission, CampaignMap, Division, ServerInput
 from storage import Storage
 from processing import SourceParser
 
@@ -62,7 +62,8 @@ class TestCampaignService(unittest.TestCase):
         self.storage: Storage = Storage(self.config.main)
         self.storage.divisions.load_by_tvd = _load_divisions_by_tvd_mock
         self.storage.campaign_maps.load_by_tvd_name = _load_campaign_map_by_tvd_mock
-        self.storage.campaign_maps.update = pass_
+        self.update_calls: list = list()
+        self.storage.campaign_maps.update = self.update_calls.append
         self.objects_service: ObjectsService = ObjectsService(
             self.emitter,
             self.config,
@@ -96,6 +97,8 @@ class TestCampaignService(unittest.TestCase):
         self.source_parser: SourceParser = SourceParser(self.config)
         self.source_parser.parse_in_dogfight = _parse_mock
 
+        self._pos: dict = {'x': 10.1, 'z': 11.1}
+
     def _init_new_service_instance(self) -> CampaignService:
         service = CampaignService(
             self.emitter,
@@ -108,11 +111,8 @@ class TestCampaignService(unittest.TestCase):
         service.init()
         return service
 
-    def test_sends_victory_input(self):
-        "Отправляется server input на победу в конце миссии при наборе 13 очков"
-        coal_id = 1
-        pos = {'x': 10.1, 'z': 11.1}
-        atype0 = Atype0(
+    def _make_atype0(self) -> Atype0:
+        return Atype0(
             tik=0,
             date=datetime.strptime('01.10.1941', DATE_FORMAT),
             file_path=r'Multiplayer/Dogfight\result2.msnbin',
@@ -122,7 +122,12 @@ class TestCampaignService(unittest.TestCase):
             mods=False,
             preset_id=0
         )
-        atype8 = Atype8(20, 1, coal_id, 4, True, 1, pos)
+
+    def test_sends_victory_input(self):
+        """Отправляет server input на победу в конце миссии при наборе 13 очков"""
+        coal_id = 1
+        atype0 = self._make_atype0()
+        atype8 = Atype8(20, 1, coal_id, 4, True, 1, self._pos)
         self._init_new_service_instance()
         # Act
         self.emitter.events_mission_start.on_next(atype0)
@@ -131,3 +136,32 @@ class TestCampaignService(unittest.TestCase):
         self.emitter.events_round_end.on_next(Atype19(22))
         # Assert
         self.assertTrue(self.interceptor.commands)
+        self.assertIsInstance(self.interceptor.commands[0], ServerInput)
+
+    def test_update_campaign_map(self):
+        """Обновляет карту кампании при старте миссии"""
+        self._init_new_service_instance()
+        # Act
+        self.emitter.events_mission_start.on_next(self._make_atype0())
+        # Assert
+        self.assertTrue(self.update_calls)
+
+    def test_emits_current_tvd(self):
+        """Отправляет объект ТВД при старте миссии"""
+        tvds = []
+        self.emitter.current_tvd.subscribe_(tvds.append)
+        self._init_new_service_instance()
+        # Act
+        self.emitter.events_mission_start.on_next(self._make_atype0())
+        # Assert
+        self.assertTrue(tvds)
+
+    def test_emits_mission(self):
+        """Отправляет объект миссии при старте миссии"""
+        missions = []
+        self.emitter.campaign_mission.subscribe_(missions.append)
+        self._init_new_service_instance()
+        # Act
+        self.emitter.events_mission_start.on_next(self._make_atype0())
+        # Assert
+        self.assertTrue(missions)

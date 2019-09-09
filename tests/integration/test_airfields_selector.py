@@ -53,7 +53,7 @@ class TestAirfieldsSelector(unittest.TestCase):
             self._storage,
             self._vendor
         )
-        self._graph_service: GraphService = GraphService(CONFIG)
+        self._graph_service: GraphService = GraphService(self._emitter, CONFIG)
         self._warehouses_service: WarehouseService = WarehouseService(
             self._emitter, CONFIG, self._storage)
         self._storage.airfields.update_airfields(
