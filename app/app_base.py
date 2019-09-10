@@ -82,7 +82,6 @@ class AppBase:
             self.events_emitter,
             self.config,
             self.storage,
-            self.airfields_service,
             self.tvd_services,
             self.source_parser
         )

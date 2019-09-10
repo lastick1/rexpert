@@ -15,8 +15,6 @@ from core import EventsEmitter, \
     PointsGain
 from services import CampaignService, \
     ObjectsService, \
-    AircraftVendorService, \
-    AirfieldsService, \
     GraphService, \
     WarehouseService, \
     TvdService
@@ -24,7 +22,7 @@ from model import SourceMission, CampaignMap, Division, ServerInput
 from storage import Storage
 from processing import SourceParser
 
-from tests.mocks import ConfigMock, TvdMock, EventsInterceptor, pass_
+from tests.mocks import ConfigMock, TvdMock, EventsInterceptor
 
 TEST_TVD_NAME = 'moscow'
 TEST_TVD_DATE = '01.01.1941'
@@ -69,14 +67,6 @@ class TestCampaignService(unittest.TestCase):
             self.config,
             Objects()
         )
-        self.vendor: AircraftVendorService = AircraftVendorService(self.config)
-        self.airfields_service: AirfieldsService = AirfieldsService(
-            self.emitter,
-            self.config,
-            self.storage,
-            self.vendor,
-        )
-        self.airfields_service.get_weakest_airfield = _get_weakest_airfield_mock
         self.graph_service: GraphService = GraphService(
             self.emitter,
             self.config,
@@ -104,7 +94,6 @@ class TestCampaignService(unittest.TestCase):
             self.emitter,
             self.config,
             self.storage,
-            self.airfields_service,
             self.tvd_services,
             self.source_parser,
         )
@@ -131,8 +120,7 @@ class TestCampaignService(unittest.TestCase):
         self._init_new_service_instance()
         # Act
         self.emitter.events_mission_start.on_next(atype0)
-        self.emitter.gameplay_points_gain.on_next(
-            PointsGain(coal_id * 100 + 1, 13, atype8))
+        self.emitter.gameplay_points_gain.on_next(PointsGain(coal_id * 100 + 1, 13, atype8))
         self.emitter.events_round_end.on_next(Atype19(22))
         # Assert
         self.assertTrue(self.interceptor.commands)
@@ -165,3 +153,19 @@ class TestCampaignService(unittest.TestCase):
         self.emitter.events_mission_start.on_next(self._make_atype0())
         # Assert
         self.assertTrue(missions)
+
+    def test_emits_mission_victory(self):
+        """Отправляет победившую страну в миссии в конце раунда"""
+        emissions = []
+        coal_id = 1
+        atype8 = Atype8(20, 1, coal_id, 4, True, 1, self._pos)
+        self.emitter.mission_victory.subscribe_(emissions.append)
+        emissions.pop()
+        self._init_new_service_instance()
+        # Act
+        self.emitter.events_mission_start.on_next(self._make_atype0())
+        self.emitter.gameplay_points_gain.on_next(PointsGain(coal_id * 100 + 1, 13, atype8))
+        self.emitter.events_round_end.on_next(Atype19(22))
+        # Assert
+        self.assertTrue(emissions)
+        self.assertEqual(emissions[0], coal_id * 100 + 1)

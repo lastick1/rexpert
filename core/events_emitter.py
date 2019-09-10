@@ -14,6 +14,7 @@ class EventsEmitter(SortieEmitter):
         super().__init__(*args, **kwargs)
         self._campaign_mission: Subject = Subject()
         self._current_tvd: BehaviorSubject = BehaviorSubject(None)
+        self._mission_victory: BehaviorSubject = BehaviorSubject(0)
         self._generations: Subject = Subject()
 
     @property
@@ -25,6 +26,11 @@ class EventsEmitter(SortieEmitter):
     def current_tvd(self) -> BehaviorSubject:
         "Текущий ТВД"
         return self._current_tvd
+
+    @property
+    def mission_victory(self) -> BehaviorSubject:
+        "Победа страны в миссии"
+        return self._mission_victory
 
     @property
     def generations(self) -> Subject:

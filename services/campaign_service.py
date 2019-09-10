@@ -9,7 +9,6 @@ from rx import interval
 
 from constants import DATE_FORMAT, VICTORY
 from core import EventsEmitter, \
-    Capture, \
     Generation, \
     Atype0, \
     Atype7, \
@@ -29,11 +28,9 @@ from model import CampaignMission, \
 
 
 from .base_event_service import BaseEventService
-from .airfields_service import AirfieldsService
 from .tvd_service import TvdService
 START_DATE = 'start_date'
 END_DATE = 'end_date'
-
 
 
 class CampaignService(BaseEventService):
@@ -44,14 +41,12 @@ class CampaignService(BaseEventService):
             emitter: EventsEmitter,
             config: Config,
             storage: Storage,
-            airfields_service: AirfieldsService,
             tvd_services: Dict[str, TvdService],
             source_parser: SourceParser,
     ):
         super().__init__(emitter)
         self._config: Config = config
         self._storage: Storage = storage
-        self._airfields_service: AirfieldsService = airfields_service
         self._tvd_services: Dict[str, TvdService] = tvd_services
         self._source_parser: SourceParser = source_parser
         self._mission: CampaignMission = None
@@ -154,7 +149,6 @@ class CampaignService(BaseEventService):
         self._storage.campaign_missions.update(self._mission)
         # TODO "приземлить" всех
 
-    # этот метод должен вызываться последним среди всех контроллеров
     def _end_round(self, atype: Atype19):
         """Обработать завершение раунда (4-минутный отсчёт до конца миссии)"""
         logging.info('round ended')
@@ -164,15 +158,8 @@ class CampaignService(BaseEventService):
         # TODO подвести итог ТВД, если он изменился
         # TODO определить имя ТВД для следующей миссии
         # TODO отремонтировать дивизии
-        invert = {101: 201, 201: 101}
         if self.won_country:
-            lost = self._airfields_service.get_weakest_airfield(
-                invert[self.won_country])
-            self.emitter.gameplay_capture.on_next(Capture(
-                self._campaign_map.tvd_name,
-                {'x': lost.x, 'z': lost.z},
-                self.won_country
-            ))
+            self.emitter.mission_victory.on_next(self.won_country)
             self.emitter.commands_rcon.on_next(ServerInput(VICTORY[self.won_country]))
         self.emitter.generations.on_next(Generation(
             self.next_name,

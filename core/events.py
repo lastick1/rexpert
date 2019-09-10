@@ -5,13 +5,12 @@ from geometry import Point
 from .atypes import Atype19
 
 
+@dataclass
 class Capture:
     "Захват территории"
-
-    def __init__(self, tvd_name: str, pos: dict, country: int):
-        self.tvd_name: str = tvd_name
-        self.pos: dict = pos
-        self.country: int = country
+    tvd_name: str
+    country: int
+    point: Point
 
 
 class PointsGain:

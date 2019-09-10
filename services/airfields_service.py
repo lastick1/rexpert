@@ -4,7 +4,7 @@ from typing import List
 import logging
 import json
 
-from core import EventsEmitter, Atype0, Atype9, Spawn, Finish
+from core import EventsEmitter, Atype0, Atype9, Spawn, Finish, Capture
 from configs import Config
 from storage import Storage
 from model import ManagedAirfield, Tvd, CampaignMap
@@ -37,6 +37,7 @@ class AirfieldsService(BaseEventService):
             self.emitter.events_airfield.subscribe_(self.spawn_airfield),
             self.emitter.sortie_spawn.subscribe_(self.spawn_aircraft),
             self.emitter.sortie_deinitialize.subscribe_(self._finish),
+            self.emitter.mission_victory.subscribe_(self._mission_victory),
         ])
 
     def _update_current_tvd(self, tvd: Tvd) -> None:
@@ -73,6 +74,7 @@ class AirfieldsService(BaseEventService):
 
     def start_mission(self, atype: Atype0):
         """Обработать начало миссии"""
+        self.current_airfields.clear()
         mission_airfields = list()
         for airfield in self._storage.airfields.load_by_tvd(tvd_name=self._current_tvd.name):
             mission_airfields.append({
@@ -83,7 +85,6 @@ class AirfieldsService(BaseEventService):
             })
         with open(self._config.stat.current_airfields, mode='w') as stream:
             stream.write(json.dumps(mission_airfields))
-        self.current_airfields.clear()
 
     def spawn_aircraft(self, spawn: Spawn):
         """Обработать появление самолёта на аэродроме"""
@@ -189,3 +190,10 @@ class AirfieldsService(BaseEventService):
                 if result.planes_count > managed_airfield.planes_count:
                     result = managed_airfield
         return result
+
+    def _mission_victory(self, country: int) -> None:
+        """Обработать победу стороны в миссии"""
+        if country:
+            invert = {101: 201, 201: 101}
+            airfield: ManagedAirfield = self.get_weakest_airfield(invert[country])
+            self.emitter.gameplay_capture.on_next(Capture(airfield.tvd_name, country, airfield))
