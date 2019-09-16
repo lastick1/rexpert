@@ -1,7 +1,7 @@
 """Источник событий самолётовылетов"""
 from __future__ import annotations
 
-from rx.subjects.subject import Subject
+from rx.subject import Subject
 
 from .gameplay_emitter import GameplayEmitter
 

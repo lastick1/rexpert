@@ -1,6 +1,6 @@
 "Шина событий игрового процесса"
 
-from rx.subjects.subject import Subject
+from rx.subject.subject import Subject
 from .commands_emitter import CommandsEmitter
 
 

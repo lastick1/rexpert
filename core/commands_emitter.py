@@ -1,7 +1,7 @@
 "Источник событий управления сервером (DServer)"
 from __future__ import annotations
 
-from rx.subjects.subject import Subject
+from rx.subject.subject import Subject
 
 from .atypes_emitter_decorator import AtypesEmitterDecorator
 

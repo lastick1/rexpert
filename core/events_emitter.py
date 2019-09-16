@@ -1,8 +1,8 @@
 "Источник всех событий, возникающих в ходе работы приложения"
 from __future__ import annotations
 
-from rx.subjects.behaviorsubject import BehaviorSubject
-from rx.subjects.subject import Subject
+from rx.subject.behaviorsubject import BehaviorSubject
+from rx.subject.subject import Subject
 
 from .sortie_emitter import SortieEmitter
 

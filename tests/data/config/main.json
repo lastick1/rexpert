@@ -8,27 +8,27 @@
       "console_chat_output": true,
       "minimal_chat_interval": 120,
       "logs_read_interval": 30,
-      "game_folder": ".\\tmp",
-      "server_folder": ".\\tmp",
-      "graph_files_folder": ".\\tmp",
-      "maps_archive_folder": ".\\tmp",
-      "icons_folder": ".\\tmp",
-      "stats_folder": ".\\tmp",
-      "planner_folder": ".\\tmp"
+      "game_folder": "./tmp",
+      "server_folder": "./tmp",
+      "graph_files_folder": "./tmp",
+      "maps_archive_folder": "./tmp",
+      "icons_folder": "./tmp",
+      "stats_folder": "./tmp",
+      "planner_folder": "./tmp"
     },
     "missiongen": {
       "use_resaver": false,
       "generate_missions": true,
       "special_influences": false,
-      "mission_gen_folder": ".\\tmp",
-      "resaver_folder": ".\\tmp",
+      "mission_gen_folder": "./tmp",
+      "resaver_folder": "./tmp",
       "mission_duration": "03:00:00",
       "test_airfields": false
     },
     "dserver": {
-      "logs_directory": ".\\tmp",
-      "arch_directory": ".\\tmp",
-      "chat_directory": ".\\tmp"
+      "logs_directory": "./tmp",
+      "arch_directory": "./tmp",
+      "chat_directory": "./tmp"
     },
     "mongo": {
       "host": "il2",

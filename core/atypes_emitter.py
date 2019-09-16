@@ -2,7 +2,7 @@
 from __future__ import annotations
 import logging
 from typing import Tuple
-from rx.subjects import Subject
+from rx.subject import Subject
 from rx.core.abc.disposable import Disposable
 from .atypes import Atype0, Atype1, Atype2, Atype3, Atype4, Atype5, Atype6, Atype7, Atype8, Atype9, \
     Atype10, Atype11, Atype12, Atype13, Atype14, Atype15, Atype16, Atype17, Atype18, Atype19, \

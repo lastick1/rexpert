@@ -10,7 +10,7 @@ class Draw:
     _instances = 0
 
     def __init__(self, mgen: Mgen):
-        with open('.\\configs\\draw_settings.json') as stream:
+        with open('./configs/draw_settings.json') as stream:
             src = json.load(stream)
         project_fld = pathlib.Path('.\\').absolute()
         self.cfg = src

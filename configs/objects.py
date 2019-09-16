@@ -17,7 +17,7 @@ class Object:
 class Objects(dict):
     """Словарь объектов"""
     def __init__(self):
-        with codecs.open(r'.\configs\objects.csv', encoding='utf-8') as stream:
+        with codecs.open(r'./configs/objects.csv', encoding='utf-8') as stream:
             lines = stream.readlines()
         tmp = list(Object(*x.split(',')) for x in lines[1:])
         data = list((x.log_name, x) for x in tmp)

@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": ".venv\\Scripts\\python.exe",
+    "python.pythonPath": ".venv/bin/python",
     "python.venvPath": "${workspaceRoot}/.venv",
     "python.linting.pylintArgs": [
         "--rcfile=.rcfile"

@@ -90,5 +90,5 @@ class GeneratorParamsConfig:
     """Конфиг параметров генератора"""
 
     def __init__(self):
-        with open('.\\configs\\dfpr.json') as stream:
+        with open('./configs/dfpr.json') as stream:
             self.cfg = json.load(stream)

@@ -30,7 +30,7 @@ class Group:
 
     def rename(self, to):
         """Смена имён файлов на to"""
-        dst_path = os.path.dirname(str(self.files['Group'])) + '\\' + to
+        dst_path = os.path.dirname(str(self.files['Group'])) + '/' + to
         for file_ext in self.files:
             tmp = pathlib.Path(dst_path + '.' + file_ext)
             if tmp.exists():

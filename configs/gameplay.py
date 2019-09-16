@@ -7,7 +7,7 @@ import pathlib
 class Gameplay:
     """Класс настроек игрового процесса"""
     def __init__(self):
-        with open('.\\configs\\gameplay.json') as stream:
+        with open('./configs/gameplay.json') as stream:
             src = json.load(stream)
         self.cfg = src
         self.supply_csv = {tvd_name: pathlib.Path(r'./').joinpath(src['supply_schedule'][tvd_name])

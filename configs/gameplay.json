@@ -2,8 +2,8 @@
   "$schema": "../data/schemas/gameplay.json",
   "maps": ["moscow", "stalingrad"],
   "supply_schedule": {
-    "moscow": ".\\configs\\supply_moscow.csv",
-    "stalingrad": ".\\configs\\supply_stalin.csv"
+    "moscow": "./configs/supply_moscow.csv",
+    "stalingrad": "./configs/supply_stalin.csv"
   },
   "mission_time": "02:30:00",
   "unlocks_start": 1,

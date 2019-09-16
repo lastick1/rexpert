@@ -1,7 +1,7 @@
 "Потоки событый из логов"
 # pylint: disable=too-many-public-methods
 from __future__ import annotations
-from rx.subjects import Subject
+from rx.subject import Subject
 from .atypes_emitter import AtypesEmitter
 
 
