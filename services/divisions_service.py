@@ -11,6 +11,7 @@ from core import EventsEmitter, DivisionDamage, PointsGain
 from configs import Config
 from storage import Storage
 from model import Division, \
+    WarehouseDisable, \
     DIVISIONS, \
     DivisionKill, \
     CampaignMission, \
@@ -67,14 +68,15 @@ class DivisionsService(BaseEventService):
         self._current_divisions: Dict[str, Division] = dict()
         self._sent_inputs: Set[str] = set()
         self._round_ended: bool = False
+        self._warehouses_disables: Dict[Set[WarehouseDisable]] = None
         self.event_notify = interval(self._config.main.chat.division_notification_interval)
 
     def init(self) -> None:
         self.register_subscriptions([
-            self.emitter.campaign_mission.subscribe_(
-                self.start_mission),
-            self.emitter.gameplay_division_damage.subscribe_(
-                self.damage_division),
+            self.emitter.campaign_mission.subscribe_(self.start_mission),
+            self.emitter.gameplay_division_damage.subscribe_(self.damage_division),
+            self.emitter.mission_victory.subscribe_(self._mission_victory),
+            self.emitter.gameplay_points_gain.subscribe_(self._points_gain),
             self.event_notify.subscribe_(self.notify)
         ])
 
@@ -117,6 +119,7 @@ class DivisionsService(BaseEventService):
         self._round_ended = False
         self._current_divisions.clear()
         self._sent_inputs.clear()
+        self._warehouses_disables = {101: set(), 201: set()}
         for server_input in self._campaign_mission.server_inputs:
             if DIVISION_INPUT_RE.match(server_input['name']):
                 division = self._storage.divisions.load_by_name(
@@ -207,3 +210,15 @@ class DivisionsService(BaseEventService):
     def get_division(self, division_name: str) -> Division:
         """Получить дивизию по имени для текущего ТВД"""
         return self._current_divisions[division_name]
+
+    def _points_gain(self, gain: PointsGain) -> None:
+        """Обработать получение очков захвата за склад"""
+        if isinstance(gain.reason, WarehouseDisable):
+            disable: WarehouseDisable = gain.reason
+            self._warehouses_disables[INVERT[gain.country]].add(disable.warehouse_name)
+
+    def _mission_victory(self, country: int) -> None:
+        """Обработать победу страны в миссии"""
+        for division_name in self._current_divisions:
+            division: Division = self._current_divisions[division_name]
+            self.repair_division(division.tvd_name, division.name, len(self._warehouses_disables[division.country]))

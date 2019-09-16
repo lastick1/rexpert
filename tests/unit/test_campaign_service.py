@@ -160,7 +160,6 @@ class TestCampaignService(unittest.TestCase):
         coal_id = 1
         atype8 = Atype8(20, 1, coal_id, 4, True, 1, self._pos)
         self.emitter.mission_victory.subscribe_(emissions.append)
-        emissions.pop()
         self._init_new_service_instance()
         # Act
         self.emitter.events_mission_start.on_next(self._make_atype0())

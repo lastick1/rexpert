@@ -211,3 +211,12 @@ class TestDivisionsService(unittest.TestCase):
         # Assert
         self.assertEqual(self._storage.divisions.load_by_name(TEST_TVD_NAME, TEST_DIVISION_NAME1).units, expected1)
         self.assertEqual(self._storage.divisions.load_by_name(TEST_TVD_NAME, TEST_DIVISION_NAME2).units, expected2)
+
+    def test_repair_on_mission_end(self):
+        """Восполняются дивизии в конце миссии"""
+        self._init_new_service_instance()
+        self.emitter.campaign_mission.on_next(TEST_MISSION)
+        # Act
+        self.emitter.mission_victory.on_next(0)
+        # Assert
+        self.assertTrue(self._update_calls)

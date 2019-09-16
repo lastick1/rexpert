@@ -5,6 +5,7 @@ import logging
 import json
 
 from core import EventsEmitter, Atype0, Atype9, Spawn, Finish, Capture
+from constants import INVERT
 from configs import Config
 from storage import Storage
 from model import ManagedAirfield, Tvd, CampaignMap
@@ -194,6 +195,5 @@ class AirfieldsService(BaseEventService):
     def _mission_victory(self, country: int) -> None:
         """Обработать победу стороны в миссии"""
         if country:
-            invert = {101: 201, 201: 101}
-            airfield: ManagedAirfield = self.get_weakest_airfield(invert[country])
+            airfield: ManagedAirfield = self.get_weakest_airfield(INVERT[country])
             self.emitter.gameplay_capture.on_next(Capture(airfield.tvd_name, country, airfield))

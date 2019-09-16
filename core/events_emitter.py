@@ -14,7 +14,7 @@ class EventsEmitter(SortieEmitter):
         super().__init__(*args, **kwargs)
         self._campaign_mission: Subject = Subject()
         self._current_tvd: BehaviorSubject = BehaviorSubject(None)
-        self._mission_victory: BehaviorSubject = BehaviorSubject(0)
+        self._mission_victory: BehaviorSubject = Subject()
         self._generations: Subject = Subject()
 
     @property

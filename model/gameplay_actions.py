@@ -62,7 +62,7 @@ class WarehouseDisable(GameplayAction):
         super().__init__(tik, country, self.__class__.__name__, warehouse_name)
 
     @property
-    def warehouse_name(self):
+    def warehouse_name(self) -> str:
         """Подавленный склад"""
         return self.object_name
 

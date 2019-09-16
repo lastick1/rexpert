@@ -13,13 +13,13 @@ class Capture:
     point: Point
 
 
+@dataclass
 class PointsGain:
     "Набор очков какой либо из сторон"
 
-    def __init__(self, country: int, capture_points: int, reason: Any = None):
-        self.country: int = country
-        self.capture_points: int = capture_points
-        self.reason: Any = reason
+    country: int
+    capture_points: int
+    reason: Any
 
 
 class Generation:
