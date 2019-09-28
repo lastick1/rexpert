@@ -52,7 +52,7 @@ class Takeoff:
 @dataclass
 class Finish:
     """Завершение вылета игроком"""
-    aircraft_id: str
+    account_id: str
     on_airfield: bool
     gain_unlocks: bool
     aircraft_name: str

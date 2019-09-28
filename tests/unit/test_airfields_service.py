@@ -152,7 +152,7 @@ class TestAirfieldsService(unittest.TestCase):
         # Act
         self._emitter.current_tvd.on_next(tvd_mock)
         self._emitter.sortie_deinitialize.on_next(
-            Finish(self._aircraft.obj_id, True, True, self._aircraft_name, managed_airfield)
+            Finish('_test_account_id', True, True, self._aircraft_name, managed_airfield)
         )
         # Assert
         managed_airfield = self._storage.airfields.load_by_name(

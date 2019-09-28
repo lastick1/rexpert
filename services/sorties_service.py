@@ -78,7 +78,7 @@ class SortiesService(BaseEventService):
             self._aircraft_ids[atype.bot_id] = sortie.aircraft_id
             self._sorties[atype.aircraft_id] = sortie
             self.emitter.sortie_spawn.on_next(
-                Spawn(sortie.account_id, atype.name, sortie.unlocks, bot.aircraft.name, atype.point)
+                Spawn(sortie.account_id, atype.name, sortie.unlocks, bot.aircraft.log_name, atype.point)
             )
 
     def _takeoff(self, atype: Atype5) -> None:
@@ -120,5 +120,5 @@ class SortiesService(BaseEventService):
             mission_ended
         )
         self.emitter.sortie_deinitialize.on_next(
-            Finish(sortie.aircraft_id, sortie.on_airfield, sortie.success, bot.aircraft.name, atype.point)
+            Finish(sortie.account_id, sortie.on_airfield, sortie.success, bot.aircraft.log_name, atype.point)
         )

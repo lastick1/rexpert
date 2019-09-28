@@ -135,6 +135,18 @@ class TestPlayersController(unittest.TestCase):
             self._interceptor.commands[0].message,
             f'{TEST_NICKNAME} TAKEOFF is FORBIDDEN FOR YOU on this aircraft. Available modifications 0')
 
+    def test_msg_granted_takeoff(self):
+        """Отправляется разрешение на взлёт"""
+        self._player_dict[constants.Player.NICKNAME] = TEST_NICKNAME
+        self._init_new_service_instance()
+        # Act
+        self._emitter.sortie_spawn.on_next(Spawn(TEST_ACCOUNT_ID, TEST_NICKNAME, 1, None, None))
+        # Assert
+        self.assertTrue(self._interceptor.commands)
+        self.assertEqual(
+            self._interceptor.commands[0].message,
+            f'{TEST_NICKNAME} takeoff granted! Available modifications 1')
+
     def test_kick_restricted_takeoff(self):
         """Отправляется команда кика при запрещённом взлёте"""
         self._player_dict[constants.Player.UNLOCKS] = 0

@@ -43,8 +43,7 @@ class DServerService(BaseEventService):
         }
 
     def init(self) -> None:
-        self.register_subscription(
-            self.emitter.commands_rcon.subscribe_(self.on_command))
+        self.register_subscription(self.emitter.commands_rcon.subscribe_(self.on_command))
 
     def on_command(self, command: Command) -> None:
         "Обработать команду в RCon"

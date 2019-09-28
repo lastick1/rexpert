@@ -8,6 +8,7 @@ from configs import Config, Objects
 from rcon import DServerRcon
 from storage import Storage
 from services import ObjectsService, \
+    SortiesService, \
     PlayersService, \
     GroundTargetsService, \
     GraphService, \
@@ -65,6 +66,11 @@ class AppBase:
             self.storage,
             self.aircrafts_vendor_service,
         )
+        self.sorties_service: SortiesService = SortiesService(
+            self.events_emitter,
+            self.objects_service,
+            self.airfields_service,
+        )
         self.divisions_service: DivisionsService = DivisionsService(
             self.events_emitter,
             self.config,
@@ -108,6 +114,7 @@ class AppBase:
             self.airfields_service
         )
         self.objects_service.init()
+        self.sorties_service.init()
         self.campaign_service.init()
         self.airfields_service.init()
         self.ground_targets_service.init()

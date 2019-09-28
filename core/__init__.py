@@ -33,3 +33,4 @@ from .events import Finish, \
     Capture, \
     Spawn, \
     Takeoff
+from .parse_mission_log_line import parse as parse_mission_log_line

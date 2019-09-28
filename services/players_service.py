@@ -19,7 +19,6 @@ from core import EventsEmitter, \
     Finish
 from configs import Config
 from storage import Storage
-from log_objects import BotPilot
 from model import Player, \
     MessagePrivate, \
     PlayerKick, \
@@ -37,20 +36,16 @@ class PlayersService(BaseEventService):
             emitter: EventsEmitter,
             config: Config,
             storage: Storage,
-            objects_service: ObjectsService
+            objects_service: ObjectsService,
     ):
         super().__init__(emitter)
         self._config: Config = config
         self._storage: Storage = storage
         self._objects_service: ObjectsService = objects_service
-        self.player_by_bot_id: Dict[int, Player] = dict()
-        self.bot_id_by_aircraft_id: Dict[int, int] = dict()
-        self.unlocks_taken: Dict[str, int] = dict()
 
     def init(self) -> None:
         self.register_subscriptions([
             self.emitter.events_mission_start.subscribe_(self._start_mission),
-            self.emitter.events_sortie_end.subscribe_(self._end_sortie),
             self.emitter.events_player_connected.subscribe_(self._connect),
             self.emitter.events_player_disconnected.subscribe_(self._disconnect),
 
@@ -59,10 +54,6 @@ class PlayersService(BaseEventService):
             self.emitter.sortie_deinitialize.subscribe_(self._finish),
         ])
 
-    def _get_player(self, bot: BotPilot) -> Player:
-        """Получить игрока по его боту - пилоту в самолёте"""
-        return self.player_by_bot_id[bot.obj_id]
-
     def reset(self):
         """Сбросить состояние модификаций игроков и онлайн в кампании"""
         self._storage.players.reset_mods_for_all(
@@ -70,9 +61,6 @@ class PlayersService(BaseEventService):
 
     def _start_mission(self, atype: Atype0):
         """Обработать начало миссии"""
-        self.player_by_bot_id.clear()
-        self.bot_id_by_aircraft_id.clear()
-        self.unlocks_taken.clear()
 
     def _takeoff(self, takeoff: Takeoff):
         """Обработка взлёта"""
@@ -102,7 +90,7 @@ class PlayersService(BaseEventService):
         """Обработать конец вылета (деинициализация бота)"""
         if finish.gain_unlocks:
             try:
-                player = self._get_player(self._objects_service.get_bot(self.bot_id_by_aircraft_id[finish.aircraft_id]))
+                player = self._storage.players.find(finish.account_id)
                 player.unlocks += 1
                 self._storage.players.update(player)
             except Exception as exception:
@@ -129,12 +117,3 @@ class PlayersService(BaseEventService):
         player = self._storage.players.find(atype.account_id)
         player.online = False
         self._storage.players.update(player)
-
-    def _end_sortie(self, atype: Atype4) -> None:
-        """Обработать завершение вылета"""
-
-    def _influence_area(self, atype: Atype13):
-        """Обработать объявление зоны влияния в логах"""
-
-    def _influence_area_boundary(self, atype: Atype14):
-        """Обновить многоугольник зоны влияния"""
