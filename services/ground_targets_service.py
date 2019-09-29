@@ -2,6 +2,7 @@
 from __future__ import annotations
 import re
 
+from constants import INVERT
 from core import EventsEmitter, \
     Atype0, \
     Atype3, \
@@ -14,6 +15,8 @@ import log_objects
 import geometry
 
 from model import CampaignMission, \
+    ArtilleryKill, \
+    TanksCoverFail, \
     ServerInput
 
 from .base_event_service import BaseEventService
@@ -268,10 +271,17 @@ class GroundTargetsService(BaseEventService):
 
     def _mission_result(self, atype: Atype8) -> None:
         """Обработать mission objective в логах"""
+        country = atype.coal_id * 100 + 1
+        points = self._config.mgen.mission_objectives[atype.task_type_id].capture_points
+        reason = atype
+        if atype.task_type_id == 4:
+            reason = ArtilleryKill(atype.tik, country)
+        if atype.task_type_id == 6:
+            reason = TanksCoverFail(atype.tik, country)
         self.emitter.gameplay_points_gain.on_next(PointsGain(
-            atype.coal_id * 100 + 1,
-            self._config.mgen.mission_objectives[atype.task_type_id].capture_points,
-            atype
+            country,
+            points,
+            reason
         ))
 
     def killed_bridges(self, country: int) -> int:

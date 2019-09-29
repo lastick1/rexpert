@@ -11,6 +11,7 @@ NAME = 'name'
 COUNTRY = 'country'
 VICTORY = {101: 'VICTORY_RED', 201: 'VICTORY_BLUD'}
 INVERT = {101: 201, 201: 101}
+COUNTRY_NAMES = {101: 'USSR', 201: 'Germany'}
 
 
 class Mongo:

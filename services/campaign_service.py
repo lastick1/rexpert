@@ -7,7 +7,7 @@ import datetime
 
 from rx import interval
 
-from constants import DATE_FORMAT, VICTORY
+from constants import DATE_FORMAT, VICTORY, COUNTRY_NAMES
 from core import EventsEmitter, \
     Generation, \
     Atype0, \
@@ -54,7 +54,7 @@ class CampaignService(BaseEventService):
         self._current_tvd: Tvd = None
         self._round_ended: bool = False
         self._countries_result: Dict[int, int] = {101: 0, 201: 0}
-        self.won_country: int
+        self.won_country: int = 0
         self.event_notify = interval(self._config.main.chat.points_notification_interval)
 
     def init(self) -> None:
@@ -122,6 +122,13 @@ class CampaignService(BaseEventService):
             self._countries_result[gain.country] += gain.capture_points
             if self._countries_result[gain.country] >= 13:
                 self.won_country = gain.country
+            gain_loose = 'gain' if gain.capture_points >= 0 else 'loose'
+            country = COUNTRY_NAMES[gain.country]
+            messages = {
+                101: f'{country} {gain_loose} {abs(gain.capture_points)} capture points for {gain.reason}',
+                201: f'{country} {gain_loose} {abs(gain.capture_points)} capture points for {gain.reason}',
+            }
+            self.emitter.commands_rcon.on_next(MessageAll(messages[gain.country]))
 
     def register_action(self, action: GameplayAction) -> None:
         """Зарегистрировать игровое событие"""

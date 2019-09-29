@@ -80,11 +80,18 @@ class TestGroundControl(unittest.TestCase):
         """Очистка после тестов"""
         self._interceptor.dispose()
 
+    def _init_new_service_instance(self) -> GroundTargetsService:
+        service = GroundTargetsService(
+            self.emitter,
+            self.config,
+            self._objects_service
+        )
+        service.init()
+        return service
+
     def test_kill(self):
         """Учитываются уничтоженные наземные цели"""
-        service = GroundTargetsService(self.emitter,
-                                       self.config,
-                                       self._objects_service)
+        service = self._init_new_service_instance()
         target_name = 'static_il2'
         aircraft_name = 'I-16 type 24'
         pos_target = {'x': 300.0, 'y': 100.0, 'z': 100.0}
@@ -104,9 +111,7 @@ class TestGroundControl(unittest.TestCase):
 
     def test_kill_aircraft(self):
         """Учитываются только уничтоженные наземные цели"""
-        service = GroundTargetsService(self.emitter,
-                                       self.config,
-                                       self._objects_service)
+        service = self._init_new_service_instance()
         aircraft_name = 'I-16 type 24'
         aircraft = self._objects_service._create_object(
             atype_12_stub(2, aircraft_name, 101, 'Test aircraft', -1))
@@ -118,10 +123,7 @@ class TestGroundControl(unittest.TestCase):
 
     def test_division_unit_kill(self):
         """Обрабатывается уничтожение подразделения дивизии"""
-        service = GroundTargetsService(self.emitter,
-                                       self.config,
-                                       self._objects_service)
-        service.init()
+        service = self._init_new_service_instance()
         self.emitter.campaign_mission.on_next(TEST_MISSION)
         target_name = 'static_il2'
         aircraft_name = 'I-16 type 24'
@@ -150,10 +152,7 @@ class TestGroundControl(unittest.TestCase):
         """Обрабатывается уничтожение артиллерийской батареи"""
         coal_id = 1
         pos = {'x': 10.1, 'z': 11.1}
-        service = GroundTargetsService(self.emitter,
-                                       self.config,
-                                       self._objects_service)
-        service.init()
+        service = self._init_new_service_instance()
         # Act
         self.emitter.events_mission_result.on_next(Atype8(
             20, 1, coal_id, 4, True, 1, pos
@@ -167,10 +166,7 @@ class TestGroundControl(unittest.TestCase):
         """Обрабатывается уничтожение танкового наступления"""
         coal_id = 1
         pos = {'x': 10.1, 'z': 11.1}
-        service = GroundTargetsService(self.emitter,
-                                       self.config,
-                                       self._objects_service)
-        service.init()
+        service = self._init_new_service_instance()
         # Act
         self.emitter.events_mission_result.on_next(Atype8(
             20, 1, coal_id, 6, True, 1, pos

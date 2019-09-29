@@ -1,7 +1,10 @@
 """События в игровом процессе"""
 import datetime
+import re
+import abc
 import constants
 
+DIVISION_TYPE_RE = re.compile(r'^[RB](?P<type>.)D\d$')
 
 class GameplayAction:
     """Игровое действие"""
@@ -23,6 +26,10 @@ class GameplayAction:
             constants.COUNTRY: self.country
         }
 
+    @abc.abstractmethod
+    def __str__(self):
+        return None
+
 
 class AirfieldKill(GameplayAction):
     """Уничтожение аэродрома"""
@@ -34,6 +41,9 @@ class AirfieldKill(GameplayAction):
     def airfield_name(self):
         """Уничтоженный аэродром"""
         return self.object_name
+
+    def __str__(self):
+        return f"{self.airfield_name} airfield destruction"
 
 
 class DivisionKill(GameplayAction):
@@ -47,12 +57,24 @@ class DivisionKill(GameplayAction):
         """Уничтоженная дивизия"""
         return self.object_name
 
+    def __str__(self):
+        types = {
+            'A': 'artillery',
+            'T': 'tanks',
+            'I': 'vehicles',
+        }
+        match = DIVISION_TYPE_RE.match(self.division_name)
+        return f'fortified area ({types[match.group(1)]}) destruction'
+
 
 class ArtilleryKill(GameplayAction):
     """Уничтожение артиллерии"""
 
     def __init__(self, tik: int, country: int, name: str = 'artillery'):
         super().__init__(tik, country, self.__class__.__name__, name)
+
+    def __str__(self):
+        return 'artillery position destruction'
 
 
 class WarehouseDisable(GameplayAction):
@@ -66,8 +88,14 @@ class WarehouseDisable(GameplayAction):
         """Подавленный склад"""
         return self.object_name
 
+    def __str__(self):
+        return 'warehouse disable'
+
 class TanksCoverFail(GameplayAction):
     """Уничтожены наступающие танки"""
 
     def __init__(self, tik: int, country: int, name: str = 'tanks'):
         super().__init__(tik, country, self.__class__.__name__, name)
+
+    def __str__(self):
+        return 'lost of attacking tanks'

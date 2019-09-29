@@ -18,7 +18,14 @@ from services import CampaignService, \
     GraphService, \
     WarehouseService, \
     TvdService
-from model import SourceMission, CampaignMap, Division, ServerInput
+from model import SourceMission, \
+    CampaignMap, \
+    Division, \
+    ServerInput, \
+    WarehouseDisable, \
+    DivisionKill, \
+    ArtilleryKill, \
+    TanksCoverFail
 from storage import Storage
 from processing import SourceParser
 
@@ -42,8 +49,11 @@ def _load_campaign_map_by_tvd_mock(tvd_name: str) -> CampaignMap:
     return CampaignMap(1, TEST_TVD_DATE, TEST_TVD_DATE, TEST_TVD_NAME, list(), list())
 
 # pylint: disable=unused-argument
+
+
 def _load_divisions_by_tvd_mock(tvd_name: str) -> List[Division]:
     return []
+
 
 def _get_weakest_airfield_mock(contry: int):
     return Point()
@@ -124,7 +134,7 @@ class TestCampaignService(unittest.TestCase):
         self.emitter.events_round_end.on_next(Atype19(22))
         # Assert
         self.assertTrue(self.interceptor.commands)
-        self.assertIsInstance(self.interceptor.commands[0], ServerInput)
+        self.assertIsInstance(self.interceptor.commands[1], ServerInput)
 
     def test_update_campaign_map(self):
         """Обновляет карту кампании при старте миссии"""
@@ -168,3 +178,30 @@ class TestCampaignService(unittest.TestCase):
         # Assert
         self.assertTrue(emissions)
         self.assertEqual(emissions[0], coal_id * 100 + 1)
+
+    def test_sends_message_on_points_gain(self):
+        """Отправляет сообщение при получении/потере очков захвата"""
+        self._init_new_service_instance()
+        # Act
+        self.emitter.gameplay_points_gain.on_next(PointsGain(101, 3, DivisionKill(10, 101, 'BID1')))
+        self.emitter.gameplay_points_gain.on_next(PointsGain(101, 4, WarehouseDisable(10, 101, 'BWH1')))
+        self.emitter.gameplay_points_gain.on_next(PointsGain(101, 2, ArtilleryKill(10, 101)))
+        self.emitter.gameplay_points_gain.on_next(PointsGain(201, -1, TanksCoverFail(10, 101)))
+        # Assert
+        self.assertTrue(self.interceptor.commands)
+        self.assertEqual(
+            self.interceptor.commands[0].message,
+            'USSR gain 3 capture points for fortified area (vehicles) destruction'
+        )
+        self.assertEqual(
+            self.interceptor.commands[1].message,
+            'USSR gain 4 capture points for warehouse disable'
+        )
+        self.assertEqual(
+            self.interceptor.commands[2].message,
+            'USSR gain 2 capture points for artillery position destruction'
+        )
+        self.assertEqual(
+            self.interceptor.commands[3].message,
+            'Germany loose 1 capture points for lost of attacking tanks'
+        )

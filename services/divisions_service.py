@@ -6,7 +6,7 @@ import re
 
 from rx import interval
 
-from constants import INVERT
+from constants import INVERT, COUNTRY_NAMES
 from core import EventsEmitter, DivisionDamage, PointsGain
 from configs import Config
 from storage import Storage
@@ -35,9 +35,6 @@ def _to_campaign_mission(mission) -> CampaignMission:
 
 def _to_division(division) -> Division:
     return division
-
-
-COUNTRY_NAMES = {101: 'USSR', 201: 'Germany'}
 
 
 def _make_notify_message(division: Division) -> str:
