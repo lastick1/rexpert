@@ -8,12 +8,15 @@ from core import EventsEmitter, WarehouseDamage
 from storage import Storage
 from model import CampaignMission, Warehouse
 
-from tests.mocks import ConfigMock, EventsInterceptor, pass_
+from tests.mocks import ConfigMock, EventsInterceptor, TvdMock, return_true
 
 from services import WarehouseService
 TEST_TVD_NAME = 'moscow'
 TEST_DATE = '01.09.1941'
-TEST_RWH1_NAME = 'test_warehouse'
+TEST_RWH1_NAME = 'test_red_warehouse1'
+TEST_RWH2_NAME = 'test_red_warehouse2'
+TEST_BWH1_NAME = 'test_blue_warehouse1'
+TEST_BWH2_NAME = 'test_blue_warehouse2'
 TEST_TARGET_RWH1_SERVER_INPUT = 'RWH1'
 TEST_TARGET_POS_RWH1 = {'x': 156060.64, 'z': 132392.5}
 TEST_TARGET_POS_RWH1_UNITS = [
@@ -57,20 +60,54 @@ class TestWarehousesService(unittest.TestCase):
         self.emitter = EventsEmitter()
         self.config = ConfigMock()
         self.storage = Storage(self.config.main)
-        self.storage.warehouses.load_by_tvd = self._load_warehouses_by_tvd_mock
-        self.storage.warehouses.update = pass_
         self.interceptor: EventsInterceptor = EventsInterceptor(self.emitter)
         self._test_warehouse_health = 100
+        self._update_calls: List[Warehouse] = []
+        self._load_calls = 0
+
+        self.storage.warehouses.load_by_tvd = self._load_warehouses_by_tvd_mock
+        self.storage.warehouses.update = self._update_calls.append
 
     def _load_warehouses_by_tvd_mock(self, tvd_name: str) -> List[Warehouse]:
-        return [Warehouse(
-            TEST_RWH1_NAME,
-            tvd_name,
-            self._test_warehouse_health,
-            0,
-            101,
-            TEST_TARGET_POS_RWH1
-        )]
+        self._load_calls += 1
+        return [
+            Warehouse(
+                TEST_RWH1_NAME,
+                tvd_name,
+                self._test_warehouse_health,
+                0,
+                101,
+                TEST_TARGET_POS_RWH1,
+                False,
+            ),
+            Warehouse(
+                TEST_RWH2_NAME,
+                tvd_name,
+                self._test_warehouse_health,
+                0,
+                101,
+                TEST_TARGET_POS_RWH1,
+                False,
+            ),
+            Warehouse(
+                TEST_BWH1_NAME,
+                tvd_name,
+                self._test_warehouse_health,
+                0,
+                201,
+                TEST_TARGET_POS_RWH1,
+                False,
+            ),
+            Warehouse(
+                TEST_BWH2_NAME,
+                tvd_name,
+                self._test_warehouse_health,
+                0,
+                201,
+                TEST_TARGET_POS_RWH1,
+                False,
+            ),
+        ]
 
     def test_warehouse_disable(self):
         "Учитывается выведение склада из строя"
@@ -120,3 +157,27 @@ class TestWarehousesService(unittest.TestCase):
         warehouse = self._load_warehouses_by_tvd_mock(TEST_MISSION.tvd_name)[0]
         for command in self.interceptor.commands:
             self.assertIn(warehouse.name, command.message)
+
+    def test_sets_is_current_on_mission_start(self):
+        """Обновляются текущие склады при старте миссии"""
+        service = WarehouseService(self.emitter, self.config, self.storage)
+        service.init()
+        # Act
+        self.emitter.campaign_mission.on_next(TEST_MISSION)
+        # Assert
+        self.assertTrue(self._update_calls)
+        for update in self._update_calls:
+            self.assertTrue(update.is_current)
+
+    def test_next_warehouses_loads_from_db(self):
+        """Загружаются из БД склады для выбора следующих"""
+        service = WarehouseService(self.emitter, self.config, self.storage)
+        service.init()
+        tvd = TvdMock(TEST_TVD_NAME)
+        tvd.country = 101
+        tvd.is_rear = return_true
+        # Act
+        result = service.next_warehouses(tvd)
+        # Assert
+        self.assertTrue(result)
+        self.assertTrue(self._load_calls)

@@ -92,3 +92,4 @@ class Warehouse:
     """Константы модели данных склада"""
     HEALTH = 'health'
     DEATHS = 'deaths'
+    IS_CURRENT = 'is_current'

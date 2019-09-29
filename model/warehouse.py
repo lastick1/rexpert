@@ -14,7 +14,7 @@ WAREHOUSES = {
 
 class Warehouse(geometry.Point):
     """Склад ресурсов"""
-    def __init__(self, name: str, tvd_name: str, health: float, deaths: int, country: int, pos: dict):
+    def __init__(self, name: str, tvd_name: str, health: float, deaths: int, country: int, pos: dict, is_current: bool):
         super().__init__(pos['x'], pos['z'])
         self.name = name
         self.tvd_name = tvd_name
@@ -23,6 +23,7 @@ class Warehouse(geometry.Point):
         self.country = country
         self.pos = pos
         self.server_input: str = None  # имя сервер инпута для генерации
+        self.is_current = is_current
 
     @property
     def damage_level(self) -> int:
@@ -55,5 +56,6 @@ class Warehouse(geometry.Point):
             constants.Warehouse.HEALTH: self.health,
             constants.Warehouse.DEATHS: self.deaths,
             constants.COUNTRY: self.country,
-            constants.POS: self.pos
+            constants.POS: self.pos,
+            constants.Warehouse.IS_CURRENT: self.is_current,
         }

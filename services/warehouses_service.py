@@ -71,7 +71,8 @@ class WarehouseService(BaseEventService):
                     health=100.0,
                     deaths=0,
                     country=data['country'],
-                    pos={'x': data['x'], 'z': data['z']}
+                    pos={'x': data['x'], 'z': data['z']},
+                    is_current=False,
                 )
             )
         logging.debug(f'{tvd_name} warehouses initialized')
@@ -88,11 +89,13 @@ class WarehouseService(BaseEventService):
             self._current_tvd_warehouses[warehouse.name] = warehouse
         for server_input in self._campaign_mission.server_inputs:
             if WAREHOUSE_INPUT_RE.match(server_input['name']):
-                warehouse = self.get_warehouse_by_coordinates(
+                warehouse: Warehouse = self.get_warehouse_by_coordinates(
                     server_input['pos'])
                 self._current_mission_warehouses.append(warehouse)
                 self._warehouses_by_inputs[server_input['name']] = warehouse
                 self._check_warehouse(0, warehouse)
+                warehouse.is_current = True
+                self._storage.warehouses.update(warehouse)
 
     def end_round(self, atype: Atype19):
         """Завершить раунд"""
@@ -143,6 +146,7 @@ class WarehouseService(BaseEventService):
 
     def next_warehouses(self, tvd: Tvd) -> list:
         """Склады для следующей миссии"""
-        selector = WarehousesSelector(self._storage.warehouses.load_by_tvd(
-            tvd.name), self._current_mission_warehouses)
+        selector = WarehousesSelector(
+            self._storage.warehouses.load_by_tvd(tvd.name),
+        )
         return selector.select(tvd)

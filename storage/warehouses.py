@@ -1,3 +1,4 @@
+"""Коллекция складов в БД"""
 from __future__ import annotations
 from typing import List
 import constants
@@ -22,13 +23,16 @@ class Warehouses(CollectionWrapper):
             health=document[constants.Warehouse.HEALTH],
             deaths=document[constants.Warehouse.DEATHS],
             country=document[constants.COUNTRY],
-            pos=document[constants.POS]
+            pos=document[constants.POS],
+            is_current=document[constants.Warehouse.IS_CURRENT],
         )
 
     def update(self, warehouse: Warehouse) -> None:
         """Обновить/создать документ в БД"""
         self.update_one(
-            self._make_filter(warehouse.tvd_name, warehouse.name), CollectionWrapper.update_request_body(warehouse.to_dict()))
+            self._make_filter(warehouse.tvd_name, warehouse.name),
+            CollectionWrapper.update_request_body(warehouse.to_dict()),
+        )
 
     def load_by_name(self, tvd_name: str, name: str) -> Warehouse:
         """Загрузить данные склада по его имени"""

@@ -3,26 +3,27 @@
 В миссии у сторон по 2 склада
 """
 from __future__ import annotations
+from typing import List
 import logging
 import random
 
 import geometry
-import model
+from model import Tvd, Warehouse
 
 
 class WarehousesSelector:
     """Класс, реализующий выбор"""
 
-    def __init__(self, warehouses: list, current: list):
+    def __init__(self, warehouses: List[Warehouse]):
         self._warehouses = warehouses
-        self._current = current
+        self._current = list(x for x in warehouses if x.is_current)
 
     def _get_max_deaths(self, country: int):
         if self._warehouses:
             return max(x.deaths for x in self._warehouses if x.country == country) + 1
         return 0
 
-    def select(self, tvd: model.Tvd) -> list:
+    def select(self, tvd: Tvd) -> list:
         """Выбрать склады для ТВД"""
         result = self._next_warehouses(101, tvd) + self._next_warehouses(201, tvd)
         param_names = {
@@ -33,7 +34,7 @@ class WarehousesSelector:
             warehouse.server_input = param_names[warehouse.country].pop()
         return result
 
-    def _next_warehouses(self, country: int, tvd: model.Tvd) -> list:
+    def _next_warehouses(self, country: int, tvd: Tvd) -> list:
         """Склады для следующей миссии для указанной стороны и указанного ТВД"""
         # выбираются те склады, которые убивались меньшее количество раз, текущие склады в приоритете
         airfields = tvd.airfields[country]
