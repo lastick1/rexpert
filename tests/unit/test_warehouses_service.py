@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import List
 import unittest
 
-
+from geometry import Point
 from core import EventsEmitter, WarehouseDamage
 from storage import Storage
 from model import CampaignMission, Warehouse
@@ -175,6 +175,9 @@ class TestWarehousesService(unittest.TestCase):
         service.init()
         tvd = TvdMock(TEST_TVD_NAME)
         tvd.country = 101
+        tvd.set_border([
+            Point(TEST_TARGET_POS_RWH1['x'], TEST_TARGET_POS_RWH1['z']),
+        ])
         tvd.is_rear = return_true
         # Act
         result = service.next_warehouses(tvd)

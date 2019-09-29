@@ -12,3 +12,7 @@ class TvdMock(Tvd):
 
     def get_country(self, point):
         return self.country
+
+    def set_border(self, value: list) -> None:
+        """Установить линию фронта"""
+        self._border = value

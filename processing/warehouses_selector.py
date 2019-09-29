@@ -7,7 +7,7 @@ from typing import List
 import logging
 import random
 
-import geometry
+from geometry import remove_too_close, remove_too_far
 from model import Tvd, Warehouse
 
 
@@ -39,7 +39,9 @@ class WarehousesSelector:
         # выбираются те склады, которые убивались меньшее количество раз, текущие склады в приоритете
         airfields = tvd.airfields[country]
         max_deaths = self._get_max_deaths(country)
-        warehouses = list(x for x in geometry.remove_too_close(self._warehouses, airfields, 30000)
+        filtered = remove_too_close(self._warehouses, airfields, 30000)
+        filtered = remove_too_far(filtered, tvd.border, 120000)
+        warehouses = list(x for x in filtered
                           if x.deaths < max_deaths
                           and x.country == country
                           and tvd.is_rear(x, country))

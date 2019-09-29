@@ -179,6 +179,18 @@ def remove_too_close(src: list, check_points: list, radius: float) -> list:
             result.append(point)
     return result
 
+def remove_too_far(src: list, check_points: list, radius: float) -> list:
+    """Убрать из списка точки, которые слишком далеко от точек второго списка"""
+    result = list()
+    for point in src:
+        close = False
+        for check in check_points:
+            if point.distance_to(check.x, check.z) > radius:
+                close = True
+                break
+        if not close:
+            result.append(point)
+    return result
 
 def jarvis_march(array: list) -> list:
     """Находит минимальную выпуклую оболочку в массиве точек"""
