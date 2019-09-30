@@ -40,7 +40,7 @@ class WarehousesSelector:
         airfields = tvd.airfields[country]
         max_deaths = self._get_max_deaths(country)
         filtered = remove_too_close(self._warehouses, airfields, 30000)
-        filtered = remove_too_far(filtered, tvd.border, 120000)
+        filtered = remove_too_far(filtered, tvd.border, 100000)
         warehouses = list(x for x in filtered
                           if x.deaths < max_deaths
                           and x.country == country

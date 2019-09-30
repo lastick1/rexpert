@@ -251,6 +251,8 @@ class GroundTargetsService(BaseEventService):
             if RW_STATION_RE.match(server_input['name']):
                 self.targets.append(RailwayStationTarget(
                     server_input['name'], server_input['pos']))
+                continue
+            print(f'server input:{server_input}')
         self._check_targets(0)
 
     def _kill(self, atype: Atype3) -> None:
