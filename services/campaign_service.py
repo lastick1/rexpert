@@ -113,8 +113,6 @@ class CampaignService(BaseEventService):
         logging.info(
             f'mission started {self._campaign_map.mission.date.strftime(DATE_FORMAT)}, ' +
             f'{self._mission.tvd_name}, {self._campaign_map.mission.file}')
-        # TODO сохранить миссию в базу (в документ CampaignMap и в коллекцию CampaignMissions)
-        # TODO удалить файлы предыдущей миссии
 
     def _points_gain(self, gain: PointsGain) -> None:
         "Учесть получение очков захвата"

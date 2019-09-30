@@ -174,16 +174,14 @@ class GroundTargetsService(BaseEventService):
 
     def init(self) -> None:
         self.register_subscriptions([
-            self.emitter.campaign_mission.subscribe_(
-                self._update_campaign_mission),
-            self.emitter.events_mission_start.subscribe_(self._mission_start),
+            self.emitter.campaign_mission.subscribe_(self._update_campaign_mission),
             self.emitter.events_kill.subscribe_(self._kill),
-            self.emitter.events_mission_result.subscribe_(
-                self._mission_result),
+            self.emitter.events_mission_result.subscribe_(self._mission_result),
         ])
 
     def _update_campaign_mission(self, campaign_mission: CampaignMission) -> None:
         self._campaign_mission = campaign_mission
+        self._mission_start()
 
     def _check_targets(self, tik: int):
         """Проверить состояние целей и отправить инпуты в консоль при необходимости"""
@@ -220,7 +218,7 @@ class GroundTargetsService(BaseEventService):
         """Получить радиус юнита дивизии из конфига"""
         return self._config.mgen.cfg[tvd_name]['division_unit_radius']
 
-    def _mission_start(self, atype: Atype0):
+    def _mission_start(self):
         """Обработать начало миссии"""
         self._killed_units.clear()
         self.ground_kills.clear()
