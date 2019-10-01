@@ -107,11 +107,15 @@
             "cwd": "${workspaceRoot}"
         },
         {
-            "name":"Python: Текущий файл",
+            "name":"tool make_airfields_deactivators_groups",
             "type":"python",
             "request":"launch",
-            "program":"${file}",
-            "console":"integratedTerminal"
+            "program":"${workspaceRoot}/tools/make_airfields_deactivators_groups.py",
+            "args": [
+                "./data/stalin_fields.csv",
+                "./data/scg/2/blocks_quickmission/airfields_deactivators",
+            ],
+            "cwd": "${workspaceRoot}"
         },
     ]
 }
