@@ -20,7 +20,7 @@ MCU_H_ReferencePoint
 MCU_TR_ServerInput
 {
   Index = 8;
-  Name = "REXPERT_AF_DEACTIVATE_polotnyaniy_zavod";
+  Name = "REXPERT_DEACT_polotnyaniy_zavod";
   Desc = "";
   Targets = [27];
   Objects = [];

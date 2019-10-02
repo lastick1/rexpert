@@ -27,7 +27,7 @@ AIRFIELD_DEACTIVATOR_GROUP_FORMAT = """MCU_H_ReferencePoint
 MCU_TR_ServerInput
 {{
   Index = 8;
-  Name = "REXPERT_AF_DEACTIVATE_{0}";
+  Name = "REXPERT_DEACT_{0}";
   Desc = "";
   Targets = [27];
   Objects = [];

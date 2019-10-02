@@ -20,7 +20,7 @@ MCU_H_ReferencePoint
 MCU_TR_ServerInput
 {
   Index = 8;
-  Name = "REXPERT_AF_DEACTIVATE_vatulino";
+  Name = "REXPERT_DEACT_vatulino";
   Desc = "";
   Targets = [27];
   Objects = [];

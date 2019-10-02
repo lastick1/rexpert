@@ -112,7 +112,7 @@
             "request":"launch",
             "program":"${workspaceRoot}/tools/make_airfields_deactivators_groups.py",
             "args": [
-                "./data/stalin_fields.csv",
+                "./data/moscow_fields.csv",
                 "./data/scg/2/blocks_quickmission/airfields_deactivators",
             ],
             "cwd": "${workspaceRoot}"
