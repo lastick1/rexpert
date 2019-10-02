@@ -942,6 +942,12 @@ blocks_set; blocks_RTD1_TEST_AF; main(scg\1\blocks_quickmission\airfields\blue_t
 blocks_set; blocks_BID1_TEST_AF; main(scg\1\blocks_quickmission\airfields\red_test.group);
 blocks_set; blocks_BTD1_TEST_AF; main(scg\1\blocks_quickmission\airfields\red_test.group);
 blocks_set; blocks_BAD1_TEST_AF; main(scg\1\blocks_quickmission\airfields\red_test.group);
+blocks_set; blocks_RED_FRONT_AF1_DEACTIVATOR; main(scg\1\blocks_quickmission\airfields_deactivators\!x102108z271453.group);
+blocks_set; blocks_RED_FRONT_AF2_DEACTIVATOR; main(scg\1\blocks_quickmission\airfields_deactivators\!x102108z271453.group);
+blocks_set; blocks_RED_FRONT_AF3_DEACTIVATOR; main(scg\1\blocks_quickmission\airfields_deactivators\!x102108z271453.group);
+blocks_set; blocks_BLUE_FRONT_AF1_DEACTIVATOR; main(scg\1\blocks_quickmission\airfields_deactivators\!x102108z271453.group);
+blocks_set; blocks_BLUE_FRONT_AF2_DEACTIVATOR; main(scg\1\blocks_quickmission\airfields_deactivators\!x102108z271453.group);
+blocks_set; blocks_BLUE_FRONT_AF3_DEACTIVATOR; main(scg\1\blocks_quickmission\airfields_deactivators\!x102108z271453.group);
 
 #
 ## geo params
@@ -1885,6 +1891,12 @@ phase; RTD1_TEST_AF; at(RTD1_REF); blocks_RTD1_TEST_AF; clone_location;;
 phase; BID1_TEST_AF; at(BID1_REF); blocks_BID1_TEST_AF; clone_location;;
 phase; BTD1_TEST_AF; at(BTD1_REF); blocks_BTD1_TEST_AF; clone_location;;
 phase; BAD1_TEST_AF; at(BAD1_REF); blocks_BAD1_TEST_AF; clone_location;;
+phase; RED_FRONT_AF1_DEACTIVATOR; at(RED_FRONT_AF1); blocks_RED_FRONT_AF1_DEACTIVATOR; clone_location;scg\1\blocks_quickmission\airfields_deactivators;
+phase; RED_FRONT_AF2_DEACTIVATOR; at(RED_FRONT_AF2); blocks_RED_FRONT_AF2_DEACTIVATOR; clone_location;scg\1\blocks_quickmission\airfields_deactivators;
+phase; RED_FRONT_AF3_DEACTIVATOR; at(RED_FRONT_AF3); blocks_RED_FRONT_AF3_DEACTIVATOR; clone_location;scg\1\blocks_quickmission\airfields_deactivators;
+phase; BLUE_FRONT_AF1_DEACTIVATOR; at(BLUE_FRONT_AF1); blocks_BLUE_FRONT_AF1_DEACTIVATOR; clone_location;scg\1\blocks_quickmission\airfields_deactivators;
+phase; BLUE_FRONT_AF2_DEACTIVATOR; at(BLUE_FRONT_AF2); blocks_BLUE_FRONT_AF2_DEACTIVATOR; clone_location;scg\1\blocks_quickmission\airfields_deactivators;
+phase; BLUE_FRONT_AF3_DEACTIVATOR; at(BLUE_FRONT_AF3); blocks_BLUE_FRONT_AF3_DEACTIVATOR; clone_location;scg\1\blocks_quickmission\airfields_deactivators;
 
 #
 ## cases & switches
@@ -2391,6 +2403,12 @@ tlink; RED_SMART_CHECKZONE_1447_2392_3687(ACTIVATE_AUTO_CANNONS); MEDIUM_CANNON2
 tlink; RED_SMART_CHECKZONE_1447_2392_3687(DEACTIVATE_AUTO_CANNONS); MEDIUM_CANNON2_505_1458_2403_3698(DEACTIVATE_AUTO_CANNONS);
 tlink; RED_SMART_CHECKZONE_1447_2392_3687(ACTIVATE_AUTO_CANNONS); MEDIUM_CANNON4_516_1459_2404_3699(ACTIVATE_AUTO_CANNONS);
 tlink; RED_SMART_CHECKZONE_1447_2392_3687(DEACTIVATE_AUTO_CANNONS); MEDIUM_CANNON4_516_1459_2404_3699(DEACTIVATE_AUTO_CANNONS);
+tlink; RED_FRONT_AF1_DEACTIVATOR(AF_MCU_OBJECT); RED_FRONT_AF1(AF_MCU_OBJECT);
+tlink; RED_FRONT_AF2_DEACTIVATOR(AF_MCU_OBJECT); RED_FRONT_AF2(AF_MCU_OBJECT);
+tlink; RED_FRONT_AF3_DEACTIVATOR(AF_MCU_OBJECT); RED_FRONT_AF3(AF_MCU_OBJECT);
+tlink; BLUE_FRONT_AF1_DEACTIVATOR(AF_MCU_OBJECT); BLUE_FRONT_AF1(AF_MCU_OBJECT);
+tlink; BLUE_FRONT_AF2_DEACTIVATOR(AF_MCU_OBJECT); BLUE_FRONT_AF2(AF_MCU_OBJECT);
+tlink; BLUE_FRONT_AF3_DEACTIVATOR(AF_MCU_OBJECT); BLUE_FRONT_AF3(AF_MCU_OBJECT);
 
 #
 ## conditions
@@ -5870,6 +5888,12 @@ gui_helper; RTD1_TEST_AF; 8565; 4659;""; ( ); 5;
 gui_helper; BID1_TEST_AF; -7555; 8720;""; ( ); 6;
 gui_helper; BTD1_TEST_AF; -7455; 4642;""; ( ); 6;
 gui_helper; BAD1_TEST_AF; -8908; 4657;""; ( ); 6;
+gui_helper; RED_FRONT_AF1_DEACTIVATOR; 3843; -1989;
+gui_helper; RED_FRONT_AF2_DEACTIVATOR; 5752; -1888;
+gui_helper; RED_FRONT_AF3_DEACTIVATOR; 7668; -1918;
+gui_helper; BLUE_FRONT_AF1_DEACTIVATOR; -2297; -1706;
+gui_helper; BLUE_FRONT_AF2_DEACTIVATOR; -4505; -1786;
+gui_helper; BLUE_FRONT_AF3_DEACTIVATOR; -6735; -1834;
 gui_helper; check; -5717; -3132;LARGE_CANNON_31(location_type)
 gui_helper; check; -5720; -3092;LARGE_CANNON_31(free)
 gui_helper; check; -5720; -3055;LARGE_CANNON_31(range)

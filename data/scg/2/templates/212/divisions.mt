@@ -896,6 +896,12 @@ blocks_set; blocks_RTD1_TEST_AF; main(scg\2\blocks_quickmission\airfields\blue_t
 blocks_set; blocks_BID1_TEST_AF; main(scg\2\blocks_quickmission\airfields\red_test.group);
 blocks_set; blocks_BTD1_TEST_AF; main(scg\2\blocks_quickmission\airfields\red_test.group);
 blocks_set; blocks_BAD1_TEST_AF; main(scg\2\blocks_quickmission\airfields\red_test.group);
+blocks_set; blocks_RED_FRONT_AF1_DEACTIVATOR; main(scg\2\blocks_quickmission\airfields_deactivators\!x100505z156297.group);
+blocks_set; blocks_RED_FRONT_AF2_DEACTIVATOR; main(scg\2\blocks_quickmission\airfields_deactivators\!x100505z156297.group);
+blocks_set; blocks_RED_FRONT_AF3_DEACTIVATOR; main(scg\2\blocks_quickmission\airfields_deactivators\!x100505z156297.group);
+blocks_set; blocks_BLUE_FRONT_AF1_DEACTIVATOR; main(scg\2\blocks_quickmission\airfields_deactivators\!x100505z156297.group);
+blocks_set; blocks_BLUE_FRONT_AF2_DEACTIVATOR; main(scg\2\blocks_quickmission\airfields_deactivators\!x100505z156297.group);
+blocks_set; blocks_BLUE_FRONT_AF3_DEACTIVATOR; main(scg\2\blocks_quickmission\airfields_deactivators\!x100505z156297.group);
 
 #
 ## geo params
@@ -1793,6 +1799,12 @@ phase; RTD1_TEST_AF; at(RTD1_REF); blocks_RTD1_TEST_AF; clone_location;;
 phase; BID1_TEST_AF; at(BID1_REF); blocks_BID1_TEST_AF; clone_location;;
 phase; BTD1_TEST_AF; at(BTD1_REF); blocks_BTD1_TEST_AF; clone_location;;
 phase; BAD1_TEST_AF; at(BAD1_REF); blocks_BAD1_TEST_AF; clone_location;;
+phase; RED_FRONT_AF1_DEACTIVATOR; at(RED_FRONT_AF1); blocks_RED_FRONT_AF1_DEACTIVATOR; clone_location;scg\2\blocks_quickmission\airfields_deactivators;
+phase; RED_FRONT_AF2_DEACTIVATOR; at(RED_FRONT_AF2); blocks_RED_FRONT_AF2_DEACTIVATOR; clone_location;scg\2\blocks_quickmission\airfields_deactivators;
+phase; RED_FRONT_AF3_DEACTIVATOR; at(RED_FRONT_AF3); blocks_RED_FRONT_AF3_DEACTIVATOR; clone_location;scg\2\blocks_quickmission\airfields_deactivators;
+phase; BLUE_FRONT_AF1_DEACTIVATOR; at(BLUE_FRONT_AF1); blocks_BLUE_FRONT_AF1_DEACTIVATOR; clone_location;scg\2\blocks_quickmission\airfields_deactivators;
+phase; BLUE_FRONT_AF2_DEACTIVATOR; at(BLUE_FRONT_AF2); blocks_BLUE_FRONT_AF2_DEACTIVATOR; clone_location;scg\2\blocks_quickmission\airfields_deactivators;
+phase; BLUE_FRONT_AF3_DEACTIVATOR; at(BLUE_FRONT_AF3); blocks_BLUE_FRONT_AF3_DEACTIVATOR; clone_location;scg\2\blocks_quickmission\airfields_deactivators;
 
 #
 ## cases & switches
@@ -2299,6 +2311,12 @@ tlink; BLUE_SMART_CHECKZONE_891_1222_2965_3092(ACTIVATE_AUTO_CANNONS); MEDIUM_CA
 tlink; BLUE_SMART_CHECKZONE_891_1222_2965_3092(DEACTIVATE_AUTO_CANNONS); MEDIUM_CANNON2_87_884_181_1224_2967_3094(DEACTIVATE_AUTO_CANNONS);
 tlink; BLUE_SMART_CHECKZONE_891_1222_2965_3092(ACTIVATE_AUTO_CANNONS); MEDIUM_CANNON6_91_888_192_1225_2968_3095(ACTIVATE_AUTO_CANNONS);
 tlink; BLUE_SMART_CHECKZONE_891_1222_2965_3092(DEACTIVATE_AUTO_CANNONS); MEDIUM_CANNON6_91_888_192_1225_2968_3095(DEACTIVATE_AUTO_CANNONS);
+tlink; RED_FRONT_AF1_DEACTIVATOR(AF_MCU_OBJECT); RED_FRONT_AF1(AF_MCU_OBJECT);
+tlink; RED_FRONT_AF2_DEACTIVATOR(AF_MCU_OBJECT); RED_FRONT_AF2(AF_MCU_OBJECT);
+tlink; RED_FRONT_AF3_DEACTIVATOR(AF_MCU_OBJECT); RED_FRONT_AF3(AF_MCU_OBJECT);
+tlink; BLUE_FRONT_AF1_DEACTIVATOR(AF_MCU_OBJECT); BLUE_FRONT_AF1(AF_MCU_OBJECT);
+tlink; BLUE_FRONT_AF2_DEACTIVATOR(AF_MCU_OBJECT); BLUE_FRONT_AF2(AF_MCU_OBJECT);
+tlink; BLUE_FRONT_AF3_DEACTIVATOR(AF_MCU_OBJECT); BLUE_FRONT_AF3(AF_MCU_OBJECT);
 
 #
 ## conditions
@@ -5594,6 +5612,12 @@ gui_helper; RTD1_TEST_AF; 8828; 4193;""; ( ); 5;
 gui_helper; BID1_TEST_AF; -7473; 8025;""; ( ); 6;
 gui_helper; BTD1_TEST_AF; -7300; 4143;""; ( ); 6;
 gui_helper; BAD1_TEST_AF; -8592; 4110;""; ( ); 6;
+gui_helper; RED_FRONT_AF1_DEACTIVATOR; 3774; -748;
+gui_helper; RED_FRONT_AF2_DEACTIVATOR; 5686; -597;
+gui_helper; RED_FRONT_AF3_DEACTIVATOR; 7624; -660;
+gui_helper; BLUE_FRONT_AF1_DEACTIVATOR; -2561; -620;
+gui_helper; BLUE_FRONT_AF2_DEACTIVATOR; -4626; -678;
+gui_helper; BLUE_FRONT_AF3_DEACTIVATOR; -6912; -771;
 gui_helper; check; -6849; 4049;BTD1(free)
 gui_helper; check; -6848; 3997;BTD1(location_type)
 gui_helper; check; -6850; 4093;BTD1(coalition)
