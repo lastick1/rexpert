@@ -2,6 +2,7 @@
 from __future__ import annotations
 import re
 
+from constants import INVERT
 from core import EventsEmitter, \
     Atype3, \
     Atype8, \
@@ -13,6 +14,7 @@ import log_objects
 import geometry
 
 from model import CampaignMission, \
+    AirfieldKill, \
     ArtilleryKill, \
     TanksCoverFail, \
     ServerInput
@@ -101,11 +103,13 @@ class RailwayStationTarget(GroundTarget):
             country = 101
         super().__init__(server_input, pos, 35, country, 2000)
 
+
 class AirfieldTarget(GroundTarget):
     """Аэродром"""
 
-    def __init__(self, server_input: str, pos: dict, durability: int, country: int, radius: int):
-        super().__init__(server_input, pos, durability, country, radius)
+    def __init__(self, server_input: str, pos: dict, country: int, radius: int, airfield_name: str):
+        super().__init__(server_input, pos, 60, country, radius)
+        self.airfield_name = airfield_name
 
 
 class GroundTargetUnit(GroundTarget):
@@ -197,7 +201,7 @@ class GroundTargetsService(BaseEventService):
                 self._check_unit(tik, target)
                 continue
             if isinstance(target, GroundTarget):
-                self._check_target(target)
+                self._check_target(tik, target)
 
     def _check_unit(self, tik: int, unit: GroundTargetUnit):
         """Проверить юнит составной цели"""
@@ -210,10 +214,17 @@ class GroundTargetsService(BaseEventService):
                 self.emitter.gameplay_warehouse_damage.on_next(
                     WarehouseDamage(tik, unit.name, unit.pos))
 
-    def _check_target(self, target: GroundTarget):
+    def _check_target(self, tik: int, target: GroundTarget):
         """Проверить цель"""
         if target.killed:
             self._send_input(target.server_input)
+            if isinstance(target, AirfieldTarget):
+                country = INVERT[target.country]
+                self.emitter.gameplay_points_gain.on_next(PointsGain(
+                    country,
+                    1,
+                    AirfieldKill(tik, country, target.airfield_name)
+                ))
 
     def _send_input(self, server_input: str):
         """Отправить инпут на сервер, если он не был отправлен"""
@@ -249,6 +260,19 @@ class GroundTargetsService(BaseEventService):
                 ))
                 continue
         for server_input in self._campaign_mission.server_inputs:
+            airfield_match = AIRFIELD_RE.match(server_input['name'])
+            if airfield_match:
+                airfield_name = airfield_match.groupdict()['airfield_name']
+                for airfield in self._campaign_mission.airfields:
+                    if airfield['name'] == airfield_name:
+                        self.targets.append(AirfieldTarget(
+                            server_input['name'],
+                            airfield['pos'],
+                            airfield['country'],
+                            self._config.gameplay.airfield_radius,
+                            airfield_name,
+                        ))
+                continue
             if BRIDGE_RE.match(server_input['name']):
                 self.targets.append(BridgeTarget(
                     server_input['name'], server_input['pos']))
@@ -257,7 +281,6 @@ class GroundTargetsService(BaseEventService):
                 self.targets.append(RailwayStationTarget(
                     server_input['name'], server_input['pos']))
                 continue
-            print(f'server input:{server_input}')
         self._check_targets(0)
 
     def _kill(self, atype: Atype3) -> None:
