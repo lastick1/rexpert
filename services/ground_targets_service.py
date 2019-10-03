@@ -2,9 +2,7 @@
 from __future__ import annotations
 import re
 
-from constants import INVERT
 from core import EventsEmitter, \
-    Atype0, \
     Atype3, \
     Atype8, \
     DivisionDamage, \
@@ -31,6 +29,9 @@ WAREHOUSE_RE = re.compile(
     r'^REXPERT_(?P<side>[BR])WH(?P<number>\d)_(?P<durability>\d+).*$'
 )
 
+AIRFIELD_RE = re.compile(
+    r'^REXPERT_DEACT_(?P<airfield_name>.*)$'
+)
 
 BRIDGE_RE = re.compile(
     ''
@@ -99,6 +100,12 @@ class RailwayStationTarget(GroundTarget):
         if 'red' in server_input:
             country = 101
         super().__init__(server_input, pos, 35, country, 2000)
+
+class AirfieldTarget(GroundTarget):
+    """Аэродром"""
+
+    def __init__(self, server_input: str, pos: dict, durability: int, country: int, radius: int):
+        super().__init__(server_input, pos, durability, country, radius)
 
 
 class GroundTargetUnit(GroundTarget):

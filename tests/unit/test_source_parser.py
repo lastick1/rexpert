@@ -35,7 +35,10 @@ class TestSourceParser(unittest.TestCase):
     def test_parse_server_input(self):
         """Определяются MCU ServerInput из исходника миссии"""
         parser = SourceParser(CONFIG)
-        expected = [{'name': 'test_input', 'pos': {'x': 50, 'z': 50}}]
+        expected = [
+            {'name': 'test_input', 'pos': {'x': 50, 'z': 50}},
+            {'name': 'REXPERT_DEACT_kubinka', 'pos': {'x': 250.0, 'z': 520.0}},
+        ]
         # Act
         result = parser.parse(TEST_TVD_NAME, pathlib.Path(
             './tests/data/mission_source/{}.Mission'.format(TEST_TVD_NAME)))

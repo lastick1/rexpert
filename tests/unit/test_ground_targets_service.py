@@ -131,7 +131,7 @@ class TestGroundControl(unittest.TestCase):
             atype_12_stub(2, aircraft_name, 201, 'Test attacker', -1))
         target = self._objects_service._create_object(
             atype_12_stub(3, target_name, 101, 'Test ground target', -1))
-        service._mission_start(None)
+        service._mission_start()
         # Act
         self._objects_service._kill(
             Atype3(4444, attacker.obj_id, target.obj_id, TEST_TARGET_POS_BTD1_UNITS[0]))
@@ -166,7 +166,7 @@ class TestGroundControl(unittest.TestCase):
         """Обрабатывается уничтожение танкового наступления"""
         coal_id = 1
         pos = {'x': 10.1, 'z': 11.1}
-        service = self._init_new_service_instance()
+        self._init_new_service_instance()
         # Act
         self.emitter.events_mission_result.on_next(Atype8(
             20, 1, coal_id, 6, True, 1, pos
@@ -174,6 +174,15 @@ class TestGroundControl(unittest.TestCase):
         # Assert
         self.assertTrue(self._interceptor.points_gains)
         self.assertEqual(-1, self._interceptor.points_gains[0].capture_points)
+
+    def test_airfield_kill(self):
+        """Обрабатывается уничтожение аэродрома"""
+        self._init_new_service_instance()
+        # Act
+        # TODO: отправить события килла для уничтожения аэродрома и проверить, что придёт событие уничтожения филда
+        # Assert
+        self.fail('Not implemented')
+
 
 
 if __name__ == '__main__':
