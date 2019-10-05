@@ -152,7 +152,6 @@ class CampaignService(BaseEventService):
         self._update_tik(atype.tik)
         self._mission.is_correctly_completed = True
         self._storage.campaign_missions.update(self._mission)
-        # TODO "приземлить" всех
 
     def _end_round(self, atype: Atype19):
         """Обработать завершение раунда (4-минутный отсчёт до конца миссии)"""
@@ -162,7 +161,6 @@ class CampaignService(BaseEventService):
         # TODO подвести итог кампании, если она закончилась
         # TODO подвести итог ТВД, если он изменился
         # TODO определить имя ТВД для следующей миссии
-        # TODO отремонтировать дивизии
         if self.won_country:
             self.emitter.mission_victory.on_next(self.won_country)
             self.emitter.commands_rcon.on_next(ServerInput(VICTORY[self.won_country]))
