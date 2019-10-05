@@ -136,13 +136,18 @@ class CampaignService(BaseEventService):
             self._storage.campaign_maps.update(self._campaign_map)
         else:
             logging.warning(
-                f'{action.__class__.__name__} after round end {action.object_name}')
+                '%(action)s after round end %(object)s',
+                extra={
+                    'action': action.__class__.__name__,
+                    'object': action.object_name,
+                }
+            )
 
     def _get_tvd(self, tvd_name: str, date: str) -> Tvd:
         """Получить ТВД (создаётся заново)"""
         result = self._tvd_services[tvd_name].get_tvd(date)
         if not result:
-            logging.critical(f'tvd not built')
+            logging.critical('tvd not built')
         return result
 
     def _end_mission(self, atype: Atype7):
